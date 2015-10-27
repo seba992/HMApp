@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
+using DiamondApp.Views;
 using GalaSoft.MvvmLight.Command;
 
 namespace DiamondApp.ViewModels
@@ -78,6 +79,7 @@ namespace DiamondApp.ViewModels
 
                             _userId = user.Id;
                             _userType = user.AccountType;
+                            Application.Current.MainWindow.Hide();
 
                             MessageBox.Show("Otworz nowe okno \n" +
                                             "Zamknij obecne");
@@ -89,8 +91,20 @@ namespace DiamondApp.ViewModels
 
                 if (_allowToLog)
                 {
-                    // Application.Current.MainWindow
-                    MessageBox.Show("Zmien domyslne okno logowania na nowe lub je .hide");
+                    // Application.Current.UserMainWindow
+
+                    // if typ konta to je wlacz
+                    if (_userType == "A")
+                    {
+                        UserMainWindow userMainWindow = new UserMainWindow(_userId);
+                        userMainWindow.Show();
+                    }
+                    else
+                    {
+//                        AdminMainWindow adminMainWindow = new AdminMainWindow();
+//                        adminMainWindow.Show();
+                    }
+
                 }
                 else
                 {
