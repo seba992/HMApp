@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace DiamondApp.Views
 {
@@ -19,5 +20,20 @@ namespace DiamondApp.Views
         {
             Application.Current.Shutdown();
         }
+
+        private void VisibleElement(object sender, RoutedEventArgs e)
+        {
+            if (this.DataGridProposition.Visibility != Visibility.Hidden)
+            {
+                this.DataGridProposition.Visibility = Visibility.Hidden;
+                this.TabControlProposition.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                this.DataGridProposition.Visibility = Visibility.Visible;
+                this.TabControlProposition.Visibility = Visibility.Hidden;
+            }
+
+         }
     }
 }

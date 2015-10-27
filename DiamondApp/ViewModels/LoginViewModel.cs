@@ -101,8 +101,8 @@ namespace DiamondApp.ViewModels
                     }
                     else
                     {
-//                        AdminMainWindow adminMainWindow = new AdminMainWindow();
-//                        adminMainWindow.Show();
+                        UserMainWindow adminMainWindow = new UserMainWindow(_userId);
+                        adminMainWindow.Show();
                     }
 
                 }
