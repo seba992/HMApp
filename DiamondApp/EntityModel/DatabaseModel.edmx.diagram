@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="71d641a749f841e2bd256cf3eb081deb" Name="Diagram1">
+        <EntityTypeShape EntityType="DiamondDBModel.AccountPrivileges" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipment" Width="1.5" PointX="7.5" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.Proposition" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions" Width="1.5" PointX="7.5" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.sysdiagrams" Width="1.5" PointX="0.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.Users" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation_Dictionary" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices_Dictionary" Width="1.5" PointX="2.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipmnet_Dictionary_First" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipmnet_Dictionary_Second" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions_Dictionary_First" Width="1.5" PointX="4.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions_Dictionary_Fourth" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions_Dictionary_Second" Width="1.5" PointX="4.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions_Dictionary_Third" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="DiamondDBModel.FK__Users__AccountTy__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="DiamondDBModel.FK_PropHallEquipment_Proposition" ManuallyRouted="false" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
