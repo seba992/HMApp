@@ -1,0 +1,267 @@
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('50 % zadatek / 50% do dnia realizacji');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('100% zadatek');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('100% do dnia realizacji');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Przelew 7 dni');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Przelew 14 dni');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Przelew 21 dni');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Inna');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Gotówka/karta');
+insert PropPaymentSuggestions_Dictionary_First (PaymentForm) values ('Do ustalenia');
+
+insert PropPaymentSuggestions_Dictionary_Second (InvoiceServiceName) values ('Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Us³uga noclegowa 8%');
+insert PropPaymentSuggestions_Dictionary_Second (InvoiceServiceName) values ('Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23%');
+insert PropPaymentSuggestions_Dictionary_Second (InvoiceServiceName) values ('Posi³ki grupowe HP');
+insert PropPaymentSuggestions_Dictionary_Second (InvoiceServiceName) values ('Posi³ki grupowe HP ; Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23%');
+insert PropPaymentSuggestions_Dictionary_Second (InvoiceServiceName) values ('Us³uga Konferencyjna 23%');
+insert PropPaymentSuggestions_Dictionary_Second (InvoiceServiceName) values ('Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23%');
+
+insert PropPaymentSuggestions_Dictionary_Third (IndividualOrders) values ('P³atny indywidualnie');
+insert PropPaymentSuggestions_Dictionary_Third (IndividualOrders) values ('Rycza³t');
+insert PropPaymentSuggestions_Dictionary_Third (IndividualOrders) values ('Doliczany do faktury');
+insert PropPaymentSuggestions_Dictionary_Third (IndividualOrders) values ('Do ustalenia');
+insert PropPaymentSuggestions_Dictionary_Third (IndividualOrders) values ('Zamówienia trenera i reprezentatów doliczane do faktury, goœcie p³ac¹ indywidualnie');
+
+insert PropPaymentSuggestions_Dictionary_Fourth (CarPark) values ('P³atny indywidualnie');
+insert PropPaymentSuggestions_Dictionary_Fourth (CarPark) values ('Rycza³t');
+insert PropPaymentSuggestions_Dictionary_Fourth (CarPark) values ('Doliczany do faktury');
+insert PropPaymentSuggestions_Dictionary_Fourth (CarPark) values ('Do ustalenia');
+insert PropPaymentSuggestions_Dictionary_Fourth (CarPark) values ('Zamówienia trenera i reprezentatów doliczane do faktury, goœcie p³ac¹ indywidualnie');
+
+insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKÓJ 1-OSOBOWY');
+insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKÓJ 2-OSOBOWY');
+insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKÓJ BUSSINES 1-OSOBOWY');
+insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKÓJ BUSSINES 2-OSOBOWY');
+insert PropAccomodation_Dictionary (TypeOfRoom) values ('APARTAMENT');
+insert PropAccomodation_Dictionary (TypeOfRoom) values ('JUNIOR');
+insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKOJ DLA NIEPE£NOSPRAWNYCH');
+insert PropAccomodation_Dictionary (TypeOfRoom) values ('BAGA¯OWNIA');
+
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 57m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 75m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 132m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 58m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 88m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 147m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 116m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 163m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 41m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 175m2');
+insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 45m2');
+
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('RZUTNIK, EKRAN, FLIPCHART');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('RZUTNIK, EKRAN');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('EKRAN, FLIPCHART');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('FLIPCHART');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('EKRAN');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('RZUTNIK');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('LAPTOP');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('NAG£OŒNIENIE');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('NAG£OŒNIENIE DO LAPTOPA');
+insert PropHallEquipmnet_Dictionary_Second (Things) values ('KRZES£A Z PULPITAMI');
+
+insert PropExtraServices_Dictionary (ServiceType) values ('PARKING ( czêœæ nie dozorowana )');
+insert PropExtraServices_Dictionary (ServiceType) values ('PARKING ( czêœæ dozorowana )');
+
+insert PropMenuMarge_Dictionary_First (MargeName,Value) values ('Mar¿a gastronomia 8%)',0.8);
+insert PropMenuMarge_Dictionary_First (MargeName,Value) values ('Mar¿a gastronomia 23%)',0.8);
+insert PropMenuMarge_Dictionary_First (MargeName,Value) values ('Mar¿a Alkohole)',0.8);
+insert PropMenuMarge_Dictionary_First (MargeName,Value) values ('Mar¿a niskobud¿etowe)',0.8);
+insert PropMenuMarge_Dictionary_First (MargeName,Value) values ('Napoje)',0.8);
+
+insert PropMergeTypes_Dictionary (MargeType) values ('MGA8');
+insert PropMergeTypes_Dictionary (MargeType) values ('MGA23');
+insert PropMergeTypes_Dictionary (MargeType) values ('MALK');
+insert PropMergeTypes_Dictionary (MargeType) values ('MNIS');
+insert PropMergeTypes_Dictionary (MargeType) values ('MNAPO');
+
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - 3 dania', 38.12,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - 2 dania z zup¹', 31.77 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - 2 dania z przystawk¹', 33.03 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - 1 danie g³ówne', 25.42 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Zestaw œl¹ski ( zupa + danie g³ówne + deser)', 45.39 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu I Sl¹skie smaki', 35.66 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu II Tradycyjny obiad', 37.82 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu III Wspomnienia lata', 38.90 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu IV Jak u mamy', 39.98 ,0.08,'MGA8');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy (2-zupy , 2-dodatki miêsne 1 dodatek rybny, 2-dodatki syc¹ce, 3-surówki, 2 desery)',  64.19 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy Menu I ', 46.46 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy Menu II ', 47.54 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy Menu III ', 49.71 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy Menu I, II, III powyzej 100os.',38.90  ,0.08,'MGA8');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet NAPOJE (kawa, herbata, woda, sok)', 8.92 ,0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet NAPOJE (serwowany 2 krotnie) (kawa, herbata, woda, sok)', 13.38 ,0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet NAPOJE (serwowany ci¹gle) (kawa, herbata, woda, sok)', 17.84 ,0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet II standard', 12.59 , 0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet II standard UZUPE£NIANY', 17.08 ,0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet II standard CI¥G£Y', 25.62 ,0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet III standard plus', 15.18, 0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet III standard plus UZUPE£NIANY', 24.67 ,0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet III standard plus CI¥G£Y', 35.10 , 0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet IV energetyzuj¹cy', 18.98 , 0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet IV energetyzuj¹cy UZUPE£NIANY', 35.10 ,0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet IV energetyzuj¹cy CI¥G£Y', 45.54, 0.23,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Sa³atka owocowa 100g/os', 4.28, 0.08,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Owoce 100g/os', 3.31 ,0.08,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kanapki dekoracyjne 3szt/os',7.81, 0.08,'MGA23');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Ciasto domowe 2 kawa³ki/os', 6.62,0.08,'MGA23');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja "Serwowana"', 39.38 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja serwowana menu I', 34.16 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja serwowana menu II' ,40.80 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja "Bufet"' , 39.38 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja bufetowa menu I', 34.16 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja bufetowa menu II', 36.05 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Grill z Grillo-wêdzarni¹', 41.94 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Grill Menu II', 47.02 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Grill Menu III', 53.38 ,0.08,'MGA8');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja Bufetowa + zimna p³yta', 85.31 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Zimna p³yta "Bufet"', 34.48 ,0.08,'MGA8');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet przek¹sek zimnych + gor¹ca kolacja', 30.63 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet przek¹sek zestaw II', 30.63 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet przek¹sek zestaw III', 30.63 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bufet przek¹sek zestaw IV', 34.31 ,0.08,'MGA8');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Barszcz  czerwony z korokietem ', 14.70 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Zupa curry z kurczaka' , 14.70 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Zupa gulaszowa  pikantna  wêgierska' , 14.70 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Curry z kurczaka z bia³ym ryzem' , 24.51 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Strogonof z wo³owiny z pieczywem' , 14.70 ,0.08,'MGA8');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Szasyki drobiowe z frytkami' , 24.51 ,0.08,'MGA8');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('¯ywiec 0.3 l', 4.67  ,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('¯ywiec 0.5 l', 6.42  ,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('¯ywiec 30 l', 350.10  ,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('¯ywiec bia³e 0.5 l', 5.84  ,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('¯ywiec bezalkohoolowy 0.33 l', 4.08  ,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('¯ywiec 0.3 l', 4.67  ,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Wyborowa 0,04 l', 3.50,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Wyborowa 0,5 l', 35.01,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Finlandia 0,04 l', 4.67,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Finlandia 0,5 l', 45.51,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Absolut 0,04 l', 4.67,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Absolut 0,5 l', 45.51,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('¯ubrówka 0,04 l', 3.50,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('¯ubrówka 0,5 l', 35.01,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Wiœniówka 0,04 l', 3.50,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Wiœniówka 0,5 l', 35.01,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Gorzka ¿o³¹dkowa 0,04 l', 3.50,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Gorzka ¿o³¹dkowa0,5 l', 35.01,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Ballantine''s Finest 0,04 l', 5.84,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Ballantine''s Finest 0,7 l', 102.11,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Ballantine''s 12 years 0,04 l', 8.17,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Ballantine''s 12 years 0,7 l', 142.96,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Johnie Walker Red Label 0,04 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Johnie Walker Red Label 0,7 l', 91.90,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Johnie Walker Black Label 0,04 l', 9.34,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Johnie Walker Black Label 0,7 l', 163.38,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Chivas Regal 0,04 l', 8.17,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Chivas Regal 0,7 l', 142.96,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Jameson 0,04 l', 5.84,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Jameson 0,7 l', 102.11,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Jack Daniels 0,04 l', 7.00,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Jack Daniels 0,7 l', 122.54,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Campari 0,04 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Campari 0,7 l', 91.90,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Martini Bianco 0,1 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Martini Bianco 1 l', 52.52,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Martini Extra Dry 0,1 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Martini Extra Dry 1l', 52.52,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Martini Rosso 0,1 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Martini Rosso 1 l', 52.52,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bacardi Superior 0,04 l', 7.59,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bacardi Superior 0,7 l', 132.75,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bacardi Black 0,04 l', 6.42,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bacardi Black 0,7 l', 112.32,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Havana Club 3 0,04 l', 6.42,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Havana Club 3 0,7 l', 112.32,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Havana Club 7 0,04 l', 7.59,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Havana Club 7 0,7 l', 132.75,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bailey''s Irish Cream 0,04 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bailey''s Irish Cream 0,7 l', 91.90,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Jagermeister 0,04 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Jagermeister 0,7 l', 91.90,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Malibu 0,04 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Malibu 0,7 l', 91.90,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Passoa 0,04 l', 5.25,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Passoa 0,7 l', 91.90,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Seagrams 0,04 l', 4.67,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Seagrams 0,7 l', 81.69,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Metaxa ***** 0,04 l', 5.84,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Metaxa ***** 0,7 l', 102.11,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Martel VS 0,04 l', 9.34,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Martel VS 0,7 l', 163.38,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Tequila Silver 0,04 l', 5.84,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Tequila Silver 0,7 l', 102.11,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Tequila Gold 0,04 l', 6.42,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Tequila Gold 0,7 l', 112.32,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('SantaCarolina Premio 0,15l', 4.67,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('SantaCarolina Premio 0,75l', 29.18,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Elilaio Trebbiano D''Abruzzo 0,15l', 5.84,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Elilaio Trebbiano D''Abruzzo 0,75l', 35.01,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kumala Shiraz Pinotage 0,75l', 46.68,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Vina Bujanda Tempranillo 0,75l', 52.52,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Chateau Pey La Tour 0,75l', 58.35,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Peppoli Chianti Classico 0,75l', 116.70,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Santa Carolina Premio 0,15l', 4.67,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Santa Carolina Premio 0,75l', 29.18,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Elilaio Trebbiano D''Abruzzo 0,15l', 5.84,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Elilaio Trebbiano D''Abruzzo 0,75l', 35.01,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kumala Semillon Chardonnay 0,75l', 46.68,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Bordeaus 0,75l', 46.68,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Cava Rigol Brut 0,1l', 4.67,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Cava Rigol Brut 0,75l', 46.68,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Jean De La Fontaine Brut 0,75l', 116.70,0.23,'MALK');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Pepsi 0.2l', 4.08 ,0.23,'MNAPO');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('PepsiMax 0.2l', 4.08 ,0.23,'MNAPO');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Pepsi Light 0.2l', 4.08 ,0.23,'MNAPO');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Mirinda 0.2l', 4.08 ,0.23,'MNAPO');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('7 UP 0.2l', 4.08 ,0.23,'MNAPO');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Schwepps 0.2l', 4.08 ,0.23,'MNAPO');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Górska natura gazowana 0.3l', 4.08 ,0.23,'MNAPO');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Górska natura niegazowana 0.3l', 4.08 ,0.23,'MNAPO');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Red bull 0.2l', 5.84 ,0.23,'MNAPO');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Œniadania grupowe niskobud¿etowe (ekonomiczne)', 22.69 ,0.08,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu I', 23.77 ,0.08,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu II', 25.93 ,0.08 ,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu III', 27.01 ,0.08 ,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu IV', 28.09 ,0.08 ,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch serwowany - Menu V', 29.18 ,0.08 ,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy - Menu I', 25.93 ,0.08 ,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy - Menu II', 27.01 ,0.08 ,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy - Menu III', 28.09 ,0.08,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy - Menu IV', 29.18 ,0.08,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Lunch bufetowy - Menu V', 30.26 ,0.08,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja bufetowa - Menu I', 22.69 ,0.08,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja bufetowa - Menu II', 23.77 ,0.08 ,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja bufetowa - Menu III', 25.93 ,0.08 ,'MNIS');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('Kolacja bufetowa - Menu IV', 28.09 ,0.08 ,'MNIS');
+
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: STANDARD do 4h', 56.02 ,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: STANDARD od 4h do 8h', 84.02 ,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: STANDARD powy¿ej 8h', 112.03 ,0.23 ,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: PREMIUM STANDARD do 4h', 67.69 ,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: PREMIUM od 4h do 8h', 101.53 ,0.23,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: PREMIUM powy¿ej 8h', 135.37 ,0.23 ,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: DIAMENT do 4h', 79.36 ,0.23 ,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: DIAMENT od 4h do 8h', 119.03 ,0.23 ,'MALK');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MargeType) values ('OpenBar: DIAMENT powy¿ej 8h', 158.71 ,0.23 ,'MALK');

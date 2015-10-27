@@ -1,0 +1,35 @@
++ Motywacja
+
+obecne kierunki na rynku
+
+automatyzacja systemów, informatyzacja
+
+korzystanie z us³ug firmy - dostrzezenie problemu w funkcjonowaniu firmy
+
+propozycja mozliwoœci wspó³pracy
+
+rozwi¹zanie problemu biznesowego
+
+usprawnienie obecnego systemu
+
+opisac obecny system
+
+pozorne oszczednosci
+- brak centralnej bazy danych i problemy jakie z tego wynikaj¹ (brak synch.)
+
+rozwiazania tego problemu istniejace na rynku
+
+dlaczego inne niz obecnie istniejace na rynku rozwiazania (porównanie obecnie dostepnych i ich krótki opis)
+
+problem do rozwi¹zania
+
+jak go rozwi¹zaæ
+
+dyskusja z firma nad sposobem tworzenia aplikacji (desktop vs web)
+
+zysk z rozwi¹zania (oszczednosc czasu)
+
+.................
+CEL PROJEKTU
+automatyczny system 
+opisac projekt jak bedzie wygl¹da³
