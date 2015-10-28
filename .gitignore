@@ -18,3 +18,27 @@ DBScripts/DiamondDB_v0.3.sql.orig
 packages/Portable.MvvmLightLibs.5.0.2.0/*
 packages/MvvmLightLibs.5.2.0.0/*
 DiamondAppTests/obj/Debug/*
+packages/NUnit.2.6.4/license.txt
+packages/CommonServiceLocator.1.3/CommonServiceLocator.1.3.nupkg
+packages/CommonServiceLocator.1.3/lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.XML
+packages/EntityFramework.6.1.1/EntityFramework.6.1.1.nupkg
+packages/NUnit.2.6.4/NUnit.2.6.4.nupkg
+DiamondAppTests/bin/Debug/GalaSoft.MvvmLight.xml
+DiamondAppTests/bin/Debug/Microsoft.Practices.ServiceLocation.xml
+DiamondAppTests/bin/Debug/nunit.framework.xml
+Project Documents/~$neza v2.docx
+packages/EntityFramework.6.1.1/content/App.config.transform
+packages/EntityFramework.6.1.1/lib/net40/EntityFramework.SqlServer.xml
+packages/EntityFramework.6.1.1/lib/net40/EntityFramework.xml
+packages/EntityFramework.6.1.1/lib/net45/EntityFramework.SqlServer.xml
+packages/EntityFramework.6.1.1/lib/net45/EntityFramework.xml
+packages/EntityFramework.6.1.1/tools/EntityFramework.psd1
+packages/EntityFramework.6.1.1/tools/EntityFramework.psm1
+packages/EntityFramework.6.1.1/tools/about_EntityFramework.help.txt
+packages/EntityFramework.6.1.1/tools/init.ps1
+packages/EntityFramework.6.1.1/tools/install.ps1
+DiamondAppTests/bin/Debug/DiamondAppTests.dll.config
+DiamondAppTests/bin/Debug/EntityFramework.SqlServer.xml
+DiamondAppTests/bin/Debug/EntityFramework.xml
+packages/EntityFramework.6.1.1/content/Web.config.transform
+packages/NUnit.2.6.4/lib/nunit.framework.xml
