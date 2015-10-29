@@ -85,6 +85,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DatabaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="Views\UserMainWindow.xaml.cs">
       <DependentUpon>UserMainWindow.xaml</DependentUpon>
     </Compile>
