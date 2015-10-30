@@ -78,76 +78,90 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="EntityModel\AccountPrivileges.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\DatabaseModel.cs">
+    <Compile Include="EntityModel\DiamondModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
+      <DependentUpon>DiamondModel.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityModel\DiamondModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\DiamondModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DiamondModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropAccomodation.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropAccomodation_Dictionary.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropExtraServices.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropExtraServices_Dictionary.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropHallEquipment.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropHallEquipmnet_Dictionary_First.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropHallEquipmnet_Dictionary_Second.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropMenuPosition.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\Proposition.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropPaymentSuggestions.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_First.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Fourth.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Second.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Third.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\sysdiagrams.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\Users.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
-    <Compile Include="Views\UserMainWindow.xaml.cs">
-      <DependentUpon>UserMainWindow.xaml</DependentUpon>
+    <Compile Include="Views\AdminMainView.xaml.cs">
+      <DependentUpon>AdminMainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\RelayCommandGeneric.cs" />
     <Compile Include="Tools\ShaConverter.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="EntityModel\PropAccomodation.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropAccomodation_Dictionary.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Properties\Annotations1.cs" />
-    <Compile Include="EntityModel\PropExtraServices.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropExtraServices_Dictionary.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropHallEquipment.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropHallEquipmnet_Dictionary_First.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropHallEquipmnet_Dictionary_Second.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropMenuPosition.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\Proposition.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_First.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Fourth.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Second.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Third.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\sysdiagrams.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Tools\ObservableObject.cs" />
-    <Compile Include="EntityModel\Users.cs">
-      <DependentUpon>DatabaseModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="Views\LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\WeakActionGeneric.cs" />
-    <Page Include="Views\UserMainWindow.xaml">
+    <Compile Include="Views\UserMainView.xaml.cs">
+      <DependentUpon>UserMainView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\AdminMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -155,17 +169,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EntityModel\DatabaseModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="EntityModel\DatabaseModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-    </Compile>
-    <Page Include="Views\LoginWindow.xaml">
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,12 +196,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="EntityModel\DatabaseModel.edmx">
+    <EntityDeploy Include="EntityModel\DiamondModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DatabaseModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DiamondModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="EntityModel\DatabaseModel.edmx.diagram">
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
+    <None Include="EntityModel\DiamondModel.edmx.diagram">
+      <DependentUpon>DiamondModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -206,19 +214,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EntityModel\DatabaseModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="EntityModel\DatabaseModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DatabaseModel.edmx</DependentUpon>
-      <LastGenOutput>DatabaseModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="EntityModel\DiamondModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DiamondModel.edmx</DependentUpon>
+      <LastGenOutput>DiamondModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityModel\DiamondModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DiamondModel.edmx</DependentUpon>
+      <LastGenOutput>DiamondModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

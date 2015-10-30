@@ -17,7 +17,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using GalaSoft.MvvmLight.Helpers;
 
-namespace DiamondApp
+namespace DiamondApp.Tools
 {
     /// <summary>
     /// Stores an Action without causing a hard reference

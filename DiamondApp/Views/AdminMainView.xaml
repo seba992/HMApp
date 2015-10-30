@@ -1,0 +1,44 @@
+﻿<Window x:Class="DiamondApp.Views.AdminMainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:da="clr-namespace:DiamondApp.ViewModels"
+        Title="AdminMainView" Height="689.671" Width="1158.164" Closed="Window_Closed">
+
+            <!--<Window.DataContext>
+        <viewModels:AdminViewModel />
+    </Window.DataContext>-->
+
+    <Grid RenderTransformOrigin="0.0,0.0">
+        <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0" >
+            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="140">
+                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
+                <MenuItem Header="Zapisz" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
+                <MenuItem Header="Do pdf" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
+                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
+                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
+            </MenuItem>
+        </Menu>
+        <DataGrid x:Name="DataGridProposition" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="614" Width="1130"/>
+        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="614" Margin="10,35,0,0" VerticalAlignment="Top" Width="1130" Visibility="Hidden">
+            <TabItem Header="DANE FIRMY">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="SZCZEGÓŁY REZERWACJI">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="USŁUGI GASTRONOMICZNE">
+            <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="USŁUGI NOCLEGOWE">
+            <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="USŁUGI DODATKOWE:">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="FORMA PŁATNOŚĆI">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

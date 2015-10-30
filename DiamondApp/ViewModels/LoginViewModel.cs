@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Data.Common;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -8,7 +6,7 @@ using System.Windows.Input;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
 using DiamondApp.Views;
-using GalaSoft.MvvmLight.Command;
+using Microsoft.Practices.ServiceLocation;
 
 namespace DiamondApp.ViewModels
 {
@@ -36,13 +34,19 @@ namespace DiamondApp.ViewModels
             {
                 _userLogin = value;
                 RaisePropertyChanged("UserLogin");
-                _loginCommand.RaiseCanExecuteChanged(); // check if user can click login button
+                _loginCommand.RaiseCanExecuteChanged(); // sprawdz czy user nacisnal przycisk logowania
             }
         }
 
-        public ICommand LoginCommand22
+        public int UserId
         {
-            // if Login button clicked execute the login operation
+            get { return _userId; }
+            set { _userId = value; }
+        }
+        
+        public ICommand LoginCommand
+        {
+            // jesli zostal nacisniety przycisk logowania wykonaj ta operacje
             get
             {
                 if (_loginCommand == null)
@@ -53,7 +57,9 @@ namespace DiamondApp.ViewModels
             }          
         }
 
-        // check if username is not empty
+
+
+        // sprawdza czy login nie jest pusty
         private bool CanLoginExecute(PasswordBox arg)
         {
             if (string.IsNullOrEmpty(_userLogin))
@@ -77,12 +83,12 @@ namespace DiamondApp.ViewModels
                         if (user.Login == _userLogin && user.Password == passBox.Password)
                         {
 
-                            _userId = user.Id;
+                            UserId = user.Id;
                             _userType = user.AccountType;
                             Application.Current.MainWindow.Hide();
 
-                            MessageBox.Show("Otworz nowe okno \n" +
-                                            "Zamknij obecne");
+//                            MessageBox.Show("Otworz nowe okno \n" +
+//                                            "Zamknij obecne");
                             _allowToLog = true;
                             break;
                         }
@@ -91,20 +97,23 @@ namespace DiamondApp.ViewModels
 
                 if (_allowToLog)
                 {
-                    // Application.Current.UserMainWindow
+                    // Application.Current.AdminMainView
 
                     // if typ konta to je wlacz
-                    if (_userType == "A")
+                    if (_userType.ToUpper() == "A")
                     {
-                        UserMainWindow userMainWindow = new UserMainWindow(_userId);
-                        userMainWindow.Show();
+                        AdminMainView adminMainView = new AdminMainView(_userId);
+                        adminMainView.Show();
+                    }
+                    else if(_userType.ToUpper() == "S")
+                    {
+                        UserMainView userMainView = new UserMainView(_userId);
+                        userMainView.Show();
                     }
                     else
                     {
-                        UserMainWindow adminMainWindow = new UserMainWindow(_userId);
-                        adminMainWindow.Show();
+                        MessageBox.Show("Błędny typ konta usera");      // TO DELETE
                     }
-
                 }
                 else
                 {
@@ -114,9 +123,10 @@ namespace DiamondApp.ViewModels
                     passBox.Clear();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Błąd połączenia z bazą danych. Skontaktuj się z administratorem.");
+                MessageBox.Show(ex.ToString());
+                // MessageBox.Show("Błąd połączenia z bazą danych. Skontaktuj się z administratorem.");
             }   
         }
     }
