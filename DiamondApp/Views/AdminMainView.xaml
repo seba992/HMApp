@@ -4,22 +4,25 @@
         xmlns:da="clr-namespace:DiamondApp.ViewModels"
         Title="AdminMainView" Height="689.671" Width="1158.164" Closed="Window_Closed">
 
-            <!--<Window.DataContext>
+    <!--<Window.DataContext>
         <viewModels:AdminViewModel />
     </Window.DataContext>-->
 
     <Grid RenderTransformOrigin="0.0,0.0">
-        <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0" >
-            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="140">
-                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
-                <MenuItem Header="Zapisz" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
-                <MenuItem Header="Do pdf" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
-                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
-                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="140" Click="VisibleElement"/>
+        <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
+            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="150">
+                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
+                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
+                <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
+                <MenuItem Header="Lista propozy" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
+                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
             </MenuItem>
+            <MenuItem Header="Edytuj słownik"/>
         </Menu>
-        <DataGrid x:Name="DataGridProposition" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="614" Width="1130"/>
-        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="614" Margin="10,35,0,0" VerticalAlignment="Top" Width="1130" Visibility="Hidden">
+
+        <DataGrid x:Name="DataGridProposition" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="560" Width="1130" ItemsSource="{Binding PropositionsList}" MinColumnWidth="3"/>
+            
+                <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="614" Margin="10,35,0,0" VerticalAlignment="Top" Width="1130" Visibility="Hidden">
             <TabItem Header="DANE FIRMY">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
@@ -27,10 +30,10 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="USŁUGI GASTRONOMICZNE">
-            <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="USŁUGI NOCLEGOWE">
-            <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem Header="USŁUGI DODATKOWE:">
                 <Grid Background="#FFE5E5E5"/>
@@ -39,6 +42,8 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
+        <ComboBox HorizontalAlignment="Left" Margin="977,35,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding  UsersList}"/>
+        <Label Content="Użytkownicy" HorizontalAlignment="Left" Height="22" Margin="793,35,0,0" VerticalAlignment="Top" Width="179" Padding="0"/>
 
     </Grid>
 </Window>

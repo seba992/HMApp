@@ -6,6 +6,15 @@
         Title="UserMainView" Height="684.47" Width="1137.648" Closed="Window_Closed">
 
     <Grid>
+        <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
+            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="150">
+                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="150" />
+                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="150" />
+                <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="150" />
+                <MenuItem Header="Lista propozy" HorizontalAlignment="Left" Width="150" />
+                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="150" />
+           </MenuItem>
+        </Menu>
         <ListView ItemsSource="{Binding PropositionsList}" x:Name ="ListViewSeby" HorizontalAlignment="Left" Height="597" Margin="507,47,0,0" VerticalAlignment="Top" Width="613">
             <ListView.View>
                 <GridView>

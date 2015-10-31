@@ -11,15 +11,22 @@ namespace DiamondApp.ViewModels
     {
         private DiamondDBEntities _ctx;
         public List<Proposition> propositionList;
+        public List<Users> usersList;
         private int _userId;
         private string _tag;
+
+        public AdminViewModel()
+        {
+            _ctx = new DiamondDBEntities();
+            MyMethod();
+
+        }
 
         public AdminViewModel(int userId)
         {
             _ctx = new DiamondDBEntities();
             _userId = userId;
-
-            FillPropositions();
+            MyMethod();
         }
 
 #region Properties
@@ -37,7 +44,28 @@ namespace DiamondApp.ViewModels
             }
         }
 
-#endregion
+
+        public List<Users> UsersList
+        {
+            get { return usersList; }
+            set
+            {
+                usersList = value ;
+                UserList();
+                RaisePropertyChanged("UsersList");
+               
+            }
+
+        }
+
+        private void UserList()
+        {
+            var q = (from s in _ctx.Users
+                select s).ToList();
+            usersList = q;
+        }
+
+        #endregion
 
         private void FillPropositions()
         {
@@ -58,6 +86,13 @@ namespace DiamondApp.ViewModels
 
             MessageBox.Show(_userId.ToString());
 
+        }
+
+        private void MyMethod()
+        {
+            var myQuerry = (from s in _ctx.Proposition
+                            select s).ToList();
+            propositionList = myQuerry;
         }
     }
 }
