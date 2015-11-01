@@ -37,21 +37,20 @@ select  p.Id,'Inne ',10,8,3  from Proposition p where p.Id_user = 4;
 insert into PropExtraServicesDiscount(Id_proposition,StandardPrice,Discount)
 select  p.Id,100,50  from Proposition p where p.Id_user = 4;
 insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
-select  p.Id,'Rzutnik',10,8,2,10  from Proposition p where p.Id_user = 4;
+select  p.Id,'RZUTNIK',10,8,2,10  from Proposition p where p.Id_user = 4;
 insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
-select  p.Id,'Laptop',110,8,2,10  from Proposition p where p.Id_user = 4;
-insert into PropHallEquipmentDiscount(Id,StandardPrice,Discount) 
-select ph.Id,45,20 from PropHallEquipment ph where ph.Things  LIKE 'Laptop';
-insert into PropHallEquipmentDiscount(Id,StandardPrice,Discount)
-select ph.Id,30,10  from PropHallEquipment ph where ph.Things  LIKE 'Rzutnik';
-insert into PropMenuMarge(Id_proposition,MargeName,DefaultValue,MargeType)
+select  p.Id,'LAPTOP',110,8,2,10  from Proposition p where p.Id_user = 4;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
+select p.Id,45,20 from Proposition p where p.Id_user = 4 ;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
 select  p.Id,'Marża gastronomia 8%',80,'MG8' from Proposition p where p.Id_user = 4;
-insert into PropMenuMarge(Id_proposition,MargeName,DefaultValue,MargeType)
+/*insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
 select p.Id,'Marża gastronomia 23%',50,'MG23'  from Proposition p where p.Id_user = 4;
-insert into PropMenuMarge(Id_proposition,MargeName,DefaultValue,MargeType)
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
 select  p.Id,'Marża alkohole',30,'MA'  from Proposition p where p.Id_user = 4;
-insert into PropMenuMarge(Id_proposition,MargeName,DefaultValue,MargeType)
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
 select  p.Id,'Marża napoje',20,'MN'  from Proposition p where p.Id_user = 4;
+*/
 insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
 select  p.Id,'Lunch serwowany - 3 dania',80,8,3,4  from Proposition p where p.Id_user = 4;
 insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days) 
@@ -70,27 +69,25 @@ select p.Id,'ApartmentSingleEP',750,23,4,30 from Proposition p  where p.Id_user 
 insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,BussinesDoubleEP,ApartmentSingleEP,ApartmentDoubleEP)
 select p.Id,100,20,45,100,145,220,265 from Proposition p where p.Id_user = 6;
 insert into PropClient (Id_proposition,CompanyName,CompanyStreet,CompanyBuildingNumber,CompanyZipCode,CompanyCity,NIP,CustomerName,CustomerSurname,PhoneNum,DecisingPersonName,DecisingPersonSurname)
-select p.Id,'Przetwórstwo futra','Pożeczkowa',37,'76-717','Bytom','1734573386','Mateusz','Wolski', 634562926,'Ignacy','Krasiński'from Proposition p;
+select p.Id,'Przetwórstwo futra','Pożeczkowa',37,'76-717','Bytom','1734573386','Mateusz','Wolski', 634562926,'Ignacy','Krasiński'from Proposition p where p.Id_user = 6;
 insert into PropExtraServices(Id_proposition,ServiceType,BruttoHourPrice,Vat,Days)
 select p.Id,'Parking',2.50,8,3 from Proposition p where p.Id_user = 6;
 insert into PropExtraServicesDiscount(Id_proposition,StandardPrice,Discount)
 select p.Id,500,80 from Proposition p where p.Id_user = 6;
 insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
-select p.Id,'Ekran', 20,8,3,8 from Proposition p where p.Id_user = 6;
+select p.Id,'EKRAN', 20,8,3,8 from Proposition p where p.Id_user = 6;
 insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
-select p.Id,'Rzutnik', 10,8,1,8 from Proposition p where p.Id_user = 6;
-insert into PropHallEquipmentDiscount(Id,StandardPrice,Discount)
-select ph.Id,500,80 from PropHallEquipment ph where ph.Things LIKE 'Ekran' ;
-insert into PropHallEquipmentDiscount(Id,StandardPrice,Discount)
-select ph.Id,20,35 from PropHallEquipment ph where ph.Things LIKE 'Rzutnik' ;
-insert into PropMenuMarge(Id_proposition,MargeName,DefaultValue,MargeType)
+select p.Id,'RZYTNIK', 10,8,1,8 from Proposition p where p.Id_user = 6;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount)
+select p.Id,500,80 from Proposition p where p.Id_user=6;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
 select p.Id,'Marża gastronomia 8%',70,'MG8' from Proposition p where p.Id_user = 6;
-insert into PropMenuMarge(Id_proposition,MargeName,DefaultValue,MargeType)
+/*insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
 select p.Id,'Marża gastronomia 23%',40,'MG23' from Proposition p where p.Id_user = 6;
-insert into PropMenuMarge(Id_proposition,MargeName,DefaultValue,MargeType)
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
 select p.Id,'Marża alkohole',50,'MA' from Proposition p where p.Id_user = 6;
-insert into PropMenuMarge(Id_proposition,MargeName,DefaultValue,MargeType)
-select p.Id,'Marża napoje',20,'MN' from Proposition p where p.Id_user = 6;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select p.Id,'Marża napoje',20,'MN' from Proposition p where p.Id_user = 6;*/
 insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
 select p.Id,'Lunch serwowany - 2 dania',60,8,6,2 from Proposition p where p.Id_user = 6;
 insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
