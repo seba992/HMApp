@@ -12,9 +12,9 @@ namespace DiamondApp.EntityModel
     using System;
     using System.Collections.ObjectModel;
     
-    public partial class PropPaymentSuggestions_Dictionary_Third
+    public partial class PropMergeTypes_Dictionary
     {
         public int Id { get; set; }
-        public string IndividualOrders { get; set; }
+        public string MergeType { get; set; }
     }
 }

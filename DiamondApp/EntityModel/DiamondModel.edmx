@@ -24,18 +24,18 @@
           <Property Name="Amount" Type="smallint" />
           <Property Name="Days" Type="smallint" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiamondDB.dbo.PropAccomodation_Dictionary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PropAccomodation_Dictionary">
           <Key>
-            <PropertyRef Name="TypeOfRoom" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeOfRoom" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropAccomodationDiscount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="PropAccomodationDiscount">
-          <Property Name="Id_proposition" Type="int" />
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="int" Nullable="false" />
           <Property Name="StandardPrice" Type="real" />
           <Property Name="Discount" Type="real" />
           <Property Name="DoubleRoomEP" Type="real" />
@@ -43,11 +43,12 @@ warning 6013: The table/view 'DiamondDB.dbo.PropAccomodationDiscount' does not h
           <Property Name="BussinesDoubleEP" Type="real" />
           <Property Name="ApartmentSingleEP" Type="real" />
           <Property Name="ApartmentDoubleEP" Type="real" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropClient' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        </EntityType>
         <EntityType Name="PropClient">
-          <Property Name="Id_proposition" Type="int" />
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="int" Nullable="false" />
           <Property Name="CompanyName" Type="varchar" MaxLength="50" />
           <Property Name="CompanyStreet" Type="varchar" MaxLength="20" />
           <Property Name="CompanyBuildingNumber" Type="varchar" MaxLength="4" />
@@ -59,7 +60,7 @@ warning 6013: The table/view 'DiamondDB.dbo.PropClient' does not have a primary 
           <Property Name="PhoneNum" Type="varchar" MaxLength="15" />
           <Property Name="DecisingPersonName" Type="varchar" MaxLength="20" />
           <Property Name="DecisingPersonSurname" Type="varchar" MaxLength="30" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="PropExtraServices">
           <Key>
             <PropertyRef Name="Id" />
@@ -72,21 +73,21 @@ warning 6013: The table/view 'DiamondDB.dbo.PropClient' does not have a primary 
           <Property Name="Amount" Type="smallint" />
           <Property Name="Days" Type="smallint" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiamondDB.dbo.PropExtraServices_Dictionary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PropExtraServices_Dictionary">
           <Key>
-            <PropertyRef Name="ServiceType" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceType" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropExtraServicesDiscount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="PropExtraServicesDiscount">
-          <Property Name="Id_proposition" Type="int" />
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="int" Nullable="false" />
           <Property Name="StandardPrice" Type="real" />
           <Property Name="Discount" Type="real" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="PropHallEquipment">
           <Key>
             <PropertyRef Name="Id" />
@@ -99,51 +100,55 @@ warning 6013: The table/view 'DiamondDB.dbo.PropExtraServicesDiscount' does not 
           <Property Name="Amount" Type="int" />
           <Property Name="Days" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropHallEquipmentDiscount' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="PropHallEquipmentDiscount">
-          <Property Name="Id" Type="int" />
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="int" Nullable="false" />
           <Property Name="StandardPrice" Type="real" />
           <Property Name="Discount" Type="real" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiamondDB.dbo.PropHallEquipmnet_Dictionary_First' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        </EntityType>
         <EntityType Name="PropHallEquipmnet_Dictionary_First">
           <Key>
-            <PropertyRef Name="Things" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Things" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiamondDB.dbo.PropHallEquipmnet_Dictionary_Second' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PropHallEquipmnet_Dictionary_Second">
           <Key>
-            <PropertyRef Name="Things" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Things" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropMenuGastronomicThings_Dictionary_First' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="PropMenuGastronomicThings_Dictionary_First">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ThingName" Type="nvarchar" MaxLength="170" />
           <Property Name="NettoMini" Type="real" />
           <Property Name="Vat" Type="tinyint" />
-          <Property Name="MargeType" Type="varchar" MaxLength="5" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropMenuMarge' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PropMenuMarge">
-          <Property Name="Id_proposition" Type="int" />
-          <Property Name="MargeName" Type="nvarchar" MaxLength="40" />
+          <Property Name="MergeType" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="PropMenuMerge">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="int" Nullable="false" />
+          <Property Name="MergeName" Type="nvarchar" MaxLength="40" />
           <Property Name="DefaultValue" Type="real" />
-          <Property Name="MargeType" Type="varchar" MaxLength="5" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropMenuMarge_Dictionary_First' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="PropMenuMarge_Dictionary_First">
-          <Property Name="MargeName" Type="nvarchar" MaxLength="40" />
+          <Property Name="MergeType" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="PropMenuMerge_Dictionary_First">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MergeName" Type="nvarchar" MaxLength="40" />
           <Property Name="Value" Type="real" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="PropMenuPosition">
           <Key>
             <PropertyRef Name="Id" />
@@ -156,11 +161,13 @@ warning 6013: The table/view 'DiamondDB.dbo.PropMenuMarge_Dictionary_First' does
           <Property Name="Amount" Type="smallint" />
           <Property Name="Days" Type="smallint" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropMergeTypes_Dictionary' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="PropMergeTypes_Dictionary">
-          <Property Name="MargeType" Type="varchar" MaxLength="5" />
-        </EntityType>-->
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MergeType" Type="varchar" MaxLength="5" />
+        </EntityType>
         <EntityType Name="Proposition">
           <Key>
             <PropertyRef Name="Id" />
@@ -181,42 +188,39 @@ warning 6013: The table/view 'DiamondDB.dbo.PropMergeTypes_Dictionary' does not 
           <Property Name="CarPark" Type="varchar" MaxLength="90" />
           <Property Name="HallDescription" Type="varchar(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiamondDB.dbo.PropPaymentSuggestions_Dictionary_First' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PropPaymentSuggestions_Dictionary_First">
           <Key>
-            <PropertyRef Name="PaymentForm" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PaymentForm" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiamondDB.dbo.PropPaymentSuggestions_Dictionary_Fourth' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PropPaymentSuggestions_Dictionary_Fourth">
           <Key>
-            <PropertyRef Name="CarPark" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CarPark" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiamondDB.dbo.PropPaymentSuggestions_Dictionary_Second' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PropPaymentSuggestions_Dictionary_Second">
           <Key>
-            <PropertyRef Name="InvoiceServiceName" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="InvoiceServiceName" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DiamondDB.dbo.PropPaymentSuggestions_Dictionary_Third' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PropPaymentSuggestions_Dictionary_Third">
           <Key>
-            <PropertyRef Name="IndividualOrders" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IndividualOrders" Type="varchar" MaxLength="170" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DiamondDB.dbo.PropReservationDetails' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="PropReservationDetails">
-          <Property Name="Id_proposition" Type="int" />
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="int" Nullable="false" />
           <Property Name="StartData" Type="date" />
           <Property Name="StartTime" Type="time" Precision="7" />
           <Property Name="EndData" Type="date" />
@@ -224,7 +228,37 @@ warning 6013: The table/view 'DiamondDB.dbo.PropReservationDetails' does not hav
           <Property Name="PeopleNumber" Type="int" />
           <Property Name="Hall" Type="nvarchar" MaxLength="50" />
           <Property Name="HallSetting" Type="nvarchar" MaxLength="50" />
-        </EntityType>-->
+        </EntityType>
+        <EntityType Name="PropReservationDetails_Dictionary_HallCapacity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hall" Type="varchar" MaxLength="20" />
+          <Property Name="Area" Type="int" />
+          <Property Name="TheatrePeopleNumber" Type="int" />
+          <Property Name="UShapePeopleNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="PropReservationDetails_Dictionary_HallPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hall" Type="varchar" MaxLength="20" />
+          <Property Name="January" Type="int" />
+          <Property Name="Febuary" Type="int" />
+          <Property Name="March" Type="int" />
+          <Property Name="April" Type="int" />
+          <Property Name="May" Type="int" />
+          <Property Name="June" Type="int" />
+          <Property Name="July" Type="int" />
+          <Property Name="August" Type="int" />
+          <Property Name="September" Type="int" />
+          <Property Name="October" Type="int" />
+          <Property Name="November" Type="int" />
+          <Property Name="December" Type="int" />
+          <Property Name="Other" Type="int" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -249,9 +283,6 @@ warning 6013: The table/view 'DiamondDB.dbo.PropReservationDetails' does not hav
           <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-error 6004: The table 'DiamondDB.dbo.PropAccomodationDiscount' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__PropAccom__Id_pr__2E1BDC42" />-->
         <Association Name="FK__PropAccom__Id_pr__3A81B327">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -266,12 +297,34 @@ error 6004: The table 'DiamondDB.dbo.PropAccomodationDiscount' is referenced by 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DiamondDB.dbo.PropClient' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__PropClien__Id_pr__239E4DCF" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DiamondDB.dbo.PropExtraServicesDiscount' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__PropExtra__Id_pr__30F848ED" />-->
+        <Association Name="FK__PropAccom__Id_pr__74AE54BC">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropAccomodationDiscount" Type="Self.PropAccomodationDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropAccomodationDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropClien__Id_pr__778AC167">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropClient" Type="Self.PropClient" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropClient">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PropExtra__Id_pr__3D5E1FD2">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -286,12 +339,48 @@ error 6004: The table 'DiamondDB.dbo.PropExtraServicesDiscount' is referenced by
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DiamondDB.dbo.PropHallEquipmentDiscount' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__PropHallEqui__Id__32E0915F" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DiamondDB.dbo.PropMenuMarge' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__PropMenuM__Id_pr__33D4B598" />-->
+        <Association Name="FK__PropExtra__Id_pr__7A672E12">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropExtraServicesDiscount" Type="Self.PropExtraServicesDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropExtraServicesDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropHallE__Id_pr__7D439ABD">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropHallEquipmentDiscount" Type="Self.PropHallEquipmentDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropHallEquipmentDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropMenuM__Id_pr__00200768">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropMenuMerge" Type="Self.PropMenuMerge" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropMenuMerge">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PropMenuP__Id_pr__31EC6D26">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -334,10 +423,21 @@ error 6004: The table 'DiamondDB.dbo.PropMenuMarge' is referenced by a relations
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__PropReser__Id_pr__21B6055D" />-->
-        <Association Name="FK__Users__AccountTy__38996AB5">
+        <Association Name="FK__PropReser__Id_pr__02FC7413">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropReservationDetails" Type="Self.PropReservationDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropReservationDetails">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__AccountTy__3B75D760">
           <End Role="AccountPrivileges" Type="Self.AccountPrivileges" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -366,60 +466,59 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
         <EntityContainer Name="DiamondDBModelStoreContainer">
           <EntitySet Name="AccountPrivileges" EntityType="Self.AccountPrivileges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropAccomodation" EntityType="Self.PropAccomodation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropAccomodation_Dictionary" EntityType="Self.PropAccomodation_Dictionary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropAccomodationDiscount" EntityType="Self.PropAccomodationDiscount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropClient" EntityType="Self.PropClient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropExtraServices" EntityType="Self.PropExtraServices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropExtraServices_Dictionary" EntityType="Self.PropExtraServices_Dictionary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropExtraServicesDiscount" EntityType="Self.PropExtraServicesDiscount" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropHallEquipment" EntityType="Self.PropHallEquipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropHallEquipmentDiscount" EntityType="Self.PropHallEquipmentDiscount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropHallEquipmnet_Dictionary_First" EntityType="Self.PropHallEquipmnet_Dictionary_First" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropHallEquipmnet_Dictionary_Second" EntityType="Self.PropHallEquipmnet_Dictionary_Second" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropMenuGastronomicThings_Dictionary_First" EntityType="Self.PropMenuGastronomicThings_Dictionary_First" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropMenuMerge" EntityType="Self.PropMenuMerge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropMenuMerge_Dictionary_First" EntityType="Self.PropMenuMerge_Dictionary_First" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropMenuPosition" EntityType="Self.PropMenuPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropMergeTypes_Dictionary" EntityType="Self.PropMergeTypes_Dictionary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proposition" EntityType="Self.Proposition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropPaymentSuggestions" EntityType="Self.PropPaymentSuggestions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropPaymentSuggestions_Dictionary_First" EntityType="Self.PropPaymentSuggestions_Dictionary_First" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropPaymentSuggestions_Dictionary_Fourth" EntityType="Self.PropPaymentSuggestions_Dictionary_Fourth" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropPaymentSuggestions_Dictionary_Second" EntityType="Self.PropPaymentSuggestions_Dictionary_Second" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropPaymentSuggestions_Dictionary_Third" EntityType="Self.PropPaymentSuggestions_Dictionary_Third" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropReservationDetails" EntityType="Self.PropReservationDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropReservationDetails_Dictionary_HallCapacity" EntityType="Self.PropReservationDetails_Dictionary_HallCapacity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="Self.PropReservationDetails_Dictionary_HallPrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PropAccomodation_Dictionary" EntityType="Self.PropAccomodation_Dictionary" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PropAccomodation_Dictionary].[TypeOfRoom] AS [TypeOfRoom]
-    FROM [dbo].[PropAccomodation_Dictionary] AS [PropAccomodation_Dictionary]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PropExtraServices_Dictionary" EntityType="Self.PropExtraServices_Dictionary" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PropExtraServices_Dictionary].[ServiceType] AS [ServiceType]
-    FROM [dbo].[PropExtraServices_Dictionary] AS [PropExtraServices_Dictionary]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PropHallEquipmnet_Dictionary_First" EntityType="Self.PropHallEquipmnet_Dictionary_First" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PropHallEquipmnet_Dictionary_First].[Things] AS [Things]
-    FROM [dbo].[PropHallEquipmnet_Dictionary_First] AS [PropHallEquipmnet_Dictionary_First]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PropHallEquipmnet_Dictionary_Second" EntityType="Self.PropHallEquipmnet_Dictionary_Second" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PropHallEquipmnet_Dictionary_Second].[Things] AS [Things]
-    FROM [dbo].[PropHallEquipmnet_Dictionary_Second] AS [PropHallEquipmnet_Dictionary_Second]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PropPaymentSuggestions_Dictionary_First" EntityType="Self.PropPaymentSuggestions_Dictionary_First" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PropPaymentSuggestions_Dictionary_First].[PaymentForm] AS [PaymentForm]
-    FROM [dbo].[PropPaymentSuggestions_Dictionary_First] AS [PropPaymentSuggestions_Dictionary_First]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PropPaymentSuggestions_Dictionary_Fourth" EntityType="Self.PropPaymentSuggestions_Dictionary_Fourth" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PropPaymentSuggestions_Dictionary_Fourth].[CarPark] AS [CarPark]
-    FROM [dbo].[PropPaymentSuggestions_Dictionary_Fourth] AS [PropPaymentSuggestions_Dictionary_Fourth]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PropPaymentSuggestions_Dictionary_Second" EntityType="Self.PropPaymentSuggestions_Dictionary_Second" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PropPaymentSuggestions_Dictionary_Second].[InvoiceServiceName] AS [InvoiceServiceName]
-    FROM [dbo].[PropPaymentSuggestions_Dictionary_Second] AS [PropPaymentSuggestions_Dictionary_Second]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PropPaymentSuggestions_Dictionary_Third" EntityType="Self.PropPaymentSuggestions_Dictionary_Third" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [PropPaymentSuggestions_Dictionary_Third].[IndividualOrders] AS [IndividualOrders]
-    FROM [dbo].[PropPaymentSuggestions_Dictionary_Third] AS [PropPaymentSuggestions_Dictionary_Third]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="Self.FK__PropAccom__Id_pr__3A81B327">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodation" EntitySet="PropAccomodation" />
           </AssociationSet>
+          <AssociationSet Name="FK__PropAccom__Id_pr__74AE54BC" Association="Self.FK__PropAccom__Id_pr__74AE54BC">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropAccomodationDiscount" EntitySet="PropAccomodationDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropClien__Id_pr__778AC167" Association="Self.FK__PropClien__Id_pr__778AC167">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropClient" EntitySet="PropClient" />
+          </AssociationSet>
           <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="Self.FK__PropExtra__Id_pr__3D5E1FD2">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServices" EntitySet="PropExtraServices" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropExtra__Id_pr__7A672E12" Association="Self.FK__PropExtra__Id_pr__7A672E12">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropExtraServicesDiscount" EntitySet="PropExtraServicesDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropHallE__Id_pr__7D439ABD" Association="Self.FK__PropHallE__Id_pr__7D439ABD">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropHallEquipmentDiscount" EntitySet="PropHallEquipmentDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropMenuM__Id_pr__00200768" Association="Self.FK__PropMenuM__Id_pr__00200768">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropMenuMerge" EntitySet="PropMenuMerge" />
           </AssociationSet>
           <AssociationSet Name="FK__PropMenuP__Id_pr__31EC6D26" Association="Self.FK__PropMenuP__Id_pr__31EC6D26">
             <End Role="Proposition" EntitySet="Proposition" />
@@ -433,7 +532,11 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropPaymentSuggestions" EntitySet="PropPaymentSuggestions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__AccountTy__38996AB5" Association="Self.FK__Users__AccountTy__38996AB5">
+          <AssociationSet Name="FK__PropReser__Id_pr__02FC7413" Association="Self.FK__PropReser__Id_pr__02FC7413">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__AccountTy__3B75D760" Association="Self.FK__Users__AccountTy__3B75D760">
             <End Role="AccountPrivileges" EntitySet="AccountPrivileges" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -453,7 +556,7 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="AccountType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__AccountTy__38996AB5" FromRole="AccountPrivileges" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__AccountTy__3B75D760" FromRole="AccountPrivileges" ToRole="Users" />
         </EntityType>
         <EntityType Name="PropAccomodation">
           <Key>
@@ -468,6 +571,45 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           <Property Name="Days" Type="Int16" />
           <NavigationProperty Name="Proposition" Relationship="Self.FK__PropAccom__Id_pr__3A81B327" FromRole="PropAccomodation" ToRole="Proposition" />
         </EntityType>
+        <EntityType Name="PropAccomodation_Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeOfRoom" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropAccomodationDiscount">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="StandardPrice" Type="Single" />
+          <Property Name="Discount" Type="Single" />
+          <Property Name="DoubleRoomEP" Type="Single" />
+          <Property Name="BussinesSingleEP" Type="Single" />
+          <Property Name="BussinesDoubleEP" Type="Single" />
+          <Property Name="ApartmentSingleEP" Type="Single" />
+          <Property Name="ApartmentDoubleEP" Type="Single" />
+          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropAccom__Id_pr__74AE54BC" FromRole="PropAccomodationDiscount" ToRole="Proposition" />
+        </EntityType>
+        <EntityType Name="PropClient">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyStreet" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyBuildingNumber" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyZipCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyCity" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="NIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DecisingPersonName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DecisingPersonSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropClien__Id_pr__778AC167" FromRole="PropClient" ToRole="Proposition" />
+        </EntityType>
         <EntityType Name="PropExtraServices">
           <Key>
             <PropertyRef Name="Id" />
@@ -480,6 +622,22 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           <Property Name="Amount" Type="Int16" />
           <Property Name="Days" Type="Int16" />
           <NavigationProperty Name="Proposition" Relationship="Self.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="PropExtraServices" ToRole="Proposition" />
+        </EntityType>
+        <EntityType Name="PropExtraServices_Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceType" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropExtraServicesDiscount">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="StandardPrice" Type="Single" />
+          <Property Name="Discount" Type="Single" />
+          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropExtra__Id_pr__7A672E12" FromRole="PropExtraServicesDiscount" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropHallEquipment">
           <Key>
@@ -494,6 +652,57 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           <Property Name="Days" Type="Int32" />
           <NavigationProperty Name="Proposition" Relationship="Self.FK_PropHallEquipment_Proposition" FromRole="PropHallEquipment" ToRole="Proposition" />
         </EntityType>
+        <EntityType Name="PropHallEquipmentDiscount">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="StandardPrice" Type="Single" />
+          <Property Name="Discount" Type="Single" />
+          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropHallE__Id_pr__7D439ABD" FromRole="PropHallEquipmentDiscount" ToRole="Proposition" />
+        </EntityType>
+        <EntityType Name="PropHallEquipmnet_Dictionary_First">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropHallEquipmnet_Dictionary_Second">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropMenuGastronomicThings_Dictionary_First">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ThingName" Type="String" MaxLength="170" FixedLength="false" Unicode="true" />
+          <Property Name="NettoMini" Type="Single" />
+          <Property Name="Vat" Type="Byte" />
+          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PropMenuMerge">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="MergeName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="DefaultValue" Type="Single" />
+          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropMenuM__Id_pr__00200768" FromRole="PropMenuMerge" ToRole="Proposition" />
+        </EntityType>
+        <EntityType Name="PropMenuMerge_Dictionary_First">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MergeName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="Single" />
+        </EntityType>
         <EntityType Name="PropMenuPosition">
           <Key>
             <PropertyRef Name="Id" />
@@ -507,6 +716,13 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           <Property Name="Days" Type="Int16" />
           <NavigationProperty Name="Proposition" Relationship="Self.FK__PropMenuP__Id_pr__31EC6D26" FromRole="PropMenuPosition" ToRole="Proposition" />
         </EntityType>
+        <EntityType Name="PropMergeTypes_Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Proposition">
           <Key>
             <PropertyRef Name="Id" />
@@ -515,11 +731,17 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           <Property Name="Id_user" Type="Int32" Nullable="false" />
           <Property Name="UpdateDate" Type="DateTime" Precision="0" />
           <NavigationProperty Name="PropAccomodation" Relationship="Self.FK__PropAccom__Id_pr__3A81B327" FromRole="Proposition" ToRole="PropAccomodation" />
+          <NavigationProperty Name="PropAccomodationDiscount" Relationship="Self.FK__PropAccom__Id_pr__74AE54BC" FromRole="Proposition" ToRole="PropAccomodationDiscount" />
+          <NavigationProperty Name="PropClient" Relationship="Self.FK__PropClien__Id_pr__778AC167" FromRole="Proposition" ToRole="PropClient" />
           <NavigationProperty Name="PropExtraServices" Relationship="Self.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="Proposition" ToRole="PropExtraServices" />
+          <NavigationProperty Name="PropExtraServicesDiscount" Relationship="Self.FK__PropExtra__Id_pr__7A672E12" FromRole="Proposition" ToRole="PropExtraServicesDiscount" />
           <NavigationProperty Name="PropHallEquipment" Relationship="Self.FK_PropHallEquipment_Proposition" FromRole="Proposition" ToRole="PropHallEquipment" />
+          <NavigationProperty Name="PropHallEquipmentDiscount" Relationship="Self.FK__PropHallE__Id_pr__7D439ABD" FromRole="Proposition" ToRole="PropHallEquipmentDiscount" />
+          <NavigationProperty Name="PropMenuMerge" Relationship="Self.FK__PropMenuM__Id_pr__00200768" FromRole="Proposition" ToRole="PropMenuMerge" />
           <NavigationProperty Name="PropMenuPosition" Relationship="Self.FK__PropMenuP__Id_pr__31EC6D26" FromRole="Proposition" ToRole="PropMenuPosition" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Propositi__Id_us__1FCDBCEB" FromRole="Proposition" ToRole="Users" />
           <NavigationProperty Name="PropPaymentSuggestions" Relationship="Self.FK__PropPayme__Id_pr__403A8C7D" FromRole="Proposition" ToRole="PropPaymentSuggestions" />
+          <NavigationProperty Name="PropReservationDetails" Relationship="Self.FK__PropReser__Id_pr__02FC7413" FromRole="Proposition" ToRole="PropReservationDetails" />
         </EntityType>
         <EntityType Name="PropPaymentSuggestions">
           <Key>
@@ -533,6 +755,78 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           <Property Name="CarPark" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
           <Property Name="HallDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Proposition" Relationship="Self.FK__PropPayme__Id_pr__403A8C7D" FromRole="PropPaymentSuggestions" ToRole="Proposition" />
+        </EntityType>
+        <EntityType Name="PropPaymentSuggestions_Dictionary_First">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentForm" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropPaymentSuggestions_Dictionary_Fourth">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarPark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropPaymentSuggestions_Dictionary_Second">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceServiceName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropPaymentSuggestions_Dictionary_Third">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IndividualOrders" Type="String" MaxLength="170" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PropReservationDetails">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="StartData" Type="DateTime" Precision="0" />
+          <Property Name="StartTime" Type="Time" Precision="7" />
+          <Property Name="EndData" Type="DateTime" Precision="0" />
+          <Property Name="EndTime" Type="Time" Precision="7" />
+          <Property Name="PeopleNumber" Type="Int32" />
+          <Property Name="Hall" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HallSetting" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropReser__Id_pr__02FC7413" FromRole="PropReservationDetails" ToRole="Proposition" />
+        </EntityType>
+        <EntityType Name="PropReservationDetails_Dictionary_HallCapacity">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hall" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Area" Type="Int32" />
+          <Property Name="TheatrePeopleNumber" Type="Int32" />
+          <Property Name="UShapePeopleNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PropReservationDetails_Dictionary_HallPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hall" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="January" Type="Int32" />
+          <Property Name="Febuary" Type="Int32" />
+          <Property Name="March" Type="Int32" />
+          <Property Name="April" Type="Int32" />
+          <Property Name="May" Type="Int32" />
+          <Property Name="June" Type="Int32" />
+          <Property Name="July" Type="Int32" />
+          <Property Name="August" Type="Int32" />
+          <Property Name="September" Type="Int32" />
+          <Property Name="October" Type="Int32" />
+          <Property Name="November" Type="Int32" />
+          <Property Name="December" Type="Int32" />
+          <Property Name="Other" Type="Int32" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -557,58 +851,10 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           <Property Name="AccountType" Type="Int32" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AccountPrivileges" Relationship="Self.FK__Users__AccountTy__38996AB5" FromRole="Users" ToRole="AccountPrivileges" />
+          <NavigationProperty Name="AccountPrivileges" Relationship="Self.FK__Users__AccountTy__3B75D760" FromRole="Users" ToRole="AccountPrivileges" />
           <NavigationProperty Name="Proposition" Relationship="Self.FK__Propositi__Id_us__1FCDBCEB" FromRole="Users" ToRole="Proposition" />
         </EntityType>
-        <EntityType Name="PropAccomodation_Dictionary">
-          <Key>
-            <PropertyRef Name="TypeOfRoom" />
-          </Key>
-          <Property Name="TypeOfRoom" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropExtraServices_Dictionary">
-          <Key>
-            <PropertyRef Name="ServiceType" />
-          </Key>
-          <Property Name="ServiceType" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropHallEquipmnet_Dictionary_First">
-          <Key>
-            <PropertyRef Name="Things" />
-          </Key>
-          <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropHallEquipmnet_Dictionary_Second">
-          <Key>
-            <PropertyRef Name="Things" />
-          </Key>
-          <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropPaymentSuggestions_Dictionary_First">
-          <Key>
-            <PropertyRef Name="PaymentForm" />
-          </Key>
-          <Property Name="PaymentForm" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropPaymentSuggestions_Dictionary_Fourth">
-          <Key>
-            <PropertyRef Name="CarPark" />
-          </Key>
-          <Property Name="CarPark" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropPaymentSuggestions_Dictionary_Second">
-          <Key>
-            <PropertyRef Name="InvoiceServiceName" />
-          </Key>
-          <Property Name="InvoiceServiceName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropPaymentSuggestions_Dictionary_Third">
-          <Key>
-            <PropertyRef Name="IndividualOrders" />
-          </Key>
-          <Property Name="IndividualOrders" Type="String" MaxLength="170" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <Association Name="FK__Users__AccountTy__38996AB5">
+        <Association Name="FK__Users__AccountTy__3B75D760">
           <End Role="AccountPrivileges" Type="Self.AccountPrivileges" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -636,6 +882,34 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PropAccom__Id_pr__74AE54BC">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropAccomodationDiscount" Type="Self.PropAccomodationDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropAccomodationDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropClien__Id_pr__778AC167">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropClient" Type="Self.PropClient" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropClient">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PropExtra__Id_pr__3D5E1FD2">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -650,6 +924,20 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PropExtra__Id_pr__7A672E12">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropExtraServicesDiscount" Type="Self.PropExtraServicesDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropExtraServicesDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PropHallEquipment_Proposition">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1" />
           <End Role="PropHallEquipment" Type="Self.PropHallEquipment" Multiplicity="*" />
@@ -658,6 +946,34 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PropHallEquipment">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropHallE__Id_pr__7D439ABD">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropHallEquipmentDiscount" Type="Self.PropHallEquipmentDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropHallEquipmentDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropMenuM__Id_pr__00200768">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropMenuMerge" Type="Self.PropMenuMerge" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropMenuMerge">
               <PropertyRef Name="Id_proposition" />
             </Dependent>
           </ReferentialConstraint>
@@ -704,25 +1020,50 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PropReser__Id_pr__02FC7413">
+          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PropReservationDetails" Type="Self.PropReservationDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropReservationDetails">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DiamondDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AccountPrivileges" EntityType="Self.AccountPrivileges" />
           <EntitySet Name="PropAccomodation" EntityType="Self.PropAccomodation" />
-          <EntitySet Name="PropExtraServices" EntityType="Self.PropExtraServices" />
-          <EntitySet Name="PropHallEquipment" EntityType="Self.PropHallEquipment" />
-          <EntitySet Name="PropMenuPosition" EntityType="Self.PropMenuPosition" />
-          <EntitySet Name="Proposition" EntityType="Self.Proposition" />
-          <EntitySet Name="PropPaymentSuggestions" EntityType="Self.PropPaymentSuggestions" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="PropAccomodation_Dictionary" EntityType="Self.PropAccomodation_Dictionary" />
+          <EntitySet Name="PropAccomodationDiscount" EntityType="Self.PropAccomodationDiscount" />
+          <EntitySet Name="PropClient" EntityType="Self.PropClient" />
+          <EntitySet Name="PropExtraServices" EntityType="Self.PropExtraServices" />
           <EntitySet Name="PropExtraServices_Dictionary" EntityType="Self.PropExtraServices_Dictionary" />
+          <EntitySet Name="PropExtraServicesDiscount" EntityType="Self.PropExtraServicesDiscount" />
+          <EntitySet Name="PropHallEquipment" EntityType="Self.PropHallEquipment" />
+          <EntitySet Name="PropHallEquipmentDiscount" EntityType="Self.PropHallEquipmentDiscount" />
           <EntitySet Name="PropHallEquipmnet_Dictionary_First" EntityType="Self.PropHallEquipmnet_Dictionary_First" />
           <EntitySet Name="PropHallEquipmnet_Dictionary_Second" EntityType="Self.PropHallEquipmnet_Dictionary_Second" />
+          <EntitySet Name="PropMenuGastronomicThings_Dictionary_First" EntityType="Self.PropMenuGastronomicThings_Dictionary_First" />
+          <EntitySet Name="PropMenuMerge" EntityType="Self.PropMenuMerge" />
+          <EntitySet Name="PropMenuMerge_Dictionary_First" EntityType="Self.PropMenuMerge_Dictionary_First" />
+          <EntitySet Name="PropMenuPosition" EntityType="Self.PropMenuPosition" />
+          <EntitySet Name="PropMergeTypes_Dictionary" EntityType="Self.PropMergeTypes_Dictionary" />
+          <EntitySet Name="Proposition" EntityType="Self.Proposition" />
+          <EntitySet Name="PropPaymentSuggestions" EntityType="Self.PropPaymentSuggestions" />
           <EntitySet Name="PropPaymentSuggestions_Dictionary_First" EntityType="Self.PropPaymentSuggestions_Dictionary_First" />
           <EntitySet Name="PropPaymentSuggestions_Dictionary_Fourth" EntityType="Self.PropPaymentSuggestions_Dictionary_Fourth" />
           <EntitySet Name="PropPaymentSuggestions_Dictionary_Second" EntityType="Self.PropPaymentSuggestions_Dictionary_Second" />
           <EntitySet Name="PropPaymentSuggestions_Dictionary_Third" EntityType="Self.PropPaymentSuggestions_Dictionary_Third" />
-          <AssociationSet Name="FK__Users__AccountTy__38996AB5" Association="Self.FK__Users__AccountTy__38996AB5">
+          <EntitySet Name="PropReservationDetails" EntityType="Self.PropReservationDetails" />
+          <EntitySet Name="PropReservationDetails_Dictionary_HallCapacity" EntityType="Self.PropReservationDetails_Dictionary_HallCapacity" />
+          <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="Self.PropReservationDetails_Dictionary_HallPrices" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK__Users__AccountTy__3B75D760" Association="Self.FK__Users__AccountTy__3B75D760">
             <End Role="AccountPrivileges" EntitySet="AccountPrivileges" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -730,13 +1071,33 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodation" EntitySet="PropAccomodation" />
           </AssociationSet>
+          <AssociationSet Name="FK__PropAccom__Id_pr__74AE54BC" Association="Self.FK__PropAccom__Id_pr__74AE54BC">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropAccomodationDiscount" EntitySet="PropAccomodationDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropClien__Id_pr__778AC167" Association="Self.FK__PropClien__Id_pr__778AC167">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropClient" EntitySet="PropClient" />
+          </AssociationSet>
           <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="Self.FK__PropExtra__Id_pr__3D5E1FD2">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServices" EntitySet="PropExtraServices" />
           </AssociationSet>
+          <AssociationSet Name="FK__PropExtra__Id_pr__7A672E12" Association="Self.FK__PropExtra__Id_pr__7A672E12">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropExtraServicesDiscount" EntitySet="PropExtraServicesDiscount" />
+          </AssociationSet>
           <AssociationSet Name="FK_PropHallEquipment_Proposition" Association="Self.FK_PropHallEquipment_Proposition">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropHallEquipment" EntitySet="PropHallEquipment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropHallE__Id_pr__7D439ABD" Association="Self.FK__PropHallE__Id_pr__7D439ABD">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropHallEquipmentDiscount" EntitySet="PropHallEquipmentDiscount" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropMenuM__Id_pr__00200768" Association="Self.FK__PropMenuM__Id_pr__00200768">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropMenuMerge" EntitySet="PropMenuMerge" />
           </AssociationSet>
           <AssociationSet Name="FK__PropMenuP__Id_pr__31EC6D26" Association="Self.FK__PropMenuP__Id_pr__31EC6D26">
             <End Role="Proposition" EntitySet="Proposition" />
@@ -749,6 +1110,10 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
           <AssociationSet Name="FK__PropPayme__Id_pr__403A8C7D" Association="Self.FK__PropPayme__Id_pr__403A8C7D">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropPaymentSuggestions" EntitySet="PropPaymentSuggestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropReser__Id_pr__02FC7413" Association="Self.FK__PropReser__Id_pr__02FC7413">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -778,6 +1143,46 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PropAccomodation_Dictionary">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodation_Dictionary">
+              <MappingFragment StoreEntitySet="PropAccomodation_Dictionary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropAccomodationDiscount">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodationDiscount">
+              <MappingFragment StoreEntitySet="PropAccomodationDiscount">
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="StandardPrice" ColumnName="StandardPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DoubleRoomEP" ColumnName="DoubleRoomEP" />
+                <ScalarProperty Name="BussinesSingleEP" ColumnName="BussinesSingleEP" />
+                <ScalarProperty Name="BussinesDoubleEP" ColumnName="BussinesDoubleEP" />
+                <ScalarProperty Name="ApartmentSingleEP" ColumnName="ApartmentSingleEP" />
+                <ScalarProperty Name="ApartmentDoubleEP" ColumnName="ApartmentDoubleEP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropClient">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropClient">
+              <MappingFragment StoreEntitySet="PropClient">
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyStreet" ColumnName="CompanyStreet" />
+                <ScalarProperty Name="CompanyBuildingNumber" ColumnName="CompanyBuildingNumber" />
+                <ScalarProperty Name="CompanyZipCode" ColumnName="CompanyZipCode" />
+                <ScalarProperty Name="CompanyCity" ColumnName="CompanyCity" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerSurname" ColumnName="CustomerSurname" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="DecisingPersonName" ColumnName="DecisingPersonName" />
+                <ScalarProperty Name="DecisingPersonSurname" ColumnName="DecisingPersonSurname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PropExtraServices">
             <EntityTypeMapping TypeName="DiamondDBModel.PropExtraServices">
               <MappingFragment StoreEntitySet="PropExtraServices">
@@ -788,6 +1193,23 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
                 <ScalarProperty Name="Vat" ColumnName="Vat" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Days" ColumnName="Days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropExtraServices_Dictionary">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropExtraServices_Dictionary">
+              <MappingFragment StoreEntitySet="PropExtraServices_Dictionary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropExtraServicesDiscount">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropExtraServicesDiscount">
+              <MappingFragment StoreEntitySet="PropExtraServicesDiscount">
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="StandardPrice" ColumnName="StandardPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -804,6 +1226,61 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PropHallEquipmentDiscount">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropHallEquipmentDiscount">
+              <MappingFragment StoreEntitySet="PropHallEquipmentDiscount">
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="StandardPrice" ColumnName="StandardPrice" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropHallEquipmnet_Dictionary_First">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropHallEquipmnet_Dictionary_First">
+              <MappingFragment StoreEntitySet="PropHallEquipmnet_Dictionary_First">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Things" ColumnName="Things" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropHallEquipmnet_Dictionary_Second">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropHallEquipmnet_Dictionary_Second">
+              <MappingFragment StoreEntitySet="PropHallEquipmnet_Dictionary_Second">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Things" ColumnName="Things" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropMenuGastronomicThings_Dictionary_First">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First">
+              <MappingFragment StoreEntitySet="PropMenuGastronomicThings_Dictionary_First">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ThingName" ColumnName="ThingName" />
+                <ScalarProperty Name="NettoMini" ColumnName="NettoMini" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropMenuMerge">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuMerge">
+              <MappingFragment StoreEntitySet="PropMenuMerge">
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="MergeName" ColumnName="MergeName" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropMenuMerge_Dictionary_First">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuMerge_Dictionary_First">
+              <MappingFragment StoreEntitySet="PropMenuMerge_Dictionary_First">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MergeName" ColumnName="MergeName" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PropMenuPosition">
             <EntityTypeMapping TypeName="DiamondDBModel.PropMenuPosition">
               <MappingFragment StoreEntitySet="PropMenuPosition">
@@ -814,6 +1291,14 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
                 <ScalarProperty Name="Vat" ColumnName="Vat" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Days" ColumnName="Days" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropMergeTypes_Dictionary">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropMergeTypes_Dictionary">
+              <MappingFragment StoreEntitySet="PropMergeTypes_Dictionary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -836,6 +1321,84 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
                 <ScalarProperty Name="IndividualOrders" ColumnName="IndividualOrders" />
                 <ScalarProperty Name="CarPark" ColumnName="CarPark" />
                 <ScalarProperty Name="HallDescription" ColumnName="HallDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropPaymentSuggestions_Dictionary_First">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropPaymentSuggestions_Dictionary_First">
+              <MappingFragment StoreEntitySet="PropPaymentSuggestions_Dictionary_First">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PaymentForm" ColumnName="PaymentForm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropPaymentSuggestions_Dictionary_Fourth">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropPaymentSuggestions_Dictionary_Fourth">
+              <MappingFragment StoreEntitySet="PropPaymentSuggestions_Dictionary_Fourth">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CarPark" ColumnName="CarPark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropPaymentSuggestions_Dictionary_Second">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropPaymentSuggestions_Dictionary_Second">
+              <MappingFragment StoreEntitySet="PropPaymentSuggestions_Dictionary_Second">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="InvoiceServiceName" ColumnName="InvoiceServiceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropPaymentSuggestions_Dictionary_Third">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropPaymentSuggestions_Dictionary_Third">
+              <MappingFragment StoreEntitySet="PropPaymentSuggestions_Dictionary_Third">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IndividualOrders" ColumnName="IndividualOrders" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropReservationDetails">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropReservationDetails">
+              <MappingFragment StoreEntitySet="PropReservationDetails">
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="StartData" ColumnName="StartData" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndData" ColumnName="EndData" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="PeopleNumber" ColumnName="PeopleNumber" />
+                <ScalarProperty Name="Hall" ColumnName="Hall" />
+                <ScalarProperty Name="HallSetting" ColumnName="HallSetting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropReservationDetails_Dictionary_HallCapacity">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropReservationDetails_Dictionary_HallCapacity">
+              <MappingFragment StoreEntitySet="PropReservationDetails_Dictionary_HallCapacity">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hall" ColumnName="Hall" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="TheatrePeopleNumber" ColumnName="TheatrePeopleNumber" />
+                <ScalarProperty Name="UShapePeopleNumber" ColumnName="UShapePeopleNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropReservationDetails_Dictionary_HallPrices">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropReservationDetails_Dictionary_HallPrices">
+              <MappingFragment StoreEntitySet="PropReservationDetails_Dictionary_HallPrices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Hall" ColumnName="Hall" />
+                <ScalarProperty Name="January" ColumnName="January" />
+                <ScalarProperty Name="Febuary" ColumnName="Febuary" />
+                <ScalarProperty Name="March" ColumnName="March" />
+                <ScalarProperty Name="April" ColumnName="April" />
+                <ScalarProperty Name="May" ColumnName="May" />
+                <ScalarProperty Name="June" ColumnName="June" />
+                <ScalarProperty Name="July" ColumnName="July" />
+                <ScalarProperty Name="August" ColumnName="August" />
+                <ScalarProperty Name="September" ColumnName="September" />
+                <ScalarProperty Name="October" ColumnName="October" />
+                <ScalarProperty Name="November" ColumnName="November" />
+                <ScalarProperty Name="December" ColumnName="December" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -862,62 +1425,6 @@ error 6004: The table 'DiamondDB.dbo.PropReservationDetails' is referenced by a 
                 <ScalarProperty Name="AccountType" ColumnName="AccountType" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropAccomodation_Dictionary">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodation_Dictionary">
-              <MappingFragment StoreEntitySet="PropAccomodation_Dictionary">
-                <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropExtraServices_Dictionary">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropExtraServices_Dictionary">
-              <MappingFragment StoreEntitySet="PropExtraServices_Dictionary">
-                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropHallEquipmnet_Dictionary_First">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropHallEquipmnet_Dictionary_First">
-              <MappingFragment StoreEntitySet="PropHallEquipmnet_Dictionary_First">
-                <ScalarProperty Name="Things" ColumnName="Things" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropHallEquipmnet_Dictionary_Second">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropHallEquipmnet_Dictionary_Second">
-              <MappingFragment StoreEntitySet="PropHallEquipmnet_Dictionary_Second">
-                <ScalarProperty Name="Things" ColumnName="Things" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropPaymentSuggestions_Dictionary_First">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropPaymentSuggestions_Dictionary_First">
-              <MappingFragment StoreEntitySet="PropPaymentSuggestions_Dictionary_First">
-                <ScalarProperty Name="PaymentForm" ColumnName="PaymentForm" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropPaymentSuggestions_Dictionary_Fourth">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropPaymentSuggestions_Dictionary_Fourth">
-              <MappingFragment StoreEntitySet="PropPaymentSuggestions_Dictionary_Fourth">
-                <ScalarProperty Name="CarPark" ColumnName="CarPark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropPaymentSuggestions_Dictionary_Second">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropPaymentSuggestions_Dictionary_Second">
-              <MappingFragment StoreEntitySet="PropPaymentSuggestions_Dictionary_Second">
-                <ScalarProperty Name="InvoiceServiceName" ColumnName="InvoiceServiceName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropPaymentSuggestions_Dictionary_Third">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropPaymentSuggestions_Dictionary_Third">
-              <MappingFragment StoreEntitySet="PropPaymentSuggestions_Dictionary_Third">
-                <ScalarProperty Name="IndividualOrders" ColumnName="IndividualOrders" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

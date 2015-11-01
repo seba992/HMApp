@@ -14,6 +14,7 @@ namespace DiamondApp.EntityModel
     
     public partial class PropPaymentSuggestions_Dictionary_Fourth
     {
+        public int Id { get; set; }
         public string CarPark { get; set; }
     }
 }

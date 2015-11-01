@@ -12,9 +12,10 @@ namespace DiamondApp.EntityModel
     using System;
     using System.Collections.ObjectModel;
     
-    public partial class PropPaymentSuggestions_Dictionary_Third
+    public partial class PropMenuMerge_Dictionary_First
     {
         public int Id { get; set; }
-        public string IndividualOrders { get; set; }
+        public string MergeName { get; set; }
+        public Nullable<float> Value { get; set; }
     }
 }

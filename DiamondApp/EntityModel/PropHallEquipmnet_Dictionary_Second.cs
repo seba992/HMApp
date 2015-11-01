@@ -14,6 +14,7 @@ namespace DiamondApp.EntityModel
     
     public partial class PropHallEquipmnet_Dictionary_Second
     {
+        public int Id { get; set; }
         public string Things { get; set; }
     }
 }

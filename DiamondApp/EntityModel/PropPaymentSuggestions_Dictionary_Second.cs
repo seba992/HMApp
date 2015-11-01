@@ -14,6 +14,7 @@ namespace DiamondApp.EntityModel
     
     public partial class PropPaymentSuggestions_Dictionary_Second
     {
+        public int Id { get; set; }
         public string InvoiceServiceName { get; set; }
     }
 }

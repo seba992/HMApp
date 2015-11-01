@@ -12,9 +12,12 @@ namespace DiamondApp.EntityModel
     using System;
     using System.Collections.ObjectModel;
     
-    public partial class PropPaymentSuggestions_Dictionary_Third
+    public partial class PropExtraServicesDiscount
     {
-        public int Id { get; set; }
-        public string IndividualOrders { get; set; }
+        public int Id_proposition { get; set; }
+        public Nullable<float> StandardPrice { get; set; }
+        public Nullable<float> Discount { get; set; }
+    
+        public virtual Proposition Proposition { get; set; }
     }
 }

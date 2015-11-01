@@ -12,9 +12,12 @@ namespace DiamondApp.EntityModel
     using System;
     using System.Collections.ObjectModel;
     
-    public partial class PropPaymentSuggestions_Dictionary_Third
+    public partial class PropMenuGastronomicThings_Dictionary_First
     {
         public int Id { get; set; }
-        public string IndividualOrders { get; set; }
+        public string ThingName { get; set; }
+        public Nullable<float> NettoMini { get; set; }
+        public Nullable<byte> Vat { get; set; }
+        public string MergeType { get; set; }
     }
 }

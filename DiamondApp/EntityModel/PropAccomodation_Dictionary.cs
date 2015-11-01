@@ -14,6 +14,7 @@ namespace DiamondApp.EntityModel
     
     public partial class PropAccomodation_Dictionary
     {
+        public int Id { get; set; }
         public string TypeOfRoom { get; set; }
     }
 }

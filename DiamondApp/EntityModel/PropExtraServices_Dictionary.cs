@@ -14,6 +14,7 @@ namespace DiamondApp.EntityModel
     
     public partial class PropExtraServices_Dictionary
     {
+        public int Id { get; set; }
         public string ServiceType { get; set; }
     }
 }

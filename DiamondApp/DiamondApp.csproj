@@ -98,10 +98,19 @@
     <Compile Include="EntityModel\PropAccomodation.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityModel\PropAccomodationDiscount.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\PropAccomodation_Dictionary.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityModel\PropClient.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\PropExtraServices.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropExtraServicesDiscount.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\PropExtraServices_Dictionary.cs">
@@ -110,13 +119,28 @@
     <Compile Include="EntityModel\PropHallEquipment.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityModel\PropHallEquipmentDiscount.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\PropHallEquipmnet_Dictionary_First.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\PropHallEquipmnet_Dictionary_Second.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityModel\PropMenuGastronomicThings_Dictionary_First.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropMenuMerge.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropMenuMerge_Dictionary_First.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\PropMenuPosition.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropMergeTypes_Dictionary.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\Proposition.cs">
@@ -135,6 +159,15 @@
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Third.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropReservationDetails.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropReservationDetails_Dictionary_HallCapacity.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\PropReservationDetails_Dictionary_HallPrices.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityModel\sysdiagrams.cs">
