@@ -42,3 +42,17 @@ DiamondAppTests/bin/Debug/EntityFramework.SqlServer.xml
 DiamondAppTests/bin/Debug/EntityFramework.xml
 packages/EntityFramework.6.1.1/content/Web.config.transform
 packages/NUnit.2.6.4/lib/nunit.framework.xml
+DiamondAppTests/bin/Debug/DiamondApp.pdb
+DiamondAppTests/bin/Debug/DiamondAppTests.pdb
+DiamondAppTests/bin/Debug/GalaSoft.MvvmLight.pdb
+DiamondAppTests/bin/Debug/Microsoft.Practices.ServiceLocation.pdb
+packages/CommonServiceLocator.1.3/lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll
+packages/CommonServiceLocator.1.3/lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.pdb
+packages/EntityFramework.6.1.1/lib/net40/EntityFramework.SqlServer.dll
+packages/EntityFramework.6.1.1/lib/net40/EntityFramework.dll
+packages/EntityFramework.6.1.1/lib/net45/EntityFramework.SqlServer.dll
+packages/EntityFramework.6.1.1/lib/net45/EntityFramework.dll
+packages/EntityFramework.6.1.1/tools/EntityFramework.PowerShell.Utility.dll
+packages/EntityFramework.6.1.1/tools/EntityFramework.PowerShell.dll
+packages/EntityFramework.6.1.1/tools/migrate.exe
+packages/NUnit.2.6.4/lib/nunit.framework.dll
