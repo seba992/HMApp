@@ -30,11 +30,11 @@ namespace DiamondApp.Views
             {
                 case "Edytuj":
                 case "Dodaj":
-                    this.DataGridProposition.Visibility = Visibility.Hidden;
+                    this.AdminProposition.Visibility = Visibility.Hidden;
                     this.TabControlProposition.Visibility = Visibility.Visible;
                     break;
                 default:
-                    this.DataGridProposition.Visibility = Visibility.Visible;
+                    this.AdminProposition.Visibility = Visibility.Visible;
                     this.TabControlProposition.Visibility = Visibility.Hidden;
                     break;
             }

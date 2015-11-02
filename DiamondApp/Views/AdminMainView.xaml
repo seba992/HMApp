@@ -10,19 +10,31 @@
 
     <Grid RenderTransformOrigin="0.0,0.0">
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
-            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="150">
-                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
-                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
-                <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
-                <MenuItem Header="Lista propozy" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
-                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="150" Click="VisibleElement"/>
+            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="47">
+                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Lista propozycji" HorizontalAlignment="Left" Click="VisibleElement" Margin="0"/>
+                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
             </MenuItem>
             <MenuItem Header="Edytuj słownik"/>
+            <MenuItem Header="Użytkownicy">
+                <MenuItem Header="Dodaj"/>
+                <MenuItem Header="Edytuj"/>
+                <MenuItem Header="Usuń"/>
+            </MenuItem>
         </Menu>
 
-        <DataGrid x:Name="DataGridProposition" HorizontalAlignment="Left" Margin="10,89,0,0" VerticalAlignment="Top" Height="560" Width="1130" ItemsSource="{Binding PropositionsList}" MinColumnWidth="3"/>
-            
-                <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="614" Margin="10,35,0,0" VerticalAlignment="Top" Width="1130" Visibility="Hidden">
+        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="1,62,0,0" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="140" Header="Id propozycji" DisplayMemberBinding="{Binding Id}"  />
+                    <GridViewColumn Width="140" Header="Id uzytkownika"   DisplayMemberBinding="{Binding Id_user}" />
+                    <GridViewColumn Width="140" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="614" Margin="10,35,0,0" VerticalAlignment="Top" Width="1130" Visibility="Hidden">
             <TabItem Header="DANE FIRMY">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
@@ -42,7 +54,8 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <ComboBox HorizontalAlignment="Left" Margin="977,35,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding  UsersList}"/>
+        <ComboBox HorizontalAlignment="Left" Margin="977,35,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="PropositionsSeller Mode=TwoWay, 
+    UpdateSourceTrigger=PropertyChanged}"/>
         <Label Content="Użytkownicy" HorizontalAlignment="Left" Height="22" Margin="793,35,0,0" VerticalAlignment="Top" Width="179" Padding="0"/>
 
     </Grid>
