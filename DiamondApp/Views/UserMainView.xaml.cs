@@ -34,5 +34,20 @@ namespace DiamondApp.Views
             Application.Current.Shutdown();
         }
 
+        private void VisibleElement(object sender, RoutedEventArgs e)
+        {
+            switch (((MenuItem)sender).Header.ToString())
+            {
+                case "Edytuj":
+                case "Dodaj":
+                    this.UserProposition.Visibility = Visibility.Hidden;
+                    this.TabControlProposition.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    this.UserProposition.Visibility = Visibility.Visible;
+                    this.TabControlProposition.Visibility = Visibility.Hidden;
+                    break;
+            }
+        }
     }
 }
