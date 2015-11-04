@@ -25,7 +25,7 @@ namespace DiamondApp.Views
 
         private void VisibleElement(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(((MenuItem)sender).Header.ToString());
+            //MessageBox.Show(((MenuItem)sender).Header.ToString());
             switch (((MenuItem)sender).Header.ToString())
             {
                 case "Edytuj":

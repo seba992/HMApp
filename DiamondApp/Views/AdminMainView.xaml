@@ -31,6 +31,23 @@
                     <GridViewColumn Width="140" Header="Id propozycji" DisplayMemberBinding="{Binding Id}"  />
                     <GridViewColumn Width="140" Header="Id uzytkownika"   DisplayMemberBinding="{Binding Id_user}" />
                     <GridViewColumn Width="140" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate}" />
+                    <GridViewColumn Header="Stan">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox  Width="150">
+                                    <ComboBoxItem IsSelected="True"  Content="Nierozpatrzona"/>
+                                    <ComboBoxItem Content="Gotowa"  />
+                                </ComboBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edytuj" Padding="5,2"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

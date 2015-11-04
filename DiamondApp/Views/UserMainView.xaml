@@ -7,26 +7,59 @@
 
     <Grid>
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
-            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="150">
-                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="150" />
-                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="150" />
-                <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="150" />
-                <MenuItem Header="Lista propozy" HorizontalAlignment="Left" Width="150" />
-                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="150" />
-           </MenuItem>
+            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="47">
+                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Lista propozycji" HorizontalAlignment="Left" Click="VisibleElement" Margin="0"/>
+                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+            </MenuItem>
         </Menu>
-        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="ListViewSeby" HorizontalAlignment="Left" Height="597" Margin="507,47,0,0" VerticalAlignment="Top" Width="613">
+        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="UserProposition" HorizontalAlignment="Left" Height="609" Margin="1,35,-10,0" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="140" Header="Id propozycji" DisplayMemberBinding="{Binding Id}"  />
                     <GridViewColumn Width="140" Header="Id uzytkownika"   DisplayMemberBinding="{Binding Id_user}" />
                     <GridViewColumn Width="140" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate}" />
+                    <GridViewColumn Header="Stan">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox  Width="150">
+                                    <ComboBoxItem IsSelected="True" Content="Nierozpatrzona"/>
+                                    <ComboBoxItem Content="Gotowa" />
+                                </ComboBox>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Edytuj" Padding="5,2"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox Text="{Binding UserId}" x:Name="tbxSeby" HorizontalAlignment="Left" Height="23" Margin="72,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
-        </TextBox>
-        <Label Content="Id usera" HorizontalAlignment="Left" Margin="106,215,0,0" VerticalAlignment="Top"/>
-
+        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="614" Margin="10,35,0,0" VerticalAlignment="Top" Width="1130" Visibility="Hidden">
+            <TabItem Header="DANE FIRMY">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="SZCZEGÓŁY REZERWACJI">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="USŁUGI GASTRONOMICZNE">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="USŁUGI NOCLEGOWE">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="USŁUGI DODATKOWE:">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="FORMA PŁATNOŚĆI">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>
