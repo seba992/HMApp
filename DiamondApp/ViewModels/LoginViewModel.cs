@@ -85,7 +85,6 @@ namespace DiamondApp.ViewModels
 
                             UserId = user.Id;
                             _userType = user.AccountType;
-                            Application.Current.MainWindow.Hide();
 
 //                            MessageBox.Show("Otworz nowe okno \n" +
 //                                            "Zamknij obecne");
@@ -104,11 +103,13 @@ namespace DiamondApp.ViewModels
                     {
                         AdminMainView adminMainView = new AdminMainView(_userId);
                         adminMainView.Show();
+                        Application.Current.MainWindow.Hide();
                     }
                     else if(_userType.ToUpper() == "S")
                     {
                         UserMainView userMainView = new UserMainView(_userId);
                         userMainView.Show();
+                        Application.Current.MainWindow.Hide();
                     }
                     else
                     {
