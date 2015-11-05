@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,17 +14,18 @@ namespace DiamondApp.ViewModels
     public class AdminViewModel : ObservableObject
     {
         private DiamondDBEntities _ctx;
-        public List<AdminPropositionList> propositionList;
+        private List<AdminProposition> _propositionList;
+        private AddNewProposition _addNewProposition; 
         public List<Users> usersList;
         private int _userId;
-        private string _tag;
+        private string _testString;
 
 
 
         public AdminViewModel()
         {
             _ctx = new DiamondDBEntities();
-            SelectPropositions();
+            SelectAllPropositions();
 
         }
 
@@ -30,20 +33,21 @@ namespace DiamondApp.ViewModels
         {
             _ctx = new DiamondDBEntities();
             _userId = userId;
-            SelectPropositions();
+            SelectAllPropositions();
+            CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl();         // CACHE
         }
 
 #region Properties
 
-        public List<AdminPropositionList> PropositionsList
+        public List<AdminProposition> PropositionsList
         {
             get
             {
-                return propositionList;
+                return _propositionList;
             }
             set
             {
-                propositionList = value;
+                _propositionList = value;
                 RaisePropertyChanged("PropositionsList");
             }
         }
@@ -56,9 +60,7 @@ namespace DiamondApp.ViewModels
                 usersList = value ;
                 SelectUsers();
                 RaisePropertyChanged("UsersList");
-               
             }
-
         }
 
         public ICommand CreateNewPropositionCommand
@@ -73,6 +75,21 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        public AddNewProposition AddNewProposition
+        {
+            get { return _addNewProposition; }
+            set
+            {
+                _addNewProposition = value;
+                RaisePropertyChanged("AddNewProposition");
+            }
+        }
+
+        public string TestString
+        {
+            get { return _testString; }
+            set { _testString = value; }
+        }
 
         #endregion
 
@@ -81,14 +98,24 @@ namespace DiamondApp.ViewModels
         private ICommand _createNewPropositionCommand;
         private bool CanCreateNewPropositionExecute(object arg)
         {
-           // throw new System.NotImplementedException();
             return true;
         }
-
         private void CreateNewPropositionExecute(object obj)
         {
-            //throw new System.NotImplementedException();
+            var querry = (from user in _ctx.Users
+                where user.Id == _userId
+                select new AddNewProposition
+                {
+                    UpdateDate = DateTime.Today,
+                    UserFirstName = user.Name,
+                    UserSurname = user.Surname,
+                    UserPhoneNum = user.PhoneNum,
+                    UserEmail = user.Email
+                }).SingleOrDefault();
+            _addNewProposition = querry;
         }
+
+
 
 #endregion
 
@@ -102,13 +129,28 @@ namespace DiamondApp.ViewModels
             usersList = q;
         }
 
-        private void SelectPropositions()
+        private void CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl()
+        {
+            var querry = (from user in _ctx.Users
+                where user.Id == _userId
+                select new AddNewProposition
+                {
+                    UpdateDate = DateTime.Today,
+                    UserFirstName = user.Name,
+                    UserSurname = user.Surname,
+                    UserPhoneNum = user.PhoneNum,
+                    UserEmail = user.Email
+                }).SingleOrDefault();
+            _addNewProposition = querry;
+            TestString = _addNewProposition.OurNip;
+        }
+        private void SelectAllPropositions()
         {
             var myQuerry = (from prop in _ctx.Proposition
                 from user in _ctx.Users
                 where prop.Id == user.Id
                 orderby prop.UpdateDate, user.Name
-                select new AdminPropositionList
+                select new AdminProposition
                 {
                     UserFirstName = user.Name,
                     UserSurname = user.Surname,
@@ -118,7 +160,7 @@ namespace DiamondApp.ViewModels
                     UpdateDate = prop.UpdateDate,
                     Status = prop.Status
                 }).ToList();
-            propositionList = myQuerry;
+            _propositionList = myQuerry;
         }
 #endregion
         

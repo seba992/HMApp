@@ -11,7 +11,8 @@
     <Grid RenderTransformOrigin="0.0,0.0">
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
             <MenuItem Header="Menu" HorizontalAlignment="Left" Width="47">
-                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" Command="{Binding CreateNewPropositionCommand}"/>
+                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" />
+                <!--Command="{Binding CreateNewPropositionCommand}"-->
                 <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
                 <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
                 <MenuItem Header="Lista propozycji" HorizontalAlignment="Left" Click="VisibleElement" Margin="0"/>
@@ -25,7 +26,7 @@
             </MenuItem>
         </Menu>
 
-        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller" IsHitTestVisible="True" Visibility="Visible">
+        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1040" SelectedItem="PropositionsSeller" IsHitTestVisible="True" Visibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
@@ -55,10 +56,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1051" Visibility="Hidden">
-            <TabItem Header="OPIS KLIENTA">
 
-                <Grid x:Name="FirstGrid" Background="#FFE5E5E5" Margin="0,0,0,-2">
+        <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1051">
+            <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
+
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                         <RowDefinition Height="60" />
@@ -105,7 +107,7 @@
                     <Label Grid.Row="10" Grid.Column="1" Content="ILOŚ OSÓB:"/>
                     <Label Grid.Row="11" Grid.Column="1" Content="USTAWIENIE SALI:"/>
 
-                    <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserEmail}"/>
                     <TextBox x:Name="DotyczyAdresTextBox" Grid.Row="1" Grid.Column="0" Margin="253,3,3,3" AcceptsReturn="True" />
                     <TextBox x:Name="DotyczyNipTextBox" Grid.Row="2" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
                     <TextBox x:Name="DataAktualizacjiTextBox" Grid.Row="3" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
@@ -138,7 +140,7 @@
             </TabItem>
 
             <TabItem x:Name="SecondGrid" Header="SZCZEGÓŁY REZERWACJI">
-                <Grid Background="#FFE5E5E5" Height="446">
+                <Grid Background="#FFE5E5E5">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="60" />

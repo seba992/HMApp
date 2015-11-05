@@ -77,7 +77,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataGridObjectClasses\AdminPropositionList.cs" />
+    <Compile Include="DataGridObjectClasses\AddNewProposition.cs" />
+    <Compile Include="DataGridObjectClasses\AdminProposition.cs" />
     <Compile Include="EntityModel\AccountPrivileges.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>

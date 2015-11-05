@@ -16,7 +16,7 @@ namespace DiamondApp.EntityModel
     public partial class DiamondDBEntities : DbContext
     {
         public DiamondDBEntities()
-            : base("name=DiamondDBEntities")
+            : base("DiamondDBEntities")
         {
         }
     

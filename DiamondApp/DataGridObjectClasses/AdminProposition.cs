@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiamondApp.DataGridObjectClasses
 {
-    public class AdminPropositionList
+    public class AdminProposition
     {
         public string UserFirstName
         { get; set; }
