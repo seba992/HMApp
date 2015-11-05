@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:da="clr-namespace:DiamondApp.ViewModels"
-        Title="AdminMainView" Height="689.671" Width="1158.164" Closed="Window_Closed">
+        Title="AdminMainView" Height="547.671" Width="1060.164" Closed="Window_Closed">
 
     <!--<Window.DataContext>
         <viewModels:AdminViewModel />
@@ -25,7 +25,7 @@
             </MenuItem>
         </Menu>
 
-        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="1,62,0,0" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller">
+        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="1,62,0,0" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller" IsHitTestVisible="True" Visibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="140" Header="Id propozycji" DisplayMemberBinding="{Binding Id}"  />
@@ -51,15 +51,139 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="614" Margin="10,35,0,0" VerticalAlignment="Top" Width="1130" Visibility="Hidden">
-            <TabItem Header="DANE FIRMY">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
+        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Margin="8,35,0,0" VerticalAlignment="Top">
             <TabItem Header="SZCZEGÓŁY REZERWACJI">
-                <Grid Background="#FFE5E5E5"/>
+
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="DOTYCZY:"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="ADRES:"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="NIP:"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="DATA AKTUALIZACJI:"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="KONTAKT ZE STRONY HOTELU:" FontWeight="Bold"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="SPECJALISTA DS. SPRZEDAŻY"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="TELEFON:"/>
+                    <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:"/>
+                    <Label Grid.Row="10" Grid.Column="0" Content="TERMIN:"/>
+                    <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA:"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="DLA: "/>
+                    <Label Grid.Row="1" Grid.Column="2" Content="ADRES: "/>
+                    <Label Grid.Row="2" Grid.Column="2" Content="NIP: "/>
+                    <Label Grid.Row="3" Grid.Column="2" Content="TERMIN WAŻNOŚCI PROPOZYCJI:"/>
+                    <Label Grid.Row="4" Grid.Column="2" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold"/>
+                    <Label Grid.Row="5" Grid.Column="2" Content="Sz.P.:"/>
+                    <Label Grid.Row="6" Grid.Column="2" Content="TELEFON:"/>
+                    <Label Grid.Row="7" Grid.Column="2" Content="ADRES E-MAIL:"/>
+                    <Label Grid.Row="8" Grid.Column="2" Content="OSOBA DECYZYJNA:"/>
+                    <Label Grid.Row="10" Grid.Column="2" Content="ILOŚ OSÓB:"/>
+                    <Label Grid.Row="11" Grid.Column="2" Content="USTAWIENIE SALI:"/>
+
+                    <TextBox x:Name="DotyczyTextBox" Grid.Column="1" Grid.Row="0" Margin="3" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="DotyczyAdresTextBox" Grid.Column="1" Grid.Row="1" Margin="3" AcceptsReturn="True" />
+                    <TextBox x:Name="DotyczyNipTextBox" Grid.Column="1" Grid.Row="2" Margin="3" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="DataAktualizacjiTextBox" Grid.Column="1" Grid.Row="3" Margin="3" VerticalContentAlignment="Center"/>
+
+                    <TextBox x:Name="NazwaSprzedawcyTextBox" Grid.Column="1" Grid.Row="5" Margin="3" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="SprzedawcaNumerTextBox" Grid.Column="1" Grid.Row="6" Margin="3" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="SprzedawcaEmailTextBox" Grid.Column="1" Grid.Row="7" Margin="3" VerticalContentAlignment="Center"/>
+
+                    <DatePicker x:Name="TerminDatePicker" Grid.Column="1" Grid.Row="10" Margin="3" Text="Wybierz datę" />
+                    <TextBox x:Name="CzasTrwaniaTextBox" Grid.Column="1" Grid.Row="11" Margin="3" VerticalContentAlignment="Center"/>
+
+                    <TextBox x:Name="DlaTextBox" Grid.Column="3" Grid.Row="0" Margin="3" />
+                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="3" Grid.Row="1" Margin="3" AcceptsReturn="True" />
+                    <TextBox x:Name="DlaNipTextBox" Grid.Column="3" Grid.Row="2" Margin="3" />
+                    <TextBox x:Name="TerminWaznosciTextBox" Grid.Column="3" Grid.Row="3" Margin="3" />
+
+                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="3" Grid.Row="5" Margin="3" />
+                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="3" Grid.Row="6" Margin="3" />
+                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="3" Grid.Row="7" Margin="3" />
+                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="3" Grid.Row="8" Margin="3" />
+
+                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="3" Grid.Row="10" Margin="3" />
+                    <TextBox x:Name="IloscOsobTextBox" Grid.Column="3" Grid.Row="11" Margin="3" />
+                    
+
+                </Grid>
             </TabItem>
+            
             <TabItem Header="USŁUGI GASTRONOMICZNE">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="200" />
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="145" />
+                        <ColumnDefinition Width="145" />
+
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="DOTYCZY:"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="ADRES:"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="NIP:"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="DATA AKTUALIZACJI:"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="KONTAKT ZE STRONY HOTELU:" FontWeight="Bold"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="SPECJALISTA DS. SPRZEDAŻY"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="TELEFON:"/>
+                    <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:"/>
+                    <Label Grid.Row="10" Grid.Column="0" Content="TERMIN:"/>
+                    <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA:"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="DLA: "/>
+                    <Label Grid.Row="1" Grid.Column="2" Content="ADRES: "/>
+                    <Label Grid.Row="2" Grid.Column="2" Content="NIP: "/>
+                    <Label Grid.Row="3" Grid.Column="2" Content="TERMIN WAŻNOŚCI PROPOZYCJI:"/>
+                    <Label Grid.Row="4" Grid.Column="2" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold"/>
+                    <Label Grid.Row="5" Grid.Column="2" Content="Sz.P.:"/>
+                    <Label Grid.Row="6" Grid.Column="2" Content="TELEFON:"/>
+                    <Label Grid.Row="7" Grid.Column="2" Content="ADRES E-MAIL:"/>
+                    <Label Grid.Row="8" Grid.Column="2" Content="OSOBA DECYZYJNA:"/>
+                    <Label Grid.Row="10" Grid.Column="2" Content="ILOŚ OSÓB:"/>
+                    <Label Grid.Row="11" Grid.Column="2" Content="USTAWIENIE SALI:"/>
+                </Grid>
             </TabItem>
             <TabItem Header="USŁUGI NOCLEGOWE">
                 <Grid Background="#FFE5E5E5"/>
@@ -71,9 +195,9 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <ComboBox HorizontalAlignment="Left" Margin="977,35,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="PropositionsSeller Mode=TwoWay, 
+        <ComboBox HorizontalAlignment="Left" Margin="883,35,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="PropositionsSeller Mode=TwoWay, 
     UpdateSourceTrigger=PropertyChanged}"/>
-        <Label Content="Użytkownicy" HorizontalAlignment="Left" Height="22" Margin="793,35,0,0" VerticalAlignment="Top" Width="179" Padding="0"/>
+        <Label Content="Użytkownicy" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0"/>
 
     </Grid>
 </Window>

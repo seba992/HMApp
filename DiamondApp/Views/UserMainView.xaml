@@ -15,7 +15,7 @@
                 <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
             </MenuItem>
         </Menu>
-        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="UserProposition" HorizontalAlignment="Left" Height="609" Margin="1,35,-10,0" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller">
+        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="UserProposition" HorizontalAlignment="Left" Height="609" Margin="1,39,-10,0" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="140" Header="Id propozycji" DisplayMemberBinding="{Binding Id}"  />

@@ -24,7 +24,7 @@
             <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="399,276,0,0" VerticalAlignment="Top" Width="75" Command="{Binding AddUserCommand}" CommandParameter="{Binding ElementName=NameTextBox}"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="399,276,0,0" VerticalAlignment="Top" Width="75" Command="{Binding AddUserCommand}"/>
         <Button Content="Anuluj" HorizontalAlignment="Left" Margin="479,276,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
 using Microsoft.Practices.ServiceLocation;
@@ -55,8 +56,7 @@ namespace DiamondApp.ViewModels
         private void MyMethod()
         {
             var myQuerry = (from s in _ctx.Proposition
-                select s).ToList();
-            propositionList = myQuerry;
+                select s).FirstOrDefault();
         }
     }
 }

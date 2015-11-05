@@ -19,6 +19,7 @@ namespace DiamondApp.ViewModels
         private DiamondDBEntities _ctx;
 
         public RelayCommand _addUserCommand;
+        private string _userPassword;
 
         private string _userName { get; set; }
         private string _userSurname { get; set; }
@@ -27,7 +28,12 @@ namespace DiamondApp.ViewModels
         private string _userPosition { get; set; }
         private int _userType { get; set; }
         private string _userLogin { get; set; }
-        private string _userPassword { get; set; }
+
+        public string UserPassword
+        {
+            get { return _userPassword; }
+            set { _userPassword = ShaConverter.sha256_hash(value); }
+        }
 
 
         public AddUserViewModel()
@@ -96,6 +102,7 @@ namespace DiamondApp.ViewModels
                     AccountType = 1,
                     Login = "krzysiek", //ShaConverter.sha256_hash() !!!!! nie dziala
                     Password = "zbyszek",
+                    FirstLogin = "t"
                 };
 
                 _ctx.Users.Add(addUser);
