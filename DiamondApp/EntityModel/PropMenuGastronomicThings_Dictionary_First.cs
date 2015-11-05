@@ -20,6 +20,5 @@ namespace DiamondApp.EntityModel
         public Nullable<byte> Vat { get; set; }
         public string MergeType { get; set; }
         public string SpecificType { get; set; }
-        public string SpecificType1 { get; set; }
     }
 }

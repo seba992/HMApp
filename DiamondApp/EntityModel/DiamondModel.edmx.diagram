@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="aea8a9e0b82543189f227fa2229240e2" Name="Diagram1" ZoomLevel="84">
-        <EntityTypeShape EntityType="DiamondDBModel.AccountPrivileges" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation_Dictionary" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodationDiscount" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
@@ -17,11 +16,9 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipmentDiscount" Width="1.5" PointX="7.5" PointY="22.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipmnet_Dictionary_First" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipmnet_Dictionary_Second" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuMerge_Dictionary_First" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="28.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMergeTypes_Dictionary" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.Proposition" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions" Width="1.5" PointX="7.5" PointY="31.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions_Dictionary_First" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions_Dictionary_Fourth" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
@@ -30,22 +27,24 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails" Width="1.5" PointX="7.5" PointY="34.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallCapacity" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallPrices" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.Users" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
-        <AssociationConnector Association="DiamondDBModel.FK__Users__AccountTy__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__74AE54BC" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropClien__Id_pr__778AC167" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__7A672E12" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK_PropHallEquipment_Proposition" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropHallE__Id_pr__7D439ABD" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropReser__Id_pr__02FC7413" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuMerge" Width="1.5" PointX="7.5" PointY="39" />
+        <EntityTypeShape EntityType="DiamondDBModel.AccountPrivileges" Width="1.5" PointX="0.75" PointY="19.5" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First" Width="1.5" PointX="10.375" PointY="8.75" />
+        <EntityTypeShape EntityType="DiamondDBModel.Users" Width="1.5" PointX="3" PointY="18.625" />
+        <AssociationConnector Association="DiamondDBModel.FK__Users__AccountTy__4D94879B" />
+        <EntityTypeShape EntityType="DiamondDBModel.Proposition" Width="1.5" PointX="5.25" PointY="18.25" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" />
+        <AssociationConnector Association="DiamondDBModel.FK_PropHallEquipment_Proposition" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropHallE__Id_pr__47DBAE45" />
         <AssociationConnector Association="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropMenuMerg__Id__160F4887" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" />
+        <AssociationConnector Association="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

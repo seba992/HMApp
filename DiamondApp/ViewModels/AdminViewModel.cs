@@ -1,24 +1,28 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using DiamondApp.DataGridObjectClasses;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
 using Microsoft.Practices.ServiceLocation;
 
 namespace DiamondApp.ViewModels
 {
-    class AdminViewModel : ObservableObject
+    public class AdminViewModel : ObservableObject
     {
         private DiamondDBEntities _ctx;
-        public List<Proposition> propositionList;
+        public List<AdminPropositionList> propositionList;
         public List<Users> usersList;
         private int _userId;
         private string _tag;
 
+
+
         public AdminViewModel()
         {
             _ctx = new DiamondDBEntities();
-            MyMethod();
+            SelectPropositions();
 
         }
 
@@ -26,12 +30,12 @@ namespace DiamondApp.ViewModels
         {
             _ctx = new DiamondDBEntities();
             _userId = userId;
-            MyMethod();
+            SelectPropositions();
         }
 
 #region Properties
 
-        public List<Proposition> PropositionsList
+        public List<AdminPropositionList> PropositionsList
         {
             get
             {
@@ -44,55 +48,79 @@ namespace DiamondApp.ViewModels
             }
         }
 
-
         public List<Users> UsersList
         {
             get { return usersList; }
             set
             {
                 usersList = value ;
-                UserList();
+                SelectUsers();
                 RaisePropertyChanged("UsersList");
                
             }
 
         }
 
-        private void UserList()
+        public ICommand CreateNewPropositionCommand
         {
-            var q = (from s in _ctx.Users
-                select s).ToList();
-            usersList = q;
+            get
+            {
+                if (_createNewPropositionCommand == null)
+                {
+                    _createNewPropositionCommand = new RelayCommand(CreateNewPropositionExecute, CanCreateNewPropositionExecute);
+                }
+                return _createNewPropositionCommand;
+            }
         }
+
 
         #endregion
 
-        private void FillPropositions()
+#region Commands
+
+        private ICommand _createNewPropositionCommand;
+        private bool CanCreateNewPropositionExecute(object arg)
         {
-            // wybierz wszystkie propozycje obecnie zalogowanego uzytkownika
-
-            //var q = (from a in _ctx.Proposition
-            //         where a.Id_user == a.Users.Id
-            //         where a.Id_user == _userId
-            //         select a).ToList();
-
-
-            // wybierz wszystkie propozycje userow
-
-            var q = (from a in _ctx.Proposition
-                     select a).ToList();
-
-            propositionList = q;
-
-            MessageBox.Show(_userId.ToString());
-
+           // throw new System.NotImplementedException();
+            return true;
         }
 
-        private void MyMethod()
+        private void CreateNewPropositionExecute(object obj)
         {
-            var myQuerry = (from s in _ctx.Proposition
-                            select s).ToList();
+            //throw new System.NotImplementedException();
+        }
+
+#endregion
+
+
+#region Methods
+
+        private void SelectUsers()
+        {
+            var q = (from s in _ctx.Users
+                     select s).ToList();
+            usersList = q;
+        }
+
+        private void SelectPropositions()
+        {
+            var myQuerry = (from prop in _ctx.Proposition
+                from user in _ctx.Users
+                where prop.Id == user.Id
+                orderby prop.UpdateDate, user.Name
+                select new AdminPropositionList
+                {
+                    UserFirstName = user.Name,
+                    UserSurname = user.Surname,
+                    CustomerFirstName = prop.PropClient.CustomerName,
+                    CustomerSurname = prop.PropClient.CustomerSurname,
+                    CompanyName = prop.PropClient.CompanyName,
+                    UpdateDate = prop.UpdateDate,
+                    Status = prop.Status
+                }).ToList();
             propositionList = myQuerry;
         }
+#endregion
+        
     }
 }

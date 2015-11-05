@@ -32,10 +32,12 @@ namespace DiamondApp.Views
                 case "Dodaj":
                     this.AdminProposition.Visibility = Visibility.Hidden;
                     this.TabControlProposition.Visibility = Visibility.Visible;
+                    this.SavePropositionButton.Visibility = Visibility.Visible;
                     break;
                 default:
                     this.AdminProposition.Visibility = Visibility.Visible;
                     this.TabControlProposition.Visibility = Visibility.Hidden;
+                    this.SavePropositionButton.Visibility = Visibility.Hidden;
                     break;
             }
         }

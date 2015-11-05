@@ -542,14 +542,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiamondDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="AccountPrivileges">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="AccountType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__AccountTy__3B75D760" FromRole="AccountPrivileges" ToRole="Users" />
-        </EntityType>
         <EntityType Name="PropAccomodation">
           <Key>
             <PropertyRef Name="Id" />
@@ -561,7 +553,7 @@
           <Property Name="Vat" Type="Byte" />
           <Property Name="Amount" Type="Int16" />
           <Property Name="Days" Type="Int16" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropAccom__Id_pr__3A81B327" FromRole="PropAccomodation" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="PropAccomodation" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropAccomodation_Dictionary">
           <Key>
@@ -582,7 +574,7 @@
           <Property Name="BussinesDoubleEP" Type="Single" />
           <Property Name="ApartmentSingleEP" Type="Single" />
           <Property Name="ApartmentDoubleEP" Type="Single" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropAccom__Id_pr__74AE54BC" FromRole="PropAccomodationDiscount" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="PropAccomodationDiscount" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropClient">
           <Key>
@@ -600,7 +592,7 @@
           <Property Name="PhoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="DecisingPersonName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="DecisingPersonSurname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropClien__Id_pr__778AC167" FromRole="PropClient" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" FromRole="PropClient" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropExtraServices">
           <Key>
@@ -613,7 +605,7 @@
           <Property Name="Vat" Type="Byte" />
           <Property Name="Amount" Type="Int16" />
           <Property Name="Days" Type="Int16" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="PropExtraServices" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="PropExtraServices" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropExtraServices_Dictionary">
           <Key>
@@ -629,7 +621,7 @@
           <Property Name="Id_proposition" Type="Int32" Nullable="false" />
           <Property Name="StandardPrice" Type="Single" />
           <Property Name="Discount" Type="Single" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropExtra__Id_pr__7A672E12" FromRole="PropExtraServicesDiscount" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" FromRole="PropExtraServicesDiscount" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropHallEquipment">
           <Key>
@@ -642,7 +634,7 @@
           <Property Name="Vat" Type="Single" />
           <Property Name="Amount" Type="Int32" />
           <Property Name="Days" Type="Int32" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK_PropHallEquipment_Proposition" FromRole="PropHallEquipment" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK_PropHallEquipment_Proposition" FromRole="PropHallEquipment" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropHallEquipmentDiscount">
           <Key>
@@ -651,7 +643,7 @@
           <Property Name="Id_proposition" Type="Int32" Nullable="false" />
           <Property Name="StandardPrice" Type="Single" />
           <Property Name="Discount" Type="Single" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropHallE__Id_pr__7D439ABD" FromRole="PropHallEquipmentDiscount" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropHallE__Id_pr__47DBAE45" FromRole="PropHallEquipmentDiscount" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropHallEquipmnet_Dictionary_First">
           <Key>
@@ -666,18 +658,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropMenuGastronomicThings_Dictionary_First">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ThingName" Type="String" MaxLength="170" FixedLength="false" Unicode="false" />
-          <Property Name="NettoMini" Type="Single" />
-          <Property Name="Vat" Type="Byte" />
-          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="SpecificType" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="SpecificType1" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PropMenuMerge_Dictionary_First">
           <Key>
@@ -698,7 +678,7 @@
           <Property Name="Vat" Type="Byte" />
           <Property Name="Amount" Type="Int16" />
           <Property Name="Days" Type="Int16" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropMenuP__Id_pr__31EC6D26" FromRole="PropMenuPosition" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="PropMenuPosition" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropMergeTypes_Dictionary">
           <Key>
@@ -706,29 +686,6 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Proposition">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id_user" Type="Int32" Nullable="false" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="PropAccomodation" Relationship="Self.FK__PropAccom__Id_pr__3A81B327" FromRole="Proposition" ToRole="PropAccomodation" />
-          <NavigationProperty Name="PropAccomodationDiscount" Relationship="Self.FK__PropAccom__Id_pr__74AE54BC" FromRole="Proposition" ToRole="PropAccomodationDiscount" />
-          <NavigationProperty Name="PropClient" Relationship="Self.FK__PropClien__Id_pr__778AC167" FromRole="Proposition" ToRole="PropClient" />
-          <NavigationProperty Name="PropExtraServices" Relationship="Self.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="Proposition" ToRole="PropExtraServices" />
-          <NavigationProperty Name="PropExtraServicesDiscount" Relationship="Self.FK__PropExtra__Id_pr__7A672E12" FromRole="Proposition" ToRole="PropExtraServicesDiscount" />
-          <NavigationProperty Name="PropHallEquipment" Relationship="Self.FK_PropHallEquipment_Proposition" FromRole="Proposition" ToRole="PropHallEquipment" />
-          <NavigationProperty Name="PropHallEquipmentDiscount" Relationship="Self.FK__PropHallE__Id_pr__7D439ABD" FromRole="Proposition" ToRole="PropHallEquipmentDiscount" />
-          <NavigationProperty Name="PropMenuPosition" Relationship="Self.FK__PropMenuP__Id_pr__31EC6D26" FromRole="Proposition" ToRole="PropMenuPosition" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Propositi__Id_us__1FCDBCEB" FromRole="Proposition" ToRole="Users" />
-          <NavigationProperty Name="PropPaymentSuggestions" Relationship="Self.FK__PropPayme__Id_pr__403A8C7D" FromRole="Proposition" ToRole="PropPaymentSuggestions" />
-          <NavigationProperty Name="PropReservationDetails" Relationship="Self.FK__PropReser__Id_pr__02FC7413" FromRole="Proposition" ToRole="PropReservationDetails" />
-          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PropMenuMerge" Relationship="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E" FromRole="Proposition" ToRole="PropMenuMerge" />
-          <NavigationProperty Name="PropMenuMerge1" Relationship="DiamondDBModel.FK__PropMenuMerg__Id__160F4887" FromRole="Proposition" ToRole="PropMenuMerge" />
-          <Property Name="Status1" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PropPaymentSuggestions">
           <Key>
@@ -741,7 +698,7 @@
           <Property Name="IndividualOrders" Type="String" MaxLength="170" FixedLength="false" Unicode="false" />
           <Property Name="CarPark" Type="String" MaxLength="90" FixedLength="false" Unicode="false" />
           <Property Name="HallDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropPayme__Id_pr__403A8C7D" FromRole="PropPaymentSuggestions" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" FromRole="PropPaymentSuggestions" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropPaymentSuggestions_Dictionary_First">
           <Key>
@@ -783,7 +740,7 @@
           <Property Name="PeopleNumber" Type="Int32" />
           <Property Name="Hall" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="HallSetting" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropReser__Id_pr__02FC7413" FromRole="PropReservationDetails" ToRole="Proposition" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" FromRole="PropReservationDetails" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropReservationDetails_Dictionary_HallCapacity">
           <Key>
@@ -815,192 +772,7 @@
           <Property Name="December" Type="Int32" />
           <Property Name="Other" Type="Int32" />
         </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PhoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Position" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
-          <Property Name="AccountType" Type="Int32" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="AccountPrivileges" Relationship="Self.FK__Users__AccountTy__3B75D760" FromRole="Users" ToRole="AccountPrivileges" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__Propositi__Id_us__1FCDBCEB" FromRole="Users" ToRole="Proposition" />
-          <Property Name="FirstLogin" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FirstLogin1" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <Association Name="FK__Users__AccountTy__3B75D760">
-          <End Role="AccountPrivileges" Type="Self.AccountPrivileges" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AccountPrivileges">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="AccountType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropAccom__Id_pr__3A81B327">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropAccomodation" Type="Self.PropAccomodation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropAccomodation">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropAccom__Id_pr__74AE54BC">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropAccomodationDiscount" Type="Self.PropAccomodationDiscount" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropAccomodationDiscount">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropClien__Id_pr__778AC167">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropClient" Type="Self.PropClient" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropClient">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropExtra__Id_pr__3D5E1FD2">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropExtraServices" Type="Self.PropExtraServices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropExtraServices">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropExtra__Id_pr__7A672E12">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropExtraServicesDiscount" Type="Self.PropExtraServicesDiscount" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropExtraServicesDiscount">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PropHallEquipment_Proposition">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1" />
-          <End Role="PropHallEquipment" Type="Self.PropHallEquipment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropHallEquipment">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropHallE__Id_pr__7D439ABD">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropHallEquipmentDiscount" Type="Self.PropHallEquipmentDiscount" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropHallEquipmentDiscount">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropMenuP__Id_pr__31EC6D26">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropMenuPosition" Type="Self.PropMenuPosition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropMenuPosition">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Propositi__Id_us__1FCDBCEB">
-          <End Role="Users" Type="Self.Users" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Proposition">
-              <PropertyRef Name="Id_user" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropPayme__Id_pr__403A8C7D">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropPaymentSuggestions" Type="Self.PropPaymentSuggestions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropPaymentSuggestions">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropReser__Id_pr__02FC7413">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropReservationDetails" Type="Self.PropReservationDetails" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropReservationDetails">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DiamondDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AccountPrivileges" EntityType="Self.AccountPrivileges" />
           <EntitySet Name="PropAccomodation" EntityType="Self.PropAccomodation" />
           <EntitySet Name="PropAccomodation_Dictionary" EntityType="Self.PropAccomodation_Dictionary" />
           <EntitySet Name="PropAccomodationDiscount" EntityType="Self.PropAccomodationDiscount" />
@@ -1012,11 +784,9 @@
           <EntitySet Name="PropHallEquipmentDiscount" EntityType="Self.PropHallEquipmentDiscount" />
           <EntitySet Name="PropHallEquipmnet_Dictionary_First" EntityType="Self.PropHallEquipmnet_Dictionary_First" />
           <EntitySet Name="PropHallEquipmnet_Dictionary_Second" EntityType="Self.PropHallEquipmnet_Dictionary_Second" />
-          <EntitySet Name="PropMenuGastronomicThings_Dictionary_First" EntityType="Self.PropMenuGastronomicThings_Dictionary_First" />
           <EntitySet Name="PropMenuMerge_Dictionary_First" EntityType="Self.PropMenuMerge_Dictionary_First" />
           <EntitySet Name="PropMenuPosition" EntityType="Self.PropMenuPosition" />
           <EntitySet Name="PropMergeTypes_Dictionary" EntityType="Self.PropMergeTypes_Dictionary" />
-          <EntitySet Name="Proposition" EntityType="Self.Proposition" />
           <EntitySet Name="PropPaymentSuggestions" EntityType="Self.PropPaymentSuggestions" />
           <EntitySet Name="PropPaymentSuggestions_Dictionary_First" EntityType="Self.PropPaymentSuggestions_Dictionary_First" />
           <EntitySet Name="PropPaymentSuggestions_Dictionary_Fourth" EntityType="Self.PropPaymentSuggestions_Dictionary_Fourth" />
@@ -1025,63 +795,62 @@
           <EntitySet Name="PropReservationDetails" EntityType="Self.PropReservationDetails" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallCapacity" EntityType="Self.PropReservationDetails_Dictionary_HallCapacity" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="Self.PropReservationDetails_Dictionary_HallPrices" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__Users__AccountTy__3B75D760" Association="Self.FK__Users__AccountTy__3B75D760">
+          <EntitySet Name="PropMenuMerge" EntityType="DiamondDBModel.PropMenuMerge" />
+          <EntitySet Name="AccountPrivileges" EntityType="DiamondDBModel.AccountPrivileges" />
+          <EntitySet Name="PropMenuGastronomicThings_Dictionary_First" EntityType="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First" />
+          <EntitySet Name="Users" EntityType="DiamondDBModel.Users" />
+          <AssociationSet Name="FK__Users__AccountTy__4D94879B" Association="DiamondDBModel.FK__Users__AccountTy__4D94879B">
             <End Role="AccountPrivileges" EntitySet="AccountPrivileges" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="Self.FK__PropAccom__Id_pr__3A81B327">
+          <EntitySet Name="Proposition" EntityType="DiamondDBModel.Proposition" />
+          <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodation" EntitySet="PropAccomodation" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropAccom__Id_pr__74AE54BC" Association="Self.FK__PropAccom__Id_pr__74AE54BC">
+          <AssociationSet Name="FK__PropAccom__Id_pr__4316F928" Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodationDiscount" EntitySet="PropAccomodationDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropClien__Id_pr__778AC167" Association="Self.FK__PropClien__Id_pr__778AC167">
+          <AssociationSet Name="FK__PropClien__Id_pr__440B1D61" Association="DiamondDBModel.FK__PropClien__Id_pr__440B1D61">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropClient" EntitySet="PropClient" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="Self.FK__PropExtra__Id_pr__3D5E1FD2">
+          <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServices" EntitySet="PropExtraServices" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropExtra__Id_pr__7A672E12" Association="Self.FK__PropExtra__Id_pr__7A672E12">
+          <AssociationSet Name="FK__PropExtra__Id_pr__45F365D3" Association="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServicesDiscount" EntitySet="PropExtraServicesDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK_PropHallEquipment_Proposition" Association="Self.FK_PropHallEquipment_Proposition">
+          <AssociationSet Name="FK_PropHallEquipment_Proposition" Association="DiamondDBModel.FK_PropHallEquipment_Proposition">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropHallEquipment" EntitySet="PropHallEquipment" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropHallE__Id_pr__7D439ABD" Association="Self.FK__PropHallE__Id_pr__7D439ABD">
+          <AssociationSet Name="FK__PropHallE__Id_pr__47DBAE45" Association="DiamondDBModel.FK__PropHallE__Id_pr__47DBAE45">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropHallEquipmentDiscount" EntitySet="PropHallEquipmentDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropMenuP__Id_pr__31EC6D26" Association="Self.FK__PropMenuP__Id_pr__31EC6D26">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropMenuPosition" EntitySet="PropMenuPosition" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Propositi__Id_us__1FCDBCEB" Association="Self.FK__Propositi__Id_us__1FCDBCEB">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Proposition" EntitySet="Proposition" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PropPayme__Id_pr__403A8C7D" Association="Self.FK__PropPayme__Id_pr__403A8C7D">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropPaymentSuggestions" EntitySet="PropPaymentSuggestions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PropReser__Id_pr__02FC7413" Association="Self.FK__PropReser__Id_pr__02FC7413">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
-          </AssociationSet>
-          <EntitySet Name="PropMenuMerge" EntityType="DiamondDBModel.PropMenuMerge" />
           <AssociationSet Name="FK__PropMenuM__Id_pr__48CFD27E" Association="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropMenuMerge" EntitySet="PropMenuMerge" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropMenuMerg__Id__160F4887" Association="DiamondDBModel.FK__PropMenuMerg__Id__160F4887">
+          <AssociationSet Name="FK__PropMenuP__Id_pr__31EC6D26" Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26">
             <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropMenuMerge" EntitySet="PropMenuMerge" />
+            <End Role="PropMenuPosition" EntitySet="PropMenuPosition" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Propositi__Id_us__1FCDBCEB" Association="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Proposition" EntitySet="Proposition" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropPayme__Id_pr__403A8C7D" Association="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropPaymentSuggestions" EntitySet="PropPaymentSuggestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PropReser__Id_pr__4CA06362" Association="DiamondDBModel.FK__PropReser__Id_pr__4CA06362">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
@@ -1094,8 +863,174 @@
           <Property Name="DefaultValue" Type="Single" />
           <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E" FromRole="PropMenuMerge" ToRole="Proposition" />
-          <NavigationProperty Name="Proposition1" Relationship="DiamondDBModel.FK__PropMenuMerg__Id__160F4887" FromRole="PropMenuMerge" ToRole="Proposition" />
+          </EntityType>
+        <EntityType Name="AccountPrivileges">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AccountType" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="DiamondDBModel.FK__Users__AccountTy__4D94879B" FromRole="AccountPrivileges" ToRole="Users" />
         </EntityType>
+        <EntityType Name="PropMenuGastronomicThings_Dictionary_First">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ThingName" Type="String" MaxLength="170" FixedLength="false" Unicode="false" />
+          <Property Name="NettoMini" Type="Single" />
+          <Property Name="Vat" Type="Byte" />
+          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SpecificType" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="AccountType" Type="Int32" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="FirstLogin" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AccountPrivileges" Relationship="DiamondDBModel.FK__Users__AccountTy__4D94879B" FromRole="Users" ToRole="AccountPrivileges" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB" FromRole="Users" ToRole="Proposition" />
+        </EntityType>
+        <Association Name="FK__Users__AccountTy__4D94879B">
+          <End Type="DiamondDBModel.AccountPrivileges" Role="AccountPrivileges" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccountPrivileges">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="AccountType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Proposition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_user" Type="Int32" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PropAccomodation" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="Proposition" ToRole="PropAccomodation" />
+          <NavigationProperty Name="PropAccomodationDiscount" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="Proposition" ToRole="PropAccomodationDiscount" />
+          <NavigationProperty Name="PropClient" Relationship="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" FromRole="Proposition" ToRole="PropClient" />
+          <NavigationProperty Name="PropExtraServices" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="Proposition" ToRole="PropExtraServices" />
+          <NavigationProperty Name="PropExtraServicesDiscount" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" FromRole="Proposition" ToRole="PropExtraServicesDiscount" />
+          <NavigationProperty Name="PropHallEquipment" Relationship="DiamondDBModel.FK_PropHallEquipment_Proposition" FromRole="Proposition" ToRole="PropHallEquipment" />
+          <NavigationProperty Name="PropHallEquipmentDiscount" Relationship="DiamondDBModel.FK__PropHallE__Id_pr__47DBAE45" FromRole="Proposition" ToRole="PropHallEquipmentDiscount" />
+          <NavigationProperty Name="PropMenuMerge" Relationship="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E" FromRole="Proposition" ToRole="PropMenuMerge" />
+          <NavigationProperty Name="PropMenuPosition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="Proposition" ToRole="PropMenuPosition" />
+          <NavigationProperty Name="Users" Relationship="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB" FromRole="Proposition" ToRole="Users" />
+          <NavigationProperty Name="PropPaymentSuggestions" Relationship="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" FromRole="Proposition" ToRole="PropPaymentSuggestions" />
+          <NavigationProperty Name="PropReservationDetails" Relationship="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" FromRole="Proposition" ToRole="PropReservationDetails" />
+        </EntityType>
+        <Association Name="FK__PropAccom__Id_pr__3A81B327">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropAccomodation" Role="PropAccomodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropAccomodation">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropAccom__Id_pr__4316F928">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropAccomodationDiscount" Role="PropAccomodationDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropAccomodationDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropClien__Id_pr__440B1D61">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropClient" Role="PropClient" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropClient">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropExtra__Id_pr__3D5E1FD2">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropExtraServices" Role="PropExtraServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropExtraServices">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropExtra__Id_pr__45F365D3">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropExtraServicesDiscount" Role="PropExtraServicesDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropExtraServicesDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PropHallEquipment_Proposition">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1" />
+          <End Type="DiamondDBModel.PropHallEquipment" Role="PropHallEquipment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropHallEquipment">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropHallE__Id_pr__47DBAE45">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropHallEquipmentDiscount" Role="PropHallEquipmentDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropHallEquipmentDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PropMenuM__Id_pr__48CFD27E">
           <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1110,17 +1045,59 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropMenuMerg__Id__160F4887">
-          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+        <Association Name="FK__PropMenuP__Id_pr__31EC6D26">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="DiamondDBModel.PropMenuMerge" Role="PropMenuMerge" Multiplicity="0..1" />
+          <End Type="DiamondDBModel.PropMenuPosition" Role="PropMenuPosition" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Proposition">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="PropMenuMerge">
+            <Dependent Role="PropMenuPosition">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Propositi__Id_us__1FCDBCEB">
+          <End Type="DiamondDBModel.Users" Role="Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
               <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Proposition">
+              <PropertyRef Name="Id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropPayme__Id_pr__403A8C7D">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropPaymentSuggestions" Role="PropPaymentSuggestions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropPaymentSuggestions">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PropReser__Id_pr__4CA06362">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropReservationDetails" Role="PropReservationDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropReservationDetails">
+              <PropertyRef Name="Id_proposition" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1130,14 +1107,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DiamondDBModelStoreContainer" CdmEntityContainer="DiamondDBEntities">
-          <EntitySetMapping Name="AccountPrivileges">
-            <EntityTypeMapping TypeName="DiamondDBModel.AccountPrivileges">
-              <MappingFragment StoreEntitySet="AccountPrivileges">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropAccomodation">
             <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodation">
               <MappingFragment StoreEntitySet="PropAccomodation">
@@ -1259,18 +1228,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PropMenuGastronomicThings_Dictionary_First">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First">
-              <MappingFragment StoreEntitySet="PropMenuGastronomicThings_Dictionary_First">
-                <ScalarProperty Name="SpecificType1" ColumnName="SpecificType" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="ThingName" ColumnName="ThingName" />
-                <ScalarProperty Name="NettoMini" ColumnName="NettoMini" />
-                <ScalarProperty Name="Vat" ColumnName="Vat" />
-                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropMenuMerge_Dictionary_First">
             <EntityTypeMapping TypeName="DiamondDBModel.PropMenuMerge_Dictionary_First">
               <MappingFragment StoreEntitySet="PropMenuMerge_Dictionary_First">
@@ -1298,16 +1255,6 @@
               <MappingFragment StoreEntitySet="PropMergeTypes_Dictionary">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MergeType" ColumnName="MergeType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Proposition">
-            <EntityTypeMapping TypeName="DiamondDBModel.Proposition">
-              <MappingFragment StoreEntitySet="Proposition">
-                <ScalarProperty Name="Status1" ColumnName="Status" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Id_user" ColumnName="Id_user" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1402,22 +1349,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="DiamondDBModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="FirstLogin1" ColumnName="FirstLogin" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropMenuMerge">
             <EntityTypeMapping TypeName="DiamondDBModel.PropMenuMerge">
               <MappingFragment StoreEntitySet="PropMenuMerge">
@@ -1425,6 +1356,52 @@
                 <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
                 <ScalarProperty Name="MergeName" ColumnName="MergeName" />
                 <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountPrivileges">
+            <EntityTypeMapping TypeName="DiamondDBModel.AccountPrivileges">
+              <MappingFragment StoreEntitySet="AccountPrivileges">
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropMenuGastronomicThings_Dictionary_First">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First">
+              <MappingFragment StoreEntitySet="PropMenuGastronomicThings_Dictionary_First">
+                <ScalarProperty Name="SpecificType" ColumnName="SpecificType" />
+                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="NettoMini" ColumnName="NettoMini" />
+                <ScalarProperty Name="ThingName" ColumnName="ThingName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DiamondDBModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="FirstLogin" ColumnName="FirstLogin" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proposition">
+            <EntityTypeMapping TypeName="DiamondDBModel.Proposition">
+              <MappingFragment StoreEntitySet="Proposition">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="Id_user" ColumnName="Id_user" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

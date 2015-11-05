@@ -10,8 +10,8 @@
 
     <Grid RenderTransformOrigin="0.0,0.0">
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
-            <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="47">
-                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+            <MenuItem Header="Menu" HorizontalAlignment="Left" Width="47">
+                <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" Command="{Binding CreateNewPropositionCommand}"/>
                 <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
                 <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
                 <MenuItem Header="Lista propozycji" HorizontalAlignment="Left" Click="VisibleElement" Margin="0"/>
@@ -25,22 +25,26 @@
             </MenuItem>
         </Menu>
 
-        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="1,62,0,0" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller" IsHitTestVisible="True" Visibility="Hidden">
+        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller" IsHitTestVisible="True" Visibility="Visible">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="140" Header="Id propozycji" DisplayMemberBinding="{Binding Id}"  />
-                    <GridViewColumn Width="140" Header="Id uzytkownika"   DisplayMemberBinding="{Binding Id_user}" />
-                    <GridViewColumn Width="140" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate}" />
-                    <GridViewColumn Header="Stan">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <ComboBox  Width="150">
-                                    <ComboBoxItem IsSelected="True"  Content="Nierozpatrzona"/>
-                                    <ComboBoxItem Content="Gotowa"  />
-                                </ComboBox>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
+                    <GridViewColumn Width="200" Header="Nazwa klienta" DisplayMemberBinding="{Binding CustomerFullName}" />
+                    <GridViewColumn Width="200" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
+                    <GridViewColumn Width="200" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate}" />
+                    <GridViewColumn Width="70" Header="Status" DisplayMemberBinding="{Binding Status}" />
+
+<!--                    cache comment to copy into userform, admin cant change prop status from grid
+                    its complicated, TO RESOLVE ON REVIEV!!! -->
+                    
+<!--                        <GridViewColumn.CellTemplate>-->
+<!--                            <DataTemplate>-->
+<!--                                <ComboBox  Width="150">-->
+<!--                                    <ComboBoxItem IsSelected="True"  Content="Nierozpatrzona"/>-->
+<!--                                    <ComboBoxItem Content="Gotowa"  />-->
+<!--                                </ComboBox>-->
+<!--                            </DataTemplate>-->
+<!--                        </GridViewColumn.CellTemplate>-->
                     <GridViewColumn>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -51,10 +55,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="483" Width="1051">
+        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1051" Visibility="Hidden">
             <TabItem Header="OPIS KLIENTA">
 
-                <Grid x:Name="FirstGrid" Background="#FFE5E5E5">
+                <Grid x:Name="FirstGrid" Background="#FFE5E5E5" Margin="0,0,0,-2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                         <RowDefinition Height="60" />
@@ -125,8 +129,11 @@
 
                     <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="2" Grid.Row="10" Margin="3" />
                     <TextBox x:Name="IloscOsobTextBox" Grid.Column="2" Grid.Row="11" Margin="3" />
-
-
+                    
+                    
+                    
+                    
+                    <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="102,41,0,-31" Grid.Row="13" VerticalAlignment="Top" Width="118" Grid.Column="2"/>
                 </Grid>
             </TabItem>
 

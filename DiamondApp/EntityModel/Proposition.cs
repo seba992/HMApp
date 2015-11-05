@@ -19,16 +19,15 @@ namespace DiamondApp.EntityModel
             this.PropAccomodation = new ObservableCollection<PropAccomodation>();
             this.PropExtraServices = new ObservableCollection<PropExtraServices>();
             this.PropHallEquipment = new ObservableCollection<PropHallEquipment>();
+            this.PropMenuMerge = new ObservableCollection<PropMenuMerge>();
             this.PropMenuPosition = new ObservableCollection<PropMenuPosition>();
             this.PropPaymentSuggestions = new ObservableCollection<PropPaymentSuggestions>();
-            this.PropMenuMerge = new ObservableCollection<PropMenuMerge>();
         }
     
         public int Id { get; set; }
         public int Id_user { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public string Status { get; set; }
-        public string Status1 { get; set; }
     
         public virtual ObservableCollection<PropAccomodation> PropAccomodation { get; set; }
         public virtual PropAccomodationDiscount PropAccomodationDiscount { get; set; }
@@ -37,11 +36,10 @@ namespace DiamondApp.EntityModel
         public virtual PropExtraServicesDiscount PropExtraServicesDiscount { get; set; }
         public virtual ObservableCollection<PropHallEquipment> PropHallEquipment { get; set; }
         public virtual PropHallEquipmentDiscount PropHallEquipmentDiscount { get; set; }
+        public virtual ObservableCollection<PropMenuMerge> PropMenuMerge { get; set; }
         public virtual ObservableCollection<PropMenuPosition> PropMenuPosition { get; set; }
         public virtual Users Users { get; set; }
         public virtual ObservableCollection<PropPaymentSuggestions> PropPaymentSuggestions { get; set; }
         public virtual PropReservationDetails PropReservationDetails { get; set; }
-        public virtual ObservableCollection<PropMenuMerge> PropMenuMerge { get; set; }
-        public virtual PropMenuMerge PropMenuMerge1 { get; set; }
     }
 }
