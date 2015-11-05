@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DiamondDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DiamondDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AccountPrivileges">
           <Key>
             <PropertyRef Name="Id" />
@@ -94,7 +94,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_proposition" Type="int" />
-          <Property Name="Things" Type="nvarchar" MaxLength="50" />
+          <Property Name="Things" Type="varchar" MaxLength="50" />
           <Property Name="BruttoPrice" Type="real" />
           <Property Name="Vat" Type="real" />
           <Property Name="Amount" Type="int" />
@@ -120,24 +120,26 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Things" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Things" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="PropMenuGastronomicThings_Dictionary_First">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ThingName" Type="nvarchar" MaxLength="170" />
+          <Property Name="ThingName" Type="varchar" MaxLength="170" />
           <Property Name="NettoMini" Type="real" />
           <Property Name="Vat" Type="tinyint" />
           <Property Name="MergeType" Type="varchar" MaxLength="5" />
+          <Property Name="SpecificType" Type="varchar" MaxLength="4" />
         </EntityType>
         <EntityType Name="PropMenuMerge">
           <Key>
-            <PropertyRef Name="Id_proposition" />
+            <PropertyRef Name="Id" />
           </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_proposition" Type="int" Nullable="false" />
-          <Property Name="MergeName" Type="nvarchar" MaxLength="40" />
+          <Property Name="MergeName" Type="varchar" MaxLength="40" />
           <Property Name="DefaultValue" Type="real" />
           <Property Name="MergeType" Type="varchar" MaxLength="5" />
         </EntityType>
@@ -146,7 +148,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MergeName" Type="nvarchar" MaxLength="40" />
+          <Property Name="MergeName" Type="varchar" MaxLength="40" />
           <Property Name="Value" Type="real" />
         </EntityType>
         <EntityType Name="PropMenuPosition">
@@ -175,6 +177,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_user" Type="int" Nullable="false" />
           <Property Name="UpdateDate" Type="date" />
+          <Property Name="Status" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="PropPaymentSuggestions">
           <Key>
@@ -226,8 +229,8 @@
           <Property Name="EndData" Type="date" />
           <Property Name="EndTime" Type="time" Precision="7" />
           <Property Name="PeopleNumber" Type="int" />
-          <Property Name="Hall" Type="nvarchar" MaxLength="50" />
-          <Property Name="HallSetting" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hall" Type="varchar" MaxLength="50" />
+          <Property Name="HallSetting" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PropReservationDetails_Dictionary_HallCapacity">
           <Key>
@@ -259,29 +262,20 @@
           <Property Name="December" Type="int" />
           <Property Name="Other" Type="int" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="35" Nullable="false" />
-          <Property Name="Surname" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="35" Nullable="false" />
           <Property Name="PhoneNum" Type="varchar" MaxLength="15" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Position" Type="nvarchar" MaxLength="70" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Position" Type="varchar" MaxLength="70" />
           <Property Name="AccountType" Type="int" />
-          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstLogin" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <Association Name="FK__PropAccom__Id_pr__3A81B327">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
@@ -297,7 +291,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropAccom__Id_pr__74AE54BC">
+        <Association Name="FK__PropAccom__Id_pr__4316F928">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -311,7 +305,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropClien__Id_pr__778AC167">
+        <Association Name="FK__PropClien__Id_pr__440B1D61">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -339,7 +333,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropExtra__Id_pr__7A672E12">
+        <Association Name="FK__PropExtra__Id_pr__45F365D3">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -353,7 +347,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropHallE__Id_pr__7D439ABD">
+        <Association Name="FK__PropHallE__Id_pr__47DBAE45">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -367,11 +361,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropMenuM__Id_pr__00200768">
+        <Association Name="FK__PropMenuM__Id_pr__48CFD27E">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="PropMenuMerge" Type="Self.PropMenuMerge" Multiplicity="0..1" />
+          <End Role="PropMenuMerge" Type="Self.PropMenuMerge" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Proposition">
               <PropertyRef Name="Id" />
@@ -423,7 +417,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropReser__Id_pr__02FC7413">
+        <Association Name="FK__PropReser__Id_pr__4CA06362">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -437,7 +431,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__AccountTy__3B75D760">
+        <Association Name="FK__Users__AccountTy__4D94879B">
           <End Role="AccountPrivileges" Type="Self.AccountPrivileges" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -490,17 +484,16 @@
           <EntitySet Name="PropReservationDetails" EntityType="Self.PropReservationDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallCapacity" EntityType="Self.PropReservationDetails_Dictionary_HallCapacity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="Self.PropReservationDetails_Dictionary_HallPrices" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="Self.FK__PropAccom__Id_pr__3A81B327">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodation" EntitySet="PropAccomodation" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropAccom__Id_pr__74AE54BC" Association="Self.FK__PropAccom__Id_pr__74AE54BC">
+          <AssociationSet Name="FK__PropAccom__Id_pr__4316F928" Association="Self.FK__PropAccom__Id_pr__4316F928">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodationDiscount" EntitySet="PropAccomodationDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropClien__Id_pr__778AC167" Association="Self.FK__PropClien__Id_pr__778AC167">
+          <AssociationSet Name="FK__PropClien__Id_pr__440B1D61" Association="Self.FK__PropClien__Id_pr__440B1D61">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropClient" EntitySet="PropClient" />
           </AssociationSet>
@@ -508,15 +501,15 @@
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServices" EntitySet="PropExtraServices" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropExtra__Id_pr__7A672E12" Association="Self.FK__PropExtra__Id_pr__7A672E12">
+          <AssociationSet Name="FK__PropExtra__Id_pr__45F365D3" Association="Self.FK__PropExtra__Id_pr__45F365D3">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServicesDiscount" EntitySet="PropExtraServicesDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropHallE__Id_pr__7D439ABD" Association="Self.FK__PropHallE__Id_pr__7D439ABD">
+          <AssociationSet Name="FK__PropHallE__Id_pr__47DBAE45" Association="Self.FK__PropHallE__Id_pr__47DBAE45">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropHallEquipmentDiscount" EntitySet="PropHallEquipmentDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropMenuM__Id_pr__00200768" Association="Self.FK__PropMenuM__Id_pr__00200768">
+          <AssociationSet Name="FK__PropMenuM__Id_pr__48CFD27E" Association="Self.FK__PropMenuM__Id_pr__48CFD27E">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropMenuMerge" EntitySet="PropMenuMerge" />
           </AssociationSet>
@@ -532,11 +525,11 @@
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropPaymentSuggestions" EntitySet="PropPaymentSuggestions" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropReser__Id_pr__02FC7413" Association="Self.FK__PropReser__Id_pr__02FC7413">
+          <AssociationSet Name="FK__PropReser__Id_pr__4CA06362" Association="Self.FK__PropReser__Id_pr__4CA06362">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__AccountTy__3B75D760" Association="Self.FK__Users__AccountTy__3B75D760">
+          <AssociationSet Name="FK__Users__AccountTy__4D94879B" Association="Self.FK__Users__AccountTy__4D94879B">
             <End Role="AccountPrivileges" EntitySet="AccountPrivileges" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -545,8 +538,7 @@
             <End Role="PropHallEquipment" EntitySet="PropHallEquipment" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiamondDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -645,7 +637,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_proposition" Type="Int32" />
-          <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BruttoPrice" Type="Single" />
           <Property Name="Vat" Type="Single" />
           <Property Name="Amount" Type="Int32" />
@@ -673,34 +665,25 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Things" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="PropMenuGastronomicThings_Dictionary_First">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ThingName" Type="String" MaxLength="170" FixedLength="false" Unicode="true" />
+          <Property Name="ThingName" Type="String" MaxLength="170" FixedLength="false" Unicode="false" />
           <Property Name="NettoMini" Type="Single" />
           <Property Name="Vat" Type="Byte" />
           <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="PropMenuMerge">
-          <Key>
-            <PropertyRef Name="Id_proposition" />
-          </Key>
-          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
-          <Property Name="MergeName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="DefaultValue" Type="Single" />
-          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Proposition" Relationship="Self.FK__PropMenuM__Id_pr__00200768" FromRole="PropMenuMerge" ToRole="Proposition" />
+          <Property Name="SpecificType" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PropMenuMerge_Dictionary_First">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MergeName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="MergeName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="Value" Type="Single" />
         </EntityType>
         <EntityType Name="PropMenuPosition">
@@ -737,11 +720,12 @@
           <NavigationProperty Name="PropExtraServicesDiscount" Relationship="Self.FK__PropExtra__Id_pr__7A672E12" FromRole="Proposition" ToRole="PropExtraServicesDiscount" />
           <NavigationProperty Name="PropHallEquipment" Relationship="Self.FK_PropHallEquipment_Proposition" FromRole="Proposition" ToRole="PropHallEquipment" />
           <NavigationProperty Name="PropHallEquipmentDiscount" Relationship="Self.FK__PropHallE__Id_pr__7D439ABD" FromRole="Proposition" ToRole="PropHallEquipmentDiscount" />
-          <NavigationProperty Name="PropMenuMerge" Relationship="Self.FK__PropMenuM__Id_pr__00200768" FromRole="Proposition" ToRole="PropMenuMerge" />
           <NavigationProperty Name="PropMenuPosition" Relationship="Self.FK__PropMenuP__Id_pr__31EC6D26" FromRole="Proposition" ToRole="PropMenuPosition" />
           <NavigationProperty Name="Users" Relationship="Self.FK__Propositi__Id_us__1FCDBCEB" FromRole="Proposition" ToRole="Users" />
           <NavigationProperty Name="PropPaymentSuggestions" Relationship="Self.FK__PropPayme__Id_pr__403A8C7D" FromRole="Proposition" ToRole="PropPaymentSuggestions" />
           <NavigationProperty Name="PropReservationDetails" Relationship="Self.FK__PropReser__Id_pr__02FC7413" FromRole="Proposition" ToRole="PropReservationDetails" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PropMenuMerge" Relationship="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E" FromRole="Proposition" ToRole="PropMenuMerge" />
         </EntityType>
         <EntityType Name="PropPaymentSuggestions">
           <Key>
@@ -794,8 +778,8 @@
           <Property Name="EndData" Type="DateTime" Precision="0" />
           <Property Name="EndTime" Type="Time" Precision="7" />
           <Property Name="PeopleNumber" Type="Int32" />
-          <Property Name="Hall" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="HallSetting" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hall" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="HallSetting" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Proposition" Relationship="Self.FK__PropReser__Id_pr__02FC7413" FromRole="PropReservationDetails" ToRole="Proposition" />
         </EntityType>
         <EntityType Name="PropReservationDetails_Dictionary_HallCapacity">
@@ -828,31 +812,22 @@
           <Property Name="December" Type="Int32" />
           <Property Name="Other" Type="Int32" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PhoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Position" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="AccountType" Type="Int32" />
-          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="AccountPrivileges" Relationship="Self.FK__Users__AccountTy__3B75D760" FromRole="Users" ToRole="AccountPrivileges" />
           <NavigationProperty Name="Proposition" Relationship="Self.FK__Propositi__Id_us__1FCDBCEB" FromRole="Users" ToRole="Proposition" />
+          <Property Name="FirstLogin" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Users__AccountTy__3B75D760">
           <End Role="AccountPrivileges" Type="Self.AccountPrivileges" Multiplicity="0..1">
@@ -964,20 +939,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PropMenuM__Id_pr__00200768">
-          <End Role="Proposition" Type="Self.Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="PropMenuMerge" Type="Self.PropMenuMerge" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropMenuMerge">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PropMenuP__Id_pr__31EC6D26">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1048,7 +1009,6 @@
           <EntitySet Name="PropHallEquipmnet_Dictionary_First" EntityType="Self.PropHallEquipmnet_Dictionary_First" />
           <EntitySet Name="PropHallEquipmnet_Dictionary_Second" EntityType="Self.PropHallEquipmnet_Dictionary_Second" />
           <EntitySet Name="PropMenuGastronomicThings_Dictionary_First" EntityType="Self.PropMenuGastronomicThings_Dictionary_First" />
-          <EntitySet Name="PropMenuMerge" EntityType="Self.PropMenuMerge" />
           <EntitySet Name="PropMenuMerge_Dictionary_First" EntityType="Self.PropMenuMerge_Dictionary_First" />
           <EntitySet Name="PropMenuPosition" EntityType="Self.PropMenuPosition" />
           <EntitySet Name="PropMergeTypes_Dictionary" EntityType="Self.PropMergeTypes_Dictionary" />
@@ -1061,7 +1021,6 @@
           <EntitySet Name="PropReservationDetails" EntityType="Self.PropReservationDetails" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallCapacity" EntityType="Self.PropReservationDetails_Dictionary_HallCapacity" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="Self.PropReservationDetails_Dictionary_HallPrices" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK__Users__AccountTy__3B75D760" Association="Self.FK__Users__AccountTy__3B75D760">
             <End Role="AccountPrivileges" EntitySet="AccountPrivileges" />
@@ -1095,10 +1054,6 @@
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropHallEquipmentDiscount" EntitySet="PropHallEquipmentDiscount" />
           </AssociationSet>
-          <AssociationSet Name="FK__PropMenuM__Id_pr__00200768" Association="Self.FK__PropMenuM__Id_pr__00200768">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropMenuMerge" EntitySet="PropMenuMerge" />
-          </AssociationSet>
           <AssociationSet Name="FK__PropMenuP__Id_pr__31EC6D26" Association="Self.FK__PropMenuP__Id_pr__31EC6D26">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropMenuPosition" EntitySet="PropMenuPosition" />
@@ -1115,7 +1070,37 @@
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
           </AssociationSet>
+          <EntitySet Name="PropMenuMerge" EntityType="DiamondDBModel.PropMenuMerge" />
+          <AssociationSet Name="FK__PropMenuM__Id_pr__48CFD27E" Association="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropMenuMerge" EntitySet="PropMenuMerge" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="PropMenuMerge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="MergeName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="DefaultValue" Type="Single" />
+          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E" FromRole="PropMenuMerge" ToRole="Proposition" />
+        </EntityType>
+        <Association Name="FK__PropMenuM__Id_pr__48CFD27E">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropMenuMerge" Role="PropMenuMerge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropMenuMerge">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1254,20 +1239,11 @@
           <EntitySetMapping Name="PropMenuGastronomicThings_Dictionary_First">
             <EntityTypeMapping TypeName="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First">
               <MappingFragment StoreEntitySet="PropMenuGastronomicThings_Dictionary_First">
+                <ScalarProperty Name="SpecificType" ColumnName="SpecificType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ThingName" ColumnName="ThingName" />
                 <ScalarProperty Name="NettoMini" ColumnName="NettoMini" />
                 <ScalarProperty Name="Vat" ColumnName="Vat" />
-                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropMenuMerge">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuMerge">
-              <MappingFragment StoreEntitySet="PropMenuMerge">
-                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
-                <ScalarProperty Name="MergeName" ColumnName="MergeName" />
-                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
                 <ScalarProperty Name="MergeType" ColumnName="MergeType" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1305,6 +1281,7 @@
           <EntitySetMapping Name="Proposition">
             <EntityTypeMapping TypeName="DiamondDBModel.Proposition">
               <MappingFragment StoreEntitySet="Proposition">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_user" ColumnName="Id_user" />
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
@@ -1402,20 +1379,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="DiamondDBModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DiamondDBModel.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="FirstLogin" ColumnName="FirstLogin" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -1425,6 +1392,17 @@
                 <ScalarProperty Name="AccountType" ColumnName="AccountType" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropMenuMerge">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuMerge">
+              <MappingFragment StoreEntitySet="PropMenuMerge">
+                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
+                <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+                <ScalarProperty Name="MergeName" ColumnName="MergeName" />
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

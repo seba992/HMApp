@@ -14,6 +14,7 @@ namespace DiamondApp.EntityModel
     
     public partial class PropMenuMerge
     {
+        public int Id { get; set; }
         public int Id_proposition { get; set; }
         public string MergeName { get; set; }
         public Nullable<float> DefaultValue { get; set; }
