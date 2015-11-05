@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:da="clr-namespace:DiamondApp.ViewModels"
-        Title="AdminMainView" Height="547.671" Width="1060.164" Closed="Window_Closed">
+        Title="AdminMainView" Height="630.171" Width="1060.164" Closed="Window_Closed">
 
     <!--<Window.DataContext>
         <viewModels:AdminViewModel />
@@ -193,15 +193,15 @@
                     <ComboBox x:Name="SRVatComboBox5" Grid.Column="3" Grid.Row="5" Margin="3" />
 
                     <TextBox x:Name="SRIloscTextBox1" Grid.Column="4" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-                    <TextBox x:Name="SRIloscTextBox2" Grid.Column="4" Grid.Row="2" Margin="3" />
-                    <TextBox x:Name="SRIloscTextBox3" Grid.Column="4" Grid.Row="3" Margin="3" />
+                    <TextBox x:Name="SRIloscTextBox2" Grid.Column="4" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRIloscTextBox3" Grid.Column="4" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRIloscTextBox4" Grid.Column="4" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRIloscTextBox5" Grid.Column="4" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
 
-                    <TextBox x:Name="SRDniTextBox1" Grid.Column="5" Grid.Row="1" Margin="3" />
-                    <TextBox x:Name="SRDniTextBox2" Grid.Column="5" Grid.Row="2" Margin="3" />
-                    <TextBox x:Name="SRDniTextBox3" Grid.Column="5" Grid.Row="3" Margin="3" />
-                    <TextBox x:Name="SRDniTextBox4" Grid.Column="5" Grid.Row="4" Margin="3" />
+                    <TextBox x:Name="SRDniTextBox1" Grid.Column="5" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRDniTextBox2" Grid.Column="5" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRDniTextBox3" Grid.Column="5" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRDniTextBox4" Grid.Column="5" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRDniTextBox5" Grid.Column="5" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
 
                     <TextBox x:Name="SRWartoscNettoTextBox1" Grid.Column="6" Grid.Row="1" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
@@ -250,6 +250,120 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="ThirdGrid" Header="USŁUGI GASTRONOMICZNE">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-84">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="195" />
+                        <ColumnDefinition Width="195" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="125" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--definicja calej tabeli/-->
+                    <Label Grid.Row="1" Grid.Column="0" Content="RODZAJ USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="2" Content="CENA JEDNOSTKOWA NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="3" Content="VAT" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="4" Content="ILOŚĆ" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="5" Content="DNI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="6" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="7" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+
+                    <ComboBox x:Name="UGRodzajUslugiComboBox1" Grid.Column="0" Grid.Row="2" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox2" Grid.Column="0" Grid.Row="3" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox3" Grid.Column="0" Grid.Row="4" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox4" Grid.Column="0" Grid.Row="5" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox5" Grid.Column="0" Grid.Row="6" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox6" Grid.Column="0" Grid.Row="7" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox7" Grid.Column="0" Grid.Row="8" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox8" Grid.Column="0" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" />
+
+                    <TextBox x:Name="UGCenaJednBrutto1" Grid.Column="1" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto2" Grid.Column="1" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto3" Grid.Column="1" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto4" Grid.Column="1" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto5" Grid.Column="1" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto6" Grid.Column="1" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto7" Grid.Column="1" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto8" Grid.Column="1" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+
+                    <TextBox x:Name="UGCenaJednNetto1" Grid.Column="2" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednNetto2" Grid.Column="2" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednNetto3" Grid.Column="2" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednNetto4" Grid.Column="2" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednNetto5" Grid.Column="2" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednNetto6" Grid.Column="2" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednNetto7" Grid.Column="2" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednNetto8" Grid.Column="2" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+
+                    <ComboBox x:Name="UGVatComboBox1" Grid.Column="3" Grid.Row="2" Margin="3" />
+                    <ComboBox x:Name="UGVatComboBox2" Grid.Column="3" Grid.Row="3" Margin="3" />
+                    <ComboBox x:Name="UGVatComboBox3" Grid.Column="3" Grid.Row="4" Margin="3" />
+                    <ComboBox x:Name="UGVatComboBox4" Grid.Column="3" Grid.Row="5" Margin="3" />
+                    <ComboBox x:Name="UGVatComboBox5" Grid.Column="3" Grid.Row="6" Margin="3" />
+                    <ComboBox x:Name="UGVatComboBox6" Grid.Column="3" Grid.Row="7" Margin="3" />
+                    <ComboBox x:Name="UGVatComboBox7" Grid.Column="3" Grid.Row="8" Margin="3" />
+                    <ComboBox x:Name="UGVatComboBox8" Grid.Column="3" Grid.Row="9" Margin="3" />
+
+                    <TextBox x:Name="UGIloscTextBox1" Grid.Column="4" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGIloscTextBox2" Grid.Column="4" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGIloscTextBox3" Grid.Column="4" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGIloscTextBox4" Grid.Column="4" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGIloscTextBox5" Grid.Column="4" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGIloscTextBox6" Grid.Column="4" Grid.Row="7" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGIloscTextBox7" Grid.Column="4" Grid.Row="8" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGIloscTextBox8" Grid.Column="4" Grid.Row="9" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+
+                    <TextBox x:Name="UGDniTextBox1" Grid.Column="5" Grid.Row="2"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGDniTextBox2" Grid.Column="5" Grid.Row="3"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGDniTextBox3" Grid.Column="5" Grid.Row="4"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGDniTextBox4" Grid.Column="5" Grid.Row="5"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGDniTextBox5" Grid.Column="5" Grid.Row="6"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGDniTextBox6" Grid.Column="5" Grid.Row="7"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGDniTextBox7" Grid.Column="5" Grid.Row="8"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UGDniTextBox8" Grid.Column="5" Grid.Row="9"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+
+                    <TextBox x:Name="UGWartoscNettoTextBox1" Grid.Column="6" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UGWartoscNettoTextBox2" Grid.Column="6" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UGWartoscNettoTextBox3" Grid.Column="6" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UGWartoscNettoTextBox4" Grid.Column="6" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UGWartoscNettoTextBox5" Grid.Column="6" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UGWartoscNettoTextBox6" Grid.Column="6" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UGWartoscNettoTextBox7" Grid.Column="6" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UGWartoscNettoTextBox8" Grid.Column="6" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+
+                    <TextBox x:Name="UGWartoscBruttoTextBox1" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox2" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox3" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox6" Grid.Column="7" Grid.Row="7" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox7" Grid.Column="7" Grid.Row="8" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox8" Grid.Column="7" Grid.Row="9" Margin="3" IsEnabled="False" />
+
+                </Grid>
+
+            </TabItem>
+            <TabItem x:Name="FourthGrid" Header="USŁUGI DODATKOWE:">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15" />
@@ -278,7 +392,8 @@
                         <ColumnDefinition Width="125" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="1" Grid.Column="0" Content="RODZAJ USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <!--definicja calej tabeli/-->
+                    <Label Grid.Row="1" Grid.Column="0" Content="RODZAJ POKOJU" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="1" Grid.Column="1" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="1" Grid.Column="2" Content="CENA JEDNOSTKOWA NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="1" Grid.Column="3" Content="VAT" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
@@ -287,47 +402,70 @@
                     <Label Grid.Row="1" Grid.Column="6" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="1" Grid.Column="7" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
 
-                    <ComboBox x:Name="UGRodzajUslugiComboBox1" Grid.Column="0" Grid.Row="2" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox2" Grid.Column="0" Grid.Row="3" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox3" Grid.Column="0" Grid.Row="4" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox4" Grid.Column="0" Grid.Row="5" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox5" Grid.Column="0" Grid.Row="6" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox6" Grid.Column="0" Grid.Row="7" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox7" Grid.Column="0" Grid.Row="8" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox8" Grid.Column="0" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox9" Grid.Column="0" Grid.Row="10" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox10" Grid.Column="0" Grid.Row="11" Margin="3" HorizontalContentAlignment="Center" />
-                    <ComboBox x:Name="UGRodzajUslugiComboBox11" Grid.Column="0" Grid.Row="12" Margin="3" HorizontalContentAlignment="Center" />
-                    
-                    <TextBox x:Name="UGTabelaSalaPowTextBox1" Grid.Column="1" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox2" Grid.Column="1" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox3" Grid.Column="1" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox4" Grid.Column="1" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox5" Grid.Column="1" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox6" Grid.Column="1" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox7" Grid.Column="1" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox8" Grid.Column="1" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox9" Grid.Column="1" Grid.Row="10" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox10" Grid.Column="1" Grid.Row="11" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGTabelaSalaPowTextBox11" Grid.Column="1" Grid.Row="12" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <ComboBox x:Name="UNRodzajPokojuComboBox1" Grid.Column="0" Grid.Row="2" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UNRodzajPokojuComboBox2" Grid.Column="0" Grid.Row="3" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UNRodzajPokojuComboBox3" Grid.Column="0" Grid.Row="4" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UNRodzajPokojuComboBox4" Grid.Column="0" Grid.Row="5" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UNRodzajPokojuComboBox5" Grid.Column="0" Grid.Row="6" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UNRodzajPokojuComboBox6" Grid.Column="0" Grid.Row="7" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UNRodzajPokojuComboBox7" Grid.Column="0" Grid.Row="8" Margin="3" HorizontalContentAlignment="Center" />
 
-                    <TextBox x:Name="UGCenaJednBrutto1" Grid.Column="2" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto2" Grid.Column="2" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto3" Grid.Column="2" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto4" Grid.Column="2" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto5" Grid.Column="2" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto6" Grid.Column="2" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto7" Grid.Column="2" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto8" Grid.Column="2" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto9" Grid.Column="2" Grid.Row="10" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto10" Grid.Column="2" Grid.Row="11" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
-                    <TextBox x:Name="UGCenaJednBrutto11" Grid.Column="2" Grid.Row="12" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednBrutto1" Grid.Column="1" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednBrutto2" Grid.Column="1" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednBrutto3" Grid.Column="1" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednBrutto4" Grid.Column="1" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednBrutto5" Grid.Column="1" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednBrutto6" Grid.Column="1" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednBrutto7" Grid.Column="1" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
 
+                    <TextBox x:Name="UNCenaJednNetto1" Grid.Column="2" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednNetto2" Grid.Column="2" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednNetto3" Grid.Column="2" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednNetto4" Grid.Column="2" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednNetto5" Grid.Column="2" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednNetto6" Grid.Column="2" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UNCenaJednNetto7" Grid.Column="2" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+
+                    <ComboBox x:Name="UNVatComboBox1" Grid.Column="3" Grid.Row="2" Margin="3" />
+                    <ComboBox x:Name="UNVatComboBox2" Grid.Column="3" Grid.Row="3" Margin="3" />
+                    <ComboBox x:Name="UNVatComboBox3" Grid.Column="3" Grid.Row="4" Margin="3" />
+                    <ComboBox x:Name="UNVatComboBox4" Grid.Column="3" Grid.Row="5" Margin="3" />
+                    <ComboBox x:Name="UNVatComboBox5" Grid.Column="3" Grid.Row="6" Margin="3" />
+                    <ComboBox x:Name="UNVatComboBox6" Grid.Column="3" Grid.Row="7" Margin="3" />
+                    <ComboBox x:Name="UNVatComboBox7" Grid.Column="3" Grid.Row="8" Margin="3" />
+
+                    <TextBox x:Name="UNIloscTextBox1" Grid.Column="4" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNIloscTextBox2" Grid.Column="4" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNIloscTextBox3" Grid.Column="4" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNIloscTextBox4" Grid.Column="4" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNIloscTextBox5" Grid.Column="4" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNIloscTextBox6" Grid.Column="4" Grid.Row="7" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNIloscTextBox7" Grid.Column="4" Grid.Row="8" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+
+                    <TextBox x:Name="UNDniTextBox1" Grid.Column="5" Grid.Row="2"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNDniTextBox2" Grid.Column="5" Grid.Row="3"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNDniTextBox3" Grid.Column="5" Grid.Row="4"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNDniTextBox4" Grid.Column="5" Grid.Row="5"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNDniTextBox5" Grid.Column="5" Grid.Row="6"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNDniTextBox6" Grid.Column="5" Grid.Row="7"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="UNDniTextBox7" Grid.Column="5" Grid.Row="8"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+
+                    <TextBox x:Name="UNWartoscNettoTextBox1" Grid.Column="6" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UNWartoscNettoTextBox2" Grid.Column="6" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UNWartoscNettoTextBox3" Grid.Column="6" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UNWartoscNettoTextBox4" Grid.Column="6" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UNWartoscNettoTextBox5" Grid.Column="6" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UNWartoscNettoTextBox6" Grid.Column="6" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="UNWartoscNettoTextBox7" Grid.Column="6" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+
+                    <TextBox x:Name="UNWartoscBruttoTextBox1" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UNWartoscBruttoTextBox2" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UNWartoscBruttoTextBox3" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UNWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UNWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UNWartoscBruttoTextBox6" Grid.Column="7" Grid.Row="7" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="UNWartoscBruttoTextBox7" Grid.Column="7" Grid.Row="8" Margin="3" IsEnabled="False" />
                 </Grid>
-
-            </TabItem>
-            <TabItem x:Name="FourthGrid" Header="USŁUGI DODATKOWE:">
-                <Grid Background="#FFE5E5E5"/>
             </TabItem>
             <TabItem x:Name="FifthGrid" Header="FORMA PŁATNOŚĆI">
                 <Grid Background="#FFE5E5E5"/>
