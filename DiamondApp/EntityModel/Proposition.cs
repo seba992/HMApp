@@ -28,6 +28,7 @@ namespace DiamondApp.EntityModel
         public int Id_user { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public string Status { get; set; }
+        public string Status1 { get; set; }
     
         public virtual ObservableCollection<PropAccomodation> PropAccomodation { get; set; }
         public virtual PropAccomodationDiscount PropAccomodationDiscount { get; set; }
@@ -41,5 +42,6 @@ namespace DiamondApp.EntityModel
         public virtual ObservableCollection<PropPaymentSuggestions> PropPaymentSuggestions { get; set; }
         public virtual PropReservationDetails PropReservationDetails { get; set; }
         public virtual ObservableCollection<PropMenuMerge> PropMenuMerge { get; set; }
+        public virtual PropMenuMerge PropMenuMerge1 { get; set; }
     }
 }

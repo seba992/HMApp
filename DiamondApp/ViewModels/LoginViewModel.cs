@@ -126,7 +126,7 @@ namespace DiamondApp.ViewModels
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString());
                 MessageBox.Show("Błąd połączenia z bazą danych. Skontaktuj się z administratorem.");
             }   
         }

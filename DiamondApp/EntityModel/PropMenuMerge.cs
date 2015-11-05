@@ -21,5 +21,6 @@ namespace DiamondApp.EntityModel
         public string MergeType { get; set; }
     
         public virtual Proposition Proposition { get; set; }
+        public virtual Proposition Proposition1 { get; set; }
     }
 }

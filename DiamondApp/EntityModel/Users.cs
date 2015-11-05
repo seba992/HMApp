@@ -29,6 +29,7 @@ namespace DiamondApp.EntityModel
         public string Login { get; set; }
         public string Password { get; set; }
         public string FirstLogin { get; set; }
+        public string FirstLogin1 { get; set; }
     
         public virtual AccountPrivileges AccountPrivileges { get; set; }
         public virtual ObservableCollection<Proposition> Proposition { get; set; }

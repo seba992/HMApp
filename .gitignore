@@ -58,3 +58,4 @@ packages/EntityFramework.6.1.1/tools/migrate.exe
 packages/NUnit.2.6.4/lib/nunit.framework.dll
 DiamondAppTests/bin/Debug/DiamondApp.exe
 DiamondAppTests/bin/Debug/DiamondAppTests.dll
+packages/repositories.config

@@ -45,6 +45,7 @@
         <AssociationConnector Association="DiamondDBModel.FK__PropReser__Id_pr__02FC7413" ManuallyRouted="false" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuMerge" Width="1.5" PointX="7.5" PointY="39" />
         <AssociationConnector Association="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropMenuMerg__Id__160F4887" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
