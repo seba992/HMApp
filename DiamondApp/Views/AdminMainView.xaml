@@ -51,10 +51,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Margin="8,35,0,0" VerticalAlignment="Top">
-            <TabItem Header="SZCZEGÓŁY REZERWACJI">
+        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="483" Width="1051">
+            <TabItem Header="OPIS KLIENTA">
 
-                <Grid Background="#FFE5E5E5">
+                <Grid x:Name="FirstGrid" Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                         <RowDefinition Height="60" />
@@ -73,68 +73,67 @@
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="250" />
-                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="500" />
                         <ColumnDefinition Width="250" />
                         <ColumnDefinition Width="250" />
                         <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="DOTYCZY:"/>
-                    <Label Grid.Row="1" Grid.Column="0" Content="ADRES:"/>
-                    <Label Grid.Row="2" Grid.Column="0" Content="NIP:"/>
-                    <Label Grid.Row="3" Grid.Column="0" Content="DATA AKTUALIZACJI:"/>
-                    <Label Grid.Row="4" Grid.Column="0" Content="KONTAKT ZE STRONY HOTELU:" FontWeight="Bold"/>
-                    <Label Grid.Row="5" Grid.Column="0" Content="SPECJALISTA DS. SPRZEDAŻY"/>
-                    <Label Grid.Row="6" Grid.Column="0" Content="TELEFON:"/>
-                    <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:"/>
-                    <Label Grid.Row="10" Grid.Column="0" Content="TERMIN:"/>
-                    <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA:"/>
-                    <Label Grid.Row="0" Grid.Column="2" Content="DLA: "/>
-                    <Label Grid.Row="1" Grid.Column="2" Content="ADRES: "/>
-                    <Label Grid.Row="2" Grid.Column="2" Content="NIP: "/>
-                    <Label Grid.Row="3" Grid.Column="2" Content="TERMIN WAŻNOŚCI PROPOZYCJI:"/>
-                    <Label Grid.Row="4" Grid.Column="2" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold"/>
-                    <Label Grid.Row="5" Grid.Column="2" Content="Sz.P.:"/>
-                    <Label Grid.Row="6" Grid.Column="2" Content="TELEFON:"/>
-                    <Label Grid.Row="7" Grid.Column="2" Content="ADRES E-MAIL:"/>
-                    <Label Grid.Row="8" Grid.Column="2" Content="OSOBA DECYZYJNA:"/>
-                    <Label Grid.Row="10" Grid.Column="2" Content="ILOŚ OSÓB:"/>
-                    <Label Grid.Row="11" Grid.Column="2" Content="USTAWIENIE SALI:"/>
+                    <Label Grid.Row="0" Grid.Column="0" Content="DOTYCZY:" Margin="0,0,250,0"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="ADRES:" Margin="0,0,250,0"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="NIP:" Margin="0,0,250,0"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="DATA AKTUALIZACJI:" Margin="0,0,250,0"/>
+                    <Label Grid.Row="4" Grid.Column="0" Content="KONTAKT ZE STRONY HOTELU:" FontWeight="Bold" Margin="0,0,250,0"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="SPECJALISTA DS. SPRZEDAŻY" Margin="0,0,250,0"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="TELEFON:" Margin="0,0,250,0"/>
+                    <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:" Margin="0,0,250,0"/>
+                    <Label Grid.Row="10" Grid.Column="0" Content="TERMIN:" Margin="0,0,250,0"/>
+                    <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA:" Margin="0,0,250,0"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="DLA: "/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="ADRES: "/>
+                    <Label Grid.Row="2" Grid.Column="1" Content="NIP: "/>
+                    <Label Grid.Row="3" Grid.Column="1" Content="TERMIN WAŻNOŚCI PROPOZYCJI:"/>
+                    <Label Grid.Row="4" Grid.Column="1" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold"/>
+                    <Label Grid.Row="5" Grid.Column="1" Content="Sz.P.:"/>
+                    <Label Grid.Row="6" Grid.Column="1" Content="TELEFON:"/>
+                    <Label Grid.Row="7" Grid.Column="1" Content="ADRES E-MAIL:"/>
+                    <Label Grid.Row="8" Grid.Column="1" Content="OSOBA DECYZYJNA:"/>
+                    <Label Grid.Row="10" Grid.Column="1" Content="ILOŚ OSÓB:"/>
+                    <Label Grid.Row="11" Grid.Column="1" Content="USTAWIENIE SALI:"/>
 
-                    <TextBox x:Name="DotyczyTextBox" Grid.Column="1" Grid.Row="0" Margin="3" VerticalContentAlignment="Center" />
-                    <TextBox x:Name="DotyczyAdresTextBox" Grid.Column="1" Grid.Row="1" Margin="3" AcceptsReturn="True" />
-                    <TextBox x:Name="DotyczyNipTextBox" Grid.Column="1" Grid.Row="2" Margin="3" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="DataAktualizacjiTextBox" Grid.Column="1" Grid.Row="3" Margin="3" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="DotyczyAdresTextBox" Grid.Row="1" Grid.Column="0" Margin="253,3,3,3" AcceptsReturn="True" />
+                    <TextBox x:Name="DotyczyNipTextBox" Grid.Row="2" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="DataAktualizacjiTextBox" Grid.Row="3" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
 
-                    <TextBox x:Name="NazwaSprzedawcyTextBox" Grid.Column="1" Grid.Row="5" Margin="3" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="SprzedawcaNumerTextBox" Grid.Column="1" Grid.Row="6" Margin="3" VerticalContentAlignment="Center"/>
-                    <TextBox x:Name="SprzedawcaEmailTextBox" Grid.Column="1" Grid.Row="7" Margin="3" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="NazwaSprzedawcyTextBox" Grid.Row="5" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="SprzedawcaNumerTextBox" Grid.Row="6" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
+                    <TextBox x:Name="SprzedawcaEmailTextBox" Grid.Row="7" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
 
-                    <DatePicker x:Name="TerminDatePicker" Grid.Column="1" Grid.Row="10" Margin="3" Text="Wybierz datę" />
-                    <TextBox x:Name="CzasTrwaniaTextBox" Grid.Column="1" Grid.Row="11" Margin="3" VerticalContentAlignment="Center"/>
+                    <DatePicker x:Name="TerminDatePicker" Grid.Row="10" Grid.Column="0" Margin="253,3,3,3" Text="Wybierz datę" />
+                    <TextBox x:Name="CzasTrwaniaTextBox" Grid.Row="11" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
 
-                    <TextBox x:Name="DlaTextBox" Grid.Column="3" Grid.Row="0" Margin="3" />
-                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="3" Grid.Row="1" Margin="3" AcceptsReturn="True" />
-                    <TextBox x:Name="DlaNipTextBox" Grid.Column="3" Grid.Row="2" Margin="3" />
-                    <TextBox x:Name="TerminWaznosciTextBox" Grid.Column="3" Grid.Row="3" Margin="3" />
+                    <TextBox x:Name="DlaTextBox" Grid.Column="2" Grid.Row="0" Margin="3" />
+                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="2" Grid.Row="1" Margin="3" AcceptsReturn="True" />
+                    <TextBox x:Name="DlaNipTextBox" Grid.Column="2" Grid.Row="2" Margin="3" />
+                    <TextBox x:Name="TerminWaznosciTextBox" Grid.Column="2" Grid.Row="3" Margin="3" />
 
-                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="3" Grid.Row="5" Margin="3" />
-                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="3" Grid.Row="6" Margin="3" />
-                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="3" Grid.Row="7" Margin="3" />
-                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="3" Grid.Row="8" Margin="3" />
+                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="2" Grid.Row="5" Margin="3" />
+                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="2" Grid.Row="6" Margin="3" />
+                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="2" Grid.Row="7" Margin="3" />
+                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="2" Grid.Row="8" Margin="3" />
 
-                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="3" Grid.Row="10" Margin="3" />
-                    <TextBox x:Name="IloscOsobTextBox" Grid.Column="3" Grid.Row="11" Margin="3" />
-                    
+                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="2" Grid.Row="10" Margin="3" />
+                    <TextBox x:Name="IloscOsobTextBox" Grid.Column="2" Grid.Row="11" Margin="3" />
+
 
                 </Grid>
             </TabItem>
-            
-            <TabItem Header="USŁUGI GASTRONOMICZNE">
-                <Grid Background="#FFE5E5E5">
+
+            <TabItem x:Name="SecondGrid" Header="SZCZEGÓŁY REZERWACJI">
+                <Grid Background="#FFE5E5E5" Height="446">
+
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30" />
                         <RowDefinition Height="60" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
@@ -142,62 +141,203 @@
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150" />
-                        <ColumnDefinition Width="200" />
-                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="198" />
+                        <ColumnDefinition Width="195" />
                         <ColumnDefinition Width="60" />
-                        <ColumnDefinition Width="80" />
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="145" />
-                        <ColumnDefinition Width="145" />
-
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="125" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Grid.Column="0" Content="DOTYCZY:"/>
-                    <Label Grid.Row="1" Grid.Column="0" Content="ADRES:"/>
-                    <Label Grid.Row="2" Grid.Column="0" Content="NIP:"/>
-                    <Label Grid.Row="3" Grid.Column="0" Content="DATA AKTUALIZACJI:"/>
-                    <Label Grid.Row="4" Grid.Column="0" Content="KONTAKT ZE STRONY HOTELU:" FontWeight="Bold"/>
-                    <Label Grid.Row="5" Grid.Column="0" Content="SPECJALISTA DS. SPRZEDAŻY"/>
-                    <Label Grid.Row="6" Grid.Column="0" Content="TELEFON:"/>
-                    <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:"/>
-                    <Label Grid.Row="10" Grid.Column="0" Content="TERMIN:"/>
-                    <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA:"/>
-                    <Label Grid.Row="0" Grid.Column="2" Content="DLA: "/>
-                    <Label Grid.Row="1" Grid.Column="2" Content="ADRES: "/>
-                    <Label Grid.Row="2" Grid.Column="2" Content="NIP: "/>
-                    <Label Grid.Row="3" Grid.Column="2" Content="TERMIN WAŻNOŚCI PROPOZYCJI:"/>
-                    <Label Grid.Row="4" Grid.Column="2" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold"/>
-                    <Label Grid.Row="5" Grid.Column="2" Content="Sz.P.:"/>
-                    <Label Grid.Row="6" Grid.Column="2" Content="TELEFON:"/>
-                    <Label Grid.Row="7" Grid.Column="2" Content="ADRES E-MAIL:"/>
-                    <Label Grid.Row="8" Grid.Column="2" Content="OSOBA DECYZYJNA:"/>
-                    <Label Grid.Row="10" Grid.Column="2" Content="ILOŚ OSÓB:"/>
-                    <Label Grid.Row="11" Grid.Column="2" Content="USTAWIENIE SALI:"/>
+                    <!--definicja górnych 6 wierszy-->
+                    <Label Grid.Row="0" Grid.Column="0" Content="WYNAJEM" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="0" Grid.Column="1" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="0" Grid.Column="2" Content="CENA JEDNOSTKOWA NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="0" Grid.Column="3" Content="VAT" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="0" Grid.Column="4" Content="ILOŚĆ" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="0" Grid.Column="5" Content="DNI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="0" Grid.Column="6" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="0" Grid.Column="7" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+
+                    <ComboBox x:Name="SRSalaKonferencyjnaComboBox" Grid.Column="0" Grid.Row="1" Margin="3" />
+                    <ComboBox x:Name="SRElementySali1" Grid.Column="0" Grid.Row="2" Margin="3" />
+                    <ComboBox x:Name="SRElementySali2" Grid.Column="0" Grid.Row="3" Margin="3" />
+                    <ComboBox x:Name="SRElementySali3" Grid.Column="0" Grid.Row="4" Margin="3" />
+                    <ComboBox x:Name="SRElementySali4" Grid.Column="0" Grid.Row="5" Margin="3" />
+
+                    <TextBox x:Name="SRCenaJednBrutto1" Grid.Column="1" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                    <TextBox x:Name="SRCenaJednBrutto2" Grid.Column="1" Grid.Row="2" Margin="3" />
+                    <TextBox x:Name="SRCenaJednBrutto3" Grid.Column="1" Grid.Row="3" Margin="3" />
+                    <TextBox x:Name="SRCenaJednBrutto4" Grid.Column="1" Grid.Row="4" Margin="3" />
+                    <TextBox x:Name="SRCenaJednBrutto5" Grid.Column="1" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+
+                    <TextBox x:Name="SRCenaJednNetto1" Grid.Column="2" Grid.Row="1" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                    <TextBox x:Name="SRCenaJednNetto2" Grid.Column="2" Grid.Row="2" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="SRCenaJednNetto3" Grid.Column="2" Grid.Row="3" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="SRCenaJednNetto4" Grid.Column="2" Grid.Row="4" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="SRCenaJednNetto5" Grid.Column="2" Grid.Row="5" Margin="3" IsEnabled="False" />
+
+                    <ComboBox x:Name="SRVatComboBox1" Grid.Column="3" Grid.Row="1" Margin="3" />
+                    <ComboBox x:Name="SRVatComboBox2" Grid.Column="3" Grid.Row="2" Margin="3" />
+                    <ComboBox x:Name="SRVatComboBox3" Grid.Column="3" Grid.Row="3" Margin="3" />
+                    <ComboBox x:Name="SRVatComboBox4" Grid.Column="3" Grid.Row="4" Margin="3" />
+                    <ComboBox x:Name="SRVatComboBox5" Grid.Column="3" Grid.Row="5" Margin="3" />
+
+                    <TextBox x:Name="SRIloscTextBox1" Grid.Column="4" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRIloscTextBox2" Grid.Column="4" Grid.Row="2" Margin="3" />
+                    <TextBox x:Name="SRIloscTextBox3" Grid.Column="4" Grid.Row="3" Margin="3" />
+                    <TextBox x:Name="SRIloscTextBox4" Grid.Column="4" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRIloscTextBox5" Grid.Column="4" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+
+                    <TextBox x:Name="SRDniTextBox1" Grid.Column="5" Grid.Row="1" Margin="3" />
+                    <TextBox x:Name="SRDniTextBox2" Grid.Column="5" Grid.Row="2" Margin="3" />
+                    <TextBox x:Name="SRDniTextBox3" Grid.Column="5" Grid.Row="3" Margin="3" />
+                    <TextBox x:Name="SRDniTextBox4" Grid.Column="5" Grid.Row="4" Margin="3" />
+                    <TextBox x:Name="SRDniTextBox5" Grid.Column="5" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+
+                    <TextBox x:Name="SRWartoscNettoTextBox1" Grid.Column="6" Grid.Row="1" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="SRWartoscNettoTextBox2" Grid.Column="6" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="SRWartoscNettoTextBox3" Grid.Column="6" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="SRWartoscNettoTextBox4" Grid.Column="6" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="SRWartoscNettoTextBox5" Grid.Column="6" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+
+                    <TextBox x:Name="SRWartoscBruttoTextBox1" Grid.Column="7" Grid.Row="1" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox2" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox3" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" />
+
+                    <!--definicja wiersza podsumowania-->
+                    <Label Grid.Row="6" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" />
+                    <TextBox x:Name="SRSumaWartoscNettoTextBox" Grid.Column="6" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="SRSumaWartoscBruttoTextBox" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+
+
+                    <!--definicja wierszy cel sali /dol srodek/-->
+                    <Label Grid.Column="1"  Grid.Row="8" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="1"  Grid.Row="9" Content="Rabat od bara: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="1"  Grid.Row="10" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+
+                    <TextBox x:Name="SRCenaStandardTextBox" Grid.Column="2" Grid.Row="8" Margin="3" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="SRRabatOdBaraTextBox" Grid.Column="2" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="10" Margin="3" HorizontalContentAlignment="Center" IsEnabled="False" />
+
+                    <!--definicja wierszy wielkosci sali /dol prawo/-->
+                    <Label Grid.Column="4" Grid.Row="8" Content="Sala" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="5" Grid.Row="8" Content="Powierchnia" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="6" Grid.Row="8" Content="Uł. Teatr" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="7" Grid.Row="8" Content="Uł. Podkowa" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+
+                    <ComboBox x:Name="SRTabelaSalaComboBox" Grid.Column="4" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRTabelaSalaPowTextBox" Grid.Column="5" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="SRTabelaSalaPowTeatrTextBox" Grid.Column="6" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRTabelaSalaPowUTextBox" Grid.Column="7" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" />
+
+                    <Label Grid.Row="10" Grid.Column="4" Content="Cena z tabeli: " HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="SRTabelaSalaCena" Grid.Column="5" Grid.Row="10" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <Label Grid.Row="10" Grid.Column="6" Content="Miesiąc: " HorizontalContentAlignment="Right"/>
+                    <TextBox x:Name="SRSalaPowUTextBox" Grid.Column="7" Grid.Row="10" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" />
+
                 </Grid>
             </TabItem>
-            <TabItem Header="USŁUGI NOCLEGOWE">
+            <TabItem x:Name="ThirdGrid" Header="USŁUGI GASTRONOMICZNE">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                        <RowDefinition Height="36" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="195" />
+                        <ColumnDefinition Width="195" />
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="125" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="RODZAJ USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="2" Content="CENA JEDNOSTKOWA NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="3" Content="VAT" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="4" Content="ILOŚĆ" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="5" Content="DNI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="6" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="7" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+
+                    <ComboBox x:Name="UGRodzajUslugiComboBox1" Grid.Column="0" Grid.Row="2" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox2" Grid.Column="0" Grid.Row="3" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox3" Grid.Column="0" Grid.Row="4" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox4" Grid.Column="0" Grid.Row="5" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox5" Grid.Column="0" Grid.Row="6" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox6" Grid.Column="0" Grid.Row="7" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox7" Grid.Column="0" Grid.Row="8" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox8" Grid.Column="0" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox9" Grid.Column="0" Grid.Row="10" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox10" Grid.Column="0" Grid.Row="11" Margin="3" HorizontalContentAlignment="Center" />
+                    <ComboBox x:Name="UGRodzajUslugiComboBox11" Grid.Column="0" Grid.Row="12" Margin="3" HorizontalContentAlignment="Center" />
+                    
+                    <TextBox x:Name="UGTabelaSalaPowTextBox1" Grid.Column="1" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox2" Grid.Column="1" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox3" Grid.Column="1" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox4" Grid.Column="1" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox5" Grid.Column="1" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox6" Grid.Column="1" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox7" Grid.Column="1" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox8" Grid.Column="1" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox9" Grid.Column="1" Grid.Row="10" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox10" Grid.Column="1" Grid.Row="11" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGTabelaSalaPowTextBox11" Grid.Column="1" Grid.Row="12" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+
+                    <TextBox x:Name="UGCenaJednBrutto1" Grid.Column="2" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto2" Grid.Column="2" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto3" Grid.Column="2" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto4" Grid.Column="2" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto5" Grid.Column="2" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto6" Grid.Column="2" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto7" Grid.Column="2" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto8" Grid.Column="2" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto9" Grid.Column="2" Grid.Row="10" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto10" Grid.Column="2" Grid.Row="11" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="UGCenaJednBrutto11" Grid.Column="2" Grid.Row="12" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem x:Name="FourthGrid" Header="USŁUGI DODATKOWE:">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
-            <TabItem Header="USŁUGI DODATKOWE:">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-            <TabItem Header="FORMA PŁATNOŚĆI">
+            <TabItem x:Name="FifthGrid" Header="FORMA PŁATNOŚĆI">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <ComboBox HorizontalAlignment="Left" Margin="883,35,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="PropositionsSeller Mode=TwoWay, 
+        <ComboBox HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="PropositionsSeller Mode=TwoWay, 
     UpdateSourceTrigger=PropertyChanged}"/>
-        <Label Content="Użytkownicy" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0"/>
+        <Label Content="Użytkownicy" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0" HorizontalContentAlignment="Right"/>
 
     </Grid>
 </Window>
+
+    
