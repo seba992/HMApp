@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,12 +20,15 @@ namespace DiamondApp.ViewModels
         private int _userId;
         private string _userType;
         private string _userLogin;
-
         private bool _allowToLog = false;
+        private List<Users> users;
 
         public LoginViewModel()
         {
             _ctx = new DiamondDBEntities();
+            // komentarz w celu wydajniejszych testów - LAG ON FIRST QUERRY
+//            users = (from s in _ctx.Users
+//                select s).ToList();
         }
 
         public string UserLogin
@@ -35,6 +39,13 @@ namespace DiamondApp.ViewModels
                 _userLogin = value;
                 RaisePropertyChanged("UserLogin");
                 _loginCommand.RaiseCanExecuteChanged(); // sprawdz czy user nacisnal przycisk logowania
+
+                // działa - odkomentować gdy wersja beta :D
+//                var q = (from s in _ctx.Users
+//                    where _userLogin == s.Login
+//                    select s).SingleOrDefault();
+//                if (q != null && q.FirstLogin.ToUpper() == "T")
+//                    MessageBox.Show("Wymagana zmiana hasła! Wprowadź swoje nowe hasło celu jego ustawienia.");
             }
         }
 
@@ -57,8 +68,6 @@ namespace DiamondApp.ViewModels
             }          
         }
 
-
-
         // sprawdza czy login nie jest pusty
         private bool CanLoginExecute(PasswordBox arg)
         {
@@ -72,32 +81,29 @@ namespace DiamondApp.ViewModels
         {
             try
             {
-                var userList = (from u in _ctx.Users
-                                select new { u.Id, u.Login, u.Password, u.AccountPrivileges.AccountType }
-                ).ToList();
-                if (userList.Any())
-                {
-                    foreach (var user in userList)
-                    {
-                        //(user.Password == ShaConverter.sha256_hash(passBox.Password))\
-                        if (user.Login == _userLogin && user.Password == passBox.Password)
-                        {
+                var userToLogin = (from u in _ctx.Users
+                                  where u.Login == _userLogin
+                                  select u);
 
-                            UserId = user.Id;
-                            _userType = user.AccountType;
-
-//                            MessageBox.Show("Otworz nowe okno \n" +
-//                                            "Zamknij obecne");
-                            _allowToLog = true;
-                            break;
-                        }
-                    }
+                if (userToLogin.Count() == 1 && userToLogin.SingleOrDefault().FirstLogin.ToUpper() == "T") // jesli jest jeden i tylko jeden user
+                { 
+                    //.Password = ShaConverter.sha256_hash(passBox.Password);
+                    userToLogin.First().Password = passBox.Password;
+                    userToLogin.First().FirstLogin = "f";
+                    UserId = userToLogin.First().Id;
+                    _userType = userToLogin.First().AccountPrivileges.AccountType;
+                    _ctx.SaveChanges();
+                    _allowToLog = true;
                 }
-
+                //.Password == ShaConverter.sha256_hash(passBox.Password))
+                else if (userToLogin.First().Login == _userLogin && userToLogin.First().Password == passBox.Password)
+                {
+                    _userType = userToLogin.First().AccountPrivileges.AccountType;
+                    UserId = userToLogin.First().Id;
+                    _allowToLog = true;
+                }
                 if (_allowToLog)
                 {
-                    // Application.Current.AdminMainView
-
                     // if typ konta to je wlacz
                     if (_userType.ToUpper() == "A")
                     {

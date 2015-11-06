@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using DiamondApp.DataGridObjectClasses;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
-using Microsoft.Practices.ServiceLocation;
 
 namespace DiamondApp.ViewModels
 {
@@ -30,7 +27,6 @@ namespace DiamondApp.ViewModels
         {
             _ctx = new DiamondDBEntities();
             SelectAllPropositions();
-
         }
 
         public AdminViewModel(int userId)
@@ -152,7 +148,7 @@ namespace DiamondApp.ViewModels
                     UserEmail = user.Email,
                     IsCreated = true
                 }).SingleOrDefault();
-            _addNewProposition = querry;
+            AddNewProposition = querry;
         }
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
@@ -166,7 +162,7 @@ namespace DiamondApp.ViewModels
 
         private void SavePropositionExecute(object obj)
         {
-            if (_addNewProposition.IsCreated == true)
+            if (_addNewProposition.IsCreated)
             {
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
 
@@ -218,7 +214,6 @@ namespace DiamondApp.ViewModels
 
 
 #endregion
-
 
 #region Methods
 
