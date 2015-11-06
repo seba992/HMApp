@@ -8,6 +8,8 @@ namespace DiamondApp.DataGridObjectClasses
 {
     public class AdminProposition
     {
+        public int PropositionId 
+        { get; set; }
         public string UserFirstName
         { get; set; }
         public string UserSurname

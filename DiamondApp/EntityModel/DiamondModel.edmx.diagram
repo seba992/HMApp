@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation_Dictionary" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodationDiscount" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.PropClient" Width="1.5" PointX="7.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropClient" Width="2.25" PointX="7.5" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices_Dictionary" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServicesDiscount" Width="1.5" PointX="7.5" PointY="17" IsExpanded="true" />
