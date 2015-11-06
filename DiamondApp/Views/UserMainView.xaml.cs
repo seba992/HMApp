@@ -49,5 +49,11 @@ namespace DiamondApp.Views
                     break;
             }
         }
+        private void VisibleElementAfterSavePropClick(object sender, RoutedEventArgs e)
+        {
+            UserProposition.Visibility = Visibility.Visible;
+            TabControlProposition.Visibility = Visibility.Hidden;
+            SavePropositionButton.Visibility = Visibility.Hidden;
+        }
     }
 }
