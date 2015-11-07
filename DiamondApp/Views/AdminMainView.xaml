@@ -109,17 +109,16 @@
                     <Label Grid.Row="10" Grid.Column="3" Content="ILOŚ OSÓB:"/>
                     <Label Grid.Row="11" Grid.Column="3" Content="USTAWIENIE SALI:"/>
 
-                    <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="3" Text="{Binding AddNewProposition.CompanyName}" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="DotyczyNipTextBox" Grid.Row="2" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.OurNip}" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="DataAktualizacjiTextBox" Grid.Row="3" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UpdateDate, StringFormat='{}{0:yyyy-MM-dd}'}" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="3" Text="{Binding AddNewProposition.CompanyName}" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <TextBox x:Name="DotyczyNipTextBox" Grid.Row="2" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.OurNip}" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <DatePicker x:Name="DataAktualizacjiTextBox" Grid.Row="3" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Grid.ColumnSpan="2" SelectedDate="{Binding AddNewProposition.UpdateDate, StringFormat='{}{0:yyyy-MM-dd}'}"/>
+                    <TextBox x:Name="NazwaSprzedawcyTextBox" Grid.Row="5" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserFullname}" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <TextBox x:Name="SprzedawcaNumerTextBox" Grid.Row="6" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserPhoneNum}" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <TextBox x:Name="SprzedawcaEmailTextBox" Grid.Row="7" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserEmail}" Grid.ColumnSpan="2" IsEnabled="False"/>
 
-                    <TextBox x:Name="NazwaSprzedawcyTextBox" Grid.Row="5" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserFullname}" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="SprzedawcaNumerTextBox" Grid.Row="6" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserPhoneNum}" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="SprzedawcaEmailTextBox" Grid.Row="7" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserEmail}" Grid.ColumnSpan="2"/>
-
-                    <DatePicker x:Name="TerminOdDatePicker" Grid.Row="10" Grid.Column="1" Margin="3" Text="Data start" />
+                    <DatePicker x:Name="TerminOdDatePicker" Grid.Row="10" Grid.Column="1" Margin="3" Text="Data start" Height="25" VerticalAlignment="Top" />
                     <DatePicker x:Name="TerminDoDatePicker" Grid.Row="10" Grid.Column="2" Margin="3" Text="Data koniec"/>
-                    
+
                     <xctk:TimePicker x:Name="GodzinaOdTimePicker" Grid.Row="11" Grid.Column="1" Value="{Binding CurrentDateTime}" Margin="3"/>
                     <xctk:TimePicker x:Name="GodzinaDoTimePicker" Grid.Row="11" Grid.Column="2" Value="{Binding CurrentDateTime}" Margin="3"/>
                     <!--                    <TextBox x:Name="CzasTrwaniaTextBox" Grid.Row="11" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>-->
@@ -127,7 +126,7 @@
                     <TextBox x:Name="DlaTextBox" Grid.Column="4" Grid.Row="0" Margin="3" Text="{Binding PropositionClientCompanyName, Mode=TwoWay}" />
                     <TextBox x:Name="DlaAdresTextBox" Grid.Column="4" Grid.Row="1" Margin="3" AcceptsReturn="True" Text="{Binding PropositionClientCompanyAdress, Mode=TwoWay}" />
                     <TextBox x:Name="DlaNipTextBox" Grid.Column="4" Grid.Row="2" Margin="3" Text="{Binding PropositionClientNip, Mode=TwoWay}" />
-                    <TextBox x:Name="TerminWaznosciTextBox" Grid.Column="4" Grid.Row="3" Margin="3" />
+                    <TextBox x:Name="TerminWaznoSciDatePicker" Grid.Row="3" Grid.Column="4" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.ValidityPropDate, StringFormat='{}{0:yyyy-MM-dd}'}" IsEnabled="False"/>
 
                     <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="4" Grid.Row="5" Margin="3" Text="{Binding PropositionClientCustromerFullName, Mode=TwoWay}" />
                     <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="4" Grid.Row="6" Margin="3" Text="{Binding PropositionClientPhoneNum, Mode=TwoWay}" />
