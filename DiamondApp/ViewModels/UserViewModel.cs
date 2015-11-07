@@ -134,8 +134,7 @@ namespace DiamondApp.ViewModels
                                 PropositionId = prop.Id,   
                                 UserFirstName = user.Name,
                                 UserSurname = user.Surname,
-                                CustomerFirstName = prop.PropClient.CustomerName,
-                                CustomerSurname = prop.PropClient.CustomerSurname,
+                                CustomerFullName = prop.PropClient.CustomerFullName,
                                 CompanyName = prop.PropClient.CompanyName,
                                 UpdateDate = prop.UpdateDate,
                                 Status = prop.Status

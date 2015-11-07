@@ -14,15 +14,13 @@ namespace DiamondApp.DataGridObjectClasses
         { get; set; }
         public string UserSurname
         { get; set; }
-        public string CustomerFirstName
-        { get; set; }
-        public string CustomerSurname
-        { get; set; }
         public string CompanyName
         { get; set; }
         public DateTime? UpdateDate
         { get; set; }
         public string Status 
+        { get; set; }
+        public string CustomerFullName
         { get; set; }
 
         public string UserFullName
@@ -30,10 +28,6 @@ namespace DiamondApp.DataGridObjectClasses
             get { return UserFirstName + " " + UserSurname; }
         }
 
-        public string CustomerFullName
-        {
-            get { return CustomerFirstName + " " + CustomerSurname; }
-        }
 
         
     }

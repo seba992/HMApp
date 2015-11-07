@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation_Dictionary" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodationDiscount" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.PropClient" Width="2.25" PointX="7.5" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices_Dictionary" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServicesDiscount" Width="1.5" PointX="7.5" PointY="17" IsExpanded="true" />
@@ -35,7 +34,6 @@
         <EntityTypeShape EntityType="DiamondDBModel.Proposition" Width="1.5" PointX="5.25" PointY="18.25" />
         <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" />
         <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" />
         <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" />
         <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" />
         <AssociationConnector Association="DiamondDBModel.FK_PropHallEquipment_Proposition" />
@@ -45,6 +43,8 @@
         <AssociationConnector Association="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB" />
         <AssociationConnector Association="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" />
         <AssociationConnector Association="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropClient" Width="1.5" PointX="7.5" PointY="10" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

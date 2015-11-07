@@ -242,6 +242,7 @@
     </EntityDeploy>
     <None Include="EntityModel\DiamondModel.edmx.diagram">
       <DependentUpon>DiamondModel.edmx</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

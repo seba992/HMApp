@@ -16,16 +16,11 @@ namespace DiamondApp.EntityModel
     {
         public int Id_proposition { get; set; }
         public string CompanyName { get; set; }
-        public string CompanyStreet { get; set; }
-        public string CompanyBuildingNumber { get; set; }
-        public string CompanyZipCode { get; set; }
-        public string CompanyCity { get; set; }
+        public string CompanyAdress { get; set; }
         public string NIP { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerSurname { get; set; }
+        public string CustomerFullName { get; set; }
         public string PhoneNum { get; set; }
-        public string DecisingPersonName { get; set; }
-        public string DecisingPersonSurname { get; set; }
+        public string DecisingPersonFullName { get; set; }
     
         public virtual Proposition Proposition { get; set; }
     }
