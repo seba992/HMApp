@@ -26,8 +26,7 @@ namespace DiamondApp.ViewModels
         private string _userPhoneNumber;
         private string _userEmail;
         private string _userPosition;
-        private int _userType;
-        private string _userLogin;
+        private int _userAccountType;
 
         public AddUserViewModel()
         {
@@ -78,6 +77,12 @@ namespace DiamondApp.ViewModels
             set { _userPassword = ShaConverter.sha256_hash(value); }
         }
 
+        public int UserAccountType
+        {
+            get { return _userAccountType; }
+            set { _userAccountType = value; }
+        }
+
         public ICommand AddUserCommand
         {
             get
@@ -106,7 +111,7 @@ namespace DiamondApp.ViewModels
                     PhoneNum = _userPhoneNumber,
                     Email = _userEmail,
                     Position = _userPosition,
-                    AccountType = 1,
+                    AccountType = _userAccountType,
                     Login = UserLogin,
                     Password = "",
                     FirstLogin = "f"

@@ -20,7 +20,7 @@
         <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="111,80,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPhoneNumber}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="111,110,0,0" TextWrapping="Wrap" Text="{Binding Path=UserEmail}" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="PositionTextBox" HorizontalAlignment="Left" Height="23" Margin="111,140,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPosition}" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Margin="111,170,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Margin="111,170,0,0" VerticalAlignment="Top" Width="120" Text="{Binding Path=UserAccountType}">
             <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
