@@ -19,22 +19,15 @@ namespace DiamondApp.ViewModels
         private DiamondDBEntities _ctx;
 
         public RelayCommand _addUserCommand;
+       
         private string _userPassword;
-
-        private string _userName { get; set; }
-        private string _userSurname { get; set; }
-        private string _userPhoneNumber { get; set; }
-        private string _userEmail { get; set; }
-        private string _userPosition { get; set; }
-        private int _userType { get; set; }
-        private string _userLogin { get; set; }
-
-        public string UserPassword
-        {
-            get { return _userPassword; }
-            set { _userPassword = ShaConverter.sha256_hash(value); }
-        }
-
+        private string _userName;
+        private string _userSurname;
+        private string _userPhoneNumber;
+        private string _userEmail;
+        private string _userPosition;
+        private int _userType;
+        private string _userLogin;
 
         public AddUserViewModel()
         {
@@ -71,6 +64,20 @@ namespace DiamondApp.ViewModels
             set { _userPosition = value; }
         }
 
+        public string UserLogin
+        {
+            get 
+            {
+                return  Validations.FirstLetterToLowerCase(UserName) + "." + Validations.FirstLetterToLowerCase(UserSurname);  
+            }
+        }
+
+        public string UserPassword
+        {
+            get { return _userPassword; }
+            set { _userPassword = ShaConverter.sha256_hash(value); }
+        }
+
         public ICommand AddUserCommand
         {
             get
@@ -100,14 +107,14 @@ namespace DiamondApp.ViewModels
                     Email = _userEmail,
                     Position = _userPosition,
                     AccountType = 1,
-                    Login = "krzysiek", //ShaConverter.sha256_hash() !!!!! nie dziala
-                    Password = "zbyszek",
-                    FirstLogin = "t"
+                    Login = UserLogin,
+                    Password = "",
+                    FirstLogin = "f"
                 };
 
                 _ctx.Users.Add(addUser);
                 _ctx.SaveChanges();
-                MessageBox.Show("udalo sie");
+                MessageBox.Show("Konto użytkownika zostało utworzone!");
             }
             catch (Exception ex)
             {

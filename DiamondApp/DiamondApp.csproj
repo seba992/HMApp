@@ -179,6 +179,7 @@
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Tools\RelayCommand.cs" />
+    <Compile Include="Tools\Validations.cs" />
     <Compile Include="ViewModels\AddUserViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="Views\AddUserView.xaml.cs">
