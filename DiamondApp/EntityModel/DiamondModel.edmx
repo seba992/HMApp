@@ -55,6 +55,7 @@
           <Property Name="CustomerFullName" Type="varchar" MaxLength="40" />
           <Property Name="PhoneNum" Type="varchar" MaxLength="15" />
           <Property Name="DecisingPersonFullName" Type="varchar" MaxLength="20" />
+          <Property Name="CustomerEmail" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PropExtraServices">
           <Key>
@@ -779,7 +780,6 @@
             <End Role="AccountPrivileges" EntitySet="AccountPrivileges" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <EntitySet Name="PropClient" EntityType="DiamondDBModel.PropClient" />
           <EntitySet Name="Proposition" EntityType="DiamondDBModel.Proposition" />
           <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327">
             <End Role="Proposition" EntitySet="Proposition" />
@@ -788,10 +788,6 @@
           <AssociationSet Name="FK__PropAccom__Id_pr__4316F928" Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodationDiscount" EntitySet="PropAccomodationDiscount" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PropClien__Id_pr__440B1D61" Association="DiamondDBModel.FK__PropClien__Id_pr__440B1D61">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropClient" EntitySet="PropClient" />
           </AssociationSet>
           <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2">
             <End Role="Proposition" EntitySet="Proposition" />
@@ -828,6 +824,11 @@
           <AssociationSet Name="FK__PropReser__Id_pr__4CA06362" Association="DiamondDBModel.FK__PropReser__Id_pr__4CA06362">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
+          </AssociationSet>
+          <EntitySet Name="PropClient" EntityType="DiamondDBModel.PropClient" />
+          <AssociationSet Name="FK__PropClien__Id_pr__440B1D61" Association="DiamondDBModel.FK__PropClien__Id_pr__440B1D61">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropClient" EntitySet="PropClient" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
@@ -891,19 +892,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="PropClient">
-          <Key>
-            <PropertyRef Name="Id_proposition" />
-          </Key>
-          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
-          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CompanyAdress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="NIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="CustomerFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="DecisingPersonFullName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" FromRole="PropClient" ToRole="Proposition" />
-        </EntityType>
         <EntityType Name="Proposition">
           <Key>
             <PropertyRef Name="Id" />
@@ -914,7 +902,6 @@
           <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PropAccomodation" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="Proposition" ToRole="PropAccomodation" />
           <NavigationProperty Name="PropAccomodationDiscount" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="Proposition" ToRole="PropAccomodationDiscount" />
-          <NavigationProperty Name="PropClient" Relationship="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" FromRole="Proposition" ToRole="PropClient" />
           <NavigationProperty Name="PropExtraServices" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="Proposition" ToRole="PropExtraServices" />
           <NavigationProperty Name="PropExtraServicesDiscount" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" FromRole="Proposition" ToRole="PropExtraServicesDiscount" />
           <NavigationProperty Name="PropHallEquipment" Relationship="DiamondDBModel.FK_PropHallEquipment_Proposition" FromRole="Proposition" ToRole="PropHallEquipment" />
@@ -924,6 +911,7 @@
           <NavigationProperty Name="Users" Relationship="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB" FromRole="Proposition" ToRole="Users" />
           <NavigationProperty Name="PropPaymentSuggestions" Relationship="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" FromRole="Proposition" ToRole="PropPaymentSuggestions" />
           <NavigationProperty Name="PropReservationDetails" Relationship="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" FromRole="Proposition" ToRole="PropReservationDetails" />
+          <NavigationProperty Name="PropClient" Relationship="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" FromRole="Proposition" ToRole="PropClient" />
         </EntityType>
         <Association Name="FK__PropAccom__Id_pr__3A81B327">
           <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
@@ -949,20 +937,6 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PropAccomodationDiscount">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropClien__Id_pr__440B1D61">
-          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DiamondDBModel.PropClient" Role="PropClient" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropClient">
               <PropertyRef Name="Id_proposition" />
             </Dependent>
           </ReferentialConstraint>
@@ -1087,6 +1061,34 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PropReservationDetails">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PropClient">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyAdress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="NIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerFullName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DecisingPersonFullName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" FromRole="PropClient" ToRole="Proposition" />
+        </EntityType>
+        <Association Name="FK__PropClien__Id_pr__440B1D61">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropClient" Role="PropClient" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropClient">
               <PropertyRef Name="Id_proposition" />
             </Dependent>
           </ReferentialConstraint>
@@ -1368,19 +1370,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PropClient">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropClient">
-              <MappingFragment StoreEntitySet="PropClient">
-                <ScalarProperty Name="DecisingPersonFullName" ColumnName="DecisingPersonFullName" />
-                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
-                <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
-                <ScalarProperty Name="NIP" ColumnName="NIP" />
-                <ScalarProperty Name="CompanyAdress" ColumnName="CompanyAdress" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Proposition">
             <EntityTypeMapping TypeName="DiamondDBModel.Proposition">
               <MappingFragment StoreEntitySet="Proposition">
@@ -1388,6 +1377,20 @@
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="Id_user" ColumnName="Id_user" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropClient">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropClient">
+              <MappingFragment StoreEntitySet="PropClient">
+                <ScalarProperty Name="CustomerEmail" ColumnName="CustomerEmail" />
+                <ScalarProperty Name="DecisingPersonFullName" ColumnName="DecisingPersonFullName" />
+                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+                <ScalarProperty Name="CustomerFullName" ColumnName="CustomerFullName" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="CompanyAdress" ColumnName="CompanyAdress" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
