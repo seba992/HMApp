@@ -18,6 +18,9 @@ namespace DiamondApp.ViewModels
         private AddNewProposition _addNewProposition;
 
         private PropClient _propositionClient = new PropClient();
+        private PropReservationDetails _propositionReservDetails = new PropReservationDetails();
+        private List<string> _hallList;
+
 
         private List<Users> _usersList;
         private int _userId;
@@ -129,7 +132,7 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionClient.CompanyName = value;
-                RaisePropertyChanged("PropositionClient");
+                RaisePropertyChanged("PropositionClientCompanyName");
             }
         }
 
@@ -139,7 +142,7 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionClient.CompanyAdress = value;
-                RaisePropertyChanged("PropositionClient");
+                RaisePropertyChanged("PropositionClientCompanyAdress");
             }
         }
 
@@ -149,7 +152,7 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionClient.NIP = value;
-                RaisePropertyChanged("PropositionClient");
+                RaisePropertyChanged("PropositionClientNip");
             }
         }
 
@@ -159,8 +162,8 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionClient.CustomerFullName = value;
-                _propositionClient.DecisingPersonFullName = value;
-                RaisePropertyChanged("PropositionClient");
+                PropositionClientDecisingPerFullName = value;
+                RaisePropertyChanged("PropositionClientCustromerFullName");
             }
         }
 
@@ -170,7 +173,7 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionClient.PhoneNum = value;
-                RaisePropertyChanged("PropositionClient");
+                RaisePropertyChanged("PropositionClientPhoneNum");
             }
         }
 
@@ -180,7 +183,7 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionClient.DecisingPersonFullName = value;
-                RaisePropertyChanged("PropositionClient");
+                RaisePropertyChanged("PropositionClientDecisingPerFullName");
             }
         }
 
@@ -190,11 +193,91 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionClient.CustomerEmail = value;
-                RaisePropertyChanged("PropositionClient");
+                RaisePropertyChanged("PropositionClientCustomerEmail");
             }
         }
 
-#endregion
+        public PropReservationDetails PropositionReservDetails
+        {
+            get { return _propositionReservDetails; }
+            set
+            {
+                _propositionReservDetails = value;
+                RaisePropertyChanged("PropositionReservDetails");
+            }
+        }
+
+        public DateTime? PropositionReservDetailsStartData
+        {
+            get { return _propositionReservDetails.StartData; }
+            set
+            {
+                _propositionReservDetails.StartData = value;
+                RaisePropertyChanged("PropositionReservDetailsStartData");
+            }
+        }
+
+        public TimeSpan? PropositionReservDetailsStartTime
+        {
+            get { return _propositionReservDetails.StartTime; }
+            set
+            {
+                _propositionReservDetails.StartTime = value;
+                RaisePropertyChanged("PropositionReservDetailsStartTime");
+            }
+        }
+
+        public DateTime? PropositionReservDetailsEndData
+        {
+            get { return _propositionReservDetails.EndData; }
+            set
+            {
+                _propositionReservDetails.EndData = value;
+                RaisePropertyChanged("PropositionReservDetailsEndData");
+            }
+        }
+
+        public int? PropositionReservDetailsPeopleNumber
+        {
+            get { return _propositionReservDetails.PeopleNumber; }
+            set
+            {
+                _propositionReservDetails.PeopleNumber = value;
+                RaisePropertyChanged("PropositionReservDetailsPeopleNumber");
+            }
+        }
+
+        public string PropositionReservDetailsHall
+        {
+            get { return _propositionReservDetails.Hall; }
+            set
+            {
+                _propositionReservDetails.Hall = value;
+                RaisePropertyChanged("PropositionReservDetailsHall");
+            }
+        }
+
+        public string PropositionReservDetailsHallSetting
+        {
+            get { return _propositionReservDetails.HallSetting; }
+            set
+            {
+                _propositionReservDetails.HallSetting = value;
+                RaisePropertyChanged("PropositionReservDetailsHallSetting");
+            }
+        }
+
+        public List<string> HallList
+        {
+            get { return _hallList; }
+            set
+            {
+                _hallList = value;
+                RaisePropertyChanged("HallList");
+            }
+        }
+
+        #endregion
 
 #region Commands
 
@@ -221,6 +304,11 @@ namespace DiamondApp.ViewModels
                     IsCreated = true
                 }).SingleOrDefault();
             AddNewProposition = querry;
+
+            // wypełnienie listy umieszczonej jako SALA 1tab
+            var hallDict1 = (from hd in _ctx.PropReservationDetails_Dictionary_HallCapacity
+                select hd.Hall).ToList();
+            HallList = hallDict1;
         }
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
@@ -269,6 +357,9 @@ namespace DiamondApp.ViewModels
                 };
                 _ctx.PropClient.Add(propClientToBase);
                 _ctx.SaveChanges();
+
+                //------------------------------
+                // !! PROPCLIENT !!
 
 
                 MessageBox.Show("dodano nowa propozycje");
