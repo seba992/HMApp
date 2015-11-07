@@ -97,6 +97,8 @@ namespace DiamondApp.ViewModels
 
         private bool CanAddUserExecute()
         {
+            if (string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_userSurname) || _userAccountType == 0)
+                return false;
             return true;
         }
 
