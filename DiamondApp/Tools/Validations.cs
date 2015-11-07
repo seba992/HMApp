@@ -8,6 +8,7 @@ namespace DiamondApp.Tools
 {
     class Validations
     {
+        //Konwersja pierwszego znaku z ciągu na małą literę
         public static string FirstLetterToLowerCase(string value)
         {
             if (String.IsNullOrEmpty(value))
