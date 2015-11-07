@@ -174,22 +174,22 @@ namespace DiamondApp.ViewModels
             }
         }
 
-        public string PropositionClientCustomerEmail
-        {
-            get { return _propositionClient.CustomerEmail; }
-            set
-            {
-                _propositionClient.CustomerEmail = value;
-                RaisePropertyChanged("PropositionClient");
-            }
-        }
-
         public string PropositionClientDecisingPerFullName
         {
             get { return _propositionClient.DecisingPersonFullName; }
             set
             {
                 _propositionClient.DecisingPersonFullName = value;
+                RaisePropertyChanged("PropositionClient");
+            }
+        }
+
+        public string PropositionClientCustomerEmail
+        {
+            get { return _propositionClient.CustomerEmail; }
+            set
+            {
+                _propositionClient.CustomerEmail = value;
                 RaisePropertyChanged("PropositionClient");
             }
         }
@@ -258,15 +258,18 @@ namespace DiamondApp.ViewModels
                 
                 //------------------------------
                 // !! PROPCLIENT !!
-//                PropositionClient = new PropClient
-//                {
-//                    Id_proposition = currentPropositionId,
-//                    CompanyName = PropositionClient.CompanyName,
-//                    CompanyAdress =  PropositionClient.CompanyAdress,
-//                    NIP = PropositionClient.NIP,
-//                    CustomerFullName = PropositionClient.CustomerFullName,
-//                    PhoneNum = PropositionClient.PhoneNum
-//                };
+                var propClientToBase = new PropClient
+                {
+                    Id_proposition = currentPropositionId,
+                    CompanyName = PropositionClient.CompanyName,
+                    CompanyAdress =  PropositionClient.CompanyAdress,
+                    NIP = PropositionClient.NIP,
+                    CustomerFullName = PropositionClient.CustomerFullName,
+                    PhoneNum = PropositionClient.PhoneNum
+                };
+                _ctx.PropClient.Add(propClientToBase);
+                _ctx.SaveChanges();
+
 
                 MessageBox.Show("dodano nowa propozycje");
 
@@ -308,16 +311,18 @@ namespace DiamondApp.ViewModels
 
         private void CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl()
         {
+            DateTime today = DateTime.Today;
             var querry = (from user in _ctx.Users
-                where user.Id == _userId
-                select new AddNewProposition
-                {
-                    UpdateDate = DateTime.Today,
-                    UserFirstName = user.Name,
-                    UserSurname = user.Surname,
-                    UserPhoneNum = user.PhoneNum,
-                    UserEmail = user.Email
-                }).SingleOrDefault();
+                          where user.Id == _userId
+                          select new AddNewProposition
+                          {
+                              UpdateDate = today,
+                              UserFirstName = user.Name,
+                              UserSurname = user.Surname,
+                              UserPhoneNum = user.PhoneNum,
+                              UserEmail = user.Email,
+                              IsCreated = true
+                          }).SingleOrDefault();
             AddNewProposition = querry;
         }
 
