@@ -54,5 +54,11 @@ namespace DiamondApp.Views
             AddUserView addUserView = new AddUserView();
             addUserView.Show();
         }
+
+        private void EditUser_Click(object sender, RoutedEventArgs e)
+        {
+            EditUserView editUserView = new EditUserView();
+            editUserView.Show();
+        }
     }
 }

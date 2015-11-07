@@ -21,7 +21,7 @@
             <MenuItem Header="Edytuj słownik"/>
             <MenuItem Header="Użytkownicy">
                 <MenuItem Header="Dodaj" Click="AddUser_Click"/>
-                <MenuItem Header="Edytuj"/>
+                <MenuItem Header="Edytuj" Click="EditUser_Click" />
                 <MenuItem Header="Usuń"/>
             </MenuItem>
         </Menu>

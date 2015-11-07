@@ -17,9 +17,9 @@ namespace DiamondApp.Views
     /// <summary>
     /// Interaction logic for EditUser.xaml
     /// </summary>
-    public partial class EditUser : Window
+    public partial class EditUserView : Window
     {
-        public EditUser()
+        public EditUserView()
         {
             InitializeComponent();
         }
