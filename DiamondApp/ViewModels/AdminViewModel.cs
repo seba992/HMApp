@@ -16,13 +16,12 @@ namespace DiamondApp.ViewModels
 
         private List<AdminProposition> _propositionList;
         private AddNewProposition _addNewProposition;
-        private Proposition _proposition;
+
+        private PropClient _propositionClient = new PropClient();
 
         private List<Users> _usersList;
         private int _userId;
         private int _selectedPropositionId;
-
-
 
         public AdminViewModel()
         {
@@ -100,16 +99,6 @@ namespace DiamondApp.ViewModels
             }
         }
 
-        public Proposition Proposition
-        {
-            get { return _proposition; }
-            set
-            {
-                _proposition = value;
-                RaisePropertyChanged("AddNewProposition");
-            }
-        }
-
         public ICommand ShowPropositionsCommand
         {
             get
@@ -121,6 +110,88 @@ namespace DiamondApp.ViewModels
                 return _showPropositionsCommand; 
             }
 
+        }
+
+        // objekt zawierajacy wszystkie elementy wpisane przez uzytkownika /dotyczy tabeli PropClient/
+        public PropClient PropositionClient
+        {
+            get { return _propositionClient; }
+            set
+            {
+                _propositionClient = value;
+                RaisePropertyChanged("PropositionClient");
+            }
+        }
+
+        public string PropositionClientCompanyName
+        {
+            get { return _propositionClient.CompanyName; }
+            set
+            {
+                _propositionClient.CompanyName = value;
+                RaisePropertyChanged("PropositionClient");
+            }
+        }
+
+        public string PropositionClientCompanyAdress
+        {
+            get { return _propositionClient.CompanyAdress; }
+            set
+            {
+                _propositionClient.CompanyAdress = value;
+                RaisePropertyChanged("PropositionClient");
+            }
+        }
+
+        public string PropositionClientNip
+        {
+            get { return _propositionClient.NIP; }
+            set
+            {
+                _propositionClient.NIP = value;
+                RaisePropertyChanged("PropositionClient");
+            }
+        }
+
+        public string PropositionClientCustromerFullName
+        {
+            get { return _propositionClient.CustomerFullName; }
+            set
+            {
+                _propositionClient.CustomerFullName = value;
+                _propositionClient.DecisingPersonFullName = value;
+                RaisePropertyChanged("PropositionClient");
+            }
+        }
+
+        public string PropositionClientPhoneNum
+        {
+            get { return _propositionClient.PhoneNum; }
+            set
+            {
+                _propositionClient.PhoneNum = value;
+                RaisePropertyChanged("PropositionClient");
+            }
+        }
+
+        public string PropositionClientCustomerEmail
+        {
+            get { return _propositionClient.CustomerEmail; }
+            set
+            {
+                _propositionClient.CustomerEmail = value;
+                RaisePropertyChanged("PropositionClient");
+            }
+        }
+
+        public string PropositionClientDecisingPerFullName
+        {
+            get { return _propositionClient.DecisingPersonFullName; }
+            set
+            {
+                _propositionClient.DecisingPersonFullName = value;
+                RaisePropertyChanged("PropositionClient");
+            }
         }
 
 #endregion
@@ -168,13 +239,13 @@ namespace DiamondApp.ViewModels
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
 
                 // !! PROPOSITION !! 
-                Proposition = new Proposition
+                var propositionToBase = new Proposition
                 {
                     Id_user = _userId,
                     UpdateDate = _addNewProposition.UpdateDate,
                     Status = "New"  //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
                 };
-                _ctx.Proposition.Add(Proposition);
+                _ctx.Proposition.Add(propositionToBase);
                 _addNewProposition.IsCreated = false;
                 _ctx.SaveChanges();
 
@@ -186,7 +257,16 @@ namespace DiamondApp.ViewModels
                 int currentPropositionId = lastPropId.Id;
                 
                 //------------------------------
-
+                // !! PROPCLIENT !!
+//                PropositionClient = new PropClient
+//                {
+//                    Id_proposition = currentPropositionId,
+//                    CompanyName = PropositionClient.CompanyName,
+//                    CompanyAdress =  PropositionClient.CompanyAdress,
+//                    NIP = PropositionClient.NIP,
+//                    CustomerFullName = PropositionClient.CustomerFullName,
+//                    PhoneNum = PropositionClient.PhoneNum
+//                };
 
                 MessageBox.Show("dodano nowa propozycje");
 

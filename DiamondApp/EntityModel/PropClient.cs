@@ -21,6 +21,7 @@ namespace DiamondApp.EntityModel
         public string CustomerFullName { get; set; }
         public string PhoneNum { get; set; }
         public string DecisingPersonFullName { get; set; }
+        public string CustomerEmail { get; set; }
     
         public virtual Proposition Proposition { get; set; }
     }

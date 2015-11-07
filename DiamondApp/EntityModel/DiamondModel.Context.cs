@@ -50,7 +50,7 @@ namespace DiamondApp.EntityModel
         public virtual DbSet<AccountPrivileges> AccountPrivileges { get; set; }
         public virtual DbSet<PropMenuGastronomicThings_Dictionary_First> PropMenuGastronomicThings_Dictionary_First { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<PropClient> PropClient { get; set; }
         public virtual DbSet<Proposition> Proposition { get; set; }
+        public virtual DbSet<PropClient> PropClient { get; set; }
     }
 }

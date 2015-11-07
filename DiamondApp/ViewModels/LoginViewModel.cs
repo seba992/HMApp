@@ -39,7 +39,6 @@ namespace DiamondApp.ViewModels
                 _userLogin = value;
                 RaisePropertyChanged("UserLogin");
                 _loginCommand.RaiseCanExecuteChanged(); // sprawdz czy user nacisnal przycisk logowania
-
                 // działa - odkomentować gdy wersja beta :D
 //                var q = (from s in _ctx.Users
 //                    where _userLogin == s.Login
