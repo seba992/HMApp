@@ -30,8 +30,8 @@ insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,D
 select p.Id,'DoubleRoomEP',450,23,3,10  from Proposition p  where p.Id_user = 4;
 insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,BussinesDoubleEP,ApartmentSingleEP,ApartmentDoubleEP)
 select p.Id,100,20,45,100,145,220,265  from Proposition p where p.Id_user = 4;
-insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonName, DecisingPersonSurname)
-select  p.Id,'Wytwórnia win','Jagodowa 3 23-765 Siemianowiec','1234556698','Sebastian Nalepka', 500295458,'Patrycja', 'Kowalska'  from Proposition p;
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonName, DecisingPersonSurname , CustomerEmail)
+select  p.Id,'Wytwórnia win','Jagodowa 3 23-765 Siemianowiec','1234556698','Sebastian Nalepka', 500295458,'Patrycja', 'Kowalska' ,'sn@wp.pl'   from Proposition p;
 insert into PropExtraServices(Id_proposition,ServiceType,BruttoHourPrice,Vat,Days)
 select  p.Id,'Inne ',10,8,3  from Proposition p where p.Id_user = 4;
 insert into PropExtraServicesDiscount(Id_proposition,StandardPrice,Discount)
@@ -71,8 +71,8 @@ insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,D
 select p.Id,'ApartmentSingleEP',750,23,4,30 from Proposition p  where p.Id_user = 6;
 insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,BussinesDoubleEP,ApartmentSingleEP,ApartmentDoubleEP)
 select p.Id,100,20,45,100,145,220,265 from Proposition p where p.Id_user = 6;
-insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonName, DecisingPersonSurname)
-select p.Id,'Przetwórstwo futra','Pożeczkowa 37 76-717 Bytom','1734573386','Mateusz Wolski', 634562926,'Ignacy', 'Krasiński'from Proposition p where p.Id_user = 6;
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonName, DecisingPersonSurname ,CustomerEmail)
+select p.Id,'Przetwórstwo futra','Pożeczkowa 37 76-717 Bytom','1734573386','Mateusz Wolski', 634562926,'Ignacy', 'Krasiński' ,'Test@test.pl'from Proposition p where p.Id_user = 6;
 insert into PropExtraServices(Id_proposition,ServiceType,BruttoHourPrice,Vat,Days)
 select p.Id,'Parking',2.50,8,3 from Proposition p where p.Id_user = 6;
 insert into PropExtraServicesDiscount(Id_proposition,StandardPrice,Discount)
