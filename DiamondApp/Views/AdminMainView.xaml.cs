@@ -48,5 +48,11 @@ namespace DiamondApp.Views
             TabControlProposition.Visibility = Visibility.Hidden;
             SavePropositionButton.Visibility = Visibility.Hidden;
         }
+
+        private void AddUser_Click(object sender, RoutedEventArgs e)
+        {
+            AddUserView addUserView = new AddUserView();
+            addUserView.Show();
+        }
     }
 }

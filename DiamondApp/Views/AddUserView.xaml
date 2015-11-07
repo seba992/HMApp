@@ -2,28 +2,29 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
-        Title="AddUserView" Height="246" Width="239">
+        Title="AddUserView" Height="266" Width="256">
 
     <Window.DataContext>
         <viewModels:AddUserViewModel/>
     </Window.DataContext>
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.79,1.003"><Run Text="Imię"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="10,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Nazwisko:"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="10,70,0,0" TextWrapping="Wrap" Text="Numer telefonu:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" Text="E-mail:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Stanowisko:"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="10,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Typ konta:"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="108,10,0,0" TextWrapping="Wrap" Text="{Binding Path=UserName}"  VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="SurnameTextBox" HorizontalAlignment="Left" Height="23" Margin="108,40,0,0" TextWrapping="Wrap" Text="{Binding Path=UserSurname}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="108,70,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPhoneNumber}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="108,100,0,0" TextWrapping="Wrap" Text="{Binding Path=UserEmail}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PositionTextBox" HorizontalAlignment="Left" Height="23" Margin="108,130,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPosition}" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Margin="108,160,0,0" VerticalAlignment="Top" Width="120">
+        <TextBlock HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.79,1.003"><Run Text="Imię"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Nazwisko:"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,80,0,0" TextWrapping="Wrap" Text="Numer telefonu:" VerticalAlignment="Top" RenderTransformOrigin="0.452,2.068"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,110,0,0" TextWrapping="Wrap" Text="E-mail:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Stanowisko:"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Typ konta:"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="111,20,0,0" TextWrapping="Wrap" Text="{Binding Path=UserName}"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="SurnameTextBox" HorizontalAlignment="Left" Height="23" Margin="111,50,0,0" TextWrapping="Wrap" Text="{Binding Path=UserSurname}" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.608,0.652"/>
+        <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="111,80,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPhoneNumber}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="111,110,0,0" TextWrapping="Wrap" Text="{Binding Path=UserEmail}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PositionTextBox" HorizontalAlignment="Left" Height="23" Margin="111,140,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPosition}" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Margin="111,170,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
-        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="153,190,0,0" VerticalAlignment="Top" Width="75" Command="{Binding AddUserCommand}"/>
+        <Button Content="Dodaj" HorizontalAlignment="Left" Margin="156,197,0,0" VerticalAlignment="Top" Width="75" Command="{Binding AddUserCommand}"/>
+        <GroupBox Header="Dodaj użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Height="230" Width="240" Margin="6,0,0,0"/>
     </Grid>
 </Window>
