@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -184,9 +185,10 @@ namespace DiamondApp.ViewModels
                     select prop).ToList().Last();
                 int currentPropositionId = lastPropId.Id;
                 
+                //------------------------------
+
+
                 MessageBox.Show("dodano nowa propozycje");
-                // TODO ukryć okno propozycji i wyświetlić listę propozycji
-                // done, ukrycie elementów w codebehind adminview. Po nacisnieciu przycisku wlacz/ukryj odpowiednie elementy
 
                 // po dodaniu propozycji odśwież listę propozycji
                 SelectAllPropositions();
@@ -236,7 +238,7 @@ namespace DiamondApp.ViewModels
                     UserPhoneNum = user.PhoneNum,
                     UserEmail = user.Email
                 }).SingleOrDefault();
-            _addNewProposition = querry;
+            AddNewProposition = querry;
         }
 
         /* Wyszukiwanie wszystkich danych potrzebnych do wypełnienia grida admina
@@ -258,9 +260,9 @@ namespace DiamondApp.ViewModels
                     UpdateDate = prop.UpdateDate,
                     Status = prop.Status
                 }).ToList();
+
             PropositionsList = myQuerry;
         }
 #endregion
-        
     }
 }

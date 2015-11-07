@@ -31,7 +31,7 @@
                     <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
                     <GridViewColumn Width="200" Header="Nazwa klienta" DisplayMemberBinding="{Binding CustomerFullName}" />
                     <GridViewColumn Width="200" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
-                    <GridViewColumn Width="200" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate}" />
+                    <GridViewColumn Width="200" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat='{}{0:yyyy-MM-dd}'}" />
                     <GridViewColumn Width="70" Header="Status" DisplayMemberBinding="{Binding Status}" />
 
 <!--                    cache comment to copy into userform, admin cant change prop status from grid
@@ -108,7 +108,7 @@
 
                     <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="253,3,3,3" Text="{Binding AddNewProposition.CompanyName}"/>
                     <TextBox x:Name="DotyczyNipTextBox" Grid.Row="2" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.OurNip}"/>
-                    <TextBox x:Name="DataAktualizacjiTextBox" Grid.Row="3" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UpdateDate}"/>
+                    <TextBox x:Name="DataAktualizacjiTextBox" Grid.Row="3" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UpdateDate, StringFormat='{}{0:yyyy-MM-dd}'}"/>
 
                     <TextBox x:Name="NazwaSprzedawcyTextBox" Grid.Row="5" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserFullname}"/>
                     <TextBox x:Name="SprzedawcaNumerTextBox" Grid.Row="6" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserPhoneNum}"/>

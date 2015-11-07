@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace DiamondApp.EntityModel
 {
     using System;
@@ -26,11 +28,14 @@ namespace DiamondApp.EntityModel
     
         public int Id { get; set; }
         public int Id_user { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+
+        [Column(TypeName = "Date")]
+        public System.DateTime UpdateDate { get; set; }
         public string Status { get; set; }
     
         public virtual ObservableCollection<PropAccomodation> PropAccomodation { get; set; }
         public virtual PropAccomodationDiscount PropAccomodationDiscount { get; set; }
+        public virtual PropClient PropClient { get; set; }
         public virtual ObservableCollection<PropExtraServices> PropExtraServices { get; set; }
         public virtual PropExtraServicesDiscount PropExtraServicesDiscount { get; set; }
         public virtual ObservableCollection<PropHallEquipment> PropHallEquipment { get; set; }
@@ -40,6 +45,5 @@ namespace DiamondApp.EntityModel
         public virtual Users Users { get; set; }
         public virtual ObservableCollection<PropPaymentSuggestions> PropPaymentSuggestions { get; set; }
         public virtual PropReservationDetails PropReservationDetails { get; set; }
-        public virtual PropClient PropClient { get; set; }
     }
 }

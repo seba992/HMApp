@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace DiamondApp.DataGridObjectClasses
         { get; set; }
         public string CompanyName
         { get; set; }
-        public DateTime? UpdateDate
+        [Column(TypeName = "Date")]
+        public DateTime UpdateDate
         { get; set; }
         public string Status 
         { get; set; }
