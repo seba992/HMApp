@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:System="clr-namespace:System;assembly=mscorlib" 
         xmlns:ViewModels="clr-namespace:DiamondApp.ViewModels"
-        Title="UserMainView" Height="684.47" Width="1137.648" Closed="Window_Closed">
+        Title="UserMainView" ResizeMode="NoResize" Height="684.47" Width="1137.648" Closed="Window_Closed">
 
     <Grid>
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">

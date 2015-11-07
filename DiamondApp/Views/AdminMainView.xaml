@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:da="clr-namespace:DiamondApp.ViewModels"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-        Title="AdminMainView" Height="630.171" Width="1060.164" Closed="Window_Closed">
+        Title="AdminMainView" ResizeMode="NoResize" Height="630.171" Width="1060.164" Closed="Window_Closed">
 
     <!--<Window.DataContext>
         <viewModels:AdminViewModel />
