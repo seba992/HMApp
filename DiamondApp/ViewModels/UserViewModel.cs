@@ -353,7 +353,7 @@ namespace DiamondApp.ViewModels
                     Status = "New"  //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
                 };
                 _ctx.Proposition.Add(propositionToBase);
-                _addNewProposition.IsCreated = true;
+                _addNewProposition.IsCreated = false;
                 _ctx.SaveChanges();
 
                 /* wyciągnięcie Id dodanej propozycji który potrzebny bedzie przy dodawaniu
@@ -391,24 +391,38 @@ namespace DiamondApp.ViewModels
                 // Wybrany Id Propozycji
                 int currentPropositionId = SelectedProposition.PropositionId;
 
-                //Edycja Propozucji
+                //Edycja Propozycji
                 // !! PROPCLIENT !!
 
                 int idProposition = SelectedProposition.PropositionId;
-                var test = (from q in _ctx.PropClient
-                where q.Id_proposition == idProposition
-                select q).SingleOrDefault();
+                var editClient = (from q in _ctx.PropClient
+                        where q.Id_proposition == idProposition
+                        select q).SingleOrDefault();
+                if (editClient != null)
+                {
+                    editClient.Id_proposition = currentPropositionId;
+                    editClient.CompanyName = PropositionClient.CompanyName;
+                    editClient.CompanyAdress = PropositionClient.CompanyAdress;
+                    editClient.NIP = PropositionClient.NIP;
+                    editClient.CustomerFullName = PropositionClient.CustomerFullName;
+                    editClient.PhoneNum = PropositionClient.PhoneNum;
+                    _ctx.SaveChanges();
+                }
+                else
+                {
+                    PropClient addNewClient = new PropClient();
 
-                test.Id_proposition = currentPropositionId;
-                test.CompanyName = PropositionClient.CompanyName;
-                test.CompanyAdress = PropositionClient.CompanyAdress;
-                test.NIP = PropositionClient.NIP;
-                test.CustomerFullName = PropositionClient.CustomerFullName;
-                test.PhoneNum = PropositionClient.PhoneNum;
-                
-                _ctx.SaveChanges();
-                
-                //SelectAllPropositions();
+                    addNewClient.Id_proposition = currentPropositionId;
+                    addNewClient.CompanyName = PropositionClient.CompanyName;
+                    addNewClient.CompanyAdress = PropositionClient.CompanyAdress;
+                    addNewClient.NIP = PropositionClient.NIP;
+                    addNewClient.CustomerFullName = PropositionClient.CustomerFullName;
+                    addNewClient.PhoneNum = PropositionClient.PhoneNum;
+                    _ctx.PropClient.Add(addNewClient);
+                    _ctx.SaveChanges();
+
+                }
+                SelectAllPropositions();
                 MessageBox.Show("edytowano istniejaca propozycje");
             }
         }
@@ -428,7 +442,7 @@ namespace DiamondApp.ViewModels
         }
         private void CreateNewPropositionExecute(object obj)
         {
-            _saveFlag = true;
+            _saveFlag = false;
             var querry = (from user in _ctx.Users
                           where user.Id == _userId
                           select new AddNewProposition
@@ -453,9 +467,12 @@ namespace DiamondApp.ViewModels
             int idProposition = SelectedProposition.PropositionId;
             var test = (from q in _ctx.PropClient
                 where q.Id_proposition == idProposition
-                select q).SingleOrDefault();
-            _propositionClient = test;
-            MessageBox.Show(test.Id_proposition.ToString());
+                        select q).SingleOrDefault();
+            if(test !=null )
+                _propositionClient = test;
+            else
+                MessageBox.Show("no i poszło na grzybki" + idProposition.ToString());
+
         }
       
         
@@ -470,7 +487,8 @@ namespace DiamondApp.ViewModels
                               UserFirstName = user.Name,
                               UserSurname = user.Surname,
                               UserPhoneNum = user.PhoneNum,
-                              UserEmail = user.Email
+                              UserEmail = user.Email,
+                              IsCreated = true
                           }).SingleOrDefault();
            
            _addNewProposition = querry;
