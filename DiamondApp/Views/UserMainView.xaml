@@ -3,25 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:System="clr-namespace:System;assembly=mscorlib" 
         xmlns:ViewModels="clr-namespace:DiamondApp.ViewModels"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         Title="UserMainView" ResizeMode="NoResize" Height="684.47" Width="1137.648" Closed="Window_Closed">
 
     <Grid>
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
             <MenuItem  Header="Menu" HorizontalAlignment="Left" Width="47">
                 <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" Command="{Binding CreateNewPropositionCommand}"/>
-                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"  Command="{Binding ChangePropositionCommand}"/>
                 <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
                 <MenuItem Header="Lista propozycji" HorizontalAlignment="Left" Click="VisibleElement" Margin="0"/>
                 <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
             </MenuItem>
         </Menu>
-        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="UserProposition" HorizontalAlignment="Left" Height="609" Margin="1,39,-10,0" VerticalAlignment="Top" Width="1139" SelectedItem="PropositionsSeller">
+
+        <ListView ItemsSource="{Binding PropositionsList}" x:Name ="UserProposition" HorizontalAlignment="Left" Height="609" Margin="1,39,0,0" VerticalAlignment="Top" Width="1121" Visibility="Visible" SelectedValue="{Binding SelectedProposition}">
             <ListView.View>
-                <GridView>
+                <GridView >
                     <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
                     <GridViewColumn Width="200" Header="Nazwa klienta" DisplayMemberBinding="{Binding CustomerFullName}" />
                     <GridViewColumn Width="200" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
-                    <GridViewColumn Width="200" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate}" />
+                    <GridViewColumn Width="150" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat='{}{0:yyyy-MM-dd}'}" />
                     <GridViewColumn Width="70" Header="Status" DisplayMemberBinding="{Binding Status}" />
 
                     <GridViewColumn Header="Stan">
@@ -34,18 +36,20 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn>
+                    <GridViewColumn >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Edytuj" Padding="5,2"/>
+                                <Button Content="Edytuj" Padding="5,2" Command="{Binding ChangePropositionCommand}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="614" Margin="10,35,0,0" VerticalAlignment="Top" Width="1130" Visibility="Hidden">
+
+        <TabControl x:Name="TabControlProposition" HorizontalAlignment="Left" Height="560" Margin="1,35,0,0" VerticalAlignment="Top" Width="1051" Visibility="Hidden">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
+
                 <Grid Background="#FFE5E5E5"  Margin="0,0,0,-2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
@@ -62,64 +66,87 @@
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
                     </Grid.RowDefinitions>
-                    
+
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="500" />
-                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="131" />
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="130.5"/>
+                        <ColumnDefinition Width="122.5"/>
+                        <ColumnDefinition Width="114.5" />
+                        <ColumnDefinition Width="136.5"/>
                         <ColumnDefinition Width="250" />
                         <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Content="DOTYCZY:" Margin="0,0,250,0"/>
-                    <Label Grid.Row="1" Grid.Column="0" Content="ADRES:" Margin="0,0,250,0"/>
-                    <Label Grid.Row="2" Grid.Column="0" Content="NIP:" Margin="0,0,250,0"/>
-                    <Label Grid.Row="3" Grid.Column="0" Content="DATA AKTUALIZACJI:" Margin="0,0,250,0"/>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="DOTYCZY:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="ADRES:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="2" Grid.Column="0" Content="NIP:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="3" Grid.Column="0" Content="DATA AKTUALIZACJI:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
                     <Label Grid.Row="4" Grid.Column="0" Content="KONTAKT ZE STRONY HOTELU:" FontWeight="Bold" Margin="0,0,250,0"/>
-                    <Label Grid.Row="5" Grid.Column="0" Content="SPECJALISTA DS. SPRZEDAŻY" Margin="0,0,250,0"/>
-                    <Label Grid.Row="6" Grid.Column="0" Content="TELEFON:" Margin="0,0,250,0"/>
-                    <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:" Margin="0,0,250,0"/>
-                    <Label Grid.Row="10" Grid.Column="0" Content="TERMIN:" Margin="0,0,250,0"/>
-                    <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA:" Margin="0,0,250,0"/>
-                    <Label Grid.Row="0" Grid.Column="1" Content="DLA: "/>
-                    <Label Grid.Row="1" Grid.Column="1" Content="ADRES: "/>
-                    <Label Grid.Row="2" Grid.Column="1" Content="NIP: "/>
-                    <Label Grid.Row="3" Grid.Column="1" Content="TERMIN WAŻNOŚCI PROPOZYCJI:"/>
-                    <Label Grid.Row="4" Grid.Column="1" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold"/>
-                    <Label Grid.Row="5" Grid.Column="1" Content="Sz.P.:"/>
-                    <Label Grid.Row="6" Grid.Column="1" Content="TELEFON:"/>
-                    <Label Grid.Row="7" Grid.Column="1" Content="ADRES E-MAIL:"/>
-                    <Label Grid.Row="8" Grid.Column="1" Content="OSOBA DECYZYJNA:"/>
-                    <Label Grid.Row="10" Grid.Column="1" Content="ILOŚ OSÓB:"/>
-                    <Label Grid.Row="11" Grid.Column="1" Content="USTAWIENIE SALI:"/>
+                    <Label Grid.Row="5" Grid.Column="0" Content="SPECJALISTA DS. SPRZEDAŻY" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="6" Grid.Column="0" Content="TELEFON:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="10" Grid.Column="0" Content="TERMIN:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="0" Grid.Column="4" Content="DLA: " Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="1" Grid.Column="4" Content="ADRES: " Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="2" Grid.Column="4" Content="NIP: " Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="3" Grid.Column="4" Content="TERMIN WAŻNOŚCI PROPOZYCJI:" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="4" Grid.Column="4" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="5" Grid.Column="4" Content="Sz.P.:" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="6" Grid.Column="4" Content="TELEFON:" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="7" Grid.Column="4" Content="ADRES E-MAIL:" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="8" Grid.Column="4" Content="OSOBA DECYZYJNA:" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="10" Content="ILOŚ OSÓB:" Grid.ColumnSpan="3" Margin="3" Grid.Column="4"/>
+                    <Label Grid.Row="11" Grid.Column="4" Content="USTAWIENIE SALI:" Grid.ColumnSpan="2"/>
 
-                    <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="253,3,3,3" Text="{Binding AddNewProposition.CompanyName}"/>
-                    <TextBox x:Name="DotyczyNipTextBox" Grid.Row="2" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.OurNip}"/>
-                    <TextBox x:Name="DataAktualizacjiTextBox" Grid.Row="3" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UpdateDate}"/>
+                    <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Margin="3" Text="{Binding AddNewProposition.CompanyName}" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <TextBox x:Name="DotyczyNipTextBox" Grid.Row="2" Grid.Column="2" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.OurNip}" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <DatePicker x:Name="DataAktualizacjiTextBox" Grid.Row="3" Grid.Column="2" Margin="3" VerticalContentAlignment="Center" Grid.ColumnSpan="2" SelectedDate="{Binding AddNewProposition.UpdateDate, StringFormat='{}{0:yyyy-MM-dd}'}"/>
+                    <TextBox x:Name="NazwaSprzedawcyTextBox" Grid.Row="5" Grid.Column="2" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserFullname}" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <TextBox x:Name="SprzedawcaNumerTextBox" Grid.Row="6" Grid.Column="2" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserPhoneNum}" Grid.ColumnSpan="2" IsEnabled="False"/>
+                    <TextBox x:Name="SprzedawcaEmailTextBox" Grid.Row="7" Grid.Column="2" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserEmail}" Grid.ColumnSpan="2" IsEnabled="False"/>
 
-                    <TextBox x:Name="NazwaSprzedawcyTextBox" Grid.Row="5" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserFullname}"/>
-                    <TextBox x:Name="SprzedawcaNumerTextBox" Grid.Row="6" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserPhoneNum}"/>
-                    <TextBox x:Name="SprzedawcaEmailTextBox" Grid.Row="7" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.UserEmail}"/>
+                    <DatePicker x:Name="TerminOdDatePicker" Grid.Row="10" Grid.Column="2" Margin="3,3,3,0" Text="Data start" Height="25" VerticalAlignment="Top" />
+                    <DatePicker x:Name="TerminDoDatePicker" Grid.Row="10" Grid.Column="3" Margin="3" Text="Data koniec"/>
 
-                    <DatePicker x:Name="TerminDatePicker" Grid.Row="10" Grid.Column="0" Margin="253,3,3,3" Text="Wybierz datę" />
-                    <TextBox x:Name="CzasTrwaniaTextBox" Grid.Row="11" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/>
+                    <xctk:TimePicker x:Name="GodzinaOdTimePicker" Grid.Row="11" Grid.Column="2" Value="{Binding CurrentDateTime}" Margin="3"/>
+                    <xctk:TimePicker x:Name="GodzinaDoTimePicker" Grid.Row="11" Grid.Column="3" Value="{Binding CurrentDateTime}" Margin="3"/>
 
-                    <TextBox x:Name="DlaTextBox" Grid.Column="2" Grid.Row="0" Margin="3" />
-                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="2" Grid.Row="1" Margin="3" AcceptsReturn="True" />
-                    <TextBox x:Name="DlaNipTextBox" Grid.Column="2" Grid.Row="2" Margin="3" />
-                    <TextBox x:Name="TerminWaznosciTextBox" Grid.Column="2" Grid.Row="3" Margin="3" />
+                    <!--<TextBox x:Name="CzasTrwaniaTextBox" Grid.Row="11" Grid.Column="0" Margin="253,3,3,3" VerticalContentAlignment="Center"/> -->
 
-                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="2" Grid.Row="5" Margin="3" />
-                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="2" Grid.Row="6" Margin="3" />
-                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="2" Grid.Row="7" Margin="3" />
-                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="2" Grid.Row="8" Margin="3" />
+                    <TextBox x:Name="DlaTextBox" Grid.Column="6" Grid.Row="0" Margin="3" Text="{Binding PropositionClientCompanyName, Mode=TwoWay}" />
+                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="6" Grid.Row="1" Margin="3" AcceptsReturn="True" Text="{Binding PropositionClientCompanyAdress, Mode=TwoWay}" />
+                    <TextBox x:Name="DlaNipTextBox" Grid.Column="6" Grid.Row="2" Margin="3" Text="{Binding PropositionClientNip, Mode=TwoWay}" />
+                    <TextBox x:Name="TerminWaznoSciDatePicker" Grid.Row="3" Grid.Column="6" Margin="3" VerticalContentAlignment="Center"  IsEnabled="False"/>
 
-                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="2" Grid.Row="10" Margin="3" />
-                    <TextBox x:Name="IloscOsobTextBox" Grid.Column="2" Grid.Row="11" Margin="3" />
+                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="6" Grid.Row="5" Margin="3" Text="{Binding PropositionClientCustromerFullName, Mode=TwoWay}" />
+                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="6" Grid.Row="6" Margin="3" Text="{Binding PropositionClientPhoneNum, Mode=TwoWay}" />
+                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="6" Grid.Row="7" Margin="3" Text="{Binding PropositionClientCustomerEmail, Mode=TwoWay}" />
+                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="6" Grid.Row="8" Margin="3" Text="{Binding PropositionClientDecisingPerFullName, Mode=TwoWay}" />
 
+                    <xctk:IntegerUpDown x:Name="IloscOsobTextBox" Grid.Column="6" Grid.Row="10" Margin="3" Minimum="1" Maximum="100000" />
+                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="6" Grid.Row="11" Margin="3"/>
 
+                    <Label Grid.Column="1" Grid.Row="13" Content="Sala" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Column="2" Grid.Row="13" Content="Powierchnia" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Column="3" Grid.Row="13" Content="Uł. Teatr" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Column="4" Grid.Row="13" Content="Uł. Podkowa" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
 
+                    <ComboBox x:Name="OKTabelaSalaComboBox" Grid.Column="1" Grid.Row="14" Margin="3" HorizontalContentAlignment="Center" ItemsSource="{Binding HallList}" SelectedItem="{Binding PropositionReservDetailsHall}"  Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100" IsTabStop="False"/>
+                    <TextBox x:Name="OKTabelaSalaPowTextBox" Grid.Column="2" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="OKTabelaSalaPowTeatrTextBox" Grid.Column="3" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="OKTabelaSalaPowUTextBox" Grid.Column="4" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
 
-                    <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="102,41,0,-31" Grid.Row="13" VerticalAlignment="Top" Width="118" Grid.Column="2" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>
+                    <Label Grid.Row="15" Grid.Column="1" Content="Cena z tabeli: " HorizontalContentAlignment="Right" Margin="3" />
+                    <TextBox x:Name="OKTabelaSalaCena" Grid.Column="2" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <Label Grid.Row="15" Grid.Column="3" Content="Miesiąc: " HorizontalContentAlignment="Right" Margin="3" />
+                    <TextBox x:Name="OKSalaPowUTextBox" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+
+                    <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="3" Grid.Row="13" VerticalAlignment="Top" Width="118" Grid.Column="6" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>
                 </Grid>
             </TabItem>
             <TabItem Header="SZCZEGÓŁY REZERWACJI" x:Name="SecondGrid">
