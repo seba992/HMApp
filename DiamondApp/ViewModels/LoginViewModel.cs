@@ -94,7 +94,7 @@ namespace DiamondApp.ViewModels
                     _allowToLog = true;
                 }
                 //.Password == ShaConverter.sha256_hash(passBox.Password))
-                else if (userToLogin.First().Login == _userLogin && userToLogin.First().Password == passBox.Password)
+                else if (userToLogin.Count() == 1 && userToLogin.First().Login == _userLogin && userToLogin.First().Password == passBox.Password)
                 {
                     _userType = userToLogin.First().AccountPrivileges.AccountType;
                     UserId = userToLogin.First().Id;

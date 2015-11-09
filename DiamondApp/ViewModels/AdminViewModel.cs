@@ -26,6 +26,8 @@ namespace DiamondApp.ViewModels
         private List<Users> _usersList;
         private int _userId;
         private int _selectedPropositionId;
+        private int? _hallPrice;
+
 
         public AdminViewModel()
         {
@@ -239,15 +241,24 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionReservDetails.StartData = value;
-                // zaktualizuj miesiąc
-                UpdateMonth(value);
+
+                // zaktualizuj miesiąc wyswietlany w oknie tworzenia propozycji
+                EventMonth = DateTimeConverter.ToMonthPolishName(value);
                 RaisePropertyChanged("PropositionReservDetailsStartData");
+
+                // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
+                SetHallPrice();
             }
         }
 
-        private void UpdateMonth(DateTime? date)
+        public int? HallPrice
         {
-           // EventMonth = DateTimeConverter.ToMonthName(date);
+            get { return _hallPrice; }
+            set
+            {
+                _hallPrice = value;
+                RaisePropertyChanged("HallPrice");
+            }
         }
 
         public DateTime? PropositionReservDetailsEndData
@@ -276,7 +287,7 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionReservDetails.EndTime = value;
-                RaisePropertyChanged("PropositionReservDetailsEndData");
+                RaisePropertyChanged("PropositionReservDetailsEndTime");
             }
         }
 
@@ -303,6 +314,9 @@ namespace DiamondApp.ViewModels
                 HallCapacity = querry;
 
                 RaisePropertyChanged("PropositionReservDetailsHall");
+
+                // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
+                SetHallPrice();
             }
         }
 
@@ -313,6 +327,8 @@ namespace DiamondApp.ViewModels
             {
                 _propositionReservDetails.HallSetting = value;
                 RaisePropertyChanged("PropositionReservDetailsHallSetting");
+
+                SetHallPrice();
             }
         }
 
@@ -339,7 +355,11 @@ namespace DiamondApp.ViewModels
         public string EventMonth
         {
             get { return _eventMonth; }
-            set { _eventMonth = value; }
+            set
+            {
+                _eventMonth = value;
+                RaisePropertyChanged("EventMonth");
+            }
         }
 
         #endregion
@@ -433,7 +453,6 @@ namespace DiamondApp.ViewModels
                 MessageBox.Show("dodano nowa propozycje");
 
                 // po dodaniu propozycji odśwież listę propozycji
-                PropositionClientCustromerFullName = null;
                 SelectAllPropositions();
             }
             else
@@ -540,6 +559,32 @@ namespace DiamondApp.ViewModels
                 }).ToList();
 
             PropositionsList = myQuerry;
+        }
+
+        // Metoda ustawiająca cenę sali gdy jest wypełniona nazwa sali i miesiąc wydarzenia
+        private void SetHallPrice()
+        {
+            int? price = null;
+            if (!string.IsNullOrEmpty(PropositionReservDetailsHall) && PropositionReservDetailsStartData != null)
+            {
+                // zapisanie angielskiej nazwy miesiaca (jest ona rowna kolumnie w tabeli PropReservationDetails_Dictionary_HallPrices
+                string columnName = DateTimeConverter.ToMonthEnglishName(PropositionReservDetailsStartData);
+
+                // zapytanie zwracajace wiersz zawierajacy wybrana przez uzytkownika sale
+                var q = (from s in _ctx.PropReservationDetails_Dictionary_HallPrices
+                    where s.Hall == PropositionReservDetailsHall
+                    select s).ToList();
+
+                // za pomoca refleksji wybieramy interesujaca nas kolumne
+                // domyslnie w entity nie mozna wybierac dynamicznej nazwy kolumny 
+                // (w naszym przypadku zależna jest ona od wybranego miesiąca)
+
+                var names = q.Select(x => x.GetType().GetProperty(columnName).GetValue(x).ToString());
+                
+                // przypisanie odpowiadającej ceny w danym miesiącu danej sali
+                price = Convert.ToInt32(names.First());
+            }
+            HallPrice = price;
         }
 
 #endregion

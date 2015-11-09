@@ -170,15 +170,15 @@
                     <Label Grid.Column="3" Grid.Row="13" Content="Uł. Teatr" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
                     <Label Grid.Column="4" Grid.Row="13" Content="Uł. Podkowa" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
 
-                    <ComboBox x:Name="OKTabelaSalaComboBox" Grid.Column="1" Grid.Row="14" Margin="3" HorizontalContentAlignment="Center" ItemsSource="{Binding HallList}" SelectedItem="{Binding PropositionReservDetailsHall}"  Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
+                    <ComboBox x:Name="OKTabelaSalaComboBox" Grid.Column="1" Grid.Row="14" Margin="3" HorizontalContentAlignment="Center" ItemsSource="{Binding HallList}" SelectedItem="{Binding PropositionReservDetailsHall}" Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
                     <TextBox x:Name="OKTabelaSalaPowTextBox" Grid.Column="2" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding HallCapacity.Area}"/>
                     <TextBox x:Name="OKTabelaSalaPowTeatrTextBox" Grid.Column="3" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding HallCapacity.TheatrePeopleNumber}"/>
                     <TextBox x:Name="OKTabelaSalaPowUTextBox" Grid.Column="4" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding HallCapacity.UShapePeopleNumber}"/>
 
                     <Label Grid.Row="15" Grid.Column="1" Content="Cena z tabeli: " HorizontalContentAlignment="Right" Margin="3" />
-                    <TextBox x:Name="OKTabelaSalaCena" Grid.Column="2" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="OKTabelaSalaCena" Grid.Column="2" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding HallPrice}"/>
                     <Label Grid.Row="15" Grid.Column="3" Content="Miesiąc: " HorizontalContentAlignment="Right" Margin="3" />
-                    <TextBox x:Name="OKSalaPowUTextBox" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center"/>
+                    <TextBox x:Name="OKSalaMiesiac" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding EventMonth}"/>
 
                     <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="3" Grid.Row="13" VerticalAlignment="Top" Width="118" Grid.Column="6" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>
                 </Grid>

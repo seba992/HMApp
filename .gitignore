@@ -60,3 +60,4 @@ DiamondAppTests/bin/Debug/DiamondApp.exe
 DiamondAppTests/bin/Debug/DiamondAppTests.dll
 packages/repositories.config
 DiamondAppTests/bin/Debug/Xceed.Wpf.Toolkit.dll
+DiamondApp/ViewModels/AdminViewModel.cs.orig
