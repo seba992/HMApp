@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace DiamondApp.Views
 {
     /// <summary>
-    /// Interaction logic for EditUser.xaml
+    /// Interaction logic for EditUserDataView.xaml
     /// </summary>
-    public partial class EditUserView : Window
+    public partial class EditUserDataView : Window
     {
-        public EditUserView()
+        public EditUserDataView()
         {
             InitializeComponent();
         }
