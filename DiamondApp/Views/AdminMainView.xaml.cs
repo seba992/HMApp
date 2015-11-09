@@ -31,11 +31,13 @@ namespace DiamondApp.Views
                 case "Edytuj":
                 case "Dodaj":
                     this.AdminProposition.Visibility = Visibility.Hidden;
+                    this.UserList.Visibility = Visibility.Hidden;
                     this.TabControlProposition.Visibility = Visibility.Visible;
                     this.SavePropositionButton.Visibility = Visibility.Visible;
                     break;
                 default:
                     this.AdminProposition.Visibility = Visibility.Visible;
+                    this.UserList.Visibility = Visibility.Hidden;
                     this.TabControlProposition.Visibility = Visibility.Hidden;
                     this.SavePropositionButton.Visibility = Visibility.Hidden;
                     break;
@@ -45,6 +47,15 @@ namespace DiamondApp.Views
         private void VisibleElementAfterSavePropClick(object sender, RoutedEventArgs e)
         {
             AdminProposition.Visibility = Visibility.Visible;
+            UserList.Visibility = Visibility.Hidden;
+            TabControlProposition.Visibility = Visibility.Hidden;
+            SavePropositionButton.Visibility = Visibility.Hidden;
+        }
+
+        private void VisibleElement2(object sender, RoutedEventArgs e)
+        {
+            AdminProposition.Visibility = Visibility.Hidden;
+            UserList.Visibility = Visibility.Visible;
             TabControlProposition.Visibility = Visibility.Hidden;
             SavePropositionButton.Visibility = Visibility.Hidden;
         }
@@ -57,8 +68,7 @@ namespace DiamondApp.Views
 
         private void EditUser_Click(object sender, RoutedEventArgs e)
         {
-            EditUserView editUserView = new EditUserView();
-            editUserView.Show();
+          
         }
     }
 }

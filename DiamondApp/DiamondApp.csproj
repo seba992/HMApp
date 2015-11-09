@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="DataGridObjectClasses\AddNewProposition.cs" />
     <Compile Include="DataGridObjectClasses\AdminProposition.cs" />
+    <Compile Include="DataGridObjectClasses\User.cs" />
     <Compile Include="EntityModel\AccountPrivileges.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
@@ -182,7 +183,7 @@
     <Compile Include="Tools\Validations.cs" />
     <Compile Include="ViewModels\AddUserViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
-    <Compile Include="ViewModels\EditUserViewModel.cs" />
+    <Compile Include="ViewModels\EditUserDataViewModel.cs" />
     <Compile Include="Views\AddUserView.xaml.cs">
       <DependentUpon>AddUserView.xaml</DependentUpon>
     </Compile>
@@ -195,8 +196,8 @@
     <Compile Include="Properties\Annotations1.cs" />
     <Compile Include="Tools\ObservableObject.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="Views\EditUserView.xaml.cs">
-      <DependentUpon>EditUserView.xaml</DependentUpon>
+    <Compile Include="Views\EditUserDataView.xaml.cs">
+      <DependentUpon>EditUserDataView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -217,7 +218,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\EditUserView.xaml">
+    <Page Include="Views\EditUserDataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

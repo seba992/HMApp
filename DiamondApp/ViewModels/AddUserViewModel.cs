@@ -14,7 +14,7 @@ using Microsoft.Practices;
 
 namespace DiamondApp.ViewModels
 {
-    class AddUserViewModel : ObservableObject
+    public class AddUserViewModel : ObservableObject
     {
         private DiamondDBEntities _ctx;
 
@@ -67,7 +67,7 @@ namespace DiamondApp.ViewModels
         {
             get 
             {
-                return  Validations.FirstLetterToLowerCase(UserName) + "." + Validations.FirstLetterToLowerCase(UserSurname);  
+                return UserName.ToLower() + "." + UserSurname.ToLower() ;  
             }
         }
 
@@ -127,6 +127,7 @@ namespace DiamondApp.ViewModels
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Wystąpił błąd! Konto użytkownika nie zostało utworzone.");
                 MessageBox.Show(ex.ToString());
             } 
         }
