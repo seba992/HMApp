@@ -20,8 +20,8 @@ namespace DiamondApp.ViewModels
         private PropClient _propositionClient = new PropClient();
         private PropReservationDetails _propositionReservDetails = new PropReservationDetails();
         private List<string> _hallList;
-
-
+        private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();
+        private string _eventMonth;
         private List<Users> _usersList;
         private int _userId;
         private int _selectedPropositionId;
@@ -37,6 +37,7 @@ namespace DiamondApp.ViewModels
             _ctx = new DiamondDBEntities();
             _userId = userId;
             SelectAllPropositions();
+            SelectUsers();
             CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl();         // CACHE
         }
 
@@ -60,7 +61,6 @@ namespace DiamondApp.ViewModels
             get { return _usersList; }
             set
             {
-                SelectUsers();
                 _usersList = value;
                 RaisePropertyChanged("UsersList");
             }
@@ -213,7 +213,24 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionReservDetails.StartData = value;
+                // zaktualizuj miesiąc
+                UpdateMonth(value);
                 RaisePropertyChanged("PropositionReservDetailsStartData");
+            }
+        }
+
+        private void UpdateMonth(DateTime? date)
+        {
+           // EventMonth = DateTimeConverter.ToMonthName(date);
+        }
+
+        public DateTime? PropositionReservDetailsEndData
+        {
+            get { return _propositionReservDetails.EndData; }
+            set
+            {
+                _propositionReservDetails.EndData = value;
+                RaisePropertyChanged("PropositionReservDetailsEndData");
             }
         }
 
@@ -227,12 +244,12 @@ namespace DiamondApp.ViewModels
             }
         }
 
-        public DateTime? PropositionReservDetailsEndData
+        public TimeSpan? PropositionReservDetailsEndTime
         {
-            get { return _propositionReservDetails.EndData; }
+            get { return _propositionReservDetails.EndTime; }
             set
             {
-                _propositionReservDetails.EndData = value;
+                _propositionReservDetails.EndTime = value;
                 RaisePropertyChanged("PropositionReservDetailsEndData");
             }
         }
@@ -253,6 +270,12 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionReservDetails.Hall = value;
+
+                var querry = (from s in _ctx.PropReservationDetails_Dictionary_HallCapacity
+                    where s.Hall == value
+                    select s).SingleOrDefault();
+                HallCapacity = querry;
+
                 RaisePropertyChanged("PropositionReservDetailsHall");
             }
         }
@@ -275,6 +298,22 @@ namespace DiamondApp.ViewModels
                 _hallList = value;
                 RaisePropertyChanged("HallList");
             }
+        }
+
+        public PropReservationDetails_Dictionary_HallCapacity HallCapacity
+        {
+            get { return _hallCapacity; }
+            set
+            {
+                _hallCapacity = value;
+                RaisePropertyChanged("HallCapacity");
+            }
+        }
+
+        public string EventMonth
+        {
+            get { return _eventMonth; }
+            set { _eventMonth = value; }
         }
 
         #endregion
@@ -346,25 +385,29 @@ namespace DiamondApp.ViewModels
                 
                 //------------------------------
                 // !! PROPCLIENT !!
-                var propClientToBase = new PropClient
-                {
-                    Id_proposition = currentPropositionId,
-                    CompanyName = PropositionClient.CompanyName,
-                    CompanyAdress =  PropositionClient.CompanyAdress,
-                    NIP = PropositionClient.NIP,
-                    CustomerFullName = PropositionClient.CustomerFullName,
-                    PhoneNum = PropositionClient.PhoneNum
-                };
-                _ctx.PropClient.Add(propClientToBase);
-                _ctx.SaveChanges();
+                PropositionClient.Id_proposition = currentPropositionId;
+//                var propClientToBase = new PropClient
+//                {
+//                    Id_proposition = currentPropositionId,
+//                    CompanyName = PropositionClient.CompanyName,
+//                    CompanyAdress =  PropositionClient.CompanyAdress,
+//                    NIP = PropositionClient.NIP,
+//                    CustomerFullName = PropositionClient.CustomerFullName,
+//                    PhoneNum = PropositionClient.PhoneNum
+//                };
+                _ctx.PropClient.Add(PropositionClient);
+
 
                 //------------------------------
-                // !! PROPCLIENT !!
+                // !! PROPRESERVATIONDETAILS !!
+                PropositionReservDetails.Id_proposition = currentPropositionId;
 
-
+                _ctx.PropReservationDetails.Add(PropositionReservDetails);
+                _ctx.SaveChanges();
                 MessageBox.Show("dodano nowa propozycje");
 
                 // po dodaniu propozycji odśwież listę propozycji
+                PropositionClientCustromerFullName = null;
                 SelectAllPropositions();
             }
             else
@@ -396,8 +439,9 @@ namespace DiamondApp.ViewModels
         private void SelectUsers()
         {
             var q = (from s in _ctx.Users
+                     where s.Proposition.Any()
                      select s).ToList();
-            _usersList = q;
+            UsersList = q;
         }
 
         private void CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl()

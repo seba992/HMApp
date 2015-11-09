@@ -20,8 +20,7 @@ namespace DiamondApp.ViewModels
         private int _userId;
         private string _userType;
         private string _userLogin;
-        private bool _allowToLog = false;
-        private List<Users> users;
+        private bool _allowToLog;
 
         public LoginViewModel()
         {
