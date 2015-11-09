@@ -28,9 +28,13 @@ namespace DiamondApp.ViewModels
         private AdminProposition _selectedProposition;
         private PropClient _propositionClient = new PropClient();
         private PropReservationDetails _propositionReservDetails = new PropReservationDetails();
-        private List<PropHallEquipmnet_Dictionary_First> _hallList;
+        private List<string> _hallList;
         private ICommand _changePropositionCommand;
         private bool _saveFlag = false;
+        private int _idProposition;
+        private int? _hallPrice;
+        private string _eventMonth;
+        private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();
 
 
         public UserViewModel()
@@ -46,7 +50,7 @@ namespace DiamondApp.ViewModels
             _ctx = new DiamondDBEntities();
             SelectAllPropositions();
             PropDefaultSeller();
-            ListHall();
+
         }
 
 
@@ -251,6 +255,16 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        public int? HallPrice
+        {
+            get { return _hallPrice; }
+            set
+            {
+                _hallPrice = value;
+                RaisePropertyChanged("HallPrice");
+            }
+        }
+
         public TimeSpan? PropositionReservDetailsStartTime
         {
             get { return _propositionReservDetails.StartTime; }
@@ -271,6 +285,16 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        public TimeSpan? PropositionReservDetailsEndTime
+        {
+            get { return _propositionReservDetails.EndTime; }
+            set
+            {
+                _propositionReservDetails.EndTime = value;
+                RaisePropertyChanged("PropositionReservDetailsEndTime");
+            }
+        }
+
         public int? PropositionReservDetailsPeopleNumber
         {
             get { return _propositionReservDetails.PeopleNumber; }
@@ -287,7 +311,16 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propositionReservDetails.Hall = value;
+
+                var querry = (from s in _ctx.PropReservationDetails_Dictionary_HallCapacity
+                              where s.Hall == value
+                              select s).SingleOrDefault();
+                HallCapacity = querry;
+
                 RaisePropertyChanged("PropositionReservDetailsHall");
+
+                // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
+                SetHallPrice();
             }
         }
 
@@ -298,16 +331,39 @@ namespace DiamondApp.ViewModels
             {
                 _propositionReservDetails.HallSetting = value;
                 RaisePropertyChanged("PropositionReservDetailsHallSetting");
+
+                SetHallPrice();
             }
         }
 
-        public List<PropHallEquipmnet_Dictionary_First> HallList
+
+        public List<string> HallList
         {
             get { return _hallList; }
             set
             {
                 _hallList = value;
                 RaisePropertyChanged("HallList");
+            }
+        }
+
+        public PropReservationDetails_Dictionary_HallCapacity HallCapacity
+        {
+            get { return _hallCapacity; }
+            set
+            {
+                _hallCapacity = value;
+                RaisePropertyChanged("HallCapacity");
+            }
+        }
+
+        public string EventMonth
+        {
+            get { return _eventMonth; }
+            set
+            {
+                _eventMonth = value;
+                RaisePropertyChanged("EventMonth");
             }
         }
 
@@ -389,18 +445,18 @@ namespace DiamondApp.ViewModels
             else
             {
                 // Wybrany Id Propozycji
-                int currentPropositionId = SelectedProposition.PropositionId;
+                // int currentPropositionId = SelectedProposition.PropositionId;
 
                 //Edycja Propozycji
                 // !! PROPCLIENT !!
 
-                int idProposition = SelectedProposition.PropositionId;
+                int idProposition = _idProposition;
                 var editClient = (from q in _ctx.PropClient
                         where q.Id_proposition == idProposition
                         select q).SingleOrDefault();
                 if (editClient != null)
                 {
-                    editClient.Id_proposition = currentPropositionId;
+                    editClient.Id_proposition = idProposition;
                     editClient.CompanyName = PropositionClient.CompanyName;
                     editClient.CompanyAdress = PropositionClient.CompanyAdress;
                     editClient.NIP = PropositionClient.NIP;
@@ -412,7 +468,7 @@ namespace DiamondApp.ViewModels
                 {
                     PropClient addNewClient = new PropClient();
 
-                    addNewClient.Id_proposition = currentPropositionId;
+                    addNewClient.Id_proposition = idProposition;
                     addNewClient.CompanyName = PropositionClient.CompanyName;
                     addNewClient.CompanyAdress = PropositionClient.CompanyAdress;
                     addNewClient.NIP = PropositionClient.NIP;
@@ -464,18 +520,33 @@ namespace DiamondApp.ViewModels
         private void ChangePropositionExecute(object obj)
         {
             _saveFlag = true;
-            int idProposition = SelectedProposition.PropositionId;
-            var test = (from q in _ctx.PropClient
-                where q.Id_proposition == idProposition
-                        select q).SingleOrDefault();
-            if(test !=null )
-                _propositionClient = test;
-            else
-                MessageBox.Show("no i poszło na grzybki" + idProposition.ToString());
+          
+            try
+            {
+                _idProposition = SelectedProposition.PropositionId;
+            
+                var test = (from q in _ctx.PropClient
+                    where q.Id_proposition == _idProposition
+                    select q).SingleOrDefault();
 
+              //  if (test != null || idProposition != 0)
+                {
+                    PropositionClientCompanyName = test.CompanyName;
+                    PropositionClientCompanyAdress = test.CompanyAdress;
+                    PropositionClientCustromerFullName = test.CustomerFullName;
+                    PropositionClientPhoneNum = test.PhoneNum;
+                    PropositionClientNip = test.NIP;
+                    PropositionClientDecisingPerFullName = test.DecisingPersonFullName;
+                    PropositionClientCustomerEmail = test.CustomerEmail;
+                    PropositionClient = test;
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("no i poszło na grzybki" );
+                _saveFlag = false;
+            }
         }
-      
-        
 
         private void PropDefaultSeller()
         {
@@ -494,12 +565,29 @@ namespace DiamondApp.ViewModels
            _addNewProposition = querry;
         }
 
-        private void ListHall()
+        private void SetHallPrice()
         {
-            var q = (from x in _ctx.PropHallEquipmnet_Dictionary_First
-                select x).ToList();
-            HallList = q;
+            int? price = null;
+            if (!string.IsNullOrEmpty(PropositionReservDetailsHall) && PropositionReservDetailsStartData != null)
+            {
+                // zapisanie angielskiej nazwy miesiaca (jest ona rowna kolumnie w tabeli PropReservationDetails_Dictionary_HallPrices
+                string columnName = DateTimeConverter.ToMonthEnglishName(PropositionReservDetailsStartData);
 
+                // zapytanie zwracajace wiersz zawierajacy wybrana przez uzytkownika sale
+                var q = (from s in _ctx.PropReservationDetails_Dictionary_HallPrices
+                         where s.Hall == PropositionReservDetailsHall
+                         select s).ToList();
+
+                // za pomoca refleksji wybieramy interesujaca nas kolumne
+                // domyslnie w entity nie mozna wybierac dynamicznej nazwy kolumny 
+                // (w naszym przypadku zależna jest ona od wybranego miesiąca)
+
+                var names = q.Select(x => x.GetType().GetProperty(columnName).GetValue(x).ToString());
+
+                // przypisanie odpowiadającej ceny w danym miesiącu danej sali
+                price = Convert.ToInt32(names.First());
+            }
+            HallPrice = price;
         }
 
         #endregion
