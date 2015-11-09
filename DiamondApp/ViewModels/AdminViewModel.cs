@@ -18,15 +18,16 @@ namespace DiamondApp.ViewModels
         private List<User> _userListGrid;
         private AddNewProposition _addNewProposition;
 
-        private PropClient _propositionClient = new PropClient();
-        private PropReservationDetails _propositionReservDetails = new PropReservationDetails();
-        private List<string> _hallList;
-        private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();
-        private string _eventMonth;
-        private List<Users> _usersList;
-        private int _userId;
-        private int _selectedPropositionId;
+        private PropClient _propositionClient = new PropClient();   // obiekt zawierajacy dane propozycji klienta (1 tab gora)
+        private PropReservationDetails _propositionReservDetails = new PropReservationDetails();     // obiekt zawierajacy dane szczegolow zamownienia (1 tab dol)
+        private List<string> _hallList; // lista sal (controlbox 1tab)
+        private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();    // obiekt zawierajacy dane wybranej sali (1 tab dol)
+        private string _eventMonth; // miesiac wydarzenia potrzebny do ustalenia celi sali
+        private List<Users> _usersList; // lista uzytkownikow TODO: FOR WHAT
+        private int _userId;    // id zalogowanego uzytkownika
+        private int _selectedPropositionId; // id wybranej propozycji (do edycji)
         private int? _hallPrice;
+        private PropHallEquipmentDiscount _propHallEquipmentDiscount = new PropHallEquipmentDiscount();
 
 
         public AdminViewModel()
@@ -362,6 +363,50 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        public PropHallEquipmentDiscount HallEquipmentDiscount
+        {
+            get { return _propHallEquipmentDiscount; }
+            set
+            {
+                _propHallEquipmentDiscount = value;
+                RaisePropertyChanged("HallEquipmentDiscount");
+            }
+        }
+
+        public float? PropHallEquipmentDiscountValue
+        {
+            get { return _propHallEquipmentDiscount.Discount; }
+            set
+            {
+                _propHallEquipmentDiscount.Discount = value;
+                RaisePropertyChanged("PropHallEquipmentDiscountValue");
+
+                SetDiscountPrice();
+            }
+        }
+
+        public float? PropHallEquipmentDiscountStandPrice
+        {
+            get { return _propHallEquipmentDiscount.StandardPrice; }
+            set
+            {
+                _propHallEquipmentDiscount.StandardPrice = value;
+                RaisePropertyChanged("PropHallEquipmentDiscountStandPrice");
+
+                SetDiscountPrice();
+            }
+        }
+
+        public decimal ComputePriceAfterDiscount
+        {
+            get { return _computePriceAfterDiscount; }
+            set
+            {
+                _computePriceAfterDiscount = value;
+                RaisePropertyChanged("ComputePriceAfterDiscount");
+            }
+        }
+
         #endregion
 
 #region Commands
@@ -478,6 +523,8 @@ namespace DiamondApp.ViewModels
 
         //lista userow
         private ICommand _showUsersCommand;
+        private decimal _computePriceAfterDiscount;
+
         private bool CanShowUsersExecute(object arg)
         {
             return true;
@@ -583,10 +630,25 @@ namespace DiamondApp.ViewModels
                 
                 // przypisanie odpowiadającej ceny w danym miesiącu danej sali
                 price = Convert.ToInt32(names.First());
+
+                HallPrice = price;
+                PropHallEquipmentDiscountStandPrice = price;
             }
-            HallPrice = price;
         }
 
+        private void SetDiscountPrice()
+        {
+            if (PropHallEquipmentDiscountValue.HasValue && PropHallEquipmentDiscountStandPrice.HasValue)
+            {
+                ComputePriceAfterDiscount = Math.Ceiling((decimal) PropHallEquipmentDiscountStandPrice -
+                                                         ((decimal) PropHallEquipmentDiscountStandPrice*
+                                                          (decimal) PropHallEquipmentDiscountValue/100));
+            }
+            else if (!PropHallEquipmentDiscountValue.HasValue)
+            {
+                PropHallEquipmentDiscountValue = 0;
+            }
+        }
 #endregion
     }
 }

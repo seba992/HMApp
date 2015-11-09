@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Threading;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 using DiamondApp.ViewModels;
 
 namespace DiamondApp.Views
@@ -16,6 +18,8 @@ namespace DiamondApp.Views
             InitializeComponent();
             AdminViewModel adminView = new AdminViewModel(userId);
             DataContext = adminView;  // utworzenie instakcji widoku admina przekazujac id obecnie zalogowanego usera
+            this.Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);  // potrzebne do zmiany wyswietlanej waluty $ -> zl
+
         }
 
         private void Window_Closed(object sender, System.EventArgs e)
