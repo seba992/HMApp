@@ -12,7 +12,8 @@ using DiamondApp.DataGridObjectClasses;
 
 namespace DiamondApp.ViewModels
 {
-    class EditUserViewModel
+    public class EditUserDataViewModel : ObservableObject
     {
+
     }
 }

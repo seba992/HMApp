@@ -15,6 +15,7 @@ namespace DiamondApp.ViewModels
         private DiamondDBEntities _ctx;
 
         private List<AdminProposition> _propositionList;
+        private List<User> _userListGrid;
         private AddNewProposition _addNewProposition;
 
         private PropClient _propositionClient = new PropClient();
@@ -30,6 +31,7 @@ namespace DiamondApp.ViewModels
         {
             _ctx = new DiamondDBEntities();
             SelectAllPropositions();
+            SelectAllUsers();
         }
 
         public AdminViewModel(int userId)
@@ -37,6 +39,7 @@ namespace DiamondApp.ViewModels
             _ctx = new DiamondDBEntities();
             _userId = userId;
             SelectAllPropositions();
+            SelectAllUsers();
             CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl();         // CACHE
         }
 
@@ -63,6 +66,17 @@ namespace DiamondApp.ViewModels
                 SelectUsers();
                 _usersList = value;
                 RaisePropertyChanged("UsersList");
+            }
+        }
+
+        public List<User> UsersListGrid
+        {
+            get { return _userListGrid; }
+            set
+            {
+                SelectAllUsers();
+                _userListGrid = value;
+                RaisePropertyChanged("UsersListGrid");
             }
         }
 
@@ -111,6 +125,19 @@ namespace DiamondApp.ViewModels
                     _showPropositionsCommand = new RelayCommand(ShowPropositionExecute, CanShowPropositionExecute);
                 }
                 return _showPropositionsCommand; 
+            }
+
+        }
+
+        public ICommand ShowUsersCommand
+        {
+            get
+            {
+                if (_showUsersCommand == null)
+                {
+                    _showUsersCommand = new RelayCommand(ShowUsersExecute, CanShowUsersExecute);
+                }
+                return _showUsersCommand;
             }
 
         }
@@ -388,6 +415,19 @@ namespace DiamondApp.ViewModels
             SelectAllPropositions();
         }
 
+        //lista userow
+        private ICommand _showUsersCommand;
+        private bool CanShowUsersExecute(object arg)
+        {
+            return true;
+        }
+
+        private void ShowUsersExecute(object obj)
+        {
+            SelectAllUsers();
+        }
+
+
 
 #endregion
 
@@ -398,6 +438,25 @@ namespace DiamondApp.ViewModels
             var q = (from s in _ctx.Users
                      select s).ToList();
             _usersList = q;
+        }
+
+        private void SelectAllUsers()
+        {
+            var myQuerry = (from user in _ctx.Users
+                            select new User
+                            {
+                                UserId = user.Id,
+                                UserName = user.Name,
+                                UserSurname = user.Surname,
+                                UserPhoneNumber = user.PhoneNum,
+                                UserEmail = user.Email,
+                                UserPosition = user.Position,
+                                UserAccountType = user.AccountType,
+                                UserLogin = user.Login
+
+                            }).ToList();
+
+            _userListGrid = myQuerry;
         }
 
         private void CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl()
@@ -439,6 +498,7 @@ namespace DiamondApp.ViewModels
 
             PropositionsList = myQuerry;
         }
+
 #endregion
     }
 }
