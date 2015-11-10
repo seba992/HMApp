@@ -16,25 +16,35 @@ namespace DiamondApp.ViewModels
     {
         private DiamondDBEntities _ctx;
 
+        private int _idProposition; //id propozycji
+        private AdminProposition _selectedProposition;  // wyciagnieta pojedyńcza propozycja
+        private bool _saveFlag = false; // czy edycja czy dodanie nowej jeśli nie zostały żadna wybrana
+        
+
         private int _userId;
         // public List<Proposition> propositionList;
-        private List<AdminProposition> _propositionList;
-        private ICommand _createNewPropositionCommand;
-        private AddNewProposition _addNewProposition;
-        private ICommand _savePropositionCommand;
-        private Proposition _proposition;
+        private List<AdminProposition> _propositionList; // lista propozycji do wyświetlenia
+        private ICommand _createNewPropositionCommand;  // dodanie nowej porpozycji  i uzupełnienie domyślnych danych
+        private AddNewProposition _addNewProposition;   // domyślne dane o użytkowniku w propozycji
+        private ICommand _savePropositionCommand; // zapis propozycji
+       
+        private Proposition _proposition;   
         //private int _currentPropositionId;
         private ICommand _showPropositionsCommand;
-        private AdminProposition _selectedProposition;
-        private PropClient _propositionClient = new PropClient();
-        private PropReservationDetails _propositionReservDetails = new PropReservationDetails();
-        private List<string> _hallList;
-        private ICommand _changePropositionCommand;
-        private bool _saveFlag = false;
-        private int _idProposition;
+        private PropClient _propositionClient = new PropClient(); // klient propozycji
+        private PropReservationDetails _propositionReservDetails = new PropReservationDetails(); // detale
+        private List<string> _hallList; // lista sal (controlbox 1tab)
+        private ICommand _changePropositionCommand; // zmiana porpozycji 
+       
         private int? _hallPrice;
         private string _eventMonth;
-        private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();
+        private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();// obiekt zawierajacy dane wybranej sali (1 tab dol)
+        private List<string> _hallSettingList; // lista sal (controlbox 1tab)
+        //Wyposazenie dodatkowe
+        private PropHallEquipmentDiscount _propHallEquipmentDiscount;
+        private decimal _computePriceAfterDiscount;
+        private List<PropHallEquipment> _propHallEquipment = new List<PropHallEquipment>(6);
+        private List<decimal> _secondTabNettoPrice = new List<decimal>(6);
 
 
         public UserViewModel()
@@ -50,7 +60,6 @@ namespace DiamondApp.ViewModels
             _ctx = new DiamondDBEntities();
             SelectAllPropositions();
             PropDefaultSeller();
-
         }
 
 
@@ -235,6 +244,7 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        //Detale
         public PropReservationDetails PropositionReservDetails
         {
             get { return _propositionReservDetails; }
@@ -336,7 +346,6 @@ namespace DiamondApp.ViewModels
             }
         }
 
-
         public List<string> HallList
         {
             get { return _hallList; }
@@ -367,7 +376,114 @@ namespace DiamondApp.ViewModels
             }
         }
 
-#endregion
+        //Wyposarzenie dodatkowe
+        public PropHallEquipmentDiscount HallEquipmentDiscount
+        {
+            get { return _propHallEquipmentDiscount; }
+            set
+            {
+                _propHallEquipmentDiscount = value;
+                RaisePropertyChanged("HallEquipmentDiscount");
+            }
+        }
+
+        public float? PropHallEquipmentDiscountValue
+        {
+            get { return _propHallEquipmentDiscount.Discount; }
+            set
+            {
+                _propHallEquipmentDiscount.Discount = value;
+                RaisePropertyChanged("PropHallEquipmentDiscountValue");
+
+                SetDiscountPrice();
+            }
+        }
+
+        public float? PropHallEquipmentDiscountStandPrice
+        {
+            get { return _propHallEquipmentDiscount.StandardPrice; }
+            set
+            {
+                _propHallEquipmentDiscount.StandardPrice = value;
+                RaisePropertyChanged("PropHallEquipmentDiscountStandPrice");
+
+                SetDiscountPrice();
+            }
+        }
+
+        public decimal ComputePriceAfterDiscount
+        {
+            get { return _computePriceAfterDiscount; }
+            set
+            {
+                _computePriceAfterDiscount = value;
+                RaisePropertyChanged("ComputePriceAfterDiscount");
+            }
+        }
+
+
+        public string HallFullName0
+        {
+            get { return _propHallEquipment[0].Things; }
+            set
+            {
+                _propHallEquipment[0].Things = value;
+                RaisePropertyChanged("HallFullName1");
+            }
+        }
+        public string PropHallEqThing1
+        {
+            get { return _propHallEquipment[1].Things; }
+            set
+            {
+                _propHallEquipment[1].Things = value;
+                RaisePropertyChanged("HallFullName1");
+            }
+        }
+        public string PropHallEqThing2
+        {
+            get { return _propHallEquipment[2].Things; }
+            set
+            {
+                _propHallEquipment[2].Things = value;
+                RaisePropertyChanged("PropHallEqThing2");
+            }
+        }
+        public string PropHallEqThing3
+        {
+            get { return _propHallEquipment[3].Things; }
+            set
+            {
+                _propHallEquipment[3].Things = value;
+                RaisePropertyChanged("PropHallEqThing3");
+            }
+        }
+        public string PropHallEqThing4
+        {
+            get { return _propHallEquipment[4].Things; }
+            set
+            {
+                _propHallEquipment[4].Things = value;
+                RaisePropertyChanged("PropHallEqThing4");
+            }
+        }
+        public string PropHallEqThing5
+        {
+            get { return _propHallEquipment[5].Things; }
+            set
+            {
+                _propHallEquipment[5].Things = value;
+                RaisePropertyChanged("PropHallEqThing5");
+            }
+        }
+
+        public decimal SecondTabNettoPrice0
+        {
+            get { return _secondTabNettoPrice[0]; }
+            set { _secondTabNettoPrice[0] = value; }
+        }
+
+        #endregion
 
 #region Method
         private void SelectAllPropositions()
@@ -435,7 +551,12 @@ namespace DiamondApp.ViewModels
 
                 //------------------------------
                 // !! PROPCLIENT !!
+                //------------------------------
+                // !! PROPRESERVATIONDETAILS !!
+                PropositionReservDetails.Id_proposition = currentPropositionId;
 
+                _ctx.PropReservationDetails.Add(PropositionReservDetails);
+                _ctx.SaveChanges();
 
                 MessageBox.Show("dodano nowa propozycje");
 
@@ -456,13 +577,13 @@ namespace DiamondApp.ViewModels
                         select q).SingleOrDefault();
                 if (editClient != null)
                 {
-                    editClient.Id_proposition = idProposition;
+                    //editClient.Id_proposition = idProposition;
                     editClient.CompanyName = PropositionClient.CompanyName;
                     editClient.CompanyAdress = PropositionClient.CompanyAdress;
                     editClient.NIP = PropositionClient.NIP;
                     editClient.CustomerFullName = PropositionClient.CustomerFullName;
                     editClient.PhoneNum = PropositionClient.PhoneNum;
-                    _ctx.SaveChanges();
+                    
                 }
                 else
                 {
@@ -475,9 +596,45 @@ namespace DiamondApp.ViewModels
                     addNewClient.CustomerFullName = PropositionClient.CustomerFullName;
                     addNewClient.PhoneNum = PropositionClient.PhoneNum;
                     _ctx.PropClient.Add(addNewClient);
-                    _ctx.SaveChanges();
+                   
 
                 }
+                //-Edycja----------------------
+                // !! PROPRESERVATIONDETAILS !!
+
+                var propReservation =  (from q in _ctx.PropReservationDetails
+                                           where q.Id_proposition == idProposition
+                                            select  q).SingleOrDefault();
+                if (propReservation ==null)
+                {
+                    PropReservationDetails addPropReservationDetails = new PropReservationDetails();
+                    addPropReservationDetails.Id_proposition = idProposition;
+                    addPropReservationDetails.StartData = PropositionReservDetails.StartData;
+                    addPropReservationDetails.EndData = PropositionReservDetails.EndData;
+                    addPropReservationDetails.Hall = PropositionReservDetails.Hall;
+                    addPropReservationDetails.HallSetting = PropositionReservDetails.HallSetting;
+                    addPropReservationDetails.PeopleNumber = PropositionReservDetails.PeopleNumber;
+                    addPropReservationDetails.EndTime = PropositionReservDetails.EndTime;
+                    addPropReservationDetails.StartTime = PropositionReservDetails.StartTime;
+                    addPropReservationDetails.Proposition = PropositionReservDetails.Proposition;
+                    _ctx.PropReservationDetails.Add(addPropReservationDetails);
+                    
+                }
+                else
+                {
+                   // propReservation.Id_proposition = idProposition;
+                    propReservation.StartData = PropositionReservDetails.StartData;
+                    propReservation.EndData = PropositionReservDetails.EndData;
+                    propReservation.Hall = PropositionReservDetails.Hall;
+                    propReservation.HallSetting = PropositionReservDetails.HallSetting;
+                    propReservation.PeopleNumber = PropositionReservDetails.PeopleNumber;
+                    propReservation.EndTime = PropositionReservDetails.EndTime;
+                    propReservation.StartTime = PropositionReservDetails.StartTime;
+                    propReservation.Proposition = PropositionReservDetails.Proposition;
+                   
+                }
+                _ctx.SaveChanges();
+                SelectedProposition = null;
                 SelectAllPropositions();
                 MessageBox.Show("edytowano istniejaca propozycje");
             }
@@ -511,6 +668,7 @@ namespace DiamondApp.ViewModels
                               IsCreated = true
                           }).SingleOrDefault();
             AddNewProposition = querry;
+            HallListFunction();
         }
 
         private bool CanChangePropositionExecute(object arg)
@@ -520,26 +678,39 @@ namespace DiamondApp.ViewModels
         private void ChangePropositionExecute(object obj)
         {
             _saveFlag = true;
-          
+            HallListFunction();
             try
             {
                 _idProposition = SelectedProposition.PropositionId;
-            
-                var test = (from q in _ctx.PropClient
+                // wyszukanie dla podanego id propozycji klienta
+                SelectedProposition = null;
+                var editClient = (from q in _ctx.PropClient 
                     where q.Id_proposition == _idProposition
                     select q).SingleOrDefault();
 
-              //  if (test != null || idProposition != 0)
-                {
-                    PropositionClientCompanyName = test.CompanyName;
-                    PropositionClientCompanyAdress = test.CompanyAdress;
-                    PropositionClientCustromerFullName = test.CustomerFullName;
-                    PropositionClientPhoneNum = test.PhoneNum;
-                    PropositionClientNip = test.NIP;
-                    PropositionClientDecisingPerFullName = test.DecisingPersonFullName;
-                    PropositionClientCustomerEmail = test.CustomerEmail;
-                    PropositionClient = test;
-                }
+                //Uzupełnieni właściwości klienta
+                    PropositionClientCompanyName = editClient.CompanyName;
+                    PropositionClientCompanyAdress = editClient.CompanyAdress;
+                    PropositionClientCustromerFullName = editClient.CustomerFullName;
+                    PropositionClientPhoneNum = editClient.PhoneNum;
+                    PropositionClientNip = editClient.NIP;
+                    PropositionClientDecisingPerFullName = editClient.DecisingPersonFullName;
+                    PropositionClientCustomerEmail = editClient.CustomerEmail;
+                    PropositionClient = editClient;
+               
+               //detale rezerwacji
+                var editDetalis = (from q in _ctx.PropReservationDetails
+                    where q.Id_proposition == _idProposition
+                    select q).SingleOrDefault();
+
+                PropositionReservDetailsStartData = editDetalis.StartData;
+                PropositionReservDetailsEndData = editDetalis.EndData;
+                PropositionReservDetailsStartTime = editDetalis.StartTime;
+                PropositionReservDetailsEndTime = editDetalis.EndTime;
+                PropositionReservDetailsHall = editDetalis.Hall;
+                PropositionReservDetailsHallSetting = editDetalis.HallSetting;
+                PropositionReservDetailsPeopleNumber = editDetalis.PeopleNumber;
+                PropositionReservDetails = editDetalis;
             }
             catch(Exception ex)
             {
@@ -588,6 +759,27 @@ namespace DiamondApp.ViewModels
                 price = Convert.ToInt32(names.First());
             }
             HallPrice = price;
+        }
+
+        private void SetDiscountPrice()
+        {
+            if (PropHallEquipmentDiscountValue.HasValue && PropHallEquipmentDiscountStandPrice.HasValue)
+            {
+                ComputePriceAfterDiscount = Math.Ceiling((decimal)PropHallEquipmentDiscountStandPrice -
+                                                         ((decimal)PropHallEquipmentDiscountStandPrice *
+                                                          (decimal)PropHallEquipmentDiscountValue / 100));
+            }
+            else if (!PropHallEquipmentDiscountValue.HasValue)
+            {
+                PropHallEquipmentDiscountValue = 0;
+            }
+        }
+
+        private void HallListFunction()
+        {
+            var hallDict1 = (from hd in _ctx.PropReservationDetails_Dictionary_HallCapacity
+                             select hd.Hall).ToList();
+            HallList = hallDict1;
         }
 
         #endregion

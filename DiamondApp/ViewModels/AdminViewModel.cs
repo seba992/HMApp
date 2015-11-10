@@ -13,11 +13,16 @@ namespace DiamondApp.ViewModels
     public class AdminViewModel : ObservableObject
     {
         private DiamondDBEntities _ctx;
+        
+        // do edycji propozycji
+        private bool _saveFlag = false;  // czy edycja czy dodanie nowej jeśli nie zostały żadna wybrana
+        private AdminProposition _selectedProposition; // wybrana poropozycja
+        private int _idProposition;  //id propozycji
 
         private List<AdminProposition> _propositionList;
         private List<User> _userListGrid;
         private AddNewProposition _addNewProposition;
-
+        
         private PropClient _propositionClient = new PropClient();   // obiekt zawierajacy dane propozycji klienta (1 tab gora)
         private PropReservationDetails _propositionReservDetails = new PropReservationDetails();     // obiekt zawierajacy dane szczegolow zamownienia (1 tab dol)
         private List<string> _hallList; // lista sal (controlbox 1tab)
@@ -141,6 +146,16 @@ namespace DiamondApp.ViewModels
 
         }
 
+        // wybrana propozycja do edycji
+        public AdminProposition SelectedProposition
+        {
+            get { return _selectedProposition; }
+            set
+            {
+                _selectedProposition = value;
+                RaisePropertyChanged("SelectedProposition");
+            }
+        }
         // objekt zawierajacy wszystkie elementy wpisane przez uzytkownika /dotyczy tabeli PropClient/
         public PropClient PropositionClient
         {
@@ -529,7 +544,7 @@ namespace DiamondApp.ViewModels
 
         private void SavePropositionExecute(object obj)
         {
-            if (_addNewProposition.IsCreated)
+            if (_addNewProposition.IsCreated && !_saveFlag)
             {
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
 
@@ -579,8 +594,77 @@ namespace DiamondApp.ViewModels
             }
             else
             {
-//                var prop = from p in _ctx.Proposition
-//                           where
+                //               // Wybrany Id Propozycji
+                // int currentPropositionId = SelectedProposition.PropositionId;
+
+                //Edycja Propozycji
+                // !! PROPCLIENT !!
+
+                int idProposition = _idProposition;
+                var editClient = (from q in _ctx.PropClient
+                                  where q.Id_proposition == idProposition
+                                  select q).SingleOrDefault();
+                if (editClient != null)
+                {
+                    //editClient.Id_proposition = idProposition;
+                    editClient.CompanyName = PropositionClient.CompanyName;
+                    editClient.CompanyAdress = PropositionClient.CompanyAdress;
+                    editClient.NIP = PropositionClient.NIP;
+                    editClient.CustomerFullName = PropositionClient.CustomerFullName;
+                    editClient.PhoneNum = PropositionClient.PhoneNum;
+
+                }
+                else
+                {
+                    PropClient addNewClient = new PropClient();
+
+                    addNewClient.Id_proposition = idProposition;
+                    addNewClient.CompanyName = PropositionClient.CompanyName;
+                    addNewClient.CompanyAdress = PropositionClient.CompanyAdress;
+                    addNewClient.NIP = PropositionClient.NIP;
+                    addNewClient.CustomerFullName = PropositionClient.CustomerFullName;
+                    addNewClient.PhoneNum = PropositionClient.PhoneNum;
+                    _ctx.PropClient.Add(addNewClient);
+
+
+                }
+                //-Edycja----------------------
+                // !! PROPRESERVATIONDETAILS !!
+
+                var propReservation = (from q in _ctx.PropReservationDetails
+                                       where q.Id_proposition == idProposition
+                                       select q).SingleOrDefault();
+                if (propReservation == null)
+                {
+                    PropReservationDetails addPropReservationDetails = new PropReservationDetails();
+                    addPropReservationDetails.Id_proposition = idProposition;
+                    addPropReservationDetails.StartData = PropositionReservDetails.StartData;
+                    addPropReservationDetails.EndData = PropositionReservDetails.EndData;
+                    addPropReservationDetails.Hall = PropositionReservDetails.Hall;
+                    addPropReservationDetails.HallSetting = PropositionReservDetails.HallSetting;
+                    addPropReservationDetails.PeopleNumber = PropositionReservDetails.PeopleNumber;
+                    addPropReservationDetails.EndTime = PropositionReservDetails.EndTime;
+                    addPropReservationDetails.StartTime = PropositionReservDetails.StartTime;
+                    addPropReservationDetails.Proposition = PropositionReservDetails.Proposition;
+                    _ctx.PropReservationDetails.Add(addPropReservationDetails);
+
+                }
+                else
+                {
+                    // propReservation.Id_proposition = idProposition;
+                    propReservation.StartData = PropositionReservDetails.StartData;
+                    propReservation.EndData = PropositionReservDetails.EndData;
+                    propReservation.Hall = PropositionReservDetails.Hall;
+                    propReservation.HallSetting = PropositionReservDetails.HallSetting;
+                    propReservation.PeopleNumber = PropositionReservDetails.PeopleNumber;
+                    propReservation.EndTime = PropositionReservDetails.EndTime;
+                    propReservation.StartTime = PropositionReservDetails.StartTime;
+                    propReservation.Proposition = PropositionReservDetails.Proposition;
+
+                }
+                _ctx.SaveChanges();
+                SelectedProposition = null;
+                SelectAllPropositions();
                 MessageBox.Show("edytowano istniejaca propozycje");
             }
         }
@@ -610,6 +694,69 @@ namespace DiamondApp.ViewModels
         private void ShowUsersExecute(object obj)
         {
             SelectAllUsers();
+        }
+
+        //Edycja porpozycji
+        private ICommand _changePropositionCommand;
+        public ICommand ChangePropositionCommand
+        {
+            get
+            {
+                if (_changePropositionCommand == null)
+                {
+                    _changePropositionCommand = new RelayCommand(ChangePropositionExecute, CanChangePropositionExecute);
+                }
+                return _changePropositionCommand;
+            }
+        }
+        private bool CanChangePropositionExecute(object arg)
+        {
+            return true;
+        }
+        private void ChangePropositionExecute(object obj)
+        {
+            _saveFlag = true;
+            var hallDict1 = (from hd in _ctx.PropReservationDetails_Dictionary_HallCapacity
+                             select hd.Hall).ToList();
+            HallList = hallDict1;
+            try
+            {
+                _idProposition = SelectedProposition.PropositionId;
+                // wyszukanie dla podanego id propozycji klienta
+                SelectedProposition = null;
+                var editClient = (from q in _ctx.PropClient
+                                  where q.Id_proposition == _idProposition
+                                  select q).SingleOrDefault();
+
+                //Uzupełnieni właściwości klienta
+                PropositionClientCompanyName = editClient.CompanyName;
+                PropositionClientCompanyAdress = editClient.CompanyAdress;
+                PropositionClientCustromerFullName = editClient.CustomerFullName;
+                PropositionClientPhoneNum = editClient.PhoneNum;
+                PropositionClientNip = editClient.NIP;
+                PropositionClientDecisingPerFullName = editClient.DecisingPersonFullName;
+                PropositionClientCustomerEmail = editClient.CustomerEmail;
+                PropositionClient = editClient;
+
+                //detale rezerwacji
+                var editDetalis = (from q in _ctx.PropReservationDetails
+                                   where q.Id_proposition == _idProposition
+                                   select q).SingleOrDefault();
+
+                PropositionReservDetailsStartData = editDetalis.StartData;
+                PropositionReservDetailsEndData = editDetalis.EndData;
+                PropositionReservDetailsStartTime = editDetalis.StartTime;
+                PropositionReservDetailsEndTime = editDetalis.EndTime;
+                PropositionReservDetailsHall = editDetalis.Hall;
+                PropositionReservDetailsHallSetting = editDetalis.HallSetting;
+                PropositionReservDetailsPeopleNumber = editDetalis.PeopleNumber;
+                PropositionReservDetails = editDetalis;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("no i poszło na grzybki");
+                _saveFlag = false;
+            }
         }
 
 

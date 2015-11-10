@@ -15,7 +15,7 @@
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
             <MenuItem Header="Menu" HorizontalAlignment="Left" Width="47">
                 <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" Command="{Binding CreateNewPropositionCommand}"/>
-                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" Command="{Binding ChangePropositionCommand }"/>
                 <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
                 <MenuItem Header="Lista propozycji" HorizontalAlignment="Left" Click="VisibleElement" Margin="0" Command="{Binding ShowPropositionsCommand}"/>
                 <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
@@ -28,7 +28,7 @@
             </MenuItem>
         </Menu>
 
-        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1040" SelectedItem="PropositionsSeller" IsHitTestVisible="True" Visibility="Hidden">
+        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1040" SelectedValue="{Binding SelectedProposition}" IsHitTestVisible="True" Visibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
