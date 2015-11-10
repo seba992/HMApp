@@ -164,7 +164,7 @@
                     <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="6" Grid.Row="8" Margin="3" Text="{Binding PropositionClientDecisingPerFullName, Mode=TwoWay}" />
 
                     <xctk:IntegerUpDown x:Name="IloscOsobTextBox" Grid.Column="6" Grid.Row="10" Margin="3" Minimum="1" Maximum="100000" Value="{Binding PropositionReservDetailsPeopleNumber}"/>
-                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="6" Grid.Row="11" Margin="3"/>
+                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="6" Grid.Row="11" Margin="3" ItemsSource="{Binding HallSettingList}" SelectedItem="{Binding PropositionReservDetailsHallSetting}" Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
 
                     <Label Grid.Column="1" Grid.Row="13" Content="Sala" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
                     <Label Grid.Column="2" Grid.Row="13" Content="Powierzchnia" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
@@ -179,7 +179,7 @@
                     <Label Grid.Row="15" Grid.Column="1" Content="Cena z tabeli: " HorizontalContentAlignment="Right" Margin="3" />
                     <TextBox x:Name="OKTabelaSalaCena" Grid.Column="2" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text = "{Binding HallPrice, StringFormat=\{0:c\}}" />
                     <Label Grid.Row="15" Grid.Column="3" Content="Miesiąc: " HorizontalContentAlignment="Right" Margin="3" />
-                    <TextBox x:Name="OKSalaMiesiac" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding EventMonth}"/>  
+                    <TextBox x:Name="OKSalaMiesiac" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding EventMonth}"/>
 
                     <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="3" Grid.Row="13" VerticalAlignment="Top" Width="118" Grid.Column="6" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>
                 </Grid>
@@ -196,7 +196,8 @@
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
-                        <RowDefinition Height="60" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30"/>
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
@@ -223,71 +224,94 @@
                     <Label Grid.Row="0" Grid.Column="6" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="0" Grid.Column="7" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
 
-                    <TextBox x:Name="SRSalaKonferencyjnaComboBox" Grid.Column="0" Grid.Row="1" Margin="3" IsEnabled="False" />
-                    <ComboBox x:Name="SRElementySali1" Grid.Column="0" Grid.Row="2" Margin="3" />
-                    <ComboBox x:Name="SRElementySali2" Grid.Column="0" Grid.Row="3" Margin="3" />
-                    <ComboBox x:Name="SRElementySali3" Grid.Column="0" Grid.Row="4" Margin="3" />
-                    <ComboBox x:Name="SRElementySali4" Grid.Column="0" Grid.Row="5" Margin="3" />
+                    <TextBox x:Name="SRElementySali1" Grid.Column="0" Grid.Row="1" Margin="3" IsEnabled="False" Text="{Binding HallFullName0}"/>
+                    <ComboBox x:Name="SRElementySali2" Grid.Column="0" Grid.Row="2" Margin="3" ItemsSource="{Binding PropHallEqDict2}" SelectedItem="{Binding PropHallEqThing1}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
+                    <ComboBox x:Name="SRElementySali3" Grid.Column="0" Grid.Row="3" Margin="3" ItemsSource="{Binding PropHallEqDict2}" SelectedItem="{Binding PropHallEqThing2}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
+                    <ComboBox x:Name="SRElementySali4" Grid.Column="0" Grid.Row="4" Margin="3" ItemsSource="{Binding PropHallEqDict2}" SelectedItem="{Binding PropHallEqThing3}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
+                    <ComboBox x:Name="SRElementySali5" Grid.Column="0" Grid.Row="5" Margin="3" ItemsSource="{Binding PropHallEqDict2}" SelectedItem="{Binding PropHallEqThing4}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
+                    <ComboBox x:Name="SRElementySali6" Grid.Column="0" Grid.Row="6" Margin="3" ItemsSource="{Binding PropHallEqDict2}" SelectedItem="{Binding PropHallEqThing5}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
 
                     <TextBox x:Name="SRCenaJednBrutto1" Grid.Column="1" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}" IsEnabled="False"/>
-                    <TextBox x:Name="SRCenaJednBrutto2" Grid.Column="1" Grid.Row="2" Margin="3" />
-                    <TextBox x:Name="SRCenaJednBrutto3" Grid.Column="1" Grid.Row="3" Margin="3" />
-                    <TextBox x:Name="SRCenaJednBrutto4" Grid.Column="1" Grid.Row="4" Margin="3" />
-                    <TextBox x:Name="SRCenaJednBrutto5" Grid.Column="1" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                    <TextBox x:Name="SRCenaJednBrutto2" Grid.Column="1" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRCenaJednBrutto3" Grid.Column="1" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRCenaJednBrutto4" Grid.Column="1" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRCenaJednBrutto5" Grid.Column="1" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRCenaJednBrutto6" Grid.Column="1" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}" />
 
-                    <TextBox x:Name="SRCenaJednNetto1" Grid.Column="2" Grid.Row="1" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" />
+                    <TextBox x:Name="SRCenaJednNetto1" Grid.Column="2" Grid.Row="1" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Text="{Binding NettoPrice0, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="SRCenaJednNetto2" Grid.Column="2" Grid.Row="2" Margin="3" IsEnabled="False" />
                     <TextBox x:Name="SRCenaJednNetto3" Grid.Column="2" Grid.Row="3" Margin="3" IsEnabled="False" />
                     <TextBox x:Name="SRCenaJednNetto4" Grid.Column="2" Grid.Row="4" Margin="3" IsEnabled="False" />
                     <TextBox x:Name="SRCenaJednNetto5" Grid.Column="2" Grid.Row="5" Margin="3" IsEnabled="False" />
+                    <TextBox x:Name="SRCenaJednNetto6" Grid.Column="2" Grid.Row="6" Margin="3" IsEnabled="False" />
 
                     <ComboBox x:Name="SRVatComboBox1" Grid.Column="3" Grid.Row="1" Margin="3" >
                         <ComboBoxItem Content="8%"/>
                         <ComboBoxItem Content="23%"/>
                     </ComboBox>
-                    <ComboBox x:Name="SRVatComboBox2" Grid.Column="3" Grid.Row="2" Margin="3" />
-                    <ComboBox x:Name="SRVatComboBox3" Grid.Column="3" Grid.Row="3" Margin="3" />
-                    <ComboBox x:Name="SRVatComboBox4" Grid.Column="3" Grid.Row="4" Margin="3" />
-                    <ComboBox x:Name="SRVatComboBox5" Grid.Column="3" Grid.Row="5" Margin="3" />
-
+                    <ComboBox x:Name="SRVatComboBox2" Grid.Column="3" Grid.Row="2" Margin="3" >
+                        <ComboBoxItem Content="8%"/>
+                        <ComboBoxItem Content="23%"/>
+                    </ComboBox>
+                    <ComboBox x:Name="SRVatComboBox3" Grid.Column="3" Grid.Row="3" Margin="3" >
+                        <ComboBoxItem Content="8%"/>
+                        <ComboBoxItem Content="23%"/>
+                    </ComboBox>
+                    <ComboBox x:Name="SRVatComboBox4" Grid.Column="3" Grid.Row="4" Margin="3" >
+                        <ComboBoxItem Content="8%"/>
+                        <ComboBoxItem Content="23%"/>
+                    </ComboBox>
+                    <ComboBox x:Name="SRVatComboBox5" Grid.Column="3" Grid.Row="5" Margin="3" >
+                        <ComboBoxItem Content="8%"/>
+                        <ComboBoxItem Content="23%"/>
+                    </ComboBox>
+                    <ComboBox x:Name="SRVatComboBox6" Grid.Column="3" Grid.Row="6" Margin="3" >
+                        <ComboBoxItem Content="8%"/>
+                        <ComboBoxItem Content="23%"/>
+                    </ComboBox>
+                    
                     <TextBox x:Name="SRIloscTextBox1" Grid.Column="4" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRIloscTextBox2" Grid.Column="4" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRIloscTextBox3" Grid.Column="4" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRIloscTextBox4" Grid.Column="4" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRIloscTextBox5" Grid.Column="4" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRIloscTextBox6" Grid.Column="4" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
 
                     <TextBox x:Name="SRDniTextBox1" Grid.Column="5" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRDniTextBox2" Grid.Column="5" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRDniTextBox3" Grid.Column="5" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRDniTextBox4" Grid.Column="5" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
                     <TextBox x:Name="SRDniTextBox5" Grid.Column="5" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+                    <TextBox x:Name="SRDniTextBox6" Grid.Column="5" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
 
                     <TextBox x:Name="SRWartoscNettoTextBox1" Grid.Column="6" Grid.Row="1" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox x:Name="SRWartoscNettoTextBox2" Grid.Column="6" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox x:Name="SRWartoscNettoTextBox3" Grid.Column="6" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox x:Name="SRWartoscNettoTextBox4" Grid.Column="6" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                     <TextBox x:Name="SRWartoscNettoTextBox5" Grid.Column="6" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="SRWartoscNettoTextBox6" Grid.Column="6" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
 
                     <TextBox x:Name="SRWartoscBruttoTextBox1" Grid.Column="7" Grid.Row="1" Margin="3" IsEnabled="False" />
                     <TextBox x:Name="SRWartoscBruttoTextBox2" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" />
                     <TextBox x:Name="SRWartoscBruttoTextBox3" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" />
                     <TextBox x:Name="SRWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" />
                     <TextBox x:Name="SRWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" />
-
+                    <TextBox x:Name="SRWartoscBruttoTextBox6" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" />
+                    
                     <!--definicja wiersza podsumowania-->
-                    <Label Grid.Row="6" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" />
-                    <TextBox x:Name="SRSumaWartoscNettoTextBox" Grid.Column="6" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-                    <TextBox x:Name="SRSumaWartoscBruttoTextBox" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <Label Grid.Row="8" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" />
+                    <TextBox x:Name="SRSumaWartoscNettoTextBox" Grid.Column="6" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                    <TextBox x:Name="SRSumaWartoscBruttoTextBox" Grid.Column="7" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
 
 
                     <!--definicja wierszy cel sali /dol srodek/-->
-                    <Label Grid.Column="1"  Grid.Row="8" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Column="1"  Grid.Row="9" Content="Rabat od bara (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Column="1"  Grid.Row="10" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="1"  Grid.Row="9" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="1"  Grid.Row="10" Content="Rabat od bara (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="1"  Grid.Row="11" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
 
-                    <TextBox x:Name="SRCenaStandardTextBox" Grid.Column="2" Grid.Row="8" Margin="3" HorizontalContentAlignment="Center" Text="{Binding PropHallEquipmentDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>
-                    <xctk:IntegerUpDown x:Name="SRRabatOdBaraCustIntUpDown" Grid.Column="2" Grid.Row="9" Margin="3" Minimum="0" Maximum="100"  Value="{Binding PropHallEquipmentDiscountValue}" />
-                    <TextBox x:Name="SRCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="10" Margin="3" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}"/>
+                    <TextBox x:Name="SRCenaStandardTextBox" Grid.Column="2" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" Text="{Binding PropHallEquipmentDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>
+                    <xctk:IntegerUpDown x:Name="SRRabatOdBaraCustIntUpDown" Grid.Column="2" Grid.Row="10" Margin="3" Minimum="0" Maximum="100"  Value="{Binding PropHallEquipmentDiscountValue}" />
+                    <TextBox x:Name="SRCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="11" Margin="3" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}"/>
 
                     <!--definicja wierszy wielkosci sali /dol prawo/-->
 
@@ -407,7 +431,7 @@
                 </Grid>
 
             </TabItem>
-            <TabItem x:Name="FourthGrid" Header="USŁUGI DODATKOWE:">
+            <TabItem x:Name="FourthGrid" Header="USŁUGI NOCLEGOWE:">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="15" />

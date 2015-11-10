@@ -258,6 +258,13 @@
           <Property Name="December" Type="int" />
           <Property Name="Other" Type="int" />
         </EntityType>
+        <EntityType Name="PropReservationDetails_Dictionary_HallSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Setting" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
@@ -480,6 +487,7 @@
           <EntitySet Name="PropReservationDetails" EntityType="Self.PropReservationDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallCapacity" EntityType="Self.PropReservationDetails_Dictionary_HallCapacity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="Self.PropReservationDetails_Dictionary_HallPrices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropReservationDetails_Dictionary_HallSettings" EntityType="Self.PropReservationDetails_Dictionary_HallSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="Self.FK__PropAccom__Id_pr__3A81B327">
             <End Role="Proposition" EntitySet="Proposition" />
@@ -830,6 +838,7 @@
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropClient" EntitySet="PropClient" />
           </AssociationSet>
+          <EntitySet Name="PropReservationDetails_Dictionary_HallSettings" EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallSettings" />
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
           <Key>
@@ -1093,6 +1102,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PropReservationDetails_Dictionary_HallSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Setting" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1391,6 +1407,14 @@
                 <ScalarProperty Name="CompanyAdress" ColumnName="CompanyAdress" />
                 <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
                 <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropReservationDetails_Dictionary_HallSettings">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropReservationDetails_Dictionary_HallSettings">
+              <MappingFragment StoreEntitySet="PropReservationDetails_Dictionary_HallSettings">
+                <ScalarProperty Name="Setting" ColumnName="Setting" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

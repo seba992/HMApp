@@ -74,5 +74,10 @@ namespace DiamondApp.Views
         {
           
         }
+
+        private void SRElementySali2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

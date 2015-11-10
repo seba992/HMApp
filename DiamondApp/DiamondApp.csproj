@@ -176,6 +176,9 @@
     <Compile Include="EntityModel\PropReservationDetails_Dictionary_HallPrices.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityModel\PropReservationDetails_Dictionary_HallSettings.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\Users.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
