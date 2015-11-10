@@ -69,5 +69,10 @@ namespace DiamondApp.Views
             AddUserView addUserView = new AddUserView();
             addUserView.Show();
         }
+
+        private void SRElementySali2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

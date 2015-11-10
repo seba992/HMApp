@@ -21,22 +21,18 @@ namespace DiamondApp.ViewModels
         private PropClient _propositionClient = new PropClient();   // obiekt zawierajacy dane propozycji klienta (1 tab gora)
         private PropReservationDetails _propositionReservDetails = new PropReservationDetails();     // obiekt zawierajacy dane szczegolow zamownienia (1 tab dol)
         private List<string> _hallList; // lista sal (controlbox 1tab)
+        private List<string> _hallSettingList; // lista sal (controlbox 1tab)
+        
         private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();    // obiekt zawierajacy dane wybranej sali (1 tab dol)
         private string _eventMonth; // miesiac wydarzenia potrzebny do ustalenia celi sali
         private List<Users> _usersList; // lista uzytkownikow TODO: FOR WHAT
         private int _userId;    // id zalogowanego uzytkownika
         private int _selectedPropositionId; // id wybranej propozycji (do edycji)
         private int? _hallPrice;
-        private PropHallEquipmentDiscount _propHallEquipmentDiscount = new PropHallEquipmentDiscount();
-
-
-        public AdminViewModel()
-        {
-            _ctx = new DiamondDBEntities();
-            SelectAllPropositions();
-            SelectAllUsers();
-        }
-
+        private PropHallEquipmentDiscount _propHallEquipmentDiscount = new PropHallEquipmentDiscount(); // tabela rabat w szczegory rezerwacji
+        private List<PropHallEquipment> _propHallEquipment = new List<PropHallEquipment>(6);
+        private List<decimal> _secondTabNettoPrice = new List<decimal>(6);
+ 
         public AdminViewModel(int userId)
         {
             _ctx = new DiamondDBEntities();
@@ -44,9 +40,10 @@ namespace DiamondApp.ViewModels
             SelectAllPropositions();
             SelectAllUsers();
             CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl();         // CACHE
+            FillNeededList();
         }
 
-#region Properties
+        #region Properties
 
         public List<AdminProposition> PropositionsList
         {
@@ -300,7 +297,7 @@ namespace DiamondApp.ViewModels
                 _propositionReservDetails.PeopleNumber = value;
                 RaisePropertyChanged("PropositionReservDetailsPeopleNumber");
             }
-        }
+        }  
 
         public string PropositionReservDetailsHall
         {
@@ -318,6 +315,10 @@ namespace DiamondApp.ViewModels
 
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
+
+                // jeśli wybrana jest juz data poczatkowa wyswietl nazwe sali w tab2 poz1
+                if (PropositionReservDetailsStartData.HasValue)
+                    HallFullName0 = "Sala "+value;
             }
         }
 
@@ -340,6 +341,16 @@ namespace DiamondApp.ViewModels
             {
                 _hallList = value;
                 RaisePropertyChanged("HallList");
+            }
+        }
+
+        public List<string> HallSettingList
+        {
+            get { return _hallSettingList; }
+            set
+            {
+                _hallSettingList = value;
+                RaisePropertyChanged("HallSettingList");
             }
         }
 
@@ -407,6 +418,68 @@ namespace DiamondApp.ViewModels
             }
         }
 
+
+        public string HallFullName0
+        {
+            get { return _propHallEquipment[0].Things; }
+            set
+            {
+                _propHallEquipment[0].Things = value;
+                RaisePropertyChanged("HallFullName1");
+            }
+        }
+        public string PropHallEqThing1
+        {
+            get { return _propHallEquipment[1].Things; }
+            set
+            {
+                _propHallEquipment[1].Things = value;
+                RaisePropertyChanged("HallFullName1");
+            }
+        }
+        public string PropHallEqThing2
+        {
+            get { return _propHallEquipment[2].Things; }
+            set
+            {
+                _propHallEquipment[2].Things = value;
+                RaisePropertyChanged("PropHallEqThing2");
+            }
+        }
+        public string PropHallEqThing3
+        {
+            get { return _propHallEquipment[3].Things; }
+            set
+            {
+                _propHallEquipment[3].Things = value;
+                RaisePropertyChanged("PropHallEqThing3");
+            }
+        }
+        public string PropHallEqThing4
+        {
+            get { return _propHallEquipment[4].Things; }
+            set
+            {
+                _propHallEquipment[4].Things = value;
+                RaisePropertyChanged("PropHallEqThing4");
+            }
+        }
+        public string PropHallEqThing5
+        {
+            get { return _propHallEquipment[5].Things; }
+            set
+            {
+                _propHallEquipment[5].Things = value;
+                RaisePropertyChanged("PropHallEqThing5");
+            }
+        }
+
+        public List<decimal> SecondTabNettoPrice0
+        {
+            get { return _secondTabNettoPrice[0]. }
+            set { _secondTabNettoPrice = value; }
+        }
+
         #endregion
 
 #region Commands
@@ -439,6 +512,10 @@ namespace DiamondApp.ViewModels
             var hallDict1 = (from hd in _ctx.PropReservationDetails_Dictionary_HallCapacity
                 select hd.Hall).ToList();
             HallList = hallDict1;
+
+            var hallDict2 = (from hd in _ctx.PropReservationDetails_Dictionary_HallSettings
+                select hd.Setting).ToList();
+            HallSettingList = hallDict2;
         }
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
@@ -654,6 +731,17 @@ namespace DiamondApp.ViewModels
             {
                 PropHallEquipmentDiscountValue = 0;
             }
+        }
+
+        private void FillNeededList()
+        {
+            //PropHallEquipmentList
+            for (int i = 0; i < _propHallEquipment.Capacity; i++)
+                _propHallEquipment.Add(new PropHallEquipment());
+
+            //SecondTabNettoPriceList
+            for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
+                _secondTabNettoPrice.Add(new decimal());
         }
 #endregion
     }

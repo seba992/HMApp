@@ -45,6 +45,7 @@
         <AssociationConnector Association="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" />
         <EntityTypeShape EntityType="DiamondDBModel.PropClient" Width="1.875" PointX="7.5" PointY="9.875" />
         <AssociationConnector Association="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallSettings" Width="1.5" PointX="10.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
