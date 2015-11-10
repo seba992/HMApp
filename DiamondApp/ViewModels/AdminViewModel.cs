@@ -474,10 +474,10 @@ namespace DiamondApp.ViewModels
             }
         }
 
-        public List<decimal> SecondTabNettoPrice0
+        public decimal SecondTabNettoPrice0
         {
-            get { return _secondTabNettoPrice[0]. }
-            set { _secondTabNettoPrice = value; }
+            get { return _secondTabNettoPrice[0]; }
+            set { _secondTabNettoPrice[0] = value; }
         }
 
         #endregion
