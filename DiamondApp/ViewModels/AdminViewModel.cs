@@ -568,6 +568,12 @@ namespace DiamondApp.ViewModels
             _userListGrid = myQuerry;
         }
 
+        private void SelectUserById()
+        {
+
+        }
+
+
         private void CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl()
         {
             DateTime today = DateTime.Today;

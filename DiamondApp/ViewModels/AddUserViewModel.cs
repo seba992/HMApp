@@ -118,12 +118,13 @@ namespace DiamondApp.ViewModels
                     AccountType = _userAccountType,
                     Login = UserLogin,
                     Password = "",
-                    FirstLogin = "f"
+                    FirstLogin = "t"
                 };
 
                 _ctx.Users.Add(addUser);
                 _ctx.SaveChanges();
                 MessageBox.Show("Konto użytkownika zostało utworzone!");
+
             }
             catch (Exception ex)
             {
