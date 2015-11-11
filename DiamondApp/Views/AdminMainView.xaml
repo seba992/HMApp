@@ -5,7 +5,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
-        Title="AdminMainView" Height="630.171" Width="1060.164" Closed="Window_Closed">
+        Title="AdminMainView" Height="638" Width="1080" Closed="Window_Closed">
 
     <!--<Window.DataContext>
         <viewModels:AdminViewModel />
