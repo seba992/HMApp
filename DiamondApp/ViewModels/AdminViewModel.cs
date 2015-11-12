@@ -36,9 +36,15 @@ namespace DiamondApp.ViewModels
         private int? _hallPrice;
         private PropHallEquipmentDiscount _propHallEquipmentDiscount = new PropHallEquipmentDiscount(); // tabela rabat w szczegory rezerwacji
         private List<PropHallEquipment> _propHallEquipment = new List<PropHallEquipment>(6);
-        private List<decimal> _secondTabNettoPrice = new List<decimal>(6);
+        private List<decimal> _secondTabNettoPrice = new List<decimal>(6);  // lista cen netto (tab2)
+        private List<decimal> _secondTabNettoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab2)
+        private List<decimal> _secondTabBruttoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab2)
         private decimal _computePriceAfterDiscount;
-
+        private List<string> _propHallEqDict2; // lista zawierajaca wyposazenie dodatkowe sali (combobox tab 2)
+        private List<string> _vatList; // lista zawierajaca wartosci VAT
+        private decimal _secondTabSumNettoValue;
+        private decimal _secondTabSumBruttoValue;
+     
 
         public AdminViewModel(int userId)
         {
@@ -266,7 +272,7 @@ namespace DiamondApp.ViewModels
 
                 // jeśli wybrana jest juz nazwa sali to ustaw 
                 if (PropositionReservDetailsHall!=null)
-                    PropHallEqThing0 = "Sala " + value;
+                    PropHallEqThing0 = "Sala " + PropositionReservDetailsHall;
             }
         }
 
@@ -414,6 +420,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEquipmentDiscountValue");
 
                 SetDiscountPrice();
+
             }
         }
 
@@ -498,81 +505,641 @@ namespace DiamondApp.ViewModels
         public decimal SecondTabNettoPrice0
         {
             get { return _secondTabNettoPrice[0]; }
-            set { _secondTabNettoPrice[0] = value; }
+            set
+            {
+                _secondTabNettoPrice[0] = value;
+                RaisePropertyChanged("SecondTabNettoPrice0");
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays0 != null && PropHallEqAmount0 != null)
+                {
+                    SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, PropHallEqAmount0, PropHallEqDays0);
+                    SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, PropHallEqAmount0, PropHallEqDays0);
+                }
+            }
         }
-
         public decimal SecondTabNettoPrice1
         {
             get { return _secondTabNettoPrice[1]; }
-            set { _secondTabNettoPrice[1] = value; }
+            set
+            {
+                _secondTabNettoPrice[1] = value;
+                RaisePropertyChanged("SecondTabNettoPrice1");
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays1 != null && PropHallEqAmount1 != null)
+                {
+                    SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, PropHallEqAmount1, PropHallEqDays1);
+                    SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, PropHallEqAmount1, PropHallEqDays1);
+                }
+            }
         }
-
         public decimal SecondTabNettoPrice2
         {
             get { return _secondTabNettoPrice[2]; }
-            set { _secondTabNettoPrice[2] = value; }
+            set
+            {
+                _secondTabNettoPrice[2] = value;
+                RaisePropertyChanged("SecondTabNettoPrice2");
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays2 != null && PropHallEqAmount2 != null)
+                {
+                    SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, PropHallEqAmount2, PropHallEqDays2);
+                    SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, PropHallEqAmount2, PropHallEqDays2);
+                }
+            }
         }
-
         public decimal SecondTabNettoPrice3
         {
             get { return _secondTabNettoPrice[3]; }
-            set { _secondTabNettoPrice[3] = value; }
+            set
+            {
+                _secondTabNettoPrice[3] = value;
+                RaisePropertyChanged("SecondTabNettoPrice3");
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays3 != null && PropHallEqAmount3 != null)
+                {
+                    SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, PropHallEqAmount3, PropHallEqDays3);
+                    SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, PropHallEqAmount3, PropHallEqDays3);
+                }
+            }
         }
-
         public decimal SecondTabNettoPrice4
         {
             get { return _secondTabNettoPrice[4]; }
-            set { _secondTabNettoPrice[4] = value; }
+            set
+            {
+                _secondTabNettoPrice[4] = value;
+                RaisePropertyChanged("SecondTabNettoPrice4");
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays4 != null && PropHallEqAmount4 != null)
+                {
+                    SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, PropHallEqAmount4, PropHallEqDays4);
+                    SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, PropHallEqAmount4, PropHallEqDays4);
+                }
+            }
+        }
+        public decimal SecondTabNettoPrice5
+        {
+            get { return _secondTabNettoPrice[5]; }
+            set
+            {
+                _secondTabNettoPrice[5] = value;
+                RaisePropertyChanged("SecondTabNettoPrice5");
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays5 != null && PropHallEqAmount5 != null)
+                {
+                    SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, PropHallEqAmount5, PropHallEqDays5);
+                    SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, PropHallEqAmount5, PropHallEqDays5);
+                }
+            }
         }
 
-
-        public float? SecondTabBruttoPrice0
+        public float? PropHallEqBrutto0
         {
             get { return _propHallEquipment[0].BruttoPrice; }
             set
             {
                 _propHallEquipment[0].BruttoPrice = value;
-                RaisePropertyChanged("PropHallEqThing0");
+                RaisePropertyChanged("PropHallEqBrutto0");
+
+                // liczenie i wyswietlanie w oknie (tab2) ceny netto w sytuacji domyslnego vat
+                SecondTabNettoPrice0 = ComputeNettoPrice(value, PropHallEqVat0);
+
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays0 != null && PropHallEqAmount0 != null)
+                {
+                    SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, PropHallEqAmount0, PropHallEqDays0);
+                    SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, PropHallEqAmount0, PropHallEqDays0);
+                }
+                    
             }
         }
-        public float? SecondTabBruttoPrice1
+        public float? PropHallEqBrutto1
         {
             get { return _propHallEquipment[1].BruttoPrice; }
             set
             {
                 _propHallEquipment[1].BruttoPrice = value;
-                RaisePropertyChanged("PropHallEqThing1");
+                RaisePropertyChanged("PropHallEqBrutto1");
+                SecondTabNettoPrice1 = ComputeNettoPrice(value, PropHallEqVat1);
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays1 != null && PropHallEqAmount1 != null)
+                {
+                    SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, PropHallEqAmount1, PropHallEqDays1);
+                    SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, PropHallEqAmount1, PropHallEqDays1);
+                }
             }
         }
-        public float? SecondTabBruttoPrice2
+        public float? PropHallEqBrutto2
         {
             get { return _propHallEquipment[2].BruttoPrice; }
             set
             {
                 _propHallEquipment[2].BruttoPrice = value;
-                RaisePropertyChanged("PropHallEqThing2");
+                RaisePropertyChanged("PropHallEqBrutto2");
+                SecondTabNettoPrice2 = ComputeNettoPrice(value, PropHallEqVat2);
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays2 != null && PropHallEqAmount2 != null)
+                {
+                    SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, PropHallEqAmount2, PropHallEqDays2);
+                    SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, PropHallEqAmount2, PropHallEqDays2);
+                }
             }
         }
-        public float? SecondTabBruttoPrice3
+        public float? PropHallEqBrutto3
         {
             get { return _propHallEquipment[3].BruttoPrice; }
             set
             {
                 _propHallEquipment[3].BruttoPrice = value;
-                RaisePropertyChanged("PropHallEqThing3");
+                RaisePropertyChanged("PropHallEqBrutto3");
+                SecondTabNettoPrice3 = ComputeNettoPrice(value, PropHallEqVat3);
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays3 != null && PropHallEqAmount3 != null)
+                {
+                    SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, PropHallEqAmount3, PropHallEqDays3);
+                    SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, PropHallEqAmount3, PropHallEqDays3);
+                }
             }
         }
-        public float? SecondTabBruttoPrice4
+        public float? PropHallEqBrutto4
         {
             get { return _propHallEquipment[4].BruttoPrice; }
             set
             {
                 _propHallEquipment[4].BruttoPrice = value;
-                RaisePropertyChanged("PropHallEqThing4");
+                RaisePropertyChanged("PropHallEqBrutto4");
+                SecondTabNettoPrice4 = ComputeNettoPrice(value, PropHallEqVat4);
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays4 != null && PropHallEqAmount4 != null)
+                {
+                    SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, PropHallEqAmount4, PropHallEqDays4);
+                    SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, PropHallEqAmount4, PropHallEqDays4);
+                }
+            }
+        }
+        public float? PropHallEqBrutto5
+        {
+            get { return _propHallEquipment[5].BruttoPrice; }
+            set
+            {
+                _propHallEquipment[5].BruttoPrice = value;
+                RaisePropertyChanged("PropHallEqBrutto5");
+                SecondTabNettoPrice5 = ComputeNettoPrice(value, PropHallEqVat5);
+                // w chwili aktualizacji ceny brutto aktualizuj wartosci brutto/netto
+                if (PropHallEqDays5 != null && PropHallEqAmount5 != null)
+                {
+                    SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, PropHallEqAmount5, PropHallEqDays5);
+                    SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, PropHallEqAmount5, PropHallEqDays5);
+                }
             }
         }
 
-#endregion
+        public float? PropHallEqVat0
+        {
+            get { return _propHallEquipment[0].Vat; }
+            set
+            {
+                _propHallEquipment[0].Vat = value;
+                RaisePropertyChanged("PropHallEqVat0");
+                // liczenie i wyswietlanie w oknie (tab2) ceny netto w sytuacji zmiany vat gdy jest cena brutto
+                if(PropHallEqBrutto0!=null)
+                    SecondTabNettoPrice0 = ComputeNettoPrice(PropHallEqBrutto0, value);
+            }
+        }
+        public float? PropHallEqVat1
+        {
+            get { return _propHallEquipment[1].Vat; }
+            set
+            {
+                _propHallEquipment[1].Vat = value;
+                RaisePropertyChanged("PropHallEqVat1");
+                // liczenie i wyswietlanie w oknie (tab2) ceny netto w sytuacji zmiany vat gdy jest cena brutto
+                if(PropHallEqBrutto1!=null)
+                    SecondTabNettoPrice1 = ComputeNettoPrice(PropHallEqBrutto1, value);
+            }
+        }
+        public float? PropHallEqVat2
+        {
+            get { return _propHallEquipment[2].Vat; }
+            set
+            {
+                _propHallEquipment[2].Vat = value;
+                RaisePropertyChanged("PropHallEqVat2");
+                // liczenie i wyswietlanie w oknie (tab2) ceny netto w sytuacji zmiany vat gdy jest cena brutto
+                if (PropHallEqBrutto2 != null)
+                    SecondTabNettoPrice2 = ComputeNettoPrice(PropHallEqBrutto2, value);
+            }
+        }
+        public float? PropHallEqVat3
+        {
+            get { return _propHallEquipment[3].Vat; }
+            set
+            {
+                _propHallEquipment[3].Vat = value;
+                RaisePropertyChanged("PropHallEqVat3");
+                // liczenie i wyswietlanie w oknie (tab2) ceny netto w sytuacji zmiany vat gdy jest cena brutto
+                if (PropHallEqBrutto3 != null)
+                    SecondTabNettoPrice3 = ComputeNettoPrice(PropHallEqBrutto3, value);
+            }
+        }
+        public float? PropHallEqVat4
+        {
+            get { return _propHallEquipment[4].Vat; }
+            set
+            {
+                _propHallEquipment[4].Vat = value;
+                RaisePropertyChanged("PropHallEqVat4");
+                // liczenie i wyswietlanie w oknie (tab2) ceny netto w sytuacji zmiany vat gdy jest cena brutto
+                if (PropHallEqBrutto4 != null)
+                    SecondTabNettoPrice4 = ComputeNettoPrice(PropHallEqBrutto4, value);
+            }
+        }
+        public float? PropHallEqVat5
+        {
+            get { return _propHallEquipment[5].Vat; }
+            set
+            {
+                _propHallEquipment[5].Vat = value;
+                RaisePropertyChanged("PropHallEqVat5");
+                // liczenie i wyswietlanie w oknie (tab2) ceny netto w sytuacji zmiany vat gdy jest cena brutto
+                if (PropHallEqBrutto5 != null)
+                    SecondTabNettoPrice5 = ComputeNettoPrice(PropHallEqBrutto5, value);
+            }
+        }
+
+        public int? PropHallEqAmount0
+        {
+            get { return _propHallEquipment[0].Amount; }
+            set
+            {
+                _propHallEquipment[0].Amount = value;
+                RaisePropertyChanged("PropHallEqAmount0");
+
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice0 != null && PropHallEqDays0 != null)
+                {
+                    SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, value, PropHallEqDays0);
+                    SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, value, PropHallEqDays0);
+                }
+            }
+        }
+
+        public int? PropHallEqAmount1
+        {
+            get { return _propHallEquipment[1].Amount; }
+            set
+            {
+                _propHallEquipment[1].Amount = value;
+                RaisePropertyChanged("PropHallEqAmount1");
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice1 != null && PropHallEqDays1 != null)
+                {
+                    SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, value, PropHallEqDays1);
+                    SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, value, PropHallEqDays1);
+                }
+            }
+        }
+        public int? PropHallEqAmount2
+        {
+            get { return _propHallEquipment[2].Amount; }
+            set
+            {
+                _propHallEquipment[2].Amount = value;
+                RaisePropertyChanged("PropHallEqAmount2");
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice2 != null && PropHallEqDays2 != null)
+                {
+                    SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, value, PropHallEqDays2);
+                    SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, value, PropHallEqDays2);
+                }
+            }
+        }
+        public int? PropHallEqAmount3
+        {
+            get { return _propHallEquipment[3].Amount; }
+            set
+            {
+                _propHallEquipment[3].Amount = value;
+                RaisePropertyChanged("PropHallEqAmount3");
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice3 != null && PropHallEqDays3 != null)
+                {
+                    SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, value, PropHallEqDays3);
+                    SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, value, PropHallEqDays3);
+                }
+            }
+        }
+        public int? PropHallEqAmount4
+        {
+            get { return _propHallEquipment[4].Amount; }
+            set
+            {
+                _propHallEquipment[4].Amount = value;
+                RaisePropertyChanged("PropHallEqAmount4");
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice4 != null && PropHallEqDays4 != null)
+                {
+                    SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, value, PropHallEqDays4);
+                    SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, value, PropHallEqDays4);
+                }
+            }
+        }
+        public int? PropHallEqAmount5
+        {
+            get { return _propHallEquipment[5].Amount; }
+            set
+            {
+                _propHallEquipment[5].Amount = value;
+                RaisePropertyChanged("PropHallEqAmount5");
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice5 != null && PropHallEqDays5 != null)
+                {
+                    SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, value, PropHallEqDays5);
+                    SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, value, PropHallEqDays5);
+                }
+            }
+        }
+
+        public int? PropHallEqDays0
+        {
+            get { return _propHallEquipment[0].Days; }
+            set
+            {
+                _propHallEquipment[0].Days = value;
+                RaisePropertyChanged("PropHallEqDays0");
+
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice0 != null && PropHallEqDays0 != null)
+                {
+                    SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, PropHallEqAmount0, value);
+                    SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, PropHallEqAmount0, value);
+                }
+            }
+        }
+        public int? PropHallEqDays1
+        {
+            get { return _propHallEquipment[1].Days; }
+            set
+            {
+                _propHallEquipment[1].Days = value;
+                RaisePropertyChanged("PropHallEqDays1");
+
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice1 != null && PropHallEqDays1 != null)
+                {
+                    SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, PropHallEqAmount1, value);
+                    SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, PropHallEqAmount1, value);
+                }
+            }
+        }
+        public int? PropHallEqDays2
+        {
+            get { return _propHallEquipment[2].Days; }
+            set
+            {
+                _propHallEquipment[2].Days = value;
+                RaisePropertyChanged("PropHallEqDays2");
+
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice2 != null && PropHallEqDays2 != null)
+                {
+                    SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, PropHallEqAmount2, value);
+                    SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, PropHallEqAmount2, value);
+                }
+            }
+        }
+        public int? PropHallEqDays3
+        {
+            get { return _propHallEquipment[3].Days; }
+            set
+            {
+                _propHallEquipment[3].Days = value;
+                RaisePropertyChanged("PropHallEqDays3");
+
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice3 != null && PropHallEqDays3 != null)
+                {
+                    SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, PropHallEqAmount3, value);
+                    SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, PropHallEqAmount3, value);
+                }
+            }
+        }
+        public int? PropHallEqDays4
+        {
+            get { return _propHallEquipment[4].Days; }
+            set
+            {
+                _propHallEquipment[4].Days = value;
+                RaisePropertyChanged("PropHallEqDays4");
+
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice4 != null && PropHallEqDays4 != null)
+                {
+                    SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, PropHallEqAmount4, value);
+                    SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, PropHallEqAmount4, value);
+                }
+            }
+        }
+        public int? PropHallEqDays5
+        {
+            get { return _propHallEquipment[5].Days; }
+            set
+            {
+                _propHallEquipment[5].Days = value;
+                RaisePropertyChanged("PropHallEqDays5");
+
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+                if (SecondTabNettoPrice5 != null && PropHallEqDays5 != null)
+                {
+                    SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, PropHallEqAmount5, value);
+                    SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, PropHallEqAmount5, value);
+                }
+            }
+        }
+
+        public List<string> PropHallEqDict2
+        {
+            get { return _propHallEqDict2; }
+            set
+            {
+                _propHallEqDict2 = value;
+                RaisePropertyChanged("PropHallEqDict2");    
+            }
+        }
+
+        public List<string> VatList
+        {
+            get { return _vatList; }
+            set
+            {
+                _vatList = value;
+                RaisePropertyChanged("VatList");    
+            }
+        }
+
+        public List<decimal> SecondTabNettoValue
+        {
+            get { return _secondTabNettoValue; }
+            set
+            {
+                _secondTabNettoValue = value;
+                RaisePropertyChanged("SecondTabNettoValue");    
+            }
+        }
+        public List<decimal> SecondTabBruttoValue
+        {
+            get { return _secondTabBruttoValue; }
+            set
+            {
+                _secondTabBruttoValue = value;
+                RaisePropertyChanged("SecondTabBruttoValue");    
+            }
+        }
+
+        public decimal SecondTabNettoValue0
+        {
+            get { return _secondTabNettoValue[0]; }
+            set
+            {
+                _secondTabNettoValue[0] = value;
+                RaisePropertyChanged("SecondTabNettoValue0");
+            }
+        }
+        public decimal SecondTabNettoValue1
+        {
+            get { return _secondTabNettoValue[1]; }
+            set
+            {
+                _secondTabNettoValue[1] = value;
+                RaisePropertyChanged("SecondTabNettoValue1");
+            }
+        }
+        public decimal SecondTabNettoValue2
+        {
+            get { return _secondTabNettoValue[2]; }
+            set
+            {
+                _secondTabNettoValue[2] = value;
+                RaisePropertyChanged("SecondTabNettoValue2");
+            }
+        }
+        public decimal SecondTabNettoValue3
+        {
+            get { return _secondTabNettoValue[3]; }
+            set
+            {
+                _secondTabNettoValue[3] = value;
+                RaisePropertyChanged("SecondTabNettoValue3");
+            }
+        }
+        public decimal SecondTabNettoValue4
+        {
+            get { return _secondTabNettoValue[4]; }
+            set
+            {
+                _secondTabNettoValue[4] = value;
+                RaisePropertyChanged("SecondTabNettoValue4");
+            }
+        }
+        public decimal SecondTabNettoValue5
+        {
+            get { return _secondTabNettoValue[5]; }
+            set
+            {
+                _secondTabNettoValue[5] = value;
+                RaisePropertyChanged("SecondTabNettoValue5");
+            }
+        }
+
+        public decimal SecondTabBruttoValue0
+        {
+            get { return _secondTabBruttoValue[0]; }
+            set
+            {
+                _secondTabBruttoValue[0] = value;
+                RaisePropertyChanged("SecondTabBruttoValue0");
+                ComputeBruttoSum();
+                ComputeSumNettoValue();
+            }
+        }
+        public decimal SecondTabBruttoValue1
+        {
+            get { return _secondTabBruttoValue[1]; }
+            set
+            {
+                _secondTabBruttoValue[1] = value;
+                RaisePropertyChanged("SecondTabBruttoValue1");
+                ComputeBruttoSum();
+                ComputeSumNettoValue();
+            }
+        }
+        public decimal SecondTabBruttoValue2
+        {
+            get { return _secondTabBruttoValue[2]; }
+            set
+            {
+                _secondTabBruttoValue[2] = value;
+                RaisePropertyChanged("SecondTabBruttoValue2");
+                ComputeBruttoSum();
+                ComputeSumNettoValue();
+            }
+        }
+        public decimal SecondTabBruttoValue3
+        {
+            get { return _secondTabBruttoValue[3]; }
+            set
+            {
+                _secondTabBruttoValue[3] = value;
+                RaisePropertyChanged("SecondTabBruttoValue3");
+                ComputeBruttoSum();
+                ComputeSumNettoValue();
+            }
+        }
+        public decimal SecondTabBruttoValue4
+        {
+            get { return _secondTabBruttoValue[4]; }
+            set
+            {
+                _secondTabBruttoValue[4] = value;
+                RaisePropertyChanged("SecondTabBruttoValue4");
+                ComputeBruttoSum();
+                ComputeSumNettoValue();
+            }
+        }
+
+        public decimal SecondTabBruttoValue5
+        {
+            get { return _secondTabBruttoValue[5]; }
+            set
+            {
+                _secondTabBruttoValue[5] = value;
+                RaisePropertyChanged("SecondTabBruttoValue5");
+                ComputeBruttoSum();
+                ComputeSumNettoValue();
+            }
+        }
+
+        public decimal SecondTabSumNettoValue
+        {
+            get { return _secondTabSumNettoValue; }
+            set
+            {
+                _secondTabSumNettoValue = value;
+                RaisePropertyChanged("SecondTabSumNettoValue");
+            }
+        }
+
+        public decimal SecondTabSumBruttoValue
+        {
+            get { return _secondTabSumBruttoValue; }
+            set
+            {
+                _secondTabSumBruttoValue = value;
+                RaisePropertyChanged("SecondTabSumBruttoValue");
+            }
+        }
+
+        #endregion
 
 #region Commands
 
@@ -608,7 +1175,20 @@ namespace DiamondApp.ViewModels
             var hallDict2 = (from hd in _ctx.PropReservationDetails_Dictionary_HallSettings
                 select hd.Setting).ToList();
             HallSettingList = hallDict2;
+
+            // wypelnianie listy dodatkowego wyposazenia sali 2tab
+            var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
+                select he.Things).ToList();
+            PropHallEqDict2 = propHallEqList;
+
+            var vat = (from he in _ctx.VatList
+             select he.Vat).ToList();
+            VatList = vat;
+
+
         }
+
+        
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
          * (utworzenie nowego rekordu w bazie) czy tylko aktualizacja
@@ -646,23 +1226,30 @@ namespace DiamondApp.ViewModels
                 //------------------------------
                 // !! PROPCLIENT !!
                 PropositionClient.Id_proposition = currentPropositionId;
-//                var propClientToBase = new PropClient
-//                {
-//                    Id_proposition = currentPropositionId,
-//                    CompanyName = PropositionClient.CompanyName,
-//                    CompanyAdress =  PropositionClient.CompanyAdress,
-//                    NIP = PropositionClient.NIP,
-//                    CustomerFullName = PropositionClient.CustomerFullName,
-//                    PhoneNum = PropositionClient.PhoneNum
-//                };
                 _ctx.PropClient.Add(PropositionClient);
-
 
                 //------------------------------
                 // !! PROPRESERVATIONDETAILS !!
                 PropositionReservDetails.Id_proposition = currentPropositionId;
-
                 _ctx.PropReservationDetails.Add(PropositionReservDetails);
+
+                //------------------------------
+                // !! PROPHALLEQUPMENT !!
+
+                // dodaje do bazy tylko te elementy listy, które posiadaja nazwe i cene brutto TODO: review solution
+                for (int i = 0; i < _propHallEquipment.Count; i++)
+                {
+                    if (_propHallEquipment[i].Things != null && _propHallEquipment[i].BruttoPrice != null)
+                    {
+                        _propHallEquipment[i].Id_proposition = currentPropositionId;
+                        _ctx.PropHallEquipment.Add(_propHallEquipment[i]);
+                    }
+                }
+                //------------------------------
+                // !! PROPHALLEQUPMENTDISCOUNT !!
+                HallEquipmentDiscount.Id_proposition = currentPropositionId;
+                _ctx.PropHallEquipmentDiscount.Add(HallEquipmentDiscount);
+
                 _ctx.SaveChanges();
                 MessageBox.Show("dodano nowa propozycje");
 
@@ -774,6 +1361,8 @@ namespace DiamondApp.ViewModels
 
         //Edycja porpozycji
         private ICommand _changePropositionCommand;
+
+
         public ICommand ChangePropositionCommand
         {
             get
@@ -785,6 +1374,7 @@ namespace DiamondApp.ViewModels
                 return _changePropositionCommand;
             }
         }
+
         private bool CanChangePropositionExecute(object arg)
         {
             return true;
@@ -893,7 +1483,7 @@ namespace DiamondApp.ViewModels
             var myQuerry = (from prop in _ctx.Proposition
                 from user in _ctx.Users
                 where prop.Id_user == user.Id
-                orderby prop.UpdateDate, user.Name
+                orderby prop.UpdateDate descending, user.Name descending
                 select new AdminProposition
                 {
                     PropositionId = prop.Id,   // myślę że id propozycji się przyda CACHE
@@ -943,7 +1533,7 @@ namespace DiamondApp.ViewModels
                 ComputePriceAfterDiscount = Math.Ceiling((decimal) PropHallEquipmentDiscountStandPrice -
                                                          ((decimal) PropHallEquipmentDiscountStandPrice*
                                                           (decimal) PropHallEquipmentDiscountValue/100));
-          //      SecondTabBruttoPrice2 = ComputePriceAfterDiscount;
+                PropHallEqBrutto0 = (float?)ComputePriceAfterDiscount;
             }
             else if (!PropHallEquipmentDiscountValue.HasValue)
             {
@@ -960,6 +1550,60 @@ namespace DiamondApp.ViewModels
             //SecondTabNettoPriceList
             for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
                 _secondTabNettoPrice.Add(new decimal());
+
+            //SecondTabNettoValueList
+            for (int i = 0; i < _propHallEquipment.Capacity; i++)
+                _secondTabNettoValue.Add(new decimal());
+
+            //SecondTabBruttoValueList
+            for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
+                _secondTabBruttoValue.Add(new decimal());
+        }
+
+        // obliczanie ceny netto na podstawie ceny brutto i vatu
+        private decimal ComputeNettoPrice(float? value, float? vat)
+        {
+            return Math.Round(((decimal) value * 100 /(100 + (decimal) vat)), 2);
+        }
+
+        // obliczanie zsumowanej wartosci brutto na podstawie ceny brutto, ilosci i liczby dni
+        // nully sprawdzane musza byc przed wywolaniem metody
+        private decimal ComputeBruttoValue(float? bruttoPrice, int? amount, int? days)
+        {
+            return (decimal)bruttoPrice * (decimal)amount * (decimal)days;
+        }
+
+        // obliczanie zsumowanej wartosci netto na podstawie ceny netto, ilosci i liczby dni
+        // nully sprawdzane musza byc przed wywolaniem metody
+        private decimal ComputeNettoValue(decimal nettoPrice, int? amount, int? days)
+        {
+            return (decimal)nettoPrice * (decimal)amount * (decimal)days;
+        }
+
+        private void ComputeSumNettoValue()
+        {
+            decimal sum = 0;
+            sum += SecondTabNettoValue0;
+            sum += SecondTabNettoValue1;
+            sum += SecondTabNettoValue2;
+            sum += SecondTabNettoValue3;
+            sum += SecondTabNettoValue4;
+            sum += SecondTabNettoValue5; 
+
+            SecondTabSumNettoValue = sum;
+        }
+
+        private void ComputeBruttoSum()
+        {
+            decimal sum = 0;
+            sum += SecondTabBruttoValue0;
+            sum += SecondTabBruttoValue1;
+            sum += SecondTabBruttoValue2;
+            sum += SecondTabBruttoValue3;
+            sum += SecondTabBruttoValue4;
+            sum += SecondTabBruttoValue5;
+
+            SecondTabSumBruttoValue = sum;
         }
 #endregion
     }

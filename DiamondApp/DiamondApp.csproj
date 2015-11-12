@@ -182,6 +182,9 @@
     <Compile Include="EntityModel\Users.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityModel\VatList.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tools\DateTimeConverter.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="Tools\Validations.cs" />

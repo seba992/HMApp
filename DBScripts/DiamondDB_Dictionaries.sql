@@ -301,3 +301,6 @@ insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('
 insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Bankiet')
 insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Wspólny stó³')
 insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Teatr / Bankiet')
+
+insert into [VatList] (Vat) values ('8');
+insert into [VatList] (Vat) values ('23');

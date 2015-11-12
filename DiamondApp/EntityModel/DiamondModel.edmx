@@ -280,6 +280,13 @@
           <Property Name="Password" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="FirstLogin" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
+        <EntityType Name="VatList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vat" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
         <Association Name="FK__PropAccom__Id_pr__3A81B327">
           <End Role="Proposition" Type="Self.Proposition" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -489,6 +496,7 @@
           <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="Self.PropReservationDetails_Dictionary_HallPrices" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallSettings" EntityType="Self.PropReservationDetails_Dictionary_HallSettings" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VatList" EntityType="Self.VatList" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="Self.FK__PropAccom__Id_pr__3A81B327">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodation" EntitySet="PropAccomodation" />
@@ -839,6 +847,7 @@
             <End Role="PropClient" EntitySet="PropClient" />
           </AssociationSet>
           <EntitySet Name="PropReservationDetails_Dictionary_HallSettings" EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallSettings" />
+          <EntitySet Name="VatList" EntityType="DiamondDBModel.VatList" />
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
           <Key>
@@ -1108,6 +1117,13 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Setting" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VatList">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vat" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1414,6 +1430,14 @@
             <EntityTypeMapping TypeName="DiamondDBModel.PropReservationDetails_Dictionary_HallSettings">
               <MappingFragment StoreEntitySet="PropReservationDetails_Dictionary_HallSettings">
                 <ScalarProperty Name="Setting" ColumnName="Setting" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VatList">
+            <EntityTypeMapping TypeName="DiamondDBModel.VatList">
+              <MappingFragment StoreEntitySet="VatList">
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -53,5 +53,6 @@ namespace DiamondApp.EntityModel
         public virtual DbSet<Proposition> Proposition { get; set; }
         public virtual DbSet<PropClient> PropClient { get; set; }
         public virtual DbSet<PropReservationDetails_Dictionary_HallSettings> PropReservationDetails_Dictionary_HallSettings { get; set; }
+        public virtual DbSet<VatList> VatList { get; set; }
     }
 }
