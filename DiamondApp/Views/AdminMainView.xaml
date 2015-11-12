@@ -487,17 +487,17 @@
                     <TextBox x:Name="UGSumaWartoscNettoTextBox" Grid.Column="6" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabSumNettoValue, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="UGSumaWartoscBruttoTextBox" Grid.Column="7" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabSumBruttoValue, StringFormat=\{0:c\}}" />
                     
-                    <Label Grid.Row="11" Grid.Column="1" Content="Marża gastronomia 8%:" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
-                    <Label Grid.Row="12" Grid.Column="1" Content="Marża gastronomia 23%:" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
-                    <Label Grid.Row="13" Grid.Column="1" Content="Marża Alkohole:" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
-                    <Label Grid.Row="14" Grid.Column="1" Content="Marża niskobudżetowe:" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
-                    <Label Grid.Row="15" Grid.Column="1" Content="Napoje:" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
-                    
-                    <xctk:IntegerUpDown x:Name="UGMarza0" Grid.Column="2" Grid.Row="11" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge0}" DefaultValue="{Binding PropMenuMergeDict0}" />
-                    <xctk:IntegerUpDown x:Name="UGMarza1" Grid.Column="2" Grid.Row="12" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge1}" DefaultValue="{Binding PropMenuMergeDict1}" />
-                    <xctk:IntegerUpDown x:Name="UGMarza2" Grid.Column="2" Grid.Row="13" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge2}" DefaultValue="{Binding PropMenuMergeDict2}" />
-                    <xctk:IntegerUpDown x:Name="UGMarza3" Grid.Column="2" Grid.Row="14" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge3}" DefaultValue="{Binding PropMenuMergeDict3}" />
-                    <xctk:IntegerUpDown x:Name="UGMarza4" Grid.Column="2" Grid.Row="15" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge4}" DefaultValue="{Binding PropMenuMergeDict4}" />
+                    <Label Grid.Row="11" Grid.Column="1" Content="Marża gastronomia 8%   (%):" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
+                    <Label Grid.Row="12" Grid.Column="1" Content="Marża gastronomia 23%    (%):" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
+                    <Label Grid.Row="13" Grid.Column="1" Content="Marża Alkohole    (%):" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
+                    <Label Grid.Row="14" Grid.Column="1" Content="Marża niskobudżetowe    (%):" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
+                    <Label Grid.Row="15" Grid.Column="1" Content="Napoje    (%):" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
+
+                    <xctk:IntegerUpDown x:Name="UGMarza0" Grid.Column="2" Grid.Row="11" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge0}"/>
+                    <xctk:IntegerUpDown x:Name="UGMarza1" Grid.Column="2" Grid.Row="12" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge1}"/>
+                    <xctk:IntegerUpDown x:Name="UGMarza2" Grid.Column="2" Grid.Row="13" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge2}"/>
+                    <xctk:IntegerUpDown x:Name="UGMarza3" Grid.Column="2" Grid.Row="14" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge3}"/>
+                    <xctk:IntegerUpDown x:Name="UGMarza4" Grid.Column="2" Grid.Row="15" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge4}"/>
                                                                                          
                 </Grid>                                                                  
 

@@ -63,11 +63,11 @@ insert PropHallEquipmnet_Dictionary_Second (Things) values ('KRZES£A Z PULPITAMI
 insert PropExtraServices_Dictionary (ServiceType) values ('PARKING ( czêœæ nie dozorowana )');
 insert PropExtraServices_Dictionary (ServiceType) values ('PARKING ( czêœæ dozorowana )');
 
-insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a gastronomia 8%)',0.8);
-insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a gastronomia 23%)',0.8);
-insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a Alkohole)',0.8);
-insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a niskobud¿etowe)',0.8);
-insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Napoje)',0.8);
+insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a gastronomia 8%)',80);
+insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a gastronomia 23%)',80);
+insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a Alkohole)',80);
+insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a niskobud¿etowe)',60);
+insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Napoje)',50);
 
 insert PropMergeTypes_Dictionary (MergeType) values ('MGA8');
 insert PropMergeTypes_Dictionary (MergeType) values ('MGA23');
@@ -304,3 +304,8 @@ insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('
 
 insert into [VatList] (Vat) values ('8');
 insert into [VatList] (Vat) values ('23');
+
+update PropMenuGastronomicThings_Dictionary_First set Vat = '23' where MergeType = 'MALK'
+update PropMenuGastronomicThings_Dictionary_First set Vat = '23' where MergeType = 'MGA23'
+update PropMenuGastronomicThings_Dictionary_First set Vat = '8' where MergeType = 'MNIS'
+update PropMenuGastronomicThings_Dictionary_First set Vat = '8' where MergeType = 'MGA8'

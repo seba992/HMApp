@@ -47,7 +47,12 @@ namespace DiamondApp.ViewModels
         private decimal _secondTabSumBruttoValue;
         //3tab
         private List<string> _propMenuGastThingDict;
-        private List<PropMenuPosition> _propMenuPositions = new List<PropMenuPosition>(6); 
+        private List<PropMenuPosition> _propMenuPositions = new List<PropMenuPosition>(6);  // obiekt przechowujacy elementy uslug gastronomicznych
+        private List<decimal?> _thirdTabNettoPrice = new List<decimal?>(6);  // lista cen netto (tab3)
+        private List<PropMenuMerge> _propMenuMerges = new List<PropMenuMerge>(5);
+        private List<string> _defaultMerges = new List<string>(5);  // lista domyslnych marzy
+
+
         public AdminViewModel(int userId)
         {
             _ctx = new DiamondDBEntities();
@@ -1151,8 +1156,14 @@ namespace DiamondApp.ViewModels
             {
                 _propMenuPositions[0].TypeOfService = value;
                 RaisePropertyChanged("PropMenuTypeOfServ0");
+
+                // ustawienie ceny brutto dla danego produktu
+                PropMenuPosBrutto0 = SetMenuPosBrutto(value);
+                ThirdTabNettoPrice0 = SetThirdNettoPrice(value);
+                PropMenuPosVat0 = SetMenuPosVat(value);
             }
         }
+
         public string PropMenuTypeOfServ1
         {
             get { return _propMenuPositions[1].TypeOfService; }
@@ -1198,7 +1209,219 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuTypeOfServ5");
             }
         }
-        
+
+        public float? PropMenuPosBrutto0
+        {
+            get { return _propMenuPositions[0].BruttoPrice; }
+            set
+            {
+                _propMenuPositions[0].BruttoPrice = value;
+                RaisePropertyChanged("PropMenuPosBrutto0");
+            }
+        }
+        public float? PropMenuPosBrutto1
+        {
+            get { return _propMenuPositions[1].BruttoPrice; }
+            set
+            {
+                _propMenuPositions[1].BruttoPrice = value;
+                RaisePropertyChanged("PropMenuPosBrutto1");
+            }
+        }
+        public float? PropMenuPosBrutto2
+        {
+            get { return _propMenuPositions[2].BruttoPrice; }
+            set
+            {
+                _propMenuPositions[2].BruttoPrice = value;
+                RaisePropertyChanged("PropMenuPosBrutto2");
+            }
+        }
+        public float? PropMenuPosBrutto3
+        {
+            get { return _propMenuPositions[3].BruttoPrice; }
+            set
+            {
+                _propMenuPositions[3].BruttoPrice = value;
+                RaisePropertyChanged("PropMenuPosBrutto3");
+            }
+        }
+        public float? PropMenuPosBrutto4
+        {
+            get { return _propMenuPositions[4].BruttoPrice; }
+            set
+            {
+                _propMenuPositions[4].BruttoPrice = value;
+                RaisePropertyChanged("PropMenuPosBrutto4");
+            }
+        }
+        public float? PropMenuPosBrutto5
+        {
+            get { return _propMenuPositions[5].BruttoPrice; }
+            set
+            {
+                _propMenuPositions[5].BruttoPrice = value;
+                RaisePropertyChanged("PropMenuPosBrutto5");
+            }
+        }
+
+        public decimal? ThirdTabNettoPrice0
+        {
+            get { return _thirdTabNettoPrice[0]; }
+            set
+            {
+                _thirdTabNettoPrice[0] = value;
+                RaisePropertyChanged("ThirdTabNettoPrice0");
+            }
+        }
+        public decimal? ThirdTabNettoPrice1
+        {
+            get { return _thirdTabNettoPrice[1]; }
+            set
+            {
+                _thirdTabNettoPrice[1] = value;
+                RaisePropertyChanged("ThirdTabNettoPrice1");
+            }
+        }
+        public decimal? ThirdTabNettoPrice2
+        {
+            get { return _thirdTabNettoPrice[2]; }
+            set
+            {
+                _thirdTabNettoPrice[2] = value;
+                RaisePropertyChanged("ThirdTabNettoPrice2");
+            }
+        }
+        public decimal? ThirdTabNettoPrice3
+        {
+            get { return _thirdTabNettoPrice[3]; }
+            set
+            {
+                _thirdTabNettoPrice[3] = value;
+                RaisePropertyChanged("ThirdTabNettoPrice3");
+            }
+        }
+        public decimal? ThirdTabNettoPrice4
+        {
+            get { return _thirdTabNettoPrice[4]; }
+            set
+            {
+                _thirdTabNettoPrice[4] = value;
+                RaisePropertyChanged("ThirdTabNettoPrice4");
+            }
+        }
+        public decimal? ThirdTabNettoPrice5
+        {
+            get { return _thirdTabNettoPrice[5]; }
+            set
+            {
+                _thirdTabNettoPrice[5] = value;
+                RaisePropertyChanged("ThirdTabNettoPrice5");
+            }
+        }
+
+        public byte? PropMenuPosVat0
+        {
+            get { return _propMenuPositions[0].Vat; }
+            set
+            {
+                _propMenuPositions[0].Vat = value;
+                RaisePropertyChanged("PropMenuPosVat0");
+            }
+        }
+        public byte? PropMenuPosVat1
+        {
+            get { return _propMenuPositions[1].Vat; }
+            set
+            {
+                _propMenuPositions[1].Vat = value;
+                RaisePropertyChanged("PropMenuPosVat1");
+            }
+        }
+        public byte? PropMenuPosVat2
+        {
+            get { return _propMenuPositions[2].Vat; }
+            set
+            {
+                _propMenuPositions[2].Vat = value;
+                RaisePropertyChanged("PropMenuPosVat2");
+            }
+        }
+        public byte? PropMenuPosVat3
+        {
+            get { return _propMenuPositions[3].Vat; }
+            set
+            {
+                _propMenuPositions[3].Vat = value;
+                RaisePropertyChanged("PropMenuPosVat3");
+            }
+        }
+        public byte? PropMenuPosVat4
+        {
+            get { return _propMenuPositions[4].Vat; }
+            set
+            {
+                _propMenuPositions[4].Vat = value;
+                RaisePropertyChanged("PropMenuPosVat4");
+            }
+        }
+        public byte? PropMenuPosVat5
+        {
+            get { return _propMenuPositions[5].Vat; }
+            set
+            {
+                _propMenuPositions[5].Vat = value;
+                RaisePropertyChanged("PropMenuPosVat5");
+            }
+        }
+
+        public float? PropMenuMerge0
+        {
+            get { return _propMenuMerges[0].DefaultValue; }
+            set
+            {
+                _propMenuMerges[0].DefaultValue = value;
+                RaisePropertyChanged("PropMenuMerge0");            
+            }
+        }
+        public float? PropMenuMerge1
+        {
+            get { return _propMenuMerges[1].DefaultValue; }
+            set
+            {
+                _propMenuMerges[1].DefaultValue = value;
+                RaisePropertyChanged("PropMenuMerge1");
+            }
+        }
+        public float? PropMenuMerge2
+        {
+            get { return _propMenuMerges[2].DefaultValue; }
+            set
+            {
+                _propMenuMerges[2].DefaultValue = value;
+                RaisePropertyChanged("PropMenuMerge2");
+            }
+        }
+        public float? PropMenuMerge3
+        {
+            get { return _propMenuMerges[3].DefaultValue; }
+            set
+            {
+                _propMenuMerges[3].DefaultValue = value;
+                RaisePropertyChanged("PropMenuMerge3");
+            }
+        }
+        public float? PropMenuMerge4
+        {
+            get { return _propMenuMerges[4].DefaultValue; }
+            set
+            {
+                _propMenuMerges[4].DefaultValue = value;
+                RaisePropertyChanged("PropMenuMerge4");
+            }
+        }
+
+
         #endregion
 
 #region Commands
@@ -1250,6 +1473,15 @@ namespace DiamondApp.ViewModels
             var gastThingDict = (from gt in _ctx.PropMenuGastronomicThings_Dictionary_First
                 select gt.ThingName).ToList();
             PropMenuGastThingDict = gastThingDict;
+
+            // wypelnienie domyslnych marzy
+            var merges = (from m in _ctx.PropMenuMerge_Dictionary_First
+                select m).ToList();
+            PropMenuMerge0 = merges[0].Value;
+            PropMenuMerge1 = merges[1].Value;
+            PropMenuMerge2 = merges[2].Value;
+            PropMenuMerge3 = merges[3].Value;
+            PropMenuMerge4 = merges[4].Value;
         }
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
@@ -1472,6 +1704,7 @@ namespace DiamondApp.ViewModels
             }
         }
         private ICommand _editDictionaryCommand;
+
         public ICommand EditDictionaryCommand
         {
             get
@@ -1484,6 +1717,7 @@ namespace DiamondApp.ViewModels
             }
 
         }
+
         private bool CanEditDictionarExecute(object art)
         {
             return true;
@@ -1628,8 +1862,23 @@ namespace DiamondApp.ViewModels
             for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
                 _secondTabBruttoValue.Add(new decimal());
 
+            //PropMenuPositions
             for (int i = 0; i < _propMenuPositions.Capacity; i++)
                 _propMenuPositions.Add(new PropMenuPosition());
+
+            //ThirdTabNettoPriceList
+            for (int i = 0; i < _thirdTabNettoPrice.Capacity; i++)
+                _thirdTabNettoPrice.Add(new decimal?());
+
+            //PropMenuMerge
+            for (int i = 0; i < _propMenuMerges.Capacity; i++)
+                _propMenuMerges.Add(new PropMenuMerge());
+
+            //Default merges dictionary
+            for (int i = 0; i < _defaultMerges.Capacity; i++)
+                _defaultMerges.Add("");
+            
+            
         }
 
         // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)
@@ -1678,6 +1927,36 @@ namespace DiamondApp.ViewModels
             sum += SecondTabBruttoValue5;
 
             SecondTabSumBruttoValue = sum;
+        }
+
+
+        //tab3
+
+        // na podstawie nazwy produktu ustaw podstawowa stawke vat
+        private byte? SetMenuPosVat(string typeofservice)
+        {
+            var mvat = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
+                where typeofservice == s.ThingName
+                select s.Vat);
+            return mvat.Single();
+        }
+
+        // na podstawie nazwy produktu ustaw cene netto
+        private decimal? SetThirdNettoPrice(string typeofservice)
+        {
+            var thirdnetto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
+                        where typeofservice == s.ThingName
+                        select s.NettoMini);
+            return (decimal?)thirdnetto.Single();
+        }
+
+        // na podstawie nazwy produktu ustaw cene brutto
+        private float? SetMenuPosBrutto(string typeofservice)
+        {
+            float? vat = SetMenuPosVat(typeofservice);
+            var netto = SetThirdNettoPrice(typeofservice);
+            float? toret = (float?) netto + (float?)netto*vat.Value/100;
+            return toret;
         }
 #endregion
     }
