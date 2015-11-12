@@ -44,8 +44,9 @@ namespace DiamondApp.ViewModels
         private List<string> _vatList; // lista zawierajaca wartosci VAT
         private decimal _secondTabSumNettoValue;
         private decimal _secondTabSumBruttoValue;
-     
-
+        //3tab
+        private List<string> _propMenuGastThingDict;
+        private List<PropMenuPosition> _propMenuPositions = new List<PropMenuPosition>(6); 
         public AdminViewModel(int userId)
         {
             _ctx = new DiamondDBEntities();
@@ -1120,6 +1121,83 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        //tab 3
+        public List<string> PropMenuGastThingDict
+        {
+            get { return _propMenuGastThingDict; }
+            set
+            {
+                _propMenuGastThingDict = value;
+                RaisePropertyChanged("PropMenuGastThingDict");               
+            }
+        }
+
+        public List<PropMenuPosition> PropMenuPositions
+        {
+            get { return _propMenuPositions; }
+            set
+            {
+                _propMenuPositions = value; 
+                RaisePropertyChanged("PropMenuPositions");      
+            }
+
+        }
+
+        public string PropMenuTypeOfServ0
+        {
+            get { return _propMenuPositions[0].TypeOfService; }
+            set
+            {
+                _propMenuPositions[0].TypeOfService = value;
+                RaisePropertyChanged("PropMenuTypeOfServ0");
+            }
+        }
+        public string PropMenuTypeOfServ1
+        {
+            get { return _propMenuPositions[1].TypeOfService; }
+            set
+            {
+                _propMenuPositions[1].TypeOfService = value;
+                RaisePropertyChanged("PropMenuTypeOfServ1");
+            }
+        }
+        public string PropMenuTypeOfServ2
+        {
+            get { return _propMenuPositions[2].TypeOfService; }
+            set
+            {
+                _propMenuPositions[2].TypeOfService = value;
+                RaisePropertyChanged("PropMenuTypeOfServ2");
+            }
+        }
+        public string PropMenuTypeOfServ3
+        {
+            get { return _propMenuPositions[3].TypeOfService; }
+            set
+            {
+                _propMenuPositions[3].TypeOfService = value;
+                RaisePropertyChanged("PropMenuTypeOfServ3");
+            }
+        }
+        public string PropMenuTypeOfServ4
+        {
+            get { return _propMenuPositions[4].TypeOfService; }
+            set
+            {
+                _propMenuPositions[4].TypeOfService = value;
+                RaisePropertyChanged("PropMenuTypeOfServ4");
+            }
+        }
+        public string PropMenuTypeOfServ5
+        {
+            get { return _propMenuPositions[5].TypeOfService; }
+            set
+            {
+                _propMenuPositions[5].TypeOfService = value;
+                RaisePropertyChanged("PropMenuTypeOfServ5");
+            }
+        }
+        
         #endregion
 
 #region Commands
@@ -1166,7 +1244,11 @@ namespace DiamondApp.ViewModels
              select he.Vat).ToList();
             VatList = vat;
 
-
+            //tab3
+            // wypelnianie listy rzeczy gastro.
+            var gastThingDict = (from gt in _ctx.PropMenuGastronomicThings_Dictionary_First
+                select gt.ThingName).ToList();
+            PropMenuGastThingDict = gastThingDict;
         }
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
@@ -1504,7 +1586,7 @@ namespace DiamondApp.ViewModels
             }
         }
 
-        // wypelnianie zadeklarowanych pustych list
+        // wypelnianie zadeklarowanych pustych list 
         private void FillNeededList()
         {
             //PropHallEquipmentList
@@ -1522,23 +1604,26 @@ namespace DiamondApp.ViewModels
             //SecondTabBruttoValueList
             for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
                 _secondTabBruttoValue.Add(new decimal());
+
+            for (int i = 0; i < _propMenuPositions.Capacity; i++)
+                _propMenuPositions.Add(new PropMenuPosition());
         }
 
-        // obliczanie ceny netto na podstawie ceny brutto i vatu
+        // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)
         private decimal ComputeNettoPrice(float? value, float? vat)
         {
             return Math.Round(((decimal) value * 100 /(100 + (decimal) vat)), 2);
         }
 
         // obliczanie zsumowanej wartosci brutto na podstawie ceny brutto, ilosci i liczby dni
-        // nully sprawdzane musza byc przed wywolaniem metody
+        // nully sprawdzane musza byc przed wywolaniem metody (tab2)
         private decimal ComputeBruttoValue(float? bruttoPrice, int? amount, int? days)
         {
             return (decimal)bruttoPrice * (decimal)amount * (decimal)days;
         }
 
         // obliczanie zsumowanej wartosci netto na podstawie ceny netto, ilosci i liczby dni
-        // nully sprawdzane musza byc przed wywolaniem metody
+        // nully sprawdzane musza byc przed wywolaniem metody (tab2)
         private decimal ComputeNettoValue(decimal nettoPrice, int? amount, int? days)
         {
             return (decimal)nettoPrice * (decimal)amount * (decimal)days;
