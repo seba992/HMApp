@@ -5,7 +5,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
-        Title="AdminMainView" Height="630.171" Width="1060.164" Closed="Window_Closed">
+        Title="AdminMainView" Height="638" Width="1080" Closed="Window_Closed">
 
     <!--<Window.DataContext>
         <viewModels:AdminViewModel />
@@ -15,7 +15,7 @@
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
             <MenuItem Header="Menu" HorizontalAlignment="Left" Width="47">
                 <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" Command="{Binding CreateNewPropositionCommand}"/>
-                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
+                <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" Command="{Binding ChangePropositionCommand }"/>
                 <MenuItem Header="Zapisz do pdf" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
                 <MenuItem Header="Lista propozycji" HorizontalAlignment="Left" Click="VisibleElement" Margin="0" Command="{Binding ShowPropositionsCommand}"/>
                 <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
@@ -28,7 +28,7 @@
             </MenuItem>
         </Menu>
 
-        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1040" SelectedItem="PropositionsSeller" IsHitTestVisible="True" Visibility="Hidden">
+        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1040" SelectedValue="{Binding SelectedProposition}" IsHitTestVisible="True" Visibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
@@ -59,27 +59,103 @@
             </ListView.View>
         </ListView>
 
-        <ListView ItemsSource="{Binding UsersListGrid, Mode=TwoWay}" x:Name ="UserList" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1040" IsHitTestVisible="True" Visibility="Hidden">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="25" Header="Id" DisplayMemberBinding="{Binding UserId}" />
-                    <GridViewColumn Width="100" Header="Imię" DisplayMemberBinding="{Binding UserName}"  />
-                    <GridViewColumn Width="100" Header="Nazwisko" DisplayMemberBinding="{Binding UserSurname}"  />
-                    <GridViewColumn Width="100" Header="Nr telefonu" DisplayMemberBinding="{Binding UserPhoneNumber}"  />
-                    <GridViewColumn Width="100" Header="E-mail" DisplayMemberBinding="{Binding UserEmail}"  />
-                    <GridViewColumn Width="250" Header="Stanowisko" DisplayMemberBinding="{Binding UserPosition}"  />
-                    <GridViewColumn Width="100" Header="Typ konta" DisplayMemberBinding="{Binding UserAccountType}"  />
-                    <GridViewColumn Width="100" Header="Login" DisplayMemberBinding="{Binding UserLogin}"  />
-                    <GridViewColumn Width="80" Header="Edycja">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="{Binding UserId}" Padding="5,2"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid ItemsSource="{Binding UsersListGrid, Mode=TwoWay}" RowEditEnding="UserList_RowEditEnding" x:Name ="UserList" HorizontalAlignment="Left" Height="582" Margin="7,62,-94,-44" VerticalAlignment="Top" Width="1040" IsHitTestVisible="True" Visibility="Hidden" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding UserId}" Header="Id" />
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Imię" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Nazwisko">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UserSurname, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding UserSurname, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Nr Telefonu">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UserPhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding UserPhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="E-mail">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Stanowisko">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UserPosition, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding UserPosition, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Typ konta">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UserAccountType, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding UserAccountType, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Login">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
 
         <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1051">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
