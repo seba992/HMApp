@@ -21,6 +21,7 @@ namespace DiamondApp.EntityModel
         public Nullable<byte> Vat { get; set; }
         public Nullable<short> Amount { get; set; }
         public Nullable<short> Days { get; set; }
+        public string MergeType { get; set; }
     
         public virtual Proposition Proposition { get; set; }
     }

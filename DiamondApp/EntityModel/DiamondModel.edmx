@@ -158,6 +158,7 @@
           <Property Name="Vat" Type="tinyint" />
           <Property Name="Amount" Type="smallint" />
           <Property Name="Days" Type="smallint" />
+          <Property Name="MergeType" Type="varchar" MaxLength="5" />
         </EntityType>
         <EntityType Name="PropMergeTypes_Dictionary">
           <Key>
@@ -673,6 +674,7 @@
           <Property Name="Amount" Type="Int16" />
           <Property Name="Days" Type="Int16" />
           <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="PropMenuPosition" ToRole="Proposition" />
+          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PropMergeTypes_Dictionary">
           <Key>
@@ -1246,6 +1248,7 @@
           <EntitySetMapping Name="PropMenuPosition">
             <EntityTypeMapping TypeName="DiamondDBModel.PropMenuPosition">
               <MappingFragment StoreEntitySet="PropMenuPosition">
+                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
                 <ScalarProperty Name="TypeOfService" ColumnName="TypeOfService" />
