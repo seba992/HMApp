@@ -1,8 +1,18 @@
-﻿<Window x:Class="DiamondApp.Views.DictionaryView"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="DictionaryView" Height="300" Width="300">
+        xmlns:ViewModels="clr-namespace:DiamondApp.ViewModels" x:Class="DiamondApp.Views.DictionaryView"
+        Title="DictionaryView" Height="513" Width="813">
+
+    <Window.DataContext>
+        <ViewModels:DictionaryViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <DataGrid x:Name="Dictionary" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="459" Width="805"/>
+        <Label Content="Wybór słownika" HorizontalAlignment="Left" Margin="455,1,0,0" VerticalAlignment="Top" Height="23" Width="145"/>
+        <ComboBox x:Name="DictionaryList" HorizontalAlignment="Left" Margin="605,1,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="1.739,0.682" ItemsSource="{Binding ListTable}" SelectedItem="{Binding SelectTable}" SelectionChanged="Changeview"  IsSynchronizedWithCurrentItem="True"/>
+        <ComboBox x:Name="Ctyp" HorizontalAlignment="Left" Margin="290,0,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="LTyp" Content="Typ produktu" HorizontalAlignment="Left" Margin="144,-2,0,0" VerticalAlignment="Top" Width="126"/>
+
     </Grid>
 </Window>

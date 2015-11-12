@@ -20,7 +20,7 @@
                 <MenuItem Header="Lista propozycji" HorizontalAlignment="Left" Click="VisibleElement" Margin="0" Command="{Binding ShowPropositionsCommand}"/>
                 <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0"/>
             </MenuItem>
-            <MenuItem Header="Edytuj słownik"/>
+            <MenuItem Header="Edytuj słownik" Command="{Binding EditDictionaryCommand}"/>
             <MenuItem Header="Użytkownicy">
                 <MenuItem Header="Dodaj" Click="AddUser_Click"/>
                 <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement2" Command="{Binding ShowUsersCommand}" />

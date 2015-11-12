@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DiamondApp.EntityModel;
+using DiamondApp.ViewModels;
 
 namespace DiamondApp.Views
 {
@@ -22,6 +24,30 @@ namespace DiamondApp.Views
         public DictionaryView()
         {
             InitializeComponent();
+          
         }
+
+        public void Changeview(object sender, EventArgs e)
+        {
+
+            string test = DictionaryList.SelectionBoxItem.ToString();
+            switch (test)
+            {
+                case "Gastronomia": LTyp.Visibility = Visibility.Hidden;
+                                    Ctyp.Visibility = Visibility.Hidden;
+                                    Dictionary.ItemsSource = "{Binding Gastronomic}";
+                               
+                    //MessageBox.Show(Dictionary.ItemsSource.ToString());
+                                    break;
+                case "Pokoje": LTyp.Visibility = Visibility.Visible;
+                               Ctyp.Visibility = Visibility.Visible;
+                               Dictionary.ItemsSource = "{Binding HallPrices}";
+                               Dictionary.Items.Refresh();
+                               break;
+            }
+
+        }
+
     }
+  
 }

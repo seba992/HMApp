@@ -7,6 +7,7 @@ using System.Windows.Input;
 using DiamondApp.DataGridObjectClasses;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
+using DiamondApp.Views;
 
 namespace DiamondApp.ViewModels
 {
@@ -1337,7 +1338,8 @@ namespace DiamondApp.ViewModels
 
         //Edycja porpozycji
         private ICommand _changePropositionCommand;
-   
+       
+
         private bool CanChangePropositionExecute(object arg)
         {
             return true;
@@ -1387,7 +1389,28 @@ namespace DiamondApp.ViewModels
                 _saveFlag = false;
             }
         }
+        private ICommand _editDictionaryCommand;
+        public ICommand EditDictionaryCommand
+        {
+            get
+            {
+                if (_editDictionaryCommand == null) ;
+                {
+                    _editDictionaryCommand = new RelayCommand(EditDictionaryExecute, CanEditDictionarExecute);
+                }
+                return _editDictionaryCommand;
+            }
 
+        }
+        private bool CanEditDictionarExecute(object art)
+        {
+            return true;
+        }
+        private void EditDictionaryExecute(object obj)
+        {
+            DictionaryView edit = new DictionaryView();
+            edit.Show();
+        }
 
 #endregion
 
