@@ -32,7 +32,9 @@ namespace DiamondApp.ViewModels
         private PropHallEquipmentDiscount _propHallEquipmentDiscount = new PropHallEquipmentDiscount(); // tabela rabat w szczegory rezerwacji
         private List<PropHallEquipment> _propHallEquipment = new List<PropHallEquipment>(6);
         private List<decimal> _secondTabNettoPrice = new List<decimal>(6);
- 
+        private decimal _computePriceAfterDiscount;
+
+
         public AdminViewModel(int userId)
         {
             _ctx = new DiamondDBEntities();
@@ -246,6 +248,10 @@ namespace DiamondApp.ViewModels
 
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
+
+                // jeśli wybrana jest juz nazwa sali to ustaw 
+                if (PropositionReservDetailsHall!=null)
+                    PropHallEqThing0 = "Sala " + value;
             }
         }
 
@@ -318,7 +324,7 @@ namespace DiamondApp.ViewModels
 
                 // jeśli wybrana jest juz data poczatkowa wyswietl nazwe sali w tab2 poz1
                 if (PropositionReservDetailsStartData.HasValue)
-                    HallFullName0 = "Sala "+value;
+                    PropHallEqThing0 = "Sala "+value;
             }
         }
 
@@ -419,13 +425,13 @@ namespace DiamondApp.ViewModels
         }
 
 
-        public string HallFullName0
+        public string PropHallEqThing0
         {
             get { return _propHallEquipment[0].Things; }
             set
             {
                 _propHallEquipment[0].Things = value;
-                RaisePropertyChanged("HallFullName1");
+                RaisePropertyChanged("PropHallEqThing0");
             }
         }
         public string PropHallEqThing1
@@ -480,7 +486,78 @@ namespace DiamondApp.ViewModels
             set { _secondTabNettoPrice[0] = value; }
         }
 
-        #endregion
+        public decimal SecondTabNettoPrice1
+        {
+            get { return _secondTabNettoPrice[1]; }
+            set { _secondTabNettoPrice[1] = value; }
+        }
+
+        public decimal SecondTabNettoPrice2
+        {
+            get { return _secondTabNettoPrice[2]; }
+            set { _secondTabNettoPrice[2] = value; }
+        }
+
+        public decimal SecondTabNettoPrice3
+        {
+            get { return _secondTabNettoPrice[3]; }
+            set { _secondTabNettoPrice[3] = value; }
+        }
+
+        public decimal SecondTabNettoPrice4
+        {
+            get { return _secondTabNettoPrice[4]; }
+            set { _secondTabNettoPrice[4] = value; }
+        }
+
+
+        public float? SecondTabBruttoPrice0
+        {
+            get { return _propHallEquipment[0].BruttoPrice; }
+            set
+            {
+                _propHallEquipment[0].BruttoPrice = value;
+                RaisePropertyChanged("PropHallEqThing0");
+            }
+        }
+        public float? SecondTabBruttoPrice1
+        {
+            get { return _propHallEquipment[1].BruttoPrice; }
+            set
+            {
+                _propHallEquipment[1].BruttoPrice = value;
+                RaisePropertyChanged("PropHallEqThing1");
+            }
+        }
+        public float? SecondTabBruttoPrice2
+        {
+            get { return _propHallEquipment[2].BruttoPrice; }
+            set
+            {
+                _propHallEquipment[2].BruttoPrice = value;
+                RaisePropertyChanged("PropHallEqThing2");
+            }
+        }
+        public float? SecondTabBruttoPrice3
+        {
+            get { return _propHallEquipment[3].BruttoPrice; }
+            set
+            {
+                _propHallEquipment[3].BruttoPrice = value;
+                RaisePropertyChanged("PropHallEqThing3");
+            }
+        }
+        public float? SecondTabBruttoPrice4
+        {
+            get { return _propHallEquipment[4].BruttoPrice; }
+            set
+            {
+                _propHallEquipment[4].BruttoPrice = value;
+                RaisePropertyChanged("PropHallEqThing4");
+            }
+        }
+
+#endregion
 
 #region Commands
 
@@ -600,7 +677,6 @@ namespace DiamondApp.ViewModels
 
         //lista userow
         private ICommand _showUsersCommand;
-        private decimal _computePriceAfterDiscount;
 
         private bool CanShowUsersExecute(object arg)
         {
@@ -644,12 +720,6 @@ namespace DiamondApp.ViewModels
 
             _userListGrid = myQuerry;
         }
-
-        private void SelectUserById()
-        {
-
-        }
-
 
         private void CacheMethodWhichAllowRunsAdminWindowOnCreateNewPropositionTabControl()
         {
@@ -726,6 +796,7 @@ namespace DiamondApp.ViewModels
                 ComputePriceAfterDiscount = Math.Ceiling((decimal) PropHallEquipmentDiscountStandPrice -
                                                          ((decimal) PropHallEquipmentDiscountStandPrice*
                                                           (decimal) PropHallEquipmentDiscountValue/100));
+          //      SecondTabBruttoPrice2 = ComputePriceAfterDiscount;
             }
             else if (!PropHallEquipmentDiscountValue.HasValue)
             {

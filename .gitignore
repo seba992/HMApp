@@ -62,3 +62,4 @@ packages/repositories.config
 DiamondAppTests/bin/Debug/Xceed.Wpf.Toolkit.dll
 DiamondApp/ViewModels/AdminViewModel.cs.orig
 DiamondApp/Views/AdminMainView.xaml.cs.orig
+DiamondApp.v12.suo
