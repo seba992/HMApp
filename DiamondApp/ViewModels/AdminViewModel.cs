@@ -104,7 +104,6 @@ namespace DiamondApp.ViewModels
                 return _createNewPropositionCommand;
             }
         }
-
         public AddNewProposition AddNewProposition
         {
             get { return _addNewProposition; }
@@ -127,7 +126,6 @@ namespace DiamondApp.ViewModels
                 return _savePropositionCommand;
             }
         }
-
         public ICommand ShowPropositionsCommand
         {
             get
@@ -140,7 +138,6 @@ namespace DiamondApp.ViewModels
             }
 
         }
-
         public ICommand ShowUsersCommand
         {
             get
@@ -152,6 +149,18 @@ namespace DiamondApp.ViewModels
                 return _showUsersCommand;
             }
 
+        }
+
+        public ICommand ChangePropositionCommand
+        {
+            get
+            {
+                if (_changePropositionCommand == null)
+                {
+                    _changePropositionCommand = new RelayCommand(ChangePropositionExecute, CanChangePropositionExecute);
+                }
+                return _changePropositionCommand;
+            }
         }
 
         // wybrana propozycja do edycji
@@ -174,7 +183,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionClient");
             }
         }
-
         public string PropositionClientCompanyName
         {
             get { return _propositionClient.CompanyName; }
@@ -184,7 +192,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionClientCompanyName");
             }
         }
-
         public string PropositionClientCompanyAdress
         {
             get { return _propositionClient.CompanyAdress; }
@@ -194,7 +201,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionClientCompanyAdress");
             }
         }
-
         public string PropositionClientNip
         {
             get { return _propositionClient.NIP; }
@@ -204,7 +210,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionClientNip");
             }
         }
-
         public string PropositionClientCustromerFullName
         {
             get { return _propositionClient.CustomerFullName; }
@@ -215,7 +220,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionClientCustromerFullName");
             }
         }
-
         public string PropositionClientPhoneNum
         {
             get { return _propositionClient.PhoneNum; }
@@ -225,7 +229,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionClientPhoneNum");
             }
         }
-
         public string PropositionClientDecisingPerFullName
         {
             get { return _propositionClient.DecisingPersonFullName; }
@@ -235,7 +238,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionClientDecisingPerFullName");
             }
         }
-
         public string PropositionClientCustomerEmail
         {
             get { return _propositionClient.CustomerEmail; }
@@ -245,7 +247,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionClientCustomerEmail");
             }
         }
-
         public PropReservationDetails PropositionReservDetails
         {
             get { return _propositionReservDetails; }
@@ -255,7 +256,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionReservDetails");
             }
         }
-
         public DateTime? PropositionReservDetailsStartData
         {
             get { return _propositionReservDetails.StartData; }
@@ -285,7 +285,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("HallPrice");
             }
         }
-
         public DateTime? PropositionReservDetailsEndData
         {
             get { return _propositionReservDetails.EndData; }
@@ -295,7 +294,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionReservDetailsEndData");
             }
         }
-
         public TimeSpan? PropositionReservDetailsStartTime
         {
             get { return _propositionReservDetails.StartTime; }
@@ -305,7 +303,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionReservDetailsStartTime");
             }
         }
-
         public TimeSpan? PropositionReservDetailsEndTime
         {
             get { return _propositionReservDetails.EndTime; }
@@ -315,7 +312,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionReservDetailsEndTime");
             }
         }
-
         public int? PropositionReservDetailsPeopleNumber
         {
             get { return _propositionReservDetails.PeopleNumber; }
@@ -325,7 +321,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionReservDetailsPeopleNumber");
             }
         }  
-
         public string PropositionReservDetailsHall
         {
             get { return _propositionReservDetails.Hall; }
@@ -348,7 +343,6 @@ namespace DiamondApp.ViewModels
                     PropHallEqThing0 = "Sala "+value;
             }
         }
-
         public string PropositionReservDetailsHallSetting
         {
             get { return _propositionReservDetails.HallSetting; }
@@ -360,7 +354,6 @@ namespace DiamondApp.ViewModels
                 SetHallPrice();
             }
         }
-
         public List<string> HallList
         {
             get { return _hallList; }
@@ -370,7 +363,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("HallList");
             }
         }
-
         public List<string> HallSettingList
         {
             get { return _hallSettingList; }
@@ -380,7 +372,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("HallSettingList");
             }
         }
-
         public PropReservationDetails_Dictionary_HallCapacity HallCapacity
         {
             get { return _hallCapacity; }
@@ -390,7 +381,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("HallCapacity");
             }
         }
-
         public string EventMonth
         {
             get { return _eventMonth; }
@@ -400,7 +390,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("EventMonth");
             }
         }
-
         public PropHallEquipmentDiscount HallEquipmentDiscount
         {
             get { return _propHallEquipmentDiscount; }
@@ -410,7 +399,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("HallEquipmentDiscount");
             }
         }
-
         public float? PropHallEquipmentDiscountValue
         {
             get { return _propHallEquipmentDiscount.Discount; }
@@ -423,7 +411,6 @@ namespace DiamondApp.ViewModels
 
             }
         }
-
         public float? PropHallEquipmentDiscountStandPrice
         {
             get { return _propHallEquipmentDiscount.StandardPrice; }
@@ -435,7 +422,6 @@ namespace DiamondApp.ViewModels
                 SetDiscountPrice();
             }
         }
-
         public decimal ComputePriceAfterDiscount
         {
             get { return _computePriceAfterDiscount; }
@@ -445,7 +431,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("ComputePriceAfterDiscount");
             }
         }
-
 
         public string PropHallEqThing0
         {
@@ -783,7 +768,6 @@ namespace DiamondApp.ViewModels
                 }
             }
         }
-
         public int? PropHallEqAmount1
         {
             get { return _propHallEquipment[1].Amount; }
@@ -966,7 +950,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqDict2");    
             }
         }
-
         public List<string> VatList
         {
             get { return _vatList; }
@@ -976,7 +959,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("VatList");    
             }
         }
-
         public List<decimal> SecondTabNettoValue
         {
             get { return _secondTabNettoValue; }
@@ -1106,7 +1088,6 @@ namespace DiamondApp.ViewModels
                 ComputeSumNettoValue();
             }
         }
-
         public decimal SecondTabBruttoValue5
         {
             get { return _secondTabBruttoValue[5]; }
@@ -1188,8 +1169,6 @@ namespace DiamondApp.ViewModels
 
         }
 
-        
-
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
          * (utworzenie nowego rekordu w bazie) czy tylko aktualizacja
          * INPROGRESS*/
@@ -1198,7 +1177,6 @@ namespace DiamondApp.ViewModels
         {
             return true;
         }
-
         private void SavePropositionExecute(object obj)
         {
             if (_addNewProposition.IsCreated && !_saveFlag)
@@ -1348,12 +1326,10 @@ namespace DiamondApp.ViewModels
 
         //lista userow
         private ICommand _showUsersCommand;
-
         private bool CanShowUsersExecute(object arg)
         {
             return true;
         }
-
         private void ShowUsersExecute(object obj)
         {
             SelectAllUsers();
@@ -1361,20 +1337,7 @@ namespace DiamondApp.ViewModels
 
         //Edycja porpozycji
         private ICommand _changePropositionCommand;
-
-
-        public ICommand ChangePropositionCommand
-        {
-            get
-            {
-                if (_changePropositionCommand == null)
-                {
-                    _changePropositionCommand = new RelayCommand(ChangePropositionExecute, CanChangePropositionExecute);
-                }
-                return _changePropositionCommand;
-            }
-        }
-
+   
         private bool CanChangePropositionExecute(object arg)
         {
             return true;
@@ -1424,7 +1387,6 @@ namespace DiamondApp.ViewModels
                 _saveFlag = false;
             }
         }
-
 
 
 #endregion
@@ -1526,6 +1488,7 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        // Metoda ustawiajace cene sali po znizce + ustawiajaca cene brutto wybranej sali
         private void SetDiscountPrice()
         {
             if (PropHallEquipmentDiscountValue.HasValue && PropHallEquipmentDiscountStandPrice.HasValue)
@@ -1541,6 +1504,7 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        // wypelnianie zadeklarowanych pustych list
         private void FillNeededList()
         {
             //PropHallEquipmentList
@@ -1580,6 +1544,7 @@ namespace DiamondApp.ViewModels
             return (decimal)nettoPrice * (decimal)amount * (decimal)days;
         }
 
+        // obliczanie sumy netto (tab2)
         private void ComputeSumNettoValue()
         {
             decimal sum = 0;
@@ -1593,6 +1558,7 @@ namespace DiamondApp.ViewModels
             SecondTabSumNettoValue = sum;
         }
 
+        // obliczanie sumy brutto (tab2)
         private void ComputeBruttoSum()
         {
             decimal sum = 0;
