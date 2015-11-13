@@ -36,7 +36,6 @@ namespace DiamondApp.EntityModel
         public virtual DbSet<PropHallEquipmnet_Dictionary_First> PropHallEquipmnet_Dictionary_First { get; set; }
         public virtual DbSet<PropHallEquipmnet_Dictionary_Second> PropHallEquipmnet_Dictionary_Second { get; set; }
         public virtual DbSet<PropMenuMerge_Dictionary_First> PropMenuMerge_Dictionary_First { get; set; }
-        public virtual DbSet<PropMenuPosition> PropMenuPosition { get; set; }
         public virtual DbSet<PropMergeTypes_Dictionary> PropMergeTypes_Dictionary { get; set; }
         public virtual DbSet<PropPaymentSuggestions> PropPaymentSuggestions { get; set; }
         public virtual DbSet<PropPaymentSuggestions_Dictionary_First> PropPaymentSuggestions_Dictionary_First { get; set; }
@@ -48,11 +47,12 @@ namespace DiamondApp.EntityModel
         public virtual DbSet<PropReservationDetails_Dictionary_HallPrices> PropReservationDetails_Dictionary_HallPrices { get; set; }
         public virtual DbSet<PropMenuMerge> PropMenuMerge { get; set; }
         public virtual DbSet<AccountPrivileges> AccountPrivileges { get; set; }
-        public virtual DbSet<PropMenuGastronomicThings_Dictionary_First> PropMenuGastronomicThings_Dictionary_First { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Proposition> Proposition { get; set; }
         public virtual DbSet<PropClient> PropClient { get; set; }
         public virtual DbSet<PropReservationDetails_Dictionary_HallSettings> PropReservationDetails_Dictionary_HallSettings { get; set; }
+        public virtual DbSet<PropMenuGastronomicThings_Dictionary_First> PropMenuGastronomicThings_Dictionary_First { get; set; }
         public virtual DbSet<VatList> VatList { get; set; }
+        public virtual DbSet<PropMenuPosition> PropMenuPosition { get; set; }
     }
 }

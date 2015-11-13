@@ -17,7 +17,7 @@ namespace DiamondApp.EntityModel
         public int Id { get; set; }
         public string ThingName { get; set; }
         public Nullable<float> NettoMini { get; set; }
-        public Nullable<byte> Vat { get; set; }
+        public Nullable<float> Vat { get; set; }
         public string MergeType { get; set; }
         public string SpecificType { get; set; }
     }

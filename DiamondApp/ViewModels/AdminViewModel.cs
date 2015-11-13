@@ -42,17 +42,19 @@ namespace DiamondApp.ViewModels
         private List<decimal> _secondTabBruttoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab2)
         private decimal _computePriceAfterDiscount;
         private List<string> _propHallEqDict2; // lista zawierajaca wyposazenie dodatkowe sali (combobox tab 2)
-        private List<string> _vatList; // lista zawierajaca wartosci VAT
+        private List<float?> _vatList; // lista zawierajaca wartosci VAT
+
+
         private decimal _secondTabSumNettoValue;
         private decimal _secondTabSumBruttoValue;
         //3tab
         private List<string> _propMenuGastThingDict;
-        private List<PropMenuPosition> _propMenuPositions = new List<PropMenuPosition>(6);  // obiekt przechowujacy elementy uslug gastronomicznych
-        private List<decimal?> _thirdTabNettoPrice = new List<decimal?>(6);  // lista cen netto (tab3)
+        private List<PropMenuPosition> _propMenuPositions = new List<PropMenuPosition>(7);  // obiekt przechowujacy elementy uslug gastronomicznych
+        private List<decimal?> _thirdTabNettoPrice = new List<decimal?>(7);  // lista cen netto (tab3)
         private List<PropMenuMerge> _propMenuMerges = new List<PropMenuMerge>(5);
         private List<string> _defaultMerges = new List<string>(5);  // lista domyslnych marzy
-
-
+        private int crazyIterator = 0;
+        private bool gastro0, gastro1, gastro2, gasto3, gastro4, gastro5, gastro6;
         public AdminViewModel(int userId)
         {
             _ctx = new DiamondDBEntities();
@@ -957,15 +959,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqDict2");    
             }
         }
-        public List<string> VatList
-        {
-            get { return _vatList; }
-            set
-            {
-                _vatList = value;
-                RaisePropertyChanged("VatList");    
-            }
-        }
+
         public List<decimal> SecondTabNettoValue
         {
             get { return _secondTabNettoValue; }
@@ -1128,6 +1122,17 @@ namespace DiamondApp.ViewModels
         }
 
         //tab 3
+
+        public List<float?> VatList
+        {
+            get { return _vatList; }
+            set
+            {
+                _vatList = value;
+                RaisePropertyChanged("VatList");
+            }
+        }
+
         public List<string> PropMenuGastThingDict
         {
             get { return _propMenuGastThingDict; }
@@ -1154,13 +1159,35 @@ namespace DiamondApp.ViewModels
             get { return _propMenuPositions[0].TypeOfService; }
             set
             {
+                if (gastro0 == false)
+                {
+                    gastro0 = true;
+                    crazyIterator++;
+                }
+                if (gastro0 && value == null)
+                {
+                    crazyIterator--;
+                    gastro0 = false;
+                }
+                    
+
                 _propMenuPositions[0].TypeOfService = value;
                 RaisePropertyChanged("PropMenuTypeOfServ0");
 
+                // ustawienie ceny netto dla danego produktu
+                ThirdTabNettoPrice0 = SetThirdDefaultNettoPrice(value);
                 // ustawienie ceny brutto dla danego produktu
-                PropMenuPosBrutto0 = SetMenuPosBrutto(value);
-                ThirdTabNettoPrice0 = SetThirdNettoPrice(value);
-                PropMenuPosVat0 = SetMenuPosVat(value);
+                PropMenuPosBrutto0 = SetMenuPosDefaultBrutto(value);
+                
+                // ustawienie vat
+                PropMenuPosVat0 = SetMenuPosDefaultVat(value);
+
+                // ustawienie typu marzy
+                PropMenuPosMergeType0 = SetMenuPosDefaultMergeType(value);
+
+                // doliczenie marzy do konkretnych cen
+                ThirdTabNettoPrice0 = AddMergeToPrice(ThirdTabNettoPrice0, PropMenuPosMergeType0);
+                PropMenuPosBrutto0 = AddMergeToPrice(PropMenuPosBrutto0, PropMenuPosMergeType0);
             }
         }
 
@@ -1169,8 +1196,34 @@ namespace DiamondApp.ViewModels
             get { return _propMenuPositions[1].TypeOfService; }
             set
             {
+                if (gastro1 == false)
+                {
+                    gastro1 = true;
+                    crazyIterator++;
+                }
+                if (gastro1 && value == null)
+                {
+                    crazyIterator--;
+                    gastro1 = false;
+                }
+
                 _propMenuPositions[1].TypeOfService = value;
                 RaisePropertyChanged("PropMenuTypeOfServ1");
+
+                // ustawienie ceny netto dla danego produktu
+                ThirdTabNettoPrice1 = SetThirdDefaultNettoPrice(value);
+                // ustawienie ceny brutto dla danego produktu
+                PropMenuPosBrutto1 = SetMenuPosDefaultBrutto(value);
+
+                // ustawienie vat
+                PropMenuPosVat1 = SetMenuPosDefaultVat(value);
+
+                // ustawienie typu marzy
+                PropMenuPosMergeType1 = SetMenuPosDefaultMergeType(value);
+
+                // doliczenie marzy do konkretnych cen
+                ThirdTabNettoPrice1 = AddMergeToPrice(ThirdTabNettoPrice1, PropMenuPosMergeType1);
+                PropMenuPosBrutto1 = AddMergeToPrice(PropMenuPosBrutto1, PropMenuPosMergeType1);
             }
         }
         public string PropMenuTypeOfServ2
@@ -1178,8 +1231,34 @@ namespace DiamondApp.ViewModels
             get { return _propMenuPositions[2].TypeOfService; }
             set
             {
+                if (gastro2 == false)
+                {
+                    gastro2 = true;
+                    crazyIterator++;
+                }
+                if (gastro2 && value == null)
+                {
+                    crazyIterator--;
+                    gastro2 = false;
+                }
+
                 _propMenuPositions[2].TypeOfService = value;
                 RaisePropertyChanged("PropMenuTypeOfServ2");
+
+                // ustawienie ceny netto dla danego produktu
+                ThirdTabNettoPrice2 = SetThirdDefaultNettoPrice(value);
+                // ustawienie ceny brutto dla danego produktu
+                PropMenuPosBrutto2 = SetMenuPosDefaultBrutto(value);
+
+                // ustawienie vat
+                PropMenuPosVat2 = SetMenuPosDefaultVat(value);
+
+                // ustawienie typu marzy
+                PropMenuPosMergeType2 = SetMenuPosDefaultMergeType(value);
+
+                // doliczenie marzy do konkretnych cen
+                ThirdTabNettoPrice2 = AddMergeToPrice(ThirdTabNettoPrice2, PropMenuPosMergeType2);
+                PropMenuPosBrutto2 = AddMergeToPrice(PropMenuPosBrutto2, PropMenuPosMergeType2);
             }
         }
         public string PropMenuTypeOfServ3
@@ -1187,8 +1266,26 @@ namespace DiamondApp.ViewModels
             get { return _propMenuPositions[3].TypeOfService; }
             set
             {
+                if (value != null)
+                    crazyIterator++;
+
                 _propMenuPositions[3].TypeOfService = value;
                 RaisePropertyChanged("PropMenuTypeOfServ3");
+
+                // ustawienie ceny netto dla danego produktu
+                ThirdTabNettoPrice3 = SetThirdDefaultNettoPrice(value);
+                // ustawienie ceny brutto dla danego produktu
+                PropMenuPosBrutto3 = SetMenuPosDefaultBrutto(value);
+
+                // ustawienie vat
+                PropMenuPosVat3 = SetMenuPosDefaultVat(value);
+
+                // ustawienie typu marzy
+                PropMenuPosMergeType3 = SetMenuPosDefaultMergeType(value);
+
+                // doliczenie marzy do konkretnych cen
+                ThirdTabNettoPrice3 = AddMergeToPrice(ThirdTabNettoPrice3, PropMenuPosMergeType3);
+                PropMenuPosBrutto3 = AddMergeToPrice(PropMenuPosBrutto3, PropMenuPosMergeType3);
             }
         }
         public string PropMenuTypeOfServ4
@@ -1196,8 +1293,26 @@ namespace DiamondApp.ViewModels
             get { return _propMenuPositions[4].TypeOfService; }
             set
             {
+                if (value != null)
+                    crazyIterator++;
+
                 _propMenuPositions[4].TypeOfService = value;
                 RaisePropertyChanged("PropMenuTypeOfServ4");
+
+                // ustawienie ceny netto dla danego produktu
+                ThirdTabNettoPrice4 = SetThirdDefaultNettoPrice(value);
+                // ustawienie ceny brutto dla danego produktu
+                PropMenuPosBrutto4 = SetMenuPosDefaultBrutto(value);
+
+                // ustawienie vat
+                PropMenuPosVat4 = SetMenuPosDefaultVat(value);
+
+                // ustawienie typu marzy
+                PropMenuPosMergeType4 = SetMenuPosDefaultMergeType(value);
+
+                // doliczenie marzy do konkretnych cen
+                ThirdTabNettoPrice4 = AddMergeToPrice(ThirdTabNettoPrice4, PropMenuPosMergeType4);
+                PropMenuPosBrutto4 = AddMergeToPrice(PropMenuPosBrutto4, PropMenuPosMergeType4);
             }
         }
         public string PropMenuTypeOfServ5
@@ -1205,8 +1320,53 @@ namespace DiamondApp.ViewModels
             get { return _propMenuPositions[5].TypeOfService; }
             set
             {
+                if (value != null)
+                    crazyIterator++;
+
                 _propMenuPositions[5].TypeOfService = value;
                 RaisePropertyChanged("PropMenuTypeOfServ5");
+
+                // ustawienie ceny netto dla danego produktu
+                ThirdTabNettoPrice5 = SetThirdDefaultNettoPrice(value);
+                // ustawienie ceny brutto dla danego produktu
+                PropMenuPosBrutto5 = SetMenuPosDefaultBrutto(value);
+
+                // ustawienie vat
+                PropMenuPosVat5 = SetMenuPosDefaultVat(value);
+
+                // ustawienie typu marzy
+                PropMenuPosMergeType5 = SetMenuPosDefaultMergeType(value);
+
+                // doliczenie marzy do konkretnych cen
+                ThirdTabNettoPrice5 = AddMergeToPrice(ThirdTabNettoPrice5, PropMenuPosMergeType5);
+                PropMenuPosBrutto5 = AddMergeToPrice(PropMenuPosBrutto5, PropMenuPosMergeType5);
+            }
+        }
+        public string PropMenuTypeOfServ6
+        {
+            get { return _propMenuPositions[6].TypeOfService; }
+            set
+            {
+                if (value != null)
+                    crazyIterator++;
+
+                _propMenuPositions[6].TypeOfService = value;
+                RaisePropertyChanged("PropMenuTypeOfServ6");
+
+                // ustawienie ceny netto dla danego produktu
+                ThirdTabNettoPrice6 = SetThirdDefaultNettoPrice(value);
+                // ustawienie ceny brutto dla danego produktu
+                PropMenuPosBrutto6 = SetMenuPosDefaultBrutto(value);
+
+                // ustawienie vat
+                PropMenuPosVat6 = SetMenuPosDefaultVat(value);
+
+                // ustawienie typu marzy
+                PropMenuPosMergeType6 = SetMenuPosDefaultMergeType(value);
+
+                // doliczenie marzy do konkretnych cen
+                ThirdTabNettoPrice6 = AddMergeToPrice(ThirdTabNettoPrice6, PropMenuPosMergeType6);
+                PropMenuPosBrutto6 = AddMergeToPrice(PropMenuPosBrutto6, PropMenuPosMergeType6);
             }
         }
 
@@ -1264,6 +1424,15 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuPosBrutto5");
             }
         }
+        public float? PropMenuPosBrutto6
+        {
+            get { return _propMenuPositions[6].BruttoPrice; }
+            set
+            {
+                _propMenuPositions[6].BruttoPrice = value;
+                RaisePropertyChanged("PropMenuPosBrutto6");
+            }
+        }
 
         public decimal? ThirdTabNettoPrice0
         {
@@ -1319,59 +1488,346 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("ThirdTabNettoPrice5");
             }
         }
-
-        public byte? PropMenuPosVat0
+        public decimal? ThirdTabNettoPrice6
         {
-            get { return _propMenuPositions[0].Vat; }
+            get { return _thirdTabNettoPrice[6]; }
+            set
+            {
+                _thirdTabNettoPrice[6] = value;
+                RaisePropertyChanged("ThirdTabNettoPrice6");
+            }
+        }
+
+        public float? PropMenuPosVat0
+        {
+            get
+            {
+                if (_propMenuPositions[0].Vat == 8)
+                {
+                    return VatList[0];
+                }
+                return VatList[1];
+            }
             set
             {
                 _propMenuPositions[0].Vat = value;
                 RaisePropertyChanged("PropMenuPosVat0");
+                if (PropMenuTypeOfServ0 != null)
+                    ThirdTabNettoPrice0 = ComputeNettoPrice(PropMenuPosBrutto0, _propMenuPositions[0].Vat);
             }
         }
-        public byte? PropMenuPosVat1
+        public float? PropMenuPosVat1
         {
-            get { return _propMenuPositions[1].Vat; }
+            get
+            {
+                if (_propMenuPositions[1].Vat == 8)
+                {
+                    return VatList[0];
+                }
+                return VatList[1];
+            }
             set
             {
                 _propMenuPositions[1].Vat = value;
                 RaisePropertyChanged("PropMenuPosVat1");
+                if (PropMenuTypeOfServ1 != null)
+                    ThirdTabNettoPrice1 = ComputeNettoPrice(PropMenuPosBrutto1, _propMenuPositions[1].Vat);
             }
         }
-        public byte? PropMenuPosVat2
+        public float? PropMenuPosVat2
         {
-            get { return _propMenuPositions[2].Vat; }
+            get
+            {
+                if (_propMenuPositions[2].Vat == 8)
+                {
+                    return VatList[0];
+                }
+                return VatList[1];
+            }
             set
             {
                 _propMenuPositions[2].Vat = value;
                 RaisePropertyChanged("PropMenuPosVat2");
+                if (PropMenuTypeOfServ2 != null)
+                    ThirdTabNettoPrice2 = ComputeNettoPrice(PropMenuPosBrutto2, _propMenuPositions[2].Vat);
             }
         }
-        public byte? PropMenuPosVat3
+        public float? PropMenuPosVat3
         {
-            get { return _propMenuPositions[3].Vat; }
+            get
+            {
+                if (_propMenuPositions[3].Vat == 8)
+                {
+                    return VatList[0];
+                }
+                return VatList[1];
+            }
             set
             {
                 _propMenuPositions[3].Vat = value;
                 RaisePropertyChanged("PropMenuPosVat3");
+                if (PropMenuTypeOfServ3 != null)
+                    ThirdTabNettoPrice3 = ComputeNettoPrice(PropMenuPosBrutto3, _propMenuPositions[3].Vat);
             }
         }
-        public byte? PropMenuPosVat4
+        public float? PropMenuPosVat4
         {
-            get { return _propMenuPositions[4].Vat; }
+            get
+            {
+                if (_propMenuPositions[4].Vat == 8)
+                {
+                    return VatList[0];
+                }
+                return VatList[1];
+            }
             set
             {
                 _propMenuPositions[4].Vat = value;
                 RaisePropertyChanged("PropMenuPosVat4");
+                if (PropMenuTypeOfServ4 != null)
+                    ThirdTabNettoPrice4 = ComputeNettoPrice(PropMenuPosBrutto4, _propMenuPositions[4].Vat);
             }
         }
-        public byte? PropMenuPosVat5
+        public float? PropMenuPosVat5
         {
-            get { return _propMenuPositions[5].Vat; }
+            get
+            {
+                if (_propMenuPositions[5].Vat == 8)
+                {
+                    return VatList[0];
+                }
+                return VatList[1];
+            }
             set
             {
                 _propMenuPositions[5].Vat = value;
                 RaisePropertyChanged("PropMenuPosVat5");
+                if (PropMenuTypeOfServ5 != null)
+                    ThirdTabNettoPrice5 = ComputeNettoPrice(PropMenuPosBrutto5, _propMenuPositions[5].Vat);
+            }
+        }
+        public float? PropMenuPosVat6
+        {
+            get
+            {
+                if (_propMenuPositions[6].Vat == 8)
+                {
+                    return VatList[0];
+                }
+                return VatList[1];
+            }
+            set
+            {
+                _propMenuPositions[6].Vat = value;
+                RaisePropertyChanged("PropMenuPosVat6");
+                if (PropMenuTypeOfServ6 != null)
+                    ThirdTabNettoPrice6 = ComputeNettoPrice(PropMenuPosBrutto6, _propMenuPositions[6].Vat);
+            }
+        }
+
+        public string PropMenuPosMergeType0
+        {
+            get { return _propMenuPositions[0].MergeType; }
+            set
+            {
+                _propMenuPositions[0].MergeType = value;
+                RaisePropertyChanged("PropMenuTypeOfServ0");
+            }
+        }
+        public string PropMenuPosMergeType1
+        {
+            get { return _propMenuPositions[1].MergeType; }
+            set
+            {
+                _propMenuPositions[1].MergeType = value;
+                RaisePropertyChanged("PropMenuTypeOfServ1");
+            }
+        }
+        public string PropMenuPosMergeType2
+        {
+            get { return _propMenuPositions[2].MergeType; }
+            set
+            {
+                _propMenuPositions[2].MergeType = value;
+                RaisePropertyChanged("PropMenuTypeOfServ2");
+            }
+        }
+        public string PropMenuPosMergeType3
+        {
+            get { return _propMenuPositions[3].MergeType; }
+            set
+            {
+                _propMenuPositions[3].MergeType = value;
+                RaisePropertyChanged("PropMenuTypeOfServ3");
+            }
+        }
+        public string PropMenuPosMergeType4
+        {
+            get { return _propMenuPositions[4].MergeType; }
+            set
+            {
+                _propMenuPositions[4].MergeType = value;
+                RaisePropertyChanged("PropMenuTypeOfServ4");
+            }
+        }
+        public string PropMenuPosMergeType5
+        {
+            get { return _propMenuPositions[5].MergeType; }
+            set
+            {
+                _propMenuPositions[5].MergeType = value;
+                RaisePropertyChanged("PropMenuTypeOfServ5");
+            }
+        }
+        public string PropMenuPosMergeType6
+        {
+            get { return _propMenuPositions[6].MergeType; }
+            set
+            {
+                _propMenuPositions[6].MergeType = value;
+                RaisePropertyChanged("PropMenuTypeOfServ6");
+            }
+        }
+
+        public int? PropMenuPosAmount0
+        {
+            get { return _propMenuPositions[0].Amount; }
+            set
+            {
+                _propMenuPositions[0].Amount = value;
+                RaisePropertyChanged("PropMenuPosAmount0");
+
+            }
+        }
+        public int? PropMenuPosAmount1
+        {
+            get { return _propMenuPositions[1].Amount; }
+            set
+            {
+                _propMenuPositions[1].Amount = value;
+                RaisePropertyChanged("PropMenuPosAmount1");
+
+            }
+        }
+        public int? PropMenuPosAmount2
+        {
+            get { return _propMenuPositions[2].Amount; }
+            set
+            {
+                _propMenuPositions[2].Amount = value;
+                RaisePropertyChanged("PropMenuPosAmount2");
+                //jeśli jest cena netto i ilosc dni to oblicz sume
+
+            }
+        }
+        public int? PropMenuPosAmount3
+        {
+            get { return _propMenuPositions[3].Amount; }
+            set
+            {
+                _propMenuPositions[3].Amount = value;
+                RaisePropertyChanged("PropMenuPosAmount3");
+
+            }
+        }
+        public int? PropMenuPosAmount4
+        {
+            get { return _propMenuPositions[4].Amount; }
+            set
+            {
+                _propMenuPositions[4].Amount = value;
+                RaisePropertyChanged("PropMenuPosAmount4");
+
+            }
+        }
+        public int? PropMenuPosAmount5
+        {
+            get { return _propMenuPositions[5].Amount; }
+            set
+            {
+                _propMenuPositions[5].Amount = value;
+                RaisePropertyChanged("PropMenuPosAmount5");
+
+            }
+        }
+        public int? PropMenuPosAmount6
+        {
+            get { return _propMenuPositions[6].Amount; }
+            set
+            {
+                _propMenuPositions[6].Amount = value;
+                RaisePropertyChanged("PropMenuPosAmount6");
+
+            }
+        }
+
+        public int? PropMenuPosDays0
+        {
+            get { return _propMenuPositions[0].Days; }
+            set
+            {
+                _propMenuPositions[0].Days = value;
+                RaisePropertyChanged("PropMenuPosDays0");
+
+            }
+        }
+        public int? PropMenuPosDays1
+        {
+            get { return _propMenuPositions[1].Days; }
+            set
+            {
+                _propMenuPositions[1].Days = value;
+                RaisePropertyChanged("PropMenuPosDays1");
+
+            }
+        }
+        public int? PropMenuPosDays2
+        {
+            get { return _propMenuPositions[2].Days; }
+            set
+            {
+                _propMenuPositions[2].Days = value;
+                RaisePropertyChanged("PropMenuPosDays2");
+
+            }
+        }
+        public int? PropMenuPosDays3
+        {
+            get { return _propMenuPositions[3].Days; }
+            set
+            {
+                _propMenuPositions[3].Days = value;
+                RaisePropertyChanged("PropMenuPosDays3");
+
+            }
+        }
+        public int? PropMenuPosDays4
+        {
+            get { return _propMenuPositions[4].Days; }
+            set
+            {
+                _propMenuPositions[4].Days = value;
+                RaisePropertyChanged("PropMenuPosDays4");
+
+            }
+        }
+        public int? PropMenuPosDays5
+        {
+            get { return _propMenuPositions[5].Days; }
+            set
+            {
+                _propMenuPositions[5].Days = value;
+                RaisePropertyChanged("PropMenuPosDays5");
+
+            }
+        }
+        public int? PropMenuPosDays6
+        {
+            get { return _propMenuPositions[5].Days; }
+            set
+            {
+                _propMenuPositions[5].Days = value;
+                RaisePropertyChanged("PropMenuPosDays6");
             }
         }
 
@@ -1380,17 +1836,79 @@ namespace DiamondApp.ViewModels
             get { return _propMenuMerges[0].DefaultValue; }
             set
             {
+
+                // uaktualnienie ceny przedmiotu:
+                // obecna wyswitlana cena brutto i netto jest cena wraz z marza
+                // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
+                // a nastepnie dodac obecna (value)
                 _propMenuMerges[0].DefaultValue = value;
-                RaisePropertyChanged("PropMenuMerge0");            
+                RaisePropertyChanged("PropMenuMerge0");
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[0].MergeType == PropMenuPosMergeType0)
+                {
+                    
+                }
+                    
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[0].MergeType == PropMenuPosMergeType1)
+                    SubUpdateValueService0();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[0].MergeType == PropMenuPosMergeType2)
+                    SubUpdateValueService0();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[0].MergeType == PropMenuPosMergeType3)
+                    SubUpdateValueService0();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[0].MergeType == PropMenuPosMergeType4)
+                    SubUpdateValueService0();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[0].MergeType == PropMenuPosMergeType5)
+                    SubUpdateValueService0();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[0].MergeType == PropMenuPosMergeType6)
+                    SubUpdateValueService0();
             }
         }
+
+
         public float? PropMenuMerge1
         {
             get { return _propMenuMerges[1].DefaultValue; }
             set
             {
+                // uaktualnienie ceny przedmiotu:
+                // obecna wyswitlana cena brutto i netto jest cena wraz z marza
+                // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
+                // a nastepnie dodac obecna (value)
+
+
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType0)
+                    SubUpdateValueService1();
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType1)
+                    SubUpdateValueService1();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType2)
+                    SubUpdateValueService1();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType3)
+                    SubUpdateValueService1();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType4)
+                    SubUpdateValueService1();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType5)
+                    SubUpdateValueService1();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType6)
+                    SubUpdateValueService1();
+
                 _propMenuMerges[1].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge1");
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType0)
+                    AddUpdateValueService1();
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType1)
+                    AddUpdateValueService1();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType2)
+                    AddUpdateValueService1();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType3)
+                    AddUpdateValueService1();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType4)
+                    AddUpdateValueService1();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType5)
+                    AddUpdateValueService1();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[1].MergeType == PropMenuPosMergeType6)
+                    AddUpdateValueService1();
             }
         }
         public float? PropMenuMerge2
@@ -1398,8 +1916,44 @@ namespace DiamondApp.ViewModels
             get { return _propMenuMerges[2].DefaultValue; }
             set
             {
+                // uaktualnienie ceny przedmiotu:
+                // obecna wyswitlana cena brutto i netto jest cena wraz z marza
+                // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
+                // a nastepnie dodac obecna (value)
+
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType0)
+                    SubUpdateValueService2();
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType1)
+                    SubUpdateValueService2();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType2)
+                    SubUpdateValueService2();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType3)
+                    SubUpdateValueService2();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType4)
+                    SubUpdateValueService2();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType5)
+                    SubUpdateValueService2();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType6)
+                    SubUpdateValueService2();
+
                 _propMenuMerges[2].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge2");
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType0)
+                    AddUpdateValueService2();
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType1)
+                    AddUpdateValueService2();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType2)
+                    AddUpdateValueService2();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType3)
+                    AddUpdateValueService2();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType4)
+                    AddUpdateValueService2();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType5)
+                    AddUpdateValueService2();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[2].MergeType == PropMenuPosMergeType6)
+                    AddUpdateValueService2();
             }
         }
         public float? PropMenuMerge3
@@ -1407,8 +1961,43 @@ namespace DiamondApp.ViewModels
             get { return _propMenuMerges[3].DefaultValue; }
             set
             {
+                // uaktualnienie ceny przedmiotu:
+                // obecna wyswitlana cena brutto i netto jest cena wraz z marza
+                // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
+                // a nastepnie dodac obecna (value)
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType0)
+                    SubUpdateValueService3();
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType1)
+                    SubUpdateValueService3();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType2)
+                    SubUpdateValueService3();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType3)
+                    SubUpdateValueService3();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType4)
+                    SubUpdateValueService3();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType5)
+                    SubUpdateValueService3();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType6)
+                    SubUpdateValueService3();
+
                 _propMenuMerges[3].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge3");
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType0)
+                    AddUpdateValueService3();
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType1)
+                    AddUpdateValueService3();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType2)
+                    AddUpdateValueService3();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType3)
+                    AddUpdateValueService3();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType4)
+                    AddUpdateValueService3();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType5)
+                    AddUpdateValueService3();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[3].MergeType == PropMenuPosMergeType6)
+                    AddUpdateValueService3();
             }
         }
         public float? PropMenuMerge4
@@ -1416,8 +2005,136 @@ namespace DiamondApp.ViewModels
             get { return _propMenuMerges[4].DefaultValue; }
             set
             {
+                // uaktualnienie ceny przedmiotu:
+                // obecna wyswitlana cena brutto i netto jest cena wraz z marza
+                // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
+                // a nastepnie dodac obecna (value)
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType0)
+                    SubUpdateValueService4();
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType1)
+                    SubUpdateValueService4();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType2)
+                    SubUpdateValueService4();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType3)
+                    SubUpdateValueService4();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType4)
+                    SubUpdateValueService4();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType5)
+                    SubUpdateValueService4();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType6)
+                    SubUpdateValueService4();
+
                 _propMenuMerges[4].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge4");
+
+                if (PropMenuTypeOfServ0 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType0)
+                    AddUpdateValueService4();
+                if (PropMenuTypeOfServ1 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType1)
+                    AddUpdateValueService4();
+                if (PropMenuTypeOfServ2 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType2)
+                    AddUpdateValueService4();
+                if (PropMenuTypeOfServ3 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType3)
+                    AddUpdateValueService4();
+                if (PropMenuTypeOfServ4 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType4)
+                    AddUpdateValueService4();
+                if (PropMenuTypeOfServ5 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType5)
+                    AddUpdateValueService4();
+                if (PropMenuTypeOfServ6 != null && _propMenuMerges[4].MergeType == PropMenuPosMergeType6)
+                    AddUpdateValueService4();
+            }
+        }
+
+        private void SubUpdateValueService0()
+        {
+            PropMenuPosBrutto0 = SubMergeToPrice(PropMenuPosBrutto0, PropMenuPosMergeType0);
+            ThirdTabNettoPrice0 = SubMergeToPrice(ThirdTabNettoPrice0, PropMenuPosMergeType0);
+        }
+
+        private void AddUpdateValueService0()
+        {
+            PropMenuPosBrutto0 = AddMergeToPrice(PropMenuPosBrutto0, PropMenuPosMergeType0);
+            ThirdTabNettoPrice0 = AddMergeToPrice(ThirdTabNettoPrice0, PropMenuPosMergeType0);
+        }
+
+        private void SubUpdateValueService1()
+        {
+            PropMenuPosBrutto1 = SubMergeToPrice(PropMenuPosBrutto1, PropMenuPosMergeType1);
+            ThirdTabNettoPrice1 = SubMergeToPrice(ThirdTabNettoPrice1, PropMenuPosMergeType1);
+        }
+
+        private void AddUpdateValueService1()
+        {
+            PropMenuPosBrutto1 = AddMergeToPrice(PropMenuPosBrutto1, PropMenuPosMergeType1);
+            ThirdTabNettoPrice1 = AddMergeToPrice(ThirdTabNettoPrice1, PropMenuPosMergeType1);
+        }
+        private void SubUpdateValueService2()
+        {
+            PropMenuPosBrutto2 = SubMergeToPrice(PropMenuPosBrutto2, PropMenuPosMergeType2);
+            ThirdTabNettoPrice2 = SubMergeToPrice(ThirdTabNettoPrice2, PropMenuPosMergeType2);
+        }
+
+        private void AddUpdateValueService2()
+        {
+            PropMenuPosBrutto2 = AddMergeToPrice(PropMenuPosBrutto2, PropMenuPosMergeType2);
+            ThirdTabNettoPrice2 = AddMergeToPrice(ThirdTabNettoPrice2, PropMenuPosMergeType2);
+        }
+
+        private void SubUpdateValueService3()
+        {
+            PropMenuPosBrutto3 = SubMergeToPrice(PropMenuPosBrutto3, PropMenuPosMergeType3);
+            ThirdTabNettoPrice3 = SubMergeToPrice(ThirdTabNettoPrice3, PropMenuPosMergeType3);
+        }
+
+        private void AddUpdateValueService3()
+        {
+            PropMenuPosBrutto3 = AddMergeToPrice(PropMenuPosBrutto3, PropMenuPosMergeType3);
+            ThirdTabNettoPrice3 = AddMergeToPrice(ThirdTabNettoPrice3, PropMenuPosMergeType3);
+        }
+
+        private void SubUpdateValueService4()
+        {
+            PropMenuPosBrutto4 = SubMergeToPrice(PropMenuPosBrutto4, PropMenuPosMergeType4);
+            ThirdTabNettoPrice4 = SubMergeToPrice(ThirdTabNettoPrice4, PropMenuPosMergeType4);
+        }
+
+        private void AddUpdateValueService4()
+        {
+            PropMenuPosBrutto4 = AddMergeToPrice(PropMenuPosBrutto4, PropMenuPosMergeType4);
+            ThirdTabNettoPrice4 = AddMergeToPrice(ThirdTabNettoPrice4, PropMenuPosMergeType4);
+        }
+
+        private void SubUpdateValueService5()
+        {
+            PropMenuPosBrutto5 = SubMergeToPrice(PropMenuPosBrutto5, PropMenuPosMergeType5);
+            ThirdTabNettoPrice5 = SubMergeToPrice(ThirdTabNettoPrice5, PropMenuPosMergeType5);
+        }
+
+        private void AddUpdateValueService5()
+        {
+            PropMenuPosBrutto5 = AddMergeToPrice(PropMenuPosBrutto5, PropMenuPosMergeType5);
+            ThirdTabNettoPrice5 = AddMergeToPrice(ThirdTabNettoPrice5, PropMenuPosMergeType5);
+        }
+
+        private void SubUpdateValueService6()
+        {
+            PropMenuPosBrutto6 = SubMergeToPrice(PropMenuPosBrutto6, PropMenuPosMergeType6);
+            ThirdTabNettoPrice6 = SubMergeToPrice(ThirdTabNettoPrice6, PropMenuPosMergeType6);
+        }
+
+        private void AddUpdateValueService6()
+        {
+            PropMenuPosBrutto6 = AddMergeToPrice(PropMenuPosBrutto6, PropMenuPosMergeType6);
+            ThirdTabNettoPrice6 = AddMergeToPrice(ThirdTabNettoPrice6, PropMenuPosMergeType6);
+        }
+
+        public List<PropMenuMerge> PropMenuMerges
+        {
+            get { return _propMenuMerges; }
+            set
+            {
+                _propMenuMerges = value;
+                RaisePropertyChanged("PropMenuMerges");
             }
         }
 
@@ -1482,6 +2199,21 @@ namespace DiamondApp.ViewModels
             PropMenuMerge2 = merges[2].Value;
             PropMenuMerge3 = merges[3].Value;
             PropMenuMerge4 = merges[4].Value;
+
+            _propMenuMerges[0].MergeName = merges[0].MergeName;
+            _propMenuMerges[1].MergeName = merges[1].MergeName;
+            _propMenuMerges[2].MergeName = merges[2].MergeName;
+            _propMenuMerges[3].MergeName = merges[3].MergeName;
+            _propMenuMerges[4].MergeName = merges[4].MergeName;
+
+            var mergetype = (from m in _ctx.PropMergeTypes_Dictionary
+                select m).ToList();
+            _propMenuMerges[0].MergeType = mergetype[0].MergeType;
+            _propMenuMerges[1].MergeType = mergetype[1].MergeType;
+            _propMenuMerges[2].MergeType = mergetype[2].MergeType;
+            _propMenuMerges[3].MergeType = mergetype[3].MergeType;
+            _propMenuMerges[4].MergeType = mergetype[4].MergeType;
+
         }
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
@@ -1873,6 +2605,7 @@ namespace DiamondApp.ViewModels
             //PropMenuMerge
             for (int i = 0; i < _propMenuMerges.Capacity; i++)
                 _propMenuMerges.Add(new PropMenuMerge());
+       //     FillPropMenuMergeList(_propMenuMerges);
 
             //Default merges dictionary
             for (int i = 0; i < _defaultMerges.Capacity; i++)
@@ -1881,7 +2614,12 @@ namespace DiamondApp.ViewModels
             
         }
 
-        // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)
+//        private void FillPropMenuMergeList(List<PropMenuMerge> propMenuMerges)
+//        {
+//            throw new NotImplementedException();
+//        }
+
+        // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)PropMenuMerge0
         private decimal ComputeNettoPrice(float? value, float? vat)
         {
             return Math.Round(((decimal) value * 100 /(100 + (decimal) vat)), 2);
@@ -1933,7 +2671,7 @@ namespace DiamondApp.ViewModels
         //tab3
 
         // na podstawie nazwy produktu ustaw podstawowa stawke vat
-        private byte? SetMenuPosVat(string typeofservice)
+        private float? SetMenuPosDefaultVat(string typeofservice)
         {
             var mvat = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
                 where typeofservice == s.ThingName
@@ -1942,7 +2680,7 @@ namespace DiamondApp.ViewModels
         }
 
         // na podstawie nazwy produktu ustaw cene netto
-        private decimal? SetThirdNettoPrice(string typeofservice)
+        private decimal? SetThirdDefaultNettoPrice(string typeofservice)
         {
             var thirdnetto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
                         where typeofservice == s.ThingName
@@ -1951,11 +2689,66 @@ namespace DiamondApp.ViewModels
         }
 
         // na podstawie nazwy produktu ustaw cene brutto
-        private float? SetMenuPosBrutto(string typeofservice)
+        private float? SetMenuPosDefaultBrutto(string typeofservice)
         {
-            float? vat = SetMenuPosVat(typeofservice);
-            var netto = SetThirdNettoPrice(typeofservice);
+            float? vat = SetMenuPosDefaultVat(typeofservice);
+            var netto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
+                where typeofservice == s.ThingName
+                select s.NettoMini).Single();
             float? toret = (float?) netto + (float?)netto*vat.Value/100;
+            return toret;
+        }
+
+        // na podstawie nazwy produktu ustaw do domyslny typ marzy
+        private string SetMenuPosDefaultMergeType(string typeofservice)
+        {
+            var mt = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
+                where typeofservice == s.ThingName
+                select s.MergeType).Single();
+            return mt;
+        }
+
+        // na podstawie domyslnej ceny (netto lub brutto) dodaj marze na podstawie odpowiedniego typu
+        private decimal? AddMergeToPrice(decimal? price, string mergeType)
+        {
+            var mergeValue =
+                _propMenuMerges.Where(x => x.MergeType == mergeType)
+                    .Select((x) => new { x = x.DefaultValue })
+                    .Single();
+            var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
+            return toret;
+        }
+
+        // przeciazona powyzsza metoda
+        private float? AddMergeToPrice(float? price, string mergeType)
+        {
+            var mergeValue =
+                _propMenuMerges.Where(x => x.MergeType == mergeType)
+                    .Select((x) => new { x = x.DefaultValue })
+                    .Single();
+            var toret = price + (price * mergeValue.x / 100);
+            return toret;
+        }
+
+        // na podstawie domyslnej ceny (netto lub brutto) dodaj marze na podstawie odpowiedniego typu
+        private decimal? SubMergeToPrice(decimal? price, string mergeType)
+        {
+            var mergeValue =
+                _propMenuMerges.Where(x => x.MergeType == mergeType)
+                    .Select((x) => new { x = x.DefaultValue })
+                    .Single();
+            var toret = price/(1 + (decimal?)mergeValue.x /100);
+            return toret;
+        }
+
+        // przeciazona powyzsza metoda
+        private float? SubMergeToPrice(float? price, string mergeType)
+        {
+            var mergeValue =
+                _propMenuMerges.Where(x => x.MergeType == mergeType)
+                    .Select((x) => new { x = x.DefaultValue })
+                    .Single();
+            var toret = price / (1 + mergeValue.x / 100);
             return toret;
         }
 #endregion

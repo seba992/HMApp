@@ -15,6 +15,6 @@ namespace DiamondApp.EntityModel
     public partial class VatList
     {
         public int Id { get; set; }
-        public string Vat { get; set; }
+        public Nullable<float> Vat { get; set; }
     }
 }

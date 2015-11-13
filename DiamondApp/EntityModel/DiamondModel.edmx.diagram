@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipmnet_Dictionary_First" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipmnet_Dictionary_Second" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuMerge_Dictionary_First" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="28.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMergeTypes_Dictionary" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions" Width="1.5" PointX="7.5" PointY="31.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions_Dictionary_First" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
@@ -28,7 +27,6 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallPrices" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuMerge" Width="1.5" PointX="7.5" PointY="39" />
         <EntityTypeShape EntityType="DiamondDBModel.AccountPrivileges" Width="1.5" PointX="0.75" PointY="19.5" />
-        <EntityTypeShape EntityType="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First" Width="1.5" PointX="10.375" PointY="8.75" />
         <EntityTypeShape EntityType="DiamondDBModel.Users" Width="1.5" PointX="3" PointY="18.625" />
         <AssociationConnector Association="DiamondDBModel.FK__Users__AccountTy__4D94879B" />
         <EntityTypeShape EntityType="DiamondDBModel.Proposition" Width="1.5" PointX="5.25" PointY="18.25" />
@@ -39,14 +37,16 @@
         <AssociationConnector Association="DiamondDBModel.FK_PropHallEquipment_Proposition" />
         <AssociationConnector Association="DiamondDBModel.FK__PropHallE__Id_pr__47DBAE45" />
         <AssociationConnector Association="DiamondDBModel.FK__PropMenuM__Id_pr__48CFD27E" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" />
         <AssociationConnector Association="DiamondDBModel.FK__Propositi__Id_us__1FCDBCEB" />
         <AssociationConnector Association="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" />
         <AssociationConnector Association="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" />
         <EntityTypeShape EntityType="DiamondDBModel.PropClient" Width="1.875" PointX="7.5" PointY="9.875" />
         <AssociationConnector Association="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" />
         <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallSettings" Width="1.5" PointX="10.375" PointY="11.75" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First" Width="1.5" PointX="10.375" PointY="8.75" />
         <EntityTypeShape EntityType="DiamondDBModel.VatList" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="25.875" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
