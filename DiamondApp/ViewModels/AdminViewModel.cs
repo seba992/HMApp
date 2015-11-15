@@ -2919,7 +2919,7 @@ namespace DiamondApp.ViewModels
         {
             get
             {
-                if (_editDictionaryCommand == null) ;
+                if (_editDictionaryCommand == null)
                 {
                     _editDictionaryCommand = new RelayCommand(EditDictionaryExecute, CanEditDictionarExecute);
                 }

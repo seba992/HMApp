@@ -126,7 +126,7 @@
           <Property Name="NettoMini" Type="real" />
           <Property Name="Vat" Type="real" />
           <Property Name="MergeType" Type="varchar" MaxLength="5" />
-          <Property Name="SpecificType" Type="varchar" MaxLength="4" />
+          <Property Name="SpecificType" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="PropMenuMerge">
           <Key>
@@ -441,7 +441,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__AccountTy__4D94879B">
+        <Association Name="FK__Users__AccountTy__5165187F">
           <End Role="AccountPrivileges" Type="Self.AccountPrivileges" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -541,7 +541,7 @@
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__AccountTy__4D94879B" Association="Self.FK__Users__AccountTy__4D94879B">
+          <AssociationSet Name="FK__Users__AccountTy__5165187F" Association="Self.FK__Users__AccountTy__5165187F">
             <End Role="AccountPrivileges" EntitySet="AccountPrivileges" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -1035,7 +1035,7 @@
           <Property Name="NettoMini" Type="Single" />
           <Property Name="Vat" Type="Single" />
           <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="SpecificType" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="SpecificType" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="VatList">
           <Key>
