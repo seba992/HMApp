@@ -28,7 +28,7 @@
             </MenuItem>
         </Menu>
 
-        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="536" Margin="7,62,0,0" VerticalAlignment="Top" Width="1055" SelectedValue="{Binding SelectedProposition}" IsHitTestVisible="True">
+        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="536" Margin="7,62,0,0" VerticalAlignment="Top" Width="1055" SelectedValue="{Binding SelectedProposition}" IsHitTestVisible="True" Visibility="Hidden">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
@@ -157,10 +157,10 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1061" Visibility="Hidden">
+        <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1061">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
 
-                <Grid Background="#FFE5E5E5" Margin="0,0,0,-2">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30" />
                         <RowDefinition Height="60" />
@@ -376,9 +376,9 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="ThirdGrid" Header="USŁUGI GASTRONOMICZNE">
-                <Grid Background="#FFE5E5E5" Height="525" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="15" />
+                        <RowDefinition Height="15" /> 
                         <RowDefinition Height="36" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
