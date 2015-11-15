@@ -1,18 +1,280 @@
-﻿<Window
+﻿<Window x:Class="DiamondApp.Views.DictionaryView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:ViewModels="clr-namespace:DiamondApp.ViewModels" x:Class="DiamondApp.Views.DictionaryView"
+        xmlns:ViewModels="clr-namespace:DiamondApp.ViewModels" 
         Title="DictionaryView" Height="513" Width="813">
-
+    
     <Window.DataContext>
         <ViewModels:DictionaryViewModel/>
     </Window.DataContext>
+
+
     <Grid>
-        <DataGrid x:Name="Dictionary" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="459" Width="805"/>
+        <DataGrid x:Name="GstronomicGrid" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="459" Width="805" RowEditEnding="RowEditGstronomic" ItemsSource="{Binding Gastronomic}" AutoGenerateColumns="False" Visibility="Hidden">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Nazwa" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Netto" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NettoMini, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding NettoMini, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn IsReadOnly="False" Header="Vat" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Typ marży" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Typ produktu" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
+        </DataGrid>
+
+        <DataGrid x:Name="HallGrid" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="459" Width="805" RowEditEnding="RowEditHall" ItemsSource="{Binding HallPrices}" AutoGenerateColumns="False" Visibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
+
+            <DataGridTemplateColumn IsReadOnly="False" Header="Sala" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Hall, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate>
+                            <TextBox Text="{Binding Hall, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTemplateColumn IsReadOnly="False" Header="Styczeń" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                            <TextBlock Text="{Binding January, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate>
+                            <TextBox Text="{Binding January, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTemplateColumn IsReadOnly="False" Header="Luty" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                            <TextBlock Text="{Binding Febuary, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate>
+                            <TextBox Text="{Binding Febuary, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTemplateColumn IsReadOnly="False" Header="Marzec" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                            <TextBlock Text="{Binding March, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate>
+                            <TextBox Text="{Binding March, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
+
+            <DataGridTemplateColumn IsReadOnly="False" Header="Kwiecień" >
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                            <TextBlock Text="{Binding April, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn.CellEditingTemplate>
+                    <DataTemplate>
+                            <TextBox Text="{Binding April, UpdateSourceTrigger=PropertyChanged}" />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellEditingTemplate>
+            </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Maj" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding May, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding May, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Czerwiec" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding June, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding June, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Lipiec" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding July, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding July, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Sierpień" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding August, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding August, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Wrzesień" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding September, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding September, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Październik" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding October, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding October, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Listopad" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding November, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding November, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Grudzień" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding December, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding December, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn IsReadOnly="False" Header="Inne" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Other, UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <TextBox Text="{Binding Other, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+                
+
+            </DataGrid.Columns>
+        </DataGrid>
         <Label Content="Wybór słownika" HorizontalAlignment="Left" Margin="455,1,0,0" VerticalAlignment="Top" Height="23" Width="145"/>
-        <ComboBox x:Name="DictionaryList" HorizontalAlignment="Left" Margin="605,1,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="1.739,0.682" ItemsSource="{Binding ListTable}" SelectedItem="{Binding SelectTable}" SelectionChanged="Changeview"  IsSynchronizedWithCurrentItem="True"/>
-        <ComboBox x:Name="Ctyp" HorizontalAlignment="Left" Margin="290,0,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="LTyp" Content="Typ produktu" HorizontalAlignment="Left" Margin="144,-2,0,0" VerticalAlignment="Top" Width="126"/>
+        <ComboBox x:Name="DictionaryList" HorizontalAlignment="Left" Margin="605,1,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="1.739,0.682" ItemsSource="{Binding ListTable}" SelectedItem="{Binding SelectTable}" SelectionChanged="Changeview" SelectedValue="{Binding SelectTable}"  IsSynchronizedWithCurrentItem="False"/>
+        <ComboBox x:Name="Ctyp" HorizontalAlignment="Left" Margin="290,0,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Filter}" Visibility="Hidden" SelectedValue="{Binding SelectedFilter}"/>
+        <Label x:Name="LTyp" Content="Typ produktu" HorizontalAlignment="Left" Margin="144,-2,0,0" VerticalAlignment="Top" Width="126" Visibility="Hidden"/>
 
     </Grid>
 </Window>
