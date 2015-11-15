@@ -25,9 +25,7 @@ namespace DiamondApp.EntityModel
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<PropAccomodation> PropAccomodation { get; set; }
         public virtual DbSet<PropAccomodation_Dictionary> PropAccomodation_Dictionary { get; set; }
-        public virtual DbSet<PropAccomodationDiscount> PropAccomodationDiscount { get; set; }
         public virtual DbSet<PropExtraServices> PropExtraServices { get; set; }
         public virtual DbSet<PropExtraServices_Dictionary> PropExtraServices_Dictionary { get; set; }
         public virtual DbSet<PropExtraServicesDiscount> PropExtraServicesDiscount { get; set; }
@@ -54,5 +52,7 @@ namespace DiamondApp.EntityModel
         public virtual DbSet<PropMenuGastronomicThings_Dictionary_First> PropMenuGastronomicThings_Dictionary_First { get; set; }
         public virtual DbSet<VatList> VatList { get; set; }
         public virtual DbSet<PropMenuPosition> PropMenuPosition { get; set; }
+        public virtual DbSet<PropAccomodationDiscount> PropAccomodationDiscount { get; set; }
+        public virtual DbSet<PropAccomodation> PropAccomodation { get; set; }
     }
 }

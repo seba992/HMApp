@@ -53,11 +53,21 @@ namespace DiamondApp.ViewModels
         private List<decimal?> _thirdTabNettoPrice = new List<decimal?>(7);  // lista cen netto (tab3)
         private List<PropMenuMerge> _propMenuMerges = new List<PropMenuMerge>(5);
         private List<string> _defaultMerges = new List<string>(5);  // lista domyslnych marzy
-        private List<decimal> _thirdTabNettoValue = new List<decimal>(7);   // list zsumowanych cen netto (tab2)
-        private List<decimal> _thirdTabBruttoValue = new List<decimal>(7);   // list zsumowanych cen netto (tab2)
+        private List<decimal> _thirdTabNettoValue = new List<decimal>(7);   // list zsumowanych cen netto (tab3)
+        private List<decimal> _thirdTabBruttoValue = new List<decimal>(7);   // list zsumowanych cen netto (tab3)
 
         private decimal _thirdTabSumNettoValue;    // suma wartosci netto (tab3)
         private decimal _thirdTabSumBruttoValue;   // suma wartosci brutto (tab3)
+
+        //4 tab
+        private List<PropAccomodation> _propAccomodations = new List<PropAccomodation>(6);
+        private List<PropAccomodation_Dictionary> _propAccomDictionary = new List<PropAccomodation_Dictionary>();
+        private PropAccomodationDiscount _propAccomDiscount = new PropAccomodationDiscount();
+        private List<float?> _vatList4 = new List<float?>(2);
+        private List<decimal?> _fourthTabNettoPrice = new List<decimal?>(6);  // lista cen netto (tab4)
+        private List<decimal> _fourthTabNettoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab4)
+        private List<decimal> _fourthTabBruttoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab4)
+
 
         public AdminViewModel(int userId)
         {
@@ -2263,6 +2273,320 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("ThirdTabSumBruttoValue");
             }
         }
+
+        //tab4
+
+
+        public List<PropAccomodation> PropAccomodations
+        {
+            get { return _propAccomodations; }
+            set
+            {
+                _propAccomodations = value;
+                RaisePropertyChanged("PropAccomodations");            
+            }
+        }
+
+        public List<PropAccomodation_Dictionary> PropAccomDictionary
+        {
+            get { return _propAccomDictionary; }
+            set
+            {
+                _propAccomDictionary = value;
+                RaisePropertyChanged("PropAccomDictionary");         
+            }
+        }
+
+        public string PropAccomTypeOfRoom0
+        {
+            get { return _propAccomodations[0].TypeOfRoom; }
+            set
+            {
+                _propAccomodations[0].TypeOfRoom = value;
+                RaisePropertyChanged("PropAccomTypeOfRoom0");  
+            }
+        }
+        public string PropAccomTypeOfRoom1
+        {
+            get { return _propAccomodations[1].TypeOfRoom; }
+            set
+            {
+                _propAccomodations[1].TypeOfRoom = value;
+                RaisePropertyChanged("PropAccomTypeOfRoom1");
+            }
+        }
+        public string PropAccomTypeOfRoom2
+        {
+            get { return _propAccomodations[2].TypeOfRoom; }
+            set
+            {
+                _propAccomodations[2].TypeOfRoom = value;
+                RaisePropertyChanged("PropAccomTypeOfRoom2");
+            }
+        }
+        public string PropAccomTypeOfRoom3
+        {
+            get { return _propAccomodations[3].TypeOfRoom; }
+            set
+            {
+                _propAccomodations[3].TypeOfRoom = value;
+                RaisePropertyChanged("PropAccomTypeOfRoom3");
+            }
+        }
+        public string PropAccomTypeOfRoom4
+        {
+            get { return _propAccomodations[4].TypeOfRoom; }
+            set
+            {
+                _propAccomodations[4].TypeOfRoom = value;
+                RaisePropertyChanged("PropAccomTypeOfRoom4");
+            }
+        }
+        public string PropAccomTypeOfRoom5
+        {
+            get { return _propAccomodations[5].TypeOfRoom; }
+            set
+            {
+                _propAccomodations[5].TypeOfRoom = value;
+                RaisePropertyChanged("PropAccomTypeOfRoom5");
+            }
+        }
+        public string PropAccomTypeOfRoom6
+        {
+            get { return _propAccomodations[6].TypeOfRoom; }
+            set
+            {
+                _propAccomodations[6].TypeOfRoom = value;
+                RaisePropertyChanged("PropAccomTypeOfRoom6");
+            }
+        }
+
+        public PropAccomodationDiscount PropAccomDiscount
+        {
+            get { return _propAccomDiscount; }
+            set
+            {
+                _propAccomDiscount = value;
+                RaisePropertyChanged("PropAccomDiscount");      
+            }
+        }
+
+        public List<float?> VatList4
+        {
+            get { return _vatList4; }
+            set
+            {
+                _vatList4 = value;
+                RaisePropertyChanged("VatList4");      
+            }
+        }
+
+        public float? PropAccomBrutto0
+        {
+            get { return _propAccomodations[0].BruttoPrice; }
+            set
+            {
+                _propAccomodations[0].BruttoPrice = value;
+                RaisePropertyChanged("PropAccomBrutto0");
+            }
+        }
+        public float? PropAccomBrutto1
+        {
+            get { return _propAccomodations[1].BruttoPrice; }
+            set
+            {
+                _propAccomodations[1].BruttoPrice = value;
+                RaisePropertyChanged("PropAccomBrutto1");
+            }
+        }
+        public float? PropAccomBrutto2
+        {
+            get { return _propAccomodations[2].BruttoPrice; }
+            set
+            {
+                _propAccomodations[2].BruttoPrice = value;
+                RaisePropertyChanged("PropAccomBrutto2");
+            }
+        }
+        public float? PropAccomBrutto3
+        {
+            get { return _propAccomodations[3].BruttoPrice; }
+            set
+            {
+                _propAccomodations[3].BruttoPrice = value;
+                RaisePropertyChanged("PropAccomBrutto3");
+            }
+        }
+        public float? PropAccomBrutto4
+        {
+            get { return _propAccomodations[4].BruttoPrice; }
+            set
+            {
+                _propAccomodations[4].BruttoPrice = value;
+                RaisePropertyChanged("PropAccomBrutto4");
+            }
+        }
+        public float? PropAccomBrutto5
+        {
+            get { return _propAccomodations[5].BruttoPrice; }
+            set
+            {
+                _propAccomodations[5].BruttoPrice = value;
+                RaisePropertyChanged("PropAccomBrutto5");
+            }
+        }
+        public float? PropAccomBrutto6
+        {
+            get { return _propAccomodations[6].BruttoPrice; }
+            set
+            {
+                _propAccomodations[6].BruttoPrice = value;
+                RaisePropertyChanged("PropAccomBrutto6");
+            }
+        }
+
+        public decimal? FourthTabNettoPrice0
+        {
+            get { return _fourthTabNettoPrice[0]; }
+            set
+            {
+                _fourthTabNettoPrice[0] = value;
+                RaisePropertyChanged("FourthTabNettoPrice0");
+            }
+        }
+        public decimal? FourthTabNettoPrice1
+        {
+            get { return _fourthTabNettoPrice[1]; }
+            set
+            {
+                _fourthTabNettoPrice[1] = value;
+                RaisePropertyChanged("FourthTabNettoPrice1");
+            }
+        }
+        public decimal? FourthTabNettoPrice2
+        {
+            get { return _fourthTabNettoPrice[2]; }
+            set
+            {
+                _fourthTabNettoPrice[2] = value;
+                RaisePropertyChanged("FourthTabNettoPrice2");
+            }
+        }
+        public decimal? FourthTabNettoPrice3
+        {
+            get { return _fourthTabNettoPrice[3]; }
+            set
+            {
+                _fourthTabNettoPrice[3] = value;
+                RaisePropertyChanged("FourthTabNettoPrice3");
+            }
+        }
+        public decimal? FourthTabNettoPrice4
+        {
+            get { return _fourthTabNettoPrice[4]; }
+            set
+            {
+                _fourthTabNettoPrice[4] = value;
+                RaisePropertyChanged("FourthTabNettoPrice4");
+            }
+        }
+        public decimal? FourthTabNettoPrice5
+        {
+            get { return _fourthTabNettoPrice[5]; }
+            set
+            {
+                _fourthTabNettoPrice[5] = value;
+                RaisePropertyChanged("FourthTabNettoPrice5");
+            }
+        }
+        public decimal? FourthTabNettoPrice6
+        {
+            get { return _fourthTabNettoPrice[6]; }
+            set
+            {
+                _fourthTabNettoPrice[6] = value;
+                RaisePropertyChanged("FourthTabNettoPrice6");
+            }
+        }
+
+        public float? PropAccomVat0
+        {
+            get { return _propAccomodations[0].Vat; }
+            set
+            {
+                _propAccomodations[0].Vat = value;
+                RaisePropertyChanged("PropAccomVat0");
+                if (PropMenuTypeOfServ0 != null)
+                    FourthTabNettoPrice0 = ComputeNettoPrice(PropAccomBrutto0, _propAccomodations[0].Vat);
+            }
+        }
+        public float? PropAccomVat1
+        {
+            get { return _propAccomodations[1].Vat; }
+            set
+            {
+                _propAccomodations[1].Vat = value;
+                RaisePropertyChanged("PropAccomVat1");
+                if (PropMenuTypeOfServ1 != null)
+                    FourthTabNettoPrice1 = ComputeNettoPrice(PropAccomBrutto1, _propAccomodations[1].Vat);
+            }
+        }
+        public float? PropAccomVat2
+        {
+            get { return _propAccomodations[2].Vat; }
+            set
+            {
+                _propAccomodations[2].Vat = value;
+                RaisePropertyChanged("PropAccomVat2");
+                if (PropMenuTypeOfServ2 != null)
+                    FourthTabNettoPrice2 = ComputeNettoPrice(PropAccomBrutto2, _propAccomodations[2].Vat);
+            }
+        }
+        public float? PropAccomVat3
+        {
+            get { return _propAccomodations[3].Vat; }
+            set
+            {
+                _propAccomodations[3].Vat = value;
+                RaisePropertyChanged("PropAccomVat3");
+                if (PropMenuTypeOfServ3 != null)
+                    FourthTabNettoPrice3 = ComputeNettoPrice(PropAccomBrutto3, _propAccomodations[3].Vat);
+            }
+        }
+        public float? PropAccomVat4
+        {
+            get { return _propAccomodations[4].Vat; }
+            set
+            {
+                _propAccomodations[4].Vat = value;
+                RaisePropertyChanged("PropAccomVat4");
+                if (PropMenuTypeOfServ4 != null)
+                    FourthTabNettoPrice4 = ComputeNettoPrice(PropAccomBrutto4, _propAccomodations[4].Vat);
+            }
+        }
+        public float? PropAccomVat5
+        {
+            get { return _propAccomodations[5].Vat; }
+            set
+            {
+                _propAccomodations[5].Vat = value;
+                RaisePropertyChanged("PropAccomVat5");
+                if (PropMenuTypeOfServ5 != null)
+                    FourthTabNettoPrice5 = ComputeNettoPrice(PropAccomBrutto5, _propAccomodations[5].Vat);
+            }
+        }
+        public float? PropAccomVat6
+        {
+            get { return _propAccomodations[6].Vat; }
+            set
+            {
+                _propAccomodations[6].Vat = value;
+                RaisePropertyChanged("PropAccomVat6");
+                if (PropMenuTypeOfServ6 != null)
+                    FourthTabNettoPrice6 = ComputeNettoPrice(PropAccomBrutto6, _propAccomodations[6].Vat);
+            }
+        }
+
         #endregion
 
 #region Commands
@@ -2323,12 +2647,13 @@ namespace DiamondApp.ViewModels
             PropMenuMerge2 = merges[2].Value;
             PropMenuMerge3 = merges[3].Value;
             PropMenuMerge4 = merges[4].Value;
+//
+//            _propMenuMerges[0].MergeName = merges[0].MergeName;
+//            _propMenuMerges[1].MergeName = merges[1].MergeName;
+//            _propMenuMerges[2].MergeName = merges[2].MergeName;
+//            _propMenuMerges[3].MergeName = merges[3].MergeName;
+//            _propMenuMerges[4].MergeName = merges[4].MergeName;
 
-            _propMenuMerges[0].MergeName = merges[0].MergeName;
-            _propMenuMerges[1].MergeName = merges[1].MergeName;
-            _propMenuMerges[2].MergeName = merges[2].MergeName;
-            _propMenuMerges[3].MergeName = merges[3].MergeName;
-            _propMenuMerges[4].MergeName = merges[4].MergeName;
 
             var mergetype = (from m in _ctx.PropMergeTypes_Dictionary
                 select m).ToList();
@@ -2338,6 +2663,16 @@ namespace DiamondApp.ViewModels
             _propMenuMerges[3].MergeType = mergetype[3].MergeType;
             _propMenuMerges[4].MergeType = mergetype[4].MergeType;
 
+            //tab4
+            //wypelnienie nazw pokoi
+            var rooms = (from r in _ctx.PropAccomodation_Dictionary
+                select r).ToList();
+            PropAccomTypeOfRoom0 = rooms[0].TypeOfRoom;
+            PropAccomTypeOfRoom1 = rooms[1].TypeOfRoom;
+            PropAccomTypeOfRoom2 = rooms[2].TypeOfRoom;
+            PropAccomTypeOfRoom3 = rooms[3].TypeOfRoom;
+            PropAccomTypeOfRoom4 = rooms[4].TypeOfRoom;
+            PropAccomTypeOfRoom5 = rooms[5].TypeOfRoom;
         }
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
@@ -2744,6 +3079,22 @@ namespace DiamondApp.ViewModels
             //ThirdTabBruttoValueList
             for (int i = 0; i < _thirdTabBruttoValue.Capacity; i++)
                 _thirdTabBruttoValue.Add(new decimal());
+
+            //FourthTabNettoValueList
+            for (int i = 0; i < _fourthTabNettoValue.Capacity; i++)
+                _fourthTabNettoValue.Add(new decimal());
+
+            //ThirdTabBruttoValueList
+            for (int i = 0; i < _fourthTabBruttoValue.Capacity; i++)
+                _fourthTabBruttoValue.Add(new decimal());
+
+             //FourthTabNettoPriceList
+            for (int i = 0; i < _fourthTabNettoPrice.Capacity; i++)
+                _fourthTabNettoPrice.Add(new decimal?());
+
+             //PropositionAccomodation
+            for (int i = 0; i < _propAccomodations.Capacity; i++)
+                _propAccomodations.Add(new PropAccomodation());
         }
 
 //        private void FillPropMenuMergeList(List<PropMenuMerge> propMenuMerges)

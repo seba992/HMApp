@@ -1,4 +1,4 @@
-use [DiamondDB]
+﻿use [DiamondDB]
 insert into AccountPrivileges (Id,AccountType)
 values (1,'a'),(2,'s');
 
@@ -28,8 +28,8 @@ insert into Proposition (Id_user, UpdateDate,Status)
 values (4,CONVERT(VARCHAR(19),GETDATE()),'New');
 insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
 select p.Id,'DoubleRoomEP',450,23,3,10  from Proposition p  where p.Id_user = 4;
-insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,BussinesDoubleEP,ApartmentSingleEP,ApartmentDoubleEP)
-select p.Id,100,20,45,100,145,220,265  from Proposition p where p.Id_user = 4;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,100,20,45,100,220 from Proposition p where p.Id_user = 4;
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Wytwórnia win','Jagodowa 3 23-765 Siemianowiec','1234556698','Sebastian Nalepka', 500295458,'Patrycja Kowalska' ,'sn@wp.pl'   from Proposition p;
 insert into PropExtraServices(Id_proposition,ServiceType,BruttoHourPrice,Vat,Days)
@@ -69,8 +69,8 @@ insert into Proposition (Id_user, UpdateDate,Status)
 values (6,CONVERT(VARCHAR(19),GETDATE()+100),'New');
 insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
 select p.Id,'ApartmentSingleEP',750,23,4,30 from Proposition p  where p.Id_user = 6;
-insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,BussinesDoubleEP,ApartmentSingleEP,ApartmentDoubleEP)
-select p.Id,100,20,45,100,145,220,265 from Proposition p where p.Id_user = 6;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,100,20,45,100,220 from Proposition p where p.Id_user = 6;
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName ,CustomerEmail)
 select p.Id,'Przetwórstwo futra','Pożeczkowa 37 76-717 Bytom','1734573386','Mateusz Wolski', 634562926,'Ignacy Krasiński' ,'Test@test.pl'from Proposition p where p.Id_user = 6;
 insert into PropExtraServices(Id_proposition,ServiceType,BruttoHourPrice,Vat,Days)

@@ -19,9 +19,7 @@ namespace DiamondApp.EntityModel
         public Nullable<float> Discount { get; set; }
         public Nullable<float> DoubleRoomEP { get; set; }
         public Nullable<float> BussinesSingleEP { get; set; }
-        public Nullable<float> BussinesDoubleEP { get; set; }
         public Nullable<float> ApartmentSingleEP { get; set; }
-        public Nullable<float> ApartmentDoubleEP { get; set; }
     
         public virtual Proposition Proposition { get; set; }
     }
