@@ -42,7 +42,7 @@ namespace DiamondApp.ViewModels
         private List<decimal> _secondTabBruttoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab2)
         private decimal _computePriceAfterDiscount;
         private List<string> _propHallEqDict2; // lista zawierajaca wyposazenie dodatkowe sali (combobox tab 2)
-        private List<float?> _vatList; // lista zawierajaca wartosci VAT
+        private List<float?> _vatList = new List<float?>(2); // lista zawierajaca wartosci VAT
 
 
         private decimal _secondTabSumNettoValue;    // suma wartosci netto (tab2)
@@ -1528,14 +1528,7 @@ namespace DiamondApp.ViewModels
 
         public float? PropMenuPosVat0
         {
-            get
-            {
-                if (_propMenuPositions[0].Vat == 8)
-                {
-                    return VatList[0];
-                }
-                return VatList[1];
-            }
+            get { return _propMenuPositions[0].Vat; }
             set
             {
                 _propMenuPositions[0].Vat = value;
@@ -1546,14 +1539,7 @@ namespace DiamondApp.ViewModels
         }
         public float? PropMenuPosVat1
         {
-            get
-            {
-                if (_propMenuPositions[1].Vat == 8)
-                {
-                    return VatList[0];
-                }
-                return VatList[1];
-            }
+            get { return _propMenuPositions[1].Vat; }
             set
             {
                 _propMenuPositions[1].Vat = value;
@@ -1564,14 +1550,7 @@ namespace DiamondApp.ViewModels
         }
         public float? PropMenuPosVat2
         {
-            get
-            {
-                if (_propMenuPositions[2].Vat == 8)
-                {
-                    return VatList[0];
-                }
-                return VatList[1];
-            }
+            get { return _propMenuPositions[2].Vat; }
             set
             {
                 _propMenuPositions[2].Vat = value;
@@ -1582,14 +1561,7 @@ namespace DiamondApp.ViewModels
         }
         public float? PropMenuPosVat3
         {
-            get
-            {
-                if (_propMenuPositions[3].Vat == 8)
-                {
-                    return VatList[0];
-                }
-                return VatList[1];
-            }
+            get { return _propMenuPositions[3].Vat; }
             set
             {
                 _propMenuPositions[3].Vat = value;
@@ -1600,14 +1572,7 @@ namespace DiamondApp.ViewModels
         }
         public float? PropMenuPosVat4
         {
-            get
-            {
-                if (_propMenuPositions[4].Vat == 8)
-                {
-                    return VatList[0];
-                }
-                return VatList[1];
-            }
+            get { return _propMenuPositions[4].Vat; }
             set
             {
                 _propMenuPositions[4].Vat = value;
@@ -1618,14 +1583,7 @@ namespace DiamondApp.ViewModels
         }
         public float? PropMenuPosVat5
         {
-            get
-            {
-                if (_propMenuPositions[5].Vat == 8)
-                {
-                    return VatList[0];
-                }
-                return VatList[1];
-            }
+            get { return _propMenuPositions[5].Vat; }
             set
             {
                 _propMenuPositions[5].Vat = value;
@@ -1636,14 +1594,7 @@ namespace DiamondApp.ViewModels
         }
         public float? PropMenuPosVat6
         {
-            get
-            {
-                if (_propMenuPositions[6].Vat == 8)
-                {
-                    return VatList[0];
-                }
-                return VatList[1];
-            }
+            get { return _propMenuPositions[6].Vat; }
             set
             {
                 _propMenuPositions[6].Vat = value;
