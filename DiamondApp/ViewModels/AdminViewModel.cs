@@ -292,12 +292,15 @@ namespace DiamondApp.ViewModels
                 EventMonth = DateTimeConverter.ToMonthPolishName(value);
                 RaisePropertyChanged("PropositionReservDetailsStartData");
 
+                // jeśli wybrana jest juz nazwa sali to ustaw 
+                if (PropositionReservDetailsHall != null)
+                    PropHallEqThing0 = "Sala " + PropositionReservDetailsHall;
+
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
 
-                // jeśli wybrana jest juz nazwa sali to ustaw 
-                if (PropositionReservDetailsHall!=null)
-                    PropHallEqThing0 = "Sala " + PropositionReservDetailsHall;
+
+
             }
         }
 
@@ -360,12 +363,14 @@ namespace DiamondApp.ViewModels
 
                 RaisePropertyChanged("PropositionReservDetailsHall");
 
+                // jeśli wybrana jest juz data poczatkowa wyswietl nazwe sali w tab2 poz1
+                if (PropositionReservDetailsStartData.HasValue)
+                    PropHallEqThing0 = "Sala " + value;
+                
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
 
-                // jeśli wybrana jest juz data poczatkowa wyswietl nazwe sali w tab2 poz1
-                if (PropositionReservDetailsStartData.HasValue)
-                    PropHallEqThing0 = "Sala "+value;
+
             }
         }
         public string PropositionReservDetailsHallSetting
@@ -472,7 +477,7 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propHallEquipment[1].Things = value;
-                RaisePropertyChanged("HallFullName1");
+                RaisePropertyChanged("PropHallEqThing1");
             }
         }
         public string PropHallEqThing2
@@ -2574,6 +2579,114 @@ namespace DiamondApp.ViewModels
                     FourthTabNettoPrice5 = ComputeNettoPrice(PropAccomBrutto5, _propAccomodations[5].Vat);
             }
         }
+        public int? PropAccomDays0 
+        {
+            get { return _propAccomodations[0].Days; }
+            set
+            {
+                _propAccomodations[0].Days = value;
+                RaisePropertyChanged("PropAccomDays0");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom0 != null && PropAccomAmount0 != null)
+                {
+                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
+                        PropAccomDays0);
+                    FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
+                        PropAccomDays0);
+                }
+            }
+        }
+        public int? PropAccomDays1
+        {
+            get { return _propAccomodations[1].Days; }
+            set
+            {
+                _propAccomodations[1].Days = value;
+                RaisePropertyChanged("PropAccomDays1");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom1 != null && PropAccomAmount1 != null)
+                {
+                    FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1,
+                        PropAccomDays1);
+                    FourthTabBruttoValue1 = ComputeBruttoValue(PropAccomBrutto1, PropAccomAmount1,
+                        PropAccomDays1);
+                }
+            }
+        }
+        public int? PropAccomDays2
+        {
+            get { return _propAccomodations[2].Days; }
+            set
+            {
+                _propAccomodations[2].Days = value;
+                RaisePropertyChanged("PropAccomDays2");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom2 != null && PropAccomAmount2 != null)
+                {
+                    FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2,
+                        PropAccomDays2);
+                    FourthTabBruttoValue2 = ComputeBruttoValue(PropAccomBrutto2, PropAccomAmount2,
+                        PropAccomDays2);
+                }
+            }
+        }
+        public int? PropAccomDays3
+        {
+            get { return _propAccomodations[3].Days; }
+            set
+            {
+                _propAccomodations[3].Days = value;
+                RaisePropertyChanged("PropAccomDays3");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom3 != null && PropAccomAmount3 != null)
+                {
+                    FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3,
+                        PropAccomDays3);
+                    FourthTabBruttoValue3 = ComputeBruttoValue(PropAccomBrutto3, PropAccomAmount3,
+                        PropAccomDays3);
+                }
+            }
+        }
+        public int? PropAccomDays4
+        {
+            get { return _propAccomodations[4].Days; }
+            set
+            {
+                _propAccomodations[4].Days = value;
+                RaisePropertyChanged("PropAccomDays4");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom4 != null && PropAccomAmount4 != null)
+                {
+                    FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4,
+                        PropAccomDays4);
+                    FourthTabBruttoValue4 = ComputeBruttoValue(PropAccomBrutto4, PropAccomAmount4,
+                        PropAccomDays4);
+                }
+            }
+        }
+        public int? PropAccomDays5
+        {
+            get { return _propAccomodations[5].Days; }
+            set
+            {
+                _propAccomodations[5].Days = value;
+                RaisePropertyChanged("PropAccomDays5");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom5 != null && PropAccomAmount5 != null)
+                {
+                    FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5,
+                        PropAccomDays5);
+                    FourthTabBruttoValue5 = ComputeBruttoValue(PropAccomBrutto5, PropAccomAmount5,
+                        PropAccomDays5);
+                }
+            }
+        }
 
         public int? PropAccomAmount0
         {
@@ -2584,14 +2697,114 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropAccomAmount0");
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
-                //TODO: implement that shit
-//                if (PropAccomTypeOfRoom0 != null && PropAccomDays0 != null)
-//                {
-//                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
-//                        PropAccomDays0);
-//                    FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
-//                        PropAccomDays0);
-//                }
+
+                if (PropAccomTypeOfRoom0 != null && PropAccomDays0 != null)
+                {
+                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
+                        PropAccomDays0);
+                    FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
+                        PropAccomDays0);
+                }
+
+            }
+        }
+        public int? PropAccomAmount1
+        {
+            get { return _propAccomodations[1].Amount; }
+            set
+            {
+                _propAccomodations[1].Amount = value;
+                RaisePropertyChanged("PropAccomAmount1");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom1 != null && PropAccomDays1 != null)
+                {
+                    FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1,
+                        PropAccomDays1);
+                    FourthTabBruttoValue1 = ComputeBruttoValue(PropAccomBrutto1, PropAccomAmount1,
+                        PropAccomDays1);
+                }
+
+            }
+        }
+        public int? PropAccomAmount2
+        {
+            get { return _propAccomodations[2].Amount; }
+            set
+            {
+                _propAccomodations[2].Amount = value;
+                RaisePropertyChanged("PropAccomAmount2");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom2 != null && PropAccomDays2 != null)
+                {
+                    FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2,
+                        PropAccomDays2);
+                    FourthTabBruttoValue2 = ComputeBruttoValue(PropAccomBrutto2, PropAccomAmount2,
+                        PropAccomDays2);
+                }
+
+            }
+        }
+        public int? PropAccomAmount3
+        {
+            get { return _propAccomodations[3].Amount; }
+            set
+            {
+                _propAccomodations[3].Amount = value;
+                RaisePropertyChanged("PropAccomAmount3");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom3 != null && PropAccomDays3 != null)
+                {
+                    FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3,
+                        PropAccomDays3);
+                    FourthTabBruttoValue3 = ComputeBruttoValue(PropAccomBrutto3, PropAccomAmount3,
+                        PropAccomDays3);
+                }
+
+            }
+        }
+        public int? PropAccomAmount4
+        {
+            get { return _propAccomodations[4].Amount; }
+            set
+            {
+                _propAccomodations[4].Amount = value;
+                RaisePropertyChanged("PropAccomAmount4");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom4 != null && PropAccomDays4 != null)
+                {
+                    FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4,
+                        PropAccomDays4);
+                    FourthTabBruttoValue4 = ComputeBruttoValue(PropAccomBrutto4, PropAccomAmount4,
+                        PropAccomDays4);
+                }
+
+            }
+        }
+        public int? PropAccomAmount5
+        {
+            get { return _propAccomodations[5].Amount; }
+            set
+            {
+                _propAccomodations[5].Amount = value;
+                RaisePropertyChanged("PropAccomAmount5");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom5 != null && PropAccomDays5 != null)
+                {
+                    FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5,
+                        PropAccomDays5);
+                    FourthTabBruttoValue5 = ComputeBruttoValue(PropAccomBrutto5, PropAccomAmount5,
+                        PropAccomDays5);
+                }
 
             }
         }
@@ -2754,6 +2967,9 @@ namespace DiamondApp.ViewModels
 
         private void CreateNewPropositionExecute(object obj)
         {
+            InitializeObjects();
+            FillNeededList();
+
             var querry = (from user in _ctx.Users
                 where user.Id == _userId
                 select new AddNewProposition
@@ -2765,6 +2981,7 @@ namespace DiamondApp.ViewModels
                     UserEmail = user.Email,
                     IsCreated = true
                 }).SingleOrDefault();
+
             AddNewProposition = querry;
 
             // wypełnienie listy umieszczonej jako SALA 1tab
@@ -2799,12 +3016,12 @@ namespace DiamondApp.ViewModels
             PropMenuMerge2 = merges[2].Value;
             PropMenuMerge3 = merges[3].Value;
             PropMenuMerge4 = merges[4].Value;
-//
-//            _propMenuMerges[0].MergeName = merges[0].MergeName;
-//            _propMenuMerges[1].MergeName = merges[1].MergeName;
-//            _propMenuMerges[2].MergeName = merges[2].MergeName;
-//            _propMenuMerges[3].MergeName = merges[3].MergeName;
-//            _propMenuMerges[4].MergeName = merges[4].MergeName;
+
+            _propMenuMerges[0].MergeName = merges[0].MergeName;
+            _propMenuMerges[1].MergeName = merges[1].MergeName;
+            _propMenuMerges[2].MergeName = merges[2].MergeName;
+            _propMenuMerges[3].MergeName = merges[3].MergeName;
+            _propMenuMerges[4].MergeName = merges[4].MergeName;
 
 
             var mergetype = (from m in _ctx.PropMergeTypes_Dictionary
@@ -2863,6 +3080,7 @@ namespace DiamondApp.ViewModels
         {
             if (_addNewProposition.IsCreated && !_saveFlag)
             {
+
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
 
                 // !! PROPOSITION !! 
@@ -3212,6 +3430,31 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        private void InitializeObjects()
+        {
+            _propositionClient = new PropClient();
+            _propositionReservDetails = new PropReservationDetails();
+            _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();
+            _propHallEquipmentDiscount = new PropHallEquipmentDiscount();
+            _propHallEquipment = new List<PropHallEquipment>(6);
+            _secondTabNettoPrice = new List<decimal>(6);
+            _secondTabNettoValue = new List<decimal>(6);
+            _secondTabBruttoValue = new List<decimal>(6);
+            _vatList = new List<float?>(2);
+            _propMenuPositions = new List<PropMenuPosition>(7);
+            _thirdTabNettoPrice = new List<decimal?>(7);
+            _propMenuMerges = new List<PropMenuMerge>(5);
+            _defaultMerges = new List<string>(5);
+            _thirdTabNettoValue = new List<decimal>(7);
+            _thirdTabBruttoValue = new List<decimal>(7);
+            _propAccomodations = new List<PropAccomodation>(6);
+            _propAccomDictionary = new List<PropAccomodation_Dictionary>();
+            _propAccomDiscount = new PropAccomodationDiscount();
+            _vatList4 = new List<float?>(2);
+            _fourthTabNettoPrice = new List<decimal?>(6);
+            _fourthTabNettoValue = new List<decimal>(6);
+            _fourthTabBruttoValue = new List<decimal>(6); 
+        }
         // wypelnianie zadeklarowanych pustych list 
         private void FillNeededList()
         {
