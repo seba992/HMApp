@@ -322,19 +322,19 @@ namespace DiamondApp.Tools
                 table.Format.Font.Name = "Calibri";
 
                 //Create table columns
-                Column column = table.AddColumn("3.96cm");
+                Column column = table.AddColumn("5.42cm");
+                column.Format.Alignment = ParagraphAlignment.Left;
+
+                column = table.AddColumn("5.42cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
                 column = table.AddColumn("3.96cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
-                column = table.AddColumn("3.96cm");
+                column = table.AddColumn("2.5cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
-                column = table.AddColumn("3.96cm");
-                column.Format.Alignment = ParagraphAlignment.Left;
-
-                column = table.AddColumn("3.96cm");
+                column = table.AddColumn("2.5cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
                 table.Rows.Height = 3;
@@ -358,6 +358,8 @@ namespace DiamondApp.Tools
                 row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("NAZWA USŁUGI NA FAKTURZE:");
                 row.Cells[2].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[2].Format.Font.Bold = true;
+                row.Cells[2].Format.Font.Size = 6;
                 row.Cells[2].AddParagraph("W przypadku zlecenia podpis osoby upoważnionej, data i pieczęć firmy:");
 
                 row = table.AddRow();
@@ -377,6 +379,21 @@ namespace DiamondApp.Tools
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("OPIS SALI/STOŁÓW:");
+
+                row = table.AddRow();
+                row.Cells[0].MergeRight = 3;
+                row.Cells[0].Format.Font.Size = 7;
+                row.Cells[0].AddParagraph("Zgodnie z treścią art. 71 Kodeksu Cywilnego niniejsza propozycja cenowa nie stanowi oferty handlowej ma jedynie charakter informacyjny. Informacja  jest ważna do Po upływie tego terminu lub/i w przypadku zmniejszenia ilości zarezerwowanych pokoi lub/i zmniejszenia ilości uczestników spotkania, Hotel zastrzega sobie prawo do zmiany proponowanych cen lub wycofania tych cen. Po upływie terminu jw. Hotel także nie gwarantuje dostępności pokoi i sal konferencyjnych. W przypadku zainteresowania terminem Państwa zapytania (niniejszej oferty) ze strony innego klienta, poprosimy o potwierdzenie Państwa rezerwacji i zawarcie umowy w ciągu 24 godzin lub dokonanie rezerwacji gwaratowanej bez możliwości anulacji bezkosztowej.");
+                row.Cells[4].AddParagraph("jakas data");
+                row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[4].Format.Font.Bold = true;
+
+                row = table.AddRow();
+                row.Cells[0].MergeRight = 4;
+                row.Cells[0].Shading.Color = Colors.Gray; 
+                row.Cells[0].Format.Font.Size = 13;
+                row.Cells[0].AddParagraph("SERDECZNIE ZAPRASZAMY DO HOTELI NAZWA");
+                row.Cells[0].Format.Font.Color = Colors.White;
 
             }
             catch(Exception ex)
@@ -426,7 +443,7 @@ namespace DiamondApp.Tools
                 paragraph.Format.Font.Bold = true;
 
                 //add logo
-                Image image = section.Headers.Primary.AddImage("logo.png");
+                Image image = section.AddImage("logo.png");
                 image.Width = Unit.FromPoint(593);
                 image.Height = Unit.FromPoint(125);
                 image.RelativeVertical = RelativeVertical.Page;
