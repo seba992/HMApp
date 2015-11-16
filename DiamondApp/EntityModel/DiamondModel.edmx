@@ -20,9 +20,9 @@
           <Property Name="Id_proposition" Type="int" />
           <Property Name="TypeOfRoom" Type="varchar" MaxLength="30" />
           <Property Name="BruttoPrice" Type="real" />
-          <Property Name="Vat" Type="tinyint" />
-          <Property Name="Amount" Type="smallint" />
-          <Property Name="Days" Type="smallint" />
+          <Property Name="Vat" Type="real" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Days" Type="int" />
         </EntityType>
         <EntityType Name="PropAccomodation_Dictionary">
           <Key>
@@ -30,6 +30,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TypeOfRoom" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Price" Type="real" />
         </EntityType>
         <EntityType Name="PropAccomodationDiscount">
           <Key>
@@ -40,9 +41,7 @@
           <Property Name="Discount" Type="real" />
           <Property Name="DoubleRoomEP" Type="real" />
           <Property Name="BussinesSingleEP" Type="real" />
-          <Property Name="BussinesDoubleEP" Type="real" />
           <Property Name="ApartmentSingleEP" Type="real" />
-          <Property Name="ApartmentDoubleEP" Type="real" />
         </EntityType>
         <EntityType Name="PropClient">
           <Key>
@@ -555,39 +554,13 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DiamondDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="PropAccomodation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id_proposition" Type="Int32" />
-          <Property Name="TypeOfRoom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="BruttoPrice" Type="Single" />
-          <Property Name="Vat" Type="Byte" />
-          <Property Name="Amount" Type="Int16" />
-          <Property Name="Days" Type="Int16" />
-          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="PropAccomodation" ToRole="Proposition" />
-        </EntityType>
         <EntityType Name="PropAccomodation_Dictionary">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TypeOfRoom" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PropAccomodationDiscount">
-          <Key>
-            <PropertyRef Name="Id_proposition" />
-          </Key>
-          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
-          <Property Name="StandardPrice" Type="Single" />
-          <Property Name="Discount" Type="Single" />
-          <Property Name="DoubleRoomEP" Type="Single" />
-          <Property Name="BussinesSingleEP" Type="Single" />
-          <Property Name="BussinesDoubleEP" Type="Single" />
-          <Property Name="ApartmentSingleEP" Type="Single" />
-          <Property Name="ApartmentDoubleEP" Type="Single" />
-          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="PropAccomodationDiscount" ToRole="Proposition" />
+          <Property Name="Price" Type="Single" />
         </EntityType>
         <EntityType Name="PropExtraServices">
           <Key>
@@ -755,9 +728,7 @@
           <Property Name="Other" Type="Int32" />
         </EntityType>
         <EntityContainer Name="DiamondDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="PropAccomodation" EntityType="Self.PropAccomodation" />
           <EntitySet Name="PropAccomodation_Dictionary" EntityType="Self.PropAccomodation_Dictionary" />
-          <EntitySet Name="PropAccomodationDiscount" EntityType="Self.PropAccomodationDiscount" />
           <EntitySet Name="PropExtraServices" EntityType="Self.PropExtraServices" />
           <EntitySet Name="PropExtraServices_Dictionary" EntityType="Self.PropExtraServices_Dictionary" />
           <EntitySet Name="PropExtraServicesDiscount" EntityType="Self.PropExtraServicesDiscount" />
@@ -783,14 +754,6 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <EntitySet Name="Proposition" EntityType="DiamondDBModel.Proposition" />
-          <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropAccomodation" EntitySet="PropAccomodation" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PropAccom__Id_pr__4316F928" Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropAccomodationDiscount" EntitySet="PropAccomodationDiscount" />
-          </AssociationSet>
           <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServices" EntitySet="PropExtraServices" />
@@ -835,6 +798,16 @@
           <AssociationSet Name="FK__PropMenuP__Id_pr__31EC6D26" Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropMenuPosition" EntitySet="PropMenuPosition" />
+          </AssociationSet>
+          <EntitySet Name="PropAccomodationDiscount" EntityType="DiamondDBModel.PropAccomodationDiscount" />
+          <AssociationSet Name="FK__PropAccom__Id_pr__4316F928" Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropAccomodationDiscount" EntitySet="PropAccomodationDiscount" />
+          </AssociationSet>
+          <EntitySet Name="PropAccomodation" EntityType="DiamondDBModel.PropAccomodation" />
+          <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropAccomodation" EntitySet="PropAccomodation" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
@@ -895,8 +868,6 @@
           <Property Name="Id_user" Type="Int32" Nullable="false" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PropAccomodation" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="Proposition" ToRole="PropAccomodation" />
-          <NavigationProperty Name="PropAccomodationDiscount" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="Proposition" ToRole="PropAccomodationDiscount" />
           <NavigationProperty Name="PropExtraServices" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="Proposition" ToRole="PropExtraServices" />
           <NavigationProperty Name="PropExtraServicesDiscount" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" FromRole="Proposition" ToRole="PropExtraServicesDiscount" />
           <NavigationProperty Name="PropHallEquipment" Relationship="DiamondDBModel.FK_PropHallEquipment_Proposition" FromRole="Proposition" ToRole="PropHallEquipment" />
@@ -907,35 +878,9 @@
           <NavigationProperty Name="PropReservationDetails" Relationship="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" FromRole="Proposition" ToRole="PropReservationDetails" />
           <NavigationProperty Name="PropClient" Relationship="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" FromRole="Proposition" ToRole="PropClient" />
           <NavigationProperty Name="PropMenuPosition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="Proposition" ToRole="PropMenuPosition" />
+          <NavigationProperty Name="PropAccomodationDiscount" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="Proposition" ToRole="PropAccomodationDiscount" />
+          <NavigationProperty Name="PropAccomodation" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="Proposition" ToRole="PropAccomodation" />
         </EntityType>
-        <Association Name="FK__PropAccom__Id_pr__3A81B327">
-          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DiamondDBModel.PropAccomodation" Role="PropAccomodation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropAccomodation">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PropAccom__Id_pr__4316F928">
-          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DiamondDBModel.PropAccomodationDiscount" Role="PropAccomodationDiscount" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropAccomodationDiscount">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PropExtra__Id_pr__3D5E1FD2">
           <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
@@ -1127,44 +1072,71 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PropAccomodationDiscount">
+          <Key>
+            <PropertyRef Name="Id_proposition" />
+          </Key>
+          <Property Name="Id_proposition" Type="Int32" Nullable="false" />
+          <Property Name="StandardPrice" Type="Single" />
+          <Property Name="Discount" Type="Single" />
+          <Property Name="DoubleRoomEP" Type="Single" />
+          <Property Name="BussinesSingleEP" Type="Single" />
+          <Property Name="ApartmentSingleEP" Type="Single" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="PropAccomodationDiscount" ToRole="Proposition" />
+        </EntityType>
+        <Association Name="FK__PropAccom__Id_pr__4316F928">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropAccomodationDiscount" Role="PropAccomodationDiscount" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropAccomodationDiscount">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PropAccomodation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_proposition" Type="Int32" />
+          <Property Name="TypeOfRoom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BruttoPrice" Type="Single" />
+          <Property Name="Vat" Type="Single" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Days" Type="Int32" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="PropAccomodation" ToRole="Proposition" />
+        </EntityType>
+        <Association Name="FK__PropAccom__Id_pr__3A81B327">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropAccomodation" Role="PropAccomodation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropAccomodation">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DiamondDBModelStoreContainer" CdmEntityContainer="DiamondDBEntities">
-          <EntitySetMapping Name="PropAccomodation">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodation">
-              <MappingFragment StoreEntitySet="PropAccomodation">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
-                <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
-                <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
-                <ScalarProperty Name="Vat" ColumnName="Vat" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Days" ColumnName="Days" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropAccomodation_Dictionary">
             <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodation_Dictionary">
               <MappingFragment StoreEntitySet="PropAccomodation_Dictionary">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PropAccomodationDiscount">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodationDiscount">
-              <MappingFragment StoreEntitySet="PropAccomodationDiscount">
-                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
-                <ScalarProperty Name="StandardPrice" ColumnName="StandardPrice" />
-                <ScalarProperty Name="Discount" ColumnName="Discount" />
-                <ScalarProperty Name="DoubleRoomEP" ColumnName="DoubleRoomEP" />
-                <ScalarProperty Name="BussinesSingleEP" ColumnName="BussinesSingleEP" />
-                <ScalarProperty Name="BussinesDoubleEP" ColumnName="BussinesDoubleEP" />
-                <ScalarProperty Name="ApartmentSingleEP" ColumnName="ApartmentSingleEP" />
-                <ScalarProperty Name="ApartmentDoubleEP" ColumnName="ApartmentDoubleEP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1440,6 +1412,31 @@
                 <ScalarProperty Name="Vat" ColumnName="Vat" />
                 <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
                 <ScalarProperty Name="TypeOfService" ColumnName="TypeOfService" />
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropAccomodationDiscount">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodationDiscount">
+              <MappingFragment StoreEntitySet="PropAccomodationDiscount">
+                <ScalarProperty Name="ApartmentSingleEP" ColumnName="ApartmentSingleEP" />
+                <ScalarProperty Name="BussinesSingleEP" ColumnName="BussinesSingleEP" />
+                <ScalarProperty Name="DoubleRoomEP" ColumnName="DoubleRoomEP" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="StandardPrice" ColumnName="StandardPrice" />
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropAccomodation">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodation">
+              <MappingFragment StoreEntitySet="PropAccomodation">
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
+                <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
                 <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

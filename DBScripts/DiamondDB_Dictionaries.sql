@@ -28,14 +28,12 @@ insert PropPaymentSuggestions_Dictionary_Fourth (CarPark) values ('Doliczany do 
 insert PropPaymentSuggestions_Dictionary_Fourth (CarPark) values ('Do ustalenia');
 insert PropPaymentSuggestions_Dictionary_Fourth (CarPark) values ('Zamówienia trenera i reprezentatów doliczane do faktury, goœcie p³ac¹ indywidualnie');
 
-insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKÓJ 1-OSOBOWY');
-insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKÓJ 2-OSOBOWY');
-insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKÓJ BUSSINES 1-OSOBOWY');
-insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKÓJ BUSSINES 2-OSOBOWY');
-insert PropAccomodation_Dictionary (TypeOfRoom) values ('APARTAMENT');
-insert PropAccomodation_Dictionary (TypeOfRoom) values ('JUNIOR');
-insert PropAccomodation_Dictionary (TypeOfRoom) values ('POKOJ DLA NIEPE£NOSPRAWNYCH');
-insert PropAccomodation_Dictionary (TypeOfRoom) values ('BAGA¯OWNIA');
+insert PropAccomodation_Dictionary (TypeOfRoom,Price) values ('POKÓJ 1-OSOBOWY',250);
+insert PropAccomodation_Dictionary (TypeOfRoom,Price) values ('POKÓJ 2-OSOBOWY',350);
+insert PropAccomodation_Dictionary (TypeOfRoom,Price) values ('POKÓJ BUSSINES 1-OSOBOWY',400);
+insert PropAccomodation_Dictionary (TypeOfRoom,Price) values ('POKÓJ BUSSINES 2-OSOBOWY',500);
+insert PropAccomodation_Dictionary (TypeOfRoom,Price) values ('APARTAMENT',650);
+insert PropAccomodation_Dictionary (TypeOfRoom,Price) values ('POKOJ DLA NIEPE£NOSPRAWNYCH',250);
 
 insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA');
 insert PropHallEquipmnet_Dictionary_First (Things) values ('SALA KONFERENCYJNA 57m2');

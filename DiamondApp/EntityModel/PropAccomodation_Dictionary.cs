@@ -16,5 +16,6 @@ namespace DiamondApp.EntityModel
     {
         public int Id { get; set; }
         public string TypeOfRoom { get; set; }
+        public Nullable<float> Price { get; set; }
     }
 }
