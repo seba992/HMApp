@@ -259,7 +259,7 @@
 
                     <TextBox x:Name="SRCenaStandardTextBox" Grid.Column="2" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" Text="{Binding PropHallEquipmentDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>
                     <xctk:IntegerUpDown x:Name="SRRabatOdBaraCustIntUpDown" Grid.Column="2" Grid.Row="10" Margin="3" Minimum="0" Maximum="100"  Value="{Binding PropHallEquipmentDiscountValue}" />
-                    <TextBox x:Name="SRCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="11" Margin="3" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}"/>
+                    <TextBox x:Name="SRCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="11" Margin="3" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding PropHallPriceAfterDiscount, StringFormat=\{0:c\}}"/>
 
                     <!--definicja wierszy wielkosci sali /dol prawo/-->
 

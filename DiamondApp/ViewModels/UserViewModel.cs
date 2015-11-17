@@ -42,7 +42,7 @@ namespace DiamondApp.ViewModels
         private List<string> _hallSettingList; // lista sal (controlbox 1tab)
         //Wyposazenie dodatkowe
         private PropHallEquipmentDiscount _propHallEquipmentDiscount= new PropHallEquipmentDiscount();
-        private decimal _computePriceAfterDiscount;
+        private decimal _propHallPriceAfterDiscount;
         private List<PropHallEquipment> _propHallEquipment = new List<PropHallEquipment>(6);
         private List<decimal> _secondTabNettoPrice = new List<decimal>(6);
         private List<decimal> _secondTabNettoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab2)
@@ -429,13 +429,13 @@ namespace DiamondApp.ViewModels
                 SetDiscountPrice();
             }
         }
-        public decimal ComputePriceAfterDiscount
+        public decimal PropHallPriceAfterDiscount
         {
-            get { return _computePriceAfterDiscount; }
+            get { return _propHallPriceAfterDiscount; }
             set
             {
-                _computePriceAfterDiscount = value;
-                RaisePropertyChanged("ComputePriceAfterDiscount");
+                _propHallPriceAfterDiscount = value;
+                RaisePropertyChanged("PropHallPriceAfterDiscount");
             }
         }
         public string HallFullName0
@@ -3141,7 +3141,7 @@ namespace DiamondApp.ViewModels
         {
             if (PropHallEquipmentDiscountValue.HasValue && PropHallEquipmentDiscountStandPrice.HasValue)
             {
-                ComputePriceAfterDiscount = Math.Ceiling((decimal)PropHallEquipmentDiscountStandPrice -
+                PropHallPriceAfterDiscount = Math.Ceiling((decimal)PropHallEquipmentDiscountStandPrice -
                                                          ((decimal)PropHallEquipmentDiscountStandPrice *
                                                           (decimal)PropHallEquipmentDiscountValue / 100));
             }

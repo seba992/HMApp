@@ -368,8 +368,8 @@
                     <Label Grid.Column="1"  Grid.Row="11" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
 
                     <TextBox x:Name="SRCenaStandardTextBox" Grid.Column="2" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" Text="{Binding PropHallEquipmentDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>
-                    <xctk:IntegerUpDown x:Name="SRRabatOdBaraCustIntUpDown" Grid.Column="2" Grid.Row="10" Margin="3" Minimum="0" Maximum="100"  Value="{Binding PropHallEquipmentDiscountValue}" />
-                    <TextBox x:Name="SRCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="11" Margin="3" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount, StringFormat=\{0:c\}}"/>
+                    <xctk:IntegerUpDown x:Name="SRRabatOdBaraCustIntUpDown" Grid.Column="2" Grid.Row="10" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropHallEquipmentDiscountValue}" />
+                    <TextBox x:Name="SRCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="11" Margin="3" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding PropHallPriceAfterDiscount, StringFormat=\{0:c\}}"/>
 
                     <!--definicja wierszy wielkosci sali /dol prawo/-->
 
@@ -515,7 +515,7 @@
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
-                        <RowDefinition Height="30" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
                         <RowDefinition Height="30" />
@@ -606,21 +606,21 @@
 
                     <Label Grid.Row="9" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" />
 
-                    <Label Grid.Column="1"  Grid.Row="11" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Column="1"  Grid.Row="12" Content="Rabat od bara (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Column="1"  Grid.Row="13" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+<!--                    <Label Grid.Column="1"  Grid.Row="11" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <Label Grid.Column="1"  Grid.Row="12" Content="Rabat (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+<!--                    <Label Grid.Column="1"  Grid.Row="13" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
 
-                    <TextBox x:Name="UNCenaStandardTextBox" Grid.Column="2" Grid.Row="11" HorizontalContentAlignment="Center" Text="{Binding PropAccomDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>
+<!--                    <TextBox x:Name="UNCenaStandardTextBox" Grid.Column="2" Grid.Row="11" HorizontalContentAlignment="Center" Text="{Binding PropAccomDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>-->
                     <xctk:IntegerUpDown x:Name="UNRabatOdBaraCustIntUpDown" Grid.Column="2" Grid.Row="12" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountValue}"/>
-                    <TextBox x:Name="UNCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="13" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount4, StringFormat=\{0:c\}}" />
+<!--                    <TextBox x:Name="UNCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="13" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount4, StringFormat=\{0:c\}}" />-->
 
-                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="11" Content="Dopłata do Biznes: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="12" Content="Dopłata do Apartament: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Content="Dopłata do dwójke: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+<!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="11" Content="Dopłata do Biznes: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+<!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="12" Content="Dopłata do Apartament: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+<!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Content="Dopłata do dwójke: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
 
-                    <xctk:IntegerUpDown x:Name="UNDoplataDoBiznesIntUpDown" Grid.Column="6" Grid.Row="11" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountBussSurcharge}"/>
-                    <xctk:IntegerUpDown x:Name="UNDoplataDoApartamentIntUpDown" Grid.Column="6" Grid.Row="12" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountAparSurcharge}"/>
-                    <xctk:IntegerUpDown x:Name="UNDoplataDoDwojkaIntUpDown" Grid.Column="6" Grid.Row="13" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountDoubleSurcharge}"/>
+<!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoBiznesIntUpDown" Grid.Column="6" Grid.Row="11" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountBussSurcharge}"/>-->
+<!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoApartamentIntUpDown" Grid.Column="6" Grid.Row="12" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountAparSurcharge}"/>-->
+<!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoDwojkaIntUpDown" Grid.Column="6" Grid.Row="13" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountDoubleSurcharge}"/>-->
 
                 </Grid>
             </TabItem>
