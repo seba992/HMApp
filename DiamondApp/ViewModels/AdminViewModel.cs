@@ -40,7 +40,7 @@ namespace DiamondApp.ViewModels
         private List<decimal> _secondTabNettoPrice = new List<decimal>(6);  // lista cen netto (tab2)
         private List<decimal> _secondTabNettoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab2)
         private List<decimal> _secondTabBruttoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab2)
-        private decimal _computePriceAfterDiscount;
+        private decimal _propHallPriceAfterDiscount;
         private List<string> _propHallEqDict2; // lista zawierajaca wyposazenie dodatkowe sali (combobox tab 2)
         private List<float?> _vatList = new List<float?>(2); // lista zawierajaca wartosci VAT
 
@@ -68,6 +68,9 @@ namespace DiamondApp.ViewModels
         private List<decimal> _fourthTabNettoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab4)
         private List<decimal> _fourthTabBruttoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab4)
 
+        private decimal _fourthTabSumNettoValue;    // suma wartosci netto (tab3)
+        private decimal _fourthTabSumBruttoValue;   // suma wartosci brutto (tab3)
+
 
         public AdminViewModel(int userId)
         {
@@ -78,7 +81,7 @@ namespace DiamondApp.ViewModels
             FillNeededList();
         }
 
-        #region Properties
+#region Properties
 
         public List<AdminProposition> PropositionsList
         {
@@ -289,12 +292,15 @@ namespace DiamondApp.ViewModels
                 EventMonth = DateTimeConverter.ToMonthPolishName(value);
                 RaisePropertyChanged("PropositionReservDetailsStartData");
 
+                // jeśli wybrana jest juz nazwa sali to ustaw 
+                if (PropositionReservDetailsHall != null)
+                    PropHallEqThing0 = "Sala " + PropositionReservDetailsHall;
+
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
 
-                // jeśli wybrana jest juz nazwa sali to ustaw 
-                if (PropositionReservDetailsHall!=null)
-                    PropHallEqThing0 = "Sala " + PropositionReservDetailsHall;
+
+
             }
         }
 
@@ -357,12 +363,14 @@ namespace DiamondApp.ViewModels
 
                 RaisePropertyChanged("PropositionReservDetailsHall");
 
+                // jeśli wybrana jest juz data poczatkowa wyswietl nazwe sali w tab2 poz1
+                if (PropositionReservDetailsStartData.HasValue)
+                    PropHallEqThing0 = "Sala " + value;
+                
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
 
-                // jeśli wybrana jest juz data poczatkowa wyswietl nazwe sali w tab2 poz1
-                if (PropositionReservDetailsStartData.HasValue)
-                    PropHallEqThing0 = "Sala "+value;
+
             }
         }
         public string PropositionReservDetailsHallSetting
@@ -426,10 +434,12 @@ namespace DiamondApp.ViewModels
             get { return _propHallEquipmentDiscount.Discount; }
             set
             {
+                if (value == null)
+                    value = 0;
                 _propHallEquipmentDiscount.Discount = value;
                 RaisePropertyChanged("PropHallEquipmentDiscountValue");
 
-                SetDiscountPrice();
+                SetEquipmentDiscountPrice();
 
             }
         }
@@ -441,16 +451,16 @@ namespace DiamondApp.ViewModels
                 _propHallEquipmentDiscount.StandardPrice = value;
                 RaisePropertyChanged("PropHallEquipmentDiscountStandPrice");
 
-                SetDiscountPrice();
+                SetEquipmentDiscountPrice();
             }
         }
-        public decimal ComputePriceAfterDiscount
+        public decimal PropHallPriceAfterDiscount
         {
-            get { return _computePriceAfterDiscount; }
+            get { return _propHallPriceAfterDiscount; }
             set
             {
-                _computePriceAfterDiscount = value;
-                RaisePropertyChanged("ComputePriceAfterDiscount");
+                _propHallPriceAfterDiscount = value;
+                RaisePropertyChanged("PropHallPriceAfterDiscount");
             }
         }
 
@@ -469,7 +479,7 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propHallEquipment[1].Things = value;
-                RaisePropertyChanged("HallFullName1");
+                RaisePropertyChanged("PropHallEqThing1");
             }
         }
         public string PropHallEqThing2
@@ -1943,6 +1953,8 @@ namespace DiamondApp.ViewModels
                 // obecna wyswitlana cena brutto i netto jest cena wraz z marza
                 // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
                 // a nastepnie dodac obecna (value)
+                if (value == null)
+                    value = 0;
                 _propMenuMerges[0].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge0");
 
@@ -1973,7 +1985,8 @@ namespace DiamondApp.ViewModels
                 // obecna wyswitlana cena brutto i netto jest cena wraz z marza
                 // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
                 // a nastepnie dodac obecna (value)
-
+                if (value == null)
+                    value = 0;
                 _propMenuMerges[1].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge1");
            
@@ -2002,7 +2015,8 @@ namespace DiamondApp.ViewModels
                 // obecna wyswitlana cena brutto i netto jest cena wraz z marza
                 // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
                 // a nastepnie dodac obecna (value)
-
+                if (value == null)
+                    value = 0;
                 _propMenuMerges[2].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge2");
 
@@ -2031,7 +2045,8 @@ namespace DiamondApp.ViewModels
                 // obecna wyswitlana cena brutto i netto jest cena wraz z marza
                 // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
                 // a nastepnie dodac obecna (value)
-
+                if (value == null)
+                    value = 0;
                 _propMenuMerges[3].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge3");
 
@@ -2060,7 +2075,8 @@ namespace DiamondApp.ViewModels
                 // obecna wyswitlana cena brutto i netto jest cena wraz z marza
                 // w celu zmiany marzy (integerUpDown) nalezy odjac obecna marze
                 // a nastepnie dodac obecna (value)
-
+                if (value == null)
+                    value = 0;
                 _propMenuMerges[4].DefaultValue = value;
                 RaisePropertyChanged("PropMenuMerge4");
 
@@ -2111,7 +2127,7 @@ namespace DiamondApp.ViewModels
             }
         }
 
-                public decimal ThirdTabNettoValue0
+        public decimal ThirdTabNettoValue0
         {
             get { return _thirdTabNettoValue[0]; }
             set
@@ -2303,7 +2319,8 @@ namespace DiamondApp.ViewModels
             set
             {
                 _propAccomodations[0].TypeOfRoom = value;
-                RaisePropertyChanged("PropAccomTypeOfRoom0");  
+                RaisePropertyChanged("PropAccomTypeOfRoom0");
+  
             }
         }
         public string PropAccomTypeOfRoom1
@@ -2351,15 +2368,6 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropAccomTypeOfRoom5");
             }
         }
-        public string PropAccomTypeOfRoom6
-        {
-            get { return _propAccomodations[6].TypeOfRoom; }
-            set
-            {
-                _propAccomodations[6].TypeOfRoom = value;
-                RaisePropertyChanged("PropAccomTypeOfRoom6");
-            }
-        }
 
         public PropAccomodationDiscount PropAccomDiscount
         {
@@ -2371,6 +2379,40 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        public float? PropAccomDiscountValue
+        {
+            get { return _propAccomDiscount.Discount; }
+            set
+            {
+                if (value == null)
+                    value = 0;
+
+                _propAccomDiscount.Discount = value;
+                RaisePropertyChanged("PropAccomDiscountValue");
+
+                var price = (from s in _ctx.PropAccomodation_Dictionary
+                    select s.Price).ToList();
+                var f = price[0];
+                if (f != null)
+                {
+                    PropAccomBrutto0 = SetDiscount(price[0].Value, _propAccomDiscount.Discount);
+                    PropAccomBrutto1 = SetDiscount(price[1].Value, _propAccomDiscount.Discount);
+                    PropAccomBrutto2 = SetDiscount(price[2].Value, _propAccomDiscount.Discount);
+                    PropAccomBrutto3 = SetDiscount(price[3].Value, _propAccomDiscount.Discount);
+                    PropAccomBrutto4 = SetDiscount(price[4].Value, _propAccomDiscount.Discount);
+                    PropAccomBrutto5 = SetDiscount(price[5].Value, _propAccomDiscount.Discount);
+                }
+            }
+        }
+
+        public float? SetDiscount(float? itemPrice, float? intDiscountValue)
+        {
+            if (itemPrice == null)
+                itemPrice = 0;
+            if (intDiscountValue == null)
+                intDiscountValue = 0;
+            return itemPrice - itemPrice * intDiscountValue / 100;
+        }
         public List<float?> VatList4
         {
             get { return _vatList4; }
@@ -2388,6 +2430,10 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[0].BruttoPrice = value;
                 RaisePropertyChanged("PropAccomBrutto0");
+
+                // w sytuacji ustawienia ceny brutto uaktualnij cenę netto uwzgledniajac stawke vat
+                if(PropAccomVat0!=null)
+                    FourthTabNettoPrice0 = ComputeNettoPrice(value, PropAccomVat0);
             }
         }
         public float? PropAccomBrutto1
@@ -2397,6 +2443,9 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[1].BruttoPrice = value;
                 RaisePropertyChanged("PropAccomBrutto1");
+
+                if (PropAccomVat1 != null)
+                    FourthTabNettoPrice1 = ComputeNettoPrice(value, PropAccomVat1);
             }
         }
         public float? PropAccomBrutto2
@@ -2404,8 +2453,12 @@ namespace DiamondApp.ViewModels
             get { return _propAccomodations[2].BruttoPrice; }
             set
             {
+
                 _propAccomodations[2].BruttoPrice = value;
                 RaisePropertyChanged("PropAccomBrutto2");
+
+                if (PropAccomVat2 != null)
+                    FourthTabNettoPrice2 = ComputeNettoPrice(value, PropAccomVat2);
             }
         }
         public float? PropAccomBrutto3
@@ -2415,6 +2468,9 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[3].BruttoPrice = value;
                 RaisePropertyChanged("PropAccomBrutto3");
+
+                if (PropAccomVat3 != null)
+                    FourthTabNettoPrice3 = ComputeNettoPrice(value, PropAccomVat3);
             }
         }
         public float? PropAccomBrutto4
@@ -2424,6 +2480,9 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[4].BruttoPrice = value;
                 RaisePropertyChanged("PropAccomBrutto4");
+
+                if (PropAccomVat4 != null)
+                    FourthTabNettoPrice4 = ComputeNettoPrice(value, PropAccomVat4);
             }
         }
         public float? PropAccomBrutto5
@@ -2433,15 +2492,9 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[5].BruttoPrice = value;
                 RaisePropertyChanged("PropAccomBrutto5");
-            }
-        }
-        public float? PropAccomBrutto6
-        {
-            get { return _propAccomodations[6].BruttoPrice; }
-            set
-            {
-                _propAccomodations[6].BruttoPrice = value;
-                RaisePropertyChanged("PropAccomBrutto6");
+
+                if (PropAccomVat5 != null)
+                    FourthTabNettoPrice5 = ComputeNettoPrice(value, PropAccomVat5);
             }
         }
 
@@ -2452,6 +2505,9 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoPrice[0] = value;
                 RaisePropertyChanged("FourthTabNettoPrice0");
+
+                if (PropAccomAmount0 != null && PropAccomDays0 != null)
+                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0, PropAccomDays0);
             }
         }
         public decimal? FourthTabNettoPrice1
@@ -2461,6 +2517,9 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoPrice[1] = value;
                 RaisePropertyChanged("FourthTabNettoPrice1");
+
+                if (PropAccomAmount1 != null && PropAccomDays1 != null)
+                    FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1, PropAccomDays1);
             }
         }
         public decimal? FourthTabNettoPrice2
@@ -2470,6 +2529,9 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoPrice[2] = value;
                 RaisePropertyChanged("FourthTabNettoPrice2");
+
+                if (PropAccomAmount2 != null && PropAccomDays2 != null)
+                    FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2, PropAccomDays2);
             }
         }
         public decimal? FourthTabNettoPrice3
@@ -2479,6 +2541,9 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoPrice[3] = value;
                 RaisePropertyChanged("FourthTabNettoPrice3");
+
+                if (PropAccomAmount3 != null && PropAccomDays3 != null)
+                    FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3, PropAccomDays3);
             }
         }
         public decimal? FourthTabNettoPrice4
@@ -2488,6 +2553,9 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoPrice[4] = value;
                 RaisePropertyChanged("FourthTabNettoPrice4");
+
+                if (PropAccomAmount4 != null && PropAccomDays4 != null)
+                    FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4, PropAccomDays4);
             }
         }
         public decimal? FourthTabNettoPrice5
@@ -2497,15 +2565,9 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoPrice[5] = value;
                 RaisePropertyChanged("FourthTabNettoPrice5");
-            }
-        }
-        public decimal? FourthTabNettoPrice6
-        {
-            get { return _fourthTabNettoPrice[6]; }
-            set
-            {
-                _fourthTabNettoPrice[6] = value;
-                RaisePropertyChanged("FourthTabNettoPrice6");
+
+                if (PropAccomAmount5 != null && PropAccomDays5 != null)
+                    FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5, PropAccomDays5);
             }
         }
 
@@ -2516,7 +2578,8 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[0].Vat = value;
                 RaisePropertyChanged("PropAccomVat0");
-                if (PropMenuTypeOfServ0 != null)
+
+                if (PropAccomTypeOfRoom0 != null)
                     FourthTabNettoPrice0 = ComputeNettoPrice(PropAccomBrutto0, _propAccomodations[0].Vat);
             }
         }
@@ -2527,7 +2590,7 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[1].Vat = value;
                 RaisePropertyChanged("PropAccomVat1");
-                if (PropMenuTypeOfServ1 != null)
+                if (PropAccomTypeOfRoom0 != null)
                     FourthTabNettoPrice1 = ComputeNettoPrice(PropAccomBrutto1, _propAccomodations[1].Vat);
             }
         }
@@ -2538,7 +2601,7 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[2].Vat = value;
                 RaisePropertyChanged("PropAccomVat2");
-                if (PropMenuTypeOfServ2 != null)
+                if (PropAccomTypeOfRoom0 != null)
                     FourthTabNettoPrice2 = ComputeNettoPrice(PropAccomBrutto2, _propAccomodations[2].Vat);
             }
         }
@@ -2549,7 +2612,7 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[3].Vat = value;
                 RaisePropertyChanged("PropAccomVat3");
-                if (PropMenuTypeOfServ3 != null)
+                if (PropAccomTypeOfRoom0 != null)
                     FourthTabNettoPrice3 = ComputeNettoPrice(PropAccomBrutto3, _propAccomodations[3].Vat);
             }
         }
@@ -2560,7 +2623,7 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[4].Vat = value;
                 RaisePropertyChanged("PropAccomVat4");
-                if (PropMenuTypeOfServ4 != null)
+                if (PropAccomTypeOfRoom0 != null)
                     FourthTabNettoPrice4 = ComputeNettoPrice(PropAccomBrutto4, _propAccomodations[4].Vat);
             }
         }
@@ -2571,22 +2634,382 @@ namespace DiamondApp.ViewModels
             {
                 _propAccomodations[5].Vat = value;
                 RaisePropertyChanged("PropAccomVat5");
-                if (PropMenuTypeOfServ5 != null)
+                if (PropAccomTypeOfRoom0 != null)
                     FourthTabNettoPrice5 = ComputeNettoPrice(PropAccomBrutto5, _propAccomodations[5].Vat);
             }
         }
-        public float? PropAccomVat6
+        public int? PropAccomDays0 
         {
-            get { return _propAccomodations[6].Vat; }
+            get { return _propAccomodations[0].Days; }
             set
             {
-                _propAccomodations[6].Vat = value;
-                RaisePropertyChanged("PropAccomVat6");
-                if (PropMenuTypeOfServ6 != null)
-                    FourthTabNettoPrice6 = ComputeNettoPrice(PropAccomBrutto6, _propAccomodations[6].Vat);
+                _propAccomodations[0].Days = value;
+                RaisePropertyChanged("PropAccomDays0");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom0 != null && PropAccomAmount0 != null)
+                {
+                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
+                        PropAccomDays0);
+                    FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
+                        PropAccomDays0);
+                }
+            }
+        }
+        public int? PropAccomDays1
+        {
+            get { return _propAccomodations[1].Days; }
+            set
+            {
+                _propAccomodations[1].Days = value;
+                RaisePropertyChanged("PropAccomDays1");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom1 != null && PropAccomAmount1 != null)
+                {
+                    FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1,
+                        PropAccomDays1);
+                    FourthTabBruttoValue1 = ComputeBruttoValue(PropAccomBrutto1, PropAccomAmount1,
+                        PropAccomDays1);
+                }
+            }
+        }
+        public int? PropAccomDays2
+        {
+            get { return _propAccomodations[2].Days; }
+            set
+            {
+                _propAccomodations[2].Days = value;
+                RaisePropertyChanged("PropAccomDays2");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom2 != null && PropAccomAmount2 != null)
+                {
+                    FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2,
+                        PropAccomDays2);
+                    FourthTabBruttoValue2 = ComputeBruttoValue(PropAccomBrutto2, PropAccomAmount2,
+                        PropAccomDays2);
+                }
+            }
+        }
+        public int? PropAccomDays3
+        {
+            get { return _propAccomodations[3].Days; }
+            set
+            {
+                _propAccomodations[3].Days = value;
+                RaisePropertyChanged("PropAccomDays3");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom3 != null && PropAccomAmount3 != null)
+                {
+                    FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3,
+                        PropAccomDays3);
+                    FourthTabBruttoValue3 = ComputeBruttoValue(PropAccomBrutto3, PropAccomAmount3,
+                        PropAccomDays3);
+                }
+            }
+        }
+        public int? PropAccomDays4
+        {
+            get { return _propAccomodations[4].Days; }
+            set
+            {
+                _propAccomodations[4].Days = value;
+                RaisePropertyChanged("PropAccomDays4");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom4 != null && PropAccomAmount4 != null)
+                {
+                    FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4,
+                        PropAccomDays4);
+                    FourthTabBruttoValue4 = ComputeBruttoValue(PropAccomBrutto4, PropAccomAmount4,
+                        PropAccomDays4);
+                }
+            }
+        }
+        public int? PropAccomDays5
+        {
+            get { return _propAccomodations[5].Days; }
+            set
+            {
+                _propAccomodations[5].Days = value;
+                RaisePropertyChanged("PropAccomDays5");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropAccomTypeOfRoom5 != null && PropAccomAmount5 != null)
+                {
+                    FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5,
+                        PropAccomDays5);
+                    FourthTabBruttoValue5 = ComputeBruttoValue(PropAccomBrutto5, PropAccomAmount5,
+                        PropAccomDays5);
+                }
             }
         }
 
+        public int? PropAccomAmount0
+        {
+            get { return _propAccomodations[0].Amount; }
+            set
+            {
+                _propAccomodations[0].Amount = value;
+                RaisePropertyChanged("PropAccomAmount0");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom0 != null && PropAccomDays0 != null)
+                {
+                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
+                        PropAccomDays0);
+                    FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
+                        PropAccomDays0);
+                }
+
+            }
+        }
+        public int? PropAccomAmount1
+        {
+            get { return _propAccomodations[1].Amount; }
+            set
+            {
+                _propAccomodations[1].Amount = value;
+                RaisePropertyChanged("PropAccomAmount1");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom1 != null && PropAccomDays1 != null)
+                {
+                    FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1,
+                        PropAccomDays1);
+                    FourthTabBruttoValue1 = ComputeBruttoValue(PropAccomBrutto1, PropAccomAmount1,
+                        PropAccomDays1);
+                }
+
+            }
+        }
+        public int? PropAccomAmount2
+        {
+            get { return _propAccomodations[2].Amount; }
+            set
+            {
+                _propAccomodations[2].Amount = value;
+                RaisePropertyChanged("PropAccomAmount2");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom2 != null && PropAccomDays2 != null)
+                {
+                    FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2,
+                        PropAccomDays2);
+                    FourthTabBruttoValue2 = ComputeBruttoValue(PropAccomBrutto2, PropAccomAmount2,
+                        PropAccomDays2);
+                }
+
+            }
+        }
+        public int? PropAccomAmount3
+        {
+            get { return _propAccomodations[3].Amount; }
+            set
+            {
+                _propAccomodations[3].Amount = value;
+                RaisePropertyChanged("PropAccomAmount3");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom3 != null && PropAccomDays3 != null)
+                {
+                    FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3,
+                        PropAccomDays3);
+                    FourthTabBruttoValue3 = ComputeBruttoValue(PropAccomBrutto3, PropAccomAmount3,
+                        PropAccomDays3);
+                }
+
+            }
+        }
+        public int? PropAccomAmount4
+        {
+            get { return _propAccomodations[4].Amount; }
+            set
+            {
+                _propAccomodations[4].Amount = value;
+                RaisePropertyChanged("PropAccomAmount4");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom4 != null && PropAccomDays4 != null)
+                {
+                    FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4,
+                        PropAccomDays4);
+                    FourthTabBruttoValue4 = ComputeBruttoValue(PropAccomBrutto4, PropAccomAmount4,
+                        PropAccomDays4);
+                }
+
+            }
+        }
+        public int? PropAccomAmount5
+        {
+            get { return _propAccomodations[5].Amount; }
+            set
+            {
+                _propAccomodations[5].Amount = value;
+                RaisePropertyChanged("PropAccomAmount5");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropAccomTypeOfRoom5 != null && PropAccomDays5 != null)
+                {
+                    FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5,
+                        PropAccomDays5);
+                    FourthTabBruttoValue5 = ComputeBruttoValue(PropAccomBrutto5, PropAccomAmount5,
+                        PropAccomDays5);
+                }
+
+            }
+        }
+
+        public decimal FourthTabNettoValue0
+        {
+            get { return _fourthTabNettoValue[0]; }
+            set
+            {
+                _fourthTabNettoValue[0] = value;
+                RaisePropertyChanged("FourthTabNettoValue0");
+            }
+        }
+        public decimal FourthTabNettoValue1
+        {
+            get { return _fourthTabNettoValue[1]; }
+            set
+            {
+                _fourthTabNettoValue[1] = value;
+                RaisePropertyChanged("FourthTabNettoValue1");
+            }
+        }
+        public decimal FourthTabNettoValue2
+        {
+            get { return _fourthTabNettoValue[2]; }
+            set
+            {
+                _fourthTabNettoValue[2] = value;
+                RaisePropertyChanged("FourthTabNettoValue2");
+            }
+        }
+        public decimal FourthTabNettoValue3
+        {
+            get { return _fourthTabNettoValue[3]; }
+            set
+            {
+                _fourthTabNettoValue[3] = value;
+                RaisePropertyChanged("FourthTabNettoValue3");
+            }
+        }
+        public decimal FourthTabNettoValue4
+        {
+            get { return _fourthTabNettoValue[4]; }
+            set
+            {
+                _fourthTabNettoValue[4] = value;
+                RaisePropertyChanged("FourthTabNettoValue4");
+            }
+        }
+        public decimal FourthTabNettoValue5
+        {
+            get { return _fourthTabNettoValue[5]; }
+            set
+            {
+                _fourthTabNettoValue[5] = value;
+                RaisePropertyChanged("FourthTabNettoValue5");
+            }
+        }
+
+        public decimal FourthTabBruttoValue0
+        {
+            get { return _fourthTabBruttoValue[0]; }
+            set
+            {
+                _fourthTabBruttoValue[0] = value;
+                RaisePropertyChanged("FourthTabBruttoValue0");
+                ComputeFourthTabSumBruttoValue();
+                ComputeFourthTabSumNettoValue();
+            }
+        }
+        public decimal FourthTabBruttoValue1
+        {
+            get { return _fourthTabBruttoValue[1]; }
+            set
+            {
+                _fourthTabBruttoValue[1] = value;
+                RaisePropertyChanged("FourthTabBruttoValue1");
+                ComputeFourthTabSumBruttoValue();
+                ComputeFourthTabSumNettoValue();
+            }
+        }
+        public decimal FourthTabBruttoValue2
+        {
+            get { return _fourthTabBruttoValue[2]; }
+            set
+            {
+                _fourthTabBruttoValue[2] = value;
+                RaisePropertyChanged("FourthTabBruttoValue2");
+                ComputeFourthTabSumBruttoValue();
+                ComputeFourthTabSumNettoValue();
+            }
+        }
+        public decimal FourthTabBruttoValue3
+        {
+            get { return _fourthTabBruttoValue[3]; }
+            set
+            {
+                _fourthTabBruttoValue[3] = value;
+                RaisePropertyChanged("FourthTabBruttoValue3");
+                ComputeFourthTabSumBruttoValue();
+                ComputeFourthTabSumNettoValue();
+            }
+        }
+        public decimal FourthTabBruttoValue4
+        {
+            get { return _fourthTabBruttoValue[4]; }
+            set
+            {
+                _fourthTabBruttoValue[4] = value;
+                RaisePropertyChanged("FourthTabBruttoValue4");
+                ComputeFourthTabSumBruttoValue();
+                ComputeFourthTabSumNettoValue();
+            }
+        }
+        public decimal FourthTabBruttoValue5
+        {
+            get { return _fourthTabBruttoValue[5]; }
+            set
+            {
+                _fourthTabBruttoValue[5] = value;
+                RaisePropertyChanged("FourthTabBruttoValue5");
+                ComputeFourthTabSumBruttoValue();
+                ComputeFourthTabSumNettoValue();
+            }
+        }
+
+        public decimal FourthTabSumNettoValue
+        {
+            get { return _fourthTabSumNettoValue; }
+            set
+            {
+                _fourthTabSumNettoValue = value;
+                RaisePropertyChanged("FourthTabSumNettoValue");
+
+            }
+        }
+
+        public decimal FourthTabSumBruttoValue
+        {
+            get { return _fourthTabSumBruttoValue; }
+            set
+            {
+                _fourthTabSumBruttoValue = value;
+                RaisePropertyChanged("FourthTabSumBruttoValue");
+            }
+        }
         #endregion
 
 #region Commands
@@ -2600,8 +3023,13 @@ namespace DiamondApp.ViewModels
         {
             return true;
         }
+
         private void CreateNewPropositionExecute(object obj)
         {
+            InitializeObjects();
+            FillNeededList();
+            SetDefaultValues();
+
             var querry = (from user in _ctx.Users
                 where user.Id == _userId
                 select new AddNewProposition
@@ -2613,6 +3041,7 @@ namespace DiamondApp.ViewModels
                     UserEmail = user.Email,
                     IsCreated = true
                 }).SingleOrDefault();
+
             AddNewProposition = querry;
 
             // wypełnienie listy umieszczonej jako SALA 1tab
@@ -2630,7 +3059,7 @@ namespace DiamondApp.ViewModels
             PropHallEqDict2 = propHallEqList;
 
             var vat = (from he in _ctx.VatList
-             select he.Vat).ToList();
+                select he.Vat).ToList();
             VatList = vat;
 
             //tab3
@@ -2647,12 +3076,12 @@ namespace DiamondApp.ViewModels
             PropMenuMerge2 = merges[2].Value;
             PropMenuMerge3 = merges[3].Value;
             PropMenuMerge4 = merges[4].Value;
-//
-//            _propMenuMerges[0].MergeName = merges[0].MergeName;
-//            _propMenuMerges[1].MergeName = merges[1].MergeName;
-//            _propMenuMerges[2].MergeName = merges[2].MergeName;
-//            _propMenuMerges[3].MergeName = merges[3].MergeName;
-//            _propMenuMerges[4].MergeName = merges[4].MergeName;
+
+            _propMenuMerges[0].MergeName = merges[0].MergeName;
+            _propMenuMerges[1].MergeName = merges[1].MergeName;
+            _propMenuMerges[2].MergeName = merges[2].MergeName;
+            _propMenuMerges[3].MergeName = merges[3].MergeName;
+            _propMenuMerges[4].MergeName = merges[4].MergeName;
 
 
             var mergetype = (from m in _ctx.PropMergeTypes_Dictionary
@@ -2664,6 +3093,19 @@ namespace DiamondApp.ViewModels
             _propMenuMerges[4].MergeType = mergetype[4].MergeType;
 
             //tab4
+            // wypełnienie stawkami VAT
+            var vat4 = (from he in _ctx.VatList
+                        select he.Vat).ToList();
+            VatList4 = vat4;
+
+            PropAccomVat0 = vat4[0];
+            PropAccomVat1 = vat4[0];
+            PropAccomVat2 = vat4[0];
+            PropAccomVat3 = vat4[0];
+            PropAccomVat4 = vat4[0];
+            PropAccomVat5 = vat4[0];
+
+
             //wypelnienie nazw pokoi
             var rooms = (from r in _ctx.PropAccomodation_Dictionary
                 select r).ToList();
@@ -2673,7 +3115,18 @@ namespace DiamondApp.ViewModels
             PropAccomTypeOfRoom3 = rooms[3].TypeOfRoom;
             PropAccomTypeOfRoom4 = rooms[4].TypeOfRoom;
             PropAccomTypeOfRoom5 = rooms[5].TypeOfRoom;
+
+            // wypełnienie domyslnymi cenami brutto
+            PropAccomBrutto0 = rooms[0].Price;
+            PropAccomBrutto1 = rooms[1].Price;
+            PropAccomBrutto2 = rooms[2].Price;
+            PropAccomBrutto3 = rooms[3].Price;
+            PropAccomBrutto4 = rooms[4].Price;
+            PropAccomBrutto5 = rooms[5].Price;
+
+
         }
+
 
         /*zapisz propozycję - należy brać pod wzgląd czy jest to pierwszy zapis propozycji
          * (utworzenie nowego rekordu w bazie) czy tylko aktualizacja
@@ -2687,6 +3140,7 @@ namespace DiamondApp.ViewModels
         {
             if (_addNewProposition.IsCreated && !_saveFlag)
             {
+
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
 
                 // !! PROPOSITION !! 
@@ -2741,6 +3195,8 @@ namespace DiamondApp.ViewModels
                     PropMenuMerges[i].Id_proposition = currentPropositionId;
                     _ctx.PropMenuMerge.Add(PropMenuMerges[i]);
                 }
+
+                //------------------------------
                 // !! PROPMENUPOSITIONS !!
                 for (int i = 0; i < _propMenuPositions.Count; i++)
                 {
@@ -2752,6 +3208,22 @@ namespace DiamondApp.ViewModels
                     }
                 }
 
+                //------------------------------
+                // !! PROPACCOMODATIONS !!
+                for (int i = 0; i < _propAccomodations.Count; i++)
+                {
+                    if (_propAccomodations[i].Amount != null && _propAccomodations[i].Days != null)
+                    {
+                        _propAccomodations[i].Id_proposition = currentPropositionId;
+                        _ctx.PropAccomodation.Add(_propAccomodations[i]);
+                    }
+                }
+
+                //------------------------------
+                // !! PROPACCOMODATIONSDISCOUNT !!
+
+                PropAccomDiscount.Id_proposition = currentPropositionId;
+                _ctx.PropAccomodationDiscount.Add(PropAccomDiscount);
 
                 _ctx.SaveChanges();
                 MessageBox.Show("dodano nowa propozycje");
@@ -3021,14 +3493,14 @@ namespace DiamondApp.ViewModels
         }
 
         // Metoda ustawiajace cene sali po znizce + ustawiajaca cene brutto wybranej sali
-        private void SetDiscountPrice()
+        private void SetEquipmentDiscountPrice()
         {
             if (PropHallEquipmentDiscountValue.HasValue && PropHallEquipmentDiscountStandPrice.HasValue)
             {
-                ComputePriceAfterDiscount = Math.Ceiling((decimal) PropHallEquipmentDiscountStandPrice -
+                PropHallPriceAfterDiscount = Math.Ceiling((decimal) PropHallEquipmentDiscountStandPrice -
                                                          ((decimal) PropHallEquipmentDiscountStandPrice*
                                                           (decimal) PropHallEquipmentDiscountValue/100));
-                PropHallEqBrutto0 = (float?)ComputePriceAfterDiscount;
+                PropHallEqBrutto0 = (float?)PropHallPriceAfterDiscount;
             }
             else if (!PropHallEquipmentDiscountValue.HasValue)
             {
@@ -3036,6 +3508,31 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        private void InitializeObjects()
+        {
+            _propositionClient = new PropClient();
+            _propositionReservDetails = new PropReservationDetails();
+            _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();
+            _propHallEquipmentDiscount = new PropHallEquipmentDiscount();
+            _propHallEquipment = new List<PropHallEquipment>(6);
+            _secondTabNettoPrice = new List<decimal>(6);
+            _secondTabNettoValue = new List<decimal>(6);
+            _secondTabBruttoValue = new List<decimal>(6);
+            _vatList = new List<float?>(2);
+            _propMenuPositions = new List<PropMenuPosition>(7);
+            _thirdTabNettoPrice = new List<decimal?>(7);
+            _propMenuMerges = new List<PropMenuMerge>(5);
+            _defaultMerges = new List<string>(5);
+            _thirdTabNettoValue = new List<decimal>(7);
+            _thirdTabBruttoValue = new List<decimal>(7);
+            _propAccomodations = new List<PropAccomodation>(6);
+            _propAccomDictionary = new List<PropAccomodation_Dictionary>();
+            _propAccomDiscount = new PropAccomodationDiscount();
+            _vatList4 = new List<float?>(2);
+            _fourthTabNettoPrice = new List<decimal?>(6);
+            _fourthTabNettoValue = new List<decimal>(6);
+            _fourthTabBruttoValue = new List<decimal>(6); 
+        }
         // wypelnianie zadeklarowanych pustych list 
         private void FillNeededList()
         {
@@ -3084,7 +3581,7 @@ namespace DiamondApp.ViewModels
             for (int i = 0; i < _fourthTabNettoValue.Capacity; i++)
                 _fourthTabNettoValue.Add(new decimal());
 
-            //ThirdTabBruttoValueList
+            //FourthTabBruttoValueList
             for (int i = 0; i < _fourthTabBruttoValue.Capacity; i++)
                 _fourthTabBruttoValue.Add(new decimal());
 
@@ -3097,14 +3594,17 @@ namespace DiamondApp.ViewModels
                 _propAccomodations.Add(new PropAccomodation());
         }
 
-//        private void FillPropMenuMergeList(List<PropMenuMerge> propMenuMerges)
-//        {
-//            throw new NotImplementedException();
-//        }
+        private void SetDefaultValues()
+        {
+            PropHallEquipmentDiscountValue = 0;
+            PropAccomDiscountValue = 0;
+        }
 
-        // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)PropMenuMerge0
+        // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)PropMenuMerge0ComputeNettoPrice
         private decimal ComputeNettoPrice(float? value, float? vat)
         {
+            if (value == null)
+                value = 0;
             return Math.Round(((decimal) value * 100 /(100 + (decimal) vat)), 2);
         }
 
@@ -3194,12 +3694,19 @@ namespace DiamondApp.ViewModels
         // na podstawie domyslnej ceny (netto lub brutto) dodaj marze na podstawie odpowiedniego typu
         private decimal? AddMergeToPrice(decimal? price, string mergeType)
         {
+//            if (price == null)
+//                price = 0;
             var mergeValue =
                 _propMenuMerges.Where(x => x.MergeType == mergeType)
                     .Select((x) => new { x = x.DefaultValue })
                     .Single();
-            var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
-            return toret;
+
+            if (mergeValue.x != null)
+            {
+                var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
+                return toret;
+            }
+            return price;
         }
 
         // przeciazona powyzsza metoda
@@ -3209,8 +3716,13 @@ namespace DiamondApp.ViewModels
                 _propMenuMerges.Where(x => x.MergeType == mergeType)
                     .Select((x) => new { x = x.DefaultValue })
                     .Single();
-            var toret = price + (price * mergeValue.x / 100);
-            return toret;
+
+            if (mergeValue.x != null)
+            {
+                var toret = price + (price * mergeValue.x / 100);
+                return toret;
+            }
+            return price;
         }
 
         // na podstawie domyslnej ceny (netto lub brutto) dodaj marze na podstawie odpowiedniego typu
@@ -3263,6 +3775,34 @@ namespace DiamondApp.ViewModels
             sum += ThirdTabBruttoValue6;
 
             ThirdTabSumBruttoValue = sum;
+        }
+
+        // obliczanie sumy netto (tab4)
+        private void ComputeFourthTabSumNettoValue()
+        {
+            decimal sum = 0;
+            sum += FourthTabNettoValue0;
+            sum += FourthTabNettoValue1;
+            sum += FourthTabNettoValue2;
+            sum += FourthTabNettoValue3;
+            sum += FourthTabNettoValue4;
+            sum += FourthTabNettoValue5;
+
+            FourthTabSumNettoValue = sum;
+        }
+
+        // obliczanie sumy brutto (tab4)
+        private void ComputeFourthTabSumBruttoValue()
+        {
+            decimal sum = 0;
+            sum += FourthTabBruttoValue0;
+            sum += FourthTabBruttoValue1;
+            sum += FourthTabBruttoValue2;
+            sum += FourthTabBruttoValue3;
+            sum += FourthTabBruttoValue4;
+            sum += FourthTabBruttoValue5;
+
+            FourthTabSumBruttoValue = sum;
         }
 #endregion
     }
