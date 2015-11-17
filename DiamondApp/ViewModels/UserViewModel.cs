@@ -7,13 +7,37 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
-using Microsoft.Practices.ServiceLocation;
 using DiamondApp.DataGridObjectClasses;
 
 namespace DiamondApp.ViewModels
 {
     public class UserViewModel : ObservableObject
     {
+        public RelayCommand _makePdfCommand;
+
+        public ICommand MakePdfCommand
+        {
+            get
+            {
+                if (_makePdfCommand == null)
+                {
+                    _makePdfCommand = new RelayCommand(param => this.MakePdfExecute(), param => this.CanMakePdfExecute());
+                }
+                return _makePdfCommand;
+            }
+        }
+
+        public void MakePdfExecute()
+        {
+            PdfMaker pdf = new PdfMaker();
+            pdf.createPdf();
+        }
+
+        public bool CanMakePdfExecute()
+        {
+            return true;
+        }
+
         private DiamondDBEntities _ctx;
 
         private int _idProposition; //id propozycji
