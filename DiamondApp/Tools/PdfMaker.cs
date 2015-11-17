@@ -36,7 +36,7 @@ namespace DiamondApp.Tools
                 renderDocument.RenderDocument();
                 renderDocument.Save("test.pdf");
                 isSucces = true;
-                MessageBox.Show("Udało się  ");
+                MessageBox.Show("Udaało się  ");
             }
             catch (Exception ex)
             {
