@@ -6,6 +6,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
         Title="AdminMainView" Height="638" Width="1080" Closed="Window_Closed">
+    <Window.Resources>
+        <DataTemplate x:Key="SebaWrappingTemplate">
+            <Grid>
+                <TextBlock Text="{Binding}" TextWrapping="Wrap" >
+                </TextBlock>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
 
     <!--<Window.DataContext>
         <viewModels:AdminViewModel />
@@ -606,26 +614,130 @@
 
                     <Label Grid.Row="9" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" />
 
-<!--                    <Label Grid.Column="1"  Grid.Row="11" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <!--                    <Label Grid.Column="1"  Grid.Row="11" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
                     <Label Grid.Column="1"  Grid.Row="12" Content="Rabat (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
-<!--                    <Label Grid.Column="1"  Grid.Row="13" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <!--                    <Label Grid.Column="1"  Grid.Row="13" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
 
-<!--                    <TextBox x:Name="UNCenaStandardTextBox" Grid.Column="2" Grid.Row="11" HorizontalContentAlignment="Center" Text="{Binding PropAccomDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>-->
+                    <!--                    <TextBox x:Name="UNCenaStandardTextBox" Grid.Column="2" Grid.Row="11" HorizontalContentAlignment="Center" Text="{Binding PropAccomDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>-->
                     <xctk:IntegerUpDown x:Name="UNRabatOdBaraCustIntUpDown" Grid.Column="2" Grid.Row="12" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountValue}"/>
-<!--                    <TextBox x:Name="UNCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="13" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount4, StringFormat=\{0:c\}}" />-->
+                    <!--                    <TextBox x:Name="UNCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="13" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount4, StringFormat=\{0:c\}}" />-->
 
-<!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="11" Content="Dopłata do Biznes: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
-<!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="12" Content="Dopłata do Apartament: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
-<!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Content="Dopłata do dwójke: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="11" Content="Dopłata do Biznes: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="12" Content="Dopłata do Apartament: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Content="Dopłata do dwójke: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
 
-<!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoBiznesIntUpDown" Grid.Column="6" Grid.Row="11" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountBussSurcharge}"/>-->
-<!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoApartamentIntUpDown" Grid.Column="6" Grid.Row="12" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountAparSurcharge}"/>-->
-<!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoDwojkaIntUpDown" Grid.Column="6" Grid.Row="13" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountDoubleSurcharge}"/>-->
+                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoBiznesIntUpDown" Grid.Column="6" Grid.Row="11" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountBussSurcharge}"/>-->
+                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoApartamentIntUpDown" Grid.Column="6" Grid.Row="12" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountAparSurcharge}"/>-->
+                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoDwojkaIntUpDown" Grid.Column="6" Grid.Row="13" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountDoubleSurcharge}"/>-->
 
                 </Grid>
             </TabItem>
             <TabItem x:Name="FifthGrid" Header="USŁUGI DODATKOWE I FORMA PŁATNOŚĆI:">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="45" />
+                        <RowDefinition Height="37" />
+                        <RowDefinition Height="37" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="54.5" />
+                        <ColumnDefinition Width="141.5"/>
+                        <ColumnDefinition Width="189" />
+                        <ColumnDefinition Width="77" />
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="75" />
+                        <ColumnDefinition Width="85" />
+                        <ColumnDefinition Width="42"/>
+                        <ColumnDefinition Width="125" />
+                    </Grid.ColumnDefinitions>
+                    <!--definicja calej tabeli/-->
+                    <Label Grid.Row="1" Grid.Column="0" Content="RODZAJ USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="1" Grid.Column="3" Content="CENA JEDNOSTKOWA NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="4" Content="VAT (%)" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="5" Content="ILOŚĆ" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="6" Content="DNI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="7" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="1" Grid.Column="9" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+
+                    <ComboBox x:Name="UDRodzajPokojuComboBox1" Grid.Column="0" Grid.Row="2" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropExtraServType0}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
+                    <TextBox x:Name="UDRodzajPokojuTextBox2" Grid.Column="0" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding PropExtraServType1}"/>
+                    <TextBox x:Name="UDRodzajPokojuTextBox3" Grid.Column="0" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding PropExtraServType2}"/>
+                    <TextBox x:Name="UDRodzajPokojuTextBox4" Grid.Column="0" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding PropExtraServType3}"/>
+
+                    <TextBox x:Name="UDCenaJednBrutto1" Grid.Column="1" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding PropExtraServBruttoHP0, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="UDCenaJednBrutto2" Grid.Column="1" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding PropExtraServBruttoHP1, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="UDCenaJednBrutto3" Grid.Column="1" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding PropExtraServBruttoHP2, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="UDCenaJednBrutto4" Grid.Column="1" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding PropExtraServBruttoHP3, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+
+                    <TextBox x:Name="UDCenaJednNetto1" Grid.Column="3" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding FifthTabNettoPrice0, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UDCenaJednNetto2" Grid.Column="3" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding FifthTabNettoPrice1, StringFormat=\{0:c\}}"/>
+                    <TextBox x:Name="UDCenaJednNetto3" Grid.Column="3" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding FifthTabNettoPrice2, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UDCenaJednNetto4" Grid.Column="3" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding FifthTabNettoPrice3, StringFormat=\{0:c\}}"/>
+
+                    <ComboBox x:Name="UDVatComboBox1" Grid.Column="4" Grid.Row="2" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList4}" SelectedItem="{Binding PropExtraServVat0}" />
+                    <ComboBox x:Name="UDVatComboBox2" Grid.Column="4" Grid.Row="3" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList4}" SelectedItem="{Binding PropExtraServVat1}" />
+                    <ComboBox x:Name="UDVatComboBox3" Grid.Column="4" Grid.Row="4" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList4}" SelectedItem="{Binding PropExtraServVat2}" />
+                    <ComboBox x:Name="UDVatComboBox4" Grid.Column="4" Grid.Row="5" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList4}" SelectedItem="{Binding PropExtraServVat3}" />
+
+                    <TextBox x:Name="UDIloscTextBox1" Grid.Column="5" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropExtraServAmount0}" />
+                    <TextBox x:Name="UDIloscTextBox2" Grid.Column="5" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropExtraServAmount1}" />
+                    <TextBox x:Name="UDIloscTextBox3" Grid.Column="5" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropExtraServAmount2}" />
+                    <TextBox x:Name="UDIloscTextBox4" Grid.Column="5" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropExtraServAmount3}" />
+
+                    <TextBox x:Name="UDDniTextBox1" Grid.Column="6" Grid.Row="2"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropExtraServDays0}" />
+                    <TextBox x:Name="UDDniTextBox2" Grid.Column="6" Grid.Row="3"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropExtraServDays1}" />
+                    <TextBox x:Name="UDDniTextBox3" Grid.Column="6" Grid.Row="4"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropExtraServDays2}" />
+                    <TextBox x:Name="UDDniTextBox4" Grid.Column="6" Grid.Row="5"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropExtraServDays3}" />
+
+                    <TextBox x:Name="UDWartoscNettoTextBox1" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabNettoValue0, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="UDWartoscNettoTextBox2" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabNettoValue1, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="UDWartoscNettoTextBox3" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabNettoValue2, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="UDWartoscNettoTextBox4" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabNettoValue3, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+
+                    <TextBox x:Name="UDWartoscBruttoTextBox1" Grid.Column="9" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabBruttoValue0, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UDWartoscBruttoTextBox2" Grid.Column="9" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabBruttoValue1, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UDWartoscBruttoTextBox3" Grid.Column="9" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabBruttoValue2, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UDWartoscBruttoTextBox4" Grid.Column="9" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabBruttoValue3, StringFormat=\{0:c\}}" />
+                    
+                    <TextBox x:Name="UDSumaWartoscNettoTextBox" Grid.Column="7" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabSumNettoValue0, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="UDSumaWartoscBruttoTextBox" Grid.Column="9" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding FifthTabSumBruttoValue1, StringFormat=\{0:c\}}" />
+                    
+                    <Label Grid.Row="6" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Grid.ColumnSpan="2" Margin="3,27,51,3" Grid.RowSpan="2" />
+
+                    <Label Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Content="FORMA PŁATNOŚCI: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Content="NAZWA USŁUGI NA FAKTURZE: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2" Content="ZAMÓWIENIA INDYWIDUALNE: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="2" Content="PARKING: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="3"/>
+
+                    <ComboBox x:Name="UDFormPlatn" Grid.Column="2" Grid.Row="10" Margin="3" Grid.ColumnSpan="2" ItemsSource="{Binding PropPaySuggDictFirst}" SelectedItem="{Binding PaymentSuggestPaymentForm}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100" />
+                    <ComboBox x:Name="UDNazwUslu" Grid.Column="2" Grid.Row="11" Margin="3" Grid.ColumnSpan="2" ItemsSource="{Binding PropPaySuggDictSecond}" SelectedItem="{Binding PaymentSuggestInvServName}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100" ItemTemplate="{DynamicResource SebaWrappingTemplate}"/>
+                    <ComboBox x:Name="UDFZamoIndy" Grid.Column="2" Grid.Row="12" Margin="3" Grid.ColumnSpan="2" ItemsSource="{Binding PropPaySuggDictThird}" SelectedItem="{Binding PaymentSuggestIndividOrder}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100" ItemTemplate="{DynamicResource SebaWrappingTemplate}"/>
+                    <ComboBox x:Name="UDParking" Grid.Column="2" Grid.Row="13" Margin="3" Grid.ColumnSpan="2" ItemsSource="{Binding PropPaySuggDictFourth}" SelectedItem="{Binding PaymentSuggestCarPark}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100" ItemTemplate="{DynamicResource SebaWrappingTemplate}"/>
+
+                    <Label Grid.Row="10" Grid.Column="5" Content="WARTOSC ZAMÓWIENIA:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Grid.ColumnSpan="2" Margin="3" />
+                    <TextBox x:Name="UDSumaZamowieniaNettoTextBox" Grid.Column="7" Grid.Row="10" Margin="3" IsEnabled="False" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FullSumNetto, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UDSumaZamowieniaBruttoTextBox" Grid.Column="9" Grid.Row="10" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FullSumBrutto, StringFormat=\{0:c\}}" />
+
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="10" Margin="29,0,0,0" Grid.Row="9" Stroke="Black" VerticalAlignment="Top" Width="1012" Grid.ColumnSpan="10"/>
+
+
+                </Grid>
             </TabItem>
         </TabControl>
         <ComboBox HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="PropositionsSeller Mode=TwoWay,      UpdateSourceTrigger=PropertyChanged}"/>

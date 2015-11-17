@@ -71,6 +71,18 @@ namespace DiamondApp.ViewModels
         private decimal _fourthTabSumNettoValue;    // suma wartosci netto (tab3)
         private decimal _fourthTabSumBruttoValue;   // suma wartosci brutto (tab3)
 
+        //5 tab
+        private List<string> _propPaySuggDictFirst;
+        private List<string> _propPaySuggDictSecond;
+        private List<string> _propPaySuggDictThird;
+        private List<string> _propPaySuggDictFourth;
+        private List<PropExtraServices> _propExtraServ = new List<PropExtraServices>(4);
+
+        private decimal _fifthTabSumNettoValue;    // suma wartosci netto (tab5)
+        private decimal _fifthTabSumBruttoValue;   // suma wartosci brutto (tab5)
+
+        private decimal _fullSumNetto;    // suma wartosci netto (tab5)
+        private decimal _fullSumBrutto;   // suma wartosci brutto (tab5)
 
         public AdminViewModel(int userId)
         {
@@ -3010,6 +3022,45 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("FourthTabSumBruttoValue");
             }
         }
+
+        public List<string> PropPaySuggDictFirst
+        {
+            get { return _propPaySuggDictFirst; }
+            set
+            {
+                _propPaySuggDictFirst = value;
+                RaisePropertyChanged("PropPaySuggDictFirst");               
+            }
+        }
+        public List<string> PropPaySuggDictSecond
+        {
+            get { return _propPaySuggDictSecond; }
+            set
+            {
+                _propPaySuggDictSecond = value;
+                RaisePropertyChanged("PropPaySuggDictSecond");                
+            }
+        }
+        public List<string> PropPaySuggDictThird
+        {
+            get { return _propPaySuggDictThird; }
+            set
+            {
+                _propPaySuggDictThird = value;
+                RaisePropertyChanged("PropPaySuggDictThird");              
+            }
+        }
+        public List<string> PropPaySuggDictFourth
+        {
+            get { return _propPaySuggDictFourth; }
+            set
+            {
+                _propPaySuggDictFourth = value;
+                RaisePropertyChanged("PropPaySuggDictFourth");               
+            }
+        }
+
+
         #endregion
 
 #region Commands
@@ -3077,11 +3128,15 @@ namespace DiamondApp.ViewModels
             PropMenuMerge3 = merges[3].Value;
             PropMenuMerge4 = merges[4].Value;
 
-            _propMenuMerges[0].MergeName = merges[0].MergeName;
-            _propMenuMerges[1].MergeName = merges[1].MergeName;
-            _propMenuMerges[2].MergeName = merges[2].MergeName;
-            _propMenuMerges[3].MergeName = merges[3].MergeName;
-            _propMenuMerges[4].MergeName = merges[4].MergeName;
+            for (int i = 0; i < 5; i++)
+            {
+                _propMenuMerges[i].MergeName = merges[i].MergeName;
+            }
+//            _propMenuMerges[0].MergeName = merges[0].MergeName;
+//            _propMenuMerges[1].MergeName = merges[1].MergeName;
+//            _propMenuMerges[2].MergeName = merges[2].MergeName;
+//            _propMenuMerges[3].MergeName = merges[3].MergeName;
+//            _propMenuMerges[4].MergeName = merges[4].MergeName;
 
 
             var mergetype = (from m in _ctx.PropMergeTypes_Dictionary
@@ -3124,6 +3179,22 @@ namespace DiamondApp.ViewModels
             PropAccomBrutto4 = rooms[4].Price;
             PropAccomBrutto5 = rooms[5].Price;
 
+            // uzupelnianie slownikami form platnosci
+            var fi = (from r in _ctx.PropPaymentSuggestions_Dictionary_First
+                select r.PaymentForm).ToList();
+            PropPaySuggDictFirst = fi;
+
+            var fii = (from r in _ctx.PropPaymentSuggestions_Dictionary_Second
+                      select r.InvoiceServiceName).ToList();
+            PropPaySuggDictSecond = fii;
+
+            var fiii = (from r in _ctx.PropPaymentSuggestions_Dictionary_Third
+                      select r.IndividualOrders).ToList();
+            PropPaySuggDictThird = fiii;
+
+            var fiv = (from r in _ctx.PropPaymentSuggestions_Dictionary_Fourth
+                      select r.CarPark).ToList();
+            PropPaySuggDictFourth = fiv;
 
         }
 
@@ -3400,6 +3471,18 @@ namespace DiamondApp.ViewModels
 
         }
 
+        public decimal FifthTabSumNettoValue
+        {
+            get { return _fifthTabSumNettoValue; }
+            set { _fifthTabSumNettoValue = value; }
+        }
+
+        public decimal FifthTabSumBruttoValue
+        {
+            get { return _fifthTabSumBruttoValue; }
+            set { _fifthTabSumBruttoValue = value; }
+        }
+
         private bool CanEditDictionarExecute(object art)
         {
             return true;
@@ -3531,7 +3614,8 @@ namespace DiamondApp.ViewModels
             _vatList4 = new List<float?>(2);
             _fourthTabNettoPrice = new List<decimal?>(6);
             _fourthTabNettoValue = new List<decimal>(6);
-            _fourthTabBruttoValue = new List<decimal>(6); 
+            _fourthTabBruttoValue = new List<decimal>(6);
+            _propExtraServ = new List<PropExtraServices>(2);
         }
         // wypelnianie zadeklarowanych pustych list 
         private void FillNeededList()
@@ -3592,6 +3676,9 @@ namespace DiamondApp.ViewModels
              //PropositionAccomodation
             for (int i = 0; i < _propAccomodations.Capacity; i++)
                 _propAccomodations.Add(new PropAccomodation());
+
+            for (int i = 0; i < _propAccomodations.Capacity; i++)
+                _propExtraServ.Add(new PropExtraServices());
         }
 
         private void SetDefaultValues()
