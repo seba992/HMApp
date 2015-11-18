@@ -17,10 +17,10 @@ namespace DiamondApp.EntityModel
         public int Id { get; set; }
         public Nullable<int> Id_proposition { get; set; }
         public string ServiceType { get; set; }
-        public Nullable<int> BruttoHourPrice { get; set; }
-        public Nullable<byte> Vat { get; set; }
-        public Nullable<short> Amount { get; set; }
-        public Nullable<short> Days { get; set; }
+        public Nullable<float> BruttoPrice { get; set; }
+        public Nullable<float> Vat { get; set; }
+        public Nullable<int> Amount { get; set; }
+        public Nullable<int> Days { get; set; }
     
         public virtual Proposition Proposition { get; set; }
     }

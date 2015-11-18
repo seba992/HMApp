@@ -68,15 +68,21 @@ namespace DiamondApp.ViewModels
         private List<decimal> _fourthTabNettoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab4)
         private List<decimal> _fourthTabBruttoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab4)
 
-        private decimal _fourthTabSumNettoValue;    // suma wartosci netto (tab3)
-        private decimal _fourthTabSumBruttoValue;   // suma wartosci brutto (tab3)
+        private decimal _fourthTabSumNettoValue;    // suma wartosci netto (tab4)
+        private decimal _fourthTabSumBruttoValue;   // suma wartosci brutto (tab4)
 
         //5 tab
-        private List<string> _propPaySuggDictFirst;
-        private List<string> _propPaySuggDictSecond;
-        private List<string> _propPaySuggDictThird;
-        private List<string> _propPaySuggDictFourth;
+        private List<string> _propPaySuggDictFirst; // zaplata combo 1
+        private List<string> _propPaySuggDictSecond; // zaplata combo 2
+        private List<string> _propPaySuggDictThird; // zaplata combo 3
+        private List<string> _propPaySuggDictFourth; // zaplata combo 4
         private List<PropExtraServices> _propExtraServ = new List<PropExtraServices>(4);
+        private PropPaymentSuggestions _propPaymentSugg = new PropPaymentSuggestions();
+        private List<string> _propExtraServTypeDict;
+        private List<decimal?> _fifthTabNettoPrice = new List<decimal?>(4);  // lista cen netto (tab5)
+
+        private List<decimal> _fifthTabNettoValue = new List<decimal>(4);   // list zsumowanych cen netto (tab5)
+        private List<decimal> _fifthTabBruttoValue = new List<decimal>(4);   // list zsumowanych cen netto (tab5)
 
         private decimal _fifthTabSumNettoValue;    // suma wartosci netto (tab5)
         private decimal _fifthTabSumBruttoValue;   // suma wartosci brutto (tab5)
@@ -1143,6 +1149,7 @@ namespace DiamondApp.ViewModels
             {
                 _secondTabSumNettoValue = value;
                 RaisePropertyChanged("SecondTabSumNettoValue");
+                ComputeFullSumNetto();
             }
         }
 
@@ -1153,6 +1160,7 @@ namespace DiamondApp.ViewModels
             {
                 _secondTabSumBruttoValue = value;
                 RaisePropertyChanged("SecondTabSumBruttoValue");
+                ComputeFullSumBrutto();
             }
         }
 
@@ -2146,6 +2154,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabNettoValue[0] = value;
                 RaisePropertyChanged("ThirdTabNettoValue0");
+                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabNettoValue1
@@ -2155,6 +2164,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabNettoValue[1] = value;
                 RaisePropertyChanged("ThirdTabNettoValue1");
+                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabNettoValue2
@@ -2164,6 +2174,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabNettoValue[2] = value;
                 RaisePropertyChanged("ThirdTabNettoValue2");
+                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabNettoValue3
@@ -2173,6 +2184,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabNettoValue[3] = value;
                 RaisePropertyChanged("ThirdTabNettoValue3");
+                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabNettoValue4
@@ -2182,6 +2194,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabNettoValue[4] = value;
                 RaisePropertyChanged("ThirdTabNettoValue4");
+                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabNettoValue5
@@ -2191,6 +2204,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabNettoValue[5] = value;
                 RaisePropertyChanged("ThirdTabNettoValue5");
+                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabNettoValue6
@@ -2200,6 +2214,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabNettoValue[6] = value;
                 RaisePropertyChanged("ThirdTabNettoValue6");
+                ComputeThirdTabSumNettoValue();
             }
         }
 
@@ -2211,7 +2226,6 @@ namespace DiamondApp.ViewModels
                 _thirdTabBruttoValue[0] = value;
                 RaisePropertyChanged("ThirdTabBruttoValue0");
                 ComputeThirdTabSumBruttoValue();
-                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabBruttoValue1
@@ -2222,7 +2236,6 @@ namespace DiamondApp.ViewModels
                 _thirdTabBruttoValue[1] = value;
                 RaisePropertyChanged("ThirdTabBruttoValue1");
                 ComputeThirdTabSumBruttoValue();
-                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabBruttoValue2
@@ -2233,7 +2246,6 @@ namespace DiamondApp.ViewModels
                 _thirdTabBruttoValue[2] = value;
                 RaisePropertyChanged("ThirdTabBruttoValue2");
                 ComputeThirdTabSumBruttoValue();
-                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabBruttoValue3
@@ -2244,7 +2256,6 @@ namespace DiamondApp.ViewModels
                 _thirdTabBruttoValue[3] = value;
                 RaisePropertyChanged("ThirdTabBruttoValue3");
                 ComputeThirdTabSumBruttoValue();
-                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabBruttoValue4
@@ -2255,7 +2266,6 @@ namespace DiamondApp.ViewModels
                 _thirdTabBruttoValue[4] = value;
                 RaisePropertyChanged("ThirdTabBruttoValue4");
                 ComputeThirdTabSumBruttoValue();
-                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabBruttoValue5
@@ -2266,7 +2276,6 @@ namespace DiamondApp.ViewModels
                 _thirdTabBruttoValue[5] = value;
                 RaisePropertyChanged("ThirdTabBruttoValue5");
                 ComputeThirdTabSumBruttoValue();
-                ComputeThirdTabSumNettoValue();
             }
         }
         public decimal ThirdTabBruttoValue6
@@ -2277,7 +2286,6 @@ namespace DiamondApp.ViewModels
                 _thirdTabBruttoValue[6] = value;
                 RaisePropertyChanged("ThirdTabBruttoValue6");
                 ComputeThirdTabSumBruttoValue();
-                ComputeThirdTabSumNettoValue();
             }
         }
 
@@ -2288,7 +2296,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabSumNettoValue = value;
                 RaisePropertyChanged("ThirdTabSumNettoValue");
-                
+                ComputeFullSumNetto();
             }
         }
 
@@ -2299,6 +2307,7 @@ namespace DiamondApp.ViewModels
             {
                 _thirdTabSumBruttoValue = value;
                 RaisePropertyChanged("ThirdTabSumBruttoValue");
+                ComputeFullSumBrutto();
             }
         }
 
@@ -2887,6 +2896,7 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoValue[0] = value;
                 RaisePropertyChanged("FourthTabNettoValue0");
+                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabNettoValue1
@@ -2896,6 +2906,7 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoValue[1] = value;
                 RaisePropertyChanged("FourthTabNettoValue1");
+                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabNettoValue2
@@ -2905,6 +2916,7 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoValue[2] = value;
                 RaisePropertyChanged("FourthTabNettoValue2");
+                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabNettoValue3
@@ -2914,6 +2926,7 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoValue[3] = value;
                 RaisePropertyChanged("FourthTabNettoValue3");
+                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabNettoValue4
@@ -2923,6 +2936,7 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoValue[4] = value;
                 RaisePropertyChanged("FourthTabNettoValue4");
+                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabNettoValue5
@@ -2932,6 +2946,7 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabNettoValue[5] = value;
                 RaisePropertyChanged("FourthTabNettoValue5");
+                ComputeFourthTabSumNettoValue();
             }
         }
 
@@ -2943,7 +2958,6 @@ namespace DiamondApp.ViewModels
                 _fourthTabBruttoValue[0] = value;
                 RaisePropertyChanged("FourthTabBruttoValue0");
                 ComputeFourthTabSumBruttoValue();
-                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabBruttoValue1
@@ -2954,7 +2968,6 @@ namespace DiamondApp.ViewModels
                 _fourthTabBruttoValue[1] = value;
                 RaisePropertyChanged("FourthTabBruttoValue1");
                 ComputeFourthTabSumBruttoValue();
-                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabBruttoValue2
@@ -2965,7 +2978,6 @@ namespace DiamondApp.ViewModels
                 _fourthTabBruttoValue[2] = value;
                 RaisePropertyChanged("FourthTabBruttoValue2");
                 ComputeFourthTabSumBruttoValue();
-                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabBruttoValue3
@@ -2976,7 +2988,6 @@ namespace DiamondApp.ViewModels
                 _fourthTabBruttoValue[3] = value;
                 RaisePropertyChanged("FourthTabBruttoValue3");
                 ComputeFourthTabSumBruttoValue();
-                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabBruttoValue4
@@ -2987,7 +2998,6 @@ namespace DiamondApp.ViewModels
                 _fourthTabBruttoValue[4] = value;
                 RaisePropertyChanged("FourthTabBruttoValue4");
                 ComputeFourthTabSumBruttoValue();
-                ComputeFourthTabSumNettoValue();
             }
         }
         public decimal FourthTabBruttoValue5
@@ -2998,7 +3008,6 @@ namespace DiamondApp.ViewModels
                 _fourthTabBruttoValue[5] = value;
                 RaisePropertyChanged("FourthTabBruttoValue5");
                 ComputeFourthTabSumBruttoValue();
-                ComputeFourthTabSumNettoValue();
             }
         }
 
@@ -3009,6 +3018,7 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabSumNettoValue = value;
                 RaisePropertyChanged("FourthTabSumNettoValue");
+                ComputeFullSumNetto();
 
             }
         }
@@ -3020,6 +3030,7 @@ namespace DiamondApp.ViewModels
             {
                 _fourthTabSumBruttoValue = value;
                 RaisePropertyChanged("FourthTabSumBruttoValue");
+                ComputeFullSumBrutto();
             }
         }
 
@@ -3061,6 +3072,530 @@ namespace DiamondApp.ViewModels
         }
 
 
+        public decimal FifthTabSumNettoValue
+        {
+            get { return _fifthTabSumNettoValue; }
+            set
+            {
+                _fifthTabSumNettoValue = value;
+                RaisePropertyChanged("FifthTabSumNettoValue");
+                ComputeFullSumNetto();
+            }
+        }
+
+        public decimal FifthTabSumBruttoValue
+        {
+            get { return _fifthTabSumBruttoValue; }
+            set
+            {
+                _fifthTabSumBruttoValue = value;
+                RaisePropertyChanged("FifthTabSumBruttoValue");
+                ComputeFullSumBrutto();
+            }
+        }
+
+        public List<string> PropExtraServTypeDict
+        {
+            get { return _propExtraServTypeDict; }
+            set
+            {
+                _propExtraServTypeDict = value;
+                RaisePropertyChanged("PropExtraServTypeDict");    
+            }
+        }
+
+        public string PropExtraServType0
+        {
+            get { return _propExtraServ[0].ServiceType; }
+            set
+            {
+                _propExtraServ[0].ServiceType = value;
+                RaisePropertyChanged("PropExtraServType0");
+
+                PropExtraServBrutto0 = SetExtraServBruttoPrice(_propExtraServ[0].ServiceType);
+
+                if (PropExtraServVat0 != null)
+                    FifthTabNettoPrice0 = ComputeNettoPrice(PropExtraServBrutto0, PropExtraServVat0);
+            }
+        }
+        public string PropExtraServType1
+        {
+            get { return _propExtraServ[1].ServiceType; }
+            set
+            {
+                _propExtraServ[1].ServiceType = value;
+                RaisePropertyChanged("PropExtraServType1");
+
+            }
+        }
+        public string PropExtraServType2
+        {
+            get { return _propExtraServ[2].ServiceType; }
+            set
+            {
+                _propExtraServ[2].ServiceType = value;
+                RaisePropertyChanged("PropExtraServType2");
+
+            }
+        }
+        public string PropExtraServType3
+        {
+            get { return _propExtraServ[3].ServiceType; }
+            set
+            {
+                _propExtraServ[3].ServiceType = value;
+                RaisePropertyChanged("PropExtraServType3");
+
+            }
+        }
+
+        private float? SetExtraServBruttoPrice(string serviceType)
+        {
+            var r = (from s in _ctx.PropExtraServices_Dictionary
+                where s.ServiceType == serviceType 
+                select s.Price).Single();
+            return r;
+        }
+
+        public float? PropExtraServBrutto0
+        {
+            get { return _propExtraServ[0].BruttoPrice; }
+            set
+            {
+                _propExtraServ[0].BruttoPrice = value;
+                RaisePropertyChanged("PropExtraServBrutto0");     
+            }
+        }
+        public float? PropExtraServBrutto1
+        {
+            get { return _propExtraServ[1].BruttoPrice; }
+            set
+            {
+                _propExtraServ[1].BruttoPrice = value;
+                RaisePropertyChanged("PropExtraServBrutto1");
+
+                if (PropExtraServVat1 != null)
+                    FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, PropExtraServVat1);
+            }
+        }
+        public float? PropExtraServBrutto2
+        {
+            get { return _propExtraServ[2].BruttoPrice; }
+            set
+            {
+                _propExtraServ[2].BruttoPrice = value;
+                RaisePropertyChanged("PropExtraServBrutto2");
+
+                if (PropExtraServVat2 != null)
+                    FifthTabNettoPrice2 = ComputeNettoPrice(PropExtraServBrutto2, PropExtraServVat2);
+            }
+        }
+        public float? PropExtraServBrutto3
+        {
+            get { return _propExtraServ[3].BruttoPrice; }
+            set
+            {
+                _propExtraServ[3].BruttoPrice = value;
+                RaisePropertyChanged("PropExtraServBrutto3");
+
+                if (PropExtraServVat3 != null)
+                    FifthTabNettoPrice3 = ComputeNettoPrice(PropExtraServBrutto3, PropExtraServVat3);
+            }
+        }
+
+        public float? PropExtraServVat0
+        {
+            get { return _propExtraServ[0].Vat; }
+            set
+            {
+                _propExtraServ[0].Vat = value;
+                RaisePropertyChanged("PropExtraServVat0");
+
+                FifthTabNettoPrice0 = ComputeNettoPrice(PropExtraServBrutto0, PropExtraServVat0);
+            } 
+        }
+        public float? PropExtraServVat1
+        {
+            get { return _propExtraServ[1].Vat; }
+            set
+            {
+                _propExtraServ[1].Vat = value;
+                RaisePropertyChanged("PropExtraServVat1");
+
+                FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, PropExtraServVat1);
+            }
+        }
+        public float? PropExtraServVat2
+        {
+            get { return _propExtraServ[2].Vat; }
+            set
+            {
+                _propExtraServ[2].Vat = value;
+                RaisePropertyChanged("PropExtraServVat2");
+
+                FifthTabNettoPrice2 = ComputeNettoPrice(PropExtraServBrutto2, PropExtraServVat2);
+            }
+        }
+        public float? PropExtraServVat3
+        {
+            get { return _propExtraServ[3].Vat; }
+            set
+            {
+                _propExtraServ[3].Vat = value;
+                RaisePropertyChanged("PropExtraServVat3");
+
+                FifthTabNettoPrice3 = ComputeNettoPrice(PropExtraServBrutto3, PropExtraServVat3);
+            }
+        }
+
+        public decimal? FifthTabNettoPrice0
+        {
+            get { return _fifthTabNettoPrice[0]; }
+            set
+            {
+                _fifthTabNettoPrice[0] = value;
+                RaisePropertyChanged("FifthTabNettoPrice0");
+
+                if (PropExtraServAmount0 != null && PropExtraServDays0 != null)
+                    FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0, PropExtraServDays0);
+            }
+        }
+        public decimal? FifthTabNettoPrice1
+        {
+            get { return _fifthTabNettoPrice[1]; }
+            set
+            {
+                _fifthTabNettoPrice[1] = value;
+                RaisePropertyChanged("FifthTabNettoPrice1");
+            }
+        }
+        public decimal? FifthTabNettoPrice2
+        {
+            get { return _fifthTabNettoPrice[2]; }
+            set
+            {
+                _fifthTabNettoPrice[2] = value;
+                RaisePropertyChanged("FifthTabNettoPrice2");
+            }
+        }
+        public decimal? FifthTabNettoPrice3
+        {
+            get { return _fifthTabNettoPrice[3]; }
+            set
+            {
+                _fifthTabNettoPrice[3] = value;
+                RaisePropertyChanged("FifthTabNettoPrice3");
+            }
+        }
+
+        public int? PropExtraServAmount0
+        {
+            get { return _propExtraServ[0].Amount; }
+            set
+            {
+                _propExtraServ[0].Amount = value;
+                RaisePropertyChanged("PropExtraServAmount0");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropExtraServBrutto0 != null && PropExtraServDays0 != null)
+                {
+                    FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0,
+                        PropExtraServDays0);
+                    FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServAmount0,
+                        PropExtraServDays0);
+                }
+            }
+        }
+        public int? PropExtraServAmount1
+        {
+            get { return _propExtraServ[1].Amount; }
+            set
+            {
+                _propExtraServ[1].Amount = value;
+                RaisePropertyChanged("PropExtraServAmount1");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropExtraServBrutto1 != null && PropExtraServDays1 != null)
+                {
+                    FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, PropExtraServAmount1,
+                        PropExtraServDays1);
+                    FifthTabBruttoValue1 = ComputeBruttoValue(PropExtraServBrutto1, PropExtraServAmount1,
+                        PropExtraServDays1);
+                }
+            }
+        }
+        public int? PropExtraServAmount2
+        {
+            get { return _propExtraServ[2].Amount; }
+            set
+            {
+                _propExtraServ[2].Amount = value;
+                RaisePropertyChanged("PropExtraServAmount2");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropExtraServBrutto2 != null && PropExtraServDays2 != null)
+                {
+                    FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, PropExtraServAmount2,
+                        PropExtraServDays3);
+                    FifthTabBruttoValue2 = ComputeBruttoValue(PropExtraServBrutto2, PropExtraServAmount2,
+                        PropExtraServDays2);
+                }
+            }
+        }
+        public int? PropExtraServAmount3
+        {
+            get { return _propExtraServ[3].Amount; }
+            set
+            {
+                _propExtraServ[3].Amount = value;
+                RaisePropertyChanged("PropExtraServAmount3");
+
+                // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
+
+                if (PropExtraServBrutto3 != null && PropExtraServDays3 != null)
+                {
+                    FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
+                        PropExtraServDays3);
+                    FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, PropExtraServAmount3,
+                        PropExtraServDays3);
+                }
+            }
+        }
+
+        public int? PropExtraServDays0
+        {
+            get { return _propExtraServ[0].Days; }
+            set
+            {
+                _propExtraServ[0].Days = value;
+                RaisePropertyChanged("PropExtraServDays0");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropExtraServBrutto0 != null && PropExtraServAmount0 != null)
+                {
+                    FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0,
+                        PropExtraServDays0);
+                    FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServAmount0,
+                        PropExtraServDays0);
+                }
+            }
+        }
+        public int? PropExtraServDays1
+        {
+            get { return _propExtraServ[1].Days; }
+            set
+            {
+                _propExtraServ[1].Days = value;
+                RaisePropertyChanged("PropExtraServDays1");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropExtraServBrutto1 != null && PropExtraServAmount1 != null)
+                {
+                    FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, PropExtraServAmount1,
+                        PropExtraServDays1);
+                    FifthTabBruttoValue1 = ComputeBruttoValue(PropExtraServBrutto1, PropExtraServAmount1,
+                        PropExtraServDays1);
+                }
+            }
+        }
+        public int? PropExtraServDays2
+        {
+            get { return _propExtraServ[2].Days; }
+            set
+            {
+                _propExtraServ[2].Days = value;
+                RaisePropertyChanged("PropExtraServDays2");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropExtraServBrutto2 != null && PropExtraServAmount2 != null)
+                {
+                    FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, PropExtraServAmount2,
+                        PropExtraServDays2);
+                    FifthTabBruttoValue2 = ComputeBruttoValue(PropExtraServBrutto2, PropExtraServAmount2,
+                        PropExtraServDays2);
+                }
+            }
+        }
+        public int? PropExtraServDays3
+        {
+            get { return _propExtraServ[3].Days; }
+            set
+            {
+                _propExtraServ[3].Days = value;
+                RaisePropertyChanged("PropExtraServDays3");
+
+                // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
+                if (PropExtraServBrutto3 != null && PropExtraServAmount3 != null)
+                {
+                    FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
+                        PropExtraServDays3);
+                    FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, PropExtraServAmount3,
+                        PropExtraServDays3);
+                }
+            }
+        }
+
+        public decimal FifthTabNettoValue0
+        {
+            get { return _fifthTabNettoValue[0]; }
+            set
+            {
+                _fifthTabNettoValue[0] = value;
+                RaisePropertyChanged("FifthTabNettoValue0");
+                ComputeFifthTabSumNettoValue();
+            }
+        }
+        public decimal FifthTabNettoValue1
+        {
+            get { return _fifthTabNettoValue[1]; }
+            set
+            {
+                _fifthTabNettoValue[1] = value;
+                RaisePropertyChanged("FifthTabNettoValue1");
+                ComputeFifthTabSumNettoValue();
+            }
+        }
+        public decimal FifthTabNettoValue2
+        {
+            get { return _fifthTabNettoValue[2]; }
+            set
+            {
+                _fifthTabNettoValue[2] = value;
+                RaisePropertyChanged("FifthTabNettoValue2");
+                ComputeFifthTabSumNettoValue();
+            }
+        }
+        public decimal FifthTabNettoValue3
+        {
+            get { return _fifthTabNettoValue[3]; }
+            set
+            {
+                _fifthTabNettoValue[3] = value;
+                RaisePropertyChanged("FifthTabNettoValue3");
+                ComputeFifthTabSumNettoValue();
+            }
+        }
+
+        public List<decimal> FifthTabNettoValue
+        {
+            get { return _fifthTabNettoValue; }
+            set
+            {
+                _fifthTabNettoValue = value;
+                RaisePropertyChanged("FifthTabNettoValue");              
+            }
+        }
+
+        public List<decimal> FifthTabBruttoValue
+        {
+            get { return _fifthTabBruttoValue; }
+            set
+            {
+                _fifthTabBruttoValue = value;
+                RaisePropertyChanged("FifthTabBruttoValue");       
+            }
+        }
+
+        public decimal FifthTabBruttoValue0
+        {
+            get { return _fifthTabBruttoValue[0]; }
+            set
+            {
+                _fifthTabBruttoValue[0] = value;
+                RaisePropertyChanged("FifthTabBruttoValue0");
+                ComputeFifthTabSumBruttoValue();
+            }
+        }
+        public decimal FifthTabBruttoValue1
+        {
+            get { return _fifthTabBruttoValue[1]; }
+            set
+            {
+                _fifthTabBruttoValue[1] = value;
+                RaisePropertyChanged("FifthTabBruttoValue1");
+                ComputeFifthTabSumBruttoValue();
+            }
+        }
+        public decimal FifthTabBruttoValue2
+        {
+            get { return _fifthTabBruttoValue[2]; }
+            set
+            {
+                _fifthTabBruttoValue[2] = value;
+                RaisePropertyChanged("FifthTabBruttoValue2");
+                ComputeFifthTabSumBruttoValue();
+            }
+        }
+        public decimal FifthTabBruttoValue3
+        {
+            get { return _fifthTabBruttoValue[3]; }
+            set
+            {
+                _fifthTabBruttoValue[3] = value;
+                RaisePropertyChanged("FifthTabBruttoValue3");
+                ComputeFifthTabSumBruttoValue();
+            }
+        }
+
+        public decimal FullSumNetto
+        {
+            get { return _fullSumNetto; }
+            set
+            {
+                _fullSumNetto = value;
+                RaisePropertyChanged("FullSumNetto");              
+            }
+        }
+
+        public decimal FullSumBrutto
+        {
+            get { return _fullSumBrutto; }
+            set
+            {
+                _fullSumBrutto = value;
+                RaisePropertyChanged("FullSumBrutto");            
+            }
+        }
+
+        public string PaymentSuggestPaymentForm
+        {
+            get { return _propPaymentSugg.PaymentForm;  }
+            set
+            {
+                _propPaymentSugg.PaymentForm = value;
+                RaisePropertyChanged("PaymentSuggestPaymentForm");   
+            }
+        }
+        public string PaymentSuggestInvServName
+        {
+            get { return _propPaymentSugg.InvoiceServiceName; }
+            set
+            {
+                _propPaymentSugg.InvoiceServiceName = value;
+                RaisePropertyChanged("PaymentSuggestInvServName");
+            }
+        }
+        public string PaymentSuggestIndividOrder
+        {
+            get { return _propPaymentSugg.IndividualOrders; }
+            set
+            {
+                _propPaymentSugg.IndividualOrders = value;
+                RaisePropertyChanged("PaymentSuggestIndividOrder");
+            }
+        }
+        public string PaymentSuggestCarPark
+        {
+            get { return _propPaymentSugg.CarPark; }
+            set
+            {
+                _propPaymentSugg.CarPark = value;
+                RaisePropertyChanged("PaymentSuggestCarPark");
+            }
+        }
         #endregion
 
 #region Commands
@@ -3179,6 +3714,9 @@ namespace DiamondApp.ViewModels
             PropAccomBrutto4 = rooms[4].Price;
             PropAccomBrutto5 = rooms[5].Price;
 
+
+            //tab 5
+
             // uzupelnianie slownikami form platnosci
             var fi = (from r in _ctx.PropPaymentSuggestions_Dictionary_First
                 select r.PaymentForm).ToList();
@@ -3196,6 +3734,15 @@ namespace DiamondApp.ViewModels
                       select r.CarPark).ToList();
             PropPaySuggDictFourth = fiv;
 
+            // uzupelnienie slownikiem z parkingami (dodatkowe wypos.)
+            var ext = (from r in _ctx.PropExtraServices_Dictionary
+                      select r.ServiceType).ToList();
+            PropExtraServTypeDict = ext;
+
+            PropExtraServVat0 = vat4[0];
+            PropExtraServVat1 = vat4[0];
+            PropExtraServVat2 = vat4[0];
+            PropExtraServVat3 = vat4[0];
         }
 
 
@@ -3295,6 +3842,26 @@ namespace DiamondApp.ViewModels
 
                 PropAccomDiscount.Id_proposition = currentPropositionId;
                 _ctx.PropAccomodationDiscount.Add(PropAccomDiscount);
+
+                //------------------------------
+                // !! PROPEXTRASERVICES !!
+                for (int i = 0; i < _propExtraServ.Count; i++)
+                {
+                    if (_propExtraServ[i].ServiceType != null && _propExtraServ[i].BruttoPrice != null && 
+                        _propExtraServ[i].Days !=null && _propExtraServ[i].Amount !=null)
+                    {
+                        _propExtraServ[i].Id_proposition = currentPropositionId;
+                        _ctx.PropExtraServices.Add(_propExtraServ[i]);
+                    }
+                }
+
+                //------------------------------
+                // !! PROPPAYMENTSUGGESTIONS !!
+
+                _propPaymentSugg.Id_proposition = currentPropositionId;
+                _ctx.PropPaymentSuggestions.Add(_propPaymentSugg);
+
+
 
                 _ctx.SaveChanges();
                 MessageBox.Show("dodano nowa propozycje");
@@ -3471,18 +4038,6 @@ namespace DiamondApp.ViewModels
 
         }
 
-        public decimal FifthTabSumNettoValue
-        {
-            get { return _fifthTabSumNettoValue; }
-            set { _fifthTabSumNettoValue = value; }
-        }
-
-        public decimal FifthTabSumBruttoValue
-        {
-            get { return _fifthTabSumBruttoValue; }
-            set { _fifthTabSumBruttoValue = value; }
-        }
-
         private bool CanEditDictionarExecute(object art)
         {
             return true;
@@ -3616,6 +4171,10 @@ namespace DiamondApp.ViewModels
             _fourthTabNettoValue = new List<decimal>(6);
             _fourthTabBruttoValue = new List<decimal>(6);
             _propExtraServ = new List<PropExtraServices>(2);
+            _fifthTabNettoPrice = new List<decimal?>(4);
+            _fifthTabNettoValue = new List<decimal>(4);
+            _fifthTabBruttoValue = new List<decimal>(4);
+            _propPaymentSugg = new PropPaymentSuggestions();
         }
         // wypelnianie zadeklarowanych pustych list 
         private void FillNeededList()
@@ -3679,6 +4238,18 @@ namespace DiamondApp.ViewModels
 
             for (int i = 0; i < _propAccomodations.Capacity; i++)
                 _propExtraServ.Add(new PropExtraServices());
+
+            //FifthTabNettoPriceList
+            for (int i = 0; i < _fifthTabNettoPrice.Capacity; i++)
+                _fifthTabNettoPrice.Add(new decimal?());
+
+            //FifthTabNettoValueList
+            for (int i = 0; i < _fifthTabNettoValue.Capacity; i++)
+                _fifthTabNettoValue.Add(new decimal());
+
+            //FifthTabBruttoValueList
+            for (int i = 0; i < _fifthTabBruttoValue.Capacity; i++)
+                _fifthTabBruttoValue.Add(new decimal());
         }
 
         private void SetDefaultValues()
@@ -3891,6 +4462,53 @@ namespace DiamondApp.ViewModels
 
             FourthTabSumBruttoValue = sum;
         }
+
+        // obliczanie sumy netto (tab5)
+        private void ComputeFifthTabSumNettoValue()
+        {
+            decimal sum = 0;
+            sum += FifthTabNettoValue0;
+            sum += FifthTabNettoValue1;
+            sum += FifthTabNettoValue2;
+            sum += FifthTabNettoValue3;
+
+            FifthTabSumNettoValue = sum;
+        }
+
+        // obliczanie sumy brutto (tab5)
+        private void ComputeFifthTabSumBruttoValue()
+        {
+            decimal sum = 0;
+            sum += FifthTabBruttoValue0;
+            sum += FifthTabBruttoValue1;
+            sum += FifthTabBruttoValue2;
+            sum += FifthTabBruttoValue3;
+
+            FifthTabSumBruttoValue = sum;
+        }
+
+        private void ComputeFullSumNetto()
+        {
+            decimal sum = 0;
+            sum += SecondTabSumNettoValue;
+            sum += ThirdTabSumNettoValue;
+            sum += FourthTabSumNettoValue;
+            sum += FifthTabSumNettoValue;
+
+            FullSumNetto = sum;
+        }
+
+        private void ComputeFullSumBrutto()
+        {
+            decimal sum = 0;
+            sum += SecondTabSumBruttoValue;
+            sum += ThirdTabSumBruttoValue;
+            sum += FourthTabSumBruttoValue;
+            sum += FifthTabSumBruttoValue;
+
+            FullSumBrutto = sum;
+        }
+
 #endregion
     }
 }

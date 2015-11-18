@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="aea8a9e0b82543189f227fa2229240e2" Name="Diagram1" ZoomLevel="84">
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation_Dictionary" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices_Dictionary" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServicesDiscount" Width="1.5" PointX="7.5" PointY="17" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropHallEquipment" Width="1.5" PointX="7.5" PointY="19.5" IsExpanded="true" />
@@ -28,7 +27,6 @@
         <EntityTypeShape EntityType="DiamondDBModel.Users" Width="1.5" PointX="3" PointY="18.625" />
         <AssociationConnector Association="DiamondDBModel.FK__Users__AccountTy__4D94879B" />
         <EntityTypeShape EntityType="DiamondDBModel.Proposition" Width="1.5" PointX="5.25" PointY="18.25" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" />
         <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" />
         <AssociationConnector Association="DiamondDBModel.FK_PropHallEquipment_Proposition" />
         <AssociationConnector Association="DiamondDBModel.FK__PropHallE__Id_pr__47DBAE45" />
@@ -47,6 +45,8 @@
         <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation" Width="1.5" PointX="7.5" PointY="2" />
         <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices" Width="1.5" PointX="7.5" PointY="42" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

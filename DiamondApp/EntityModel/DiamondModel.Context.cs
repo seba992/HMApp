@@ -26,7 +26,6 @@ namespace DiamondApp.EntityModel
         }
     
         public virtual DbSet<PropAccomodation_Dictionary> PropAccomodation_Dictionary { get; set; }
-        public virtual DbSet<PropExtraServices> PropExtraServices { get; set; }
         public virtual DbSet<PropExtraServices_Dictionary> PropExtraServices_Dictionary { get; set; }
         public virtual DbSet<PropExtraServicesDiscount> PropExtraServicesDiscount { get; set; }
         public virtual DbSet<PropHallEquipment> PropHallEquipment { get; set; }
@@ -54,5 +53,6 @@ namespace DiamondApp.EntityModel
         public virtual DbSet<PropMenuPosition> PropMenuPosition { get; set; }
         public virtual DbSet<PropAccomodationDiscount> PropAccomodationDiscount { get; set; }
         public virtual DbSet<PropAccomodation> PropAccomodation { get; set; }
+        public virtual DbSet<PropExtraServices> PropExtraServices { get; set; }
     }
 }

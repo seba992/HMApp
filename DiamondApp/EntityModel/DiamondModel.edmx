@@ -63,10 +63,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_proposition" Type="int" />
           <Property Name="ServiceType" Type="varchar" MaxLength="60" />
-          <Property Name="BruttoHourPrice" Type="int" />
-          <Property Name="Vat" Type="tinyint" />
-          <Property Name="Amount" Type="smallint" />
-          <Property Name="Days" Type="smallint" />
+          <Property Name="BruttoPrice" Type="real" />
+          <Property Name="Vat" Type="real" />
+          <Property Name="Amount" Type="int" />
+          <Property Name="Days" Type="int" />
         </EntityType>
         <EntityType Name="PropExtraServices_Dictionary">
           <Key>
@@ -74,6 +74,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ServiceType" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Price" Type="real" />
         </EntityType>
         <EntityType Name="PropExtraServicesDiscount">
           <Key>
@@ -562,25 +563,13 @@
           <Property Name="TypeOfRoom" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Single" />
         </EntityType>
-        <EntityType Name="PropExtraServices">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id_proposition" Type="Int32" />
-          <Property Name="ServiceType" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
-          <Property Name="BruttoHourPrice" Type="Int32" />
-          <Property Name="Vat" Type="Byte" />
-          <Property Name="Amount" Type="Int16" />
-          <Property Name="Days" Type="Int16" />
-          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="PropExtraServices" ToRole="Proposition" />
-        </EntityType>
         <EntityType Name="PropExtraServices_Dictionary">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ServiceType" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Single" />
         </EntityType>
         <EntityType Name="PropExtraServicesDiscount">
           <Key>
@@ -729,7 +718,6 @@
         </EntityType>
         <EntityContainer Name="DiamondDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PropAccomodation_Dictionary" EntityType="Self.PropAccomodation_Dictionary" />
-          <EntitySet Name="PropExtraServices" EntityType="Self.PropExtraServices" />
           <EntitySet Name="PropExtraServices_Dictionary" EntityType="Self.PropExtraServices_Dictionary" />
           <EntitySet Name="PropExtraServicesDiscount" EntityType="Self.PropExtraServicesDiscount" />
           <EntitySet Name="PropHallEquipment" EntityType="Self.PropHallEquipment" />
@@ -754,10 +742,6 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <EntitySet Name="Proposition" EntityType="DiamondDBModel.Proposition" />
-          <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropExtraServices" EntitySet="PropExtraServices" />
-          </AssociationSet>
           <AssociationSet Name="FK__PropExtra__Id_pr__45F365D3" Association="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServicesDiscount" EntitySet="PropExtraServicesDiscount" />
@@ -808,6 +792,11 @@
           <AssociationSet Name="FK__PropAccom__Id_pr__3A81B327" Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropAccomodation" EntitySet="PropAccomodation" />
+          </AssociationSet>
+          <EntitySet Name="PropExtraServices" EntityType="DiamondDBModel.PropExtraServices" />
+          <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropExtraServices" EntitySet="PropExtraServices" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
@@ -868,7 +857,6 @@
           <Property Name="Id_user" Type="Int32" Nullable="false" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="PropExtraServices" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="Proposition" ToRole="PropExtraServices" />
           <NavigationProperty Name="PropExtraServicesDiscount" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" FromRole="Proposition" ToRole="PropExtraServicesDiscount" />
           <NavigationProperty Name="PropHallEquipment" Relationship="DiamondDBModel.FK_PropHallEquipment_Proposition" FromRole="Proposition" ToRole="PropHallEquipment" />
           <NavigationProperty Name="PropHallEquipmentDiscount" Relationship="DiamondDBModel.FK__PropHallE__Id_pr__47DBAE45" FromRole="Proposition" ToRole="PropHallEquipmentDiscount" />
@@ -880,21 +868,8 @@
           <NavigationProperty Name="PropMenuPosition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="Proposition" ToRole="PropMenuPosition" />
           <NavigationProperty Name="PropAccomodationDiscount" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="Proposition" ToRole="PropAccomodationDiscount" />
           <NavigationProperty Name="PropAccomodation" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="Proposition" ToRole="PropAccomodation" />
+          <NavigationProperty Name="PropExtraServices" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="Proposition" ToRole="PropExtraServices" />
         </EntityType>
-        <Association Name="FK__PropExtra__Id_pr__3D5E1FD2">
-          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DiamondDBModel.PropExtraServices" Role="PropExtraServices" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropExtraServices">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PropExtra__Id_pr__45F365D3">
           <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1125,6 +1100,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PropExtraServices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_proposition" Type="Int32" />
+          <Property Name="ServiceType" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="BruttoPrice" Type="Single" />
+          <Property Name="Vat" Type="Single" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Days" Type="Int32" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="PropExtraServices" ToRole="Proposition" />
+        </EntityType>
+        <Association Name="FK__PropExtra__Id_pr__3D5E1FD2">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropExtraServices" Role="PropExtraServices" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropExtraServices">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1140,22 +1142,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PropExtraServices">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropExtraServices">
-              <MappingFragment StoreEntitySet="PropExtraServices">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
-                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
-                <ScalarProperty Name="BruttoHourPrice" ColumnName="BruttoHourPrice" />
-                <ScalarProperty Name="Vat" ColumnName="Vat" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Days" ColumnName="Days" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropExtraServices_Dictionary">
             <EntityTypeMapping TypeName="DiamondDBModel.PropExtraServices_Dictionary">
               <MappingFragment StoreEntitySet="PropExtraServices_Dictionary">
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
               </MappingFragment>
@@ -1437,6 +1427,19 @@
                 <ScalarProperty Name="Vat" ColumnName="Vat" />
                 <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
                 <ScalarProperty Name="TypeOfRoom" ColumnName="TypeOfRoom" />
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropExtraServices">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropExtraServices">
+              <MappingFragment StoreEntitySet="PropExtraServices">
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
+                <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
                 <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

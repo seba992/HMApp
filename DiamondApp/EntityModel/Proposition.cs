@@ -16,12 +16,12 @@ namespace DiamondApp.EntityModel
     {
         public Proposition()
         {
-            this.PropExtraServices = new ObservableCollection<PropExtraServices>();
             this.PropHallEquipment = new ObservableCollection<PropHallEquipment>();
             this.PropMenuMerge = new ObservableCollection<PropMenuMerge>();
             this.PropPaymentSuggestions = new ObservableCollection<PropPaymentSuggestions>();
             this.PropMenuPosition = new ObservableCollection<PropMenuPosition>();
             this.PropAccomodation = new ObservableCollection<PropAccomodation>();
+            this.PropExtraServices = new ObservableCollection<PropExtraServices>();
         }
     
         public int Id { get; set; }
@@ -29,7 +29,6 @@ namespace DiamondApp.EntityModel
         public System.DateTime UpdateDate { get; set; }
         public string Status { get; set; }
     
-        public virtual ObservableCollection<PropExtraServices> PropExtraServices { get; set; }
         public virtual PropExtraServicesDiscount PropExtraServicesDiscount { get; set; }
         public virtual ObservableCollection<PropHallEquipment> PropHallEquipment { get; set; }
         public virtual PropHallEquipmentDiscount PropHallEquipmentDiscount { get; set; }
@@ -41,5 +40,6 @@ namespace DiamondApp.EntityModel
         public virtual ObservableCollection<PropMenuPosition> PropMenuPosition { get; set; }
         public virtual PropAccomodationDiscount PropAccomodationDiscount { get; set; }
         public virtual ObservableCollection<PropAccomodation> PropAccomodation { get; set; }
+        public virtual ObservableCollection<PropExtraServices> PropExtraServices { get; set; }
     }
 }
