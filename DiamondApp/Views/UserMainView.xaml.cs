@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DiamondApp.ViewModels;
+using DiamondApp.Tools;
 
 namespace DiamondApp.Views
 {
@@ -59,6 +60,14 @@ namespace DiamondApp.Views
             UserProposition.Visibility = Visibility.Visible;
             TabControlProposition.Visibility = Visibility.Hidden;
             SavePropositionButton.Visibility = Visibility.Hidden;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button _myButton = (Button)sender;
+            string value = _myButton.CommandParameter.ToString();
+            PdfMaker pdf = new PdfMaker();
+            pdf.createPdf(value);
         }
     }
 }

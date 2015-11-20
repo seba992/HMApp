@@ -881,10 +881,5 @@ namespace DiamondApp.Tools
                 value = 0;
             return Math.Round(((decimal)value * 100 / (100 + (decimal)vat)), 2);
         }
-
-      
-
-
-
     }
 }

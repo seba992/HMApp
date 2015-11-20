@@ -44,6 +44,13 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn Width="250">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Zapisz do PDF" Click="Button_Click" CommandParameter="{Binding PropositionId}" Padding="5,2" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
