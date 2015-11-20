@@ -59,8 +59,8 @@ insert PropHallEquipmnet_Dictionary_Second (Things) values ('NAG£OŒNIENIE');
 insert PropHallEquipmnet_Dictionary_Second (Things) values ('NAG£OŒNIENIE DO LAPTOPA');
 insert PropHallEquipmnet_Dictionary_Second (Things) values ('KRZES£A Z PULPITAMI');
 
-insert PropExtraServices_Dictionary (ServiceType) values ('PARKING ( czêœæ nie dozorowana )');
-insert PropExtraServices_Dictionary (ServiceType) values ('PARKING ( czêœæ dozorowana )');
+insert PropExtraServices_Dictionary (ServiceType, Price) values ('PARKING ( czêœæ nie dozorowana )', 0.0);
+insert PropExtraServices_Dictionary (ServiceType, Price) values ('PARKING ( czêœæ dozorowana )', 3.5);
 
 insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a gastronomia 8%)',80);
 insert PropMenuMerge_Dictionary_First (MergeName,Value) values ('Mar¿a gastronomia 23%)',80);

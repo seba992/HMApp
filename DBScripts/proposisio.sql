@@ -32,7 +32,7 @@ insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,Do
 select p.Id,100,20,45,100,220 from Proposition p where p.Id_user = 4;
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Wytwórnia win','Jagodowa 3 23-765 Siemianowiec','1234556698','Sebastian Nalepka', 500295458,'Patrycja Kowalska' ,'sn@wp.pl'   from Proposition p;
-insert into PropExtraServices(Id_proposition,ServiceType,BruttoHourPrice,Vat,Days)
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days)
 select  p.Id,'Inne ',10,8,3  from Proposition p where p.Id_user = 4;
 insert into PropExtraServicesDiscount(Id_proposition,StandardPrice,Discount)
 select  p.Id,100,50  from Proposition p where p.Id_user = 4;
