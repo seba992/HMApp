@@ -828,7 +828,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.CompanyName).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;
         }
 
         public string CompanyNip(int propositionId)
