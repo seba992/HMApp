@@ -93,6 +93,10 @@ namespace DiamondApp.ViewModels
         private decimal _fullSumNetto;    // suma wartosci netto (tab5)
         private decimal _fullSumBrutto;   // suma wartosci brutto (tab5)
 
+        private int _defaultViewVatIndex;
+
+
+
         public AdminViewModel(int userId)
         {
             _ctx = new DiamondDBEntities();
@@ -3700,6 +3704,16 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PaymentSuggestCarPark");
             }
         }
+
+        public int DefaultViewVatIndex
+        {
+            get { return _defaultViewVatIndex; }
+            set
+            {
+                _defaultViewVatIndex = value;
+                RaisePropertyChanged("DefaultViewVatIndex");
+            }
+        }
         #endregion
 
 #region Commands
@@ -4625,6 +4639,25 @@ namespace DiamondApp.ViewModels
         {
             PropHallEquipmentDiscountValue = 0;
             PropAccomDiscountValue = 0;
+            DefaultViewVatIndex = 1;
+            PropHallEqVat0 = 23;
+            PropHallEqVat1 = 23;
+            PropHallEqVat2 = 23;
+            PropHallEqVat3 = 23;
+            PropHallEqVat4 = 23;
+            PropHallEqVat5 = 23;
+
+            PropAccomVat0 = 23;
+            PropAccomVat1 = 23;
+            PropAccomVat2 = 23;
+            PropAccomVat3 = 23;
+            PropAccomVat4 = 23;
+            PropAccomVat5 = 23;
+
+            PropExtraServVat0 = 23;
+            PropExtraServVat1 = 23;
+            PropExtraServVat2 = 23;
+            PropExtraServVat3 = 23;
         }
 
         // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)PropMenuMerge0ComputeNettoPrice
