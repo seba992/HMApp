@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DiamondApp.ViewModels;
 using DiamondApp.Tools;
+using Microsoft.Win32;
 
 namespace DiamondApp.Views
 {
@@ -66,8 +67,16 @@ namespace DiamondApp.Views
         {
             Button _myButton = (Button)sender;
             string value = _myButton.CommandParameter.ToString();
+
+            string path = "";
+
+            SaveFileDialog openFileDialog = new SaveFileDialog();
+
+            if (openFileDialog.ShowDialog() == true)
+                path = openFileDialog.FileName;
+
             PdfMaker pdf = new PdfMaker();
-            pdf.createPdf(value);
+            pdf.createPdf(value, path);
         }
     }
 }
