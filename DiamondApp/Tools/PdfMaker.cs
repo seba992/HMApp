@@ -688,9 +688,9 @@ namespace DiamondApp.Tools
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("DATA AKTUALIZACJI:");
-                row.Cells[1].AddParagraph(SelectDate(propId2).ToString().Substring(0, 10));
+                row.Cells[1].AddParagraph(SelectDate(propId2).ToString());
                 row.Cells[2].AddParagraph("TERMIN WAŻNOŚCI PROPOZYCJI:");
-                row.Cells[3].AddParagraph(SelectDate(propId2).AddDays(4).ToString().Substring(0, 10));
+                row.Cells[3].AddParagraph(UpdatedDate(propId2).ToString());
 
                 row = table.AddRow();
                 row.Cells[0].MergeRight = 1;
@@ -744,7 +744,7 @@ namespace DiamondApp.Tools
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("TERMIN:");
-                row.Cells[1].AddParagraph(StartData(propId2).ToString().Substring(0,10) + " " + StartTime(propId2).ToString());
+                row.Cells[1].AddParagraph(StartData(propId2) + " " + StartTime(propId2).ToString());
                 row.Cells[2].AddParagraph("ILOŚĆ OSÓB:");
                 row.Cells[3].AddParagraph(PeopleNumber(propId2).ToString());
 
@@ -752,7 +752,7 @@ namespace DiamondApp.Tools
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("CZAS TRWANIA:");
-                row.Cells[1].AddParagraph(EndData(propId2).ToString().Substring(0,10) + " " + EndTime(propId2).ToString());
+                row.Cells[1].AddParagraph(EndData(propId2) + " " + EndTime(propId2).ToString());
                 row.Cells[2].AddParagraph("USTAWIENIE SALI:");
                 row.Cells[3].AddParagraph(HallSetting(propId2));
 
@@ -767,14 +767,21 @@ namespace DiamondApp.Tools
             }
         }
 
-        public DateTime SelectDate(int propositionId)
+        public string SelectDate(int propositionId)
         {
             var var = (from prop in _ctx.Proposition
                        where prop.Id == propositionId
                        select prop.UpdateDate).Single();
-            return var;
+            return var != null ? var.ToString().Substring(0, 10) : "";
         }
 
+        public string UpdatedDate(int propositionId)
+        {
+            var var = (from prop in _ctx.Proposition
+                       where prop.Id == propositionId
+                       select prop.UpdateDate).Single();
+            return var != null ? var.AddDays(4).ToString().Substring(0, 10) : "";
+        }
         public int SelectUserId(int propositionId)
         {
             var var = (from prop in _ctx.Proposition
@@ -796,7 +803,7 @@ namespace DiamondApp.Tools
             var var = (from user in _ctx.Users
                        where user.Id == userId
                        select user.Email).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;
         }
 
         public string SelectUserName(int userId)
@@ -804,7 +811,7 @@ namespace DiamondApp.Tools
             var var = (from user in _ctx.Users
                        where user.Id == userId
                        select user.Name).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;
         }
 
         public string SelectUserSurname(int userId)
@@ -812,7 +819,7 @@ namespace DiamondApp.Tools
             var var = (from user in _ctx.Users
                        where user.Id == userId
                        select user.Surname).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;
         }
 
         public string SelectUserPosition(int userId)
@@ -820,7 +827,7 @@ namespace DiamondApp.Tools
             var var = (from user in _ctx.Users
                        where user.Id == userId
                        select user.Position).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;
         }
 
         public string CompanyName(int propositionId)
@@ -828,7 +835,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.CompanyName).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;
         }
 
         public string CompanyNip(int propositionId)
@@ -836,7 +843,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.NIP).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;
         }
 
         public string CompanyAddress(int propositionId)
@@ -844,7 +851,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.CompanyAdress).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;
         }
 
         public string CustomerFullName(int propositionId)
@@ -852,7 +859,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.CustomerFullName).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
         public string CustomerPhoneNumber(int propositionId)
@@ -860,7 +867,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.PhoneNum).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
         public string DecisingPersonFullName(int propositionId)
@@ -868,7 +875,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.DecisingPersonFullName).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
         public string CustomerEmail(int propositionId)
@@ -876,7 +883,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.CustomerEmail).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
         public string PaymentForm(int propositionId)
@@ -884,7 +891,7 @@ namespace DiamondApp.Tools
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
                        select payform.PaymentForm).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
         public string InvoiceServiceName(int propositionId)
@@ -892,7 +899,7 @@ namespace DiamondApp.Tools
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
                        select payform.InvoiceServiceName).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
         public string IndividualOrders(int propositionId)
@@ -900,7 +907,7 @@ namespace DiamondApp.Tools
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
                        select payform.IndividualOrders).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
         public string CarPark(int propositionId)
@@ -908,7 +915,7 @@ namespace DiamondApp.Tools
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
                        select payform.CarPark).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
         public string HallDescription(int propositionId)
@@ -916,15 +923,18 @@ namespace DiamondApp.Tools
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
                        select payform.HallDescription).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
-        public int? PeopleNumber(int propositionId)
+        public string PeopleNumber(int propositionId)
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
                        select details.PeopleNumber).Single();
-            return var;
+            if (var == null)
+                return "";
+            return var.ToString();
+
         }
 
         public string HallSetting(int propositionId)
@@ -932,39 +942,40 @@ namespace DiamondApp.Tools
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
                        select details.HallSetting).Single();
-            return var;
+            return string.IsNullOrEmpty(var) ? "" : var; ;
         }
 
-        public DateTime? StartData(int propositionId)
+        public string StartData(int propositionId)
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
                        select details.StartData).Single();
-            return var;
+            return var != null ? var.ToString().Substring(0, 10) : "";
         }
 
-        public DateTime? EndData(int propositionId)
+        public string EndData(int propositionId)
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
                        select details.EndData).Single();
-            return var;
+            return var!=null ? var.ToString().Substring(0, 10) : "";
         }
 
-        public TimeSpan? StartTime(int propositionId)
+        public string StartTime(int propositionId)
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
                        select details.StartTime).Single();
-            return var;
+            return var != null ? var.ToString() : "";
         }
 
-        public TimeSpan? EndTime(int propositionId)
+        public string EndTime(int propositionId)
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
                        select details.EndTime).Single();
-            return var;
+            return var != null ? var.ToString() : "";
+
         }
 
         private decimal ComputeNettoPrice(float? value, float? vat)
