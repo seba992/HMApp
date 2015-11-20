@@ -29,8 +29,5 @@ namespace DiamondApp.DataGridObjectClasses
         {
             get { return UserFirstName + " " + UserSurname; }
         }
-
-
-        
     }
 }

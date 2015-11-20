@@ -73,7 +73,7 @@ insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,Do
 select p.Id,100,20,45,100,220 from Proposition p where p.Id_user = 6;
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName ,CustomerEmail)
 select p.Id,'Przetwórstwo futra','Pożeczkowa 37 76-717 Bytom','1734573386','Mateusz Wolski', 634562926,'Ignacy Krasiński' ,'Test@test.pl'from Proposition p where p.Id_user = 6;
-insert into PropExtraServices(Id_proposition,ServiceType,BruttoHourPrice,Vat,Days)
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days)
 select p.Id,'Parking',2.50,8,3 from Proposition p where p.Id_user = 6;
 insert into PropExtraServicesDiscount(Id_proposition,StandardPrice,Discount)
 select p.Id,500,80 from Proposition p where p.Id_user = 6;

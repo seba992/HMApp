@@ -20,18 +20,30 @@ using MigraDoc.RtfRendering;
 using DiamondApp.Tools;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.DocumentObjectModel.Shapes;
+using DiamondApp.DataGridObjectClasses;
+using DiamondApp.EntityModel;
 
 namespace DiamondApp.Tools
 {
     public class PdfMaker : ObservableObject
     {
+        private DiamondDBEntities _ctx;
+        private List<PropExtraServices> _propositionList;
+        public string ServiceType2
+        { get; set; }
+
+        public PdfMaker()
+        {
+            _ctx = new DiamondDBEntities();
+        }
+
         public bool savePdf(Document document)
         {
             bool isSucces = false;
             try
             {
                 //save document
-                PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(false);
+                PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always);
                 renderDocument.Document = document;
                 renderDocument.RenderDocument();
                 renderDocument.Save("test.pdf");
@@ -47,7 +59,7 @@ namespace DiamondApp.Tools
             return isSucces;
         }
 
-        public void createTable(Document document)
+        public void createTable(Document document, int propId)
         {
             Table table = document.LastSection.AddTable();
             table.Borders.Visible = true;
@@ -127,7 +139,7 @@ namespace DiamondApp.Tools
             row.Cells[7].Shading.Color = Colors.LightGray;
             row.Cells[0].AddParagraph("SALA KONFERENCYJNA:");
 
-            createRowForGastronomic(document, 4, table, column);
+            //createRowForExtra(document, table, column, propId);
             row = table.AddRow();
             row.Cells[0].Shading.Color = Colors.LightGray;
             row.Cells[0].Format.Font.Bold = true;
@@ -178,7 +190,7 @@ namespace DiamondApp.Tools
             row.Cells[6].AddParagraph("WARTOŚĆ NETTO");
             row.Cells[7].AddParagraph("WARTOŚĆ BRUTTO");
 
-            createRowForGastronomic(document,4,table, column);
+            //createRowForExtra(document, table, column, propId);
 
             row = table.AddRow();
             row.Cells[0].Shading.Color = Colors.LightGray;
@@ -231,7 +243,7 @@ namespace DiamondApp.Tools
             row.Cells[6].AddParagraph("WARTOŚĆ NETTO");
             row.Cells[7].AddParagraph("WARTOŚĆ BRUTTO");
 
-            createRowForGastronomic(document, 4, table, column);
+            //createRowForExtra(document,table, column, propId);
 
             row = table.AddRow();
             row.Cells[0].Shading.Color = Colors.LightGray;
@@ -299,20 +311,14 @@ namespace DiamondApp.Tools
             row.Cells[7].Shading.Color = Colors.LightGray;
             row.Cells[0].AddParagraph("PARKING ( część dozorowana) ");
 
-            createRowForGastronomic(document, 1, table, column);
+            createRowForExtra(document, table, column, propId);
 
-            row = table.AddRow();
-            row.Cells[0].Shading.Color = Colors.LightGray;
-            row.Cells[0].Format.Font.Bold = true;
-            row.Cells[0].AddParagraph("PODSUMOWANIE");
-            row.Cells[1].MergeRight = 4;
-
-            createTableForPaymanet(document);
+            createTableForPaymanet(document, propId);
 
 
         }
 
-        public void createTableForPaymanet(Document document)
+        public void createTableForPaymanet(Document document, int propId)
         {
             try
             {
@@ -346,7 +352,7 @@ namespace DiamondApp.Tools
                 row.Cells[3].Shading.Color = Colors.LightGray;
                 row.Cells[4].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("FORMA PŁATNOŚCI:");
-                row.Cells[1].AddParagraph("50 % zadatek / 50 % do dnia realizacji");
+                row.Cells[1].AddParagraph(PaymentForm(propId));
                 row.Cells[2].AddParagraph("WARTOŚĆ ZAMÓWIENIA:");
                
                 row = table.AddRow();
@@ -357,6 +363,7 @@ namespace DiamondApp.Tools
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("NAZWA USŁUGI NA FAKTURZE:");
+                row.Cells[1].AddParagraph(InvoiceServiceName(propId));
                 row.Cells[2].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[2].Format.Font.Bold = true;
                 row.Cells[2].Format.Font.Size = 6;
@@ -367,24 +374,27 @@ namespace DiamondApp.Tools
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("ZAMÓWIENIA INDYWIDUALNE:");
+                row.Cells[1].AddParagraph(IndividualOrders(propId));
 
                 row = table.AddRow();
                 row.Cells[2].MergeRight = 2;
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("PARKING:");
+                row.Cells[1].AddParagraph(CarPark(propId));
 
                 row = table.AddRow();
                 row.Cells[2].MergeRight = 2;
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("OPIS SALI/STOŁÓW:");
+                row.Cells[1].AddParagraph(HallDescription(propId));
 
                 row = table.AddRow();
                 row.Cells[0].MergeRight = 3;
                 row.Cells[0].Format.Font.Size = 7;
                 row.Cells[0].AddParagraph("Zgodnie z treścią art. 71 Kodeksu Cywilnego niniejsza propozycja cenowa nie stanowi oferty handlowej ma jedynie charakter informacyjny. Informacja  jest ważna do Po upływie tego terminu lub/i w przypadku zmniejszenia ilości zarezerwowanych pokoi lub/i zmniejszenia ilości uczestników spotkania, Hotel zastrzega sobie prawo do zmiany proponowanych cen lub wycofania tych cen. Po upływie terminu jw. Hotel także nie gwarantuje dostępności pokoi i sal konferencyjnych. W przypadku zainteresowania terminem Państwa zapytania (niniejszej oferty) ze strony innego klienta, poprosimy o potwierdzenie Państwa rezerwacji i zawarcie umowy w ciągu 24 godzin lub dokonanie rezerwacji gwaratowanej bez możliwości anulacji bezkosztowej.");
-                row.Cells[4].AddParagraph("jakas data");
+                row.Cells[4].AddParagraph("2015-11-24");
                 row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[4].Format.Font.Bold = true;
 
@@ -403,28 +413,60 @@ namespace DiamondApp.Tools
             
 
         }
-        public void createRowForGastronomic(Document document, int howMany, Table table, Column column)
+        public void createRowForExtra(Document document, Table table, Column column, int propId)
         {
-            for (int i = 0; i < howMany; i++)
+            var extra = (from r in _ctx.PropExtraServices
+                         where r.Id_proposition == propId
+                         select r).ToList();
+
+            for (int i = 0; i < extra.Count-1; i++)
             {
                 //Create table columns
                 table.Rows.Height = 3;
                 Row row = table.AddRow();
+
+                string netto = ComputeNettoPrice((float)extra[i].BruttoPrice, (float)(extra[i].Vat)).ToString();
+
                 row.Borders.Top.Visible = false;
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[3].Shading.Color = Colors.LightGray;
                 row.Cells[6].Shading.Color = Colors.LightGray;
                 row.Cells[7].Shading.Color = Colors.LightGray;
-                row.Cells[0].AddParagraph("DOTYCZY:");
+                row.Cells[0].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[1].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[2].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[3].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[5].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[6].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[0].AddParagraph(extra[i].ServiceType);
+                row.Cells[1].AddParagraph(Convert.ToDecimal(extra[i].BruttoPrice.ToString()).ToString("#,##0.00")+ " zł");
+                row.Cells[2].AddParagraph(Convert.ToDecimal(netto.ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[3].AddParagraph(extra[i].Vat.ToString() + "%");
+                row.Cells[4].AddParagraph(extra[i].Amount.ToString());
+                row.Cells[5].AddParagraph(extra[i].Days.ToString());
+                row.Cells[6].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto)).ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[7].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * (float)extra[i].BruttoPrice).ToString()).ToString("#,##0.00")+ " zł");
+
                 
             }
+
+            Row row2 = table.AddRow();
+
+            row2 = table.AddRow();
+            row2.Cells[0].Shading.Color = Colors.LightGray;
+            row2.Cells[0].Format.Font.Bold = true;
+            row2.Cells[0].AddParagraph("PODSUMOWANIE");
+            row2.Cells[1].MergeRight = 4;
         }
 
-        public void createPdf()
+        public void createPdf(string propId)
         {
             try
             {
+                int propId2 = Int32.Parse(propId);
                 //new document
                 Document document = new Document();
 
@@ -476,12 +518,12 @@ namespace DiamondApp.Tools
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("DOTYCZY:");
                 row.Cells[1].MergeDown = 1;
-                row.Cells[3].MergeDown = 1; // merge down third cell with next one
-                row.Cells[1].AddParagraph("Park Hotel Jakis ****");
-                row.Cells[1].AddParagraph("ul. Zwycięstwa 122a");
-                row.Cells[1].AddParagraph("77-777 Warszawa");
-                row.Cells[1].AddParagraph("77-777 Warszawa");
+                //row.Cells[3].MergeDown = 1; // merge down third cell with next one
+                row.Cells[1].AddParagraph("Nazwa Hotelu ****");
+                row.Cells[1].AddParagraph("ul. Przykładowa 122a");
+                row.Cells[1].AddParagraph("00-000 Przykład");
                 row.Cells[2].AddParagraph("DLA:");
+                row.Cells[3].AddParagraph(CompanyName(propId2));
 
                 row = table.AddRow();
                 row.VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Top;
@@ -490,18 +532,24 @@ namespace DiamondApp.Tools
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("ADRES:");
                 row.Cells[2].AddParagraph("ADRES:");
+                row.Cells[3].AddParagraph(CompanyAddress(propId2));
 
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("NIP:");
+                row.Cells[1].AddParagraph("0000000000");
                 row.Cells[2].AddParagraph("NIP:");
+                row.Cells[3].AddParagraph(CompanyNip(propId2));
+
 
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("DATA AKTUALIZACJI:");
+                row.Cells[1].AddParagraph(SelectDate(propId2).ToString().Substring(0, 10));
                 row.Cells[2].AddParagraph("TERMIN WAŻNOŚCI PROPOZYCJI:");
+                row.Cells[3].AddParagraph(SelectDate(propId2).AddDays(4).ToString().Substring(0, 10));
 
                 row = table.AddRow();
                 row.Cells[0].MergeRight = 1;
@@ -514,20 +562,26 @@ namespace DiamondApp.Tools
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
-                row.Cells[0].AddParagraph("Specjalista ds. sprzedaży:");
+                row.Cells[0].AddParagraph(SelectUserPosition(SelectUserId(propId2)));
+                row.Cells[1].AddParagraph(SelectUserName(SelectUserId(propId2)) + " " + SelectUserSurname(SelectUserId(propId2)));
                 row.Cells[2].AddParagraph("Sz.P.:");
+                row.Cells[3].AddParagraph(CustomerFullName(propId2));
 
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("TELEFON:");
+                row.Cells[1].AddParagraph(SelectUserPhone(SelectUserId(propId2)));
                 row.Cells[2].AddParagraph("TELEFON:");
+                row.Cells[3].AddParagraph(CustomerPhoneNumber(propId2));
 
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("ADRES E-MAIL:");
+                row.Cells[1].AddParagraph(SelectUserEmail(SelectUserId(propId2)));
                 row.Cells[2].AddParagraph("ADRES E-MAIL:");
+                row.Cells[3].AddParagraph(CustomerEmail(propId2));
 
                 row = table.AddRow();
                 row.Cells[0].MergeRight = 1;
@@ -535,6 +589,7 @@ namespace DiamondApp.Tools
                 row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[2].AddParagraph("OSOBA DECYZYJNA:");
+                row.Cells[3].AddParagraph(DecisingPersonFullName(propId2));
 
                 row = table.AddRow();
                 row.Cells[0].MergeRight = 3;
@@ -548,15 +603,19 @@ namespace DiamondApp.Tools
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("TERMIN:");
+                row.Cells[1].AddParagraph(StartData(propId2).ToString().Substring(0,10) + " " + StartTime(propId2).ToString());
                 row.Cells[2].AddParagraph("ILOŚĆ OSÓB:");
+                row.Cells[3].AddParagraph(PeopleNumber(propId2).ToString());
 
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("CZAS TRWANIA:");
+                row.Cells[1].AddParagraph(EndData(propId2).ToString().Substring(0,10) + " " + EndTime(propId2).ToString());
                 row.Cells[2].AddParagraph("USTAWIENIE SALI:");
+                row.Cells[3].AddParagraph(HallSetting(propId2));
 
-                createTable(document);
+                createTable(document, propId2);
 
                 savePdf(document);
 
@@ -566,6 +625,217 @@ namespace DiamondApp.Tools
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        public DateTime SelectDate(int propositionId)
+        {
+            var var = (from prop in _ctx.Proposition
+                       where prop.Id == propositionId
+                       select prop.UpdateDate).Single();
+            return var;
+        }
+
+        public int SelectUserId(int propositionId)
+        {
+            var var = (from prop in _ctx.Proposition
+                       where prop.Id == propositionId
+                       select prop.Id_user).Single();
+            return var;
+        }
+
+        public string SelectUserPhone(int userId)
+        {
+            var var = (from user in _ctx.Users
+                       where user.Id == userId
+                       select user.PhoneNum).Single();
+            return var;
+        }
+
+        public string SelectUserEmail(int userId)
+        {
+            var var = (from user in _ctx.Users
+                       where user.Id == userId
+                       select user.Email).Single();
+            return var;
+        }
+
+        public string SelectUserName(int userId)
+        {
+            var var = (from user in _ctx.Users
+                       where user.Id == userId
+                       select user.Name).Single();
+            return var;
+        }
+
+        public string SelectUserSurname(int userId)
+        {
+            var var = (from user in _ctx.Users
+                       where user.Id == userId
+                       select user.Surname).Single();
+            return var;
+        }
+
+        public string SelectUserPosition(int userId)
+        {
+            var var = (from user in _ctx.Users
+                       where user.Id == userId
+                       select user.Position).Single();
+            return var;
+        }
+
+        public string CompanyName(int propositionId)
+        {
+            var var = (from propclient in _ctx.PropClient
+                       where propclient.Id_proposition == propositionId
+                       select propclient.CompanyName).Single();
+            return var;
+        }
+
+        public string CompanyNip(int propositionId)
+        {
+            var var = (from propclient in _ctx.PropClient
+                       where propclient.Id_proposition == propositionId
+                       select propclient.NIP).Single();
+            return var;
+        }
+
+        public string CompanyAddress(int propositionId)
+        {
+            var var = (from propclient in _ctx.PropClient
+                       where propclient.Id_proposition == propositionId
+                       select propclient.CompanyAdress).Single();
+            return var;
+        }
+
+        public string CustomerFullName(int propositionId)
+        {
+            var var = (from propclient in _ctx.PropClient
+                       where propclient.Id_proposition == propositionId
+                       select propclient.CustomerFullName).Single();
+            return var;
+        }
+
+        public string CustomerPhoneNumber(int propositionId)
+        {
+            var var = (from propclient in _ctx.PropClient
+                       where propclient.Id_proposition == propositionId
+                       select propclient.PhoneNum).Single();
+            return var;
+        }
+
+        public string DecisingPersonFullName(int propositionId)
+        {
+            var var = (from propclient in _ctx.PropClient
+                       where propclient.Id_proposition == propositionId
+                       select propclient.DecisingPersonFullName).Single();
+            return var;
+        }
+
+        public string CustomerEmail(int propositionId)
+        {
+            var var = (from propclient in _ctx.PropClient
+                       where propclient.Id_proposition == propositionId
+                       select propclient.CustomerEmail).Single();
+            return var;
+        }
+
+        public string PaymentForm(int propositionId)
+        {
+            var var = (from payform in _ctx.PropPaymentSuggestions
+                       where payform.Id_proposition == propositionId
+                       select payform.PaymentForm).Single();
+            return var;
+        }
+
+        public string InvoiceServiceName(int propositionId)
+        {
+            var var = (from payform in _ctx.PropPaymentSuggestions
+                       where payform.Id_proposition == propositionId
+                       select payform.InvoiceServiceName).Single();
+            return var;
+        }
+
+        public string IndividualOrders(int propositionId)
+        {
+            var var = (from payform in _ctx.PropPaymentSuggestions
+                       where payform.Id_proposition == propositionId
+                       select payform.IndividualOrders).Single();
+            return var;
+        }
+
+        public string CarPark(int propositionId)
+        {
+            var var = (from payform in _ctx.PropPaymentSuggestions
+                       where payform.Id_proposition == propositionId
+                       select payform.CarPark).Single();
+            return var;
+        }
+
+        public string HallDescription(int propositionId)
+        {
+            var var = (from payform in _ctx.PropPaymentSuggestions
+                       where payform.Id_proposition == propositionId
+                       select payform.HallDescription).Single();
+            return var;
+        }
+
+        public int? PeopleNumber(int propositionId)
+        {
+            var var = (from details in _ctx.PropReservationDetails
+                       where details.Id_proposition == propositionId
+                       select details.PeopleNumber).Single();
+            return var;
+        }
+
+        public string HallSetting(int propositionId)
+        {
+            var var = (from details in _ctx.PropReservationDetails
+                       where details.Id_proposition == propositionId
+                       select details.HallSetting).Single();
+            return var;
+        }
+
+        public DateTime? StartData(int propositionId)
+        {
+            var var = (from details in _ctx.PropReservationDetails
+                       where details.Id_proposition == propositionId
+                       select details.StartData).Single();
+            return var;
+        }
+
+        public DateTime? EndData(int propositionId)
+        {
+            var var = (from details in _ctx.PropReservationDetails
+                       where details.Id_proposition == propositionId
+                       select details.EndData).Single();
+            return var;
+        }
+
+        public TimeSpan? StartTime(int propositionId)
+        {
+            var var = (from details in _ctx.PropReservationDetails
+                       where details.Id_proposition == propositionId
+                       select details.StartTime).Single();
+            return var;
+        }
+
+        public TimeSpan? EndTime(int propositionId)
+        {
+            var var = (from details in _ctx.PropReservationDetails
+                       where details.Id_proposition == propositionId
+                       select details.EndTime).Single();
+            return var;
+        }
+
+        private decimal ComputeNettoPrice(float? value, float? vat)
+        {
+            if (value == null)
+                value = 0;
+            return Math.Round(((decimal)value * 100 / (100 + (decimal)vat)), 2);
+        }
+
+      
+
+
 
     }
 }

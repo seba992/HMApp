@@ -9,6 +9,7 @@ using DiamondApp.EntityModel;
 using System;
 using DiamondApp.DataGridObjectClasses;
 using System.Collections;
+using DiamondApp.Tools;
 
 namespace DiamondApp.Views
 {
@@ -31,6 +32,13 @@ namespace DiamondApp.Views
         private void Window_Closed(object sender, System.EventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        public void refreshGridView()
+        {
+            UserList.ItemsSource = null;
+            UserList.ItemsSource = AdminViewModel._userListGrid;
+            UserList.Items.Refresh();
         }
 
         private void VisibleElement(object sender, RoutedEventArgs e)
@@ -78,7 +86,7 @@ namespace DiamondApp.Views
 
         private void SRElementySali2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+           
         }
 
         private void UserList_RowEditEnding(object sender, DataGridRowEditEndingEventArgs e)
@@ -99,7 +107,6 @@ namespace DiamondApp.Views
 
                 //MessageBox.Show(userRow.UserName);
                 //MessageBox.Show(userRow.UserEmail);
-
                 DiamondDBEntities _ctx = new DiamondDBEntities();
                 Users userUpdate = (from user in _ctx.Users
                                     where user.Id == selected // int selected!!! you know what i want up to date
@@ -125,6 +132,14 @@ namespace DiamondApp.Views
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button _myButton = (Button)sender;
+            string value = _myButton.CommandParameter.ToString();
+            PdfMaker pdf = new PdfMaker();
+            pdf.createPdf(value);
         }
     }
 }

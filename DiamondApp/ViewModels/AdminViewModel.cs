@@ -8,6 +8,7 @@ using DiamondApp.DataGridObjectClasses;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
 using DiamondApp.Views;
+using System.Collections.ObjectModel;
 
 namespace DiamondApp.ViewModels
 {
@@ -21,7 +22,7 @@ namespace DiamondApp.ViewModels
         private int _idProposition;  //id propozycji
 
         private List<AdminProposition> _propositionList;
-        private List<User> _userListGrid;
+        public  static List<User> _userListGrid;
         private AddNewProposition _addNewProposition;
         
         private PropClient _propositionClient = new PropClient();   // obiekt zawierajacy dane propozycji klienta (1 tab gora)
@@ -4305,7 +4306,7 @@ namespace DiamondApp.ViewModels
             UsersList = q;
         }
 
-        private void SelectAllUsers()
+        public void SelectAllUsers()
         {
             var myQuerry = (from user in _ctx.Users
                             select new User

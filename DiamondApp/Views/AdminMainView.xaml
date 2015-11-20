@@ -56,10 +56,10 @@
                     <!--                                </ComboBox>-->
                     <!--                            </DataTemplate>-->
                     <!--                        </GridViewColumn.CellTemplate>-->
-                    <GridViewColumn>
+                    <GridViewColumn Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="Edytuj" Padding="5,2"/>
+                                <Button Content="Zapisz do PDF" Click="Button_Click" CommandParameter="{Binding PropositionId}" Padding="5,2"/>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -67,7 +67,7 @@
             </ListView.View>
         </ListView>
 
-        <DataGrid ItemsSource="{Binding UsersListGrid, Mode=TwoWay}" RowEditEnding="UserList_RowEditEnding" x:Name ="UserList" HorizontalAlignment="Left" Height="533" Margin="7,62,0,0" VerticalAlignment="Top" Width="1055" IsHitTestVisible="True" AutoGenerateColumns="False" CanUserAddRows="False" Visibility="Hidden">
+        <DataGrid ItemsSource="{Binding UsersListGrid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowEditEnding="UserList_RowEditEnding" x:Name ="UserList" HorizontalAlignment="Left" Height="533" Margin="7,62,0,0" VerticalAlignment="Top" Width="850" IsHitTestVisible="True" AutoGenerateColumns="False" CanUserAddRows="False" Visibility="Hidden">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding UserId}" Header="Id" />
 

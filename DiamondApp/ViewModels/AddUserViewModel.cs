@@ -11,6 +11,8 @@ using DiamondApp.Tools;
 using DiamondApp;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices;
+using DiamondApp.ViewModels;
+using DiamondApp.Views;
 
 namespace DiamondApp.ViewModels
 {
@@ -26,7 +28,8 @@ namespace DiamondApp.ViewModels
         private string _userPhoneNumber;
         private string _userEmail;
         private string _userPosition;
-        private int _userAccountType;
+        private int _userAccountType2;
+        private string _userAccountType;
 
         public AddUserViewModel()
         {
@@ -77,10 +80,18 @@ namespace DiamondApp.ViewModels
             set { _userPassword = ShaConverter.sha256_hash(value); }
         }
 
-        public int UserAccountType
+        public string UserAccountType
         {
             get { return _userAccountType; }
             set { _userAccountType = value; }
+        }
+
+        public int UserAccontType2()
+        { 
+            if(UserAccountType=="Administrator")
+                return 1;
+            else
+                return 2;
         }
 
         public ICommand AddUserCommand
@@ -99,7 +110,7 @@ namespace DiamondApp.ViewModels
         {
             if (string.IsNullOrEmpty(_userName) || string.IsNullOrEmpty(_userSurname)
                 || string.IsNullOrEmpty(_userPhoneNumber) || string.IsNullOrEmpty(_userEmail) || string.IsNullOrEmpty(_userPosition)
-                || _userAccountType == 0)
+                || string.IsNullOrEmpty(_userAccountType))
                 return false;
             return true;
         }
@@ -115,7 +126,7 @@ namespace DiamondApp.ViewModels
                     PhoneNum = _userPhoneNumber,
                     Email = _userEmail,
                     Position = _userPosition,
-                    AccountType = _userAccountType,
+                    AccountType = UserAccontType2(),
                     Login = UserLogin,
                     Password = "",
                     FirstLogin = "t"
@@ -123,8 +134,8 @@ namespace DiamondApp.ViewModels
 
                 _ctx.Users.Add(addUser);
                 _ctx.SaveChanges();
+               // Application.Current.MainWindow.Hide();
                 MessageBox.Show("Konto użytkownika zostało utworzone!");
-
             }
             catch (Exception ex)
             {
