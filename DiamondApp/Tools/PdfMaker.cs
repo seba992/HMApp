@@ -374,7 +374,7 @@ namespace DiamondApp.Tools
             }
             catch(Exception ex)
             {
-                //MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
             
 
@@ -673,8 +673,7 @@ namespace DiamondApp.Tools
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("ADRES:");
                 row.Cells[2].AddParagraph("ADRES:");
-                row.Cells[3].AddParagraph(addrSplit(CompanyAddress(propId2),0,1));
-                row.Cells[3].AddParagraph(addrSplit(CompanyAddress(propId2),2,3));
+                row.Cells[3].AddParagraph(CompanyAddress(propId2));
 
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
@@ -764,7 +763,7 @@ namespace DiamondApp.Tools
             }
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.ToString());
             }
         }
 

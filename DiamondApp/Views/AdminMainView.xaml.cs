@@ -143,6 +143,8 @@ namespace DiamondApp.Views
             string path = "";
 
             SaveFileDialog openFileDialog = new SaveFileDialog();
+            openFileDialog.Filter = "Pliki PDF | *.pdf";
+            openFileDialog.DefaultExt = "pdf";
 
             if (openFileDialog.ShowDialog() == true)
                 path = openFileDialog.FileName;
