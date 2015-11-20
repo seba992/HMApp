@@ -29,6 +29,9 @@ namespace DiamondApp.Tools
     {
         private DiamondDBEntities _ctx;
         private List<PropExtraServices> _propositionList;
+        private float orderNettoSum = 0;
+        private float orderBruttoSum = 0;
+
 
         public PdfMaker()
         {
@@ -137,12 +140,7 @@ namespace DiamondApp.Tools
             row.Cells[7].Shading.Color = Colors.LightGray;
             row.Cells[0].AddParagraph("SALA KONFERENCYJNA:");
 
-            //createRowForExtra(document, table, column, propId);
-            row = table.AddRow();
-            row.Cells[0].Shading.Color = Colors.LightGray;
-            row.Cells[0].Format.Font.Bold = true;
-            row.Cells[0].AddParagraph("PODSUMOWANIE");
-            row.Cells[1].MergeRight = 4;
+            createRowForHallEquipment(document, table, column, propId, row);
 
             row = table.AddRow();
             row.Cells[0].MergeRight = 7;
@@ -235,13 +233,7 @@ namespace DiamondApp.Tools
             row.Cells[6].AddParagraph("WARTOŚĆ NETTO");
             row.Cells[7].AddParagraph("WARTOŚĆ BRUTTO");
 
-            //createRowForExtra(document,table, column, propId);
-
-            row = table.AddRow();
-            row.Cells[0].Shading.Color = Colors.LightGray;
-            row.Cells[0].Format.Font.Bold = true;
-            row.Cells[0].AddParagraph("PODSUMOWANIE");
-            row.Cells[1].MergeRight = 4;
+            createRowForAccomodation(document,table, column, propId, row);
 
             row = table.AddRow();
             row.Cells[0].MergeRight = 7;
@@ -287,22 +279,6 @@ namespace DiamondApp.Tools
             row.Cells[6].AddParagraph("WARTOŚĆ NETTO");
             row.Cells[7].AddParagraph("WARTOŚĆ BRUTTO");
 
-            row = table.AddRow();
-            row.Cells[0].Shading.Color = Colors.LightGray;
-            row.Cells[2].Shading.Color = Colors.LightGray;
-            row.Cells[3].Shading.Color = Colors.LightGray;
-            row.Cells[6].Shading.Color = Colors.LightGray;
-            row.Cells[7].Shading.Color = Colors.LightGray;
-            row.Cells[0].AddParagraph("PARKING ( część nie dozorowana ):");
-
-            row = table.AddRow();
-            row.Cells[0].Shading.Color = Colors.LightGray;
-            row.Cells[2].Shading.Color = Colors.LightGray;
-            row.Cells[3].Shading.Color = Colors.LightGray;
-            row.Cells[6].Shading.Color = Colors.LightGray;
-            row.Cells[7].Shading.Color = Colors.LightGray;
-            row.Cells[0].AddParagraph("PARKING ( część dozorowana) ");
-
             createRowForExtra(document, table, column, propId, row);
 
             createTableForPaymanet(document, propId);
@@ -343,9 +319,13 @@ namespace DiamondApp.Tools
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[3].Shading.Color = Colors.LightGray;
                 row.Cells[4].Shading.Color = Colors.LightGray;
+                row.Cells[3].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[0].AddParagraph("FORMA PŁATNOŚCI:");
                 row.Cells[1].AddParagraph(PaymentForm(propId));
                 row.Cells[2].AddParagraph("WARTOŚĆ ZAMÓWIENIA:");
+                row.Cells[3].AddParagraph(Convert.ToDecimal(orderNettoSum.ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[4].AddParagraph(Convert.ToDecimal(orderBruttoSum.ToString()).ToString("#,##0.00") + " zł");
                
                 row = table.AddRow();
                 row.Cells[2].MergeDown = 3;
@@ -447,6 +427,9 @@ namespace DiamondApp.Tools
                 
             }
 
+            orderBruttoSum += bruttoSum;
+            orderNettoSum += nettoSum;
+
             row2 = table.AddRow();
             row2.Cells[6].Format.Alignment = ParagraphAlignment.Center;
             row2.Cells[7].Format.Alignment = ParagraphAlignment.Center;
@@ -500,6 +483,9 @@ namespace DiamondApp.Tools
 
             }
 
+            orderBruttoSum += bruttoSum;
+            orderNettoSum += nettoSum;
+
             row2 = table.AddRow();
             row2.Cells[6].Format.Alignment = ParagraphAlignment.Center;
             row2.Cells[7].Format.Alignment = ParagraphAlignment.Center;
@@ -510,6 +496,118 @@ namespace DiamondApp.Tools
             row2.Cells[6].AddParagraph(Convert.ToDecimal(nettoSum.ToString()).ToString("#,##0.00") + " zł");
             row2.Cells[7].AddParagraph(Convert.ToDecimal(bruttoSum.ToString()).ToString("#,##0.00") + " zł");
         }
+
+        public void createRowForAccomodation(Document document, Table table, Column column, int propId, Row row2)
+        {
+            float nettoSum = 0;
+            float bruttoSum = 0;
+            var extra = (from r in _ctx.PropAccomodation
+                         where r.Id_proposition == propId
+                         select r).ToList();
+
+            for (int i = 0; i < extra.Count; i++)
+            {
+                //Create table columns
+                table.Rows.Height = 3;
+                Row row = table.AddRow();
+
+                string netto = ComputeNettoPrice((float)extra[i].BruttoPrice, (float)(extra[i].Vat)).ToString();
+
+                row.Borders.Top.Visible = false;
+                row.Cells[0].Shading.Color = Colors.LightGray;
+                row.Cells[2].Shading.Color = Colors.LightGray;
+                row.Cells[3].Shading.Color = Colors.LightGray;
+                row.Cells[6].Shading.Color = Colors.LightGray;
+                row.Cells[7].Shading.Color = Colors.LightGray;
+                row.Cells[1].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[2].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[3].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[5].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[6].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[0].AddParagraph(extra[i].TypeOfRoom);
+                row.Cells[1].AddParagraph(Convert.ToDecimal(extra[i].BruttoPrice.ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[2].AddParagraph(Convert.ToDecimal(netto.ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[3].AddParagraph(extra[i].Vat.ToString() + "%");
+                row.Cells[4].AddParagraph(extra[i].Amount.ToString());
+                row.Cells[5].AddParagraph(extra[i].Days.ToString());
+                row.Cells[6].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto)).ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[7].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * (float)extra[i].BruttoPrice).ToString()).ToString("#,##0.00") + " zł");
+                nettoSum += (float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto);
+                bruttoSum += (float)extra[i].Days * (float)extra[i].Amount * (float)extra[i].BruttoPrice;
+
+            }
+
+            orderBruttoSum += bruttoSum;
+            orderNettoSum += nettoSum;
+
+            row2 = table.AddRow();
+            row2.Cells[6].Format.Alignment = ParagraphAlignment.Center;
+            row2.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+            row2.Cells[0].Shading.Color = Colors.LightGray;
+            row2.Cells[0].Format.Font.Bold = true;
+            row2.Cells[0].AddParagraph("PODSUMOWANIE");
+            row2.Cells[1].MergeRight = 4;
+            row2.Cells[6].AddParagraph(Convert.ToDecimal(nettoSum.ToString()).ToString("#,##0.00") + " zł");
+            row2.Cells[7].AddParagraph(Convert.ToDecimal(bruttoSum.ToString()).ToString("#,##0.00") + " zł");
+        }
+        public void createRowForHallEquipment(Document document, Table table, Column column, int propId, Row row2)
+        {
+            float nettoSum = 0;
+            float bruttoSum = 0;
+            var extra = (from r in _ctx.PropHallEquipment
+                         where r.Id_proposition == propId
+                         select r).ToList();
+
+            for (int i = 0; i < extra.Count; i++)
+            {
+                //Create table columns
+                table.Rows.Height = 3;
+                Row row = table.AddRow();
+
+                string netto = ComputeNettoPrice((float)extra[i].BruttoPrice, (float)(extra[i].Vat)).ToString();
+
+                row.Borders.Top.Visible = false;
+                row.Cells[0].Shading.Color = Colors.LightGray;
+                row.Cells[2].Shading.Color = Colors.LightGray;
+                row.Cells[3].Shading.Color = Colors.LightGray;
+                row.Cells[6].Shading.Color = Colors.LightGray;
+                row.Cells[7].Shading.Color = Colors.LightGray;
+                row.Cells[1].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[2].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[3].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[5].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[6].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[0].AddParagraph(extra[i].Things);
+                row.Cells[1].AddParagraph(Convert.ToDecimal(extra[i].BruttoPrice.ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[2].AddParagraph(Convert.ToDecimal(netto.ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[3].AddParagraph(extra[i].Vat.ToString() + "%");
+                row.Cells[4].AddParagraph(extra[i].Amount.ToString());
+                row.Cells[5].AddParagraph(extra[i].Days.ToString());
+                row.Cells[6].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto)).ToString()).ToString("#,##0.00") + " zł");
+                row.Cells[7].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * (float)extra[i].BruttoPrice).ToString()).ToString("#,##0.00") + " zł");
+                nettoSum += (float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto);
+                bruttoSum += (float)extra[i].Days * (float)extra[i].Amount * (float)extra[i].BruttoPrice;
+
+            }
+
+            orderBruttoSum += bruttoSum;
+            orderNettoSum += nettoSum;
+
+            row2 = table.AddRow();
+            row2.Cells[6].Format.Alignment = ParagraphAlignment.Center;
+            row2.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+            row2.Cells[0].Shading.Color = Colors.LightGray;
+            row2.Cells[0].Format.Font.Bold = true;
+            row2.Cells[0].AddParagraph("PODSUMOWANIE");
+            row2.Cells[1].MergeRight = 4;
+            row2.Cells[6].AddParagraph(Convert.ToDecimal(nettoSum.ToString()).ToString("#,##0.00") + " zł");
+            row2.Cells[7].AddParagraph(Convert.ToDecimal(bruttoSum.ToString()).ToString("#,##0.00") + " zł");
+        }
+
 
         public void createPdf(string propId)
         {
