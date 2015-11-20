@@ -33,13 +33,12 @@ namespace DiamondApp.Tools
         private float orderBruttoSum = 0;
 
 
-
         public PdfMaker()
         {
             _ctx = new DiamondDBEntities();
         }
 
-        public bool savePdf(Document document, string path)
+        public bool savePdf(Document document)
         {
             bool isSucces = false;
             try
@@ -48,14 +47,14 @@ namespace DiamondApp.Tools
                 PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always);
                 renderDocument.Document = document;
                 renderDocument.RenderDocument();
-                renderDocument.Save(path);
+                renderDocument.Save("test.pdf");
                 isSucces = true;
-                MessageBox.Show("Wygenerowano PDF !");
+                MessageBox.Show("Udaało się  ");
             }
             catch (Exception ex)
             {
                 isSucces = false;
-                MessageBox.Show("Nie udało się wygenerować PDF");
+                MessageBox.Show(ex.ToString());
             }
 
             return isSucces;
@@ -132,6 +131,14 @@ namespace DiamondApp.Tools
             row.Cells[5].AddParagraph("DNI");
             row.Cells[6].AddParagraph("WARTOŚĆ NETTO");
             row.Cells[7].AddParagraph("WARTOŚĆ BRUTTO");
+
+            row = table.AddRow();
+            row.Cells[0].Shading.Color = Colors.LightGray;
+            row.Cells[2].Shading.Color = Colors.LightGray;
+            row.Cells[3].Shading.Color = Colors.LightGray;
+            row.Cells[6].Shading.Color = Colors.LightGray;
+            row.Cells[7].Shading.Color = Colors.LightGray;
+            row.Cells[0].AddParagraph("SALA KONFERENCYJNA:");
 
             createRowForHallEquipment(document, table, column, propId, row);
 
@@ -317,7 +324,6 @@ namespace DiamondApp.Tools
                 row.Cells[0].AddParagraph("FORMA PŁATNOŚCI:");
                 row.Cells[1].AddParagraph(PaymentForm(propId));
                 row.Cells[2].AddParagraph("WARTOŚĆ ZAMÓWIENIA:");
-                row.Cells[2].Format.Font.Bold = true;
                 row.Cells[3].AddParagraph(Convert.ToDecimal(orderNettoSum.ToString()).ToString("#,##0.00") + " zł");
                 row.Cells[4].AddParagraph(Convert.ToDecimal(orderBruttoSum.ToString()).ToString("#,##0.00") + " zł");
                
@@ -352,7 +358,7 @@ namespace DiamondApp.Tools
                 row = table.AddRow();
                 row.Cells[2].MergeRight = 2;
                 row.Cells[0].Shading.Color = Colors.LightGray;
-                row.Cells[1].Shading.Color = Colors.LightPink;
+                row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("OPIS SALI/STOŁÓW:");
                 row.Cells[1].AddParagraph(HallDescription(propId));
 
@@ -603,7 +609,7 @@ namespace DiamondApp.Tools
         }
 
 
-        public void createPdf(string propId, string path)
+        public void createPdf(string propId)
         {
             try
             {
@@ -758,7 +764,7 @@ namespace DiamondApp.Tools
 
                 createTable(document, propId2);
 
-                savePdf(document, path);
+                savePdf(document);
 
             }
             catch (Exception ex)
@@ -828,7 +834,7 @@ namespace DiamondApp.Tools
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
                        select propclient.CompanyName).Single();
-            return string.IsNullOrEmpty(var) ? "" : var;
+            return var;
         }
 
         public string CompanyNip(int propositionId)
@@ -972,12 +978,6 @@ namespace DiamondApp.Tools
             if (value == null)
                 value = 0;
             return Math.Round(((decimal)value * 100 / (100 + (decimal)vat)), 2);
-        }
-
-        private string addrSplit(string addr,int start, int end)
-        {
-            string[] tokens = addr.Split(' ');
-            return tokens[start] + " " + tokens[end];
         }
     }
 }
