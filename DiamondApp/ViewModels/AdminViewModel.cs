@@ -3215,6 +3215,9 @@ namespace DiamondApp.ViewModels
 
                 if (PropExtraServVat0 != null)
                     FifthTabNettoPrice0 = ComputeNettoPrice(PropExtraServBrutto0, PropExtraServVat0);
+                if (PropExtraServDays0 != null && PropExtraServAmount0 != null)
+                    FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServDays0,
+                        PropExtraServDays0);
             }
         }
         public string PropExtraServType1
