@@ -10,6 +10,7 @@ using DiamondApp.EntityModel;
 using DiamondApp.Tools;
 using DiamondApp.Views;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Validation;
 
 namespace DiamondApp.ViewModels
 {
@@ -96,6 +97,7 @@ namespace DiamondApp.ViewModels
         {
             _ctx = new DiamondDBEntities();
             _userId = userId;
+            SelectUsers();
             SelectAllPropositions();
             SelectAllUsers();
             FillNeededList();
@@ -3966,7 +3968,27 @@ namespace DiamondApp.ViewModels
 
 
 
-                _ctx.SaveChanges();
+                try
+                {
+                    // Your code...
+                    // Could also be before try if you know the exception occurs in SaveChanges
+
+                    _ctx.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+                    throw;
+                }
                 MessageBox.Show("dodano nowa propozycje");
 
                 // po dodaniu propozycji odśwież listę propozycji
