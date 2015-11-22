@@ -24,7 +24,7 @@ namespace DiamondApp.ViewModels
         private int _idProposition;  //id propozycji
 
         private List<AdminProposition> _propositionList;
-        public static List<User> _userListGrid;
+        private List<User> _userListGrid;
         private AddNewProposition _addNewProposition;
         
         private PropClient _propositionClient = new PropClient();   // obiekt zawierajacy dane propozycji klienta (1 tab gora)
@@ -4430,6 +4430,31 @@ namespace DiamondApp.ViewModels
         {
             DictionaryView edit = new DictionaryView();
             edit.Show();
+        }
+
+        private ICommand _resetPasswordCommand;
+
+        public ICommand ResetPasswordCommand
+        {
+            get
+            {
+                if (_resetPasswordCommand == null)
+                {
+                    _resetPasswordCommand = new RelayCommand(ResetPasswordExecute, CanResetPasswordExecute);
+                }
+                return _resetPasswordCommand;
+            }
+
+        }
+
+        private bool CanResetPasswordExecute(object art)
+        {
+            return true;
+        }
+        private void ResetPasswordExecute(object obj)
+        {
+            ResetPasswordView reset = new ResetPasswordView();
+            reset.Show();
         }
 
 #endregion

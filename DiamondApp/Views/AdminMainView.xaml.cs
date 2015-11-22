@@ -37,9 +37,9 @@ namespace DiamondApp.Views
 
         public void refreshGridView()
         {
-            UserList.ItemsSource = null;
-            UserList.ItemsSource = AdminViewModel._userListGrid;
-            UserList.Items.Refresh();
+            //UserList.ItemsSource = null;
+            //UserList.ItemsSource = AdminViewModel._userListGrid;
+            //UserList.Items.Refresh();
         }
 
         private void VisibleElement(object sender, RoutedEventArgs e)

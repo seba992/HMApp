@@ -32,6 +32,7 @@
             <MenuItem Header="Użytkownicy">
                 <MenuItem Header="Dodaj" Click="AddUser_Click"/>
                 <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Click="VisibleElement2" Command="{Binding ShowUsersCommand}" />
+                <MenuItem Header="Resetuj hasło" Command="{Binding ResetPasswordCommand}"/>
                 <MenuItem Header="Usuń"/>
             </MenuItem>
         </Menu>

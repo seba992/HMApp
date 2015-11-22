@@ -207,6 +207,7 @@
     <Compile Include="ViewModels\AddUserViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\DictionaryViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="Views\AddUserView.xaml.cs">
       <DependentUpon>AddUserView.xaml</DependentUpon>
     </Compile>
@@ -226,6 +227,9 @@
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\WeakActionGeneric.cs" />
+    <Compile Include="Views\ResetPasswordView.xaml.cs">
+      <DependentUpon>ResetPasswordView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserMainView.xaml.cs">
       <DependentUpon>UserMainView.xaml</DependentUpon>
     </Compile>
@@ -246,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ResetPasswordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -294,6 +302,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\logo.png" />
     <Content Include="EntityModel\DiamondModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DiamondModel.edmx</DependentUpon>
