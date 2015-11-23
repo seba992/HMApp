@@ -70,6 +70,12 @@ namespace DiamondApp.ViewModels
             set
             {
                 _selectTable = value;
+                HallPrices = (from x in _ctx.PropReservationDetails_Dictionary_HallPrices
+                              select x).ToList();
+                Gastronomic=(from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                            select x).ToList();
+                ListAccomaDictionaries=(from x in _ctx.PropAccomodation_Dictionary
+                                       select x).ToList();
                 RaisePropertyChanged("SelectPropertyInfo");
                 
             }

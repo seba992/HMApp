@@ -94,35 +94,32 @@ namespace DiamondApp.Views
                 // int selected = ((PropMenuGastronomicThings_Dictionary_First)e.Row.Item).Id;
 
                 dynamic userRow = GstronomicGrid.SelectedItem;
-
-                //MessageBox.Show(selected.ToString());
-                //MessageBox.Show(userRow.UserEmail);
-
-               
-
-                PropMenuGastronomicThings_Dictionary_First userUpdate =
-                    (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                        where q.Id == selected
-                        // int selected!!! you know what i want up to date
-                        select q).First();
-                if (userUpdate == null)
-                {
-                    MessageBox.Show("2l");
+                if(selected !=0)
+                { 
+                    PropMenuGastronomicThings_Dictionary_First userUpdate =
+                                    (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                        where q.Id == selected
+                                        // int selected!!! you know what i want up to date
+                                        select q).First();
+                                userUpdate.ThingName = userRow.ThingName;
+                                userUpdate.NettoMini = (float)userRow.NettoMini;
+                                userUpdate.Vat = (float)userRow.Vat;
+                                userUpdate.MergeType = userRow.MergeType;
+                                userUpdate.SpecificType = userRow.SpecificType;
+                                
                 }
-                if (userRow == null)
+                else
                 {
-                    MessageBox.Show("no i jes nul");
+                    PropMenuGastronomicThings_Dictionary_First userUpdate = new PropMenuGastronomicThings_Dictionary_First();
+                                    
+                    userUpdate.ThingName = userRow.ThingName;
+                    userUpdate.NettoMini = (float)userRow.NettoMini;
+                    userUpdate.Vat = (float)userRow.Vat;
+                    userUpdate.MergeType = userRow.MergeType;
+                    userUpdate.SpecificType = userRow.SpecificType;
+                    _ctx.PropMenuGastronomicThings_Dictionary_First.Add(userUpdate);
+
                 }
-                // update values in database by select from 'dynamic userRow' properties 
-                // UserName UserEmail etc. are in xaml in line:
-                // <TextBox Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}"/>
-                // need to update 'dynamic userRow' with Trigger, when user write text into cell
-                //userUpdate.Id = ID.ToString();
-                userUpdate.ThingName = userRow.ThingName;
-                userUpdate.NettoMini = (float)userRow.NettoMini;
-                userUpdate.Vat = (float)userRow.Vat;
-                userUpdate.MergeType = userRow.MergeType;
-                userUpdate.SpecificType = userRow.SpecificType;
                 _ctx.SaveChanges();
             }
             catch (Exception ex)
@@ -139,40 +136,51 @@ namespace DiamondApp.Views
                 object item = HallGrid.SelectedItem;
                 string ID = (HallGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                 int selected = Int32.Parse(ID);
-                // int selected = ((PropMenuGastronomicThings_Dictionary_First)e.Row.Item).Id;
-
                 dynamic hallRow = GstronomicGrid.SelectedItem;
+                if (selected != 0)
+                {
+                    PropReservationDetails_Dictionary_HallPrices hallUpdate =
+                        (from q in _ctx.PropReservationDetails_Dictionary_HallPrices
+                            where q.Id == selected
+                            // int selected!!! you know what i want up to date
+                            select q).First();
 
-                //MessageBox.Show(selected.ToString());
-                //MessageBox.Show(userRow.UserEmail);
 
-               
 
-                PropReservationDetails_Dictionary_HallPrices hallUpdate = (from q in _ctx.PropReservationDetails_Dictionary_HallPrices
-                                                                         where q.Id == selected // int selected!!! you know what i want up to date
-                                                                         select q).First();
-
- 
-            // update values in database by select from 'dynamic userRow' properties 
-                // UserName UserEmail etc. are in xaml in line:
-                // <TextBox Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}"/>
-                // need to update 'dynamic userRow' with Trigger, when user write text into cell
-                //userUpdate.Id = ID.ToString();
-              
-                hallUpdate.Febuary = hallRow.Febuary;
-                hallUpdate.January = hallRow.January;
-                hallUpdate.March = hallRow.March;
-                hallUpdate.April = hallRow.April;
-                hallUpdate.May = hallRow.May;
-                hallUpdate.August = hallRow.August;
-                hallUpdate.July = hallRow.July;
-                hallUpdate.June = hallRow.June;
-                hallUpdate.November = hallRow.November;
-                hallUpdate.October = hallRow.October;
-                hallUpdate.December = hallRow.December;
-                hallUpdate.Hall = hallRow.Hall;
-                hallUpdate.September = hallRow.September;
-                hallUpdate.Other = hallRow.Other;
+                    hallUpdate.Febuary = hallRow.Febuary;
+                    hallUpdate.January = hallRow.January;
+                    hallUpdate.March = hallRow.March;
+                    hallUpdate.April = hallRow.April;
+                    hallUpdate.May = hallRow.May;
+                    hallUpdate.August = hallRow.August;
+                    hallUpdate.July = hallRow.July;
+                    hallUpdate.June = hallRow.June;
+                    hallUpdate.November = hallRow.November;
+                    hallUpdate.October = hallRow.October;
+                    hallUpdate.December = hallRow.December;
+                    hallUpdate.Hall = hallRow.Hall;
+                    hallUpdate.September = hallRow.September;
+                    hallUpdate.Other = hallRow.Other;
+                }
+                else
+                {
+                    PropReservationDetails_Dictionary_HallPrices hallUpdate = new PropReservationDetails_Dictionary_HallPrices();
+                    hallUpdate.Febuary = hallRow.Febuary;
+                    hallUpdate.January = hallRow.January;
+                    hallUpdate.March = hallRow.March;
+                    hallUpdate.April = hallRow.April;
+                    hallUpdate.May = hallRow.May;
+                    hallUpdate.August = hallRow.August;
+                    hallUpdate.July = hallRow.July;
+                    hallUpdate.June = hallRow.June;
+                    hallUpdate.November = hallRow.November;
+                    hallUpdate.October = hallRow.October;
+                    hallUpdate.December = hallRow.December;
+                    hallUpdate.Hall = hallRow.Hall;
+                    hallUpdate.September = hallRow.September;
+                    hallUpdate.Other = hallRow.Other;
+                    _ctx.PropReservationDetails_Dictionary_HallPrices.Add(hallUpdate);
+                }
                 _ctx.SaveChanges();
             }
            catch (Exception ex)
@@ -189,11 +197,24 @@ namespace DiamondApp.Views
             string ID = (RoomGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
             int selected = Int32.Parse(ID);
             dynamic roomRow = RoomGrid.SelectedItem;
-            PropAccomodation_Dictionary roomUpdate = (from q in _ctx.PropAccomodation_Dictionary
-                                                                         where q.Id == selected // int selected!!! you know what i want up to date
-                                                                         select q).First();
-            roomUpdate.Price = roomRow.Price;
-            roomUpdate.TypeOfRoom = roomRow.TypeOfRoom;
+            MessageBox.Show(roomRow.Id + "   " + selected.ToString());
+            if (selected != 0)
+            {
+                PropAccomodation_Dictionary roomUpdate = (from q in _ctx.PropAccomodation_Dictionary
+                    where q.Id == selected
+                    // int selected!!! you know what i want up to date
+                    select q).First();
+                roomUpdate.Price = roomRow.Price;
+                roomUpdate.TypeOfRoom = roomRow.TypeOfRoom;
+            }
+            else
+            {
+                PropAccomodation_Dictionary roomUpdate = new PropAccomodation_Dictionary();
+                roomUpdate.Price = roomRow.Price;
+                roomUpdate.TypeOfRoom = roomRow.TypeOfRoom;
+                _ctx.PropAccomodation_Dictionary.Add(roomUpdate);
+            }
+            
             _ctx.SaveChanges();
         }
     }
