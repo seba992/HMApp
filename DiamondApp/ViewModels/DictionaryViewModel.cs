@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 using DiamondApp.EntityModel;
@@ -20,6 +21,22 @@ namespace DiamondApp.ViewModels
          //MessageBox.Show(_ctx.GetType().GetProperties().ToList()[0].ToString());
          //PropertyInfop = _ctx.GetType().GetProperties().ToList();
             //Gastronamia
+            DictionaryUpdate();
+
+        }
+
+        private DiamondDBEntities _ctx;
+        private List<DiamondDBEntities> _items;
+        private List<PropMenuGastronomicThings_Dictionary_First> _gastronomic;
+        private List<PropReservationDetails_Dictionary_HallPrices> _hallPrices;
+        private List<string> _filter;
+        private List<string> _listTable = new List<string> { "Gastronomia", "Pokoje", "Sale" };
+        private string _selectTable;
+        private string _selectFilter;
+        private List<PropAccomodation_Dictionary> _listAccomaDictionaries;
+
+        private void DictionaryUpdate()
+        {
             var test1 = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                          select x).ToList();
             Gastronomic = test1;
@@ -32,18 +49,10 @@ namespace DiamondApp.ViewModels
                        group x by x.SpecificType into g
                        select g.Key).ToList();
             SelectTable = "Pokoje";
-
+            var room = (from x in _ctx.PropAccomodation_Dictionary
+               select x).ToList();
+            ListAccomaDictionaries = room;
         }
-
-        private DiamondDBEntities _ctx;
-        
-        private List<DiamondDBEntities> _items;
-        private List<PropMenuGastronomicThings_Dictionary_First> _gastronomic;
-        private List<PropReservationDetails_Dictionary_HallPrices> _hallPrices;
-        private List<string> _filter;
-        private List<string> _listTable = new List<string> { "Gastronomia", "Pokoje" };
-        private string _selectTable;
-        private string _selectFilter;
 
         public List<PropMenuGastronomicThings_Dictionary_First> Gastronomic
         {
@@ -55,24 +64,20 @@ namespace DiamondApp.ViewModels
             }
         }
 
-       /* public List<string> ListTable 
-        {
-            get { return _listTable; }
-            set
-            {
-                _listTable = value;
-                RaisePropertyChanged("ListTable");
-            }
-        }*/
-
         public string SelectTable
         {
             get { return _selectTable; }
             set
             {
                 _selectTable = value;
+                HallPrices = (from x in _ctx.PropReservationDetails_Dictionary_HallPrices
+                              select x).ToList();
+                Gastronomic=(from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                            select x).ToList();
+                ListAccomaDictionaries=(from x in _ctx.PropAccomodation_Dictionary
+                                       select x).ToList();
                 RaisePropertyChanged("SelectPropertyInfo");
-               
+                
             }
         }
 
@@ -118,6 +123,16 @@ namespace DiamondApp.ViewModels
                     where x.SpecificType == value
                     select x).ToList();
             }
+        }
+
+        public List<PropAccomodation_Dictionary> ListAccomaDictionaries {
+            get { return _listAccomaDictionaries; }
+            set
+            {
+                _listAccomaDictionaries = value;
+                RaisePropertyChanged("ListAccomaDictionaries");
+            }
+
         }
 
 
