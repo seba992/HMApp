@@ -105,6 +105,15 @@ namespace DiamondApp.Views
 
                 //object which stores all deta from selected row
                 dynamic userRow = UserList.SelectedItem;
+                int tmp = 0;
+                if (userRow.UserAccountType == "Administrator")
+                {
+                    tmp = 1;
+                }
+                else
+                {
+                    tmp = 2;
+                }
 
                 //MessageBox.Show(userRow.UserName);
                 //MessageBox.Show(userRow.UserEmail);
@@ -123,7 +132,7 @@ namespace DiamondApp.Views
                 userUpdate.PhoneNum = userRow.UserPhoneNumber;
                 userUpdate.Email = userRow.UserEmail;
                 userUpdate.Position = userRow.UserPosition;
-                userUpdate.AccountType = userRow.UserAccountType;
+                userUpdate.AccountType = tmp;
                 userUpdate.Login = userRow.UserLogin;
 
                 _ctx.SaveChanges();

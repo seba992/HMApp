@@ -4480,8 +4480,8 @@ namespace DiamondApp.ViewModels
                                 UserPhoneNumber = user.PhoneNum,
                                 UserEmail = user.Email,
                                 UserPosition = user.Position,
-                                UserAccountType = user.AccountType,
-                                UserLogin = user.Login
+                                UserAccountType = user.AccountType == 1 ? "Administrator" : "Użytkownik",
+                                UserLogin = user.Login,
 
                             }).ToList();
 

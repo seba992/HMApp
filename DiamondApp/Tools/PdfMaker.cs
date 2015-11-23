@@ -743,7 +743,7 @@ namespace DiamondApp.Tools
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
-                row.Cells[0].AddParagraph("TERMIN:");
+                row.Cells[0].AddParagraph("DATA ROZPOCZĘCIA:");
                 row.Cells[1].AddParagraph(StartData(propId2) + " " + StartTime(propId2).ToString());
                 row.Cells[2].AddParagraph("ILOŚĆ OSÓB:");
                 row.Cells[3].AddParagraph(PeopleNumber(propId2).ToString());
@@ -751,7 +751,7 @@ namespace DiamondApp.Tools
                 row = table.AddRow();
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
-                row.Cells[0].AddParagraph("CZAS TRWANIA:");
+                row.Cells[0].AddParagraph("DATA ZAKOŃCZENIA:");
                 row.Cells[1].AddParagraph(EndData(propId2) + " " + EndTime(propId2).ToString());
                 row.Cells[2].AddParagraph("USTAWIENIE SALI:");
                 row.Cells[3].AddParagraph(HallSetting(propId2));

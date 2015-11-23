@@ -21,9 +21,12 @@ namespace DiamondApp.DataGridObjectClasses
         { get; set; }
         public string UserPosition
         { get; set; }
-        public int? UserAccountType
+        public string UserAccountType
         { get; set; }
         public string UserLogin
         { get; set; }
+
+        public string UserAccountType2
+            { get; set; }
     }
 }
