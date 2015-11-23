@@ -37,7 +37,7 @@
             </MenuItem>
         </Menu>
 
-        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="536" Margin="7,62,0,0" VerticalAlignment="Top" Width="1055" SelectedValue="{Binding SelectedProposition}" IsHitTestVisible="True" Visibility="Hidden">
+        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="536" Margin="7,62,0,0" VerticalAlignment="Top" Width="1055" SelectedValue="{Binding SelectedProposition}" IsHitTestVisible="True">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
@@ -166,7 +166,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1061">
+        <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1061" Visibility="Hidden">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
 
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
@@ -407,14 +407,15 @@
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="170" />
-                        <ColumnDefinition Width="195" />
-                        <ColumnDefinition Width="195" />
-                        <ColumnDefinition Width="60" />
-                        <ColumnDefinition Width="90" />
-                        <ColumnDefinition Width="75" />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="125" />
+                        <ColumnDefinition Width="125.5" />
+                        <ColumnDefinition Width="129.5"/>
+                        <ColumnDefinition Width="178" />
+                        <ColumnDefinition Width="179" />
+                        <ColumnDefinition Width="61" />
+                        <ColumnDefinition Width="87" />
+                        <ColumnDefinition Width="78" />
+                        <ColumnDefinition Width="105" />
+                        <ColumnDefinition Width="112" />
                     </Grid.ColumnDefinitions>
 
                     <!--definicja calej tabeli/-->
@@ -427,74 +428,74 @@
                     <Label Grid.Row="1" Grid.Column="6" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="1" Grid.Column="7" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
 
-                    <ComboBox x:Name="UGRodzajUslugiComboBox0" Grid.Column="0" Grid.Row="2" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ0}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
-                    <ComboBox x:Name="UGRodzajUslugiComboBox1" Grid.Column="0" Grid.Row="3" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ1}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
-                    <ComboBox x:Name="UGRodzajUslugiComboBox2" Grid.Column="0" Grid.Row="4" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ2}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
-                    <ComboBox x:Name="UGRodzajUslugiComboBox3" Grid.Column="0" Grid.Row="5" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ3}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
-                    <ComboBox x:Name="UGRodzajUslugiComboBox4" Grid.Column="0" Grid.Row="6" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ4}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
-                    <ComboBox x:Name="UGRodzajUslugiComboBox5" Grid.Column="0" Grid.Row="7" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ5}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
-                    <ComboBox x:Name="UGRodzajUslugiComboBox6" Grid.Column="0" Grid.Row="8" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ6}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
+                    <ComboBox x:Name="UGRodzajUslugiComboBox0" Grid.Column="1" Grid.Row="2" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ0}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
+                    <ComboBox x:Name="UGRodzajUslugiComboBox1" Grid.Column="1" Grid.Row="3" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ1}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
+                    <ComboBox x:Name="UGRodzajUslugiComboBox2" Grid.Column="1" Grid.Row="4" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ2}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
+                    <ComboBox x:Name="UGRodzajUslugiComboBox3" Grid.Column="1" Grid.Row="5" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ3}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
+                    <ComboBox x:Name="UGRodzajUslugiComboBox4" Grid.Column="1" Grid.Row="6" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ4}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
+                    <ComboBox x:Name="UGRodzajUslugiComboBox5" Grid.Column="1" Grid.Row="7" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ5}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
+                    <ComboBox x:Name="UGRodzajUslugiComboBox6" Grid.Column="1" Grid.Row="8" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ6}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
 
                     <Label Grid.Row="9" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" />
 
-                    <TextBox x:Name="UGCenaJednBrutto1" Grid.Column="1" Grid.Row="2" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto0, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednBrutto2" Grid.Column="1" Grid.Row="3" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto1, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednBrutto3" Grid.Column="1" Grid.Row="4" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto2, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednBrutto4" Grid.Column="1" Grid.Row="5" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto3, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednBrutto5" Grid.Column="1" Grid.Row="6" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto4, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednBrutto6" Grid.Column="1" Grid.Row="7" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto5, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednBrutto7" Grid.Column="1" Grid.Row="8" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto6, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednBrutto1" Grid.Column="2" Grid.Row="2" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto0, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednBrutto2" Grid.Column="2" Grid.Row="3" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto1, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednBrutto3" Grid.Column="2" Grid.Row="4" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto2, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednBrutto4" Grid.Column="2" Grid.Row="5" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto3, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednBrutto5" Grid.Column="2" Grid.Row="6" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto4, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednBrutto6" Grid.Column="2" Grid.Row="7" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto5, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednBrutto7" Grid.Column="2" Grid.Row="8" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosBrutto6, StringFormat=\{0:c\}}" />
 
-                    <TextBox x:Name="UGCenaJednNetto1" Grid.Column="2" Grid.Row="2" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice0, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednNetto2" Grid.Column="2" Grid.Row="3" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice1, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednNetto3" Grid.Column="2" Grid.Row="4" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice2, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednNetto4" Grid.Column="2" Grid.Row="5" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice3, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednNetto5" Grid.Column="2" Grid.Row="6" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice4, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednNetto6" Grid.Column="2" Grid.Row="7" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice5, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGCenaJednNetto7" Grid.Column="2" Grid.Row="8" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice6, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednNetto1" Grid.Column="3" Grid.Row="2" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice0, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednNetto2" Grid.Column="3" Grid.Row="3" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice1, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednNetto3" Grid.Column="3" Grid.Row="4" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice2, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednNetto4" Grid.Column="3" Grid.Row="5" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice3, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednNetto5" Grid.Column="3" Grid.Row="6" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice4, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednNetto6" Grid.Column="3" Grid.Row="7" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice5, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGCenaJednNetto7" Grid.Column="3" Grid.Row="8" Margin="3" IsEnabled="False" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding ThirdTabNettoPrice6, StringFormat=\{0:c\}}" />
 
-                    <TextBox x:Name="UGVatComboBox1" Grid.Column="3" Grid.Row="2" Margin="3" Text="{Binding PropMenuPosVat0}" IsEnabled="False"/>
-                    <TextBox x:Name="UGVatComboBox2" Grid.Column="3" Grid.Row="3" Margin="3" Text="{Binding PropMenuPosVat1}" IsEnabled="False"/>
-                    <TextBox x:Name="UGVatComboBox3" Grid.Column="3" Grid.Row="4" Margin="3" Text="{Binding PropMenuPosVat2}" IsEnabled="False"/>
-                    <TextBox x:Name="UGVatComboBox4" Grid.Column="3" Grid.Row="5" Margin="3" Text="{Binding PropMenuPosVat3}" IsEnabled="False"/>
-                    <TextBox x:Name="UGVatComboBox5" Grid.Column="3" Grid.Row="6" Margin="3" Text="{Binding PropMenuPosVat4}" IsEnabled="False"/>
-                    <TextBox x:Name="UGVatComboBox6" Grid.Column="3" Grid.Row="7" Margin="3" Text="{Binding PropMenuPosVat5}" IsEnabled="False"/>
-                    <TextBox x:Name="UGVatComboBox7" Grid.Column="3" Grid.Row="8" Margin="3" Text="{Binding PropMenuPosVat6}" IsEnabled="False"/>
+                    <TextBox x:Name="UGVatComboBox1" Grid.Column="4" Grid.Row="2" Margin="3" Text="{Binding PropMenuPosVat0}" IsEnabled="False"/>
+                    <TextBox x:Name="UGVatComboBox2" Grid.Column="4" Grid.Row="3" Margin="3" Text="{Binding PropMenuPosVat1}" IsEnabled="False"/>
+                    <TextBox x:Name="UGVatComboBox3" Grid.Column="4" Grid.Row="4" Margin="3" Text="{Binding PropMenuPosVat2}" IsEnabled="False"/>
+                    <TextBox x:Name="UGVatComboBox4" Grid.Column="4" Grid.Row="5" Margin="3" Text="{Binding PropMenuPosVat3}" IsEnabled="False"/>
+                    <TextBox x:Name="UGVatComboBox5" Grid.Column="4" Grid.Row="6" Margin="3" Text="{Binding PropMenuPosVat4}" IsEnabled="False"/>
+                    <TextBox x:Name="UGVatComboBox6" Grid.Column="4" Grid.Row="7" Margin="3" Text="{Binding PropMenuPosVat5}" IsEnabled="False"/>
+                    <TextBox x:Name="UGVatComboBox7" Grid.Column="4" Grid.Row="8" Margin="3" Text="{Binding PropMenuPosVat6}" IsEnabled="False"/>
 
-                    <TextBox x:Name="UGIloscTextBox1" Grid.Column="4" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount0}" />
-                    <TextBox x:Name="UGIloscTextBox2" Grid.Column="4" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount1}" />
-                    <TextBox x:Name="UGIloscTextBox3" Grid.Column="4" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount2}" />
-                    <TextBox x:Name="UGIloscTextBox4" Grid.Column="4" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount3}" />
-                    <TextBox x:Name="UGIloscTextBox5" Grid.Column="4" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount4}" />
-                    <TextBox x:Name="UGIloscTextBox6" Grid.Column="4" Grid.Row="7" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount5}" />
-                    <TextBox x:Name="UGIloscTextBox7" Grid.Column="4" Grid.Row="8" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount6}" />
+                    <TextBox x:Name="UGIloscTextBox1" Grid.Column="5" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount0}" />
+                    <TextBox x:Name="UGIloscTextBox2" Grid.Column="5" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount1}" />
+                    <TextBox x:Name="UGIloscTextBox3" Grid.Column="5" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount2}" />
+                    <TextBox x:Name="UGIloscTextBox4" Grid.Column="5" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount3}" />
+                    <TextBox x:Name="UGIloscTextBox5" Grid.Column="5" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount4}" />
+                    <TextBox x:Name="UGIloscTextBox6" Grid.Column="5" Grid.Row="7" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount5}" />
+                    <TextBox x:Name="UGIloscTextBox7" Grid.Column="5" Grid.Row="8" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount6}" />
 
-                    <TextBox x:Name="UGDniTextBox1" Grid.Column="5" Grid.Row="2"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays0}"/>
-                    <TextBox x:Name="UGDniTextBox2" Grid.Column="5" Grid.Row="3"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays1}"/>
-                    <TextBox x:Name="UGDniTextBox3" Grid.Column="5" Grid.Row="4"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays2}"/>
-                    <TextBox x:Name="UGDniTextBox4" Grid.Column="5" Grid.Row="5"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays3}"/>
-                    <TextBox x:Name="UGDniTextBox5" Grid.Column="5" Grid.Row="6"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays4}"/>
-                    <TextBox x:Name="UGDniTextBox6" Grid.Column="5" Grid.Row="7"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays5}"/>
-                    <TextBox x:Name="UGDniTextBox7" Grid.Column="5" Grid.Row="8"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays6}"/>
+                    <TextBox x:Name="UGDniTextBox1" Grid.Column="6" Grid.Row="2"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays0}"/>
+                    <TextBox x:Name="UGDniTextBox2" Grid.Column="6" Grid.Row="3"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays1}"/>
+                    <TextBox x:Name="UGDniTextBox3" Grid.Column="6" Grid.Row="4"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays2}"/>
+                    <TextBox x:Name="UGDniTextBox4" Grid.Column="6" Grid.Row="5"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays3}"/>
+                    <TextBox x:Name="UGDniTextBox5" Grid.Column="6" Grid.Row="6"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays4}"/>
+                    <TextBox x:Name="UGDniTextBox6" Grid.Column="6" Grid.Row="7"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays5}"/>
+                    <TextBox x:Name="UGDniTextBox7" Grid.Column="6" Grid.Row="8"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays6}"/>
 
-                    <TextBox x:Name="UGWartoscNettoTextBox1" Grid.Column="6" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue0, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscNettoTextBox2" Grid.Column="6" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue1, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscNettoTextBox3" Grid.Column="6" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue2, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscNettoTextBox4" Grid.Column="6" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue3, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscNettoTextBox5" Grid.Column="6" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue4, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscNettoTextBox6" Grid.Column="6" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue5, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscNettoTextBox7" Grid.Column="6" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue6, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscNettoTextBox1" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue0, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscNettoTextBox2" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue1, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscNettoTextBox3" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue2, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscNettoTextBox4" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue3, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscNettoTextBox5" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue4, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscNettoTextBox6" Grid.Column="7" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue5, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscNettoTextBox7" Grid.Column="7" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue6, StringFormat=\{0:c\}}" />
 
-                    <TextBox x:Name="UGWartoscBruttoTextBox1" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue0, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscBruttoTextBox2" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue1, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscBruttoTextBox3" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue2, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue3, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue4, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscBruttoTextBox6" Grid.Column="7" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue5, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGWartoscBruttoTextBox7" Grid.Column="7" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue6, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox1" Grid.Column="8" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue0, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox2" Grid.Column="8" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue1, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox3" Grid.Column="8" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue2, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox4" Grid.Column="8" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue3, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox5" Grid.Column="8" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue4, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox6" Grid.Column="8" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue5, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGWartoscBruttoTextBox7" Grid.Column="8" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabBruttoValue6, StringFormat=\{0:c\}}" />
 
-                    <TextBox x:Name="UGSumaWartoscNettoTextBox" Grid.Column="6" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding ThirdTabSumNettoValue, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UGSumaWartoscBruttoTextBox" Grid.Column="7" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabSumBruttoValue, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGSumaWartoscNettoTextBox" Grid.Column="7" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding ThirdTabSumNettoValue, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UGSumaWartoscBruttoTextBox" Grid.Column="8" Grid.Row="9" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabSumBruttoValue, StringFormat=\{0:c\}}" />
 
                     <Label Grid.Row="11" Grid.Column="1" Content="Marża gastronomia 8%   (%):" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
                     <Label Grid.Row="12" Grid.Column="1" Content="Marża gastronomia 23%    (%):" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" />
@@ -507,6 +508,14 @@
                     <xctk:IntegerUpDown x:Name="UGMarza2" Grid.Column="2" Grid.Row="13" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge2}"/>
                     <xctk:IntegerUpDown x:Name="UGMarza3" Grid.Column="2" Grid.Row="14" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge3}"/>
                     <xctk:IntegerUpDown x:Name="UGMarza4" Grid.Column="2" Grid.Row="15" Margin="3" Minimum="0" Maximum="100" Value="{Binding PropMenuMerge4}"/>
+
+                    <ComboBox Grid.Row="2" Margin="3"  MaxDropDownHeight="200" ItemsSource="{Binding Filter}" SelectedValue ="{Binding SelectedType0}"  SelectedIndex="1" ScrollViewer.VerticalScrollBarVisibility="Visible"  />
+                    <ComboBox Grid.Row="3" Margin="3"  MaxDropDownHeight="200" ItemsSource="{Binding Filter}" SelectedValue ="{Binding SelectedType1}"  SelectedIndex="1"  ScrollViewer.VerticalScrollBarVisibility="Visible" />
+                    <ComboBox Grid.Row="4" Margin="3"  MaxDropDownHeight="200" ItemsSource="{Binding Filter}" SelectedValue ="{Binding SelectedType2}"  SelectedIndex="1"  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                    <ComboBox Grid.Row="5" Margin="3"  MaxDropDownHeight="200" ItemsSource="{Binding Filter}" SelectedValue ="{Binding SelectedType3}"  SelectedIndex="1"  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                    <ComboBox Grid.Row="6" Margin="3"  MaxDropDownHeight="200" ItemsSource="{Binding Filter}" SelectedValue ="{Binding SelectedType4}"  SelectedIndex="1"  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                    <ComboBox Grid.Row="7" Margin="3"  MaxDropDownHeight="200" ItemsSource="{Binding Filter}" SelectedValue ="{Binding SelectedType5}"  SelectedIndex="1"  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+                    <ComboBox Grid.Row="8" Margin="3"  MaxDropDownHeight="200" ItemsSource="{Binding Filter}" SelectedValue ="{Binding SelectedType6}"  SelectedIndex="1"  ScrollViewer.VerticalScrollBarVisibility="Visible"/>
 
                 </Grid>
 

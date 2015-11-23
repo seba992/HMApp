@@ -4440,8 +4440,130 @@ namespace DiamondApp.ViewModels
                     select q).SingleOrDefault();
                 mergeaccom.Discount = PropAccomDiscountValue;
                 _ctx.SaveChanges();
+// usługi dodatkowe
+                var propextr = (from q in _ctx.PropExtraServices
+                    where q.Id_proposition == idProposition
+                    select q).ToList();
+                var dic = (from q in _ctx.PropExtraServices_Dictionary
+                    select q.ServiceType).ToList();
 
-                SelectedProposition = null;
+                if (PropExtraServType0 != null)
+                {
+                    var position = propextr.Find(item => item.ServiceType == dic[0]);
+                    var position1 = propextr.Find(item => item.ServiceType == dic[1]);
+
+                    if (position != null || position1!=null)
+                    {
+                        position.ServiceType = PropExtraServType0;
+                        position.Amount = PropExtraServAmount0;
+                        position.Days = PropExtraServDays0;
+                        position.BruttoPrice = PropExtraServBrutto0;
+                        position.Vat = PropExtraServVat0;
+                    }
+                    else
+                    {
+                     
+                        PropExtraServices newextra = new PropExtraServices();
+                        newextra.Id_proposition = idProposition;
+                        newextra.ServiceType = PropExtraServType0;
+                        newextra.Amount = PropExtraServAmount0;
+                        newextra.Days = PropExtraServDays0;
+                        newextra.BruttoPrice = PropExtraServBrutto0;
+                        newextra.Vat = PropExtraServVat0;
+                    }
+                }
+                if (PropExtraServType1 != null)
+                {
+                    var position = propextr.Find(item => item.ServiceType == PropExtraServType1);
+                    if (position != null)
+                    {
+                        position.ServiceType = PropExtraServType1;
+                        position.Amount = PropExtraServAmount1;
+                        position.Days = PropExtraServDays1;
+                        position.BruttoPrice = PropExtraServBrutto1;
+                        position.Vat = PropExtraServVat1;
+                    }
+                    else
+                    {
+
+                        PropExtraServices newextra = new PropExtraServices();
+                        newextra.Id_proposition = idProposition;
+                        newextra.ServiceType = PropExtraServType1;
+                        newextra.Amount = PropExtraServAmount1;
+                        newextra.Days = PropExtraServDays1;
+                        newextra.BruttoPrice = PropExtraServBrutto1;
+                        newextra.Vat = PropExtraServVat1;
+                    }
+                }
+                if (PropExtraServType2 != null)
+                {
+                    var position = propextr.Find(item => item.ServiceType == PropExtraServType2);
+                    if (position != null)
+                    {
+                        position.ServiceType = PropExtraServType2;
+                        position.Amount = PropExtraServAmount2;
+                        position.Days = PropExtraServDays2;
+                        position.BruttoPrice = PropExtraServBrutto2;
+                        position.Vat = PropExtraServVat2;
+                    }
+                    else
+                    {
+
+                        PropExtraServices newextra = new PropExtraServices();
+                        newextra.Id_proposition = idProposition;
+                        newextra.ServiceType = PropExtraServType2;
+                        newextra.Amount = PropExtraServAmount2;
+                        newextra.Days = PropExtraServDays2;
+                        newextra.BruttoPrice = PropExtraServBrutto2;
+                        newextra.Vat = PropExtraServVat2;
+                    }
+                }
+                if (PropExtraServType3 != null)
+                {
+                    var position = propextr.Find(item => item.ServiceType == PropExtraServType3);
+                    if (position != null)
+                    {
+                        position.ServiceType = PropExtraServType3;
+                        position.Amount = PropExtraServAmount3;
+                        position.Days = PropExtraServDays3;
+                        position.BruttoPrice = PropExtraServBrutto3;
+                        position.Vat = PropExtraServVat3;
+                    }
+                    else
+                    {
+
+                        PropExtraServices newextra = new PropExtraServices();
+                        newextra.Id_proposition = idProposition;
+                        newextra.ServiceType = PropExtraServType3;
+                        newextra.Amount = PropExtraServAmount3;
+                        newextra.Days = PropExtraServDays3;
+                        newextra.BruttoPrice = PropExtraServBrutto3;
+                        newextra.Vat = PropExtraServVat3;
+                    }
+                }
+                _ctx.SaveChanges();
+                var paysug = (from q in _ctx.PropPaymentSuggestions
+                              where q.Id_proposition == _idProposition
+                              select q).SingleOrDefault();
+                if (paysug != null)
+                {
+                    paysug.PaymentForm = PaymentSuggestPaymentForm;
+                    paysug.InvoiceServiceName =PaymentSuggestInvServName;
+                    paysug.CarPark= PaymentSuggestCarPark;
+                    paysug.IndividualOrders =PaymentSuggestIndividOrder;
+                
+                }
+                else
+                {
+                    PropPaymentSuggestions paysug1 = new PropPaymentSuggestions();
+                    paysug1.Id_proposition = idProposition;
+                    paysug1.PaymentForm = PaymentSuggestPaymentForm;
+                    paysug1.InvoiceServiceName = PaymentSuggestInvServName;
+                    paysug1.CarPark = PaymentSuggestCarPark;
+                    paysug1.IndividualOrders = PaymentSuggestIndividOrder;
+                }
+                _ctx.SaveChanges();
+                SelectedProposition = null; 
                 SelectAllPropositions();
                 MessageBox.Show("edytowano istniejaca propozycje");
             }
@@ -4607,9 +4729,9 @@ namespace DiamondApp.ViewModels
         {
             _saveFlag = true;
             HallListFunction();
-            //InitializeObjects();
-            //FillNeededList();
-            //SetDefaultValues();
+            InitializeObjects();
+            FillNeededList();
+            SetDefaultValues();
             roomExistList = (from q in _ctx.PropAccomodation_Dictionary
                 select q.TypeOfRoom).ToList();
             _idProposition = SelectedProposition.PropositionId;
@@ -4776,8 +4898,9 @@ namespace DiamondApp.ViewModels
                                         select q).ToList().Where(x => x.ThingName == editGastronomic[0].TypeOfService).SingleOrDefault();
                              
                              SelectedType0 = typ.SpecificType;
+                             PropMenuPosVat0 = editGastronomic[0].Vat;
                           PropMenuPosMergeType0 = editGastronomic[0].MergeType;
-                          PropMenuPosVat0 = editGastronomic[0].Vat;
+                          
                           PropMenuTypeOfServ0 = editGastronomic[0].TypeOfService;
                            if(editGastronomic[0].Amount!=null)
                           PropMenuPosAmount0 = editGastronomic[0].Amount;
@@ -4969,12 +5092,20 @@ namespace DiamondApp.ViewModels
                         
                 }
             }
-                
-                
+            var paysug = (from q in _ctx.PropPaymentSuggestions
+                where q.Id_proposition == _idProposition
+                select q).SingleOrDefault();
+            if (paysug != null)
+            {
+                PaymentSuggestPaymentForm = paysug.PaymentForm;
+                PaymentSuggestInvServName = paysug.InvoiceServiceName;
+                PaymentSuggestCarPark = paysug.CarPark;
+                PaymentSuggestIndividOrder = paysug.IndividualOrders;
+            }
 
         }
 
-        private void PropDefaultSeller()
+       private void PropDefaultSeller()
         {
             var querry = (from user in _ctx.Users
                           where user.Id == _userId
@@ -5055,7 +5186,7 @@ namespace DiamondApp.ViewModels
                                  select gt.ThingName).ToList();
             PropMenuGastThingDict0 = gastThingDict;
             PropMenuGastThingDict1 = gastThingDict;
-            PropMenuGastThingDict2= gastThingDict;
+            PropMenuGastThingDict2 =  gastThingDict;
             PropMenuGastThingDict3 = gastThingDict;
             PropMenuGastThingDict4 = gastThingDict;
             PropMenuGastThingDict5 = gastThingDict;
@@ -5511,6 +5642,203 @@ namespace DiamondApp.ViewModels
             sum += FifthTabSumBruttoValue;
 
             FullSumBrutto = sum;
+        }
+        private void CleanProperties(Type obj)
+        {
+            string[] stringContainList = { "PropMenuTypeOfServ0" };//"Prop", "Hall", "TabNetto", "TabBrutto", "TabSum", "PaymentSuggest","FullSum" };
+            string[] stringNotContainList = { "Command", "List", "Add", "Selected" };
+            var properties = obj.GetProperties();
+
+            //tab1
+            PropositionReservDetailsStartData = null;
+            PropositionReservDetailsEndData = null;
+
+            PropositionReservDetailsStartTime = null;
+            PropositionReservDetailsEndTime = null;
+            PropositionClientCompanyName = null;
+            PropositionClientCompanyAdress = null;
+            PropositionClientNip = null;
+            PropositionClientCustromerFullName = null;
+            PropositionClientPhoneNum = null;
+            PropositionClientCustomerEmail = null;
+            PropositionClientDecisingPerFullName = null;
+            PropositionReservDetailsPeopleNumber = null;
+            PropositionReservDetailsHallSetting = null;
+            PropositionReservDetailsHall = null;
+            HallCapacity = null;
+            HallPrice = null;
+            AddNewProposition = null;
+
+            //tab2
+            PropHallEqThing0 = null;
+            PropHallEqThing1 = null;
+            PropHallEqThing2 = null;
+            PropHallEqThing3 = null;
+            PropHallEqThing4 = null;
+            PropHallEqThing5 = null;
+
+            PropHallEqBrutto0 = null;
+            PropHallEqBrutto1 = null;
+            PropHallEqBrutto2 = null;
+            PropHallEqBrutto3 = null;
+            PropHallEqBrutto4 = null;
+            PropHallEqBrutto5 = null;
+
+            PropHallEqAmount0 = null;
+            PropHallEqAmount1 = null;
+            PropHallEqAmount2 = null;
+            PropHallEqAmount3 = null;
+            PropHallEqAmount4 = null;
+            PropHallEqAmount5 = null;
+
+            PropHallEqDays0 = null;
+            PropHallEqDays1 = null;
+            PropHallEqDays2 = null;
+            PropHallEqDays3 = null;
+            PropHallEqDays4 = null;
+            PropHallEqDays5 = null;
+
+            SecondTabNettoValue0 = 0;
+            SecondTabNettoValue1 = 0;
+            SecondTabNettoValue2 = 0;
+            SecondTabNettoValue3 = 0;
+            SecondTabNettoValue4 = 0;
+            SecondTabNettoValue5 = 0;
+
+            SecondTabBruttoValue0 = 0;
+            SecondTabBruttoValue1 = 0;
+            SecondTabBruttoValue2 = 0;
+            SecondTabBruttoValue3 = 0;
+            SecondTabBruttoValue4 = 0;
+            SecondTabBruttoValue5 = 0;
+
+            PropHallEquipmentDiscountStandPrice = null;
+            PropHallPriceAfterDiscount = 0;
+            PropHallEquipmentDiscountValue = null;
+
+            //tab3
+            PropMenuTypeOfServ0 = null;
+            PropMenuTypeOfServ1 = null;
+            PropMenuTypeOfServ2 = null;
+            PropMenuTypeOfServ3 = null;
+            PropMenuTypeOfServ4 = null;
+            PropMenuTypeOfServ5 = null;
+            PropMenuTypeOfServ6 = null;
+
+            PropMenuPosDays0 = null;
+            PropMenuPosDays1 = null;
+            PropMenuPosDays2 = null;
+            PropMenuPosDays3 = null;
+            PropMenuPosDays4 = null;
+            PropMenuPosDays5 = null;
+
+            PropMenuPosAmount0 = null;
+            PropMenuPosAmount1 = null;
+            PropMenuPosAmount2 = null;
+            PropMenuPosAmount3 = null;
+            PropMenuPosAmount4 = null;
+            PropMenuPosAmount5 = null;
+
+            //tab4
+
+            PropAccomAmount0 = null;
+            PropAccomAmount1 = null;
+            PropAccomAmount2 = null;
+            PropAccomAmount3 = null;
+            PropAccomAmount4 = null;
+            PropAccomAmount5 = null;
+
+            PropAccomDays0 = null;
+            PropAccomDays1 = null;
+            PropAccomDays2 = null;
+            PropAccomDays3 = null;
+            PropAccomDays4 = null;
+            PropAccomDays5 = null;
+
+            FourthTabNettoValue0 = 0;
+            FourthTabNettoValue1 = 0;
+            FourthTabNettoValue2 = 0;
+            FourthTabNettoValue3 = 0;
+            FourthTabNettoValue4 = 0;
+            FourthTabNettoValue5 = 0;
+
+            FourthTabBruttoValue0 = 0;
+            FourthTabBruttoValue1 = 0;
+            FourthTabBruttoValue2 = 0;
+            FourthTabBruttoValue3 = 0;
+            FourthTabBruttoValue4 = 0;
+            FourthTabBruttoValue5 = 0;
+
+            FourthTabSumNettoValue = 0;
+            FourthTabSumBruttoValue = 0;
+
+            PropAccomDiscountValue = null;
+
+            PropExtraServType0 = null;
+            PropExtraServType1 = null;
+            PropExtraServType2 = null;
+            PropExtraServType3 = null;
+
+            PropExtraServBrutto0 = null;
+            PropExtraServBrutto1 = null;
+            PropExtraServBrutto2 = null;
+            PropExtraServBrutto3 = null;
+
+            FifthTabNettoPrice0 = null;
+            FifthTabNettoPrice1 = null;
+            FifthTabNettoPrice2 = null;
+            FifthTabNettoPrice3 = null;
+
+            PropExtraServAmount0 = null;
+            PropExtraServAmount1 = null;
+            PropExtraServAmount2 = null;
+            PropExtraServAmount3 = null;
+
+            PropExtraServDays0 = null;
+            PropExtraServDays1 = null;
+            PropExtraServDays2 = null;
+            PropExtraServDays3 = null;
+
+            //tab5
+            FifthTabNettoValue0 = 0;
+            FifthTabNettoValue1 = 0;
+            FifthTabNettoValue2 = 0;
+            FifthTabNettoValue3 = 0;
+
+            FifthTabBruttoValue0 = 0;
+            FifthTabBruttoValue1 = 0;
+            FifthTabBruttoValue2 = 0;
+            FifthTabBruttoValue3 = 0;
+
+            FifthTabSumNettoValue = 0;
+            FifthTabSumBruttoValue = 0;
+
+            FullSumNetto = 0;
+            FullSumBrutto = 0;
+
+            PaymentSuggestPaymentForm = null;
+            PaymentSuggestInvServName = null;
+            PaymentSuggestIndividOrder = null;
+            PaymentSuggestCarPark = null;
+
+
+            //            foreach (var propertyInfo in properties)
+            //            {
+            //                if (!stringNotContainList.Any(propertyInfo.Name.Contains))
+            //                {
+            //                    if (stringContainList.Any(propertyInfo.Name.Contains))
+            //                    {
+            //                        string type = propertyInfo.PropertyType.Name;
+            //                       // propertyInfo.SetValue(propertyInfo, null);
+            //                        switch (type)
+            //                        {
+            //                            case "String":
+            //                                propertyInfo.SetValue(type, "", null);
+            //                                break;
+            //                        }
+            //                    }
+            //                } 
+            //            }
         }
         #endregion
     }
