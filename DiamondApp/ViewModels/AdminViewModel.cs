@@ -5339,7 +5339,31 @@ namespace DiamondApp.ViewModels
             remove.Show();
         }
 
-        private ICommand
+        private ICommand _editUserCommand;
+
+        public ICommand EditUserCommand
+        {
+            get
+            {
+                if (_editUserCommand == null)
+                {
+                    _editUserCommand = new RelayCommand(EditUserExecute, CanEditUserExecute);
+                }
+                return _editUserCommand;
+            }
+
+        }
+
+        private bool CanEditUserExecute(object art)
+        {
+            return true;
+        }
+        private void EditUserExecute(object obj)
+        {
+            EditUserView remove = new EditUserView();
+            remove.Show();
+        }
+
 
 #endregion
 
