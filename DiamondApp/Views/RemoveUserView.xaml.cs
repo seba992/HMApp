@@ -16,15 +16,15 @@ using System.Windows.Shapes;
 namespace DiamondApp.Views
 {
     /// <summary>
-    /// Interaction logic for ResetPasswordView.xaml
+    /// Interaction logic for RemoveUserView.xaml
     /// </summary>
-    public partial class ResetPasswordView : Window
+    public partial class RemoveUserView : Window
     {
-        public ResetPasswordView()
+        public RemoveUserView()
         {
             InitializeComponent();
-            ResetPasswordViewModel resetPasswordView = new ResetPasswordViewModel();
-            DataContext = resetPasswordView;
+            RemoveUserViewModel removeUserView = new RemoveUserViewModel();
+            DataContext = removeUserView;
         }
     }
 }

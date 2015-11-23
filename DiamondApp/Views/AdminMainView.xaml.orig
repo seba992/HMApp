@@ -36,7 +36,10 @@
                 <MenuItem Header="Edytuj" Command="{Binding EditUserCommand}" />
                 <MenuItem Header="Resetuj hasło" Command="{Binding ResetPasswordCommand}"/>
                 <MenuItem Header="Usuń" Command="{Binding RemoveUserCommand}"/>
+<<<<<<< HEAD
            
+=======
+>>>>>>> 9101bd86232164b0d57c6b7280f16b5b320d86ea
             </MenuItem>
         </Menu>
 
