@@ -5314,6 +5314,33 @@ namespace DiamondApp.ViewModels
             reset.Show();
         }
 
+        private ICommand _removeUserCommand;
+
+        public ICommand RemoveUserCommand
+        {
+            get
+            {
+                if (_removeUserCommand == null)
+                {
+                    _removeUserCommand = new RelayCommand(RemoveUserExecute, CanRemoveUserExecute);
+                }
+                return _removeUserCommand;
+            }
+
+        }
+
+        private bool CanRemoveUserExecute(object art)
+        {
+            return true;
+        }
+        private void RemoveUserExecute(object obj)
+        {
+            RemoveUserView remove = new RemoveUserView();
+            remove.Show();
+        }
+
+        private ICommand
+
 #endregion
 
 #region Methods
