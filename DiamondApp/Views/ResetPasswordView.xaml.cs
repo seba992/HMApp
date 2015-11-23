@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DiamondApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace DiamondApp.Views
         public ResetPasswordView()
         {
             InitializeComponent();
+            ResetPasswordViewModel resetPasswordView = new ResetPasswordViewModel();
+            DataContext = resetPasswordView;
         }
     }
 }
