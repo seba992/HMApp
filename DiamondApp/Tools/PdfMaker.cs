@@ -352,7 +352,7 @@ namespace DiamondApp.Tools
                 row = table.AddRow();
                 row.Cells[2].MergeRight = 2;
                 row.Cells[0].Shading.Color = Colors.LightGray;
-                row.Cells[1].Shading.Color = Colors.LightPink;
+                row.Cells[1].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("OPIS SALI/STOŁÓW:");
                 row.Cells[1].AddParagraph(HallDescription(propId));
 

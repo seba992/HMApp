@@ -96,8 +96,8 @@ namespace DiamondApp.Views
                 dynamic userRow = GstronomicGrid.SelectedItem;
                 if(selected !=0)
                 { 
-                    PropMenuGastronomicThings_Dictionary_First userUpdate =
-                                    (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                    PropMenuGastronomicThings_Dictionary_First userUpdate = 
+                        (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
                                         where q.Id == selected
                                         // int selected!!! you know what i want up to date
                                         select q).First();
