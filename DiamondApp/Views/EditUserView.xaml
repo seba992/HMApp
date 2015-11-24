@@ -82,7 +82,7 @@
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
                             <ComboBox Text="{Binding UserAccountType, UpdateSourceTrigger=PropertyChanged}" >
-                                <ComboBoxItem Content="Użytkownik"/>
+                                <ComboBoxItem Content="Sprzedawca"/>
                                 <ComboBoxItem Content="Administrator"/>
                             </ComboBox>
                         </DataTemplate>

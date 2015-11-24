@@ -22,7 +22,7 @@
         <TextBox x:Name="PositionTextBox" HorizontalAlignment="Left" Height="23" Margin="111,140,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPosition}" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Margin="111,170,0,0" VerticalAlignment="Top" Width="120" Text="{Binding Path=UserAccountType}">
             <ComboBoxItem Content="Administrator" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="Użytkownik" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="Sprzedawca" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="156,197,0,0" VerticalAlignment="Top" Width="75" Command="{Binding AddUserCommand}"/>
         <GroupBox Header="Dodaj użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Height="230" Width="240" Margin="6,0,0,0"/>
