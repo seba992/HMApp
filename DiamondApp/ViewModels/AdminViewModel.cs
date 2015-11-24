@@ -5314,6 +5314,7 @@ namespace DiamondApp.ViewModels
         private void ResetPasswordExecute(object obj)
         {
             ResetPasswordView reset = new ResetPasswordView();
+            Application.Current.MainWindow = reset;
             reset.Show();
         }
 
@@ -5339,6 +5340,7 @@ namespace DiamondApp.ViewModels
         private void RemoveUserExecute(object obj)
         {
             RemoveUserView remove = new RemoveUserView();
+            Application.Current.MainWindow = remove;
             remove.Show();
         }
 
@@ -5364,7 +5366,34 @@ namespace DiamondApp.ViewModels
         private void EditUserExecute(object obj)
         {
             EditUserView remove = new EditUserView();
+            Application.Current.MainWindow = remove;
             remove.Show();
+        }
+
+        private ICommand _addUserCommand;
+
+        public ICommand AddUserCommand
+        {
+            get
+            {
+                if (_addUserCommand == null)
+                {
+                    _addUserCommand = new RelayCommand(AddUserExecute, CanAddUserExecute);
+                }
+                return _addUserCommand;
+            }
+
+        }
+
+        private bool CanAddUserExecute(object art)
+        {
+            return true;
+        }
+        private void AddUserExecute(object obj)
+        {
+            AddUserView add = new AddUserView();
+            Application.Current.MainWindow = add;
+            add.Show();
         }
 
 

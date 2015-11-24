@@ -580,6 +580,12 @@ namespace DiamondApp.Tools
                 row.Cells[3].AddParagraph(extra[i].Vat.ToString() + "%");
                 row.Cells[4].AddParagraph(extra[i].Amount.ToString());
                 row.Cells[5].AddParagraph(extra[i].Days.ToString());
+
+                if (extra[i].Days == null)
+                    extra[i].Days = 0;
+                else if (extra[i].Amount == null)
+                    extra[i].Days = 0;
+
                 row.Cells[6].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto)).ToString()).ToString("#,##0.00") + " zł");
                 row.Cells[7].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * (float)extra[i].BruttoPrice).ToString()).ToString("#,##0.00") + " zł");
                 nettoSum += (float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto);
