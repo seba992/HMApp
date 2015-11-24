@@ -79,12 +79,6 @@ namespace DiamondApp.Views
             SavePropositionButton.Visibility = Visibility.Hidden;
         }
 
-        private void AddUser_Click(object sender, RoutedEventArgs e)
-        {
-            AddUserView addUserView = new AddUserView();
-            addUserView.Show();
-        }
-
         private void SRElementySali2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
            

@@ -30,7 +30,7 @@
             </MenuItem>
             <MenuItem Header="Edytuj słownik" Command="{Binding EditDictionaryCommand}"/>
             <MenuItem Header="Użytkownicy">
-                <MenuItem Header="Dodaj" Click="AddUser_Click"/>
+                <MenuItem Header="Dodaj" Command="{Binding AddUserCommand}"/>
                 <MenuItem Header="Edytuj" Command="{Binding EditUserCommand}" />
                 <MenuItem Header="Resetuj hasło" Command="{Binding ResetPasswordCommand}"/>
                 <MenuItem Header="Usuń" Command="{Binding RemoveUserCommand}"/>

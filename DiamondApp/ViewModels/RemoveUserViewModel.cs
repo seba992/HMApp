@@ -84,6 +84,7 @@ namespace DiamondApp.ViewModels
                 _ctx.Users.Remove(order);
                 _ctx.SaveChanges();
                 MessageBox.Show("Konto użytkownika zostało usunięte!");
+                Application.Current.MainWindow.Hide();
             }
             catch (Exception ex)
             {

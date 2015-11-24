@@ -28,7 +28,6 @@ namespace DiamondApp.Tools
     public class PdfMaker : ObservableObject
     {
         private DiamondDBEntities _ctx;
-        private List<PropExtraServices> _propositionList;
         private float orderNettoSum = 0;
         private float orderBruttoSum = 0;
 

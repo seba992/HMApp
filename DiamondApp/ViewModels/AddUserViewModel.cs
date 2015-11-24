@@ -28,7 +28,6 @@ namespace DiamondApp.ViewModels
         private string _userPhoneNumber;
         private string _userEmail;
         private string _userPosition;
-        private int _userAccountType2;
         private string _userAccountType;
 
         public AddUserViewModel()
@@ -134,8 +133,8 @@ namespace DiamondApp.ViewModels
 
                 _ctx.Users.Add(addUser);
                 _ctx.SaveChanges();
-               // Application.Current.MainWindow.Hide();
                 MessageBox.Show("Konto użytkownika zostało utworzone!");
+                Application.Current.MainWindow.Hide();
             }
             catch (Exception ex)
             {

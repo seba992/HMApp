@@ -86,6 +86,7 @@ namespace DiamondApp.ViewModels
                 _ctx.SaveChanges();
 
                 MessageBox.Show("Hasło użytkownika zostało zresetowane!");
+                Application.Current.MainWindow.Hide();
             }
             catch (Exception ex)
             {
