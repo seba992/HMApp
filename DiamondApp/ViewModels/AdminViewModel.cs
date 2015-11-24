@@ -4893,10 +4893,12 @@ namespace DiamondApp.ViewModels
         {
             _saveFlag = true;
 
+            
             HallListFunction();
             InitializeObjects();
             FillNeededList();
             SetDefaultValues();
+            CleanProperties(GetType());
             roomExistList = (from q in _ctx.PropAccomodation_Dictionary
                              select q.TypeOfRoom).ToList();
             _idProposition = SelectedProposition.PropositionId;
