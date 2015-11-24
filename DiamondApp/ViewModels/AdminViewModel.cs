@@ -4092,7 +4092,8 @@ namespace DiamondApp.ViewModels
                 // dodaje do bazy tylko te elementy listy, które posiadaja nazwe i cene brutto TODO: review solution
                 for (int i = 0; i < _propHallEquipment.Count; i++)
                 {
-                    if (_propHallEquipment[i].Things != null && _propHallEquipment[i].BruttoPrice != null)
+                    if (_propHallEquipment[i].Things != null && _propHallEquipment[i].BruttoPrice != null
+                        && _propHallEquipment[i].Amount != null && _propHallEquipment[i].Days !=null)
                     {
                         _propHallEquipment[i].Id_proposition = currentPropositionId;
                         _ctx.PropHallEquipment.Add(_propHallEquipment[i]);
@@ -5311,7 +5312,6 @@ namespace DiamondApp.ViewModels
         private void ResetPasswordExecute(object obj)
         {
             ResetPasswordView reset = new ResetPasswordView();
-            Application.Current.MainWindow = reset;
             reset.Show();
         }
 
@@ -5337,7 +5337,6 @@ namespace DiamondApp.ViewModels
         private void RemoveUserExecute(object obj)
         {
             RemoveUserView remove = new RemoveUserView();
-            Application.Current.MainWindow = remove;
             remove.Show();
         }
 
@@ -5364,32 +5363,6 @@ namespace DiamondApp.ViewModels
         {
             EditUserView remove = new EditUserView();
             remove.Show();
-        }
-
-        private ICommand _addUserCommand;
-
-        public ICommand AddUserCommand
-        {
-            get
-            {
-                if (_addUserCommand == null)
-                {
-                    _addUserCommand = new RelayCommand(AddUserExecute, CanAddUserExecute);
-                }
-                return _addUserCommand;
-            }
-
-        }
-
-        private bool CanAddUserExecute(object art)
-        {
-            return true;
-        }
-        private void AddUserExecute(object obj)
-        {
-            AddUserView add = new AddUserView();
-            Application.Current.MainWindow = add;
-            add.Show();
         }
 
 
