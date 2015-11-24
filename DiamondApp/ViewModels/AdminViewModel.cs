@@ -4255,7 +4255,7 @@ namespace DiamondApp.ViewModels
                     propReservation.PeopleNumber = PropositionReservDetailsPeopleNumber;
                     propReservation.EndTime = PropositionReservDetailsEndTime;
                     propReservation.StartTime = PropositionReservDetailsStartTime;
-                    //propReservation.Proposition = PropositionReservDetailsProposition;
+                    //propReservation.Proposition = PropositionReservDetails.Proposition;
 
                 }
 
@@ -5287,10 +5287,13 @@ namespace DiamondApp.ViewModels
             var paysug = (from q in _ctx.PropPaymentSuggestions
                           where q.Id_proposition == _idProposition
                           select q).SingleOrDefault();
-            PaymentSuggestPaymentForm = paysug.PaymentForm;
-            PaymentSuggestInvServName = paysug.InvoiceServiceName;
-            PaymentSuggestCarPark = paysug.CarPark;
-            PaymentSuggestIndividOrder = paysug.IndividualOrders;
+            if (paysug != null)
+            {
+                PaymentSuggestPaymentForm = paysug.PaymentForm;
+                PaymentSuggestInvServName = paysug.InvoiceServiceName;
+                PaymentSuggestCarPark = paysug.CarPark;
+                PaymentSuggestIndividOrder = paysug.IndividualOrders;
+            }
 
 
         }
