@@ -834,7 +834,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqAmount0");
 
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice0 != null && PropHallEqDays0 != null)
+                if (PropHallEqDays0 != null && PropHallEqAmount0 != null)
                 {
                     SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, value, PropHallEqDays0);
                     SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, value, PropHallEqDays0);
@@ -849,7 +849,7 @@ namespace DiamondApp.ViewModels
                 _propHallEquipment[1].Amount = value;
                 RaisePropertyChanged("PropHallEqAmount1");
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice1 != null && PropHallEqDays1 != null)
+                if (PropHallEqDays1 != null && PropHallEqAmount1 != null)
                 {
                     SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, value, PropHallEqDays1);
                     SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, value, PropHallEqDays1);
@@ -864,7 +864,7 @@ namespace DiamondApp.ViewModels
                 _propHallEquipment[2].Amount = value;
                 RaisePropertyChanged("PropHallEqAmount2");
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice2 != null && PropHallEqDays2 != null)
+                if (PropHallEqDays2 != null && PropHallEqAmount2 != null)
                 {
                     SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, value, PropHallEqDays2);
                     SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, value, PropHallEqDays2);
@@ -879,7 +879,7 @@ namespace DiamondApp.ViewModels
                 _propHallEquipment[3].Amount = value;
                 RaisePropertyChanged("PropHallEqAmount3");
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice3 != null && PropHallEqDays3 != null)
+                if (PropHallEqDays3 != null && PropHallEqAmount3 != null)
                 {
                     SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, value, PropHallEqDays3);
                     SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, value, PropHallEqDays3);
@@ -894,7 +894,7 @@ namespace DiamondApp.ViewModels
                 _propHallEquipment[4].Amount = value;
                 RaisePropertyChanged("PropHallEqAmount4");
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice4 != null && PropHallEqDays4 != null)
+                if (PropHallEqDays4 != null && PropHallEqAmount4 != null)
                 {
                     SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, value, PropHallEqDays4);
                     SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, value, PropHallEqDays4);
@@ -909,7 +909,7 @@ namespace DiamondApp.ViewModels
                 _propHallEquipment[5].Amount = value;
                 RaisePropertyChanged("PropHallEqAmount5");
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice5 != null && PropHallEqDays5 != null)
+                if (PropHallEqDays5 != null && PropHallEqAmount5 != null)
                 {
                     SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, value, PropHallEqDays5);
                     SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, value, PropHallEqDays5);
@@ -926,10 +926,10 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqDays0");
 
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice0 != null && PropHallEqDays0 != null)
+                if (PropHallEqDays0 != null && PropHallEqAmount0 != null)
                 {
-                    SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, PropHallEqAmount0, value);
-                    SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, PropHallEqAmount0, value);
+                    SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, value, PropHallEqDays0);
+                    SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, value, PropHallEqDays0);
                 }
             }
         }
@@ -942,10 +942,10 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqDays1");
 
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice1 != null && PropHallEqDays1 != null)
+                if (PropHallEqDays1 != null && PropHallEqAmount1 != null)
                 {
-                    SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, PropHallEqAmount1, value);
-                    SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, PropHallEqAmount1, value);
+                    SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, value, PropHallEqDays1);
+                    SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, value, PropHallEqDays1);
                 }
             }
         }
@@ -958,7 +958,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqDays2");
 
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice2 != null && PropHallEqDays2 != null)
+                if (PropHallEqDays2 != null && PropHallEqAmount2 != null)
                 {
                     SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, PropHallEqAmount2, value);
                     SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, PropHallEqAmount2, value);
@@ -974,7 +974,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqDays3");
 
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice3 != null && PropHallEqDays3 != null)
+                if (PropHallEqDays3 != null && PropHallEqAmount3 != null)
                 {
                     SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, PropHallEqAmount3, value);
                     SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, PropHallEqAmount3, value);
@@ -990,7 +990,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqDays4");
 
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice4 != null && PropHallEqDays4 != null)
+                if (PropHallEqDays4 != null && PropHallEqAmount4 != null)
                 {
                     SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, PropHallEqAmount4, value);
                     SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, PropHallEqAmount4, value);
@@ -1006,7 +1006,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropHallEqDays5");
 
                 //jeśli jest cena netto i ilosc dni to oblicz sume
-                if (SecondTabNettoPrice5 != null && PropHallEqDays5 != null)
+                if (PropHallEqDays5 != null && PropHallEqAmount5 != null)
                 {
                     SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, PropHallEqAmount5, value);
                     SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, PropHallEqAmount5, value);
