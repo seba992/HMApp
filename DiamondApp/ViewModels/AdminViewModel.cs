@@ -4228,13 +4228,12 @@ namespace DiamondApp.ViewModels
                 // !! PROPRESERVATIONDETAILS !!
 
                 var propReservation = (from q in _ctx.PropReservationDetails
-                                       where q.Id_proposition == idProposition
+                                       where q.Id_proposition == _idProposition
                                        select q).SingleOrDefault();
                 if (propReservation == null)
                 {
                     PropReservationDetails addPropReservationDetails = new PropReservationDetails();
-                    addPropReservationDetails.Id_proposition = idProposition;
-
+                    addPropReservationDetails.Id_proposition = _idProposition;
                     addPropReservationDetails.StartData = PropositionReservDetails.StartData;
                     addPropReservationDetails.EndData = PropositionReservDetails.EndData;
                     addPropReservationDetails.Hall = PropositionReservDetails.Hall;
@@ -4242,22 +4241,21 @@ namespace DiamondApp.ViewModels
                     addPropReservationDetails.PeopleNumber = PropositionReservDetailsPeopleNumber;
                     addPropReservationDetails.EndTime = PropositionReservDetails.EndTime;
                     addPropReservationDetails.StartTime = PropositionReservDetails.StartTime;
-                    addPropReservationDetails.Proposition = PropositionReservDetails.Proposition;
+                    //ddPropReservationDetails.Proposition = PropositionReservDetails.Proposition;
                     _ctx.PropReservationDetails.Add(addPropReservationDetails);
 
                 }
                 else
                 {
-                    //propReservation.Id_proposition = idProposition;
-                    propReservation.StartData = PropositionReservDetails.StartData;
-                    propReservation.EndData = PropositionReservDetails.EndData;
-                    propReservation.Hall = PropositionReservDetails.Hall;
+                    //propReservation.Id_proposition = _idProposition;
+                    propReservation.StartData = PropositionReservDetailsStartData;
+                    propReservation.EndData = PropositionReservDetailsEndData;
+                    propReservation.Hall = PropositionReservDetailsHall;
                     propReservation.HallSetting = PropositionReservDetailsHallSetting;
                     propReservation.PeopleNumber = PropositionReservDetailsPeopleNumber;
-                    propReservation.EndTime = PropositionReservDetails.EndTime;
-                    propReservation.StartTime = PropositionReservDetails.StartTime;
-                    propReservation.Proposition = PropositionReservDetails.Proposition;
-
+                    propReservation.EndTime = PropositionReservDetailsEndTime;
+                    propReservation.StartTime = PropositionReservDetailsStartTime;
+                    //propReservation.Proposition = PropositionReservDetailsProposition;
 
                 }
 
@@ -4266,13 +4264,26 @@ namespace DiamondApp.ViewModels
                                      where q.Id_proposition == idProposition
                                      select q).ToList();
                 var hall = propEquipment.Find(item => item.Things == PropHallEqThing0);
-                if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
+
+                if (hall != null)
                 {
-                    if (hall.Days != PropHallEqDays0)
-                        hall.Days = PropHallEqDays0;
-                    if (hall.Amount != PropHallEqAmount0)
-                        hall.Amount = PropHallEqAmount0;
-                    _ctx.SaveChanges();
+                    if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
+                    {
+                        if (hall.Days != PropHallEqDays0)
+                            hall.Days = PropHallEqDays0;
+                        if (hall.Amount != PropHallEqAmount0)
+                            hall.Amount = PropHallEqAmount0;
+                        _ctx.SaveChanges();
+                    }
+                }
+                else if (PropHallEqThing0 != null)
+                {
+                    PropHallEquipment newqEquipment = new PropHallEquipment();
+                    newqEquipment.Things = PropHallEqThing0;
+                    newqEquipment.Things = PropHallEqThing0;
+                    newqEquipment.Amount = PropHallEqAmount0;
+                    newqEquipment.Days = PropHallEqDays0;
+                    newqEquipment.BruttoPrice = PropHallEqBrutto0;
                 }
                 //wposażenie
 
@@ -4899,9 +4910,25 @@ namespace DiamondApp.ViewModels
             FillNeededList();
             SetDefaultValues();
             CleanProperties(GetType());
+
+            var querry = (from user in _ctx.Users
+                          where user.Id == _userId
+                          select new AddNewProposition
+                          {
+                              UpdateDate = DateTime.Today,
+                              UserFirstName = user.Name,
+                              UserSurname = user.Surname,
+                              UserPhoneNum = user.PhoneNum,
+                              UserEmail = user.Email,
+                              IsCreated = true
+                          }).SingleOrDefault();
+
+            AddNewProposition = querry; 
+
             roomExistList = (from q in _ctx.PropAccomodation_Dictionary
                              select q.TypeOfRoom).ToList();
-            _idProposition = SelectedProposition.PropositionId;
+            if (SelectedProposition !=null)
+                _idProposition = SelectedProposition.PropositionId;
             SelectedProposition = null;
             try
             {
@@ -4928,8 +4955,6 @@ namespace DiamondApp.ViewModels
                                select q).SingleOrDefault();
             try
             {
-
-
                 PropositionReservDetailsStartData = editDetalis.StartData;
                 PropositionReservDetailsEndData = editDetalis.EndData;
                 PropositionReservDetailsStartTime = editDetalis.StartTime;
@@ -4942,7 +4967,7 @@ namespace DiamondApp.ViewModels
                 {
                     PropositionReservDetailsPeopleNumber = editDetalis.PeopleNumber;
                 }
-                PropositionReservDetailsHallSetting = editDetalis.HallSetting;
+                //PropositionReservDetailsHallSetting = editDetalis.HallSetting;
 
             }
             catch (Exception e)
@@ -4950,7 +4975,7 @@ namespace DiamondApp.ViewModels
 
                 MessageBox.Show("Detale nie dziłaja" + e.ToString());
             }
-
+            //_ctx.SaveChanges();
             List<PropHallEquipment> editEquipment = (from q in _ctx.PropHallEquipment
                                                      where q.Id_proposition == _idProposition
                                                      select q).ToList();
