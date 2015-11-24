@@ -5390,9 +5390,7 @@ namespace DiamondApp.ViewModels
                                 UserPosition = user.Position,
                                 UserAccountType = user.AccountType == 1 ? "Administrator" : "Użytkownik",
                                 UserLogin = user.Login,
-
                             }).ToList();
-
             _userListGrid = myQuerry;
         }
 
@@ -5618,10 +5616,8 @@ namespace DiamondApp.ViewModels
         // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)PropMenuMerge0ComputeNettoPrice
         private decimal ComputeNettoPrice(float? value, float? vat)
         {
-            if (vat == null)
-                vat = 0;
-            if (value == null)
-                value = 0;
+            if (vat == null || value == null)
+                return 0;
             return Math.Round(((decimal) value * 100 /(100 + (decimal) vat)), 2);
         }
 
@@ -5629,6 +5625,8 @@ namespace DiamondApp.ViewModels
         // nully sprawdzane musza byc przed wywolaniem metody (tab2)
         private decimal ComputeBruttoValue(float? bruttoPrice, int? amount, int? days)
         {
+            if (amount == null || days == null || bruttoPrice == null)
+                return 0;
             return (decimal)bruttoPrice * (decimal)amount * (decimal)days;
         }
 
@@ -5636,11 +5634,9 @@ namespace DiamondApp.ViewModels
         // nully sprawdzane musza byc przed wywolaniem metody (tab2)
         private decimal ComputeNettoValue(decimal nettoPrice, int? amount, int? days)
         {
-            if (nettoPrice != null)
-            {
-                return (decimal)nettoPrice * (decimal)amount * (decimal)days;
-            }
-            return 0;
+            if (amount == null || days == null || nettoPrice == null)
+                return 0;
+            return (decimal)nettoPrice * (decimal)amount * (decimal)days;
         }
 
         // obliczanie sumy netto (tab2)

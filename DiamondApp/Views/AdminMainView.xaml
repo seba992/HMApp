@@ -34,7 +34,7 @@
                 <MenuItem Header="Edytuj" Command="{Binding EditUserCommand}" />
                 <MenuItem Header="Resetuj hasło" Command="{Binding ResetPasswordCommand}"/>
                 <MenuItem Header="Usuń" Command="{Binding RemoveUserCommand}"/>
-           
+
             </MenuItem>
         </Menu>
 
@@ -69,7 +69,7 @@
             </ListView.View>
         </ListView>
 
-        <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1061" Visibility="Hidden">
+        <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1061" Visibility="Visible">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
                     <Grid.RowDefinitions>
@@ -239,19 +239,20 @@
                     <ComboBox x:Name="SRVatComboBox5" Grid.Column="3" Grid.Row="5" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList}" SelectedItem="{Binding PropHallEqVat4}" />
                     <ComboBox x:Name="SRVatComboBox6" Grid.Column="3" Grid.Row="6" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList}" SelectedItem="{Binding PropHallEqVat5}" />
 
-                    <TextBox x:Name="SRIloscTextBox1" Grid.Column="4" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropHallEqAmount0}" />
-                    <TextBox x:Name="SRIloscTextBox2" Grid.Column="4" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropHallEqAmount1}" />
-                    <TextBox x:Name="SRIloscTextBox3" Grid.Column="4" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropHallEqAmount2}" />
-                    <TextBox x:Name="SRIloscTextBox4" Grid.Column="4" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropHallEqAmount3}" />
-                    <TextBox x:Name="SRIloscTextBox5" Grid.Column="4" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropHallEqAmount4}" />
-                    <TextBox x:Name="SRIloscTextBox6" Grid.Column="4" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropHallEqAmount5}" />
+                    <xctk:IntegerUpDown x:Name="SRIloscIntUpDown1" Grid.Column="4" Grid.Row="1" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqAmount0}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRIloscIntUpDown2" Grid.Column="4" Grid.Row="2" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqAmount1}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRIloscIntUpDown3" Grid.Column="4" Grid.Row="3" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqAmount2}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRIloscIntUpDown4" Grid.Column="4" Grid.Row="4" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqAmount3}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRIloscIntUpDown5" Grid.Column="4" Grid.Row="5" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqAmount4}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRIloscIntUpDown6" Grid.Column="4" Grid.Row="6" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqAmount5}" HorizontalContentAlignment="Center" />
 
-                    <TextBox x:Name="SRDniTextBox1" Grid.Column="5" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropHallEqDays0}"/>
-                    <TextBox x:Name="SRDniTextBox2" Grid.Column="5" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropHallEqDays1}"/>
-                    <TextBox x:Name="SRDniTextBox3" Grid.Column="5" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropHallEqDays2}"/>
-                    <TextBox x:Name="SRDniTextBox4" Grid.Column="5" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropHallEqDays3}"/>
-                    <TextBox x:Name="SRDniTextBox5" Grid.Column="5" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropHallEqDays4}"/>
-                    <TextBox x:Name="SRDniTextBox6" Grid.Column="5" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropHallEqDays5}"/>
+                    <xctk:IntegerUpDown x:Name="SRDniIntUpDown1" Grid.Column="5" Grid.Row="1" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqDays0}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRDniIntUpDown2" Grid.Column="5" Grid.Row="2" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqDays1}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRDniIntUpDown3" Grid.Column="5" Grid.Row="3" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqDays2}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRDniIntUpDown4" Grid.Column="5" Grid.Row="4" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqDays3}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRDniIntUpDown5" Grid.Column="5" Grid.Row="5" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqDays4}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="SRDniIntUpDown6" Grid.Column="5" Grid.Row="6" Margin="3"  Minimum="0" Maximum="1000" Value="{Binding PropHallEqDays5}" HorizontalContentAlignment="Center" />
+
 
                     <TextBox x:Name="SRWartoscNettoTextBox1" Grid.Column="6" Grid.Row="1" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabNettoValue0, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="SRWartoscNettoTextBox2" Grid.Column="6" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabNettoValue1, StringFormat=\{0:c\}}" />
@@ -321,14 +322,15 @@
                     </Grid.ColumnDefinitions>
 
                     <!--definicja calej tabeli/-->
-                    <Label Grid.Row="1" Grid.Column="0" Content="RODZAJ USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Row="1" Grid.Column="1" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Row="1" Grid.Column="2" Content="CENA JEDNOSTKOWA NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Row="1" Grid.Column="3" Content="VAT (%)" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Row="1" Grid.Column="4" Content="ILOŚĆ" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Row="1" Grid.Column="5" Content="DNI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Row="1" Grid.Column="6" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Row="1" Grid.Column="7" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="KATEGORIA USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="1" Content="RODZAJ USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="2" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="3" Content="CENA JEDNOSTKOWA NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="4" Content="VAT (%)" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="5" Content="ILOŚĆ" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="6" Content="DNI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="7" Content="WARTOŚĆ NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="8" Content="WARTOŚĆ BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Grid.Row="1"/>
 
                     <ComboBox x:Name="UGRodzajUslugiComboBox0" Grid.Column="1" Grid.Row="2" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ0}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
                     <ComboBox x:Name="UGRodzajUslugiComboBox1" Grid.Column="1" Grid.Row="3" Margin="3" ItemsSource="{Binding PropMenuGastThingDict}" SelectedItem="{Binding PropMenuTypeOfServ1}" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="200"/>
@@ -364,21 +366,21 @@
                     <TextBox x:Name="UGVatComboBox6" Grid.Column="4" Grid.Row="7" Margin="3" Text="{Binding PropMenuPosVat5}" IsEnabled="False"/>
                     <TextBox x:Name="UGVatComboBox7" Grid.Column="4" Grid.Row="8" Margin="3" Text="{Binding PropMenuPosVat6}" IsEnabled="False"/>
 
-                    <TextBox x:Name="UGIloscTextBox1" Grid.Column="5" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount0}" />
-                    <TextBox x:Name="UGIloscTextBox2" Grid.Column="5" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount1}" />
-                    <TextBox x:Name="UGIloscTextBox3" Grid.Column="5" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount2}" />
-                    <TextBox x:Name="UGIloscTextBox4" Grid.Column="5" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount3}" />
-                    <TextBox x:Name="UGIloscTextBox5" Grid.Column="5" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount4}" />
-                    <TextBox x:Name="UGIloscTextBox6" Grid.Column="5" Grid.Row="7" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount5}" />
-                    <TextBox x:Name="UGIloscTextBox7" Grid.Column="5" Grid.Row="8" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropMenuPosAmount6}" />
+                    <xctk:IntegerUpDown x:Name="UGIloscIntUpDown1" Grid.Column="5" Grid.Row="2" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosAmount0}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGIloscIntUpDown2" Grid.Column="5" Grid.Row="3" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosAmount1}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGIloscIntUpDown3" Grid.Column="5" Grid.Row="4" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosAmount2}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGIloscIntUpDown4" Grid.Column="5" Grid.Row="5" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosAmount3}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGIloscIntUpDown5" Grid.Column="5" Grid.Row="6" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosAmount4}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGIloscIntUpDown6" Grid.Column="5" Grid.Row="7" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosAmount5}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGIloscIntUpDown7" Grid.Column="5" Grid.Row="8" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosAmount6}" HorizontalContentAlignment="Center" />
 
-                    <TextBox x:Name="UGDniTextBox1" Grid.Column="6" Grid.Row="2"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays0}"/>
-                    <TextBox x:Name="UGDniTextBox2" Grid.Column="6" Grid.Row="3"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays1}"/>
-                    <TextBox x:Name="UGDniTextBox3" Grid.Column="6" Grid.Row="4"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays2}"/>
-                    <TextBox x:Name="UGDniTextBox4" Grid.Column="6" Grid.Row="5"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays3}"/>
-                    <TextBox x:Name="UGDniTextBox5" Grid.Column="6" Grid.Row="6"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays4}"/>
-                    <TextBox x:Name="UGDniTextBox6" Grid.Column="6" Grid.Row="7"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays5}"/>
-                    <TextBox x:Name="UGDniTextBox7" Grid.Column="6" Grid.Row="8"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text="{Binding PropMenuPosDays6}"/>
+                    <xctk:IntegerUpDown x:Name="UGDniIntUpDown1" Grid.Column="6" Grid.Row="2"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosDays0}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGDniIntUpDown2" Grid.Column="6" Grid.Row="3"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosDays1}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGDniIntUpDown3" Grid.Column="6" Grid.Row="4"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosDays2}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGDniIntUpDown4" Grid.Column="6" Grid.Row="5"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosDays3}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGDniIntUpDown5" Grid.Column="6" Grid.Row="6"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosDays4}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGDniIntUpDown6" Grid.Column="6" Grid.Row="7"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosDays5}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UGDniIntUpDown7" Grid.Column="6" Grid.Row="8"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropMenuPosDays6}" HorizontalContentAlignment="Center" />
 
                     <TextBox x:Name="UGWartoscNettoTextBox1" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue0, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="UGWartoscNettoTextBox2" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding ThirdTabNettoValue1, StringFormat=\{0:c\}}" />
@@ -493,19 +495,19 @@
                     <ComboBox x:Name="UNVatComboBox5" Grid.Column="3" Grid.Row="6" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList4}" SelectedItem="{Binding PropAccomVat4}" />
                     <ComboBox x:Name="UNVatComboBox6" Grid.Column="3" Grid.Row="7" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList4}" SelectedItem="{Binding PropAccomVat5}" />
 
-                    <TextBox x:Name="UNIloscTextBox1" Grid.Column="4" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropAccomAmount0}" />
-                    <TextBox x:Name="UNIloscTextBox2" Grid.Column="4" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropAccomAmount1}" />
-                    <TextBox x:Name="UNIloscTextBox3" Grid.Column="4" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropAccomAmount2}" />
-                    <TextBox x:Name="UNIloscTextBox4" Grid.Column="4" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropAccomAmount3}" />
-                    <TextBox x:Name="UNIloscTextBox5" Grid.Column="4" Grid.Row="6" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropAccomAmount4}" />
-                    <TextBox x:Name="UNIloscTextBox6" Grid.Column="4" Grid.Row="7" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropAccomAmount5}" />
+                    <xctk:IntegerUpDown x:Name="UNIloscIntUpDown1" Grid.Column="4" Grid.Row="2" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomAmount0}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNIloscIntUpDown2" Grid.Column="4" Grid.Row="3" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomAmount1}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNIloscIntUpDown3" Grid.Column="4" Grid.Row="4" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomAmount2}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNIloscIntUpDown4" Grid.Column="4" Grid.Row="5" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomAmount3}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNIloscIntUpDown5" Grid.Column="4" Grid.Row="6" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomAmount4}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNIloscIntUpDown6" Grid.Column="4" Grid.Row="7" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomAmount5}" HorizontalContentAlignment="Center" />
 
-                    <TextBox x:Name="UNDniTextBox1" Grid.Column="5" Grid.Row="2"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropAccomDays0}" />
-                    <TextBox x:Name="UNDniTextBox2" Grid.Column="5" Grid.Row="3"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropAccomDays1}" />
-                    <TextBox x:Name="UNDniTextBox3" Grid.Column="5" Grid.Row="4"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropAccomDays2}" />
-                    <TextBox x:Name="UNDniTextBox4" Grid.Column="5" Grid.Row="5"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropAccomDays3}" />
-                    <TextBox x:Name="UNDniTextBox5" Grid.Column="5" Grid.Row="6"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropAccomDays4}" />
-                    <TextBox x:Name="UNDniTextBox6" Grid.Column="5" Grid.Row="7"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropAccomDays5}" />
+                    <xctk:IntegerUpDown x:Name="UNDniTextBox1" Grid.Column="5" Grid.Row="2"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomDays0}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNDniTextBox2" Grid.Column="5" Grid.Row="3"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomDays1}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNDniTextBox3" Grid.Column="5" Grid.Row="4"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomDays2}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNDniTextBox4" Grid.Column="5" Grid.Row="5"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomDays3}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNDniTextBox5" Grid.Column="5" Grid.Row="6"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomDays4}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UNDniTextBox6" Grid.Column="5" Grid.Row="7"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropAccomDays5}" HorizontalContentAlignment="Center" />
 
                     <TextBox x:Name="UNWartoscNettoTextBox1" Grid.Column="6" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabNettoValue0, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="UNWartoscNettoTextBox2" Grid.Column="6" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabNettoValue1, StringFormat=\{0:c\}}" />
@@ -607,15 +609,15 @@
                     <ComboBox x:Name="UDVatComboBox3" Grid.Column="4" Grid.Row="4" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList4}" SelectedItem="{Binding PropExtraServVat2}" />
                     <ComboBox x:Name="UDVatComboBox4" Grid.Column="4" Grid.Row="5" Margin="3" SelectedIndex="1" ItemsSource="{Binding VatList4}" SelectedItem="{Binding PropExtraServVat3}" />
 
-                    <TextBox x:Name="UDIloscTextBox1" Grid.Column="5" Grid.Row="2" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropExtraServAmount0}" />
-                    <TextBox x:Name="UDIloscTextBox2" Grid.Column="5" Grid.Row="3" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropExtraServAmount1}" />
-                    <TextBox x:Name="UDIloscTextBox3" Grid.Column="5" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropExtraServAmount2}" />
-                    <TextBox x:Name="UDIloscTextBox4" Grid.Column="5" Grid.Row="5" Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Text ="{Binding PropExtraServAmount3}" />
+                    <xctk:IntegerUpDown x:Name="UDIloscIntUpDown1" Grid.Column="5" Grid.Row="2" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropExtraServAmount0}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UDIloscIntUpDown2" Grid.Column="5" Grid.Row="3" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropExtraServAmount1}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UDIloscIntUpDown3" Grid.Column="5" Grid.Row="4" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropExtraServAmount2}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UDIloscIntUpDown4" Grid.Column="5" Grid.Row="5" Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropExtraServAmount3}" HorizontalContentAlignment="Center" />
 
-                    <TextBox x:Name="UDDniTextBox1" Grid.Column="6" Grid.Row="2"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropExtraServDays0}" />
-                    <TextBox x:Name="UDDniTextBox2" Grid.Column="6" Grid.Row="3"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropExtraServDays1}" />
-                    <TextBox x:Name="UDDniTextBox3" Grid.Column="6" Grid.Row="4"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropExtraServDays2}" />
-                    <TextBox x:Name="UDDniTextBox4" Grid.Column="6" Grid.Row="5"  Margin="3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Text ="{Binding PropExtraServDays3}" />
+                    <xctk:IntegerUpDown x:Name="UDDniIntUpDown1" Grid.Column="6" Grid.Row="2"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropExtraServDays0}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UDDniIntUpDown2" Grid.Column="6" Grid.Row="3"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropExtraServDays1}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UDDniIntUpDown3" Grid.Column="6" Grid.Row="4"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropExtraServDays2}" HorizontalContentAlignment="Center" />
+                    <xctk:IntegerUpDown x:Name="UDDniIntUpDown4" Grid.Column="6" Grid.Row="5"  Margin="3" Minimum="0" Maximum="1000" Value="{Binding PropExtraServDays3}" HorizontalContentAlignment="Center" />
 
                     <TextBox x:Name="UDWartoscNettoTextBox1" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabNettoValue0, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
                     <TextBox x:Name="UDWartoscNettoTextBox2" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabNettoValue1, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
