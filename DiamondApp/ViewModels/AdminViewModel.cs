@@ -5634,7 +5634,7 @@ namespace DiamondApp.ViewModels
         // nully sprawdzane musza byc przed wywolaniem metody (tab2)
         private decimal ComputeNettoValue(decimal nettoPrice, int? amount, int? days)
         {
-            if (amount == null || days == null || nettoPrice == null)
+            if (amount == null || days == null)
                 return 0;
             return (decimal)nettoPrice * (decimal)amount * (decimal)days;
         }
