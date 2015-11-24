@@ -5734,7 +5734,7 @@ namespace DiamondApp.ViewModels
         {
             var mvat = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
                 where typeofservice == s.ThingName
-                select s.Vat).Single();
+                select s.Vat).SingleOrDefault();
 
             return mvat!=null ? mvat : 0;
         }
@@ -5745,7 +5745,7 @@ namespace DiamondApp.ViewModels
             var thirdnetto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
                         where typeofservice == s.ThingName
                         select s.NettoMini);
-            return (decimal?)thirdnetto.Single();
+            return (decimal?)thirdnetto.SingleOrDefault();
         }
 
         // na podstawie nazwy produktu ustaw cene brutto
@@ -5754,7 +5754,7 @@ namespace DiamondApp.ViewModels
             float? vat = SetMenuPosDefaultVat(typeofservice);
             var netto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
                 where typeofservice == s.ThingName
-                select s.NettoMini).Single();
+                select s.NettoMini).SingleOrDefault();
             float? toret = (float?) netto + (float?)netto*vat.Value/100;
             return toret;
         }
@@ -5764,7 +5764,7 @@ namespace DiamondApp.ViewModels
         {
             var mt = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
                 where typeofservice == s.ThingName
-                select s.MergeType).Single();
+                select s.MergeType).SingleOrDefault();
             return mt;
         }
 
@@ -5799,28 +5799,6 @@ namespace DiamondApp.ViewModels
                 return toret;
             }
             return price;
-        }
-
-        // na podstawie domyslnej ceny (netto lub brutto) dodaj marze na podstawie odpowiedniego typu
-        private decimal? SubMergeToPrice(decimal? price, string mergeType)
-        {
-            var mergeValue =
-                _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new { x = x.DefaultValue })
-                    .Single();
-            var toret = price/(1 + (decimal?)mergeValue.x /100);
-            return toret;
-        }
-
-        // przeciazona powyzsza metoda
-        private float? SubMergeToPrice(float? price, string mergeType)
-        {
-            var mergeValue =
-                _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new { x = x.DefaultValue })
-                    .Single();
-            var toret = price / (1 + mergeValue.x / 100);
-            return toret;
         }
 
         // obliczanie sumy netto (tab3)
