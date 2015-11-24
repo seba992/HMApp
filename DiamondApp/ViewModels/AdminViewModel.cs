@@ -4863,6 +4863,7 @@ namespace DiamondApp.ViewModels
                 }
                 _ctx.SaveChanges();
                 SelectedProposition = null;
+                _idProposition = 0;
                 SelectAllPropositions();
                 MessageBox.Show("edytowano istniejaca propozycje");
             }
@@ -5176,7 +5177,11 @@ namespace DiamondApp.ViewModels
             {
                 MessageBox.Show("Gastronomia " + e.ToString());
             }
-
+            var propAccomDiscountValue = (from q in _ctx.PropAccomodationDiscount
+                                          where q.Id_proposition == _idProposition
+                                          select q).SingleOrDefault();
+            if (propAccomDiscountValue != null)
+                PropAccomDiscountValue = propAccomDiscountValue.Discount;
             try
             {
                 var propAccomodation = (from q in _ctx.PropAccomodation
@@ -5237,11 +5242,7 @@ namespace DiamondApp.ViewModels
             {
                 MessageBox.Show("nocleg " + e.ToString());
             }
-            var propAccomDiscountValue = (from q in _ctx.PropAccomodationDiscount
-                                          where q.Id_proposition == _idProposition
-                                          select q).SingleOrDefault();
-            if (propAccomDiscountValue != null)
-                PropAccomDiscountValue = propAccomDiscountValue.Discount;
+      
             //MessageBox.Show(roomExistList.Count.ToString());
             //Dodatkowe
             var extra = (from q in _ctx.PropExtraServices
@@ -5290,6 +5291,7 @@ namespace DiamondApp.ViewModels
             PaymentSuggestInvServName = paysug.InvoiceServiceName;
             PaymentSuggestCarPark = paysug.CarPark;
             PaymentSuggestIndividOrder = paysug.IndividualOrders;
+
 
         }
         private ICommand _editDictionaryCommand;
