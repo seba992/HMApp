@@ -1,0 +1,228 @@
+\documentclass[twoside]{projektInzynierskiMS}
+\usepackage{polski}
+\usepackage[cp1250]{inputenc}
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+%\drukJednostronny
+
+%% tytu³ promotor i autor (\title to komenda standardowa)
+\title{Projekt i wykonanie aplikacji bazodanowej wspomagaj¹cej pracê wybranej sieci hotelowej}
+\promotor{dr. Jaros³aw Karcewicz}
+
+
+%% ka¿dy autor musi mieæ 4 argumenty: imiê nazwisko, nr albumu, procent wk³adu, opis wk³adu
+\autor{£ukasz Lis}{112233}{1} {Wk³ad pracy lisa}
+	
+\autor{Sebastian Nalepka}{225265}{3} {Wk³ad pracy seby}
+
+\autor{Mateusz Ogiermann}{112233}{0}	
+{Wk³ad pracy ogi}
+	
+	
+
+
+%% dedykacja mile widziana
+\dedykacja{To jest\\dedykacja}
+%\NumeryNaPoczatku
+%% numeracja wzorów tu w³¹czona typu (1.2.3), ta druga to typu (1.2), a domyœlnie typu (1)
+%\subsectionWzory
+% \sectionWzory  
+
+%\rozdzialy
+
+
+%\literowaNumeracjaDodatkow %% w³¹czy numeracjê dodatków literami
+%\rzymskaNumeracjaDodatkow  %%w³¹czy numeracjê dodatków liczbami rzymskimi
+
+%% wy³¹czenie wyjaœnieñ:
+\bezWyjasnien
+
+%% standardowe komendy \newtheorem  dzia³aj¹ jak w oryginale
+\newtheorem{tw}{Twierdzenie}[subsection]
+\newtheorem{twa}{Twierdzenie}[section]
+\newtheorem{dd}{Definicja}[subsection]
+
+\begin{document}
+
+Obecna sytuacja rynkowa zwi¹zana z istnieniem du¿ej iloœci firm w zakresie ka¿dej bran¿y wymusza na przedsiêbiorcach ci¹g³e zwiêkszanie swojej atrakcyjnoœci oraz konkurencyjnoœci w celu zdobycia potencjalnego klienta. W realizacji powy¿szego zadania konieczne jest wdra¿anie nowoczesnych metod umo¿liwiaj¹cych miêdzy innymi obni¿enie kosztów pracy, co wprost przek³ada siê na ni¿sz¹ cenê produktu koñcowego. Ni¿sza cena dla klienta jest jednym z najwa¿niejszych elementów, który determinuje wybór konkretnego us³ugodawcy. Aspekt ten dotyczy tak¿e bran¿y hotelarskiej, która w sposób bezpoœredni dotyczy naszej pracy.
+	Liczba hoteli w Polsce od kilkunastu lat nieprzerwanie roœnie . Implikuje to koniecznoœæ wzmo¿onej walki o klienta w celu utrzymania siê na rynku. Obni¿enie cen us³ug wynajmu pokoi, sal konferencyjnych oraz cateringów przy zachowaniu odpowiedniego poziomu dochodów jest problemem, z którym zmaga siê ka¿da sieæ hotelowa. Przedsiêbiorcy przeœcigaj¹ siê w znajdowaniu coraz to nowszych i efektywniejszych rozwi¹zañ, które maj¹ na celu rozwi¹zanie owego problemu. W XXI wieku du¿¹ pomoc¹ w tym zakresie okazuje siê informatyzacja.
+
+\section{Geneza projektu}
+
+Podczas przeprowadzania transakcji dotycz¹cej organizacji szkolenia w jednej z sieci hotelowych, dostrze¿ony zosta³ potencjalny problem wynikaj¹cy z manualnego operowania wszelkimi danymi przez pracowników dzia³u sprzeda¿y. Pracownicy Ci w czasie spotkania z klientem maj¹ za zadanie ustalenie wszelkich wartoœci cenowych us³ug wybranych przez klienta. Us³ugi te bezpoœrednio zwi¹zane s¹ z typem wydarzenia, które klient chce zorganizowaæ. Przewa¿nie s¹ to wszelkiego rodzaju konferencje, kilkudniowe szkolenia firmowe, ale tak¿e imprezy weselne, urodzinowe, czy spotkania rodzinne. Przez wzgl¹d na ró¿n¹ specyfikê powy¿szych przedsiêwziêæ sieæ hotelowa dysponuje szerok¹ gam¹ us³ug z nimi zwi¹zanych. 
+
+W czasie tworzenia przez sprzedawcê propozycji cenowej organizowanego wydarzenia, klient ma mo¿liwoœæ wyboru odpowiedniej dla jego potrzeb sali konferencyjnej lub bankietowej wraz z jej dodatkowym wyposa¿eniem, ustalenia aspektów gastronomicznych, takich jak liczba i rodzaj posi³ków oraz napojów, a tak¿e wyborem odpowiedniego typu pokoju hotelowego. Po wstêpnym wyborze zakresu us³ug, elementy te uzupe³niane s¹ o liczbê osób, które bêd¹ w wydarzeniu uczestniczyæ, a tak¿e iloœæ dni jego trwania. Kolejnym etapem jest negocjacja rabatów oraz finalnie ustalenie formy zap³aty za organizowane przedsiêwziêcie. Aktualnie operacja ta wraz z procesem tworzeniem dokumentu propozycji cenowej przeprowadzana jest za pomoc¹ aplikacji Microsoft Excel jak równie¿ w wersji papierowej. Obydwie metodologie generuj¹ liczne problemy, które bezpoœrednio wp³ywaj¹ na zwiêkszenie kosztów generowanych przez pracowników, a co za tym idzie ceny oferowanych us³ug. Pierwszy problem odnosi siê do aspektu utrudnienia aktualizacji danych, który jest nieod³¹cznym elementem bran¿y. Ceny pokoi hotelowych ulegaj¹ czêstym modyfikacjom oraz uzale¿nione s¹ od sytuacji rynkowej, organizowanych okolicznych wydarzeñ rozrywkowych i kulturalnych oraz samego faktu wolnej ich iloœci w danym czasie. Analogicznie sytuacja przedstawia siê w przypadku produktów gastronomicznych oraz pozosta³ych wynajmowanych pomieszczeñ.
+
+Aktualnie wszelkie modyfikacje cenników pokoi hotelowych, sal mo¿liwych do wynajêcia oraz dostêpnych towarów dokonywane s¹ przez menad¿era sprzeda¿y, który za poœrednictwem poczty elektronicznej przekazuje uaktualnione wersje arkuszy kalkulacyjnych oraz listy cen okreœlonym sprzedawcom. Czêste zmiany zobowi¹zuj¹ pracowników dzia³u sprzeda¿y do ci¹g³ej kontroli skrzynki elektronicznej oraz powoduj¹ presjê spowodowan¹ posiadaniem potencjalnie nieaktualnych danych. Zaawansowane arkusze kalkulacyjne wykonane w aplikacji Excel podatne s¹ na b³êdy ludzkie, wymuszaj¹ na pracownikach dobr¹ znajomoœæ oprogramowania oraz umiejêtnoœæ jego obs³ugi, co z kolei niekorzystnie przek³ada siê na nowych pracowników oraz pracodawcê, który zobowi¹zany jest przeprowadzaæ d³ugie i kosztowne szkolenia w tym zakresie.
+Kolejnym dostrze¿onym problemem jest zagadnienie czasoch³onnoœci wyszukiwania danych dotycz¹cych produktów znajduj¹cych siê na hotelowej restauracji i ich cen. Pracownik otrzymuje rozbudowan¹ listê produktów wraz z przyporz¹dkowanymi im cenami i we w³asnym zakresie zobligowany jest znaleŸæ interesuj¹c¹ go pozycjê w czasie przygotowywania propozycji cenowej. 
+
+Dostrzegaj¹c powy¿sze problemy zdecydowano siê wykonaæ dedykowan¹ aplikacjê bazodanow¹, której celem jest ich rozwi¹zanie. Za³o¿ono, ¿e konieczne by by³o, aby ka¿dy ze sprzedawców posiada³ mo¿liwoœæ uruchomienia na swoim s³u¿bowym komputerze programu, który dziêki po³¹czeniu z baz¹ danych i wykorzystaniu jej funkcjonalnoœci umo¿liwi³by przyspieszenie procesu przeprowadzania transakcji z klientem poprzez automatyczn¹ aktualizacjê cenników oraz przedstawienie listy produktów gastronomicznych w skategoryzowany sposób. Dziêki przechowywaniu wszystkich propozycji cenowych w bazie danych, zanika³aby koniecznoœæ samodzielnej ich kategoryzacji i dbania o bezpieczeñstwo na lokalnym komputerze. Umo¿liwi³oby to pracownikom pracê na ró¿nych maszynach, co w znaczny sposób zwiêkszy³oby ich elastycznoœæ.
+
+Kolejnym atutem przedstawionego rozwi¹zania by³oby umo¿liwienie kierownictwu z poziomu kont administratorskich kontroli pracowników poprzez zdalny wgl¹d w przygotowywane przez nich propozycje cenowe, a co za tym idzie ustalanych z klientem cen oraz zni¿ek. Menad¿er sprzeda¿y za pomoc¹ swojego uprzywilejowanego konta posiada³by równie¿ mo¿liwoœæ aktualizacji odpowiednich tabel danych, dziêki czemu zmiany natychmiastowo by³yby widocznie na kontach sprzedawców. Zmiany te dotyczy³yby mo¿liwoœci modyfikacji cen oferowanych us³ug i produktów oraz kontroli sk³adu pracowniczego poprzez funkcjonalnoœæ dodawania, usuwania a tak¿e modyfikacji ich kont. 
+
+
+\begin{twa}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{twa}
+\begin{dd}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{dd}
+
+\thesection,\thesubsection,\thesubsubsection,
+
+\section{Analiza przedwdro¿eniowa}
+\section{Istniej¹ce rozwi¹zania konkurencyjne}
+\section{Zastosowane rozwi¹zania}
+\subsection{Wykorzystana technologia}
+\subsubsection{.NET/C\#}
+\subsubsection{WPF}
+\subsection{Wykorzystane narzêdzia}
+\subsubsection{Visual Studio 2013}
+\subsubsection{SQL Server Management Studio}
+\subsubsection{Trello}
+
+Podczas pracy zespo³owej napotyka siê liczne problemy zwi¹zane z organizacj¹ pracy, jej synchronizacj¹ oraz podzia³em obowi¹zków. Stopieñ zaawansowania przedstawionych problemów dodatkowo wzrastaj¹, w sytuacji, gdy wspó³praca zespo³u przebiega zdalnie. W takich okolicznoœciach warto pos³u¿yæ siê dedykowanymi narzêdziami, które umo¿liwiaj¹ prost¹, szybk¹ i skuteczn¹ komunikacjê wspieraj¹c¹ pracê wielu osób nad jednym projektem. 
+Trello jest to aplikacja, której przeznaczeniem jest wspieranie organizacji pracy grupowej opieraj¹c siê na metodyce Kanban \textbf{przypis?}, która zaadoptowana zosta³a na potrzeby in¿ynierii oprogramowania. Potencjalny wzrost wydajnoœci pracy przy u¿yciu Trello ma nast¹piæ dziêki scentralizowanemu systemowi zarz¹dzania projektem, który opiera siê na wirtualnych tablicach, na których ulokowane s¹ listy zadañ.
+
+SCREEN HERE
+
+
+Listy te umo¿liwiaj¹ tworzenie zadañ w postaci kafelek, które w bardzo intuicyjny sposób mo¿na sortowaæ lub przenosiæ pomiêdzy listami za pomoc¹ techniki drag-and-drop. Do ka¿dego zadania mo¿liwa jest tak¿e opcja przypisania osoby odpowiedzialnej za jego wykonanie, utworzenia listy czynnoœci, które nale¿y wykonaæ w celu jego realizacji oraz dodania daty definiuj¹cej ostateczny termin ukoñczenia zadania. 
+
+SCREEN HERE
+
+Ciekaw¹ funkcjonalnoœci¹ godn¹ przedstawienia s¹ tak¿e powiadomienia zmian, które w sposób automatyczny przekazywane s¹ na skrzynkê elektroniczn¹ lub jako powiadomienia push na urz¹dzenia przenoœne. 
+Dziêki temu, i¿ narzêdzie Trello dostêpne jest w postaci webowej, a tak¿e jako aplikacja mobilna na Androida, iOS oraz Windows 8, dostêp do niej jest w znaczny sposób u³atwiony. Umo¿liwia to otrzymanie niemal natychmiastowej informacji o naniesionych zmianach w projekcie lub zbli¿aj¹cym siê terminie ukoñczenia zadania, do którego jesteœmy przypisani.
+
+
+
+\subsubsection{SourceTree + GitHub}
+\subsubsection{Resharper}
+\subsubsection{Jenkins}
+\subsection{Biblioteki zewnêtrzne}
+\subsubsection{Extended WPF Toolkit}
+\subsubsection{PDFsharp \& MigraDoc}
+\subsubsection{GalaSoft.MvvmLight}
+\subsubsection{Entity Framework}
+\section{Implementacja}
+\subsection{Architektura aplikacji}
+\subsubsection{Architektura aplikacji}
+\subsubsection{Zastosowany wzorzec architektoniczny – MVVM}
+\subsubsection{Model aplikacji}
+\subsection{Architektura bazy danych}
+\subsubsection{Definicja bazy danych}
+\subsubsection{MS-SQL – Zastosowany system zarz¹dzania baz¹ danych}
+\subsubsection{Budowa bazy danych u¿ytej w projekcie}
+\subsection{Komunikacja bazy danych z projektem programistycznym}
+\subsubsection{Narzêdzia ORM}
+\subsubsection{Zastosowane oprogramowanie mapowania obiektowo relacyjnego – Entity Framework}
+\subsubsection{Dostosowanie Entity Framework do wymagañ zwi¹zanych ze wzorcem MVVM}
+\subsubsection{U¿ycie bazy danych ze strony projektu C\#}
+\subsection{Automatyzacja wydawania kolejnych wersji programu}
+\subsubsection{Continuous Integration – definicja}
+\subsubsection{Continuous Deployment – definicja}
+\subsubsection{Continuous Delivery – definicja}
+\subsubsection{Schemat budowania programu}
+\section{Specyfikacja zewnêtrzna}
+\subsection{Logowanie}
+\subsection{Zarz¹dzanie kontem sprzedawcy oraz administratora  (obs³uga)}
+\subsection{Tworzenie nowej propozycji cenowej}
+\subsubsection{Opis klienta}
+\subsubsection{Szczegó³y rezerwacji}
+\subsubsection{Us³ugi gastronomiczne}
+\subsubsection{Us³ugi noclegowe}
+\subsubsection{Us³ugi dodatkowe i forma p³atnoœci}
+\subsection{Edycja istniej¹cej propozycji cenowej}
+\subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
+\subsection{Modyfikacja kont u¿ytkowników/sprzedawców}
+\subsubsection{Dodawanie konta}
+\subsubsection{Edycja konta}
+\subsubsection{Usuwanie konta}
+\subsection{Modyfikacja s³owników cenowych}
+\section{Specyfikacja wewnêtrzna}
+\subsection{Logowanie}
+\subsubsection{Funkcja haszuj¹ca}
+\subsubsection{SHA-2}
+\subsubsection{Pierwsze logowanie}
+\subsection{Konto administratora i u¿ytkownika – ListView}
+\subsection{Tworzenie propozycji cenowej}
+\subsection{Edycja s³owników oraz kont u¿ytkowników}
+\subsection{Konto administratora i u¿ytkownika – ListView}
+\begin{equation}
+a^2+b^2=c^2
+\end{equation}
+
+\begin{tw}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{tw}
+
+\begin{dd}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{dd}
+\begin{equation}
+E=mc^2
+\end{equation}
+
+Lorem Ipsum generator (\texttt{http://lipsum.pl/index.php});
+
+Moskalom przez konar b³ysnê³o jako po zadzwonieniu na wzmiankê Warszawy rzek³, podnios³szy g³owê: Pan œwiata wie, ¿e gotyckiej s¹ nasze spraw bernardyñskie. có¿ by znaczyæ w poñczochach, ze œwiecami w uczciwoœci, w oknie sta³ patrz¹c, dumaj¹c wonnymi powiewami kwiatów oddychaj¹c oblicze a¿ do dworu. Tu œmiech m³odzie¿y mowê Wojskiego zag³uszy³. Wstano od dzisiaj nie dozwala³, by tu Ryków przerwa³ i s³udzy. I ogl¹da czule, jako œwieca przez grzecznoœæ nie po duszy, a ja wam s³u¿yæ, moje panny córki choæ suknia krótka, oko pañskie konia tuczy. Wojski towarzystwa nam siê damom, starcom i tu¿ nad b³êkitnym Niemnem rozci¹gnionych. Do zobaczenia! tak gadaæ: Có¿ z³ego, ¿e tamuje progresy, ¿e mi wybaczy, ¯e w poñczochach, ze srebrnymi klamrami trzewiki peruka z nowych goœci. W takim Litwinka tylko siê jak mnich na prawo, kozio³ka, z brabanckich koronek poprawia³a, to mówi¹c, ¿e odg³os tr¹bki i ubiory. By³a to mówi¹c, ¿e jacyœ Francuzi wymowny zrobili wynalazek: i¿ ludzie s¹ architektury. Choæ Sêdzia tu¿ to mówi¹c, ¿e przeszkadza kulturze, ¿e jacyœ Francuzi wymowny zrobili wynalazek: i¿ ludzie s¹ architektury. Choæ Sêdzia wie, ¿e nauczyciel ³adny i dwiestu.
+
+%% UWaga na \newlineTekst oraz \newlineSpis. Mo¿na te¿ u¿yæ \newline, dzia³a jak \newlineSpis\newlineTekst
+\section[Tytu³ drugiego rozdzia³u. Bardzo d³ugi \ldots]
+        {Tytu³ drugiego rozdzia³u. \newlineTekst Bardzo d³ugi tytu³. \newlineTekst
+          Jego \newlineSpis formatowanie jest trudniejsze}
+
+Tu jest wnêtrze rozdzia³u drugiego.          
+
+
+
+Mówi¹c, Podkomorzemu œcisn¹³ za rarogiem zazdroszczono domowi, przed nim le¿y Fedon i Suwarów w naukach mniej krzykliwy i wionê³a ogrodem przez Niemen rzek³: Dziœ, nowym zwyczajem my na konikach ma³e ¿arciki umia³ komponowaæ i¿by je wicher rozerwie i dziwniejsze od kilku dzieje chciano przeczyæ chwa³y. Wiêc do z³otego run on Pana Mówi¹c, Podkomorzemu œcisn¹³ za rarogiem zazdroszczono domowi, przed nim dla zabawki Bo nie rozwity, lecz latem nic nie jest obora. Dozoru tego dnia powiada³. Dobrze, mój Tadeuszu, ¿eœ siê Soplica. wszyscy siedli i jelenie rogi z Rymsz¹, Rymsza z pola. Tak ka¿e u Niemna odebra³ wiadomoœæ. mo¿e te¿ same portrety na filarach, pod³oga wys³ana kamieniem, Œciany bez rêki lub papug¹ w Pañskim pisano zakonie i opisujê, bo tak nazywano m³odzieñca, który teraz za nim spostrzeg³ siê, serce mu jak wiœnie bliŸniêta. U tej znalaz³ podobne oczy, usta, lica. w czasie wojny otoczony chmur¹ pu³ków, tysi¹cem dzia³ zbrojny wprz¹g³szy w koñcu œród biesiadników siedzia³ s³ucha³ zmru¿ywszy oczy, usta, lica. w sieni siad³ przy jego wiernym ludem! Jak go pilnowa³ i oczy wko³o obraca³ ostró¿ne. Gdy siê chlubi a zaj¹c jak.
+
+\dodatek{Mój specjalny dodatek}
+
+Tu treœæ dodatku. Zwróæmy uwagê na sposób numerowania dodatku, 
+mo¿liwa jest zmiana numerowania, patrz wyjaœnienia.
+          
+%% to wpisuje siê do spisu treœci, ale bez numeru rozdzia³u,
+%% mo¿na te¿ u¿ywaæ \dodatek{Tytu³}, który jest numerowany, ale inaczej ni¿ rozdzia³y.
+\dodatkowo{Rysunki}
+
+
+
+\dodatkowo{Programy}
+
+Tu programy
+
+\begin{verbatim}
+#include <stdio.h>
+
+int main()
+{
+   printf("Hello world\n");
+}
+\end{verbatim}
+
+\noindent
+Oraz 
+
+\bigskip
+
+\vrule\hspace{10pt}\begin{minipage}{10cm}
+\begin{verbatim*}
+<?php
+   echo "test=$test";
+?>
+\end{verbatim*}
+\end{minipage}
+
+\begin{tw}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{tw}
+\begin{thebibliography}{12}
+
+\bibitem{PozNazwa1} Jakaœ pozycja literatury
+\bibitem{InnPoz} Jakaœ pozycja literatury
+
+\end{thebibliography}
+\end{document}
