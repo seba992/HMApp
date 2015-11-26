@@ -35,8 +35,7 @@ namespace DiamondApp.ViewModels
         private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();    // obiekt zawierajacy dane wybranej sali (1 tab dol)
         private string _eventMonth; // miesiac wydarzenia potrzebny do ustalenia celi sali
         private List<Users> _usersList; // lista uzytkownikow TODO: FOR WHAT
-        private int _userId;    // id zalogowanego uzytkownika
-        private int _selectedPropositionId; // id wybranej propozycji (do edycji)
+        private readonly int _userId;    // id zalogowanego uzytkownika
         private int? _hallPrice;
         private PropHallEquipmentDiscount _propHallEquipmentDiscount = new PropHallEquipmentDiscount(); // tabela rabat w szczegory rezerwacji
         private List<PropHallEquipment> _propHallEquipment = new List<PropHallEquipment>(6);
@@ -73,7 +72,8 @@ namespace DiamondApp.ViewModels
         private decimal _thirdTabSumBruttoValue;   // suma wartosci brutto (tab3)
 
         //4 tab
-        private List<string> roomExistList;
+        private List<string> _roomExistList;    // w edycji propozycji (lisu)
+
         private List<PropAccomodation> _propAccomodations = new List<PropAccomodation>(6);
         private List<PropAccomodation_Dictionary> _propAccomDictionary = new List<PropAccomodation_Dictionary>();
         private PropAccomodationDiscount _propAccomDiscount = new PropAccomodationDiscount();
@@ -1300,7 +1300,7 @@ namespace DiamondApp.ViewModels
                 PropMenuPosBrutto0 = AddMergeToPrice(PropMenuPosBrutto0, PropMenuPosMergeType0);
 
                 // jesli jest wybrana ilosc i liczba dni to aktualizuj sume elementu
-                if (PropMenuPosAmount0 != null && PropMenuPosDays0 != null)
+                if (PropMenuPosAmount0 != null && PropMenuPosDays0 != null && ThirdTabNettoPrice0 != null)
                 {
                     ThirdTabNettoValue0 = ComputeNettoValue((decimal)ThirdTabNettoPrice0, PropMenuPosAmount0,
                         PropMenuPosDays0);
@@ -1335,7 +1335,7 @@ namespace DiamondApp.ViewModels
                 PropMenuPosBrutto1 = AddMergeToPrice(PropMenuPosBrutto1, PropMenuPosMergeType1);
 
                 // jesli jest wybrana ilosc i liczba dni to aktualizuj sume elementu
-                if (PropMenuPosAmount1 != null && PropMenuPosDays1 != null)
+                if (PropMenuPosAmount1 != null && PropMenuPosDays1 != null && ThirdTabNettoPrice1 != null)
                 {
                     ThirdTabNettoValue1 = ComputeNettoValue((decimal)ThirdTabNettoPrice1, PropMenuPosAmount1,
                         PropMenuPosDays1);
@@ -1369,7 +1369,7 @@ namespace DiamondApp.ViewModels
                 PropMenuPosBrutto2 = AddMergeToPrice(PropMenuPosBrutto2, PropMenuPosMergeType2);
 
                 // jesli jest wybrana ilosc i liczba dni to aktualizuj sume elementu
-                if (PropMenuPosAmount2 != null && PropMenuPosDays2 != null)
+                if (PropMenuPosAmount2 != null && PropMenuPosDays2 != null && ThirdTabNettoPrice2 != null)
                 {
                     ThirdTabNettoValue2 = ComputeNettoValue((decimal)ThirdTabNettoPrice2, PropMenuPosAmount2,
                         PropMenuPosDays2);
@@ -1403,7 +1403,7 @@ namespace DiamondApp.ViewModels
                 PropMenuPosBrutto3 = AddMergeToPrice(PropMenuPosBrutto3, PropMenuPosMergeType3);
 
                 // jesli jest wybrana ilosc i liczba dni to aktualizuj sume elementu
-                if (PropMenuPosAmount3 != null && PropMenuPosDays3 != null)
+                if (PropMenuPosAmount3 != null && PropMenuPosDays3 != null && ThirdTabNettoPrice3 != null)
                 {
                     ThirdTabNettoValue3 = ComputeNettoValue((decimal)ThirdTabNettoPrice3, PropMenuPosAmount3,
                         PropMenuPosDays3);
@@ -1437,7 +1437,7 @@ namespace DiamondApp.ViewModels
                 PropMenuPosBrutto4 = AddMergeToPrice(PropMenuPosBrutto4, PropMenuPosMergeType4);
 
                 // jesli jest wybrana ilosc i liczba dni to aktualizuj sume elementu
-                if (PropMenuPosAmount4 != null && PropMenuPosDays4 != null)
+                if (PropMenuPosAmount4 != null && PropMenuPosDays4 != null && ThirdTabNettoPrice4 != null)
                 {
                     ThirdTabNettoValue4 = ComputeNettoValue((decimal)ThirdTabNettoPrice4, PropMenuPosAmount4,
                         PropMenuPosDays4);
@@ -1471,7 +1471,7 @@ namespace DiamondApp.ViewModels
                 PropMenuPosBrutto5 = AddMergeToPrice(PropMenuPosBrutto5, PropMenuPosMergeType5);
 
                 // jesli jest wybrana ilosc i liczba dni to aktualizuj sume elementu
-                if (PropMenuPosAmount5 != null && PropMenuPosDays5 != null)
+                if (PropMenuPosAmount5 != null && PropMenuPosDays5 != null && ThirdTabNettoPrice5 != null)
                 {
                     ThirdTabNettoValue5 = ComputeNettoValue((decimal)ThirdTabNettoPrice5, PropMenuPosAmount5,
                         PropMenuPosDays5);
@@ -1505,7 +1505,7 @@ namespace DiamondApp.ViewModels
                 PropMenuPosBrutto6 = AddMergeToPrice(PropMenuPosBrutto6, PropMenuPosMergeType6);
 
                 // jesli jest wybrana ilosc i liczba dni to aktualizuj sume elementu
-                if (PropMenuPosAmount6 != null && PropMenuPosDays6 != null)
+                if (PropMenuPosAmount6 != null && PropMenuPosDays6 != null && ThirdTabNettoPrice6 != null)
                 {
                     ThirdTabNettoValue6 = ComputeNettoValue((decimal)ThirdTabNettoPrice6, PropMenuPosAmount6,
                         PropMenuPosDays6);
@@ -4057,7 +4057,7 @@ namespace DiamondApp.ViewModels
             {
 
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
-
+// dupa1
                 // !! PROPOSITION !! 
                 var propositionToBase = new Proposition
                 {
@@ -4084,7 +4084,8 @@ namespace DiamondApp.ViewModels
                 //------------------------------
                 // !! PROPRESERVATIONDETAILS !!
                 PropositionReservDetails.Id_proposition = currentPropositionId;
-                _ctx.PropReservationDetails.Add(PropositionReservDetails);
+                if(PropositionReservDetails.Hall != " ")
+                    _ctx.PropReservationDetails.Add(PropositionReservDetails);
 
                 //------------------------------
                 // !! PROPHALLEQUPMENT !!
@@ -4093,7 +4094,8 @@ namespace DiamondApp.ViewModels
                 for (int i = 0; i < _propHallEquipment.Count; i++)
                 {
                     if (_propHallEquipment[i].Things != null && _propHallEquipment[i].BruttoPrice != null
-                        && _propHallEquipment[i].Amount != null && _propHallEquipment[i].Days !=null)
+                        && _propHallEquipment[i].Amount != null && _propHallEquipment[i].Days !=null 
+                        && _propHallEquipment[i].Things != " ")
                     {
                         _propHallEquipment[i].Id_proposition = currentPropositionId;
                         _ctx.PropHallEquipment.Add(_propHallEquipment[i]);
@@ -4145,8 +4147,9 @@ namespace DiamondApp.ViewModels
                 // !! PROPEXTRASERVICES !!
                 for (int i = 0; i < _propExtraServ.Count; i++)
                 {
-                    if (_propExtraServ[i].ServiceType != null && _propExtraServ[i].BruttoPrice != null && 
-                        _propExtraServ[i].Days !=null && _propExtraServ[i].Amount !=null)
+                    if (_propExtraServ[i].ServiceType != null && _propExtraServ[i].BruttoPrice != null &&
+                        _propExtraServ[i].Days != null && _propExtraServ[i].Amount != null &&
+                        _propExtraServ[i].ServiceType != " ") 
                     {
                         _propExtraServ[i].Id_proposition = currentPropositionId;
                         _ctx.PropExtraServices.Add(_propExtraServ[i]);
@@ -4650,9 +4653,9 @@ namespace DiamondApp.ViewModels
                             break;
                     }
                 }
-                for (int i = 0; i < roomExistList.Count; i++)
+                for (int i = 0; i < _roomExistList.Count; i++)
                 {
-                    switch (roomExistList[i])
+                    switch (_roomExistList[i])
                     {
                         case "POKÓJ 1-OSOBOWY":
                             if (PropAccomAmount0 != null || PropAccomDays0 != null)
@@ -4926,7 +4929,7 @@ namespace DiamondApp.ViewModels
 
             AddNewProposition = querry; 
 
-            roomExistList = (from q in _ctx.PropAccomodation_Dictionary
+            _roomExistList = (from q in _ctx.PropAccomodation_Dictionary
                              select q.TypeOfRoom).ToList();
             if (SelectedProposition !=null)
                 _idProposition = SelectedProposition.PropositionId;
@@ -5197,7 +5200,7 @@ namespace DiamondApp.ViewModels
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays0 = propAccomodation[i].Days;
                             // MessageBox.Show(roomExistList.Count.ToString());
-                            roomExistList.Remove("POKÓJ 1-OSOBOWY");
+                            _roomExistList.Remove("POKÓJ 1-OSOBOWY");
                             //MessageBox.Show(roomExistList.Count.ToString());
                             break;
                         case "POKÓJ 2-OSOBOWY":
@@ -5205,35 +5208,35 @@ namespace DiamondApp.ViewModels
                                 PropAccomAmount1 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays1 = propAccomodation[i].Days;
-                            roomExistList.Remove("POKÓJ 2-OSOBOWY");
+                            _roomExistList.Remove("POKÓJ 2-OSOBOWY");
                             break;
                         case "POKÓJ BUSSINES 1-OSOBOWY":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount2 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays2 = propAccomodation[i].Days;
-                            roomExistList.Remove("POKÓJ BUSSINES 1-OSOBOWY");
+                            _roomExistList.Remove("POKÓJ BUSSINES 1-OSOBOWY");
                             break;
                         case "POKÓJ BUSSINES 2-OSOBOWY":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount3 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays3 = propAccomodation[i].Days;
-                            roomExistList.Remove("POKÓJ BUSSINES 2-OSOBOWY");
+                            _roomExistList.Remove("POKÓJ BUSSINES 2-OSOBOWY");
                             break;
                         case "APARTAMENT":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount4 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays4 = propAccomodation[i].Days;
-                            roomExistList.Remove("APARTAMENT");
+                            _roomExistList.Remove("APARTAMENT");
                             break;
                         case "POKOJ DLA NIEPEŁNOSPRAWNYCH":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount5 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays5 = propAccomodation[i].Days;
-                            roomExistList.Remove("POKOJ DLA NIEPEŁNOSPRAWNYCH");
+                            _roomExistList.Remove("POKOJ DLA NIEPEŁNOSPRAWNYCH");
                             break;
                     }
                 }
@@ -5248,6 +5251,12 @@ namespace DiamondApp.ViewModels
             var extra = (from q in _ctx.PropExtraServices
                          where q.Id_proposition == _idProposition
                          select q).ToList();
+
+            var dic = (from q in _ctx.PropExtraServices_Dictionary
+                           select q.ServiceType).ToList();
+
+                
+
             for (int i = 0; i < extra.Count; i++)
             {
                 switch (i)
@@ -5780,7 +5789,7 @@ namespace DiamondApp.ViewModels
                 _propMenuMerges.Where(x => x.MergeType == mergeType)
                     .Select((x) => new {x = x.DefaultValue}).FirstOrDefault();
 
-            if (mergeValue.x != null)
+            if (mergeValue != null && mergeValue.x != null)
             {
                 var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
                 return toret;
@@ -5796,7 +5805,7 @@ namespace DiamondApp.ViewModels
                     .Select((x) => new {x = x.DefaultValue})
                     .FirstOrDefault();
 
-            if (mergeValue.x != null)
+            if (mergeValue != null && mergeValue.x != null)
             {
                 var toret = price + (price * mergeValue.x / 100);
                 return toret;

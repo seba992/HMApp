@@ -311,3 +311,12 @@ update PropMenuGastronomicThings_Dictionary_First set Vat = '8' where MergeType 
 
 insert into PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values
 (NULL,NULL,NULL,NULL,NULL)
+
+insert PropExtraServices_Dictionary (ServiceType,Price) values (' ',null);
+insert into PropPaymentSuggestions_Dictionary_First values (' ')
+insert into PropPaymentSuggestions_Dictionary_Second values (' ')
+insert into PropPaymentSuggestions_Dictionary_Third values (' ')
+insert into PropPaymentSuggestions_Dictionary_Fourth values (' ')
+insert into PropReservationDetails_Dictionary_HallCapacity (Hall,Area,TheatrePeopleNumber,UshapePeopleNumber) values (' ',null,null,null)
+insert into PropReservationDetails_Dictionary_HallSettings values (' ')
+insert into PropHallEquipmnet_Dictionary_Second values (' ')
