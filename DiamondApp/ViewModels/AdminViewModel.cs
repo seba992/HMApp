@@ -4802,6 +4802,7 @@ namespace DiamondApp.ViewModels
                         newextra.Days = PropExtraServDays0;
                         newextra.BruttoPrice = PropExtraServBrutto0;
                         newextra.Vat = PropExtraServVat0;
+                        _ctx.PropExtraServices.Add(newextra);
                     }
                 }
                 if (PropExtraServType1 != null)
@@ -4848,6 +4849,7 @@ namespace DiamondApp.ViewModels
                         newextra.Days = PropExtraServDays2;
                         newextra.BruttoPrice = PropExtraServBrutto2;
                         newextra.Vat = PropExtraServVat2;
+                        _ctx.PropExtraServices.Add(newextra);
                     }
                 }
                 if (PropExtraServType3 != null)
@@ -4871,6 +4873,7 @@ namespace DiamondApp.ViewModels
                         newextra.Days = PropExtraServDays3;
                         newextra.BruttoPrice = PropExtraServBrutto3;
                         newextra.Vat = PropExtraServVat3;
+                        _ctx.PropExtraServices.Add(newextra);
                     }
                 }
                 _ctx.SaveChanges();
@@ -4893,6 +4896,7 @@ namespace DiamondApp.ViewModels
                     paysug1.InvoiceServiceName = PaymentSuggestInvServName;
                     paysug1.CarPark = PaymentSuggestCarPark;
                     paysug1.IndividualOrders = PaymentSuggestIndividOrder;
+                    _ctx.PropPaymentSuggestions.Add(paysug1);
                 }
                 _ctx.SaveChanges();
                 SelectedProposition = null;
@@ -5274,45 +5278,104 @@ namespace DiamondApp.ViewModels
                                 select q).ToList();
                 var dic = (from q in _ctx.PropExtraServices_Dictionary
                            select q.ServiceType).ToList();
-
+                int nullFisrtRow = 0;
                 for (int i = 0; i < extra.Count; i++)
                 {
                     switch (i)
                     {
                         case 0:
-                             var position = extra.Find(item => item.ServiceType == dic[0]);
-                             var position1 = extra.Find(item => item.ServiceType == dic[1]);
-                             if (position != null || position1!=null)
-                             { 
-                                PropExtraServType0 = extra[0].ServiceType;
-                                PropExtraServVat0 = extra[0].Vat;
-                                PropExtraServAmount0 = extra[0].Amount;
-                                PropExtraServDays0 = extra[0].Days;
-                                PropExtraServBrutto0 = extra[0].BruttoPrice; 
-                             }
-                           
+                            try
+                            {
+                                var position = extra.Find(item => item.ServiceType == dic[0]);
+                                var position1 = extra.Find(item => item.ServiceType == dic[1]);
+                                if (position != null)
+                                {
+                                    MessageBox.Show(position.ServiceType +"11111111");
+                                    PropExtraServType0 = position.ServiceType;
+                                    PropExtraServVat0 = position.Vat;
+                                    PropExtraServAmount0 = position.Amount;
+                                    PropExtraServDays0 = position.Days;
+                                    PropExtraServBrutto0 = position.BruttoPrice;
+                                    extra.Remove(position);
+
+                                }
+                                else if (position1!=null)
+                                {
+                                    MessageBox.Show(position1.ServiceType + "2222");
+                                    PropExtraServType0 = position1.ServiceType;
+                                    PropExtraServVat0 = position1.Vat;
+                                    PropExtraServAmount0 = position1.Amount;
+                                    PropExtraServDays0 = position1.Days;
+                                    PropExtraServBrutto0 = position1.BruttoPrice;
+                                    extra.Remove(position1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(extra[0].ServiceType );
+                                    PropExtraServType1 = extra[0].ServiceType;
+                                    PropExtraServVat1 = extra[0].Vat;
+                                    PropExtraServAmount1 = extra[0].Amount;
+                                    PropExtraServDays1 = extra[0].Days;
+                                    PropExtraServBrutto1 = extra[0].BruttoPrice;
+                                    nullFisrtRow++;
+
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("testststset" +e.ToString());
+                            }
 
                             break;
                         case 1:
-                            PropExtraServType1 = extra[1].ServiceType;
-                            PropExtraServVat1 = extra[1].Vat;
-                            PropExtraServAmount1 = extra[1].Amount;
-                            PropExtraServDays1 = extra[1].Days;
-                            PropExtraServBrutto1 = extra[1].BruttoPrice;
+                            MessageBox.Show(extra[1].ServiceType);
+                            if (nullFisrtRow > 0)
+                            {
+                                PropExtraServType2 = extra[1].ServiceType;
+                                PropExtraServVat2 = extra[1].Vat;
+                                PropExtraServAmount2 = extra[1].Amount;
+                                PropExtraServDays2 = extra[1].Days;
+                                PropExtraServBrutto2 = extra[1].BruttoPrice;
+                            }
+                            else
+                            {
+                                PropExtraServType1 = extra[1].ServiceType;
+                                PropExtraServVat1 = extra[1].Vat;
+                                PropExtraServAmount1 = extra[1].Amount;
+                                PropExtraServDays1 = extra[1].Days;
+                                PropExtraServBrutto1 = extra[1].BruttoPrice;
+                                
+                            }
                             break;
                         case 2:
-                            PropExtraServType2 = extra[2].ServiceType;
-                            PropExtraServVat2 = extra[2].Vat;
-                            PropExtraServAmount2 = extra[2].Amount;
-                            PropExtraServDays2 = extra[2].Days;
-                            PropExtraServBrutto2 = extra[2].BruttoPrice;
+                            MessageBox.Show(extra[2].ServiceType);
+                            if (nullFisrtRow > 0)
+                            {
+                                PropExtraServType3 = extra[2].ServiceType;
+                                PropExtraServVat3 = extra[2].Vat;
+                                PropExtraServAmount3 = extra[2].Amount;
+                                PropExtraServDays3 = extra[2].Days;
+                                PropExtraServBrutto3 = extra[2].BruttoPrice;
+                            }
+                            else
+                            {
+                                PropExtraServType2 = extra[2].ServiceType;
+                                PropExtraServVat2 = extra[2].Vat;
+                                PropExtraServAmount2 = extra[2].Amount;
+                                PropExtraServDays2 = extra[2].Days;
+                                PropExtraServBrutto2 = extra[2].BruttoPrice;
+                            }
                             break;
                         case 3:
-                            PropExtraServType3 = extra[3].ServiceType;
-                            PropExtraServVat3 = extra[3].Vat;
-                            PropExtraServAmount3 = extra[3].Amount;
-                            PropExtraServDays3 = extra[3].Days;
-                            PropExtraServBrutto3 = extra[3].BruttoPrice;
+                            MessageBox.Show(extra[3].ServiceType);
+                            if (nullFisrtRow > 0)
+                            {
+                                PropExtraServType3 = extra[3].ServiceType;
+                                PropExtraServVat3 = extra[3].Vat;
+                                PropExtraServAmount3 = extra[3].Amount;
+                                PropExtraServDays3 = extra[3].Days;
+                                PropExtraServBrutto3 = extra[3].BruttoPrice;
+                            }
                             break;
 
                     }
@@ -5331,6 +5394,7 @@ namespace DiamondApp.ViewModels
             catch(Exception e)
             {
                 MessageBox.Show("nowa propozycka");
+                _saveFlag = false;
                 CreateNewPropositionExecute("test");
             }
 

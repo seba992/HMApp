@@ -41,15 +41,18 @@ namespace DiamondApp.Views
             switch (((MenuItem)sender).Header.ToString())
             {
                 case "Edytuj":
+                        
                 case "Dodaj":
                     this.AdminProposition.Visibility = Visibility.Hidden;
-                  
+                    this.Luser.Visibility =Visibility.Hidden;
+                    this.CBUser.Visibility = Visibility.Hidden;
                     this.TabControlProposition.Visibility = Visibility.Visible;
                     this.SavePropositionButton.Visibility = Visibility.Visible;
                     break;
                 default:
                     this.AdminProposition.Visibility = Visibility.Visible;
-                 
+                    this.Luser.Visibility =Visibility.Visible;
+                    this.CBUser.Visibility = Visibility.Visible;
                     this.TabControlProposition.Visibility = Visibility.Hidden;
                     this.SavePropositionButton.Visibility = Visibility.Hidden;
                     break;
