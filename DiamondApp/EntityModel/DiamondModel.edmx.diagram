@@ -39,14 +39,14 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallSettings" Width="1.5" PointX="10.375" PointY="11.75" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First" Width="1.5" PointX="10.375" PointY="8.75" />
         <EntityTypeShape EntityType="DiamondDBModel.VatList" Width="1.5" PointX="12.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="25.875" />
-        <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodationDiscount" Width="2.125" PointX="7.5" PointY="6.125" />
         <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" />
         <EntityTypeShape EntityType="DiamondDBModel.PropAccomodation" Width="1.5" PointX="7.5" PointY="2" />
         <AssociationConnector Association="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" />
         <EntityTypeShape EntityType="DiamondDBModel.PropExtraServices" Width="1.5" PointX="7.5" PointY="42" />
         <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="25.875" />
+        <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

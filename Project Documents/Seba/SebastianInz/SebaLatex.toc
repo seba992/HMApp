@@ -61,9 +61,11 @@
 \contentsline {subsection}{\numberline {7.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{25}
 \contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{25}
 \contentsline {subsection}{\numberline {7.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{25}
-\contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{25}
-\contentsline {section}{\numberline {8}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{27}
-\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{29}
-\contentsline {section}{Rysunki}{31}
-\contentsline {section}{Programy}{33}
-\contentsline {section}{Literatura}{35}
+\contentsline {subsubsection}{\numberline {7.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{25}
+\contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{25}
+\contentsline {section}{\numberline {8}\kernsekcyjny Perspektywy rozwoju oprogramowania}{27}
+\contentsline {section}{\numberline {9}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{29}
+\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{31}
+\contentsline {section}{Rysunki}{33}
+\contentsline {section}{Programy}{35}
+\contentsline {section}{Literatura}{37}

@@ -153,7 +153,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_proposition" Type="int" />
-          <Property Name="TypeOfService" Type="varchar" MaxLength="50" />
+          <Property Name="TypeOfService" Type="varchar" MaxLength="170" />
           <Property Name="BruttoPrice" Type="real" />
           <Property Name="Vat" Type="real" />
           <Property Name="Amount" Type="int" />
@@ -778,11 +778,6 @@
           <EntitySet Name="PropReservationDetails_Dictionary_HallSettings" EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallSettings" />
           <EntitySet Name="PropMenuGastronomicThings_Dictionary_First" EntityType="DiamondDBModel.PropMenuGastronomicThings_Dictionary_First" />
           <EntitySet Name="VatList" EntityType="DiamondDBModel.VatList" />
-          <EntitySet Name="PropMenuPosition" EntityType="DiamondDBModel.PropMenuPosition" />
-          <AssociationSet Name="FK__PropMenuP__Id_pr__31EC6D26" Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26">
-            <End Role="Proposition" EntitySet="Proposition" />
-            <End Role="PropMenuPosition" EntitySet="PropMenuPosition" />
-          </AssociationSet>
           <EntitySet Name="PropAccomodationDiscount" EntityType="DiamondDBModel.PropAccomodationDiscount" />
           <AssociationSet Name="FK__PropAccom__Id_pr__4316F928" Association="DiamondDBModel.FK__PropAccom__Id_pr__4316F928">
             <End Role="Proposition" EntitySet="Proposition" />
@@ -797,6 +792,11 @@
           <AssociationSet Name="FK__PropExtra__Id_pr__3D5E1FD2" Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2">
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropExtraServices" EntitySet="PropExtraServices" />
+          </AssociationSet>
+          <EntitySet Name="PropMenuPosition" EntityType="DiamondDBModel.PropMenuPosition" />
+          <AssociationSet Name="FK__PropMenuP__Id_pr__31EC6D26" Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26">
+            <End Role="Proposition" EntitySet="Proposition" />
+            <End Role="PropMenuPosition" EntitySet="PropMenuPosition" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
@@ -865,10 +865,10 @@
           <NavigationProperty Name="PropPaymentSuggestions" Relationship="DiamondDBModel.FK__PropPayme__Id_pr__403A8C7D" FromRole="Proposition" ToRole="PropPaymentSuggestions" />
           <NavigationProperty Name="PropReservationDetails" Relationship="DiamondDBModel.FK__PropReser__Id_pr__4CA06362" FromRole="Proposition" ToRole="PropReservationDetails" />
           <NavigationProperty Name="PropClient" Relationship="DiamondDBModel.FK__PropClien__Id_pr__440B1D61" FromRole="Proposition" ToRole="PropClient" />
-          <NavigationProperty Name="PropMenuPosition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="Proposition" ToRole="PropMenuPosition" />
           <NavigationProperty Name="PropAccomodationDiscount" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__4316F928" FromRole="Proposition" ToRole="PropAccomodationDiscount" />
           <NavigationProperty Name="PropAccomodation" Relationship="DiamondDBModel.FK__PropAccom__Id_pr__3A81B327" FromRole="Proposition" ToRole="PropAccomodation" />
           <NavigationProperty Name="PropExtraServices" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" FromRole="Proposition" ToRole="PropExtraServices" />
+          <NavigationProperty Name="PropMenuPosition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="Proposition" ToRole="PropMenuPosition" />
         </EntityType>
         <Association Name="FK__PropExtra__Id_pr__45F365D3">
           <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="1">
@@ -1019,34 +1019,6 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Vat" Type="Single" />
         </EntityType>
-        <EntityType Name="PropMenuPosition">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Id_proposition" Type="Int32" />
-          <Property Name="TypeOfService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BruttoPrice" Type="Single" />
-          <Property Name="Vat" Type="Single" />
-          <Property Name="Amount" Type="Int32" />
-          <Property Name="Days" Type="Int32" />
-          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="PropMenuPosition" ToRole="Proposition" />
-        </EntityType>
-        <Association Name="FK__PropMenuP__Id_pr__31EC6D26">
-          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="DiamondDBModel.PropMenuPosition" Role="PropMenuPosition" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proposition">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PropMenuPosition">
-              <PropertyRef Name="Id_proposition" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="PropAccomodationDiscount">
           <Key>
             <PropertyRef Name="Id_proposition" />
@@ -1123,6 +1095,34 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PropExtraServices">
+              <PropertyRef Name="Id_proposition" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PropMenuPosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id_proposition" Type="Int32" />
+          <Property Name="TypeOfService" Type="String" MaxLength="170" FixedLength="false" Unicode="false" />
+          <Property Name="BruttoPrice" Type="Single" />
+          <Property Name="Vat" Type="Single" />
+          <Property Name="Amount" Type="Int32" />
+          <Property Name="Days" Type="Int32" />
+          <Property Name="MergeType" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Proposition" Relationship="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" FromRole="PropMenuPosition" ToRole="Proposition" />
+        </EntityType>
+        <Association Name="FK__PropMenuP__Id_pr__31EC6D26">
+          <End Type="DiamondDBModel.Proposition" Role="Proposition" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="DiamondDBModel.PropMenuPosition" Role="PropMenuPosition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proposition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PropMenuPosition">
               <PropertyRef Name="Id_proposition" />
             </Dependent>
           </ReferentialConstraint>
@@ -1393,20 +1393,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PropMenuPosition">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuPosition">
-              <MappingFragment StoreEntitySet="PropMenuPosition">
-                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
-                <ScalarProperty Name="Days" ColumnName="Days" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Vat" ColumnName="Vat" />
-                <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
-                <ScalarProperty Name="TypeOfService" ColumnName="TypeOfService" />
-                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropAccomodationDiscount">
             <EntityTypeMapping TypeName="DiamondDBModel.PropAccomodationDiscount">
               <MappingFragment StoreEntitySet="PropAccomodationDiscount">
@@ -1440,6 +1426,20 @@
                 <ScalarProperty Name="Vat" ColumnName="Vat" />
                 <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
                 <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+                <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropMenuPosition">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropMenuPosition">
+              <MappingFragment StoreEntitySet="PropMenuPosition">
+                <ScalarProperty Name="MergeType" ColumnName="MergeType" />
+                <ScalarProperty Name="Days" ColumnName="Days" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
+                <ScalarProperty Name="TypeOfService" ColumnName="TypeOfService" />
                 <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -50,9 +50,9 @@ namespace DiamondApp.EntityModel
         public virtual DbSet<PropReservationDetails_Dictionary_HallSettings> PropReservationDetails_Dictionary_HallSettings { get; set; }
         public virtual DbSet<PropMenuGastronomicThings_Dictionary_First> PropMenuGastronomicThings_Dictionary_First { get; set; }
         public virtual DbSet<VatList> VatList { get; set; }
-        public virtual DbSet<PropMenuPosition> PropMenuPosition { get; set; }
         public virtual DbSet<PropAccomodationDiscount> PropAccomodationDiscount { get; set; }
         public virtual DbSet<PropAccomodation> PropAccomodation { get; set; }
         public virtual DbSet<PropExtraServices> PropExtraServices { get; set; }
+        public virtual DbSet<PropMenuPosition> PropMenuPosition { get; set; }
     }
 }
