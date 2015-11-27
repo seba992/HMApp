@@ -102,8 +102,6 @@ Ciekaw¹ funkcjonalnoœci¹ godn¹ przedstawienia s¹ tak¿e powiadomienia zmian, któr
 Dziêki temu, i¿ narzêdzie Trello dostêpne jest w postaci webowej, a tak¿e jako aplikacja mobilna na Androida, iOS oraz Windows 8 \cite{PlatformyTrello}, dostêp do niej jest w znaczny sposób u³atwiony. Umo¿liwia to otrzymanie niemal natychmiastowej informacji o naniesionych zmianach w projekcie lub zbli¿aj¹cym siê terminie ukoñczenia zadania, do którego jesteœmy przypisani.
 
 Wszystkie przedstawione funkcjonalnoœci narzêdzia Trello umo¿liwi³y zespo³owi uproszczenie i przyspieszenie procesu organizacji pracy nad projektem co w konsekwencji doprowadzi³o do oszczêdnoœci czasowych, które przeznaczone zosta³y na elementy imlementacyjne budowanego systemu.
- 
-
 
 \subsubsection{SourceTree + GitHub}
 
@@ -124,6 +122,23 @@ Przedstawione funkcjonalnoœci ReSharpera wraz z wieloma innymi dostêpnymi do zap
 \subsubsection{Jenkins}
 \subsection{Biblioteki zewnêtrzne}
 \subsubsection{Extended WPF Toolkit}
+
+Wa¿nym aspektem ka¿dego rodzaju oprogramowania u¿ytkowego jest stopieñ trudnoœci jego obs³ugi. Interfejs graficzny aplikacji powinien byæ budowany w sposób przejrzysty i intuicyjny dla u¿ytkownika w celu bezproblemowego korzystania z jej funkcjonalnoœci. Ka¿dy element programu, który przysparza u¿ytkownikowi problem w obs³udze jest potencjalnym fragmentem, który mo¿e doprowadziæ do nieprawid³owego dzia³ania oprogramowania. Dla przyk³adu pole, do którego u¿ytkownik zobowi¹zany jest wprowadziæ datê mo¿e przysporzyæ sporo problemów w sytuacji, gdy jest ono zwyk³ym polem tekstowym. W takim przypadku nie wiadomo jaki jest po¿¹dany format daty, co implikuje koniecznoœæ dok³adnej walidacji wpisanych przez u¿ytkownika ci¹gów znaków oraz informacji zwrotnej w sytuacji b³êdnej ich formy.
+
+Domyœlnie technologia WPF podobnie jak WinForms posiada wbudowany pakiet kontrolek graficznych wraz z ich licznymi w³asnoœciami i zdarzeniami. W³asnoœci te umo¿liwiaj¹ okreœlenie dok³adnej formy u¿ytej kontrolki dotycz¹cej jej koloru, wielkoœci, po³o¿enia, wyrównania, nazwy oraz widocznoœci. Zdarzenia kontrolki z kolei odpowiadaj¹ za jej reakcje w czasie interakcji z u¿ytkownikiem oprogramowania w którym zosta³a zastosowana. Zdarzenia te dotycz¹ dla przyk³adu klikniêcia w kontrolkê, przesuniêcia kursora myszki nad ni¹ oraz jej przesuniêcia.
+
+Liczba domyœlnych kontrolek dla zaimplementowania niektórych funkcjonalnoœci nie jest jednak wystarczaj¹ca. Odwo³uj¹c siê do przytoczonego przyk³adu wpisania daty przez u¿ytkownika, WPF wymaga od programisty du¿ego wk³adu pracy do prawid³owego wykonania ten funkcjonalnoœci. Z pomoc¹ przychodz¹ jednak dedykowane biblioteki rozszerzaj¹ce, z których jedn¹ jest Extended WPF Toolkit.
+
+Extended WPF Toolkit jest to darmowa biblioteka przeznaczona dla technologii WPF, która rozpowszechniana jest na zasadach Microsoft Public Licence \cite{MicrosoftPublicLicence}. Biblioteka ta w znacznym zakresie rozszerza liczbê domyœlnych kontrolek umo¿liwiaj¹c szybk¹ i prost¹ implementacjê licznych funkcjonalnoœci, których nie umo¿liwia³y kontrolki domyœlne. 
+
+Jednym z elementów, dla których przedstawiona biblioteka znalaz³a zastosowanie w projekcie jest wpisywanie przez u¿ytkownika wartoœci liczbowej do ustalonego pola. Kontrolka IntegerUpDown umo¿liwia programiœcie zapisanie w jej w³asnoœciach zakresu przyjmowanych liczb, które niweluje koniecznoœæ implementacji dodatkowej walidacji. Dodaj¹c do tego domyœlne funkcje powy¿szej kontrolki odnosz¹ce siê do wewnêtrznego sprawdzania typu wpisanych przez u¿ytkownika znaków, podkreœlania i nieprzyjmowania b³êdnych danych oraz dwóch graficznych przycisków, które umo¿liwiaj¹ po ich naciœniêciu zmiany wpisanej wartoœci, kontrolka ta doskonale nadaje siê do przedstawionej funkcjonalnoœci odci¹¿aj¹c przy tym w znaczny sposób programistê.
+
+SCREEN
+
+Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit jest ustalanie z poziomu programu daty. Kontrolka DateTimePicker umo¿liwia u¿ytkownikowi wyboru daty w ustandaryzowanym formacie. Po operacji naciœniêcia kursorem myszki w przedstawian¹ kontrolkê wyœwietlany jest przejrzysty kalendarz, w którym proces wyboru daty polega na wybraniu przez u¿ytkownika odpowiedniego roku, miesi¹ca, a nastêpnie klikniêcia w dzieñ odpowiadaj¹cy jego potrzebom.
+
+SCREEN
+
 \subsubsection{PDFsharp \& MigraDoc}
 \subsubsection{GalaSoft.MvvmLight}
 \subsubsection{Entity Framework}
@@ -266,6 +281,10 @@ Martin R.C.: \textsl{Czysty kod. Podrêcznik dobrego programisty}, Wydawnictwo He
 
 \bibitem{ReSharperFunkcje} 
 https://www.jetbrains.com/resharper/features/
+
+\bibitem{MicrosoftPublicLicence} 
+https://opensource.org/licenses/MS-PL
+
 
 %Nazwisko I. \textsl{tytu³}, miasto, rok
 \bibitem{nazwa} Jakaœ pozycja literatury
