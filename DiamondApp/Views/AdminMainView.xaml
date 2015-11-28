@@ -265,12 +265,12 @@
                     <TextBox x:Name="SRWartoscNettoTextBox5" Grid.Column="6" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabNettoValue4, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="SRWartoscNettoTextBox6" Grid.Column="6" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabNettoValue5, StringFormat=\{0:c\}}" />
 
-                    <TextBox x:Name="SRWartoscBruttoTextBox1" Grid.Column="7" Grid.Row="1" Margin="3" IsEnabled="False" Text="{Binding SecondTabBruttoValue0, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="SRWartoscBruttoTextBox2" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" Text="{Binding SecondTabBruttoValue1, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="SRWartoscBruttoTextBox3" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" Text="{Binding SecondTabBruttoValue2, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="SRWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" Text="{Binding SecondTabBruttoValue3, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="SRWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" Text="{Binding SecondTabBruttoValue4, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="SRWartoscBruttoTextBox6" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" Text="{Binding SecondTabBruttoValue5, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox1" Grid.Column="7" Grid.Row="1" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabBruttoValue0, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox2" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabBruttoValue1, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox3" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabBruttoValue2, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabBruttoValue3, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabBruttoValue4, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="SRWartoscBruttoTextBox6" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding SecondTabBruttoValue5, StringFormat=\{0:c\}}" />
 
                     <!--definicja wiersza podsumowania-->
                     <Label Grid.Row="8" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" />

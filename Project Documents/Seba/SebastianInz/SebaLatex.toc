@@ -16,8 +16,6 @@
 \contentsline {subsection}{\numberline {4.3}\kernsubsekcyjny Biblioteki zewn\k etrzne}{22}
 \contentsline {subsubsection}{\numberline {4.3.1}\kernsubsubsekcyjny Extended WPF Toolkit}{22}
 \contentsline {subsubsection}{\numberline {4.3.2}\kernsubsubsekcyjny PDFsharp \& MigraDoc}{24}
-\contentsline {subsubsection}{\numberline {4.3.3}\kernsubsubsekcyjny GalaSoft.MvvmLight}{24}
-\contentsline {subsubsection}{\numberline {4.3.4}\kernsubsubsekcyjny Entity Framework}{24}
 \contentsline {section}{\numberline {5}\kernsekcyjny Implementacja}{25}
 \contentsline {subsection}{\numberline {5.1}\kernsubsekcyjny Architektura aplikacji}{25}
 \contentsline {subsubsection}{\numberline {5.1.1}\kernsubsubsekcyjny Architektura aplikacji}{25}

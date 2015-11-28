@@ -594,6 +594,11 @@ namespace DiamondApp.ViewModels
                     SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, PropHallEqAmount0, PropHallEqDays0);
                     SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, PropHallEqAmount0, PropHallEqDays0);
                 }
+                else
+                {
+                    SecondTabBruttoValue0 = 0;
+                    SecondTabNettoValue0 = 0;
+                }
             }
         }
         public decimal SecondTabNettoPrice1
@@ -608,6 +613,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, PropHallEqAmount1, PropHallEqDays1);
                     SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, PropHallEqAmount1, PropHallEqDays1);
+                }
+                else
+                {
+                    SecondTabBruttoValue1 = 0;
+                    SecondTabNettoValue1 = 0;
                 }
             }
         }
@@ -624,6 +634,11 @@ namespace DiamondApp.ViewModels
                     SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, PropHallEqAmount2, PropHallEqDays2);
                     SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, PropHallEqAmount2, PropHallEqDays2);
                 }
+                else
+                {
+                    SecondTabBruttoValue2 = 0;
+                    SecondTabNettoValue2 = 0;
+                }
             }
         }
         public decimal SecondTabNettoPrice3
@@ -638,6 +653,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, PropHallEqAmount3, PropHallEqDays3);
                     SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, PropHallEqAmount3, PropHallEqDays3);
+                }
+                else
+                {
+                    SecondTabBruttoValue3 = 0;
+                    SecondTabNettoValue3 = 0;
                 }
             }
         }
@@ -654,6 +674,11 @@ namespace DiamondApp.ViewModels
                     SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, PropHallEqAmount4, PropHallEqDays4);
                     SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, PropHallEqAmount4, PropHallEqDays4);
                 }
+                else
+                {
+                    SecondTabBruttoValue4 = 0;
+                    SecondTabNettoValue4 = 0;
+                }
             }
         }
         public decimal SecondTabNettoPrice5
@@ -668,6 +693,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, PropHallEqAmount5, PropHallEqDays5);
                     SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, PropHallEqAmount5, PropHallEqDays5);
+                }
+                else
+                {
+                    SecondTabBruttoValue5 = 0;
+                    SecondTabNettoValue5 = 0;
                 }
             }
         }
@@ -689,6 +719,11 @@ namespace DiamondApp.ViewModels
                     SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, PropHallEqAmount0, PropHallEqDays0);
                     SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, PropHallEqAmount0, PropHallEqDays0);
                 }
+                else
+                {
+                    SecondTabBruttoValue0 = 0;
+                    SecondTabNettoValue0 = 0;
+                }
                     
             }
         }
@@ -706,6 +741,11 @@ namespace DiamondApp.ViewModels
                     SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, PropHallEqAmount1, PropHallEqDays1);
                     SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, PropHallEqAmount1, PropHallEqDays1);
                 }
+                else
+                {
+                    SecondTabBruttoValue1 = 0;
+                    SecondTabNettoValue1 = 0;
+                }
             }
         }
         public float? PropHallEqBrutto2
@@ -721,6 +761,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, PropHallEqAmount2, PropHallEqDays2);
                     SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, PropHallEqAmount2, PropHallEqDays2);
+                }
+                else
+                {
+                    SecondTabBruttoValue2 = 0;
+                    SecondTabNettoValue2 = 0;
                 }
             }
         }
@@ -738,6 +783,11 @@ namespace DiamondApp.ViewModels
                     SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, PropHallEqAmount3, PropHallEqDays3);
                     SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, PropHallEqAmount3, PropHallEqDays3);
                 }
+                else
+                {
+                    SecondTabBruttoValue3 = 0;
+                    SecondTabNettoValue3 = 0;
+                }
             }
         }
         public float? PropHallEqBrutto4
@@ -754,6 +804,11 @@ namespace DiamondApp.ViewModels
                     SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, PropHallEqAmount4, PropHallEqDays4);
                     SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, PropHallEqAmount4, PropHallEqDays4);
                 }
+                else
+                {
+                    SecondTabBruttoValue4 = 0;
+                    SecondTabNettoValue4 = 0;
+                }
             }
         }
         public float? PropHallEqBrutto5
@@ -769,6 +824,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, PropHallEqAmount5, PropHallEqDays5);
                     SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, PropHallEqAmount5, PropHallEqDays5);
+                }
+                else
+                {
+                    SecondTabBruttoValue5 = 0;
+                    SecondTabNettoValue5 = 0;
                 }
             }
         }
@@ -860,6 +920,11 @@ namespace DiamondApp.ViewModels
                     SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, value, PropHallEqDays0);
                     SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, value, PropHallEqDays0);
                 }
+                else
+                {
+                    SecondTabBruttoValue0 = 0;
+                    SecondTabNettoValue0 = 0;
+                }
             }
         }
         public int? PropHallEqAmount1
@@ -874,6 +939,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, value, PropHallEqDays1);
                     SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, value, PropHallEqDays1);
+                }
+                else
+                {
+                    SecondTabBruttoValue1 = 0;
+                    SecondTabNettoValue1 = 0;
                 }
             }
         }
@@ -890,6 +960,11 @@ namespace DiamondApp.ViewModels
                     SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, value, PropHallEqDays2);
                     SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, value, PropHallEqDays2);
                 }
+                else
+                {
+                    SecondTabBruttoValue2 = 0;
+                    SecondTabNettoValue2 = 0;
+                }
             }
         }
         public int? PropHallEqAmount3
@@ -904,6 +979,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, value, PropHallEqDays3);
                     SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, value, PropHallEqDays3);
+                }
+                else
+                {
+                    SecondTabBruttoValue3 = 0;
+                    SecondTabNettoValue3 = 0;
                 }
             }
         }
@@ -920,6 +1000,11 @@ namespace DiamondApp.ViewModels
                     SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, value, PropHallEqDays4);
                     SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, value, PropHallEqDays4);
                 }
+                else
+                {
+                    SecondTabBruttoValue4 = 0;
+                    SecondTabNettoValue4 = 0;
+                }
             }
         }
         public int? PropHallEqAmount5
@@ -934,6 +1019,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, value, PropHallEqDays5);
                     SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, value, PropHallEqDays5);
+                }
+                else
+                {
+                    SecondTabBruttoValue5 = 0;
+                    SecondTabNettoValue5 = 0;
                 }
             }
         }
@@ -952,6 +1042,11 @@ namespace DiamondApp.ViewModels
                     SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, value, PropHallEqDays0);
                     SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, value, PropHallEqDays0);
                 }
+                else
+                {
+                    SecondTabBruttoValue0 = 0;
+                    SecondTabNettoValue0 = 0;
+                }
             }
         }
         public int? PropHallEqDays1
@@ -967,6 +1062,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, value, PropHallEqDays1);
                     SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, value, PropHallEqDays1);
+                }
+                else
+                {
+                    SecondTabBruttoValue1 = 0;
+                    SecondTabNettoValue1 = 0;
                 }
             }
         }
@@ -984,6 +1084,11 @@ namespace DiamondApp.ViewModels
                     SecondTabNettoValue2 = ComputeNettoValue(SecondTabNettoPrice2, PropHallEqAmount2, value);
                     SecondTabBruttoValue2 = ComputeBruttoValue(PropHallEqBrutto2, PropHallEqAmount2, value);
                 }
+                else
+                {
+                    SecondTabBruttoValue2 = 0;
+                    SecondTabNettoValue2 = 0;
+                }
             }
         }
         public int? PropHallEqDays3
@@ -999,6 +1104,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabNettoValue3 = ComputeNettoValue(SecondTabNettoPrice3, PropHallEqAmount3, value);
                     SecondTabBruttoValue3 = ComputeBruttoValue(PropHallEqBrutto3, PropHallEqAmount3, value);
+                }
+                else
+                {
+                    SecondTabBruttoValue3 = 0;
+                    SecondTabNettoValue3 = 0;
                 }
             }
         }
@@ -1016,6 +1126,11 @@ namespace DiamondApp.ViewModels
                     SecondTabNettoValue4 = ComputeNettoValue(SecondTabNettoPrice4, PropHallEqAmount4, value);
                     SecondTabBruttoValue4 = ComputeBruttoValue(PropHallEqBrutto4, PropHallEqAmount4, value);
                 }
+                else
+                {
+                    SecondTabBruttoValue4 = 0;
+                    SecondTabNettoValue4 = 0;
+                }
             }
         }
         public int? PropHallEqDays5
@@ -1031,6 +1146,11 @@ namespace DiamondApp.ViewModels
                 {
                     SecondTabNettoValue5 = ComputeNettoValue(SecondTabNettoPrice5, PropHallEqAmount5, value);
                     SecondTabBruttoValue5 = ComputeBruttoValue(PropHallEqBrutto5, PropHallEqAmount5, value);
+                }
+                else
+                {
+                    SecondTabBruttoValue5 = 0;
+                    SecondTabNettoValue5 = 0;
                 }
             }
         }
@@ -1071,6 +1191,7 @@ namespace DiamondApp.ViewModels
             {
                 _secondTabNettoValue[0] = value;
                 RaisePropertyChanged("SecondTabNettoValue0");
+                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabNettoValue1
@@ -1080,6 +1201,7 @@ namespace DiamondApp.ViewModels
             {
                 _secondTabNettoValue[1] = value;
                 RaisePropertyChanged("SecondTabNettoValue1");
+                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabNettoValue2
@@ -1089,6 +1211,7 @@ namespace DiamondApp.ViewModels
             {
                 _secondTabNettoValue[2] = value;
                 RaisePropertyChanged("SecondTabNettoValue2");
+                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabNettoValue3
@@ -1098,6 +1221,7 @@ namespace DiamondApp.ViewModels
             {
                 _secondTabNettoValue[3] = value;
                 RaisePropertyChanged("SecondTabNettoValue3");
+                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabNettoValue4
@@ -1107,6 +1231,7 @@ namespace DiamondApp.ViewModels
             {
                 _secondTabNettoValue[4] = value;
                 RaisePropertyChanged("SecondTabNettoValue4");
+                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabNettoValue5
@@ -1116,6 +1241,7 @@ namespace DiamondApp.ViewModels
             {
                 _secondTabNettoValue[5] = value;
                 RaisePropertyChanged("SecondTabNettoValue5");
+                ComputeSecondTabSumNettoValue();
             }
         }
 
@@ -1127,7 +1253,6 @@ namespace DiamondApp.ViewModels
                 _secondTabBruttoValue[0] = value;
                 RaisePropertyChanged("SecondTabBruttoValue0");
                 ComputeSecondTabSumBruttoValue();
-                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabBruttoValue1
@@ -1138,7 +1263,6 @@ namespace DiamondApp.ViewModels
                 _secondTabBruttoValue[1] = value;
                 RaisePropertyChanged("SecondTabBruttoValue1");
                 ComputeSecondTabSumBruttoValue();
-                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabBruttoValue2
@@ -1149,7 +1273,6 @@ namespace DiamondApp.ViewModels
                 _secondTabBruttoValue[2] = value;
                 RaisePropertyChanged("SecondTabBruttoValue2");
                 ComputeSecondTabSumBruttoValue();
-                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabBruttoValue3
@@ -1160,7 +1283,6 @@ namespace DiamondApp.ViewModels
                 _secondTabBruttoValue[3] = value;
                 RaisePropertyChanged("SecondTabBruttoValue3");
                 ComputeSecondTabSumBruttoValue();
-                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabBruttoValue4
@@ -1171,7 +1293,6 @@ namespace DiamondApp.ViewModels
                 _secondTabBruttoValue[4] = value;
                 RaisePropertyChanged("SecondTabBruttoValue4");
                 ComputeSecondTabSumBruttoValue();
-                ComputeSecondTabSumNettoValue();
             }
         }
         public decimal SecondTabBruttoValue5
@@ -1182,7 +1303,6 @@ namespace DiamondApp.ViewModels
                 _secondTabBruttoValue[5] = value;
                 RaisePropertyChanged("SecondTabBruttoValue5");
                 ComputeSecondTabSumBruttoValue();
-                ComputeSecondTabSumNettoValue();
             }
         }
 
