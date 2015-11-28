@@ -77,6 +77,7 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 \subsection{Wykorzystana technologia}
 \subsubsection{.NET/C\#}
 \subsubsection{WPF}
+\subsubsection{XAML}
 \subsection{Wykorzystane narzêdzia}
 \subsubsection{Visual Studio 2013}
 \subsubsection{SQL Server Management Studio}
@@ -147,7 +148,31 @@ Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit jest ustalanie z 
 \section{Implementacja}
 \subsection{Architektura aplikacji}
 \subsubsection{Wzorce architektoniczne oprogramowania}
+
+W in¿ynierii oprogramowania analogicznie jak w innych dziedzinach, w których przeprowadzana jest operacja budowania zadanego przedmiotu, nale¿y starannie zaplanowaæ jego proces. W tym calu nale¿y kierowaæ siê przyjêtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mówi¹ o tym, i¿ nale¿y dok³adnie okreœliæ wymagania, które powinno budowane oprogramowanie spe³niaæ, a nastêpnie ustaliæ jego ogóln¹ architekturê. Punkt ten jest niebywale wa¿ny z racji na problematycznoœæ zmiany architektury zbudowanego ju¿ systemu. W celu zobrazowania tego zagadnienia mo¿na przywo³aæ operacjê budowy budynku. Wszelkie zmiany dotycz¹ce jego konstrukcji s¹ ciê¿kie do zrealizowania w sytuacji, w której jest on ju¿ fizycznie gotowy. Kolejne fazy polegaj¹ na realizacji opisanej wczeœniej architektury poprzez implementacjê wszystkich komponentów oprogramowania wraz z ich wzajemnymi po³¹czeniami, przetestowanie ca³ego systemu oraz jego finalne uruchomienie wraz z usuwaniem wykrytych podczas jego dzia³ania b³êdów.
+
+Odnosz¹c siê do planowania architektury systemu bardzo pomocne okazuj¹ siê dostêpne wzorce architektoniczne. Wzorce te s¹ to sprawdzone oraz zaakceptowane sposoby rozwi¹zania okreœlonego problemu z dziedziny architektury oprogramowania, okreœlaj¹ce ogóln¹ strukturê systemu informatycznego, zasady komunikacji pomiêdzy komponentami oraz elementy wchodz¹ce w jego sk³ad wraz z opisem ich funkcji. Wybór odpowiedniego wzorca w du¿ej mierze zale¿ny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwi¹zaniem jest MVVM (Model View ViewModel), który jest zmodyfikowan¹ wersj¹ wzorca MVC, zawieraj¹c¹ specjalizacjê modelu prezentacji.
+
 \subsubsection{Zastosowany wzorzec architektoniczny – MVVM}
+
+MVVM jest to wzorzec, który dziêki funkcjonalnoœci odseparowania warstwy prezentacji od warstwy logiki biznesowej, umo¿liwia napisanie ³atwo testowalnej oraz prostej w rozbudowanie aplikacji, której fragment kodu mo¿e zostaæ ponownie u¿yty w innych projektach. Opisywany wzorzec cieszy siê du¿¹ popularnoœci¹ w gronie developerów WPF z powodu mo¿liwoœci wykorzystania najwiêkszych atutów tej technologii, takich jak komendy (command), wi¹zania (binding) oraz zachowania (behavior). Kod aplikacji o architekturze Model-View-ViewModel podzielony jest, zgodnie z jego nazw¹ na trzy oddzielne warstwy Model, View oraz ViewModel, z których ka¿da przechowuje dedykowane dla siebie dane i spe³nia okreœlone funkcje.
+
+Model jest to warstwa, która odpowiedzialna jest w omawianym wzorcu za logikê biznesow¹ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu in¿ynierskiego warstwa ta reprezentowana jest przez przez klasy, które utworzone zosta³y za pomoc¹ oprogramowania Entity Framework, s³u¿¹cego do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Przekazywanie informacji do kontrolek wykorzystanych w aplikacji WPF odbywa siê za poœrednictwem systemu bindowania. Wszelkie klasy zawieraj¹ce dane, które maja przekazane byæ z poziomu modelu do warstwy widoku, z którego u¿ytkownik mo¿e owe informacje odczytaæ zobowi¹zane s¹ do implementacji interfejsu INotifyPropertyChanged lub INotifyPropertyChanged, który umo¿liwia przeprowadzenie powy¿szej operacji.
+
+ViewModel
+t
+t
+t
+t
+t
+
+View
+v
+v
+v
+v
+v
+
 \subsubsection{Model aplikacji}
 \subsection{Architektura bazy danych}
 \subsubsection{Definicja bazy danych}
@@ -289,7 +314,14 @@ https://opensource.org/licenses/MS-PL
 
 %wpf extended - na razie brak
 
-% galasoft mvvm
+% wzorce architektoniczne oprogramowania
+\bibitem{FazyProdukcjiOprogramowania} 
+Jaszkiewicz A. \textsl{In¿ynieria oprogramowania}, Wydawnictwo Helion, 1997
+
+% Windows 8. Programowanie aplikacji z wykorzystaniem C# i XAML <- o MVVM
+
+\bibitem{LogikaBiznesowa}
+Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletny przewodnik dla programistów interaktywnych aplikacji internetowych w Visual Studio}, Wydawnictwo Helion, Gliwice 2014
 
 %Nazwisko I. \textsl{tytu³}, miasto, rok
 \bibitem{nazwa} Jakaœ pozycja literatury
