@@ -1,0 +1,302 @@
+\documentclass[twoside]{projektInzynierskiMS}
+\usepackage{polski}
+\usepackage[cp1250]{inputenc}
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+%\drukJednostronny
+
+%% tytu≥ promotor i autor (\title to komenda standardowa)
+\title{Projekt i wykonanie aplikacji bazodanowej wspomagajπcej pracÍ wybranej sieci hotelowej}
+\promotor{dr. Jaros≥aw Karcewicz}
+
+
+%% kaødy autor musi mieÊ 4 argumenty: imiÍ nazwisko, nr albumu, procent wk≥adu, opis wk≥adu
+\autor{£ukasz Lis}{112233}{1} {Wk≥ad pracy lisa}
+	
+\autor{Sebastian Nalepka}{225265}{3} {Wk≥ad pracy seby}
+
+\autor{Mateusz Ogiermann}{112233}{0}	
+{Wk≥ad pracy ogi}
+	
+	
+
+
+%% dedykacja mile widziana
+\dedykacja{To jest\\dedykacja}
+%\NumeryNaPoczatku
+%% numeracja wzorÛw tu w≥πczona typu (1.2.3), ta druga to typu (1.2), a domyúlnie typu (1)
+%\subsectionWzory
+% \sectionWzory  
+
+%\rozdzialy
+
+
+%\literowaNumeracjaDodatkow %% w≥πczy numeracjÍ dodatkÛw literami
+%\rzymskaNumeracjaDodatkow  %%w≥πczy numeracjÍ dodatkÛw liczbami rzymskimi
+
+%% wy≥πczenie wyjaúnieÒ:
+\bezWyjasnien
+
+%% standardowe komendy \newtheorem  dzia≥ajπ jak w oryginale
+\newtheorem{tw}{Twierdzenie}[subsection]
+\newtheorem{twa}{Twierdzenie}[section]
+\newtheorem{dd}{Definicja}[subsection]
+
+\begin{document}
+
+Obecna sytuacja rynkowa zwiπzana z istnieniem duøej iloúci firm w zakresie kaødej branøy wymusza na przedsiÍbiorcach ciπg≥e zwiÍkszanie swojej atrakcyjnoúci oraz konkurencyjnoúci w celu zdobycia potencjalnego klienta. W realizacji powyøszego zadania konieczne jest wdraøanie nowoczesnych metod umoøliwiajπcych miÍdzy innymi obniøenie kosztÛw pracy, co wprost przek≥ada siÍ na niøszπ cenÍ produktu koÒcowego. Niøsza cena dla klienta jest jednym z najwaøniejszych elementÛw, ktÛry determinuje wybÛr konkretnego us≥ugodawcy. Aspekt ten dotyczy takøe branøy hotelarskiej, ktÛra w sposÛb bezpoúredni dotyczy naszej pracy.
+	Liczba hoteli w Polsce od kilkunastu lat nieprzerwanie roúnie \cite{LiczbaHoteli}. Implikuje to koniecznoúÊ wzmoøonej walki o klienta w celu utrzymania siÍ na rynku. Obniøenie cen us≥ug wynajmu pokoi, sal konferencyjnych oraz cateringÛw przy zachowaniu odpowiedniego poziomu dochodÛw jest problemem, z ktÛrym zmaga siÍ kaøda sieÊ hotelowa. PrzedsiÍbiorcy przeúcigajπ siÍ w znajdowaniu coraz to nowszych i efektywniejszych rozwiπzaÒ, ktÛre majπ na celu rozwiπzanie owego problemu. W XXI wieku duøπ pomocπ w tym zakresie okazuje siÍ informatyzacja.
+
+\section{Geneza projektu}
+
+Podczas przeprowadzania transakcji dotyczπcej organizacji szkolenia w jednej z sieci hotelowych, dostrzeøony zosta≥ potencjalny problem wynikajπcy z manualnego operowania wszelkimi danymi przez pracownikÛw dzia≥u sprzedaøy. Pracownicy Ci w czasie spotkania z klientem majπ za zadanie ustalenie wszelkich wartoúci cenowych us≥ug wybranych przez klienta. Us≥ugi te bezpoúrednio zwiπzane sπ z typem wydarzenia, ktÛre klient chce zorganizowaÊ. Przewaønie sπ to wszelkiego rodzaju konferencje, kilkudniowe szkolenia firmowe, ale takøe imprezy weselne, urodzinowe, czy spotkania rodzinne. Przez wzglπd na rÛønπ specyfikÍ powyøszych przedsiÍwziÍÊ sieÊ hotelowa dysponuje szerokπ gamπ us≥ug z nimi zwiπzanych. 
+
+W czasie tworzenia przez sprzedawcÍ propozycji cenowej organizowanego wydarzenia, klient ma moøliwoúÊ wyboru odpowiedniej dla jego potrzeb sali konferencyjnej lub bankietowej wraz z jej dodatkowym wyposaøeniem, ustalenia aspektÛw gastronomicznych, takich jak liczba i rodzaj posi≥kÛw oraz napojÛw, a takøe wyborem odpowiedniego typu pokoju hotelowego. Po wstÍpnym wyborze zakresu us≥ug, elementy te uzupe≥niane sπ o liczbÍ osÛb, ktÛre bÍdπ w wydarzeniu uczestniczyÊ, a takøe iloúÊ dni jego trwania. Kolejnym etapem jest negocjacja rabatÛw oraz finalnie ustalenie formy zap≥aty za organizowane przedsiÍwziÍcie. Aktualnie operacja ta wraz z procesem tworzeniem dokumentu propozycji cenowej przeprowadzana jest za pomocπ aplikacji Microsoft Excel jak rÛwnieø w wersji papierowej. Obydwie metodologie generujπ liczne problemy, ktÛre bezpoúrednio wp≥ywajπ na zwiÍkszenie kosztÛw generowanych przez pracownikÛw, a co za tym idzie ceny oferowanych us≥ug. Pierwszy problem odnosi siÍ do aspektu utrudnienia aktualizacji danych, ktÛry jest nieod≥πcznym elementem branøy. Ceny pokoi hotelowych ulegajπ czÍstym modyfikacjom oraz uzaleønione sπ od sytuacji rynkowej, organizowanych okolicznych wydarzeÒ rozrywkowych i kulturalnych oraz samego faktu wolnej ich iloúci w danym czasie. Analogicznie sytuacja przedstawia siÍ w przypadku produktÛw gastronomicznych oraz pozosta≥ych wynajmowanych pomieszczeÒ.
+
+Aktualnie wszelkie modyfikacje cennikÛw pokoi hotelowych, sal moøliwych do wynajÍcia oraz dostÍpnych towarÛw dokonywane sπ przez menadøera sprzedaøy, ktÛry za poúrednictwem poczty elektronicznej przekazuje uaktualnione wersje arkuszy kalkulacyjnych oraz listy cen okreúlonym sprzedawcom. CzÍste zmiany zobowiπzujπ pracownikÛw dzia≥u sprzedaøy do ciπg≥ej kontroli skrzynki elektronicznej oraz powodujπ presjÍ spowodowanπ posiadaniem potencjalnie nieaktualnych danych. Zaawansowane arkusze kalkulacyjne wykonane w aplikacji Excel podatne sπ na b≥Ídy ludzkie, wymuszajπ na pracownikach dobrπ znajomoúÊ oprogramowania oraz umiejÍtnoúÊ jego obs≥ugi, co z kolei niekorzystnie przek≥ada siÍ na nowych pracownikÛw oraz pracodawcÍ, ktÛry zobowiπzany jest przeprowadzaÊ d≥ugie i kosztowne szkolenia w tym zakresie.
+Kolejnym dostrzeøonym problemem jest zagadnienie czasoch≥onnoúci wyszukiwania danych dotyczπcych produktÛw znajdujπcych siÍ na hotelowej restauracji i ich cen. Pracownik otrzymuje rozbudowanπ listÍ produktÛw wraz z przyporzπdkowanymi im cenami i we w≥asnym zakresie zobligowany jest znaleüÊ interesujπcπ go pozycjÍ w czasie przygotowywania propozycji cenowej. 
+
+Dostrzegajπc powyøsze problemy zdecydowano siÍ wykonaÊ dedykowanπ aplikacjÍ bazodanowπ, ktÛrej celem jest ich rozwiπzanie. Za≥oøono, øe konieczne by by≥o, aby kaødy ze sprzedawcÛw posiada≥ moøliwoúÊ uruchomienia na swoim s≥uøbowym komputerze programu, ktÛry dziÍki po≥πczeniu z bazπ danych i wykorzystaniu jej funkcjonalnoúci umoøliwi≥by przyspieszenie procesu przeprowadzania transakcji z klientem poprzez automatycznπ aktualizacjÍ cennikÛw oraz przedstawienie listy produktÛw gastronomicznych w skategoryzowany sposÛb. DziÍki przechowywaniu wszystkich propozycji cenowych w bazie danych, zanika≥aby koniecznoúÊ samodzielnej ich kategoryzacji i dbania o bezpieczeÒstwo na lokalnym komputerze. Umoøliwi≥oby to pracownikom pracÍ na rÛønych maszynach, co w znaczny sposÛb zwiÍkszy≥oby ich elastycznoúÊ.
+
+Kolejnym atutem przedstawionego rozwiπzania by≥oby umoøliwienie kierownictwu z poziomu kont administratorskich kontroli pracownikÛw poprzez zdalny wglπd w przygotowywane przez nich propozycje cenowe, a co za tym idzie ustalanych z klientem cen oraz zniøek. Menadøer sprzedaøy za pomocπ swojego uprzywilejowanego konta posiada≥by rÛwnieø moøliwoúÊ aktualizacji odpowiednich tabel danych, dziÍki czemu zmiany natychmiastowo by≥yby widocznie na kontach sprzedawcÛw. Zmiany te dotyczy≥yby moøliwoúci modyfikacji cen oferowanych us≥ug i produktÛw oraz kontroli sk≥adu pracowniczego poprzez funkcjonalnoúÊ dodawania, usuwania a takøe modyfikacji ich kont. 
+
+
+\begin{twa}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{twa}
+\begin{dd}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{dd}
+
+\thesection,\thesubsection,\thesubsubsection,
+
+\section{Analiza przedwdroøeniowa}
+\section{Istniejπce rozwiπzania konkurencyjne}
+\section{Zastosowane rozwiπzania}
+\subsection{Wykorzystana technologia}
+\subsubsection{.NET/C\#}
+\subsubsection{WPF}
+\subsection{Wykorzystane narzÍdzia}
+\subsubsection{Visual Studio 2013}
+\subsubsection{SQL Server Management Studio}
+\subsubsection{Trello}
+
+Podczas pracy zespo≥owej napotyka siÍ liczne problemy zwiπzane z organizacjπ pracy, jej synchronizacjπ oraz podzia≥em obowiπzkÛw. StopieÒ zaawansowania przedstawionych problemÛw dodatkowo wzrasta, w sytuacji, gdy wspÛ≥praca zespo≥u przebiega zdalnie. W takich okolicznoúciach warto pos≥uøyÊ siÍ dedykowanymi narzÍdziami, ktÛre umoøliwiajπ prostπ, szybkπ i skutecznπ komunikacjÍ wspierajπcπ pracÍ wielu osÛb nad jednym projektem. 
+Trello jest to darmowa aplikacja, ktÛrej przeznaczeniem jest wspieranie organizacji pracy grupowej opierajπc siÍ na metodyce Kanban \cite{Kanban}, ktÛra zaadoptowana zosta≥a na potrzeby inøynierii oprogramowania. Potencjalny wzrost wydajnoúci pracy przy uøyciu Trello ma nastπpiÊ dziÍki scentralizowanemu systemowi zarzπdzania projektem, ktÛry opiera siÍ na wirtualnych tablicach, na ktÛrych ulokowane sπ listy zadaÒ.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{trello.jpg}
+    \caption{Interfejs aplikacji webowej Trello, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+
+Listy te umoøliwiajπ konstruowanie zadaÒ w postaci tak zwanych kafelek, ktÛre w bardzo intuicyjny sposÛb moøna przenosiÊ pomiÍdzy listami za pomocπ techniki drag-and-drop. Kaøda kafelka reprezentujπca zadanie w Trello posiada szereg dodatkowych funkcjonalnoúci. W czasie pracy nad projektem wykorzystano opcjÍ przypisania konkretnej osoby lub grupy osÛb do zadania, co jednoznacznie determinowa≥o odpowiedzialnoúÊ jego wykonania oraz funkcjÍ utworzenia listy czynnoúci, ktÛre naleøy wykonaÊ w celu realizacji zadania. Dodatkowym waønym aspektem jest data, ktÛra po wspÛlnych ustaleniach przypisywana jest do konkretnego zadania i stanowi ostateczny termin wprowadzenia danej funkcjonalnoúci.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{trello2.jpg}
+
+    \caption{SzczegÛ≥y zadania na pojedynczej kafelce., èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+
+Ciekawπ funkcjonalnoúciπ godnπ przedstawienia sπ takøe powiadomienia zmian, ktÛre w sposÛb automatyczny przekazywane sπ na skrzynkÍ elektronicznπ lub jako powiadomienia push na urzπdzenia przenoúne. 
+DziÍki temu, iø narzÍdzie Trello dostÍpne jest w postaci webowej, a takøe jako aplikacja mobilna na Androida, iOS oraz Windows 8 \cite{PlatformyTrello}, dostÍp do niej jest w znaczny sposÛb u≥atwiony. Umoøliwia to otrzymanie niemal natychmiastowej informacji o naniesionych zmianach w projekcie lub zbliøajπcym siÍ terminie ukoÒczenia zadania, do ktÛrego jesteúmy przypisani.
+
+Wszystkie przedstawione funkcjonalnoúci narzÍdzia Trello umoøliwi≥y zespo≥owi uproszczenie i przyspieszenie procesu organizacji pracy nad projektem co w konsekwencji doprowadzi≥o do oszczÍdnoúci czasowych, ktÛre przeznaczone zosta≥y na elementy imlementacyjne budowanego systemu.
+
+\subsubsection{SourceTree + GitHub}
+
+pisze tutaj sobie co lalala
+
+\subsubsection{ReSharper}
+
+WydajnoúÊ pracy w projektach developerskich jest kluczowπ kwestiπ, ktÛra bezpoúrednio przek≥ada siÍ na korzyúci finansowe i zaoszczÍdzony czas. Istniejπ narzÍdzia, ktÛrych przeznaczeniem jest zwiÍkszenie efektywnoúci pracy programisty poprzez zautomatyzowanie czÍsto powtarzajπcych siÍ czynnoúci oraz nadzorowanie pisanego kodu wed≥ug ustalonych wczeúniej zasad.
+
+ReSharper jest to narzÍdzie zaprojektowane z myúlπ o programistach .NET \cite{.NETOpis} pracujπcych w Microsoft Visual Studio, ktÛre w znacznym stopniu rozszerza dostÍpnπ funkcjonalnoúÊ wyøej wymienionego úrodowiska, u≥atwiajπc tym samym pisanie oraz refaktoryzacjÍ kodu.
+
+Funkcje dostÍpne z poziomu ReSharpera moøna podzieliÊ na kilkanaúcie modu≥Ûw, z ktÛrych jednym z najwaøniejszych jest modu≥ zajmujπcy siÍ inspekcjπ kodu. Podczas pracy programisty z uruchomionym w tle ReSharperem, w czasie rzeczywistym sprawdzane jest ponad 1700 regu≥ dotyczπcych prawid≥owoúci kodu i w sytuacji znalezienia nieúcis≥oúci, znaleziony wyjπtek natychmiast wyúwietlany jest na poziomie graficznego interfejsu Visual Studio z dok≥adnym jego opisem i miejscem wystπpienia. Wyjπtki te dotyczπ miÍdzy innymi moøliwoúci zastπpienia fragmentu kodu jego wydajniejszπ wersjπ <przyklad>, ostrzeøeniem programisty przed kodem, ktÛry potencjalnie moøe doprowadziÊ do nieprawid≥owego dzia≥ania ca≥ego oprogramowania lub informacjπ o fragmencie, ktÛry jest kodem martwym \cite{MartwyKod}. 
+
+Kolejnym bardzo istotnym modu≥em jest funkcja generowania kodu. Podczas programowania wiele czynnoúci takich jak pisanie nowych klas, metod, implementacja interfejsÛw czy zmiana nazw wielokrotnie siÍ powtarza. DziÍki odpowiednim skrÛtom klawiszowym wszystkie te elementy ReSharper wykona za programistÍ. Przeniesie on wybranπ klasÍ do oddzielnego pliku, utworzy na podstawie nazwy i jej typu szablon brakujπcej metody, wygeneruje wymagane przy dziedziczeniu interfejsu wszystkie jego elementy oraz automatycznie zamieni wybranπ nazwÍ na nowπ, w kaødym miejscu jej wystÍpowania. SzczegÛlnie ostatnia opcja przy rozbudowanym systemie jest wyjπtkowo przydatna i znacznie skraca czas wykonywanej czynnoúci.
+
+Przedstawione funkcjonalnoúci ReSharpera wraz z wieloma innymi dostÍpnymi do zapoznania siÍ pod \cite{ReSharperFunkcje} elementami, umoøliwi≥y skrÛcenie etapu implementacji wymaganych w projekcie modu≥Ûw poprzez zautomatyzowanie powtarzajπcych siÍ czynnoúci i zniwelowanie pojawiajπcych siÍ zagroøeÒ juø we wczesnej fazie pisania kodu. Korzyúciπ p≥ynπcπ z tego rozwiπzania by≥a oszczÍdnoúÊ czasowa, ktÛra umoøliwi≥a zwrÛcenie wiÍkszej uwagi na aspekt przetestowania wdroøonych rozwiπzaÒ.
+
+\subsubsection{Jenkins}
+\subsection{Biblioteki zewnÍtrzne}
+\subsubsection{Extended WPF Toolkit}
+
+Waønym aspektem kaødego rodzaju oprogramowania uøytkowego jest stopieÒ trudnoúci jego obs≥ugi. Interfejs graficzny aplikacji powinien byÊ budowany w sposÛb przejrzysty i intuicyjny dla uøytkownika w celu bezproblemowego korzystania z jej funkcjonalnoúci. Kaødy element programu, ktÛry przysparza uøytkownikowi problem w obs≥udze jest potencjalnym fragmentem, ktÛry moøe doprowadziÊ do nieprawid≥owego dzia≥ania oprogramowania. Dla przyk≥adu pole, do ktÛrego uøytkownik zobowiπzany jest wprowadziÊ datÍ moøe przysporzyÊ sporo problemÛw w sytuacji, gdy jest ono zwyk≥ym polem tekstowym. W takim przypadku nie wiadomo jaki jest poøπdany format daty, co implikuje koniecznoúÊ dok≥adnej walidacji wpisanych przez uøytkownika ciπgÛw znakÛw oraz informacji zwrotnej w sytuacji b≥Ídnej ich formy.
+
+Domyúlnie technologia WPF podobnie jak WinForms posiada wbudowany pakiet kontrolek graficznych wraz z ich licznymi w≥asnoúciami i zdarzeniami. W≥asnoúci te umoøliwiajπ okreúlenie dok≥adnej formy uøytej kontrolki dotyczπcej jej koloru, wielkoúci, po≥oøenia, wyrÛwnania, nazwy oraz widocznoúci. Zdarzenia kontrolki z kolei odpowiadajπ za jej reakcje w czasie interakcji z uøytkownikiem oprogramowania w ktÛrym zosta≥a zastosowana. Zdarzenia te dotyczπ dla przyk≥adu klikniÍcia w kontrolkÍ, przesuniÍcia kursora myszki nad niπ oraz jej przesuniÍcia.
+
+Liczba domyúlnych kontrolek dla zaimplementowania niektÛrych funkcjonalnoúci nie jest jednak wystarczajπca. Odwo≥ujπc siÍ do przytoczonego przyk≥adu wpisania daty przez uøytkownika, WPF wymaga od programisty duøego wk≥adu pracy do prawid≥owego wykonania ten funkcjonalnoúci. Z pomocπ przychodzπ jednak dedykowane biblioteki rozszerzajπce, z ktÛrych jednπ jest Extended WPF Toolkit.
+
+Extended WPF Toolkit jest to darmowa biblioteka przeznaczona dla technologii WPF, ktÛra rozpowszechniana jest na zasadach Microsoft Public Licence \cite{MicrosoftPublicLicence}. Biblioteka ta w znacznym zakresie rozszerza liczbÍ domyúlnych kontrolek umoøliwiajπc szybkπ i prostπ implementacjÍ licznych funkcjonalnoúci, ktÛrych nie umoøliwia≥y kontrolki domyúlne. 
+
+Jednym z elementÛw, dla ktÛrych przedstawiona biblioteka znalaz≥a zastosowanie w projekcie jest wpisywanie przez uøytkownika wartoúci liczbowej do ustalonego pola. Kontrolka IntegerUpDown umoøliwia programiúcie zapisanie w jej w≥asnoúciach zakresu przyjmowanych liczb, ktÛre niweluje koniecznoúÊ implementacji dodatkowej walidacji. Dodajπc do tego domyúlne funkcje powyøszej kontrolki odnoszπce siÍ do wewnÍtrznego sprawdzania typu wpisanych przez uøytkownika znakÛw, podkreúlania i nieprzyjmowania b≥Ídnych danych oraz dwÛch graficznych przyciskÛw, ktÛre umoøliwiajπ po ich naciúniÍciu zmiany wpisanej wartoúci, kontrolka ta doskonale nadaje siÍ do przedstawionej funkcjonalnoúci odciπøajπc przy tym w znaczny sposÛb programistÍ.
+
+Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit jest ustalanie z poziomu programu daty. Kontrolka DatePicker umoøliwia uøytkownikowi wyboru daty w ustandaryzowanym formacie. Po operacji naciúniÍcia kursorem myszki w przedstawianπ kontrolkÍ wyúwietlany jest przejrzysty kalendarz, w ktÛrym proces wyboru daty polega na wybraniu przez uøytkownika odpowiedniego roku, miesiπca, a nastÍpnie klikniÍcia w dzieÒ odpowiadajπcy jego potrzebom.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.25\textwidth]{ExtendedWpfDataPicker.jpg}
+    \caption{Kontrolka DatePicker, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+
+\subsubsection{PDFsharp \& MigraDoc}
+
+
+\section{Implementacja}
+\subsection{Architektura aplikacji}
+\subsubsection{Wzorce architektoniczne oprogramowania}
+\subsubsection{Zastosowany wzorzec architektoniczny ñ MVVM}
+\subsubsection{Model aplikacji}
+\subsection{Architektura bazy danych}
+\subsubsection{Definicja bazy danych}
+\subsubsection{MS-SQL ñ Zastosowany system zarzπdzania bazπ danych}
+\subsubsection{Budowa bazy danych uøytej w projekcie}
+\subsection{Komunikacja bazy danych z projektem programistycznym}
+\subsubsection{NarzÍdzia ORM}
+\subsubsection{Zastosowane oprogramowanie mapowania obiektowo relacyjnego ñ Entity Framework}
+\subsubsection{Dostosowanie Entity Framework do wymagaÒ zwiπzanych ze wzorcem MVVM}
+\subsubsection{Uøycie bazy danych ze strony projektu C\#}
+\subsection{Automatyzacja wydawania kolejnych wersji programu}
+\subsubsection{Continuous Integration ñ definicja}
+\subsubsection{Continuous Deployment ñ definicja}
+\subsubsection{Continuous Delivery ñ definicja}
+\subsubsection{Schemat budowania programu}
+\section{Specyfikacja zewnÍtrzna}
+\subsection{Logowanie}
+\subsection{Zarzπdzanie kontem sprzedawcy oraz administratora  (obs≥uga)}
+\subsection{Tworzenie nowej propozycji cenowej}
+\subsubsection{Opis klienta}
+\subsubsection{SzczegÛ≥y rezerwacji}
+\subsubsection{Us≥ugi gastronomiczne}
+\subsubsection{Us≥ugi noclegowe}
+\subsubsection{Us≥ugi dodatkowe i forma p≥atnoúci}
+\subsection{Edycja istniejπcej propozycji cenowej}
+\subsection{Tworzenie pliku PDF istniejπcej propozycji cenowej}
+\subsection{Modyfikacja kont uøytkownikÛw/sprzedawcÛw}
+\subsubsection{Dodawanie konta}
+\subsubsection{Edycja konta}
+\subsubsection{Usuwanie konta}
+\subsection{Modyfikacja s≥ownikÛw cenowych}
+\section{Specyfikacja wewnÍtrzna}
+\subsection{Logowanie}
+\subsubsection{Funkcja haszujπca}
+\subsubsection{SHA-2}
+\subsubsection{Pierwsze logowanie}
+\subsection{Konto administratora i uøytkownika ñ ListView}
+\subsection{Tworzenie propozycji cenowej}
+\subsection{Edycja s≥ownikÛw oraz kont uøytkownikÛw}
+\subsubsection{DataGridView a dynamiczna komunikacja z Bazπ danych}
+\subsection{Tworzenie szablonu PDF propozycji cenowej}
+\section{Perspektywy rozwoju oprogramowania}
+
+\begin{equation}
+a^2+b^2=c^2
+\end{equation}
+
+\begin{tw}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{tw}
+
+\begin{dd}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{dd}
+\begin{equation}
+E=mc^2
+\end{equation}
+
+Lorem Ipsum generator (\texttt{http://lipsum.pl/index.php});
+
+Moskalom przez konar b≥ysnÍ≥o jako po zadzwonieniu na wzmiankÍ Warszawy rzek≥, podnios≥szy g≥owÍ: Pan úwiata wie, øe gotyckiej sπ nasze spraw bernardyÒskie. cÛø by znaczyÊ w poÒczochach, ze úwiecami w uczciwoúci, w oknie sta≥ patrzπc, dumajπc wonnymi powiewami kwiatÛw oddychajπc oblicze aø do dworu. Tu úmiech m≥odzieøy mowÍ Wojskiego zag≥uszy≥. Wstano od dzisiaj nie dozwala≥, by tu RykÛw przerwa≥ i s≥udzy. I oglπda czule, jako úwieca przez grzecznoúÊ nie po duszy, a ja wam s≥uøyÊ, moje panny cÛrki choÊ suknia krÛtka, oko paÒskie konia tuczy. Wojski towarzystwa nam siÍ damom, starcom i tuø nad b≥Íkitnym Niemnem rozciπgnionych. Do zobaczenia! tak gadaÊ: CÛø z≥ego, øe tamuje progresy, øe mi wybaczy, Øe w poÒczochach, ze srebrnymi klamrami trzewiki peruka z nowych goúci. W takim Litwinka tylko siÍ jak mnich na prawo, kozio≥ka, z brabanckich koronek poprawia≥a, to mÛwiπc, øe odg≥os trπbki i ubiory. By≥a to mÛwiπc, øe jacyú Francuzi wymowny zrobili wynalazek: iø ludzie sπ architektury. ChoÊ SÍdzia tuø to mÛwiπc, øe przeszkadza kulturze, øe jacyú Francuzi wymowny zrobili wynalazek: iø ludzie sπ architektury. ChoÊ SÍdzia wie, øe nauczyciel ≥adny i dwiestu.
+
+%% UWaga na \newlineTekst oraz \newlineSpis. Moøna teø uøyÊ \newline, dzia≥a jak \newlineSpis\newlineTekst
+\section[Tytu≥ drugiego rozdzia≥u. Bardzo d≥ugi \ldots]
+        {Tytu≥ drugiego rozdzia≥u. \newlineTekst Bardzo d≥ugi tytu≥. \newlineTekst
+          Jego \newlineSpis formatowanie jest trudniejsze}
+
+Tu jest wnÍtrze rozdzia≥u drugiego.          
+
+
+
+MÛwiπc, Podkomorzemu úcisnπ≥ za rarogiem zazdroszczono domowi, przed nim leøy Fedon i SuwarÛw w naukach mniej krzykliwy i wionÍ≥a ogrodem przez Niemen rzek≥: Dziú, nowym zwyczajem my na konikach ma≥e øarciki umia≥ komponowaÊ iøby je wicher rozerwie i dziwniejsze od kilku dzieje chciano przeczyÊ chwa≥y. WiÍc do z≥otego run on Pana MÛwiπc, Podkomorzemu úcisnπ≥ za rarogiem zazdroszczono domowi, przed nim dla zabawki Bo nie rozwity, lecz latem nic nie jest obora. Dozoru tego dnia powiada≥. Dobrze, mÛj Tadeuszu, øeú siÍ Soplica. wszyscy siedli i jelenie rogi z Rymszπ, Rymsza z pola. Tak kaøe u Niemna odebra≥ wiadomoúÊ. moøe teø same portrety na filarach, pod≥oga wys≥ana kamieniem, åciany bez rÍki lub papugπ w PaÒskim pisano zakonie i opisujÍ, bo tak nazywano m≥odzieÒca, ktÛry teraz za nim spostrzeg≥ siÍ, serce mu jak wiúnie bliüniÍta. U tej znalaz≥ podobne oczy, usta, lica. w czasie wojny otoczony chmurπ pu≥kÛw, tysiπcem dzia≥ zbrojny wprzπg≥szy w koÒcu úrÛd biesiadnikÛw siedzia≥ s≥ucha≥ zmruøywszy oczy, usta, lica. w sieni siad≥ przy jego wiernym ludem! Jak go pilnowa≥ i oczy wko≥o obraca≥ ostrÛøne. Gdy siÍ chlubi a zajπc jak.
+
+\dodatek{MÛj specjalny dodatek}
+
+Tu treúÊ dodatku. ZwrÛÊmy uwagÍ na sposÛb numerowania dodatku, 
+moøliwa jest zmiana numerowania, patrz wyjaúnienia.
+          
+%% to wpisuje siÍ do spisu treúci, ale bez numeru rozdzia≥u,
+%% moøna teø uøywaÊ \dodatek{Tytu≥}, ktÛry jest numerowany, ale inaczej niø rozdzia≥y.
+\dodatkowo{Rysunki}
+
+
+
+\dodatkowo{Programy}
+
+Tu programy
+
+\begin{verbatim}
+#include <stdio.h>
+
+int main()
+{
+   printf("Hello world\n");
+}
+\end{verbatim}
+
+\noindent
+Oraz 
+
+\bigskip
+
+\vrule\hspace{10pt}\begin{minipage}{10cm}
+\begin{verbatim*}
+<?php
+   echo "test=$test";
+?>
+\end{verbatim*}
+\end{minipage}
+
+\begin{tw}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{tw}
+\begin{thebibliography}{12}
+
+% wstÍp
+\bibitem{LiczbaHoteli} http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
+
+% trello
+\bibitem{Kanban}
+KrasiÒski M.: \textsl{Nauki o zarzπdzaniu}, Wydawnictwo Uniwersytetu Ekonomicznego we Wroc≥awiu, Wroc≥aw, 2013, str.24-32
+
+\bibitem{PlatformyTrello} 
+https://trello.com/platforms
+
+% ReSharper
+%znalesc ksiazke w ktorej jest opis .NET
+\bibitem{.NETOpis}
+Chappell D.: \textsl{Understanding .NET (2nd Edition)}, Wydawnictwo Addison-Wesley Professional, POPRAWI∆
+
+\bibitem{MartwyKod}
+Martin R.C.: \textsl{Czysty kod. PodrÍcznik dobrego programisty}, Wydawnictwo Helion, Gliwice 2014
+
+\bibitem{ReSharperFunkcje} 
+https://www.jetbrains.com/resharper/features/
+
+\bibitem{MicrosoftPublicLicence} 
+https://opensource.org/licenses/MS-PL
+
+%wpf extended - na razie brak
+
+% galasoft mvvm
+
+%Nazwisko I. \textsl{tytu≥}, miasto, rok
+\bibitem{nazwa} Jakaú pozycja literatury
+
+
+\end{thebibliography}
+
+\listoffigures
+
+\end{document}
