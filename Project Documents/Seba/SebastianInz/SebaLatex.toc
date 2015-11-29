@@ -26,10 +26,10 @@
 \contentsline {subsubsection}{\numberline {5.2.1}\kernsubsubsekcyjny Definicja bazy danych}{26}
 \contentsline {subsubsection}{\numberline {5.2.2}\kernsubsubsekcyjny MS-SQL \IeC {\textendash } Zastosowany system zarz\k adzania baz\k a danych}{26}
 \contentsline {subsubsection}{\numberline {5.2.3}\kernsubsubsekcyjny Budowa bazy danych u\.zytej w projekcie}{26}
-\contentsline {subsection}{\numberline {5.3}\kernsubsekcyjny Komunikacja bazy danych z projektem programistycznym}{26}
-\contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Narz\k edzia ORM}{26}
-\contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny Zastosowane oprogramowanie mapowania obiektowo relacyjnego \IeC {\textendash } Entity Framework}{26}
-\contentsline {subsubsection}{\numberline {5.3.3}\kernsubsubsekcyjny Dostosowanie Entity Framework do wymaga\'n zwi\k azanych ze wzorcem MVVM}{26}
+\contentsline {subsection}{\numberline {5.3}\kernsubsekcyjny Komunikacja bazy danych z projektem programistycznym}{27}
+\contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Narz\k edzia ORM}{27}
+\contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny Zastosowane oprogramowanie mapowania obiektowo relacyjnego \IeC {\textendash } Entity Framework}{27}
+\contentsline {subsubsection}{\numberline {5.3.3}\kernsubsubsekcyjny Dostosowanie Entity Framework do wymaga\'n zwi\k azanych ze wzorcem MVVM}{27}
 \contentsline {subsubsection}{\numberline {5.3.4}\kernsubsubsekcyjny U\.zycie bazy danych ze strony projektu C\#}{27}
 \contentsline {subsection}{\numberline {5.4}\kernsubsekcyjny Automatyzacja wydawania kolejnych wersji programu}{27}
 \contentsline {subsubsection}{\numberline {5.4.1}\kernsubsubsekcyjny Continuous Integration \IeC {\textendash } definicja}{27}

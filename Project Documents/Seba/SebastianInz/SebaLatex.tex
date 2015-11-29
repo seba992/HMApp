@@ -157,23 +157,16 @@ Odnosz¹c siê do planowania architektury systemu bardzo pomocne okazuj¹ siê dostê
 
 MVVM jest to wzorzec, który dziêki funkcjonalnoœci odseparowania warstwy prezentacji od warstwy logiki biznesowej, umo¿liwia napisanie ³atwo testowalnej oraz prostej w rozbudowanie aplikacji, której fragment kodu mo¿e zostaæ ponownie u¿yty w innych projektach. Opisywany wzorzec cieszy siê du¿¹ popularnoœci¹ w gronie developerów WPF z powodu mo¿liwoœci wykorzystania najwiêkszych atutów tej technologii, takich jak komendy (command), wi¹zania (binding) oraz zachowania (behavior). Kod aplikacji o architekturze Model-View-ViewModel podzielony jest, zgodnie z jego nazw¹ na trzy oddzielne warstwy Model, View oraz ViewModel, z których ka¿da przechowuje dedykowane dla siebie dane i spe³nia okreœlone funkcje.
 
-Model jest to warstwa, która odpowiedzialna jest w omawianym wzorcu za logikê biznesow¹ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu in¿ynierskiego warstwa ta reprezentowana jest przez przez klasy, które utworzone zosta³y za pomoc¹ oprogramowania Entity Framework, s³u¿¹cego do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Przekazywanie informacji do kontrolek wykorzystanych w aplikacji WPF odbywa siê za poœrednictwem systemu bindowania. Wszelkie klasy zawieraj¹ce dane, które maja przekazane byæ z poziomu modelu do warstwy widoku, z którego u¿ytkownik mo¿e owe informacje odczytaæ zobowi¹zane s¹ do implementacji interfejsu INotifyPropertyChanged lub INotifyPropertyChanged, który umo¿liwia przeprowadzenie powy¿szej operacji.
+Model to warstwa, która odpowiedzialna jest w omawianym wzorcu za logikê biznesow¹ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu in¿ynierskiego warstwa ta reprezentowana jest przez przez klasy, które utworzone zosta³y za pomoc¹ biblioteki Entity Framework, s³u¿¹cej do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Wszelkie klasy zawieraj¹ce dane, które maja przekazane byæ z poziomu modelu do warstwy widoku, z którego u¿ytkownik mo¿e owe informacje odczytaæ zobowi¹zane s¹ do implementacji interfejsu INotifyPropertyChanged lub INotifyCollectionChanged, który wspó³pracuje z bindingiem \cite{DataBinding} wykorzystywanym w WPF.
 
-ViewModel
-t
-t
-t
-t
-t
+ViewModel zajmuje siê reprezentacj¹ danych, które wysy³ane s¹ do widoku, nie maj¹c przy tym ¿adnej referencji do niego. Widok odnosi siê do elementów ViewModelu za poœrednictwem komend oraz wspomnianych operacji bindowania, co zapewnia pe³n¹ separacjê warstwy ViewModelu i umo¿liwia przetestowanie jej odrêbnie od modelu i czêœci prezentuj¹cej.
 
-View
-v
-v
-v
-v
-v
+Wastwa widoku (View) odpowiedzialna jest za wyœwietlanie danych i pe³ni rolê wy³¹cznie prezentacyjn¹. Jej komunikacja z warstw¹ modelu przebiega za poœrednictwem warstwy poœrednicz¹cej ViewModel, do której jest przy³¹czona za pomoc¹ w³aœciwoœci DataContext. W³aœciwoœæ ta wstrzykuje zale¿noœci pomiêdzy View oraz ViewModelem, który j¹ kontroluje. 
 
 \subsubsection{Model aplikacji}
+
+
+
 \subsection{Architektura bazy danych}
 \subsubsection{Definicja bazy danych}
 \subsubsection{MS-SQL – Zastosowany system zarz¹dzania baz¹ danych}
@@ -322,6 +315,9 @@ Jaszkiewicz A. \textsl{In¿ynieria oprogramowania}, Wydawnictwo Helion, 1997
 
 \bibitem{LogikaBiznesowa}
 Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletny przewodnik dla programistów interaktywnych aplikacji internetowych w Visual Studio}, Wydawnictwo Helion, Gliwice 2014
+
+\bibitem{DataBinding}
+MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
 
 %Nazwisko I. \textsl{tytu³}, miasto, rok
 \bibitem{nazwa} Jakaœ pozycja literatury
