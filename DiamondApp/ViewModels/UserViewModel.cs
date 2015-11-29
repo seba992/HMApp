@@ -4011,7 +4011,21 @@ namespace DiamondApp.ViewModels
                                      where q.Id_proposition == idProposition
                                      select q).ToList();
                 var hall = propEquipment.Find(item => item.Things == PropHallEqThing0);
-
+                var dicount = (from q in _ctx.PropHallEquipmentDiscount
+                               where q.Id_proposition == idProposition
+                               select q).SingleOrDefault();
+                if (dicount != null)
+                {
+                    dicount.Discount = PropHallEquipmentDiscountValue;
+                    dicount.StandardPrice = HallPrice;
+                }
+                else
+                {
+                    PropHallEquipmentDiscount newDiscount = new PropHallEquipmentDiscount();
+                    newDiscount.Id_proposition = _idProposition;
+                    newDiscount.StandardPrice = HallPrice;
+                    newDiscount.Discount = PropHallEquipmentDiscountValue;
+                }
                 if (hall != null)
                 {
                     if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
@@ -4022,15 +4036,18 @@ namespace DiamondApp.ViewModels
                             hall.Amount = PropHallEqAmount0;
                         _ctx.SaveChanges();
                     }
+
                 }
                 else if (PropHallEqThing0 != null)
                 {
                     PropHallEquipment newqEquipment = new PropHallEquipment();
                     newqEquipment.Things = PropHallEqThing0;
-                    newqEquipment.Things = PropHallEqThing0;
                     newqEquipment.Amount = PropHallEqAmount0;
                     newqEquipment.Days = PropHallEqDays0;
                     newqEquipment.BruttoPrice = PropHallEqBrutto0;
+                    newqEquipment.Vat = PropHallEqVat0;
+                    newqEquipment.Id_proposition = _idProposition;
+                    _ctx.PropHallEquipment.Add(newqEquipment);
                 }
                 //wposażenie
 
@@ -4044,6 +4061,7 @@ namespace DiamondApp.ViewModels
                         thing1.Things = PropHallEqThing1;
                         thing1.Amount = PropHallEqAmount1;
                         thing1.Days = PropHallEqDays1;
+                        thing1.Vat = PropHallEqVat1;
                         thing1.BruttoPrice = PropHallEqBrutto1;
                     }
                     else
@@ -4054,8 +4072,8 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays1;
                         newqEquipment.BruttoPrice = PropHallEqBrutto1;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat1;
                         _ctx.PropHallEquipment.Add(newqEquipment);
-
 
                     }
                 }
@@ -4070,6 +4088,7 @@ namespace DiamondApp.ViewModels
                         thing1.Amount = PropHallEqAmount2;
                         thing1.Days = PropHallEqDays2;
                         thing1.BruttoPrice = PropHallEqBrutto2;
+                        thing1.Vat = PropHallEqVat1;
                     }
                     else
                     {
@@ -4079,6 +4098,7 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays2;
                         newqEquipment.BruttoPrice = PropHallEqBrutto2;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat2;
                         _ctx.PropHallEquipment.Add(newqEquipment);
 
 
@@ -4095,6 +4115,7 @@ namespace DiamondApp.ViewModels
                         thing1.Amount = PropHallEqAmount3;
                         thing1.Days = PropHallEqDays3;
                         thing1.BruttoPrice = PropHallEqBrutto3;
+                        thing1.Vat = PropHallEqVat3;
                     }
                     else
                     {
@@ -4104,6 +4125,7 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays3;
                         newqEquipment.BruttoPrice = PropHallEqBrutto3;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat3;
                         _ctx.PropHallEquipment.Add(newqEquipment);
 
 
@@ -4120,6 +4142,7 @@ namespace DiamondApp.ViewModels
                         thing1.Amount = PropHallEqAmount4;
                         thing1.Days = PropHallEqDays4;
                         thing1.BruttoPrice = PropHallEqBrutto4;
+                        thing1.Vat = PropHallEqVat4;
                     }
                     else
                     {
@@ -4129,6 +4152,7 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays4;
                         newqEquipment.BruttoPrice = PropHallEqBrutto4;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat4;
                         _ctx.PropHallEquipment.Add(newqEquipment);
 
 
@@ -4145,6 +4169,7 @@ namespace DiamondApp.ViewModels
                         thing1.Amount = PropHallEqAmount5;
                         thing1.Days = PropHallEqDays5;
                         thing1.BruttoPrice = PropHallEqBrutto5;
+                        thing1.Vat = PropHallEqVat5;
                     }
                     else
                     {
@@ -4154,6 +4179,7 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays5;
                         newqEquipment.BruttoPrice = PropHallEqBrutto5;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat5;
                         _ctx.PropHallEquipment.Add(newqEquipment);
                         _ctx.SaveChanges();
 
