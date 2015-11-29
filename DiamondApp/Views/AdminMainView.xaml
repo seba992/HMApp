@@ -20,7 +20,7 @@
     </Window.DataContext>-->
 
     <Grid RenderTransformOrigin="0.0,0.0">
-        <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>
+       
         <Menu HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="1149" Margin="0,0,0,0">
             <MenuItem Header="Menu" HorizontalAlignment="Left" Width="47">
                 <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Click="VisibleElement" Margin="0,0,0,0" Command="{Binding CreateNewPropositionCommand}"/>
@@ -38,7 +38,7 @@
 
             </MenuItem>
         </Menu>
-
+      
         <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="536" Margin="7,62,0,0" VerticalAlignment="Top" Width="1055" SelectedValue="{Binding SelectedProposition}" IsHitTestVisible="True" Visibility="Hidden">
             <ListView.View>
                 <GridView>
@@ -69,7 +69,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+        
         <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1061" Visibility="Visible">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,0">
@@ -660,7 +660,7 @@
         </TabControl>
         <ComboBox x:Name="CBUser" HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="PropositionsSeller Mode=TwoWay,      UpdateSourceTrigger=PropertyChanged}" Visibility="Hidden"/>
         <Label x:Name="Luser" Content="Użytkownicy" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0" HorizontalContentAlignment="Right" Visibility="Hidden"/>
-
+        <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>     
     </Grid>
 </Window>
 

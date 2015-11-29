@@ -61,7 +61,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-
+       
         <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="1,35,0,0" VerticalAlignment="Top" Height="560" Width="1061">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
 
@@ -92,7 +92,8 @@
                         <ColumnDefinition Width="122.5"/>
                         <ColumnDefinition Width="114.5" />
                         <ColumnDefinition Width="136.5"/>
-                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="121" />
+                        <ColumnDefinition Width="130"/>
                         <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
 
@@ -134,18 +135,18 @@
                     <xctk:TimePicker x:Name="GodzinaDoTimePicker" Grid.Row="11" Grid.Column="3" Text="{Binding PropositionReservDetailsEndTime}" Margin="3"/>
                     <!--                    <TextBox x:Name="CzasTrwaniaTextBox" Grid.Row="11" Grid.Column="1" Margin="3" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>-->
 
-                    <TextBox x:Name="DlaTextBox" Grid.Column="6" Grid.Row="0" Margin="3" Text="{Binding PropositionClientCompanyName, Mode=TwoWay}" />
-                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="6" Grid.Row="1" Margin="3" AcceptsReturn="True" Text="{Binding PropositionClientCompanyAdress, Mode=TwoWay}" />
-                    <TextBox x:Name="DlaNipTextBox" Grid.Column="6" Grid.Row="2" Margin="3" Text="{Binding PropositionClientNip, Mode=TwoWay}" />
-                    <TextBox x:Name="TerminWaznoSciDatePicker" Grid.Row="3" Grid.Column="6" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.ValidityPropDate, StringFormat=\{0:yyyy-MM-dd\}}" IsEnabled="False"/>
+                    <TextBox x:Name="DlaTextBox" Grid.Column="6" Grid.Row="0" Margin="3" Text="{Binding PropositionClientCompanyName, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="6" Grid.Row="1" Margin="3" AcceptsReturn="True" Text="{Binding PropositionClientCompanyAdress, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="DlaNipTextBox" Grid.Column="6" Grid.Row="2" Margin="3" Text="{Binding PropositionClientNip, Mode=TwoWay}" MaxLength="10" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="TerminWaznoSciDatePicker" Grid.Row="3" Grid.Column="6" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.ValidityPropDate, StringFormat=\{0:yyyy-MM-dd\}}" IsEnabled="False" Grid.ColumnSpan="2"/>
 
-                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="6" Grid.Row="5" Margin="3" Text="{Binding PropositionClientCustromerFullName, Mode=TwoWay}" />
-                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="6" Grid.Row="6" Margin="3" Text="{Binding PropositionClientPhoneNum, Mode=TwoWay}" />
-                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="6" Grid.Row="7" Margin="3" Text="{Binding PropositionClientCustomerEmail, Mode=TwoWay}" />
-                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="6" Grid.Row="8" Margin="3" Text="{Binding PropositionClientDecisingPerFullName, Mode=TwoWay}" />
+                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="6" Grid.Row="5" Margin="3" Text="{Binding PropositionClientCustromerFullName, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="6" Grid.Row="6" Margin="3" Text="{Binding PropositionClientPhoneNum, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="6" Grid.Row="7" Margin="3" Text="{Binding PropositionClientCustomerEmail, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="6" Grid.Row="8" Margin="3" Text="{Binding PropositionClientDecisingPerFullName, Mode=TwoWay}" Grid.ColumnSpan="2" />
 
-                    <xctk:IntegerUpDown x:Name="IloscOsobTextBox" Grid.Column="6" Grid.Row="10" Margin="3" Minimum="1" Maximum="100000" Value="{Binding PropositionReservDetailsPeopleNumber}"/>
-                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="6" Grid.Row="11" Margin="3" ItemsSource="{Binding HallSettingList}" SelectedItem="{Binding PropositionReservDetailsHallSetting}" Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
+                    <xctk:IntegerUpDown x:Name="IloscOsobTextBox" Grid.Column="6" Grid.Row="10" Margin="3" Minimum="1" Maximum="100000" Value="{Binding PropositionReservDetailsPeopleNumber}" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="6" Grid.Row="11" Margin="3" ItemsSource="{Binding HallSettingList}" SelectedItem="{Binding PropositionReservDetailsHallSetting}" Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100" Grid.ColumnSpan="2"/>
 
                     <Label Grid.Column="1" Grid.Row="13" Content="Sala" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
                     <Label Grid.Column="2" Grid.Row="13" Content="Powierzchnia" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
@@ -161,8 +162,9 @@
                     <TextBox x:Name="OKTabelaSalaCena" Grid.Column="2" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text = "{Binding HallPrice, StringFormat=\{0:c\}}" />
                     <Label Grid.Row="15" Grid.Column="3" Content="Miesiąc: " HorizontalContentAlignment="Right" Margin="3" />
                     <TextBox x:Name="OKSalaMiesiac" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding EventMonth}"/>
-
-                    <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="3" Grid.Row="13" VerticalAlignment="Top" Width="118" Grid.Column="6" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>
+                    <Label Content="Zmiana stanu " Grid.Column="6" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top"  Width="122" Height="31"/>
+                    <ComboBox Grid.Column="7" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top" Width="127" Height="28" ItemsSource="{Binding State}" SelectedValue="{Binding SelectState}"/>
+                    
                 </Grid>
             </TabItem>
 
@@ -646,6 +648,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-
+        <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" Grid.Row="13" VerticalAlignment="Top" Width="118" Grid.Column="6" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>
     </Grid>
 </Window>

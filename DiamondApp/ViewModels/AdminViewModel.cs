@@ -190,6 +190,7 @@ namespace DiamondApp.ViewModels
                 if (_savePropositionCommand == null)
                 {
                     _savePropositionCommand = new RelayCommand(SavePropositionExecute, CanSavePropositionExecute);
+                   
                 }
                 return _savePropositionCommand;
             }
@@ -4036,7 +4037,6 @@ namespace DiamondApp.ViewModels
         {
             return true;
         }
-
         private void CreateNewPropositionExecute(object obj)
         {
             InitializeObjects();
@@ -4196,7 +4196,7 @@ namespace DiamondApp.ViewModels
         {
             if (_addNewProposition.IsCreated && !_saveFlag)
             {
-
+               
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
 // dupa1
                 // !! PROPOSITION !! 
@@ -4342,7 +4342,7 @@ namespace DiamondApp.ViewModels
                 //fox
                 // Wybrany Id Propozycji
                 // int currentPropositionId = SelectedProposition.PropositionId;
-
+               
                 //Edycja Propozycji
                 // !! PROPCLIENT !!
                 var prop = (from q in _ctx.Proposition
