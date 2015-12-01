@@ -69,8 +69,6 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
 \end{dd}
 
-\thesection,\thesubsection,\thesubsubsection,
-
 \section{Analiza przedwdroøeniowa}
 \section{Istniejπce rozwiπzania konkurencyjne}
 \section{Zastosowane rozwiπzania}
@@ -92,12 +90,12 @@ Trello jest to darmowa aplikacja, ktÛrej przeznaczeniem jest wspieranie organiza
 \end{figure}
 
 Listy te umoøliwiajπ konstruowanie zadaÒ w postaci tak zwanych kafelek, ktÛre w bardzo intuicyjny sposÛb moøna przenosiÊ pomiÍdzy listami za pomocπ techniki drag-and-drop. Kaøda kafelka reprezentujπca zadanie w Trello posiada szereg dodatkowych funkcjonalnoúci. W czasie pracy nad projektem wykorzystano opcjÍ przypisania konkretnej osoby lub grupy osÛb do zadania, co jednoznacznie determinowa≥o odpowiedzialnoúÊ jego wykonania oraz funkcjÍ utworzenia listy czynnoúci, ktÛre naleøy wykonaÊ w celu realizacji zadania. Dodatkowym waønym aspektem jest data, ktÛra po wspÛlnych ustaleniach przypisywana jest do konkretnego zadania i stanowi ostateczny termin wprowadzenia danej funkcjonalnoúci.
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.75\textwidth]{trello2.jpg}
-%
-%    \caption{SzczegÛ≥y zadania na pojedynczej kafelce., èrÛd≥o: Opracowanie w≥asne.}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{trello2.jpg}
+
+    \caption{SzczegÛ≥y zadania na pojedynczej kafelce., èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
 
 Ciekawπ funkcjonalnoúciπ godnπ przedstawienia sπ takøe powiadomienia zmian, ktÛre w sposÛb automatyczny przekazywane sπ na skrzynkÍ elektronicznπ lub jako powiadomienia push na urzπdzenia przenoúne. 
 DziÍki temu, iø narzÍdzie Trello dostÍpne jest w postaci webowej, a takøe jako aplikacja mobilna na Androida, iOS oraz Windows 8 \cite{PlatformyTrello}, dostÍp do niej jest w znaczny sposÛb u≥atwiony. Umoøliwia to otrzymanie niemal natychmiastowej informacji o naniesionych zmianach w projekcie lub zbliøajπcym siÍ terminie ukoÒczenia zadania, do ktÛrego jesteúmy przypisani.
@@ -157,32 +155,50 @@ Odnoszπc siÍ do planowania architektury systemu bardzo pomocne okazujπ siÍ dostÍ
 
 MVVM jest to wzorzec, ktÛry dziÍki funkcjonalnoúci odseparowania warstwy prezentacji od warstwy logiki biznesowej, umoøliwia napisanie ≥atwo testowalnej oraz prostej w rozbudowanie aplikacji, ktÛrej fragment kodu moøe zostaÊ ponownie uøyty w innych projektach. Opisywany wzorzec cieszy siÍ duøπ popularnoúciπ w gronie developerÛw WPF z powodu moøliwoúci wykorzystania najwiÍkszych atutÛw tej technologii, takich jak komendy (command), wiπzania (binding) oraz zachowania (behavior). Kod aplikacji o architekturze Model-View-ViewModel podzielony jest, zgodnie z jego nazwπ na trzy oddzielne warstwy Model, View oraz ViewModel, z ktÛrych kaøda przechowuje dedykowane dla siebie dane i spe≥nia okreúlone funkcje.
 
-Model jest to warstwa, ktÛra odpowiedzialna jest w omawianym wzorcu za logikÍ biznesowπ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu inøynierskiego warstwa ta reprezentowana jest przez przez klasy, ktÛre utworzone zosta≥y za pomocπ oprogramowania Entity Framework, s≥uøπcego do odwzorowania relacyjnej bazy danych na obiekty dostÍpne z poziomu kodu. Przekazywanie informacji do kontrolek wykorzystanych w aplikacji WPF odbywa siÍ za poúrednictwem systemu bindowania. Wszelkie klasy zawierajπce dane, ktÛre maja przekazane byÊ z poziomu modelu do warstwy widoku, z ktÛrego uøytkownik moøe owe informacje odczytaÊ zobowiπzane sπ do implementacji interfejsu INotifyPropertyChanged lub INotifyPropertyChanged, ktÛry umoøliwia przeprowadzenie powyøszej operacji.
+Model to warstwa, ktÛra odpowiedzialna jest w omawianym wzorcu za logikÍ biznesowπ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu inøynierskiego warstwa ta reprezentowana jest przez przez klasy, ktÛre utworzone zosta≥y za pomocπ biblioteki Entity Framework, s≥uøπcej do odwzorowania relacyjnej bazy danych na obiekty dostÍpne z poziomu kodu. Wszelkie klasy zawierajπce dane, ktÛre maja przekazane byÊ z poziomu modelu do warstwy widoku, z ktÛrego uøytkownik moøe owe informacje odczytaÊ zobowiπzane sπ do implementacji interfejsu INotifyPropertyChanged lub INotifyCollectionChanged, ktÛry wspÛ≥pracuje z bindingiem \cite{DataBinding} wykorzystywanym w WPF.
 
-ViewModel
-t
-t
-t
-t
-t
+ViewModel zajmuje siÍ reprezentacjπ danych, ktÛre wysy≥ane sπ do widoku, nie majπc przy tym øadnej referencji do niego. Widok odnosi siÍ do elementÛw ViewModelu za poúrednictwem komend oraz wspomnianych operacji bindowania, co zapewnia pe≥nπ separacjÍ warstwy ViewModelu i umoøliwia przetestowanie jej odrÍbnie od modelu i czÍúci prezentujπcej.
 
-View
-v
-v
-v
-v
-v
+Wastwa widoku (View) odpowiedzialna jest za wyúwietlanie danych i pe≥ni rolÍ wy≥πcznie prezentacyjnπ. Jej komunikacja z warstwπ modelu przebiega za poúrednictwem warstwy poúredniczπcej ViewModel, do ktÛrej jest przy≥πczona za pomocπ w≥aúciwoúci DataContext. W≥aúciwoúÊ ta wstrzykuje zaleønoúci pomiÍdzy View oraz ViewModelem, ktÛry jπ kontroluje. 
 
 \subsubsection{Model aplikacji}
+
+todo after refactor.
+
+- opis warstw (model == baza danych)
+
+- podzial view/viewmodeli
+
+- ilustracja podzialu foldery+klasy
+
 \subsection{Architektura bazy danych}
 \subsubsection{Definicja bazy danych}
 \subsubsection{MS-SQL ñ Zastosowany system zarzπdzania bazπ danych}
 \subsubsection{Budowa bazy danych uøytej w projekcie}
+
 \subsection{Komunikacja bazy danych z projektem programistycznym}
-\subsubsection{NarzÍdzia ORM}
-\subsubsection{Zastosowane oprogramowanie mapowania obiektowo relacyjnego ñ Entity Framework}
+\subsubsection{Mapowanie obiektowo-relacyjne}
+
+Aplikacje komputerowe, ktÛrych funkcjonalnoúci zorientowane sπ na wielu uøytkownikÛw lub wymuszajπ koniecznoúÊ ciπg≥ego przechowywania i przetwarzania duøych iloúci danych bardzo czÍsto korzystajπ z systemÛw baz danych. Systemy te umoøliwiajπ nieprzerwane magazynowanie duøej iloúci informacji, a takøe szybkie ich wyszukiwanie, sortowanie, dodawanie, edycjÍ oraz usuwanie. Przedstawione aspekty sπ bardzo trudne do zaimplementowania wewnπtrz standardowych aplikacji. 
+
+W przypadku technologii .NET, w ktÛrej prowadzony jest prezentowany projekt, standardowa komunikacja aplikacji z bazπ danych odbywa siÍ za poúrednictwem protoko≥u ADO.NET. Przy jego uøyciu programista ma obowiπzek kaødorazowo nawiπzaÊ po≥πczenie z bazπ, rÍcznie wprowadziÊ zapytanie SQL, odebraÊ wynik i zapisaÊ go w odpowiednim obiekcie oraz zamknπÊ po≥πczenie. Schemat ten w znacznym stopniu utrudnia utrzymanie prawid≥owego dzia≥ania aplikacji w przypadku jej rozbudowy lub modyfikacji bazy danych. Napisane zapytanie SQL w øadnym stopniu nie jest sprawdzane ze wzglÍdu na jego poprawnπ formÍ, a w sytuacji zmiany przyk≥adowo nazwy kolumny w wykorzystywanej bazie danych, programista w celu utrzymania prawid≥owej pracy aplikacji ma obowiπzek aktualizacji wszystkich zapytaÒ, ktÛre dotyczy≥y zmienionej kolumny.
+
+PojÍcie mapowania obiektowo-relacyjnego (ORM) odnosi siÍ do  programistycznego terminu dotyczπcego wspÛ≥pracy z bazπ danych, wykorzystujπc idee programowania obiektowego. Konkretnie rzecz ujmujπc chodzi o zamianÍ danych, przechowywanych w postaci tabelarycznej w relacyjnej bazie danych na postaÊ obiektowπ dostÍpnπ z poziomu uøywanego jÍzyka programowania lub w drugπ stronÍ.
+
+Przedstawiona translacja danych okaza≥a siÍ bardzo praktyczna przez wzglπd na zniwelowanie koniecznoúci zag≥Íbiania siÍ w struktury bazy danych przez programistÍ, a takøe brak wymogu dotyczπcego jego znajomoúci zapytaÒ jÍzyka SQL przez fakt pracy wy≥πcznie na obiektach, ktÛre odwzorowujπ strukturÍ tabel.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{EntityAdonet.jpg}
+    \caption{PorÛwnanie operacji dodania uøytkownika w ADO.NET oraz Entity Framework, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+
+\subsubsection{Zastosowane narzÍdzie ORM ñ Entity Framework} 
+
 \subsubsection{Dostosowanie Entity Framework do wymagaÒ zwiπzanych ze wzorcem MVVM}
+
 \subsubsection{Uøycie bazy danych ze strony projektu C\#}
+
 \subsection{Automatyzacja wydawania kolejnych wersji programu}
 \subsubsection{Continuous Integration ñ definicja}
 \subsubsection{Continuous Deployment ñ definicja}
@@ -322,6 +338,9 @@ Jaszkiewicz A. \textsl{Inøynieria oprogramowania}, Wydawnictwo Helion, 1997
 
 \bibitem{LogikaBiznesowa}
 Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletny przewodnik dla programistÛw interaktywnych aplikacji internetowych w Visual Studio}, Wydawnictwo Helion, Gliwice 2014
+
+\bibitem{DataBinding}
+MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
 
 %Nazwisko I. \textsl{tytu≥}, miasto, rok
 \bibitem{nazwa} Jakaú pozycja literatury

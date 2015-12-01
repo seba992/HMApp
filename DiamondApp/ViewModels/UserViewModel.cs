@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -16,7 +17,8 @@ namespace DiamondApp.ViewModels
         private int _idProposition; //id propozycji
         private AdminProposition _selectedProposition;  // wyciagnieta pojedyńcza propozycja
         private bool _saveFlag = false; // czy edycja czy dodanie nowej jeśli nie zostały żadna wybrana
-
+        private List<string> _state = new List<string> { "Nierozpatrzona", "Gotowa" };
+        private string _selectState;
 
         private int _userId;
         // public List<Proposition> propositionList;
@@ -81,7 +83,7 @@ namespace DiamondApp.ViewModels
         private List<decimal?> _fourthTabNettoPrice = new List<decimal?>(6);  // lista cen netto (tab4)
         private List<decimal> _fourthTabNettoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab4)
         private List<decimal> _fourthTabBruttoValue = new List<decimal>(6);   // list zsumowanych cen netto (tab4)
-
+        private List<string> _roomExistList;  
         private decimal _fourthTabSumNettoValue;    // suma wartosci netto (tab3)
         private decimal _fourthTabSumBruttoValue;   // suma wartosci brutto (tab3)
 
@@ -225,6 +227,26 @@ namespace DiamondApp.ViewModels
             }
         }
 
+        public List<string> State
+        {
+            get { return _state; }
+            set
+            {
+                _state = value;
+                RaisePropertyChanged("State");
+            }
+        }
+        public string SelectState
+        {
+            get { return _selectState; }
+            set
+            {
+                _selectState = value;
+                RaisePropertyChanged("SelectState");
+            }
+        }
+
+
         public string PropositionClientCompanyName
         {
             get { return _propositionClient.CompanyName; }
@@ -320,6 +342,7 @@ namespace DiamondApp.ViewModels
 
             }
         }
+
 
         public int? HallPrice
         {
@@ -3757,150 +3780,156 @@ namespace DiamondApp.ViewModels
         #endregion
 
         #region Method
-        private void SelectAllPropositions()
-        {
-            var myQuerry = (from prop in _ctx.Proposition
-                            from user in _ctx.Users
-                            where user.Id == _userId
-                            where prop.Id_user == UserId
-                            select new AdminProposition
-                            {
-                                PropositionId = prop.Id,
-                                UserFirstName = user.Name,
-                                UserSurname = user.Surname,
-                                CustomerFullName = prop.PropClient.CustomerFullName,
-                                CompanyName = prop.PropClient.CompanyName,
-                                UpdateDate = prop.UpdateDate,
-                                Status = prop.Status
-                            }).ToList();
-            PropositionsList = myQuerry;
-        }
-
+       
         private bool CanSavePropositionExecute(object arg)
         {
             return true;
         }
         private void SavePropositionExecute(object obj)
         {
-
-
+           
             if (_addNewProposition.IsCreated && !_saveFlag)
             {
+
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
-
+                // dupa1
                 // !! PROPOSITION !! 
-                try
+                string propstate;
+                if (SelectState != null)
+                    propstate = SelectState; //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
+                else
+                    propstate = _state[0];
+                var propositionToBase = new Proposition
                 {
-                    var propositionToBase = new Proposition
-                    {
-                        Id_user = _userId,
-                        UpdateDate = _addNewProposition.UpdateDate,
-                        Status = "New" //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
-                    };
-                    _ctx.Proposition.Add(propositionToBase);
-                    _addNewProposition.IsCreated = false;
-                    _ctx.SaveChanges();
+                    Id_user = _userId,
+                    UpdateDate = _addNewProposition.UpdateDate,
+                    Status = propstate  //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
 
-                    /* wyciągnięcie Id dodanej propozycji który potrzebny bedzie przy dodawaniu
+                };
+                _ctx.Proposition.Add(propositionToBase);
+                _addNewProposition.IsCreated = false;
+                _ctx.SaveChanges();
+
+                /* wyciągnięcie Id dodanej propozycji który potrzebny bedzie przy dodawaniu
                  * do bazy pozostałych tabel (klucz obcy) */
 
-                    var lastPropId = (from prop in _ctx.Proposition
-                        select prop).ToList().Last();
-                    int currentPropositionId = lastPropId.Id;
+                var lastPropId = (from prop in _ctx.Proposition
+                                  select prop).ToList().Last();
+                int currentPropositionId = lastPropId.Id;
 
-                    //------------------------------
-                    // !! PROPCLIENT !!
-                    PropositionClient.Id_proposition = currentPropositionId;
-                    _ctx.PropClient.Add(PropositionClient);
+                //------------------------------
+                // !! PROPCLIENT !!
+                PropositionClient.Id_proposition = currentPropositionId;
+                _ctx.PropClient.Add(PropositionClient);
 
-                    //------------------------------
-                    // !! PROPRESERVATIONDETAILS !!
-                    PropositionReservDetails.Id_proposition = currentPropositionId;
+                //------------------------------
+                // !! PROPRESERVATIONDETAILS !!
+                PropositionReservDetails.Id_proposition = currentPropositionId;
+                if (PropositionReservDetails.Hall != " ")
                     _ctx.PropReservationDetails.Add(PropositionReservDetails);
 
-                    //------------------------------
-                    // !! PROPHALLEQUPMENT !!
+                //------------------------------
+                // !! PROPHALLEQUPMENT !!
 
-                    // dodaje do bazy tylko te elementy listy, które posiadaja nazwe i cene brutto TODO: review solution
-                    for (int i = 0; i < _propHallEquipment.Count; i++)
+                // dodaje do bazy tylko te elementy listy, które posiadaja nazwe i cene brutto TODO: review solution
+                for (int i = 0; i < _propHallEquipment.Count; i++)
+                {
+                    if (_propHallEquipment[i].Things != null && _propHallEquipment[i].BruttoPrice != null
+                        && _propHallEquipment[i].Amount != null && _propHallEquipment[i].Days != null
+                        && _propHallEquipment[i].Things != " ")
                     {
-                        if (_propHallEquipment[i].Things != null && _propHallEquipment[i].BruttoPrice != null)
-                        {
-                            _propHallEquipment[i].Id_proposition = currentPropositionId;
-                            _ctx.PropHallEquipment.Add(_propHallEquipment[i]);
-                        }
+                        _propHallEquipment[i].Id_proposition = currentPropositionId;
+                        _ctx.PropHallEquipment.Add(_propHallEquipment[i]);
                     }
-                    //------------------------------
-                    // !! PROPHALLEQUPMENTDISCOUNT !!
-                    HallEquipmentDiscount.Id_proposition = currentPropositionId;
-                    _ctx.PropHallEquipmentDiscount.Add(HallEquipmentDiscount);
+                }
+                //------------------------------
+                // !! PROPHALLEQUPMENTDISCOUNT !!
+                HallEquipmentDiscount.Id_proposition = currentPropositionId;
+                _ctx.PropHallEquipmentDiscount.Add(HallEquipmentDiscount);
 
-                    //------------------------------
-                    // !! PROPMENUMERGES !!
-                    for (int i = 0; i < PropMenuMerges.Count; i++)
+                //------------------------------
+                // !! PROPMENUMERGES !!
+                for (int i = 0; i < PropMenuMerges.Count; i++)
+                {
+                    PropMenuMerges[i].Id_proposition = currentPropositionId;
+                    _ctx.PropMenuMerge.Add(PropMenuMerges[i]);
+                }
+
+                //------------------------------
+                // !! PROPMENUPOSITIONS !!
+                for (int i = 0; i < _propMenuPositions.Count; i++)
+                {
+                    if (_propMenuPositions[i].TypeOfService != null && _propMenuPositions[i].Amount != null &&
+                        _propMenuPositions[i].Days != null)
                     {
-                        PropMenuMerges[i].Id_proposition = currentPropositionId;
-                        _ctx.PropMenuMerge.Add(PropMenuMerges[i]);
+                        _propMenuPositions[i].Id_proposition = currentPropositionId;
+                        _ctx.PropMenuPosition.Add(_propMenuPositions[i]);
                     }
+                }
 
-                    //------------------------------
-                    // !! PROPMENUPOSITIONS !!
-                    for (int i = 0; i < _propMenuPositions.Count; i++)
+                //------------------------------
+                // !! PROPACCOMODATIONS !!
+                for (int i = 0; i < _propAccomodations.Count; i++)
+                {
+                    if (_propAccomodations[i].Amount != null && _propAccomodations[i].Days != null)
                     {
-                        if (_propMenuPositions[i].TypeOfService != null && _propMenuPositions[i].Amount != null &&
-                            _propMenuPositions[i].Days != null)
-                        {
-                            _propMenuPositions[i].Id_proposition = currentPropositionId;
-                            _ctx.PropMenuPosition.Add(_propMenuPositions[i]);
-                        }
+                        _propAccomodations[i].Id_proposition = currentPropositionId;
+                        _ctx.PropAccomodation.Add(_propAccomodations[i]);
                     }
+                }
 
-                    //------------------------------
-                    // !! PROPACCOMODATIONS !!
-                    for (int i = 0; i < _propAccomodations.Count; i++)
+                //------------------------------
+                // !! PROPACCOMODATIONSDISCOUNT !!
+
+                PropAccomDiscount.Id_proposition = currentPropositionId;
+                _ctx.PropAccomodationDiscount.Add(PropAccomDiscount);
+
+                //------------------------------
+                // !! PROPEXTRASERVICES !!
+                for (int i = 0; i < _propExtraServ.Count; i++)
+                {
+                    if (_propExtraServ[i].ServiceType != null && _propExtraServ[i].BruttoPrice != null &&
+                        _propExtraServ[i].Days != null && _propExtraServ[i].Amount != null &&
+                        _propExtraServ[i].ServiceType != " ")
                     {
-                        if (_propAccomodations[i].Amount != null && _propAccomodations[i].Days != null)
-                        {
-                            _propAccomodations[i].Id_proposition = currentPropositionId;
-                            _ctx.PropAccomodation.Add(_propAccomodations[i]);
-                        }
+                        _propExtraServ[i].Id_proposition = currentPropositionId;
+                        _ctx.PropExtraServices.Add(_propExtraServ[i]);
                     }
+                }
 
-                    //------------------------------
-                    // !! PROPACCOMODATIONSDISCOUNT !!
+                //------------------------------
+                // !! PROPPAYMENTSUGGESTIONS !!
 
-                    PropAccomDiscount.Id_proposition = currentPropositionId;
-                    _ctx.PropAccomodationDiscount.Add(PropAccomDiscount);
+                _propPaymentSugg.Id_proposition = currentPropositionId;
+                _ctx.PropPaymentSuggestions.Add(_propPaymentSugg);
 
-                    //------------------------------
-                    // !! PROPEXTRASERVICES !!
-                    for (int i = 0; i < _propExtraServ.Count; i++)
-                    {
-                        if (_propExtraServ[i].ServiceType != null && _propExtraServ[i].BruttoPrice != null &&
-                            _propExtraServ[i].Days != null && _propExtraServ[i].Amount != null)
-                        {
-                            _propExtraServ[i].Id_proposition = currentPropositionId;
-                            _ctx.PropExtraServices.Add(_propExtraServ[i]);
-                        }
-                    }
 
-                    //------------------------------
-                    // !! PROPPAYMENTSUGGESTIONS !!
 
-                    _propPaymentSugg.Id_proposition = currentPropositionId;
-                    _ctx.PropPaymentSuggestions.Add(_propPaymentSugg);
+                try
+                {
+                    // Your code...
+                    // Could also be before try if you know the exception occurs in SaveChanges
 
                     _ctx.SaveChanges();
-                    MessageBox.Show("dodano nowa propozycje");
-
-                    // po dodaniu propozycji odśwież listę propozycji
-                    SelectAllPropositions();
                 }
-                catch (Exception w)
+                catch (DbEntityValidationException e)
                 {
-                    MessageBox.Show(w.ToString());
+                    foreach (var eve in e.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                        }
+                    }
+                    throw;
                 }
+                MessageBox.Show("dodano nowa propozycje");
 
+                // po dodaniu propozycji odśwież listę propozycji
+                SelectAllPropositions();
             }
             else
             {
@@ -3910,7 +3939,10 @@ namespace DiamondApp.ViewModels
 
                 //Edycja Propozycji
                 // !! PROPCLIENT !!
-
+                var prop = (from q in _ctx.Proposition
+                            where q.Id == _idProposition
+                            select q).SingleOrDefault();
+                prop.Status = SelectState;
                 int idProposition = _idProposition;
                 var editClient = (from q in _ctx.PropClient
                                   where q.Id_proposition == idProposition
@@ -3943,13 +3975,11 @@ namespace DiamondApp.ViewModels
                 // !! PROPRESERVATIONDETAILS !!
 
                 var propReservation = (from q in _ctx.PropReservationDetails
-                                       where q.Id_proposition == idProposition
+                                       where q.Id_proposition == _idProposition
                                        select q).SingleOrDefault();
                 if (propReservation == null)
                 {
                     PropReservationDetails addPropReservationDetails = new PropReservationDetails();
-                    addPropReservationDetails.Id_proposition = idProposition;
-
                     addPropReservationDetails.Id_proposition = _idProposition;
                     addPropReservationDetails.StartData = PropositionReservDetails.StartData;
                     addPropReservationDetails.EndData = PropositionReservDetails.EndData;
@@ -3973,16 +4003,29 @@ namespace DiamondApp.ViewModels
                     propReservation.EndTime = PropositionReservDetailsEndTime;
                     propReservation.StartTime = PropositionReservDetailsStartTime;
                     //propReservation.Proposition = PropositionReservDetails.Proposition;
-                    
 
                 }
 
-                 _ctx.SaveChanges();
+                _ctx.SaveChanges();
                 var propEquipment = (from q in _ctx.PropHallEquipment
-                      where q.Id_proposition == idProposition
-                      select q).ToList();
+                                     where q.Id_proposition == idProposition
+                                     select q).ToList();
                 var hall = propEquipment.Find(item => item.Things == PropHallEqThing0);
-
+                var dicount = (from q in _ctx.PropHallEquipmentDiscount
+                               where q.Id_proposition == idProposition
+                               select q).SingleOrDefault();
+                if (dicount != null)
+                {
+                    dicount.Discount = PropHallEquipmentDiscountValue;
+                    dicount.StandardPrice = HallPrice;
+                }
+                else
+                {
+                    PropHallEquipmentDiscount newDiscount = new PropHallEquipmentDiscount();
+                    newDiscount.Id_proposition = _idProposition;
+                    newDiscount.StandardPrice = HallPrice;
+                    newDiscount.Discount = PropHallEquipmentDiscountValue;
+                }
                 if (hall != null)
                 {
                     if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
@@ -3993,15 +4036,18 @@ namespace DiamondApp.ViewModels
                             hall.Amount = PropHallEqAmount0;
                         _ctx.SaveChanges();
                     }
+
                 }
                 else if (PropHallEqThing0 != null)
                 {
                     PropHallEquipment newqEquipment = new PropHallEquipment();
                     newqEquipment.Things = PropHallEqThing0;
-                    newqEquipment.Things = PropHallEqThing0;
                     newqEquipment.Amount = PropHallEqAmount0;
                     newqEquipment.Days = PropHallEqDays0;
                     newqEquipment.BruttoPrice = PropHallEqBrutto0;
+                    newqEquipment.Vat = PropHallEqVat0;
+                    newqEquipment.Id_proposition = _idProposition;
+                    _ctx.PropHallEquipment.Add(newqEquipment);
                 }
                 //wposażenie
 
@@ -4011,10 +4057,11 @@ namespace DiamondApp.ViewModels
                     var thing1 = propEquipment.Find(item => item.Things == PropHallEqThing1);
                     if (thing1 != null)
                     {
-                        thing1.Id_proposition = _idProposition;                     
+                        thing1.Id_proposition = _idProposition;
                         thing1.Things = PropHallEqThing1;
                         thing1.Amount = PropHallEqAmount1;
                         thing1.Days = PropHallEqDays1;
+                        thing1.Vat = PropHallEqVat1;
                         thing1.BruttoPrice = PropHallEqBrutto1;
                     }
                     else
@@ -4025,8 +4072,8 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays1;
                         newqEquipment.BruttoPrice = PropHallEqBrutto1;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat1;
                         _ctx.PropHallEquipment.Add(newqEquipment);
-
 
                     }
                 }
@@ -4041,6 +4088,7 @@ namespace DiamondApp.ViewModels
                         thing1.Amount = PropHallEqAmount2;
                         thing1.Days = PropHallEqDays2;
                         thing1.BruttoPrice = PropHallEqBrutto2;
+                        thing1.Vat = PropHallEqVat1;
                     }
                     else
                     {
@@ -4050,6 +4098,7 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays2;
                         newqEquipment.BruttoPrice = PropHallEqBrutto2;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat2;
                         _ctx.PropHallEquipment.Add(newqEquipment);
 
 
@@ -4066,6 +4115,7 @@ namespace DiamondApp.ViewModels
                         thing1.Amount = PropHallEqAmount3;
                         thing1.Days = PropHallEqDays3;
                         thing1.BruttoPrice = PropHallEqBrutto3;
+                        thing1.Vat = PropHallEqVat3;
                     }
                     else
                     {
@@ -4075,6 +4125,7 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays3;
                         newqEquipment.BruttoPrice = PropHallEqBrutto3;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat3;
                         _ctx.PropHallEquipment.Add(newqEquipment);
 
 
@@ -4091,6 +4142,7 @@ namespace DiamondApp.ViewModels
                         thing1.Amount = PropHallEqAmount4;
                         thing1.Days = PropHallEqDays4;
                         thing1.BruttoPrice = PropHallEqBrutto4;
+                        thing1.Vat = PropHallEqVat4;
                     }
                     else
                     {
@@ -4100,6 +4152,7 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays4;
                         newqEquipment.BruttoPrice = PropHallEqBrutto4;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat4;
                         _ctx.PropHallEquipment.Add(newqEquipment);
 
 
@@ -4116,6 +4169,7 @@ namespace DiamondApp.ViewModels
                         thing1.Amount = PropHallEqAmount5;
                         thing1.Days = PropHallEqDays5;
                         thing1.BruttoPrice = PropHallEqBrutto5;
+                        thing1.Vat = PropHallEqVat5;
                     }
                     else
                     {
@@ -4125,12 +4179,13 @@ namespace DiamondApp.ViewModels
                         newqEquipment.Days = PropHallEqDays5;
                         newqEquipment.BruttoPrice = PropHallEqBrutto5;
                         newqEquipment.Id_proposition = _idProposition;
+                        newqEquipment.Vat = PropHallEqVat5;
                         _ctx.PropHallEquipment.Add(newqEquipment);
                         _ctx.SaveChanges();
 
                     }
                 }
-//Gastronomia
+                //Gastronomia
                 var editGastronomic = (from q in _ctx.PropMenuPosition
                                        where q.Id_proposition == _idProposition
                                        select q).ToList();
@@ -4149,7 +4204,7 @@ namespace DiamondApp.ViewModels
                     }
                     else
                     {
-                        PropMenuPosition newPosition =new PropMenuPosition();
+                        PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
                         service.TypeOfService = PropMenuTypeOfServ0;
                         newPosition.Amount = PropMenuPosAmount0;
@@ -4326,8 +4381,8 @@ namespace DiamondApp.ViewModels
                 _ctx.SaveChanges();
 
                 var merge = (from q in _ctx.PropMenuMerge
-                    where q.Id_proposition == idProposition
-                    select q).ToList();
+                             where q.Id_proposition == idProposition
+                             select q).ToList();
                 merge[0].DefaultValue = PropMenuMerge0;
                 merge[1].DefaultValue = PropMenuMerge1;
                 merge[2].DefaultValue = PropMenuMerge2;
@@ -4336,46 +4391,46 @@ namespace DiamondApp.ViewModels
                 _ctx.SaveChanges();
 
                 var room = (from q in _ctx.PropAccomodation
-                    where q.Id_proposition == idProposition
-                    select q).ToList();
+                            where q.Id_proposition == idProposition
+                            select q).ToList();
                 for (int i = 0; i < room.Count; i++)
                 {
                     switch (room[i].TypeOfRoom)
                     {
                         case "POKÓJ 1-OSOBOWY":
-                           room[i].Amount = PropAccomAmount0;
-                           room[i].Days = PropAccomDays0;
+                            room[i].Amount = PropAccomAmount0;
+                            room[i].Days = PropAccomDays0;
                             break;
                         case "POKÓJ 2-OSOBOWY":
-                            room[i].Amount=PropAccomAmount1 ;
-                            room[i].Days=PropAccomDays1;
+                            room[i].Amount = PropAccomAmount1;
+                            room[i].Days = PropAccomDays1;
                             break;
                         case "POKÓJ BUSSINES 1-OSOBOWY":
-                            room[i].Amount =  PropAccomAmount2 ;
-                            room[i].Days=PropAccomDays2;
+                            room[i].Amount = PropAccomAmount2;
+                            room[i].Days = PropAccomDays2;
                             break;
                         case "POKÓJ BUSSINES 2-OSOBOWY":
-                           room[i].Amount = PropAccomAmount3;
-                           room[i].Days= PropAccomDays3 ;
+                            room[i].Amount = PropAccomAmount3;
+                            room[i].Days = PropAccomDays3;
                             break;
                         case "APARTAMENT":
-                            room[i].Amount=PropAccomAmount4;
-                            room[i].Days= PropAccomDays4;
+                            room[i].Amount = PropAccomAmount4;
+                            room[i].Days = PropAccomDays4;
                             break;
                         case "POKOJ DLA NIEPEŁNOSPRAWNYCH":
-                            room[i].Amount=PropAccomAmount5 ;
-                            room[i].Days=PropAccomDays5;
+                            room[i].Amount = PropAccomAmount5;
+                            room[i].Days = PropAccomDays5;
                             break;
-                    }    
+                    }
                 }
-                for (int i = 0; i < roomExistList.Count; i++)
+                for (int i = 0; i < _roomExistList.Count; i++)
                 {
-                    switch (roomExistList[i])
+                    switch (_roomExistList[i])
                     {
                         case "POKÓJ 1-OSOBOWY":
                             if (PropAccomAmount0 != null || PropAccomDays0 != null)
                             {
-                                PropAccomodation newroom= new PropAccomodation();
+                                PropAccomodation newroom = new PropAccomodation();
                                 newroom.Id_proposition = _idProposition;
                                 newroom.Amount = PropAccomAmount0;
                                 newroom.BruttoPrice = PropAccomBrutto0;
@@ -4450,26 +4505,26 @@ namespace DiamondApp.ViewModels
                                 _ctx.PropAccomodation.Add(newroom);
                             }
                             break;
-                    }    
+                    }
                 }
                 var mergeaccom = (from q in _ctx.PropAccomodationDiscount
-                                  where q.Id_proposition==idProposition
-                    select q).SingleOrDefault();
+                                  where q.Id_proposition == idProposition
+                                  select q).SingleOrDefault();
                 mergeaccom.Discount = PropAccomDiscountValue;
                 _ctx.SaveChanges();
-// usługi dodatkowe
+                // usługi dodatkowe
                 var propextr = (from q in _ctx.PropExtraServices
-                    where q.Id_proposition == idProposition
-                    select q).ToList();
+                                where q.Id_proposition == idProposition
+                                select q).ToList();
                 var dic = (from q in _ctx.PropExtraServices_Dictionary
-                    select q.ServiceType).ToList();
+                           select q.ServiceType).ToList();
 
                 if (PropExtraServType0 != null)
                 {
                     var position = propextr.Find(item => item.ServiceType == dic[0]);
                     var position1 = propextr.Find(item => item.ServiceType == dic[1]);
 
-                    if (position != null || position1!=null)
+                    if (position != null || position1 != null)
                     {
                         position.ServiceType = PropExtraServType0;
                         position.Amount = PropExtraServAmount0;
@@ -4479,7 +4534,7 @@ namespace DiamondApp.ViewModels
                     }
                     else
                     {
-                     
+
                         PropExtraServices newextra = new PropExtraServices();
                         newextra.Id_proposition = idProposition;
                         newextra.ServiceType = PropExtraServType0;
@@ -4487,6 +4542,7 @@ namespace DiamondApp.ViewModels
                         newextra.Days = PropExtraServDays0;
                         newextra.BruttoPrice = PropExtraServBrutto0;
                         newextra.Vat = PropExtraServVat0;
+                        _ctx.PropExtraServices.Add(newextra);
                     }
                 }
                 if (PropExtraServType1 != null)
@@ -4533,6 +4589,7 @@ namespace DiamondApp.ViewModels
                         newextra.Days = PropExtraServDays2;
                         newextra.BruttoPrice = PropExtraServBrutto2;
                         newextra.Vat = PropExtraServVat2;
+                        _ctx.PropExtraServices.Add(newextra);
                     }
                 }
                 if (PropExtraServType3 != null)
@@ -4556,6 +4613,7 @@ namespace DiamondApp.ViewModels
                         newextra.Days = PropExtraServDays3;
                         newextra.BruttoPrice = PropExtraServBrutto3;
                         newextra.Vat = PropExtraServVat3;
+                        _ctx.PropExtraServices.Add(newextra);
                     }
                 }
                 _ctx.SaveChanges();
@@ -4565,10 +4623,10 @@ namespace DiamondApp.ViewModels
                 if (paysug != null)
                 {
                     paysug.PaymentForm = PaymentSuggestPaymentForm;
-                    paysug.InvoiceServiceName =PaymentSuggestInvServName;
-                    paysug.CarPark= PaymentSuggestCarPark;
-                    paysug.IndividualOrders =PaymentSuggestIndividOrder;
-                
+                    paysug.InvoiceServiceName = PaymentSuggestInvServName;
+                    paysug.CarPark = PaymentSuggestCarPark;
+                    paysug.IndividualOrders = PaymentSuggestIndividOrder;
+
                 }
                 else
                 {
@@ -4578,9 +4636,11 @@ namespace DiamondApp.ViewModels
                     paysug1.InvoiceServiceName = PaymentSuggestInvServName;
                     paysug1.CarPark = PaymentSuggestCarPark;
                     paysug1.IndividualOrders = PaymentSuggestIndividOrder;
+                    _ctx.PropPaymentSuggestions.Add(paysug1);
                 }
                 _ctx.SaveChanges();
-                SelectedProposition = null; 
+                SelectedProposition = null;
+                _idProposition = 0;
                 SelectAllPropositions();
                 MessageBox.Show("edytowano istniejaca propozycje");
             }
@@ -4753,6 +4813,7 @@ namespace DiamondApp.ViewModels
             SetDefaultValues();
             CleanProperties(GetType());
 
+
             var querry = (from user in _ctx.Users
                           where user.Id == _userId
                           select new AddNewProposition
@@ -4767,16 +4828,20 @@ namespace DiamondApp.ViewModels
 
             AddNewProposition = querry;
 
-            roomExistList = (from q in _ctx.PropAccomodation_Dictionary
-                select q.TypeOfRoom).ToList();
+
             if (SelectedProposition != null)
                 _idProposition = SelectedProposition.PropositionId;
             SelectedProposition = null;
+
             try
             {
+
+                SelectState = (from q in _ctx.Proposition
+                               where q.Id == _idProposition
+                               select q.Status).SingleOrDefault();
                 var editClient = (from q in _ctx.PropClient
-                    where q.Id_proposition == _idProposition
-                    select q).SingleOrDefault();
+                                  where q.Id_proposition == _idProposition
+                                  select q).SingleOrDefault();
 
                 //Uzupełnieni właściwości klienta
                 PropositionClientCompanyName = editClient.CompanyName;
@@ -4787,17 +4852,10 @@ namespace DiamondApp.ViewModels
                 PropositionClientDecisingPerFullName = editClient.DecisingPersonFullName;
                 PropositionClientCustomerEmail = editClient.CustomerEmail;
                 PropositionClient = editClient;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Klient sie zjebał"+e.ToString());
-            }
-            var editDetalis = (from q in _ctx.PropReservationDetails
-                               where q.Id_proposition == _idProposition
-                               select q).SingleOrDefault();
-            try
-            {
-                
+
+                var editDetalis = (from q in _ctx.PropReservationDetails
+                                   where q.Id_proposition == _idProposition
+                                   select q).SingleOrDefault();
 
                 PropositionReservDetailsStartData = editDetalis.StartData;
                 PropositionReservDetailsEndData = editDetalis.EndData;
@@ -4813,19 +4871,12 @@ namespace DiamondApp.ViewModels
                 }
                 //PropositionReservDetailsHallSetting = editDetalis.HallSetting;
 
-            }
-            catch (Exception e)
-            {
 
-                MessageBox.Show("Detale nie dziłaja" + e.ToString());
-            }
-            
-            List<PropHallEquipment> editEquipment = (from q in _ctx.PropHallEquipment
-                                                     where q.Id_proposition == _idProposition
-                                                     select q).ToList();
-            try
-            {
-               
+                //_ctx.SaveChanges();
+                List<PropHallEquipment> editEquipment = (from q in _ctx.PropHallEquipment
+                                                         where q.Id_proposition == _idProposition
+                                                         select q).ToList();
+
                 var halla = editEquipment.Find(item => item.Things == "Sala " + editDetalis.Hall);
                 if (halla != null)
                 {
@@ -4835,16 +4886,10 @@ namespace DiamondApp.ViewModels
                     PropHallEqVat0 = halla.Vat;
                     editEquipment.Remove(halla);
                 }
-            }
-            catch (Exception e)
-            {
-              
-              MessageBox.Show("Pierwsza linia szczegłów" + e.ToString());
-                
-            }
- 
-            try
-            {
+
+
+
+
                 for (int i = 0; i < editEquipment.Count; i++)
                 {
 
@@ -4888,277 +4933,361 @@ namespace DiamondApp.ViewModels
                     }
                 }
                 var editEquipmentDiscount = (from propHallEquipment in _ctx.PropHallEquipmentDiscount
-                    where propHallEquipment.Id_proposition == _idProposition
-                    select propHallEquipment).SingleOrDefault();
-                if (editEquipmentDiscount.Discount != null) 
-                PropHallEquipmentDiscountValue = editEquipmentDiscount.Discount;
-                if (editEquipmentDiscount.StandardPrice != null) 
-                PropHallEquipmentDiscountStandPrice = editEquipmentDiscount.StandardPrice;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Reszta szczegłów" + e.ToString());
-            }
+                                             where propHallEquipment.Id_proposition == _idProposition
+                                             select propHallEquipment).SingleOrDefault();
+                if (editEquipmentDiscount.Discount != null)
+                    PropHallEquipmentDiscountValue = editEquipmentDiscount.Discount;
+                if (editEquipmentDiscount.StandardPrice != null)
+                    PropHallEquipmentDiscountStandPrice = editEquipmentDiscount.StandardPrice;
 
-            var editGastronomicMerge = (from q in _ctx.PropMenuMerge
-                where q.Id_proposition == _idProposition
-                select q).ToList();
-            if (editGastronomicMerge != null)
-            {
-                _propMenuMerges = editGastronomicMerge;
-                PropMenuMerge0 = editGastronomicMerge[0].DefaultValue;
-                PropMenuMerge1 = editGastronomicMerge[1].DefaultValue;
-                PropMenuMerge2 = editGastronomicMerge[2].DefaultValue;
-                PropMenuMerge3 = editGastronomicMerge[3].DefaultValue;
-                PropMenuMerge4 = editGastronomicMerge[4].DefaultValue;
-            }
-            var editGastronomic = (from q in _ctx.PropMenuPosition
-                                   where q.Id_proposition == _idProposition
-                                   select q).ToList();
 
-            //PropMenuPositions = editGastronomic;
-            //_propMenuPositions = editGastronomic;
-            
-            try
-            {
-                
-               // MessageBox.Show(editGastronomic[0].TypeOfService.ToString());
+                var editGastronomicMerge = (from q in _ctx.PropMenuMerge
+                                            where q.Id_proposition == _idProposition
+                                            select q).ToList();
+                if (editGastronomicMerge != null)
+                {
+                    _propMenuMerges = editGastronomicMerge;
+                    PropMenuMerge0 = editGastronomicMerge[0].DefaultValue;
+                    PropMenuMerge1 = editGastronomicMerge[1].DefaultValue;
+                    PropMenuMerge2 = editGastronomicMerge[2].DefaultValue;
+                    PropMenuMerge3 = editGastronomicMerge[3].DefaultValue;
+                    PropMenuMerge4 = editGastronomicMerge[4].DefaultValue;
+                }
+                var editGastronomic = (from q in _ctx.PropMenuPosition
+                                       where q.Id_proposition == _idProposition
+                                       select q).ToList();
 
-                    for (int i = 0; i < editGastronomic.Count; i++)
-                 {
-                     switch (i)
-                     {
-                         case 0:
+                //PropMenuPositions = editGastronomic;
+                //_propMenuPositions = editGastronomic;
 
-                             var typ = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                        select q).ToList().Where(x => x.ThingName == editGastronomic[0].TypeOfService).SingleOrDefault();
-                             
-                             SelectedType0 = typ.SpecificType;
-                             PropMenuPosVat0 = editGastronomic[0].Vat;
-                          PropMenuPosMergeType0 = editGastronomic[0].MergeType;
-                          
-                          PropMenuTypeOfServ0 = editGastronomic[0].TypeOfService;
-                           if(editGastronomic[0].Amount!=null)
-                          PropMenuPosAmount0 = editGastronomic[0].Amount;
-                          if(editGastronomic[0].Days !=null)
-                          PropMenuPosDays0 = editGastronomic[0].Days;
-                          break;
-                      case 1:
-                             
-                              var typ1 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                        select q).ToList().Where(x => x.ThingName == editGastronomic[1].TypeOfService).SingleOrDefault();
-                             SelectedType1 = typ1.SpecificType;
-                          PropMenuPosMergeType1 = editGastronomic[1].MergeType;
-                          PropMenuPosVat1 = editGastronomic[1].Vat;
-                          PropMenuTypeOfServ1 = editGastronomic[1].TypeOfService;
-                          PropMenuPosAmount1 = editGastronomic[1].Amount;
-                          PropMenuPosDays1 = editGastronomic[1].Days;
-                          //SelectedType1 = editGastronomic[0].;
-                           
-                          break;
-                      case 2:
-                                var typ2 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                 select q).ToList().Where(x => x.ThingName == editGastronomic[2].TypeOfService).SingleOrDefault();;
-                             SelectedType2 = typ2.SpecificType;
-                          PropMenuPosMergeType2 = editGastronomic[2].MergeType;
-                          PropMenuPosVat2 = editGastronomic[2].Vat;
-                          PropMenuTypeOfServ2 = editGastronomic[2].TypeOfService;
-                          PropMenuPosAmount2 = editGastronomic[2].Amount;
-                          PropMenuPosDays2 = editGastronomic[2].Days;
-                            
-                          break;
-                      case 3:
-                                 var typ3 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                               select q).ToList().Where(x => x.ThingName == editGastronomic[3].TypeOfService).SingleOrDefault();;
+
+                // MessageBox.Show(editGastronomic[0].TypeOfService.ToString());
+
+                for (int i = 0; i < editGastronomic.Count; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+
+                            var typ = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                       select q).ToList()
+                                .Where(x => x.ThingName == editGastronomic[0].TypeOfService)
+                                .SingleOrDefault();
+
+                            SelectedType0 = typ.SpecificType;
+                            PropMenuPosMergeType0 = editGastronomic[0].MergeType;
+                            PropMenuPosVat0 = editGastronomic[0].Vat;
+                            PropMenuTypeOfServ0 = editGastronomic[0].TypeOfService;
+                            if (editGastronomic[0].Amount != null)
+                                PropMenuPosAmount0 = editGastronomic[0].Amount;
+                            if (editGastronomic[0].Days != null)
+                                PropMenuPosDays0 = editGastronomic[0].Days;
+                            break;
+                        case 1:
+
+                            var typ1 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                        select q).ToList()
+                                .Where(x => x.ThingName == editGastronomic[1].TypeOfService)
+                                .SingleOrDefault();
+                            SelectedType1 = typ1.SpecificType;
+                            PropMenuPosMergeType1 = editGastronomic[1].MergeType;
+                            PropMenuPosVat1 = editGastronomic[1].Vat;
+                            PropMenuTypeOfServ1 = editGastronomic[1].TypeOfService;
+                            PropMenuPosAmount1 = editGastronomic[1].Amount;
+                            PropMenuPosDays1 = editGastronomic[1].Days;
+                            //SelectedType1 = editGastronomic[0].;
+
+                            break;
+                        case 2:
+                            var typ2 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                        select q).ToList()
+                                .Where(x => x.ThingName == editGastronomic[2].TypeOfService)
+                                .SingleOrDefault();
+                            ;
+                            SelectedType2 = typ2.SpecificType;
+                            PropMenuPosMergeType2 = editGastronomic[2].MergeType;
+                            PropMenuPosVat2 = editGastronomic[2].Vat;
+                            PropMenuTypeOfServ2 = editGastronomic[2].TypeOfService;
+                            PropMenuPosAmount2 = editGastronomic[2].Amount;
+                            PropMenuPosDays2 = editGastronomic[2].Days;
+
+                            break;
+                        case 3:
+                            var typ3 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                        select q).ToList()
+                                .Where(x => x.ThingName == editGastronomic[3].TypeOfService)
+                                .SingleOrDefault();
+                            ;
                             SelectedType3 = typ3.SpecificType;
-                          PropMenuPosMergeType3 = editGastronomic[3].MergeType;
-                          PropMenuPosVat3 = editGastronomic[3].Vat;
-                          PropMenuTypeOfServ3 = editGastronomic[3].TypeOfService;
-                          PropMenuPosAmount3 = editGastronomic[3].Amount;
-                          PropMenuPosDays3 = editGastronomic[3].Days;
-                            
-                          break;
-                      case 4:
-                              var typ4 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                    select q).ToList().Where(x => x.ThingName == editGastronomic[4].TypeOfService).SingleOrDefault();;
+                            PropMenuPosMergeType3 = editGastronomic[3].MergeType;
+                            PropMenuPosVat3 = editGastronomic[3].Vat;
+                            PropMenuTypeOfServ3 = editGastronomic[3].TypeOfService;
+                            PropMenuPosAmount3 = editGastronomic[3].Amount;
+                            PropMenuPosDays3 = editGastronomic[3].Days;
+
+                            break;
+                        case 4:
+                            var typ4 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                        select q).ToList()
+                                .Where(x => x.ThingName == editGastronomic[4].TypeOfService)
+                                .SingleOrDefault();
+                            ;
                             SelectedType3 = typ4.SpecificType;
-                          PropMenuPosMergeType4 = editGastronomic[4].MergeType;
-                          PropMenuPosVat4 = editGastronomic[4].Vat;
-                          PropMenuTypeOfServ4 = editGastronomic[4].TypeOfService;
-                          PropMenuPosAmount4 = editGastronomic[4].Amount;
-                          PropMenuPosDays4 = editGastronomic[4].Days;
-                          PropMenuPosMergeType4 = editGastronomic[4].MergeType;
-                          break;
-                      case 5:
-                                var typ5 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                             
-                              select q).ToList().Where(x => x.ThingName == editGastronomic[0].TypeOfService).SingleOrDefault();;
-                         SelectedType5 = typ5.SpecificType;
-                          PropMenuPosMergeType5 = editGastronomic[5].MergeType;
-                          PropMenuPosVat5 = editGastronomic[5].Vat;
-                          PropMenuTypeOfServ5 = editGastronomic[5].TypeOfService;
-                          PropMenuPosAmount5 = editGastronomic[5].Amount;
-                          PropMenuPosDays5 = editGastronomic[5].Days;
-                            
-                          break;
-                      case 6:
-                                    var typ6 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                 
-                                 select q).ToList().Where(x => x.ThingName == editGastronomic[0].TypeOfService).SingleOrDefault();
+                            PropMenuPosMergeType4 = editGastronomic[4].MergeType;
+                            PropMenuPosVat4 = editGastronomic[4].Vat;
+                            PropMenuTypeOfServ4 = editGastronomic[4].TypeOfService;
+                            PropMenuPosAmount4 = editGastronomic[4].Amount;
+                            PropMenuPosDays4 = editGastronomic[4].Days;
+                            PropMenuPosMergeType4 = editGastronomic[4].MergeType;
+                            break;
+                        case 5:
+                            var typ5 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+
+                                        select q).ToList()
+                                .Where(x => x.ThingName == editGastronomic[0].TypeOfService)
+                                .SingleOrDefault();
+                            ;
+                            SelectedType5 = typ5.SpecificType;
+                            PropMenuPosMergeType5 = editGastronomic[5].MergeType;
+                            PropMenuPosVat5 = editGastronomic[5].Vat;
+                            PropMenuTypeOfServ5 = editGastronomic[5].TypeOfService;
+                            PropMenuPosAmount5 = editGastronomic[5].Amount;
+                            PropMenuPosDays5 = editGastronomic[5].Days;
+
+                            break;
+                        case 6:
+                            var typ6 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                        select q).ToList()
+                                .Where(x => x.ThingName == editGastronomic[0].TypeOfService)
+                                .SingleOrDefault();
                             SelectedType6 = typ6.SpecificType;
-                          PropMenuPosMergeType6 = editGastronomic[6].MergeType;
-                          PropMenuPosVat6 = editGastronomic[6].Vat;
-                          PropMenuTypeOfServ6 = editGastronomic[6].TypeOfService;
-                          PropMenuPosAmount6 = editGastronomic[6].Amount;
-                          PropMenuPosDays6 = editGastronomic[6].Days;
-                          PropMenuPosMergeType6 = editGastronomic[6].MergeType;
-                          break;
-                  }
+                            PropMenuPosMergeType6 = editGastronomic[6].MergeType;
+                            PropMenuPosVat6 = editGastronomic[6].Vat;
+                            PropMenuTypeOfServ6 = editGastronomic[6].TypeOfService;
+                            PropMenuPosAmount6 = editGastronomic[6].Amount;
+                            PropMenuPosDays6 = editGastronomic[6].Days;
+                            PropMenuPosMergeType6 = editGastronomic[6].MergeType;
+                            break;
+                    }
 
-              }
-            }
-            catch(Exception e)
-            {
-                 MessageBox.Show("Gastronomia " + e.ToString());
-            }
+                }
 
-            try
-            {
+                var propAccomDiscountValue = (from q in _ctx.PropAccomodationDiscount
+                                              where q.Id_proposition == _idProposition
+                                              select q).SingleOrDefault();
+                if (propAccomDiscountValue != null)
+                    PropAccomDiscountValue = propAccomDiscountValue.Discount;
+
                 var propAccomodation = (from q in _ctx.PropAccomodation
-                    where q.Id_proposition == _idProposition
-                    select q).ToList();
-               for(int i = 0 ; i < propAccomodation.Count;i++)
+                                        where q.Id_proposition == _idProposition
+                                        select q).ToList();
+                _roomExistList = (from q in _ctx.PropAccomodation_Dictionary
+                                  select q.TypeOfRoom).ToList();
+                for (int i = 0; i < propAccomodation.Count; i++)
                 {
                     switch (propAccomodation[i].TypeOfRoom)
                     {
                         case "POKÓJ 1-OSOBOWY":
-                            if (propAccomodation[i].Amount!=null)
-                            PropAccomAmount0 = propAccomodation[i].Amount;
+                            if (propAccomodation[i].Amount != null)
+                                PropAccomAmount0 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
-                            PropAccomDays0 = propAccomodation[i].Days;
-                           // MessageBox.Show(roomExistList.Count.ToString());
-                            roomExistList.Remove("POKÓJ 1-OSOBOWY");
+                                PropAccomDays0 = propAccomodation[i].Days;
+                            // MessageBox.Show(roomExistList.Count.ToString());
+                            _roomExistList.Remove("POKÓJ 1-OSOBOWY");
                             //MessageBox.Show(roomExistList.Count.ToString());
                             break;
                         case "POKÓJ 2-OSOBOWY":
-                            if (propAccomodation[i].Amount!=null)
-                            PropAccomAmount1 = propAccomodation[i].Amount;
+                            if (propAccomodation[i].Amount != null)
+                                PropAccomAmount1 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
-                            PropAccomDays1 = propAccomodation[i].Days;
-                            roomExistList.Remove("POKÓJ 2-OSOBOWY");
+                                PropAccomDays1 = propAccomodation[i].Days;
+                            _roomExistList.Remove("POKÓJ 2-OSOBOWY");
                             break;
                         case "POKÓJ BUSSINES 1-OSOBOWY":
-                            if (propAccomodation[i].Amount!=null)
-                            PropAccomAmount2 = propAccomodation[i].Amount;
+                            if (propAccomodation[i].Amount != null)
+                                PropAccomAmount2 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
-                            PropAccomDays2 = propAccomodation[i].Days;
-                            roomExistList.Remove("POKÓJ BUSSINES 1-OSOBOWY");
+                                PropAccomDays2 = propAccomodation[i].Days;
+                            _roomExistList.Remove("POKÓJ BUSSINES 1-OSOBOWY");
                             break;
                         case "POKÓJ BUSSINES 2-OSOBOWY":
-                            if (propAccomodation[i].Amount!=null)
-                            PropAccomAmount3 = propAccomodation[i].Amount;
+                            if (propAccomodation[i].Amount != null)
+                                PropAccomAmount3 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
-                            PropAccomDays3 = propAccomodation[i].Days;
-                            roomExistList.Remove("POKÓJ BUSSINES 2-OSOBOWY");
+                                PropAccomDays3 = propAccomodation[i].Days;
+                            _roomExistList.Remove("POKÓJ BUSSINES 2-OSOBOWY");
                             break;
                         case "APARTAMENT":
-                            if (propAccomodation[i].Amount!=null)
-                            PropAccomAmount4 = propAccomodation[i].Amount;
+                            if (propAccomodation[i].Amount != null)
+                                PropAccomAmount4 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
-                            PropAccomDays4 = propAccomodation[i].Days;
-                            roomExistList.Remove("APARTAMENT");
+                                PropAccomDays4 = propAccomodation[i].Days;
+                            _roomExistList.Remove("APARTAMENT");
                             break;
                         case "POKOJ DLA NIEPEŁNOSPRAWNYCH":
-                            if (propAccomodation[i].Amount!=null)
-                            PropAccomAmount5 = propAccomodation[i].Amount;
+                            if (propAccomodation[i].Amount != null)
+                                PropAccomAmount5 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
-                            PropAccomDays5 = propAccomodation[i].Days;
-                            roomExistList.Remove("POKOJ DLA NIEPEŁNOSPRAWNYCH");
+                                PropAccomDays5 = propAccomodation[i].Days;
+                            _roomExistList.Remove("POKOJ DLA NIEPEŁNOSPRAWNYCH");
                             break;
                     }
+                }
+
+
+                //MessageBox.Show(roomExistList.Count.ToString());
+                //Dodatkowe
+                var extra = (from q in _ctx.PropExtraServices
+                             where q.Id_proposition == _idProposition
+                             select q).ToList();
+                var dic = (from q in _ctx.PropExtraServices_Dictionary
+                           select q.ServiceType).ToList();
+                int nullFisrtRow = 0;
+                for (int i = 0; i < extra.Count; i++)
+                {
+                    switch (i)
+                    {
+                        case 0:
+                            try
+                            {
+                                var position = extra.Find(item => item.ServiceType == dic[0]);
+                                var position1 = extra.Find(item => item.ServiceType == dic[1]);
+                                if (position != null)
+                                {
+                                    MessageBox.Show(position.ServiceType + "11111111");
+                                    PropExtraServType0 = position.ServiceType;
+                                    PropExtraServVat0 = position.Vat;
+                                    PropExtraServAmount0 = position.Amount;
+                                    PropExtraServDays0 = position.Days;
+                                    PropExtraServBrutto0 = position.BruttoPrice;
+                                    extra.Remove(position);
+
+                                }
+                                else if (position1 != null)
+                                {
+                                    MessageBox.Show(position1.ServiceType + "2222");
+                                    PropExtraServType0 = position1.ServiceType;
+                                    PropExtraServVat0 = position1.Vat;
+                                    PropExtraServAmount0 = position1.Amount;
+                                    PropExtraServDays0 = position1.Days;
+                                    PropExtraServBrutto0 = position1.BruttoPrice;
+                                    extra.Remove(position1);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(extra[0].ServiceType);
+                                    PropExtraServType1 = extra[0].ServiceType;
+                                    PropExtraServVat1 = extra[0].Vat;
+                                    PropExtraServAmount1 = extra[0].Amount;
+                                    PropExtraServDays1 = extra[0].Days;
+                                    PropExtraServBrutto1 = extra[0].BruttoPrice;
+                                    nullFisrtRow++;
+
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show("testststset" + e.ToString());
+                            }
+
+                            break;
+                        case 1:
+                            MessageBox.Show(extra[1].ServiceType);
+                            if (nullFisrtRow > 0)
+                            {
+                                PropExtraServType2 = extra[1].ServiceType;
+                                PropExtraServVat2 = extra[1].Vat;
+                                PropExtraServAmount2 = extra[1].Amount;
+                                PropExtraServDays2 = extra[1].Days;
+                                PropExtraServBrutto2 = extra[1].BruttoPrice;
+                            }
+                            else
+                            {
+                                PropExtraServType1 = extra[1].ServiceType;
+                                PropExtraServVat1 = extra[1].Vat;
+                                PropExtraServAmount1 = extra[1].Amount;
+                                PropExtraServDays1 = extra[1].Days;
+                                PropExtraServBrutto1 = extra[1].BruttoPrice;
+
+                            }
+                            break;
+                        case 2:
+                            MessageBox.Show(extra[2].ServiceType);
+                            if (nullFisrtRow > 0)
+                            {
+                                PropExtraServType3 = extra[2].ServiceType;
+                                PropExtraServVat3 = extra[2].Vat;
+                                PropExtraServAmount3 = extra[2].Amount;
+                                PropExtraServDays3 = extra[2].Days;
+                                PropExtraServBrutto3 = extra[2].BruttoPrice;
+                            }
+                            else
+                            {
+                                PropExtraServType2 = extra[2].ServiceType;
+                                PropExtraServVat2 = extra[2].Vat;
+                                PropExtraServAmount2 = extra[2].Amount;
+                                PropExtraServDays2 = extra[2].Days;
+                                PropExtraServBrutto2 = extra[2].BruttoPrice;
+                            }
+                            break;
+                        case 3:
+                            MessageBox.Show(extra[3].ServiceType);
+                            if (nullFisrtRow > 0)
+                            {
+                                PropExtraServType3 = extra[3].ServiceType;
+                                PropExtraServVat3 = extra[3].Vat;
+                                PropExtraServAmount3 = extra[3].Amount;
+                                PropExtraServDays3 = extra[3].Days;
+                                PropExtraServBrutto3 = extra[3].BruttoPrice;
+                            }
+                            break;
+
+                    }
+                }
+                var paysug = (from q in _ctx.PropPaymentSuggestions
+                              where q.Id_proposition == _idProposition
+                              select q).SingleOrDefault();
+                if (paysug != null)
+                {
+                    PaymentSuggestPaymentForm = paysug.PaymentForm;
+                    PaymentSuggestInvServName = paysug.InvoiceServiceName;
+                    PaymentSuggestCarPark = paysug.CarPark;
+                    PaymentSuggestIndividOrder = paysug.IndividualOrders;
                 }
             }
             catch (Exception e)
             {
-                   MessageBox.Show("nocleg " + e.ToString());
-            }
-            var propAccomDiscountValue = (from q in _ctx.PropAccomodationDiscount
-                where q.Id_proposition == _idProposition
-                select q).SingleOrDefault();
-            if (propAccomDiscountValue !=null)
-                PropAccomDiscountValue = propAccomDiscountValue.Discount;
-            //MessageBox.Show(roomExistList.Count.ToString());
-//Dodatkowe
-            var extra = (from q in _ctx.PropExtraServices
-                where q.Id_proposition == _idProposition
-                select q).ToList();
-            for (int i = 0; i < extra.Count; i++)
-            {
-                switch (i)
-                {
-                    case 0:
-                        PropExtraServType0 = extra[0].ServiceType;
-                        PropExtraServVat0 = extra[0].Vat;
-                        PropExtraServAmount0 = extra[0].Amount;
-                        PropExtraServDays0 = extra[0].Days;
-                        PropExtraServBrutto0 = extra[0].BruttoPrice;
-
-                        break;
-                    case 1: 
-                        PropExtraServType1 = extra[1].ServiceType;
-                        PropExtraServVat1 = extra[1].Vat;
-                        PropExtraServAmount1 = extra[1].Amount;
-                        PropExtraServDays1 = extra[1].Days;
-                        PropExtraServBrutto1 = extra[1].BruttoPrice;
-                        break;
-                    case 2: 
-                        PropExtraServType2 = extra[2].ServiceType;
-                        PropExtraServVat2 = extra[2].Vat;
-                        PropExtraServAmount2 = extra[2].Amount;
-                        PropExtraServDays2 = extra[2].Days;
-                        PropExtraServBrutto2 = extra[2].BruttoPrice;
-                        break;
-                    case 3: 
-                        PropExtraServType3 = extra[3].ServiceType;
-                        PropExtraServVat3 = extra[3].Vat;
-                        PropExtraServAmount3 = extra[3].Amount;
-                        PropExtraServDays3 = extra[3].Days;
-                        PropExtraServBrutto3 = extra[3].BruttoPrice;
-                        break;
-                        
-                }
-            }
-            var paysug = (from q in _ctx.PropPaymentSuggestions
-                where q.Id_proposition == _idProposition
-                select q).SingleOrDefault();
-            if (paysug != null)
-            {
-                PaymentSuggestPaymentForm = paysug.PaymentForm;
-                PaymentSuggestInvServName = paysug.InvoiceServiceName;
-                PaymentSuggestCarPark = paysug.CarPark;
-                PaymentSuggestIndividOrder = paysug.IndividualOrders;
+                MessageBox.Show("nowa propozycka");
+                _saveFlag = false;
+                CreateNewPropositionExecute("test");
             }
 
         }
 
-
-       private void PropDefaultSeller()
+       
+        /* Wyszukiwanie wszystkich danych potrzebnych do wypełnienia grida admina
+         * - wszystkie propozycje wszystkich użytkowników posortowane według daty
+         * (imie+nazwisko użytkownika , imie+nazwisko klienta, nazwa firmy klienta, data aktualizacji*/
+        private void SelectAllPropositions()
         {
-            var querry = (from user in _ctx.Users
-                          where user.Id == _userId
-                          select new AddNewProposition
-                          {
-                              UpdateDate = DateTime.Today,
-                              UserFirstName = user.Name,
-                              UserSurname = user.Surname,
-                              UserPhoneNum = user.PhoneNum,
-                              UserEmail = user.Email,
-                              IsCreated = true
-                          }).SingleOrDefault();
-
-            _addNewProposition = querry;
+            var myQuerry = (from prop in _ctx.Proposition
+                            from user in _ctx.Users
+                            where user.Id == _userId
+                            where prop.Id_user == UserId
+                            select new AdminProposition
+                            {
+                                PropositionId = prop.Id,
+                                UserFirstName = user.Name,
+                                UserSurname = user.Surname,
+                                CustomerFullName = prop.PropClient.CustomerFullName,
+                                CompanyName = prop.PropClient.CompanyName,
+                                UpdateDate = prop.UpdateDate,
+                                Status = prop.Status
+                            }).ToList();
+            PropositionsList = myQuerry;
         }
 
+        // Metoda ustawiająca cenę sali gdy jest wypełniona nazwa sali i miesiąc wydarzenia
         private void SetHallPrice()
         {
             int? price = null;
@@ -5169,204 +5298,36 @@ namespace DiamondApp.ViewModels
 
                 // zapytanie zwracajace wiersz zawierajacy wybrana przez uzytkownika sale
                 var q = (from s in _ctx.PropReservationDetails_Dictionary_HallPrices
-                         where s.Hall == PropositionReservDetailsHall
-                         select s).ToList();
+                    where s.Hall == PropositionReservDetailsHall
+                    select s).ToList();
 
                 // za pomoca refleksji wybieramy interesujaca nas kolumne
                 // domyslnie w entity nie mozna wybierac dynamicznej nazwy kolumny 
                 // (w naszym przypadku zależna jest ona od wybranego miesiąca)
 
                 var names = q.Select(x => x.GetType().GetProperty(columnName).GetValue(x).ToString());
-
                 // przypisanie odpowiadającej ceny w danym miesiącu danej sali
                 price = Convert.ToInt32(names.First());
+
+                HallPrice = price;
+                PropHallEquipmentDiscountStandPrice = price;
             }
-            HallPrice = price;
-            PropHallEquipmentDiscountStandPrice = price;
         }
 
+        // Metoda ustawiajace cene sali po znizce + ustawiajaca cene brutto wybranej sali
         private void SetEquipmentDiscountPrice()
         {
             if (PropHallEquipmentDiscountValue.HasValue && PropHallEquipmentDiscountStandPrice.HasValue)
             {
-                PropHallPriceAfterDiscount = Math.Ceiling((decimal)PropHallEquipmentDiscountStandPrice -
-                                                         ((decimal)PropHallEquipmentDiscountStandPrice *
-                                                          (decimal)PropHallEquipmentDiscountValue / 100));
+                PropHallPriceAfterDiscount = Math.Ceiling((decimal) PropHallEquipmentDiscountStandPrice -
+                                                         ((decimal) PropHallEquipmentDiscountStandPrice*
+                                                          (decimal) PropHallEquipmentDiscountValue/100));
                 PropHallEqBrutto0 = (float?)PropHallPriceAfterDiscount;
             }
             else if (!PropHallEquipmentDiscountValue.HasValue)
             {
                 PropHallEquipmentDiscountValue = 0;
             }
-        }
-
-        private void HallListFunction()
-        {
-
-            var hallDict1 = (from hd in _ctx.PropReservationDetails_Dictionary_HallCapacity
-                             select hd.Hall).ToList();
-            HallList = hallDict1;
-
-            var hallDict2 = (from hd in _ctx.PropReservationDetails_Dictionary_HallSettings
-                             select hd.Setting).ToList();
-            HallSettingList = hallDict2;
-
-            // wypelnianie listy dodatkowego wyposazenia sali 2tab
-            var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
-                                  select he.Things).ToList();
-            PropHallEqDict2 = propHallEqList;
-
-            var vat = (from he in _ctx.VatList
-                       select he.Vat).ToList();
-            VatList = vat;
-            var gastThingDict = (from gt in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                 select gt.ThingName).ToList();
-            PropMenuGastThingDict0 = gastThingDict;
-            PropMenuGastThingDict1 = gastThingDict;
-            PropMenuGastThingDict2 =  gastThingDict;
-            PropMenuGastThingDict3 = gastThingDict;
-            PropMenuGastThingDict4 = gastThingDict;
-            PropMenuGastThingDict5 = gastThingDict;
-            PropMenuGastThingDict6 = gastThingDict;
-            Filter = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                       group x by x.SpecificType into g
-                       select g.Key).ToList();
-
-  
-
-            //tab4
-            // wypełnienie stawkami VAT
-            var vat4 = (from he in _ctx.VatList
-                        select he.Vat).ToList();
-            VatList4 = vat4;
-
-            PropAccomVat0 = vat4[0];
-            PropAccomVat1 = vat4[0];
-            PropAccomVat2 = vat4[0];
-            PropAccomVat3 = vat4[0];
-            PropAccomVat4 = vat4[0];
-            PropAccomVat5 = vat4[0];
-
-
-            //wypelnienie nazw pokoi
-            var rooms = (from r in _ctx.PropAccomodation_Dictionary
-                         select r).ToList();
-            PropAccomTypeOfRoom0 = rooms[0].TypeOfRoom;
-            PropAccomTypeOfRoom1 = rooms[1].TypeOfRoom;
-            PropAccomTypeOfRoom2 = rooms[2].TypeOfRoom;
-            PropAccomTypeOfRoom3 = rooms[3].TypeOfRoom;
-            PropAccomTypeOfRoom4 = rooms[4].TypeOfRoom;
-            PropAccomTypeOfRoom5 = rooms[5].TypeOfRoom;
-
-            // wypełnienie domyslnymi cenami brutto
-            PropAccomBrutto0 = rooms[0].Price;
-            PropAccomBrutto1 = rooms[1].Price;
-            PropAccomBrutto2 = rooms[2].Price;
-            PropAccomBrutto3 = rooms[3].Price;
-            PropAccomBrutto4 = rooms[4].Price;
-            PropAccomBrutto5 = rooms[5].Price;
-
-            // uzupelnianie slownikami form platnosci
-            var fi = (from r in _ctx.PropPaymentSuggestions_Dictionary_First
-                      select r.PaymentForm).ToList();
-            PropPaySuggDictFirst = fi;
-
-            var fii = (from r in _ctx.PropPaymentSuggestions_Dictionary_Second
-                       select r.InvoiceServiceName).ToList();
-            PropPaySuggDictSecond = fii;
-
-            var fiii = (from r in _ctx.PropPaymentSuggestions_Dictionary_Third
-                        select r.IndividualOrders).ToList();
-            PropPaySuggDictThird = fiii;
-
-            var fiv = (from r in _ctx.PropPaymentSuggestions_Dictionary_Fourth
-                       select r.CarPark).ToList();
-            PropPaySuggDictFourth = fiv;
-
-            // uzupelnienie slownikiem z parkingami (dodatkowe wypos.)
-            var ext = (from r in _ctx.PropExtraServices_Dictionary
-                       select r.ServiceType).ToList();
-            PropExtraServTypeDict = ext;
-
-            PropExtraServVat0 = vat4[0];
-            PropExtraServVat1 = vat4[0];
-            PropExtraServVat2 = vat4[0];
-            PropExtraServVat3 = vat4[0];
-
-        }
-
-        private void FillNeededList()
-        {
-            //PropHallEquipmentList
-            for (int i = 0; i < _propHallEquipment.Capacity; i++)
-                _propHallEquipment.Add(new PropHallEquipment());
-
-            //SecondTabNettoPriceList
-            for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
-                _secondTabNettoPrice.Add(new decimal());
-
-            //SecondTabNettoValueList
-            for (int i = 0; i < _secondTabNettoValue.Capacity; i++)
-                _secondTabNettoValue.Add(new decimal());
-
-            //SecondTabBruttoValueList
-            for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
-                _secondTabBruttoValue.Add(new decimal());
-
-            //PropMenuPositions
-            for (int i = 0; i < _propMenuPositions.Capacity; i++)
-                _propMenuPositions.Add(new PropMenuPosition());
-
-            //ThirdTabNettoPriceList
-            for (int i = 0; i < _thirdTabNettoPrice.Capacity; i++)
-                _thirdTabNettoPrice.Add(new decimal?());
-
-            //PropMenuMerge
-            for (int i = 0; i < _propMenuMerges.Capacity; i++)
-                _propMenuMerges.Add(new PropMenuMerge());
-            //     FillPropMenuMergeList(_propMenuMerges);
-
-            //Default merges dictionary
-            for (int i = 0; i < _defaultMerges.Capacity; i++)
-                _defaultMerges.Add("");
-
-            //ThirdTabNettoValueList
-            for (int i = 0; i < _thirdTabNettoValue.Capacity; i++)
-                _thirdTabNettoValue.Add(new decimal());
-
-            //ThirdTabBruttoValueList
-            for (int i = 0; i < _thirdTabBruttoValue.Capacity; i++)
-                _thirdTabBruttoValue.Add(new decimal());
-
-            //FourthTabNettoValueList
-            for (int i = 0; i < _fourthTabNettoValue.Capacity; i++)
-                _fourthTabNettoValue.Add(new decimal());
-
-            //ThirdTabBruttoValueList
-            for (int i = 0; i < _fourthTabBruttoValue.Capacity; i++)
-                _fourthTabBruttoValue.Add(new decimal());
-
-            //FourthTabNettoPriceList
-            for (int i = 0; i < _fourthTabNettoPrice.Capacity; i++)
-                _fourthTabNettoPrice.Add(new decimal?());
-
-            //PropositionAccomodation
-            for (int i = 0; i < _propAccomodations.Capacity; i++)
-                _propAccomodations.Add(new PropAccomodation());
-            for (int i = 0; i < _propAccomodations.Capacity; i++)
-                _propExtraServ.Add(new PropExtraServices());
-
-            //FifthTabNettoPriceList
-            for (int i = 0; i < _fifthTabNettoPrice.Capacity; i++)
-                _fifthTabNettoPrice.Add(new decimal?());
-
-            //FifthTabNettoValueList
-            for (int i = 0; i < _fifthTabNettoValue.Capacity; i++)
-                _fifthTabNettoValue.Add(new decimal());
-
-            //FifthTabBruttoValueList
-            for (int i = 0; i < _fifthTabBruttoValue.Capacity; i++)
-                _fifthTabBruttoValue.Add(new decimal());
         }
 
         private void InitializeObjects()
@@ -5400,11 +5361,88 @@ namespace DiamondApp.ViewModels
             _propPaymentSugg = new PropPaymentSuggestions();
             _selectedType = new List<string>(7);
         }
+        // wypelnianie zadeklarowanych pustych list 
+        private void FillNeededList()
+        {
+            //PropHallEquipmentList
+            for (int i = 0; i < _propHallEquipment.Capacity; i++)
+                _propHallEquipment.Add(new PropHallEquipment());
+
+            //SecondTabNettoPriceList
+            for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
+                _secondTabNettoPrice.Add(new decimal());
+
+            //SecondTabNettoValueList
+            for (int i = 0; i < _secondTabNettoValue.Capacity; i++)
+                _secondTabNettoValue.Add(new decimal());
+
+            //SecondTabBruttoValueList
+            for (int i = 0; i < _secondTabNettoPrice.Capacity; i++)
+                _secondTabBruttoValue.Add(new decimal());
+
+            //PropMenuPositions
+            for (int i = 0; i < _propMenuPositions.Capacity; i++)
+                _propMenuPositions.Add(new PropMenuPosition());
+
+            //ThirdTabNettoPriceList
+            for (int i = 0; i < _thirdTabNettoPrice.Capacity; i++)
+                _thirdTabNettoPrice.Add(new decimal?());
+
+            //PropMenuMerge
+            for (int i = 0; i < _propMenuMerges.Capacity; i++)
+                _propMenuMerges.Add(new PropMenuMerge());
+       //     FillPropMenuMergeList(_propMenuMerges);
+
+            //Default merges dictionary
+            for (int i = 0; i < _defaultMerges.Capacity; i++)
+                _defaultMerges.Add("");
+
+            //ThirdTabNettoValueList
+            for (int i = 0; i < _thirdTabNettoValue.Capacity; i++)
+                _thirdTabNettoValue.Add(new decimal());
+
+            //ThirdTabBruttoValueList
+            for (int i = 0; i < _thirdTabBruttoValue.Capacity; i++)
+                _thirdTabBruttoValue.Add(new decimal());
+
+            //FourthTabNettoValueList
+            for (int i = 0; i < _fourthTabNettoValue.Capacity; i++)
+                _fourthTabNettoValue.Add(new decimal());
+
+            //FourthTabBruttoValueList
+            for (int i = 0; i < _fourthTabBruttoValue.Capacity; i++)
+                _fourthTabBruttoValue.Add(new decimal());
+
+             //FourthTabNettoPriceList
+            for (int i = 0; i < _fourthTabNettoPrice.Capacity; i++)
+                _fourthTabNettoPrice.Add(new decimal?());
+
+             //PropositionAccomodation
+            for (int i = 0; i < _propAccomodations.Capacity; i++)
+                _propAccomodations.Add(new PropAccomodation());
+
+            for (int i = 0; i < _propAccomodations.Capacity; i++)
+                _propExtraServ.Add(new PropExtraServices());
+
+            //FifthTabNettoPriceList
+            for (int i = 0; i < _fifthTabNettoPrice.Capacity; i++)
+                _fifthTabNettoPrice.Add(new decimal?());
+
+            //FifthTabNettoValueList
+            for (int i = 0; i < _fifthTabNettoValue.Capacity; i++)
+                _fifthTabNettoValue.Add(new decimal());
+
+            //FifthTabBruttoValueList
+            for (int i = 0; i < _fifthTabBruttoValue.Capacity; i++)
+                _fifthTabBruttoValue.Add(new decimal());
+            
+        }
 
         private void SetDefaultValues()
         {
             PropHallEquipmentDiscountValue = 0;
             PropAccomDiscountValue = 0;
+           
             PropHallEqVat0 = 23;
             PropHallEqVat1 = 23;
             PropHallEqVat2 = 23;
@@ -5427,13 +5465,30 @@ namespace DiamondApp.ViewModels
             {
                 _selectedType.Add("");
             }
-       
         }
+
+        private void PropDefaultSeller()
+        {
+            var querry = (from user in _ctx.Users
+                          where user.Id == _userId
+                          select new AddNewProposition
+                          {
+                              UpdateDate = DateTime.Today,
+                              UserFirstName = user.Name,
+                              UserSurname = user.Surname,
+                              UserPhoneNum = user.PhoneNum,
+                              UserEmail = user.Email,
+                              IsCreated = true
+                          }).SingleOrDefault();
+
+            _addNewProposition = querry;
+        }
+        // obliczanie ceny netto na podstawie ceny brutto i vatu (tab2)PropMenuMerge0ComputeNettoPrice
         private decimal ComputeNettoPrice(float? value, float? vat)
         {
             if (vat == null || value == null)
                 return 0;
-            return Math.Round(((decimal)value * 100 / (100 + (decimal)vat)), 2);
+            return Math.Round(((decimal) value * 100 /(100 + (decimal) vat)), 2);
         }
 
         // obliczanie zsumowanej wartosci brutto na podstawie ceny brutto, ilosci i liczby dni
@@ -5463,7 +5518,7 @@ namespace DiamondApp.ViewModels
             sum += SecondTabNettoValue2;
             sum += SecondTabNettoValue3;
             sum += SecondTabNettoValue4;
-            sum += SecondTabNettoValue5;
+            sum += SecondTabNettoValue5; 
 
             SecondTabSumNettoValue = sum;
         }
@@ -5489,18 +5544,18 @@ namespace DiamondApp.ViewModels
         private float? SetMenuPosDefaultVat(string typeofservice)
         {
             var mvat = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
-                        where typeofservice == s.ThingName
-                        select s.Vat).SingleOrDefault();
+                where typeofservice == s.ThingName
+                select s.Vat).SingleOrDefault();
 
-            return mvat != null ? mvat : 0;
+            return mvat!=null ? mvat : 0;
         }
 
         // na podstawie nazwy produktu ustaw cene netto
         private decimal? SetThirdDefaultNettoPrice(string typeofservice)
         {
             var thirdnetto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
-                              where typeofservice == s.ThingName
-                              select s.NettoMini);
+                        where typeofservice == s.ThingName
+                        select s.NettoMini);
             return (decimal?)thirdnetto.SingleOrDefault();
         }
 
@@ -5509,9 +5564,9 @@ namespace DiamondApp.ViewModels
         {
             float? vat = SetMenuPosDefaultVat(typeofservice);
             var netto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
-                         where typeofservice == s.ThingName
-                         select s.NettoMini).SingleOrDefault();
-            float? toret = (float?)netto + (float?)netto * vat.Value / 100;
+                where typeofservice == s.ThingName
+                select s.NettoMini).SingleOrDefault();
+            float? toret = (float?) netto + (float?)netto*vat.Value/100;
             return toret;
         }
 
@@ -5519,21 +5574,21 @@ namespace DiamondApp.ViewModels
         private string SetMenuPosDefaultMergeType(string typeofservice)
         {
             var mt = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
-                      where typeofservice == s.ThingName
-                      select s.MergeType).SingleOrDefault();
+                where typeofservice == s.ThingName
+                select s.MergeType).SingleOrDefault();
             return mt;
         }
 
         // na podstawie domyslnej ceny (netto lub brutto) dodaj marze na podstawie odpowiedniego typu
         private decimal? AddMergeToPrice(decimal? price, string mergeType)
         {
-            //            if (price == null)
-            //                price = 0;
+//            if (price == null)
+//                price = 0;
             var mergeValue =
                 _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new { x = x.DefaultValue }).FirstOrDefault();
+                    .Select((x) => new {x = x.DefaultValue}).FirstOrDefault();
 
-            if (mergeValue.x != null)
+            if (mergeValue != null && mergeValue.x != null)
             {
                 var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
                 return toret;
@@ -5546,37 +5601,15 @@ namespace DiamondApp.ViewModels
         {
             var mergeValue =
                 _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new { x = x.DefaultValue })
+                    .Select((x) => new {x = x.DefaultValue})
                     .FirstOrDefault();
 
-            if (mergeValue.x != null)
+            if (mergeValue != null && mergeValue.x != null)
             {
                 var toret = price + (price * mergeValue.x / 100);
                 return toret;
             }
             return price;
-        }
-
-        // na podstawie domyslnej ceny (netto lub brutto) dodaj marze na podstawie odpowiedniego typu
-        private decimal? SubMergeToPrice(decimal? price, string mergeType)
-        {
-            var mergeValue =
-                _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new { x = x.DefaultValue })
-                    .SingleOrDefault();
-            var toret = price / (1 + (decimal?)mergeValue.x / 100);
-            return toret;
-        }
-
-        // przeciazona powyzsza metoda
-        private float? SubMergeToPrice(float? price, string mergeType)
-        {
-            var mergeValue =
-                _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new { x = x.DefaultValue })
-                    .SingleOrDefault();
-            var toret = price / (1 + mergeValue.x / 100);
-            return toret;
         }
 
         // obliczanie sumy netto (tab3)
@@ -5682,10 +5715,105 @@ namespace DiamondApp.ViewModels
 
             FullSumBrutto = sum;
         }
+        private void HallListFunction()
+        {
+
+            var hallDict1 = (from hd in _ctx.PropReservationDetails_Dictionary_HallCapacity
+                             select hd.Hall).ToList();
+            HallList = hallDict1;
+
+            var hallDict2 = (from hd in _ctx.PropReservationDetails_Dictionary_HallSettings
+                             select hd.Setting).ToList();
+            HallSettingList = hallDict2;
+
+            // wypelnianie listy dodatkowego wyposazenia sali 2tab
+            var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
+                                  select he.Things).ToList();
+            PropHallEqDict2 = propHallEqList;
+
+            var vat = (from he in _ctx.VatList
+                       select he.Vat).ToList();
+            VatList = vat;
+            var gastThingDict = (from gt in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                 select gt.ThingName).ToList();
+            PropMenuGastThingDict0 = gastThingDict;
+            PropMenuGastThingDict1 = gastThingDict;
+            PropMenuGastThingDict2 = gastThingDict;
+            PropMenuGastThingDict3 = gastThingDict;
+            PropMenuGastThingDict4 = gastThingDict;
+            PropMenuGastThingDict5 = gastThingDict;
+            PropMenuGastThingDict6 = gastThingDict;
+            Filter = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                      group x by x.SpecificType into g
+                      select g.Key).ToList();
+
+
+
+            //tab4
+            // wypełnienie stawkami VAT
+            var vat4 = (from he in _ctx.VatList
+                        select he.Vat).ToList();
+            VatList4 = vat4;
+
+            PropAccomVat0 = vat4[0];
+            PropAccomVat1 = vat4[0];
+            PropAccomVat2 = vat4[0];
+            PropAccomVat3 = vat4[0];
+            PropAccomVat4 = vat4[0];
+            PropAccomVat5 = vat4[0];
+
+
+            //wypelnienie nazw pokoi
+            var rooms = (from r in _ctx.PropAccomodation_Dictionary
+                         select r).ToList();
+            PropAccomTypeOfRoom0 = rooms[0].TypeOfRoom;
+            PropAccomTypeOfRoom1 = rooms[1].TypeOfRoom;
+            PropAccomTypeOfRoom2 = rooms[2].TypeOfRoom;
+            PropAccomTypeOfRoom3 = rooms[3].TypeOfRoom;
+            PropAccomTypeOfRoom4 = rooms[4].TypeOfRoom;
+            PropAccomTypeOfRoom5 = rooms[5].TypeOfRoom;
+
+            // wypełnienie domyslnymi cenami brutto
+            PropAccomBrutto0 = rooms[0].Price;
+            PropAccomBrutto1 = rooms[1].Price;
+            PropAccomBrutto2 = rooms[2].Price;
+            PropAccomBrutto3 = rooms[3].Price;
+            PropAccomBrutto4 = rooms[4].Price;
+            PropAccomBrutto5 = rooms[5].Price;
+
+            // uzupelnianie slownikami form platnosci
+            var fi = (from r in _ctx.PropPaymentSuggestions_Dictionary_First
+                      select r.PaymentForm).ToList();
+            PropPaySuggDictFirst = fi;
+
+            var fii = (from r in _ctx.PropPaymentSuggestions_Dictionary_Second
+                       select r.InvoiceServiceName).ToList();
+            PropPaySuggDictSecond = fii;
+
+            var fiii = (from r in _ctx.PropPaymentSuggestions_Dictionary_Third
+                        select r.IndividualOrders).ToList();
+            PropPaySuggDictThird = fiii;
+
+            var fiv = (from r in _ctx.PropPaymentSuggestions_Dictionary_Fourth
+                       select r.CarPark).ToList();
+            PropPaySuggDictFourth = fiv;
+
+            // uzupelnienie slownikiem z parkingami (dodatkowe wypos.)
+            var ext = (from r in _ctx.PropExtraServices_Dictionary
+                       select r.ServiceType).ToList();
+            PropExtraServTypeDict = ext;
+
+            PropExtraServVat0 = vat4[0];
+            PropExtraServVat1 = vat4[0];
+            PropExtraServVat2 = vat4[0];
+            PropExtraServVat3 = vat4[0];
+
+        }
+
         private void CleanProperties(Type obj)
         {
             string[] stringContainList = { "PropMenuTypeOfServ0" };//"Prop", "Hall", "TabNetto", "TabBrutto", "TabSum", "PaymentSuggest","FullSum" };
-            string[] stringNotContainList = { "Command", "List", "Add", "Selected" };
+            string[] stringNotContainList = { "Command", "List", "Add" ,"Selected"};
             var properties = obj.GetProperties();
 
             //tab1
@@ -5707,6 +5835,7 @@ namespace DiamondApp.ViewModels
             HallCapacity = null;
             HallPrice = null;
             AddNewProposition = null;
+            SelectState = null;
 
             //tab2
             PropHallEqThing0 = null;
@@ -5861,23 +5990,23 @@ namespace DiamondApp.ViewModels
             PaymentSuggestCarPark = null;
 
 
-            //            foreach (var propertyInfo in properties)
-            //            {
-            //                if (!stringNotContainList.Any(propertyInfo.Name.Contains))
-            //                {
-            //                    if (stringContainList.Any(propertyInfo.Name.Contains))
-            //                    {
-            //                        string type = propertyInfo.PropertyType.Name;
-            //                       // propertyInfo.SetValue(propertyInfo, null);
-            //                        switch (type)
-            //                        {
-            //                            case "String":
-            //                                propertyInfo.SetValue(type, "", null);
-            //                                break;
-            //                        }
-            //                    }
-            //                } 
-            //            }
+//            foreach (var propertyInfo in properties)
+//            {
+//                if (!stringNotContainList.Any(propertyInfo.Name.Contains))
+//                {
+//                    if (stringContainList.Any(propertyInfo.Name.Contains))
+//                    {
+//                        string type = propertyInfo.PropertyType.Name;
+//                       // propertyInfo.SetValue(propertyInfo, null);
+//                        switch (type)
+//                        {
+//                            case "String":
+//                                propertyInfo.SetValue(type, "", null);
+//                                break;
+//                        }
+//                    }
+//                } 
+//            }
         }
         #endregion
     }
