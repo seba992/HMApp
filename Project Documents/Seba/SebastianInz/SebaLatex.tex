@@ -71,6 +71,7 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 
 \section{Analiza przedwdro¿eniowa}
 \section{Istniej¹ce rozwi¹zania konkurencyjne}
+
 \section{Zastosowane rozwi¹zania}
 \subsection{Wykorzystana technologia}
 \subsubsection{.NET/C\#}
@@ -221,15 +222,15 @@ Za³o¿eniami dotycz¹cymi
 \section{Testowanie aplikacji}
 \subsection{Przeprowadzenie operacji logowania u¿ytkownika}
 
-Podstawowym modu³em ka¿dej aplikacji wspieraj¹cej pracê wielu u¿ytkowników na ich dedykowanych kontach jest modu³ logowania. Po uruchomieniu aplikacji, która jest przedmiotem projektu, oczom u¿ytkownika ukazuje siê okno, którego funkcj¹ jest sprawdzenie jego to¿samoœci oraz w sytuacji jej potwierdzenia, prze³¹czenie go do odpowiedniego okna g³ównego aplikacji, w zale¿noœci od posiadanych przez niego uprawnieñ. 
+Podstawowym modu³em ka¿dej aplikacji wspieraj¹cej pracê wielu u¿ytkowników na ich dedykowanych kontach jest modu³ logowania. Po uruchomieniu aplikacji, która jest przedmiotem projektu, oczom u¿ytkownika ukazuje siê okno, którego zadaniem jest sprawdzenie jego to¿samoœci oraz w sytuacji jej potwierdzenia, prze³¹czenie go do odpowiedniego okna g³ównego aplikacji, w zale¿noœci od posiadanych przez niego uprawnieñ. 
 
 SCREEN OKNA LOGOWANIA
 
-Proces logowania od strony u¿ytkownika polega na wprowadzeniu z poziomu klawiatury swojej nazwy konta sk³adaj¹cej siê z imienia oraz nazwiska oddzielonych kropk¹ oraz has³a, które wybra³ u¿ytkownik do zabezpieczenia swojego konta. Aplikacja na podstawie tych informacji przeprowadza operacjê ich weryfikacji, komunikuj¹c siê z baz¹ danych i wyszukuj¹c w odpowiednich tabelach rekordy, które pasuj¹ do otrzymanego schematu. W zale¿noœci od rezultatu tej akcji, u¿ytkownikowi zwracana jest odpowiednia odpowiedŸ. 
+Proces logowania od strony u¿ytkownika polega na wprowadzeniu z poziomu klawiatury swojej nazwy konta sk³adaj¹cej siê z imienia oraz nazwiska oddzielonych kropk¹ oraz has³a, które wybrano do zabezpieczenia swojego konta. Aplikacja na podstawie tych informacji przeprowadza operacjê ich weryfikacji, komunikuj¹c siê z baz¹ danych i wyszukuj¹c w odpowiednich tabelach rekordy, które pasuj¹ do otrzymanego schematu. W zale¿noœci od rezultatu tej akcji, u¿ytkownikowi zwracana jest odpowiednia odpowiedŸ. 
 
 W sytuacji podania poprawnego loginu oraz has³a, aplikacja ukrywa okno logowania oraz uruchamia odpowiednie dla posiadanych uprawnieñ okno g³ówne. Istniej¹ jednak inne schematy przeprowadzenia operacji logowania, takie jak wpisanie b³êdnego  has³a lub loginu, nie uzupe³nienie nazwy u¿ytkownika lub pierwsze logowanie na konto, które zgodnie z ustalonymi przez zespó³ za³o¿eniami projektowymi ma umo¿liwiaæ ustalenie has³a przez loguj¹cego siê u¿ytkownika.
 
-Wpisanie b³êdnego has³a lub nazwy konta wychwytywane jest przez mechanizmy modu³u logowania, który zwraca informacjê o problemie wraz z jego opisem. W celu zwiêkszenia bezpieczeñstwa wypisywana jest ogólna informacja o otrzymaniu b³êdnych danych, a nie wyszczególniona, która informacja zosta³a podana b³êdnie.
+Wpisanie b³êdnego has³a lub nazwy konta wychwytywane jest przez mechanizm modu³u logowania, który zwraca informacjê o problemie wraz z jego opisem. W celu zwiêkszenia bezpieczeñstwa wypisywana jest ogólna informacja o otrzymaniu b³êdnych danych, a nie wyszczególniona, która informacja zosta³a podana b³êdnie.
 
 SCREEN B£ÊDNEGO WPISANIA DANYCH
 
@@ -238,12 +239,14 @@ Pierwsze logowanie jest specyficzn¹ form¹ logowania, w którym u¿ytkownik posiada
 SCREEN PIERWSZEGO LOGOWANIA
 
 \subsection{Zarz¹dzanie kontem sprzedawcy oraz administratora  (obs³uga)}
+
 \subsection{Tworzenie nowej propozycji cenowej}
 \subsubsection{Opis klienta}
 \subsubsection{Szczegó³y rezerwacji}
 \subsubsection{Us³ugi gastronomiczne}
 \subsubsection{Us³ugi noclegowe}
 \subsubsection{Us³ugi dodatkowe i forma p³atnoœci}
+
 \subsection{Edycja istniej¹cej propozycji cenowej}
 \subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
 \subsection{Modyfikacja kont u¿ytkowników/sprzedawców}
@@ -252,10 +255,25 @@ SCREEN PIERWSZEGO LOGOWANIA
 \subsubsection{Usuwanie konta}
 \subsection{Modyfikacja s³owników cenowych}
 \section{Specyfikacja wewnêtrzna}
-\subsection{Logowanie}
-\subsubsection{Funkcja haszuj¹ca}
-\subsubsection{SHA-2}
-\subsubsection{Pierwsze logowanie}
+
+\subsection{Przeprowadzenie operacji logowania u¿ytkownika}
+\subsubsection{Bezpieczeñstwo procesu logowania}
+
+Modu³ logowania jest czêœci¹ systemu, do której dostêp posiada ka¿dy u¿ytkownik korzystaj¹cy z prezentowanej aplikacji. Implikuje to koniecznoœæ jego zabezpieczenia przed niepowo³anym u¿yciem i dostêpem do poufnych danych. Dobr¹ praktyk¹ odnosz¹c siê do bezpieczeñstwa jest nieprzechowywanie w ¿adnym miejscu has³a w postaci jawnej. 
+
+Pole wpisywania has³a przez u¿ytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka - PasswordBox. Jest to zmodyfikowana kontrolka TextBox dostêpna w technologi WPF, która wyœwietla swoj¹ zawartoœæ w postaci ukrytej, uniemo¿liwiaj¹c jednoczeœnie wykonanie na niej operacji kopiowania oraz wycinania. Zabezpiecza to przed niechcianym podejrzeniem has³a przez osobê trzeci¹ oraz niweluje problem jego odzyskania.
+
+Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili otrzym
+
+ZRZUT KONTROLKI
+
+
+
+ znajduj¹cych siê dla przyk³adu w bazie danych, z któr¹ nawi¹zywane jest po³¹czenie. 
+\subsubsection{Szyfrowanie hase³ - funkcja haszuj¹ca SHA2}
+Zastosowana funkcja haszuj¹ca - SHA2
+
+
 \subsection{Konto administratora i u¿ytkownika – ListView}
 \subsection{Tworzenie propozycji cenowej}
 \subsection{Edycja s³owników oraz kont u¿ytkowników}
@@ -300,7 +318,7 @@ mo¿liwa jest zmiana numerowania, patrz wyjaœnienia.
 
 
 
-\dodatkowo{Programy}
+\dodatkowo{Za³¹czniki}
 
 Tu programy
 

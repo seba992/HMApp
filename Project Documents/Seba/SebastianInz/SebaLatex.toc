@@ -66,5 +66,5 @@
 \contentsline {section}{\numberline {9}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{37}
 \contentsline {section}{Dodatek: M\'oj specjalny dodatek}{39}
 \contentsline {section}{Rysunki}{41}
-\contentsline {section}{Programy}{43}
+\contentsline {section}{Za\IeC {\l }\k aczniki}{43}
 \contentsline {section}{Literatura}{45}
