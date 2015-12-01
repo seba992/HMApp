@@ -13,9 +13,8 @@ namespace DiamondApp.ViewModels
 {
     public class LoginViewModel : ObservableObject
     {
-        private DiamondDBEntities _ctx;
+        private readonly DiamondDBEntities _ctx;
         private RelayCommand<PasswordBox> _loginCommand;
-        // public Action CloseAction { get; set; } <- read on google to correct close the window
 
         private int _userId;
         private string _userType;

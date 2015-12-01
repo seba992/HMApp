@@ -142,7 +142,6 @@ Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit jest ustalanie z 
 
 \subsubsection{PDFsharp \& MigraDoc}
 
-
 \section{Implementacja}
 \subsection{Architektura aplikacji}
 \subsubsection{Wzorce architektoniczne oprogramowania}
@@ -179,13 +178,15 @@ todo after refactor.
 \subsection{Komunikacja bazy danych z projektem programistycznym}
 \subsubsection{Mapowanie obiektowo-relacyjne}
 
+Pojêcie mapowania obiektowo-relacyjnego (ORM) odnosi siê do  programistycznego terminu dotycz¹cego wspó³pracy z baz¹ danych, wykorzystuj¹c idee programowania obiektowego. Konkretnie rzecz ujmuj¹c chodzi o zamianê danych, przechowywanych w postaci tabelarycznej w relacyjnej bazie danych na postaæ obiektow¹ dostêpn¹ z poziomu u¿ywanego jêzyka programowania lub w drug¹ stronê.
+
+Przedstawiona translacja danych okaza³a siê bardzo praktyczna przez wzgl¹d na zniwelowanie koniecznoœci zag³êbiania siê w struktury bazy danych przez programistê, a tak¿e w przypadku u¿ycia dodatkowych frameworków brak wymogu dotycz¹cego jego znajomoœci zapytañ jêzyka SQL przez fakt pracy wy³¹cznie na obiektach, które odwzorowuj¹ strukturê tabel.
+
 Aplikacje komputerowe, których funkcjonalnoœci zorientowane s¹ na wielu u¿ytkowników lub wymuszaj¹ koniecznoœæ ci¹g³ego przechowywania i przetwarzania du¿ych iloœci danych bardzo czêsto korzystaj¹ z systemów baz danych. Systemy te umo¿liwiaj¹ nieprzerwane magazynowanie du¿ej iloœci informacji, a tak¿e szybkie ich wyszukiwanie, sortowanie, dodawanie, edycjê oraz usuwanie. Przedstawione aspekty s¹ bardzo trudne do zaimplementowania wewn¹trz standardowych aplikacji. 
 
 W przypadku technologii .NET, w której prowadzony jest prezentowany projekt, standardowa komunikacja aplikacji z baz¹ danych odbywa siê za poœrednictwem protoko³u ADO.NET. Przy jego u¿yciu programista ma obowi¹zek ka¿dorazowo nawi¹zaæ po³¹czenie z baz¹, rêcznie wprowadziæ zapytanie SQL, odebraæ wynik i zapisaæ go w odpowiednim obiekcie oraz zamkn¹æ po³¹czenie. Schemat ten w znacznym stopniu utrudnia utrzymanie prawid³owego dzia³ania aplikacji w przypadku jej rozbudowy lub modyfikacji bazy danych. Napisane zapytanie SQL w ¿adnym stopniu nie jest sprawdzane ze wzglêdu na jego poprawn¹ formê, a w sytuacji zmiany przyk³adowo nazwy kolumny w wykorzystywanej bazie danych, programista w celu utrzymania prawid³owej pracy aplikacji ma obowi¹zek aktualizacji wszystkich zapytañ, które dotyczy³y zmienionej kolumny.
 
-Pojêcie mapowania obiektowo-relacyjnego (ORM) odnosi siê do  programistycznego terminu dotycz¹cego wspó³pracy z baz¹ danych, wykorzystuj¹c idee programowania obiektowego. Konkretnie rzecz ujmuj¹c chodzi o zamianê danych, przechowywanych w postaci tabelarycznej w relacyjnej bazie danych na postaæ obiektow¹ dostêpn¹ z poziomu u¿ywanego jêzyka programowania lub w drug¹ stronê.
-
-Przedstawiona translacja danych okaza³a siê bardzo praktyczna przez wzgl¹d na zniwelowanie koniecznoœci zag³êbiania siê w struktury bazy danych przez programistê, a tak¿e brak wymogu dotycz¹cego jego znajomoœci zapytañ jêzyka SQL przez fakt pracy wy³¹cznie na obiektach, które odwzorowuj¹ strukturê tabel.
+W celu przeciwdzia³ania przedstawionym problemom zdecydowano siê zastosowaæ dedykowany framework, który upraszcza developerowi przeprowadzanie wszelkich bazodanowych operacji.
 
 \begin{figure}[ht]
     \centering
@@ -195,17 +196,47 @@ Przedstawiona translacja danych okaza³a siê bardzo praktyczna przez wzgl¹d na zn
 
 \subsubsection{Zastosowane narzêdzie ORM – Entity Framework} 
 
-\subsubsection{Dostosowanie Entity Framework do wymagañ zwi¹zanych ze wzorcem MVVM}
+Entity Framework jest to dedykowane dla platformy .NET narzêdzie mapowania obiektowo-relacyjnego, które wspiera budowê trójwarstwowych aplikacji bazodanowych. Budowa obiektowego modelu bazy danych w prezentowanym frameworku mo¿e przebiegaæ w zale¿noœci od potrzeb trzema œcie¿kami.
 
+Pierwsz¹ opcj¹ jest podejœcie Database First, które okazuje siê przydatne w sytuacji, gdy fizyczna baza danych ju¿ istnieje. W tym przypadku, korzystaj¹c z wbudowanego we framework Designera, istnieje mo¿liwoœæ okreœlenia lokalizacji bazy oraz automatycznego jej mapowania, w wyniku którego wygenerowane zostaj¹ potrzebne klasy obiektowego modelu bazy danych.
+
+Kolejn¹ metod¹ jest Code First umo¿liwiaj¹ce utworzenie fizycznego modelu bazy danych na podstawie w³asnorêcznie napisanych klas w jêzyku C\# wraz z jej odpowiednimi adnotacjami \cite{AdnotacjeCodeFirst}.
+
+Ostatnie podejœcie to Model First, które polega na zbudowaniu fizycznego modelu bazy danych pos³uguj¹c siê kreatorem, który z znacznym stopniu u³atwia tworzenie encji oraz w³aœciwoœci bazy danych. Œcie¿ka ta jest wykorzystywana w sytuacji posiadania wy³¹cznie schematu bazy danych. Ze zbudowanego modelu generowana jest fizyczny model bazy danych jak i równie¿ klasy, które reprezentuj¹ model obiektowy.
+
+\subsubsection{Dostosowanie Entity Framework do wymagañ zwi¹zanych z za³o¿eniami projektowymi oraz wzorcem MVVM}
+
+Za³o¿eniami dotycz¹cymi 
+
+- ulokowanie, budowa, screen, zmiana na obserwowalne kolekcje
 \subsubsection{U¿ycie bazy danych ze strony projektu C\#}
+
+- opis linq to entities
 
 \subsection{Automatyzacja wydawania kolejnych wersji programu}
 \subsubsection{Continuous Integration – definicja}
 \subsubsection{Continuous Deployment – definicja}
 \subsubsection{Continuous Delivery – definicja}
 \subsubsection{Schemat budowania programu}
-\section{Specyfikacja zewnêtrzna}
-\subsection{Logowanie}
+\section{Testowanie aplikacji}
+\subsection{Przeprowadzenie operacji logowania u¿ytkownika}
+
+Podstawowym modu³em ka¿dej aplikacji wspieraj¹cej pracê wielu u¿ytkowników na ich dedykowanych kontach jest modu³ logowania. Po uruchomieniu aplikacji, która jest przedmiotem projektu, oczom u¿ytkownika ukazuje siê okno, którego funkcj¹ jest sprawdzenie jego to¿samoœci oraz w sytuacji jej potwierdzenia, prze³¹czenie go do odpowiedniego okna g³ównego aplikacji, w zale¿noœci od posiadanych przez niego uprawnieñ. 
+
+SCREEN OKNA LOGOWANIA
+
+Proces logowania od strony u¿ytkownika polega na wprowadzeniu z poziomu klawiatury swojej nazwy konta sk³adaj¹cej siê z imienia oraz nazwiska oddzielonych kropk¹ oraz has³a, które wybra³ u¿ytkownik do zabezpieczenia swojego konta. Aplikacja na podstawie tych informacji przeprowadza operacjê ich weryfikacji, komunikuj¹c siê z baz¹ danych i wyszukuj¹c w odpowiednich tabelach rekordy, które pasuj¹ do otrzymanego schematu. W zale¿noœci od rezultatu tej akcji, u¿ytkownikowi zwracana jest odpowiednia odpowiedŸ. 
+
+W sytuacji podania poprawnego loginu oraz has³a, aplikacja ukrywa okno logowania oraz uruchamia odpowiednie dla posiadanych uprawnieñ okno g³ówne. Istniej¹ jednak inne schematy przeprowadzenia operacji logowania, takie jak wpisanie b³êdnego  has³a lub loginu, nie uzupe³nienie nazwy u¿ytkownika lub pierwsze logowanie na konto, które zgodnie z ustalonymi przez zespó³ za³o¿eniami projektowymi ma umo¿liwiaæ ustalenie has³a przez loguj¹cego siê u¿ytkownika.
+
+Wpisanie b³êdnego has³a lub nazwy konta wychwytywane jest przez mechanizmy modu³u logowania, który zwraca informacjê o problemie wraz z jego opisem. W celu zwiêkszenia bezpieczeñstwa wypisywana jest ogólna informacja o otrzymaniu b³êdnych danych, a nie wyszczególniona, która informacja zosta³a podana b³êdnie.
+
+SCREEN B£ÊDNEGO WPISANIA DANYCH
+
+Pierwsze logowanie jest specyficzn¹ form¹ logowania, w którym u¿ytkownik posiada obowi¹zek wpisania has³a, z którego bêdzie korzysta³ w pracy z aplikacj¹. W chwili wpisania nazwy u¿ytkownika, program w tle przeprowadza operacjê walidacji statusu konta i w sytuacji wykrycia, i¿ u¿ytkownik loguje siê pierwszy raz, wyœwietla stosown¹ informacjê, która instruuje go o dalszych krokach /odnoœnik do zrzutu ekranu ulustruj¹c¹ tê sytacjê/
+
+SCREEN PIERWSZEGO LOGOWANIA
+
 \subsection{Zarz¹dzanie kontem sprzedawcy oraz administratora  (obs³uga)}
 \subsection{Tworzenie nowej propozycji cenowej}
 \subsubsection{Opis klienta}
@@ -256,11 +287,7 @@ Moskalom przez konar b³ysnê³o jako po zadzwonieniu na wzmiankê Warszawy rzek³, p
         {Tytu³ drugiego rozdzia³u. \newlineTekst Bardzo d³ugi tytu³. \newlineTekst
           Jego \newlineSpis formatowanie jest trudniejsze}
 
-Tu jest wnêtrze rozdzia³u drugiego.          
-
-
-
-Mówi¹c, Podkomorzemu œcisn¹³ za rarogiem zazdroszczono domowi, przed nim le¿y Fedon i Suwarów w naukach mniej krzykliwy i wionê³a ogrodem przez Niemen rzek³: Dziœ, nowym zwyczajem my na konikach ma³e ¿arciki umia³ komponowaæ i¿by je wicher rozerwie i dziwniejsze od kilku dzieje chciano przeczyæ chwa³y. Wiêc do z³otego run on Pana Mówi¹c, Podkomorzemu œcisn¹³ za rarogiem zazdroszczono domowi, przed nim dla zabawki Bo nie rozwity, lecz latem nic nie jest obora. Dozoru tego dnia powiada³. Dobrze, mój Tadeuszu, ¿eœ siê Soplica. wszyscy siedli i jelenie rogi z Rymsz¹, Rymsza z pola. Tak ka¿e u Niemna odebra³ wiadomoœæ. mo¿e te¿ same portrety na filarach, pod³oga wys³ana kamieniem, Œciany bez rêki lub papug¹ w Pañskim pisano zakonie i opisujê, bo tak nazywano m³odzieñca, który teraz za nim spostrzeg³ siê, serce mu jak wiœnie bliŸniêta. U tej znalaz³ podobne oczy, usta, lica. w czasie wojny otoczony chmur¹ pu³ków, tysi¹cem dzia³ zbrojny wprz¹g³szy w koñcu œród biesiadników siedzia³ s³ucha³ zmru¿ywszy oczy, usta, lica. w sieni siad³ przy jego wiernym ludem! Jak go pilnowa³ i oczy wko³o obraca³ ostró¿ne. Gdy siê chlubi a zaj¹c jak.
+Tu jest wnêtrze rozdzia³u drugiego.
 
 \dodatek{Mój specjalny dodatek}
 
@@ -278,12 +305,32 @@ mo¿liwa jest zmiana numerowania, patrz wyjaœnienia.
 Tu programy
 
 \begin{verbatim}
-#include <stdio.h>
+	//ADO.NET
+    SqlConnection connection = new SqlConnection(connectionString);
 
-int main()
-{
-   printf("Hello world\n");
-}
+    SqlCommand command = 
+    		new SqlCommand(@"INSERT INTO [TestDb].[Users]  
+        	    VALUES (@Login, @Password)", connection);
+            
+    command.Parameters.Add(
+    		new SqlParameter("Login", "TestLogin"));
+    command.Parameters.Add(
+	    	new SqlParameter("Password","TestPa$$word"));
+            
+    connection.Open();
+    command.ExecuteNonQuery();
+    connection.Close();
+
+    //Entity Framework
+    DiamondDBEntities dataContext = new DiamondDBEntities();
+    // EF automatycznie odczyta plik konfiguracyjny aplikacji
+
+    TestUser newUser = new TestUser
+    {
+        Login = "TestLogin", Password = "TestPa$$word",
+    };
+    dataContext.Users.Add(newUser);
+    dataContext.SaveChanges();  
 \end{verbatim}
 
 \noindent
@@ -341,6 +388,10 @@ Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletn
 
 \bibitem{DataBinding}
 MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
+
+%entity
+\bibitem{AdnotacjeCodeFirst}
+https://msdn.microsoft.com/en-us/data/jj591583
 
 %Nazwisko I. \textsl{tytu³}, miasto, rok
 \bibitem{nazwa} Jakaœ pozycja literatury

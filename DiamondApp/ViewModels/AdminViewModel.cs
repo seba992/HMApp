@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
 using DiamondApp.DataGridObjectClasses;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
 using DiamondApp.Views;
-using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 
 namespace DiamondApp.ViewModels
@@ -19,7 +16,7 @@ namespace DiamondApp.ViewModels
         private DiamondDBEntities _ctx;
         
         // do edycji propozycji
-        private bool _saveFlag = false;  // czy edycja czy dodanie nowej jeśli nie zostały żadna wybrana
+        private bool _saveFlag;  // czy edycja czy dodanie nowej jeśli nie zostały żadna wybrana
         private AdminProposition _selectedProposition; // wybrana poropozycja
         private int _idProposition;  //id propozycji
         private List<string> _state = new List<string> { "Nierozpatrzona", "Gotowa" };
@@ -47,7 +44,6 @@ namespace DiamondApp.ViewModels
         private decimal _propHallPriceAfterDiscount;
         private List<string> _propHallEqDict2; // lista zawierajaca wyposazenie dodatkowe sali (combobox tab 2)
         private List<float?> _vatList = new List<float?>(2); // lista zawierajaca wartosci VAT
-
 
         private decimal _secondTabSumNettoValue;    // suma wartosci netto (tab2)
         private decimal _secondTabSumBruttoValue;   // suma wartosci brutto (tab2)
@@ -108,7 +104,7 @@ namespace DiamondApp.ViewModels
 
         private int _defaultViewVatIndex;
 
-       
+        #region Constructor
 
         public AdminViewModel(int userId)
         {
@@ -120,18 +116,14 @@ namespace DiamondApp.ViewModels
             FillNeededList();
             PropDefaultSeller();
            SetDefaultValues();
-            //SetDefaultValues();
-//            CleanProperties(typeof(AdminViewModel));
         }
 
-#region Properties
+        #endregion
+        #region Properties
 
         public List<AdminProposition> PropositionsList
         {
-            get
-            {
-                return _propositionList;
-            }
+            get{ return _propositionList; }
             set
             {
                 _propositionList = value;
@@ -189,8 +181,7 @@ namespace DiamondApp.ViewModels
             {
                 if (_savePropositionCommand == null)
                 {
-                    _savePropositionCommand = new RelayCommand(SavePropositionExecute, CanSavePropositionExecute);
-                   
+                    _savePropositionCommand = new RelayCommand(SavePropositionExecute, CanSavePropositionExecute); 
                 }
                 return _savePropositionCommand;
             }
@@ -205,8 +196,8 @@ namespace DiamondApp.ViewModels
                 }
                 return _showPropositionsCommand; 
             }
-
         }
+
         public ICommand ShowUsersCommand
         {
             get
@@ -2155,8 +2146,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropMenuPosAmount0 != null && PropMenuPosDays0 != null && PropMenuTypeOfServ0 != null)
                 {
-                    ThirdTabNettoValue0 = ComputeNettoValue((decimal)ThirdTabNettoPrice0, PropMenuPosAmount0,
-                        PropMenuPosDays0);
+                    if (ThirdTabNettoPrice0 != null)
+                        ThirdTabNettoValue0 = ComputeNettoValue((decimal)ThirdTabNettoPrice0, PropMenuPosAmount0,
+                            PropMenuPosDays0);
                     ThirdTabBruttoValue0 = ComputeBruttoValue(PropMenuPosBrutto0, PropMenuPosAmount0,
                         PropMenuPosDays0);
                 }
@@ -2173,8 +2165,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropMenuPosAmount1 != null && PropMenuPosDays1 != null && PropMenuTypeOfServ1 != null)
                 {
-                    ThirdTabNettoValue1 = ComputeNettoValue((decimal)ThirdTabNettoPrice1, PropMenuPosAmount1,
-                        PropMenuPosDays1);
+                    if (ThirdTabNettoPrice1 != null)
+                        ThirdTabNettoValue1 = ComputeNettoValue((decimal)ThirdTabNettoPrice1, PropMenuPosAmount1,
+                            PropMenuPosDays1);
                     ThirdTabBruttoValue1 = ComputeBruttoValue(PropMenuPosBrutto1, PropMenuPosAmount1,
                         PropMenuPosDays1);
                 }
@@ -2191,8 +2184,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropMenuPosAmount2 != null && PropMenuPosDays2 != null && PropMenuTypeOfServ2 != null)
                 {
-                    ThirdTabNettoValue2 = ComputeNettoValue((decimal)ThirdTabNettoPrice2, PropMenuPosAmount2,
-                        PropMenuPosDays2);
+                    if (ThirdTabNettoPrice2 != null)
+                        ThirdTabNettoValue2 = ComputeNettoValue((decimal)ThirdTabNettoPrice2, PropMenuPosAmount2,
+                            PropMenuPosDays2);
                     ThirdTabBruttoValue2 = ComputeBruttoValue(PropMenuPosBrutto2, PropMenuPosAmount2,
                         PropMenuPosDays2);
                 }
@@ -2209,8 +2203,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropMenuPosAmount3 != null && PropMenuPosDays3 != null && PropMenuTypeOfServ3 != null)
                 {
-                    ThirdTabNettoValue3 = ComputeNettoValue((decimal)ThirdTabNettoPrice3, PropMenuPosAmount3,
-                        PropMenuPosDays3);
+                    if (ThirdTabNettoPrice3 != null)
+                        ThirdTabNettoValue3 = ComputeNettoValue((decimal)ThirdTabNettoPrice3, PropMenuPosAmount3,
+                            PropMenuPosDays3);
                     ThirdTabBruttoValue3 = ComputeBruttoValue(PropMenuPosBrutto3, PropMenuPosAmount3,
                         PropMenuPosDays3);
                 }
@@ -2227,8 +2222,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropMenuPosAmount4 != null && PropMenuPosDays4 != null && PropMenuTypeOfServ4 != null)
                 {
-                    ThirdTabNettoValue4 = ComputeNettoValue((decimal)ThirdTabNettoPrice4, PropMenuPosAmount4,
-                        PropMenuPosDays4);
+                    if (ThirdTabNettoPrice4 != null)
+                        ThirdTabNettoValue4 = ComputeNettoValue((decimal)ThirdTabNettoPrice4, PropMenuPosAmount4,
+                            PropMenuPosDays4);
                     ThirdTabBruttoValue4 = ComputeBruttoValue(PropMenuPosBrutto4, PropMenuPosAmount4,
                         PropMenuPosDays4);
                 }
@@ -2245,8 +2241,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropMenuPosAmount5 != null && PropMenuPosDays5 != null && PropMenuTypeOfServ5 != null)
                 {
-                    ThirdTabNettoValue5 = ComputeNettoValue((decimal)ThirdTabNettoPrice5, PropMenuPosAmount5,
-                        PropMenuPosDays5);
+                    if (ThirdTabNettoPrice5 != null)
+                        ThirdTabNettoValue5 = ComputeNettoValue((decimal)ThirdTabNettoPrice5, PropMenuPosAmount5,
+                            PropMenuPosDays5);
                     ThirdTabBruttoValue5 = ComputeBruttoValue(PropMenuPosBrutto5, PropMenuPosAmount5,
                         PropMenuPosDays5);
                 }
@@ -2263,8 +2260,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropMenuPosAmount6 != null && PropMenuPosDays6 != null && PropMenuTypeOfServ6 != null)
                 {
-                    ThirdTabNettoValue6 = ComputeNettoValue((decimal)ThirdTabNettoPrice6, PropMenuPosAmount6,
-                        PropMenuPosDays6);
+                    if (ThirdTabNettoPrice6 != null)
+                        ThirdTabNettoValue6 = ComputeNettoValue((decimal)ThirdTabNettoPrice6, PropMenuPosAmount6,
+                            PropMenuPosDays6);
                     ThirdTabBruttoValue6 = ComputeBruttoValue(PropMenuPosBrutto6, PropMenuPosAmount6,
                         PropMenuPosDays6);
                 }
@@ -2936,11 +2934,10 @@ namespace DiamondApp.ViewModels
 
                 if (PropAccomAmount0 != null && PropAccomDays0 != null)
                 {
-                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0, PropAccomDays0);
+                    if (FourthTabNettoPrice0 != null)
+                        FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0, PropAccomDays0);
                     FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,PropAccomDays0);
                 }
-                    
-
             }
         }
         public decimal? FourthTabNettoPrice1
@@ -2953,7 +2950,8 @@ namespace DiamondApp.ViewModels
 
                 if (PropAccomAmount1 != null && PropAccomDays1 != null)
                 {
-                    FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1, PropAccomDays1);
+                    if (FourthTabNettoPrice1 != null)
+                        FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1, PropAccomDays1);
                     FourthTabBruttoValue1 = ComputeBruttoValue(PropAccomBrutto1, PropAccomAmount1, PropAccomDays1);
                 }
             }
@@ -2967,7 +2965,8 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("FourthTabNettoPrice2");
 
                 if (PropAccomAmount2 != null && PropAccomDays2 != null)
-                    FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2, PropAccomDays2);
+                    if (FourthTabNettoPrice2 != null)
+                        FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2, PropAccomDays2);
             }
         }
         public decimal? FourthTabNettoPrice3
@@ -2979,7 +2978,8 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("FourthTabNettoPrice3");
 
                 if (PropAccomAmount3 != null && PropAccomDays3 != null)
-                    FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3, PropAccomDays3);
+                    if (FourthTabNettoPrice3 != null)
+                        FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3, PropAccomDays3);
             }
         }
         public decimal? FourthTabNettoPrice4
@@ -2991,7 +2991,8 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("FourthTabNettoPrice4");
 
                 if (PropAccomAmount4 != null && PropAccomDays4 != null)
-                    FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4, PropAccomDays4);
+                    if (FourthTabNettoPrice4 != null)
+                        FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4, PropAccomDays4);
             }
         }
         public decimal? FourthTabNettoPrice5
@@ -3003,7 +3004,8 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("FourthTabNettoPrice5");
 
                 if (PropAccomAmount5 != null && PropAccomDays5 != null)
-                    FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5, PropAccomDays5);
+                    if (FourthTabNettoPrice5 != null)
+                        FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5, PropAccomDays5);
             }
         }
 
@@ -3085,8 +3087,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropAccomTypeOfRoom0 != null && PropAccomAmount0 != null)
                 {
-                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
-                        PropAccomDays0);
+                    if (FourthTabNettoPrice0 != null)
+                        FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
+                            PropAccomDays0);
                     FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
                         PropAccomDays0);
                 }
@@ -3103,8 +3106,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropAccomTypeOfRoom1 != null && PropAccomAmount1 != null)
                 {
-                    FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1,
-                        PropAccomDays1);
+                    if (FourthTabNettoPrice1 != null)
+                        FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1,
+                            PropAccomDays1);
                     FourthTabBruttoValue1 = ComputeBruttoValue(PropAccomBrutto1, PropAccomAmount1,
                         PropAccomDays1);
                 }
@@ -3121,8 +3125,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropAccomTypeOfRoom2 != null && PropAccomAmount2 != null)
                 {
-                    FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2,
-                        PropAccomDays2);
+                    if (FourthTabNettoPrice2 != null)
+                        FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2,
+                            PropAccomDays2);
                     FourthTabBruttoValue2 = ComputeBruttoValue(PropAccomBrutto2, PropAccomAmount2,
                         PropAccomDays2);
                 }
@@ -3139,8 +3144,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropAccomTypeOfRoom3 != null && PropAccomAmount3 != null)
                 {
-                    FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3,
-                        PropAccomDays3);
+                    if (FourthTabNettoPrice3 != null)
+                        FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3,
+                            PropAccomDays3);
                     FourthTabBruttoValue3 = ComputeBruttoValue(PropAccomBrutto3, PropAccomAmount3,
                         PropAccomDays3);
                 }
@@ -3157,8 +3163,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropAccomTypeOfRoom4 != null && PropAccomAmount4 != null)
                 {
-                    FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4,
-                        PropAccomDays4);
+                    if (FourthTabNettoPrice4 != null)
+                        FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4,
+                            PropAccomDays4);
                     FourthTabBruttoValue4 = ComputeBruttoValue(PropAccomBrutto4, PropAccomAmount4,
                         PropAccomDays4);
                 }
@@ -3175,8 +3182,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropAccomTypeOfRoom5 != null && PropAccomAmount5 != null)
                 {
-                    FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5,
-                        PropAccomDays5);
+                    if (FourthTabNettoPrice5 != null)
+                        FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5,
+                            PropAccomDays5);
                     FourthTabBruttoValue5 = ComputeBruttoValue(PropAccomBrutto5, PropAccomAmount5,
                         PropAccomDays5);
                 }
@@ -3195,12 +3203,12 @@ namespace DiamondApp.ViewModels
 
                 if (PropAccomTypeOfRoom0 != null && PropAccomDays0 != null)
                 {
-                    FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
-                        PropAccomDays0);
+                    if (FourthTabNettoPrice0 != null)
+                        FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
+                            PropAccomDays0);
                     FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
                         PropAccomDays0);
                 }
-
             }
         }
         public int? PropAccomAmount1
@@ -3215,12 +3223,12 @@ namespace DiamondApp.ViewModels
 
                 if (PropAccomTypeOfRoom1 != null && PropAccomDays1 != null)
                 {
-                    FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1,
-                        PropAccomDays1);
+                    if (FourthTabNettoPrice1 != null)
+                        FourthTabNettoValue1 = ComputeNettoValue((decimal)FourthTabNettoPrice1, PropAccomAmount1,
+                            PropAccomDays1);
                     FourthTabBruttoValue1 = ComputeBruttoValue(PropAccomBrutto1, PropAccomAmount1,
                         PropAccomDays1);
                 }
-
             }
         }
         public int? PropAccomAmount2
@@ -3235,12 +3243,12 @@ namespace DiamondApp.ViewModels
 
                 if (PropAccomTypeOfRoom2 != null && PropAccomDays2 != null)
                 {
-                    FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2,
-                        PropAccomDays2);
+                    if (FourthTabNettoPrice2 != null)
+                        FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2,
+                            PropAccomDays2);
                     FourthTabBruttoValue2 = ComputeBruttoValue(PropAccomBrutto2, PropAccomAmount2,
                         PropAccomDays2);
                 }
-
             }
         }
         public int? PropAccomAmount3
@@ -3255,12 +3263,12 @@ namespace DiamondApp.ViewModels
 
                 if (PropAccomTypeOfRoom3 != null && PropAccomDays3 != null)
                 {
-                    FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3,
-                        PropAccomDays3);
+                    if (FourthTabNettoPrice3 != null)
+                        FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3,
+                            PropAccomDays3);
                     FourthTabBruttoValue3 = ComputeBruttoValue(PropAccomBrutto3, PropAccomAmount3,
                         PropAccomDays3);
                 }
-
             }
         }
         public int? PropAccomAmount4
@@ -3275,12 +3283,12 @@ namespace DiamondApp.ViewModels
 
                 if (PropAccomTypeOfRoom4 != null && PropAccomDays4 != null)
                 {
-                    FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4,
-                        PropAccomDays4);
+                    if (FourthTabNettoPrice4 != null)
+                        FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4,
+                            PropAccomDays4);
                     FourthTabBruttoValue4 = ComputeBruttoValue(PropAccomBrutto4, PropAccomAmount4,
                         PropAccomDays4);
                 }
-
             }
         }
         public int? PropAccomAmount5
@@ -3295,12 +3303,12 @@ namespace DiamondApp.ViewModels
 
                 if (PropAccomTypeOfRoom5 != null && PropAccomDays5 != null)
                 {
-                    FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5,
-                        PropAccomDays5);
+                    if (FourthTabNettoPrice5 != null)
+                        FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5,
+                            PropAccomDays5);
                     FourthTabBruttoValue5 = ComputeBruttoValue(PropAccomBrutto5, PropAccomAmount5,
                         PropAccomDays5);
                 }
-
             }
         }
 
@@ -3848,8 +3856,9 @@ namespace DiamondApp.ViewModels
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto3 != null && PropExtraServAmount3 != null)
                 {
-                    FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
-                        PropExtraServDays3);
+                    if (FifthTabNettoPrice3 != null)
+                        FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
+                            PropExtraServDays3);
                     FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, PropExtraServAmount3,
                         PropExtraServDays3);
                 }
@@ -4322,12 +4331,11 @@ namespace DiamondApp.ViewModels
                 {
                     foreach (var eve in e.EntityValidationErrors)
                     {
-                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        Console.WriteLine(@"Entity of type ""{0}"" in state ""{1}"" has the following validation errors:",
                             eve.Entry.Entity.GetType().Name, eve.Entry.State);
                         foreach (var ve in eve.ValidationErrors)
                         {
-                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
+                            Console.WriteLine(@"- Property: " + ve.PropertyName + ", Error: " + ve.ErrorMessage);
                         }
                     }
                     throw;
@@ -5732,7 +5740,6 @@ namespace DiamondApp.ViewModels
         // Metoda ustawiająca cenę sali gdy jest wypełniona nazwa sali i miesiąc wydarzenia
         private void SetHallPrice()
         {
-            int? price = null;
             if (!string.IsNullOrEmpty(PropositionReservDetailsHall) && PropositionReservDetailsStartData != null)
             {
                 // zapisanie angielskiej nazwy miesiaca (jest ona rowna kolumnie w tabeli PropReservationDetails_Dictionary_HallPrices
@@ -5749,7 +5756,7 @@ namespace DiamondApp.ViewModels
 
                 var names = q.Select(x => x.GetType().GetProperty(columnName).GetValue(x).ToString());
                 // przypisanie odpowiadającej ceny w danym miesiącu danej sali
-                price = Convert.ToInt32(names.First());
+                int? price = Convert.ToInt32(names.First());
 
                 HallPrice = price;
                 PropHallEquipmentDiscountStandPrice = price;
@@ -5948,7 +5955,7 @@ namespace DiamondApp.ViewModels
         {
             if (amount == null || days == null)
                 return 0;
-            return (decimal)nettoPrice * (decimal)amount * (decimal)days;
+            return nettoPrice * (decimal)amount * (decimal)days;
         }
 
         // obliczanie sumy netto (tab2)
@@ -6032,8 +6039,11 @@ namespace DiamondApp.ViewModels
 
             if (mergeValue != null && mergeValue.x != null)
             {
-                var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
-                return toret;
+                if (price != null)
+                {
+                    var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
+                    return toret;
+                }
             }
             return price;
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace DiamondApp
+namespace DiamondApp.Tools
 {
     /// <summary>
     /// A generic command whose sole purpose is to relay its functionality to other
@@ -12,8 +12,8 @@ namespace DiamondApp
     /// <typeparam name="T">The type of the command parameter.</typeparam>
     public class RelayCommand<T> : ICommand
     {
-        private readonly Func<T, bool> m_CanExecute;
-        private readonly Action<T> m_Execute;
+        private readonly Func<T, bool> _mCanExecute;
+        private readonly Action<T> _mExecute;
 
         /// <summary>
         /// Initializes a new instance of the RelayCommand class that 
@@ -39,8 +39,8 @@ namespace DiamondApp
                 throw new ArgumentNullException("execute");
             }
 
-            m_Execute = execute;
-            m_CanExecute = canExecute;
+            _mExecute = execute;
+            _mCanExecute = canExecute;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace DiamondApp
         /// <returns>true if this command can be executed; otherwise, false.</returns>
         public bool CanExecute(object parameter)
         {
-            return m_CanExecute == null ? true : m_CanExecute((T)parameter);
+            return _mCanExecute == null ? true : _mCanExecute((T)parameter);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace DiamondApp
         {
             if (CanExecute(parameter))
             {
-                m_Execute((T)parameter);
+                _mExecute((T)parameter);
             }
         }
 

@@ -64,7 +64,6 @@ namespace DiamondApp.ViewModels
         private List<PropMenuPosition> _propMenuPositions = new List<PropMenuPosition>(7);  // obiekt przechowujacy elementy uslug gastronomicznych
         private List<decimal?> _thirdTabNettoPrice = new List<decimal?>(7);  // lista cen netto (tab3)
         private List<PropMenuMerge> _propMenuMerges = new List<PropMenuMerge>(5);
-        private List<string> _defaultMerges = new List<string>(5);  // lista domyslnych marzy
         private List<decimal> _thirdTabNettoValue = new List<decimal>(7);   // list zsumowanych cen netto (tab2)
         private List<decimal> _thirdTabBruttoValue = new List<decimal>(7);   // list zsumowanych cen netto (tab2)
 
@@ -5344,7 +5343,6 @@ namespace DiamondApp.ViewModels
             _propMenuPositions = new List<PropMenuPosition>(7);
             _thirdTabNettoPrice = new List<decimal?>(7);
             _propMenuMerges = new List<PropMenuMerge>(5);
-            _defaultMerges = new List<string>(5);
             _thirdTabNettoValue = new List<decimal>(7);
             _thirdTabBruttoValue = new List<decimal>(7);
             _propAccomodations = new List<PropAccomodation>(6);
@@ -5392,10 +5390,6 @@ namespace DiamondApp.ViewModels
             for (int i = 0; i < _propMenuMerges.Capacity; i++)
                 _propMenuMerges.Add(new PropMenuMerge());
        //     FillPropMenuMergeList(_propMenuMerges);
-
-            //Default merges dictionary
-            for (int i = 0; i < _defaultMerges.Capacity; i++)
-                _defaultMerges.Add("");
 
             //ThirdTabNettoValueList
             for (int i = 0; i < _thirdTabNettoValue.Capacity; i++)

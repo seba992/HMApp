@@ -2,13 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
-using System.Linq;
 using DiamondApp.ViewModels;
-using System.Data;
-using DiamondApp.EntityModel;
-using System;
-using DiamondApp.DataGridObjectClasses;
-using System.Collections;
 using DiamondApp.Tools;
 using Microsoft.Win32;
 
@@ -26,7 +20,7 @@ namespace DiamondApp.Views
             InitializeComponent();
             AdminViewModel adminView = new AdminViewModel(userId);
             DataContext = adminView;  // utworzenie instakcji widoku admina przekazujac id obecnie zalogowanego usera
-            this.Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);  // potrzebne do zmiany wyswietlanej waluty $ -> zl
+            Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);  // potrzebne do zmiany wyswietlanej waluty $ -> zl
 
         }
 
@@ -43,18 +37,18 @@ namespace DiamondApp.Views
                 case "Edytuj":
                         
                 case "Dodaj":
-                    this.AdminProposition.Visibility = Visibility.Hidden;
-                    this.Luser.Visibility =Visibility.Hidden;
-                    this.CBUser.Visibility = Visibility.Hidden;
-                    this.TabControlProposition.Visibility = Visibility.Visible;
-                    this.SavePropositionButton.Visibility = Visibility.Visible;
+                    AdminProposition.Visibility = Visibility.Hidden;
+                    Luser.Visibility =Visibility.Hidden;
+                    CbUser.Visibility = Visibility.Hidden;
+                    TabControlProposition.Visibility = Visibility.Visible;
+                    SavePropositionButton.Visibility = Visibility.Visible;
                     break;
                 default:
-                    this.AdminProposition.Visibility = Visibility.Visible;
-                    this.Luser.Visibility =Visibility.Visible;
-                    this.CBUser.Visibility = Visibility.Visible;
-                    this.TabControlProposition.Visibility = Visibility.Hidden;
-                    this.SavePropositionButton.Visibility = Visibility.Hidden;
+                    AdminProposition.Visibility = Visibility.Visible;
+                    Luser.Visibility =Visibility.Visible;
+                    CbUser.Visibility = Visibility.Visible;
+                    TabControlProposition.Visibility = Visibility.Hidden;
+                    SavePropositionButton.Visibility = Visibility.Hidden;
                     break;
             }
         }
@@ -67,23 +61,10 @@ namespace DiamondApp.Views
             SavePropositionButton.Visibility = Visibility.Hidden;
         }
 
-        private void VisibleElement2(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AdminProposition.Visibility = Visibility.Hidden;
-            
-            TabControlProposition.Visibility = Visibility.Hidden;
-            SavePropositionButton.Visibility = Visibility.Hidden;
-        }
-
-        private void SRElementySali2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-           
-        }
-
-       private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button _myButton = (Button)sender;
-            string value = _myButton.CommandParameter.ToString();
+            Button myButton = (Button)sender;
+            string value = myButton.CommandParameter.ToString();
 
             string path = "";
 
