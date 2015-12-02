@@ -207,12 +207,19 @@ Ostatnie podejœcie to Model First, które polega na zbudowaniu fizycznego modelu 
 
 \subsubsection{Dostosowanie Entity Framework do wymagañ zwi¹zanych z za³o¿eniami projektowymi oraz wzorcem MVVM}
 
-Za³o¿eniami dotycz¹cymi 
-
 - ulokowanie, budowa, screen, zmiana na obserwowalne kolekcje
-\subsubsection{U¿ycie bazy danych ze strony projektu C\#}
 
-- opis linq to entities
+TO DO
+
+\subsubsection{Stosowanie poleceñ bazodanowych ze strony projektu C\# za pomoc¹ Linq to Entities}
+
+Zastosowane narzêdzie Entity Framework nie tylko w znacznym stopniu upraszcza po³¹czenie bazy danych z projektem programistycznym ale tak¿e umo¿liwia w nim proste i intuicyjne wykonywanie poleceñ bazodanowych. //Us³ugê tê dostarcza wbudowany w Entity Framework modu³ Linq To Entities //
+
+TO DO
+
+- opis linq to entities (select)
+- insert
+- update
 
 \subsection{Automatyzacja wydawania kolejnych wersji programu}
 \subsubsection{Continuous Integration – definicja}
@@ -234,18 +241,32 @@ Wpisanie b³êdnego has³a lub nazwy konta wychwytywane jest przez mechanizm modu³u
 
 SCREEN B£ÊDNEGO WPISANIA DANYCH
 
-Pierwsze logowanie jest specyficzn¹ form¹ logowania, w którym u¿ytkownik posiada obowi¹zek wpisania has³a, z którego bêdzie korzysta³ w pracy z aplikacj¹. W chwili wpisania nazwy u¿ytkownika, program w tle przeprowadza operacjê walidacji statusu konta i w sytuacji wykrycia, i¿ u¿ytkownik loguje siê pierwszy raz, wyœwietla stosown¹ informacjê, która instruuje go o dalszych krokach /odnoœnik do zrzutu ekranu ulustruj¹c¹ tê sytacjê/
+Pierwsze logowanie jest specyficzn¹ form¹ logowania, w którym u¿ytkownik posiada obowi¹zek wpisania has³a, z którego bêdzie korzysta³ w pracy z aplikacj¹. W chwili wpisania nazwy u¿ytkownika, program w tle przeprowadza operacjê walidacji statusu konta i w sytuacji wykrycia, i¿ u¿ytkownik loguje siê pierwszy raz, wyœwietla stosown¹ informacjê, która instruuje go o dalszych krokach. 
+/odnoœnik do zrzutu ekranu ilustruj¹c¹ tê sytacjê/
 
 SCREEN PIERWSZEGO LOGOWANIA
 
 \subsection{Zarz¹dzanie kontem sprzedawcy oraz administratora  (obs³uga)}
 
 \subsection{Tworzenie nowej propozycji cenowej}
+
+Modu³ tworzenia nowej propozycji cenowej umo¿liwia u¿ytkownikowi aplikacji przeprowadzenie procesu utworzenia schematu wymaganych przez klienta us³ug wraz z ich zapisem do bazy danych. Tym sposobem wszelkie ustalenia dokonane podczas spotkania z potencjalnym klientem zapisywane s¹ na centralnym serwerze, z którego w razie potrzeby mo¿na wymagan¹ propozycjê pobraæ i wygenerowaæ jej plik w formacie PDF lub dokonaæ jej edycji.
+
+W czasie spotkania sprzedawcy z klientem, chc¹c przedstawiæ ofertê cenow¹ dotycz¹c¹ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g³ównym aplikacji opcjê stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siê forma przeznaczona do wpisywania wymaganych danych. Forma ta przez wzgl¹d na kilka typów us³ug podzielona jest na piêæ zak³adek, z których ka¿da zawiera odpowiednia pola, umo¿liwiaj¹ce ustalenie wszelkich elementów konkretnej us³ugi.
+
 \subsubsection{Opis klienta}
+
+Pierwsza zak³adka dotyczy wszelkich informacji dotycz¹cych  danych osobowych sprzedawcy, klienta oraz ogólnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, któr¹ reprezentuje, pobierane s¹ automatycznie z bazy danych. Operacja ta jest mo¿liwa dziêki przechowywaniu w programie informacji o tym, na jakie konto u¿ytkownik zosta³ zalogowany. Wszelkie pozosta³e dane sprzedawca ma obowi¹zek uzupe³niæ samodzielnie, uzyskuj¹c informacje od klienta. 
+
+SCREEN TAB1
 \subsubsection{Szczegó³y rezerwacji}
+SCREEN TAB2
 \subsubsection{Us³ugi gastronomiczne}
+SCREEN TAB3
 \subsubsection{Us³ugi noclegowe}
+SCREEN TAB4
 \subsubsection{Us³ugi dodatkowe i forma p³atnoœci}
+SCREEN TAB5
 
 \subsection{Edycja istniej¹cej propozycji cenowej}
 \subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
@@ -259,17 +280,16 @@ SCREEN PIERWSZEGO LOGOWANIA
 \subsection{Przeprowadzenie operacji logowania u¿ytkownika}
 \subsubsection{Bezpieczeñstwo procesu logowania}
 
-Modu³ logowania jest czêœci¹ systemu, do której dostêp posiada ka¿dy u¿ytkownik korzystaj¹cy z prezentowanej aplikacji. Implikuje to koniecznoœæ jego zabezpieczenia przed niepowo³anym u¿yciem i dostêpem do poufnych danych. Dobr¹ praktyk¹ odnosz¹c siê do bezpieczeñstwa jest nieprzechowywanie w ¿adnym miejscu has³a w postaci jawnej. 
+Modu³ logowania jest czêœci¹ systemu, do którego dostêp udostêpniony jest ka¿demu u¿ytkownikowi korzystaj¹cego z prezentowanej aplikacji. Implikuje to koniecznoœæ jego zabezpieczenia przed niepowo³anym u¿yciem dotycz¹cym dostêpu do poufnych danych, takich jak dane osobiste oraz has³a, dla których dobr¹ praktyk¹ odnosz¹c¹ siê do bezpieczeñstwa jest ich nieprzechowywanie w ¿adnym miejscu w postaci jawnej.
 
-Pole wpisywania has³a przez u¿ytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka - PasswordBox. Jest to zmodyfikowana kontrolka TextBox dostêpna w technologi WPF, która wyœwietla swoj¹ zawartoœæ w postaci ukrytej, uniemo¿liwiaj¹c jednoczeœnie wykonanie na niej operacji kopiowania oraz wycinania. Zabezpiecza to przed niechcianym podejrzeniem has³a przez osobê trzeci¹ oraz niweluje problem jego odzyskania.
-
-Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili otrzym
+Pole wpisywania has³a przez u¿ytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka - PasswordBox. Jest to zmodyfikowana kontrolka TextBox dostêpna w technologi WPF, która wyœwietla swoj¹ zawartoœæ w postaci ukrytej, uniemo¿liwiaj¹c jednoczeœnie wykonanie na jej zawartoœci operacji kopiowania oraz wycinania z poziomu klawiatury oraz myszy. Zabezpiecza to przed niechcianym podejrzeniem has³a oraz jego odzyskania przez osobê trzeci¹.
 
 ZRZUT KONTROLKI
 
+Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili wpisania has³a przez u¿ytkownika oraz klikniêcia przycisku logowania, has³o przekszta³cane jest za pomoc¹ algorytmu haszuj¹cego na skrót, który porównywany jest ze skrótem has³a dopasowanemu wpisanej nazwie u¿ytkownika u¿ytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostêp do dalszej czêœci programu.
 
+ZRZUT REKORDU W BAZIE DANYCH + KOD PORÓWNUJ¥CY HAS£A
 
- znajduj¹cych siê dla przyk³adu w bazie danych, z któr¹ nawi¹zywane jest po³¹czenie. 
 \subsubsection{Szyfrowanie hase³ - funkcja haszuj¹ca SHA2}
 Zastosowana funkcja haszuj¹ca - SHA2
 

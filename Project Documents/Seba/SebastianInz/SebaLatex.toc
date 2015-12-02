@@ -30,7 +30,7 @@
 \contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Mapowanie obiektowo-relacyjne}{27}
 \contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny Zastosowane narz\k edzie ORM \IeC {\textendash } Entity Framework}{28}
 \contentsline {subsubsection}{\numberline {5.3.3}\kernsubsubsekcyjny Dostosowanie Entity Framework do wymaga\'n zwi\k azanych z za\IeC {\l }o\.zeniami projektowymi oraz wzorcem MVVM}{29}
-\contentsline {subsubsection}{\numberline {5.3.4}\kernsubsubsekcyjny U\.zycie bazy danych ze strony projektu C\#}{29}
+\contentsline {subsubsection}{\numberline {5.3.4}\kernsubsubsekcyjny Stosowanie polece\'n bazodanowych ze strony projektu C\# za pomoc\k a Linq to Entities}{29}
 \contentsline {subsection}{\numberline {5.4}\kernsubsekcyjny Automatyzacja wydawania kolejnych wersji programu}{29}
 \contentsline {subsubsection}{\numberline {5.4.1}\kernsubsubsekcyjny Continuous Integration \IeC {\textendash } definicja}{29}
 \contentsline {subsubsection}{\numberline {5.4.2}\kernsubsubsekcyjny Continuous Deployment \IeC {\textendash } definicja}{29}
@@ -42,29 +42,28 @@
 \contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{32}
 \contentsline {subsubsection}{\numberline {6.3.1}\kernsubsubsekcyjny Opis klienta}{32}
 \contentsline {subsubsection}{\numberline {6.3.2}\kernsubsubsekcyjny Szczeg\'o\IeC {\l }y rezerwacji}{32}
-\contentsline {subsubsection}{\numberline {6.3.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{32}
-\contentsline {subsubsection}{\numberline {6.3.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{32}
-\contentsline {subsubsection}{\numberline {6.3.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{32}
-\contentsline {subsection}{\numberline {6.4}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{32}
-\contentsline {subsection}{\numberline {6.5}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{32}
-\contentsline {subsection}{\numberline {6.6}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{32}
-\contentsline {subsubsection}{\numberline {6.6.1}\kernsubsubsekcyjny Dodawanie konta}{32}
-\contentsline {subsubsection}{\numberline {6.6.2}\kernsubsubsekcyjny Edycja konta}{32}
-\contentsline {subsubsection}{\numberline {6.6.3}\kernsubsubsekcyjny Usuwanie konta}{32}
-\contentsline {subsection}{\numberline {6.7}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{32}
-\contentsline {section}{\numberline {7}\kernsekcyjny Specyfikacja wewn\k etrzna}{33}
-\contentsline {subsection}{\numberline {7.1}\kernsubsekcyjny Logowanie}{33}
-\contentsline {subsubsection}{\numberline {7.1.1}\kernsubsubsekcyjny Funkcja haszuj\k aca}{33}
-\contentsline {subsubsection}{\numberline {7.1.2}\kernsubsubsekcyjny SHA-2}{33}
-\contentsline {subsubsection}{\numberline {7.1.3}\kernsubsubsekcyjny Pierwsze logowanie}{33}
-\contentsline {subsection}{\numberline {7.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{33}
-\contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{33}
-\contentsline {subsection}{\numberline {7.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{33}
-\contentsline {subsubsection}{\numberline {7.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{33}
-\contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{33}
-\contentsline {section}{\numberline {8}\kernsekcyjny Perspektywy rozwoju oprogramowania}{35}
-\contentsline {section}{\numberline {9}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{37}
-\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{39}
-\contentsline {section}{Rysunki}{41}
-\contentsline {section}{Za\IeC {\l }\k aczniki}{43}
-\contentsline {section}{Literatura}{45}
+\contentsline {subsubsection}{\numberline {6.3.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{33}
+\contentsline {subsubsection}{\numberline {6.3.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{33}
+\contentsline {subsubsection}{\numberline {6.3.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{33}
+\contentsline {subsection}{\numberline {6.4}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{33}
+\contentsline {subsection}{\numberline {6.5}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{33}
+\contentsline {subsection}{\numberline {6.6}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{33}
+\contentsline {subsubsection}{\numberline {6.6.1}\kernsubsubsekcyjny Dodawanie konta}{33}
+\contentsline {subsubsection}{\numberline {6.6.2}\kernsubsubsekcyjny Edycja konta}{33}
+\contentsline {subsubsection}{\numberline {6.6.3}\kernsubsubsekcyjny Usuwanie konta}{33}
+\contentsline {subsection}{\numberline {6.7}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{33}
+\contentsline {section}{\numberline {7}\kernsekcyjny Specyfikacja wewn\k etrzna}{35}
+\contentsline {subsection}{\numberline {7.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{35}
+\contentsline {subsubsection}{\numberline {7.1.1}\kernsubsubsekcyjny Bezpiecze\'nstwo procesu logowania}{35}
+\contentsline {subsubsection}{\numberline {7.1.2}\kernsubsubsekcyjny Szyfrowanie hase\IeC {\l } - funkcja haszuj\k aca SHA2}{35}
+\contentsline {subsection}{\numberline {7.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{35}
+\contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{36}
+\contentsline {subsection}{\numberline {7.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{36}
+\contentsline {subsubsection}{\numberline {7.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{36}
+\contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{36}
+\contentsline {section}{\numberline {8}\kernsekcyjny Perspektywy rozwoju oprogramowania}{37}
+\contentsline {section}{\numberline {9}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{39}
+\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{41}
+\contentsline {section}{Rysunki}{43}
+\contentsline {section}{Za\IeC {\l }\k aczniki}{45}
+\contentsline {section}{Literatura}{47}
