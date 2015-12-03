@@ -19,7 +19,7 @@ namespace DiamondApp.ViewModels
         private bool _saveFlag;  // czy edycja czy dodanie nowej jeśli nie zostały żadna wybrana
         private AdminProposition _selectedProposition; // wybrana poropozycja
         private int _idProposition;  //id propozycji
-        private List<string> _state = new List<string> { "Nierozpatrzona", "Gotowa" };
+        private List<string> _state = new List<string>(2);
         private string _selectState;
 
         private List<AdminProposition> _propositionList;
@@ -344,15 +344,22 @@ namespace DiamondApp.ViewModels
 
                 // zaktualizuj miesiąc wyswietlany w oknie tworzenia propozycji
                 EventMonth = DateTimeConverter.ToMonthPolishName(value);
-                RaisePropertyChanged("PropositionReservDetailsStartData");
+                
 
                 // jeśli wybrana jest juz nazwa sali to ustaw 
-                if (PropositionReservDetailsHall != null)
+                if (PropositionReservDetailsHall != null && PropositionReservDetailsHall != " ")
                     PropHallEqThing0 = "Sala " + PropositionReservDetailsHall;
+                else
+                    PropHallEqThing0 = null;
 
+                if (value == null)
+                {
+                    PropHallEqThing0 = null;
+                    PropHallEqBrutto0 = null;
+                }
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
-
+                RaisePropertyChanged("PropositionReservDetailsStartData");
 
 
             }
@@ -415,16 +422,21 @@ namespace DiamondApp.ViewModels
                     select s).SingleOrDefault();
                 HallCapacity = querry;
 
-                RaisePropertyChanged("PropositionReservDetailsHall");
+                
 
                 // jeśli wybrana jest juz data poczatkowa wyswietl nazwe sali w tab2 poz1
-                if (PropositionReservDetailsStartData.HasValue)
+                if (PropositionReservDetailsStartData.HasValue && value != " ")
                     PropHallEqThing0 = "Sala " + value;
-                
+                else
+                {
+                    PropHallEqThing0 = null;
+                    PropHallEqBrutto0 = null;
+                }
+                    
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
 
-
+                RaisePropertyChanged("PropositionReservDetailsHall");
             }
         }
         public string PropositionReservDetailsHallSetting
@@ -833,8 +845,12 @@ namespace DiamondApp.ViewModels
                 _propHallEquipment[0].Vat = value;
                 RaisePropertyChanged("PropHallEqVat0");
                 // liczenie i wyswietlanie w oknie (tab2) ceny netto w sytuacji zmiany vat gdy jest cena brutto
-                if(PropHallEqBrutto0!=null)
+                if (PropHallEqBrutto0 != null)
                     SecondTabNettoPrice0 = ComputeNettoPrice(PropHallEqBrutto0, value);
+                else
+                {
+                    SecondTabNettoPrice0 = 0;
+                }
             }
         }
         public float? PropHallEqVat1
@@ -4077,6 +4093,10 @@ namespace DiamondApp.ViewModels
                 select hd.Setting).ToList();
             HallSettingList = hallDict2;
 
+            //TODO: Lisu tabela w bazie ! ; D
+//            _state.Add("Nierozpatrzona");
+//            _state.Add("Gotowa");
+
             // wypelnianie listy dodatkowego wyposazenia sali 2tab
             var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
                 select he.Things).ToList();
@@ -4250,8 +4270,8 @@ namespace DiamondApp.ViewModels
                 for (int i = 0; i < _propHallEquipment.Count; i++)
                 {
                     if (_propHallEquipment[i].Things != null && _propHallEquipment[i].BruttoPrice != null
-                        && _propHallEquipment[i].Amount != null && _propHallEquipment[i].Days !=null 
-                        && _propHallEquipment[i].Things != " ")
+                        && _propHallEquipment[i].Amount != null && _propHallEquipment[i].Days != null
+                        && _propHallEquipment[i].Things != " " && _propHallEquipment[i].BruttoPrice == 0) 
                     {
                         _propHallEquipment[i].Id_proposition = currentPropositionId;
                         _ctx.PropHallEquipment.Add(_propHallEquipment[i]);
@@ -5754,12 +5774,26 @@ namespace DiamondApp.ViewModels
                 // domyslnie w entity nie mozna wybierac dynamicznej nazwy kolumny 
                 // (w naszym przypadku zależna jest ona od wybranego miesiąca)
 
-                var names = q.Select(x => x.GetType().GetProperty(columnName).GetValue(x).ToString());
+                var names = q.Select(x => x.GetType().GetProperty(columnName).GetValue(x).ToString()).SingleOrDefault();
                 // przypisanie odpowiadającej ceny w danym miesiącu danej sali
-                int? price = Convert.ToInt32(names.First());
-
-                HallPrice = price;
-                PropHallEquipmentDiscountStandPrice = price;
+                int price;
+                if (!Int32.TryParse(names, out price))
+                    price = 0;
+                if (price == 0)
+                {
+                    HallPrice = null;
+                    PropHallEquipmentDiscountStandPrice = null;
+                }
+                else
+                {
+                    HallPrice = price;
+                    PropHallEquipmentDiscountStandPrice = price;   
+                }
+            }
+            else
+            {
+                HallPrice = null;
+                PropHallEquipmentDiscountStandPrice = null;
             }
         }
 
@@ -5776,6 +5810,7 @@ namespace DiamondApp.ViewModels
             else if (!PropHallEquipmentDiscountValue.HasValue)
             {
                 PropHallEquipmentDiscountValue = 0;
+                PropHallEqBrutto0 = null;
             }
         }
 
@@ -5884,11 +5919,16 @@ namespace DiamondApp.ViewModels
             //FifthTabBruttoValueList
             for (int i = 0; i < _fifthTabBruttoValue.Capacity; i++)
                 _fifthTabBruttoValue.Add(new decimal());
-            
+
+            //First Tab state list
+ //           for (int i = 0; i < _state.Capacity; i++)
+                _state.Add("Nierozpatrzona");
+                _state.Add("Gotowa");
         }
 
         private void SetDefaultValues()
         {
+            SelectState = State[0];
             PropHallEquipmentDiscountValue = 0;
             PropAccomDiscountValue = 0;
             DefaultViewVatIndex = 1;
@@ -6269,6 +6309,12 @@ namespace DiamondApp.ViewModels
             var properties = obj.GetProperties();
 
             //tab1
+
+            //if not working, bug is here >_<
+            _state = null;
+            SelectState = null;
+
+
             PropositionReservDetailsStartData = null;
             PropositionReservDetailsEndData = null;
 
@@ -6287,7 +6333,6 @@ namespace DiamondApp.ViewModels
             HallCapacity = null;
             HallPrice = null;
             AddNewProposition = null;
-            SelectState = null;
 
             //tab2
             PropHallEqThing0 = null;

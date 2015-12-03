@@ -331,14 +331,12 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropositionReservDetailsStartData");
 
                 // jeśli wybrana jest juz nazwa sali to ustaw 
-                if (PropositionReservDetailsHall != null)
+                if (PropositionReservDetailsHall != null && PropositionReservDetailsHall == " ")
                     PropHallEqThing0 = "Sala " + PropositionReservDetailsHall;
-
+                else
+                    PropHallEqThing0 = null;
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
-
-
-
             }
         }
 
@@ -405,7 +403,8 @@ namespace DiamondApp.ViewModels
                 // jeśli wybrana jest juz data poczatkowa wyswietl nazwe sali w tab2 poz1
                 if (PropositionReservDetailsStartData.HasValue)
                     PropHallEqThing0 = "Sala " + value;
-
+                else
+                    PropHallEqThing0 = null;
                 // wyciagnij z bazy i ustaw cene wybranej cali w danym miesiacu
                 SetHallPrice();
 

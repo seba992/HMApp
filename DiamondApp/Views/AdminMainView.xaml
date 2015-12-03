@@ -169,7 +169,7 @@
                     <Label Grid.Row="15" Grid.Column="3" Content="Miesiąc: " HorizontalContentAlignment="Right" Margin="3" />
                     <TextBox x:Name="OkSalaMiesiac" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding EventMonth}"/>
                     <Label Content="Zmiana stanu " Grid.Column="6" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top"  Width="122" Height="31"/>
-                    <ComboBox Grid.Column="7" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top" Width="127" Height="28" ItemsSource="{Binding State}" SelectedValue="{Binding SelectState}"/>
+                    <ComboBox Grid.Column="7" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top" SelectedIndex="1" Width="127" Height="28" ItemsSource="{Binding State}" SelectedValue="{Binding SelectState}"/>
 
 
                 </Grid>

@@ -24,8 +24,8 @@ namespace DiamondApp.ViewModels
         public LoginViewModel()
         {
             _ctx = new DiamondDBEntities();
-            // komentarz w celu wydajniejszych testów - LAG ON FIRST QUERRY
-//            users = (from s in _ctx.Users
+//             komentarz w celu wydajniejszych testów - LAG ON FIRST QUERRY
+//            var users = (from s in _ctx.Users
 //                select s).ToList();
         }
 
@@ -79,8 +79,8 @@ namespace DiamondApp.ViewModels
             try
             {
                 var userToLogin = (from u in _ctx.Users
-                                  where u.Login == _userLogin
-                                  select u);
+                    where u.Login == _userLogin
+                    select u);
 
                 if (userToLogin.Count() == 1 && userToLogin.SingleOrDefault().FirstLogin.ToUpper() == "T") // jesli jest jeden i tylko jeden user
                 { 

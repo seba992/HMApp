@@ -3,6 +3,11 @@
 \usepackage[cp1250]{inputenc}
 \usepackage{amsmath}
 
+\usepackage{listings}
+\usepackage{xcolor}
+\lstdefinestyle{sharpc}{language=[Sharp]C, frame=lr, rulecolor=\color{blue!80!black}}
+
+\usepackage{color}
 \usepackage{graphicx}
 %\drukJednostronny
 
@@ -213,7 +218,18 @@ TO DO
 
 \subsubsection{Stosowanie poleceñ bazodanowych ze strony projektu C\# za pomoc¹ Linq to Entities}
 
-Zastosowane narzêdzie Entity Framework nie tylko w znacznym stopniu upraszcza po³¹czenie bazy danych z projektem programistycznym ale tak¿e umo¿liwia w nim proste i intuicyjne wykonywanie poleceñ bazodanowych. //Us³ugê tê dostarcza wbudowany w Entity Framework modu³ Linq To Entities //
+Zastosowane narzêdzie Entity Framework nie tylko w znacznym stopniu upraszcza po³¹czenie bazy danych z projektem programistycznym ale tak¿e umo¿liwia w nim proste i intuicyjne wykonywanie poleceñ bazodanowych. W projekcie w celu zaimplementowania za³o¿onych funkcjonalnoœci stosowano trzy podstawowe polecenia modyfikuj¹ce zawartoœæ bazy: Insert, Update oraz Delete.  Entity Framework domyœlnie zawiera modu³ LINQ to Entities, który umo¿liwia wykorzystanie sk³adni technologi LINQ [przypis] do operowania na bazodanowym Ÿródle danych.
+
+W celu wykonania polecenia SELECT zwracaj¹cego rekordy w bazie danych posiadaj¹ce interesuj¹c¹ nas wartoœæ nale¿y 
+za pomoc¹ przedstawionego schematu wybraæ nazwê tabeli z obiektu wygenerowanego przez Entity Framework a nastêpnie u¿yæ polecenia \textsl{where} definiuj¹cego wyszukiwan¹ zale¿noœæ. Finalnie poleceniem \textsl{select} ustalamy wczeœniej zdefiniowan¹ zwracan¹ zmienn¹, w której przechowywane s¹ wyszukane elementy.
+
+\begin{lstlisting}
+var exampleQuerry = (from records in _context.TableName
+		where table.ColumnName == _valueToFind
+		select records);
+\end{lstlisting}
+
+Na tak przeprowadzonej operacji otrzymujemy obiekt kolekcji \textsl{IQueryable}, który za pomoc¹ metody \textsl{ToList} mo¿na bezproblemowo przekszta³ciæ 
 
 TO DO
 
