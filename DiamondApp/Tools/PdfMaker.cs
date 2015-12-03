@@ -54,6 +54,7 @@ namespace DiamondApp.Tools
             catch (Exception ex)
             {
                 isSucces = false;
+                MessageBox.Show(ex.ToString());
                 MessageBox.Show("Nie udało się wygenerować PDF");
             }
 
@@ -321,9 +322,9 @@ namespace DiamondApp.Tools
                 row.Cells[4].AddParagraph(Convert.ToDecimal(orderBruttoSum.ToString()).ToString("#,##0.00") + " zł");
                
                 row = table.AddRow();
-                row.Cells[2].MergeDown = 3;
-                row.Cells[3].MergeDown = 3;
-                row.Cells[4].MergeDown = 3;
+                row.Cells[2].MergeDown = 2;
+                row.Cells[3].MergeDown = 2;
+                row.Cells[4].MergeDown = 2;
                 row.Cells[2].MergeRight = 2;
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[1].Shading.Color = Colors.LightGray;
@@ -348,12 +349,8 @@ namespace DiamondApp.Tools
                 row.Cells[0].AddParagraph("PARKING:");
                 row.Cells[1].AddParagraph(CarPark(propId));
 
-                row = table.AddRow();
-                row.Cells[2].MergeRight = 2;
-                row.Cells[0].Shading.Color = Colors.LightGray;
-                row.Cells[1].Shading.Color = Colors.LightGray;
-                row.Cells[0].AddParagraph("OPIS SALI/STOŁÓW:");
-                row.Cells[1].AddParagraph(HallDescription(propId));
+                //row = table.AddRow();
+               // row.Cells[2].MergeRight = 2;
 
                 row = table.AddRow();
                 row.Cells[0].MergeRight = 3;
@@ -580,12 +577,6 @@ namespace DiamondApp.Tools
                 row.Cells[3].AddParagraph(extra[i].Vat.ToString() + "%");
                 row.Cells[4].AddParagraph(extra[i].Amount.ToString());
                 row.Cells[5].AddParagraph(extra[i].Days.ToString());
-
-                if (extra[i].Days == null)
-                    extra[i].Days = 0;
-                else if (extra[i].Amount == null)
-                    extra[i].Days = 0;
-
                 row.Cells[6].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto)).ToString()).ToString("#,##0.00") + " zł");
                 row.Cells[7].AddParagraph(Convert.ToDecimal(((float)extra[i].Days * (float)extra[i].Amount * (float)extra[i].BruttoPrice).ToString()).ToString("#,##0.00") + " zł");
                 nettoSum += (float)extra[i].Days * (float)extra[i].Amount * float.Parse(netto);
@@ -776,7 +767,7 @@ namespace DiamondApp.Tools
         {
             var var = (from prop in _ctx.Proposition
                        where prop.Id == propositionId
-                       select prop.UpdateDate).Single();
+                       select prop.UpdateDate).SingleOrDefault();
             return var != null ? var.ToString().Substring(0, 10) : "";
         }
 
@@ -784,14 +775,14 @@ namespace DiamondApp.Tools
         {
             var var = (from prop in _ctx.Proposition
                        where prop.Id == propositionId
-                       select prop.UpdateDate).Single();
+                       select prop.UpdateDate).SingleOrDefault();
             return var != null ? var.AddDays(4).ToString().Substring(0, 10) : "";
         }
         public int SelectUserId(int propositionId)
         {
             var var = (from prop in _ctx.Proposition
                        where prop.Id == propositionId
-                       select prop.Id_user).Single();
+                       select prop.Id_user).SingleOrDefault();
             return var;
         }
 
@@ -799,7 +790,7 @@ namespace DiamondApp.Tools
         {
             var var = (from user in _ctx.Users
                        where user.Id == userId
-                       select user.PhoneNum).Single();
+                       select user.PhoneNum).SingleOrDefault();
             return var;
         }
 
@@ -807,7 +798,7 @@ namespace DiamondApp.Tools
         {
             var var = (from user in _ctx.Users
                        where user.Id == userId
-                       select user.Email).Single();
+                       select user.Email).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;
         }
 
@@ -815,7 +806,7 @@ namespace DiamondApp.Tools
         {
             var var = (from user in _ctx.Users
                        where user.Id == userId
-                       select user.Name).Single();
+                       select user.Name).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;
         }
 
@@ -823,7 +814,7 @@ namespace DiamondApp.Tools
         {
             var var = (from user in _ctx.Users
                        where user.Id == userId
-                       select user.Surname).Single();
+                       select user.Surname).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;
         }
 
@@ -831,7 +822,7 @@ namespace DiamondApp.Tools
         {
             var var = (from user in _ctx.Users
                        where user.Id == userId
-                       select user.Position).Single();
+                       select user.Position).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;
         }
 
@@ -839,7 +830,7 @@ namespace DiamondApp.Tools
         {
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
-                       select propclient.CompanyName).Single();
+                       select propclient.CompanyName).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;
         }
 
@@ -847,7 +838,7 @@ namespace DiamondApp.Tools
         {
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
-                       select propclient.NIP).Single();
+                       select propclient.NIP).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;
         }
 
@@ -855,7 +846,7 @@ namespace DiamondApp.Tools
         {
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
-                       select propclient.CompanyAdress).Single();
+                       select propclient.CompanyAdress).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;
         }
 
@@ -863,7 +854,7 @@ namespace DiamondApp.Tools
         {
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
-                       select propclient.CustomerFullName).Single();
+                       select propclient.CustomerFullName).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -871,7 +862,7 @@ namespace DiamondApp.Tools
         {
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
-                       select propclient.PhoneNum).Single();
+                       select propclient.PhoneNum).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -879,7 +870,7 @@ namespace DiamondApp.Tools
         {
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
-                       select propclient.DecisingPersonFullName).Single();
+                       select propclient.DecisingPersonFullName).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -887,7 +878,7 @@ namespace DiamondApp.Tools
         {
             var var = (from propclient in _ctx.PropClient
                        where propclient.Id_proposition == propositionId
-                       select propclient.CustomerEmail).Single();
+                       select propclient.CustomerEmail).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -895,7 +886,7 @@ namespace DiamondApp.Tools
         {
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
-                       select payform.PaymentForm).Single();
+                       select payform.PaymentForm).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -903,7 +894,7 @@ namespace DiamondApp.Tools
         {
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
-                       select payform.InvoiceServiceName).Single();
+                       select payform.InvoiceServiceName).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -911,7 +902,7 @@ namespace DiamondApp.Tools
         {
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
-                       select payform.IndividualOrders).Single();
+                       select payform.IndividualOrders).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -919,7 +910,7 @@ namespace DiamondApp.Tools
         {
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
-                       select payform.CarPark).Single();
+                       select payform.CarPark).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -927,7 +918,7 @@ namespace DiamondApp.Tools
         {
             var var = (from payform in _ctx.PropPaymentSuggestions
                        where payform.Id_proposition == propositionId
-                       select payform.HallDescription).Single();
+                       select payform.HallDescription).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var;;
         }
 
@@ -935,7 +926,7 @@ namespace DiamondApp.Tools
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
-                       select details.PeopleNumber).Single();
+                       select details.PeopleNumber).SingleOrDefault();
             if (var == null)
                 return "";
             return var.ToString();
@@ -946,7 +937,7 @@ namespace DiamondApp.Tools
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
-                       select details.HallSetting).Single();
+                       select details.HallSetting).SingleOrDefault();
             return string.IsNullOrEmpty(var) ? "" : var; ;
         }
 
@@ -954,7 +945,7 @@ namespace DiamondApp.Tools
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
-                       select details.StartData).Single();
+                       select details.StartData).SingleOrDefault();
             return var != null ? var.ToString().Substring(0, 10) : "";
         }
 
@@ -962,7 +953,7 @@ namespace DiamondApp.Tools
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
-                       select details.EndData).Single();
+                       select details.EndData).SingleOrDefault();
             return var!=null ? var.ToString().Substring(0, 10) : "";
         }
 
@@ -970,7 +961,7 @@ namespace DiamondApp.Tools
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
-                       select details.StartTime).Single();
+                       select details.StartTime).SingleOrDefault();
             return var != null ? var.ToString() : "";
         }
 
@@ -978,7 +969,7 @@ namespace DiamondApp.Tools
         {
             var var = (from details in _ctx.PropReservationDetails
                        where details.Id_proposition == propositionId
-                       select details.EndTime).Single();
+                       select details.EndTime).SingleOrDefault();
             return var != null ? var.ToString() : "";
 
         }
