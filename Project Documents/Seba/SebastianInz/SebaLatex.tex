@@ -204,7 +204,7 @@ W celu przeciwdzia³ania przedstawionym problemom zdecydowano siê zastosowaæ dedy
 
 Entity Framework jest to dedykowane dla platformy .NET narzêdzie mapowania obiektowo-relacyjnego, które wspiera budowê trójwarstwowych aplikacji bazodanowych. Budowa obiektowego modelu bazy danych w prezentowanym frameworku mo¿e przebiegaæ w zale¿noœci od potrzeb trzema œcie¿kami.
 
-Pierwsz¹ opcj¹ jest podejœcie Database First, które okazuje siê przydatne w sytuacji, gdy fizyczna baza danych ju¿ istnieje. W tym przypadku, korzystaj¹c z wbudowanego we framework Designera, istnieje mo¿liwoœæ okreœlenia lokalizacji bazy oraz automatycznego jej mapowania, w wyniku którego wygenerowane zostaj¹ potrzebne klasy obiektowego modelu bazy danych.
+Pierwsz¹ opcj¹ jest podejœcie Database First, które okazuje siê przydatne w sytuacji, gdy jest obecna dzia³aj¹ca fizycznie baza danych. W tym przypadku, korzystaj¹c z wbudowanego we framework Designera, istnieje mo¿liwoœæ okreœlenia lokalizacji bazy oraz automatycznego jej mapowania, w wyniku którego wygenerowane zostaj¹ potrzebne klasy obiektowego modelu bazy danych.
 
 Kolejn¹ metod¹ jest Code First umo¿liwiaj¹ce utworzenie fizycznego modelu bazy danych na podstawie w³asnorêcznie napisanych klas w jêzyku C\# wraz z jej odpowiednimi adnotacjami \cite{AdnotacjeCodeFirst}.
 
@@ -218,19 +218,19 @@ TO DO
 
 \subsubsection{Stosowanie poleceñ bazodanowych ze strony projektu C\# za pomoc¹ Linq to Entities}
 
-Zastosowane narzêdzie Entity Framework nie tylko w znacznym stopniu upraszcza po³¹czenie bazy danych z projektem programistycznym ale tak¿e umo¿liwia w nim proste i intuicyjne wykonywanie poleceñ bazodanowych. W projekcie w celu zaimplementowania za³o¿onych funkcjonalnoœci stosowano trzy podstawowe polecenia modyfikuj¹ce zawartoœæ bazy: Insert, Update oraz Delete.  Entity Framework domyœlnie zawiera modu³ LINQ to Entities, który umo¿liwia wykorzystanie sk³adni technologi LINQ [przypis] do operowania na bazodanowym Ÿródle danych.
+Zastosowane narzêdzie Entity Framework nie tylko w znacznym stopniu upraszcza po³¹czenie bazy danych z projektem programistycznym ale tak¿e umo¿liwia w nim proste i intuicyjne wykonywanie poleceñ bazodanowych. W projekcie w celu zaimplementowania za³o¿onych funkcjonalnoœci stosowano trzy podstawowe polecenia modyfikuj¹ce zawartoœæ bazy: Insert, Update oraz Delete.  Entity Framework domyœlnie zawiera modu³ LINQ to Entities, który umo¿liwia wykorzystanie sk³adni technologii LINQ [przypis] do operowania na bazodanowym Ÿródle danych.
 
-W celu wykonania polecenia SELECT zwracaj¹cego rekordy w bazie danych posiadaj¹ce interesuj¹c¹ nas wartoœæ nale¿y 
-za pomoc¹ przedstawionego schematu wybraæ nazwê tabeli z obiektu wygenerowanego przez Entity Framework a nastêpnie u¿yæ polecenia \textsl{where} definiuj¹cego wyszukiwan¹ zale¿noœæ. Finalnie poleceniem \textsl{select} ustalamy wczeœniej zdefiniowan¹ zwracan¹ zmienn¹, w której przechowywane s¹ wyszukane elementy.
+W celu wykonania polecenia SELECT zwracaj¹cego rekordy w bazie danych nale¿y za pomoc¹ przedstawionego schematu wybraæ nazwê tabeli z obiektu wygenerowanego przez Entity Framework a nastêpnie u¿yæ polecenia \textsl{where} definiuj¹cego wyszukiwan¹ zale¿noœæ. Finalnie poleceniem \textsl{select} ustaliæ mo¿na wczeœniej zdefiniowan¹ zwracan¹ zmienn¹, w której przechowywane s¹ wyszukane elementy. Tym sposobem dane przechowywane w bazie danych poddane zosta³y translacji na poziom obiektów, z których mo¿liwe jest korzystania z poziomu C\# w sposób standardowy dla obiektów.
 
-\begin{lstlisting}
+\begin{lstlisting}[caption= {Opis polecenia select}]
 var exampleQuerry = (from records in _context.TableName
 		where table.ColumnName == _valueToFind
 		select records);
 \end{lstlisting}
 
-Na tak przeprowadzonej operacji otrzymujemy obiekt kolekcji \textsl{IQueryable}, który za pomoc¹ metody \textsl{ToList} mo¿na bezproblemowo przekszta³ciæ 
+Edycja danych znajduj¹cych siê w bazie danych z poziomu projektu programistycznego realizowana jest poprzez modyfikacjê opisanego polecenia \textsl{SELECT}. Modyfikacja ta polega na przekszta³ceniu otrzymanego obiektu na typ klasy modelu Entity, która reprezentuje 
 
+Po tak przeprowadzonej operacji otrzymujemy obiekt kolekcji \textsl{IQueryable}, który za pomoc¹ metody \textsl{ToList} mo¿na bezproblemowo przekszta³ciæ na Listê o typie zadanym nazw¹ wyszukanej tabeli Entity modelu, na której 
 TO DO
 
 - opis linq to entities (select)

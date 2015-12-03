@@ -4227,7 +4227,7 @@ namespace DiamondApp.ViewModels
             {
                
                 // tworzy obiekt z aktualnymi danymi tabeli Proposition i dodaje go do bazy
-// dupa1
+
                 // !! PROPOSITION !! 
                 string propstate;
                 if (SelectState != null)
