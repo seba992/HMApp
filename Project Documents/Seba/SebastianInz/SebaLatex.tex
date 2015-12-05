@@ -168,7 +168,7 @@ Wastwa widoku (View) odpowiedzialna jest za wyúwietlanie danych i pe≥ni rolÍ wy≥
 
 \subsubsection{Model aplikacji}
 
-todo after refactor.
+TODO: after refactor.
 
 - opis warstw (model == baza danych)
 
@@ -194,11 +194,39 @@ W przypadku technologii .NET, w ktÛrej prowadzony jest prezentowany projekt, sta
 
 W celu przeciwdzia≥ania przedstawionym problemom zdecydowano siÍ zastosowaÊ dedykowany framework, ktÛry upraszcza developerowi przeprowadzanie wszelkich bazodanowych operacji.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\textwidth]{EntityAdonet.jpg}
-    \caption{PorÛwnanie operacji dodania uøytkownika w ADO.NET oraz Entity Framework, èrÛd≥o: Opracowanie w≥asne.}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=1\textwidth]{EntityAdonet.jpg}
+%    \caption{PorÛwnanie operacji dodania uøytkownika w ADO.NET oraz Entity Framework, èrÛd≥o: %Opracowanie w≥asne.}
+%\end{figure}
+
+\begin{lstlisting}[caption= {Dodanie rekordu w ADO.NET oraz Entity Framework}]
+//ADO.NET
+
+//wymagane manualne dodanie pliku konfiguracyjnego po≥πczenia
+SqlConnection connection = new SqlConnection(connectionString);
+
+SqlCommand command = 
+    new SqlCommand(@"INSERT INTO [TestDb].[Users]  
+    VALUES (@Login, @Password)", connection);           
+command.Parameters.Add(new SqlParameter("Login", "TestLogin"));
+command.Parameters.Add(new SqlParameter("Password","TestPa$$"));            
+connection.Open();
+command.ExecuteNonQuery();
+connection.Close();
+
+//Entity Framework
+
+// EF automatycznie odczyta plik konfiguracyjny po≥πczenia
+DiamondDBEntities dataContext = new DiamondDBEntities();
+
+TestUser newUser = new TestUser
+{
+    Login = "TestLogin", Password = "TestPa$$word",
+};
+dataContext.Users.Add(newUser);
+dataContext.SaveChanges(); 
+\end{lstlisting}
 
 \subsubsection{Zastosowane narzÍdzie ORM ñ Entity Framework} 
 
@@ -210,17 +238,11 @@ Kolejnπ metodπ jest Code First umoøliwiajπce utworzenie fizycznego modelu bazy d
 
 Ostatnie podejúcie to Model First, ktÛre polega na zbudowaniu fizycznego modelu bazy danych pos≥ugujπc siÍ kreatorem, ktÛry z znacznym stopniu u≥atwia tworzenie encji oraz w≥aúciwoúci bazy danych. åcieøka ta jest wykorzystywana w sytuacji posiadania wy≥πcznie schematu bazy danych. Ze zbudowanego modelu generowana jest fizyczny model bazy danych jak i rÛwnieø klasy, ktÛre reprezentujπ model obiektowy.
 
-\subsubsection{Dostosowanie Entity Framework do wymagaÒ zwiπzanych z za≥oøeniami projektowymi oraz wzorcem MVVM}
-
-- ulokowanie, budowa, screen, zmiana na obserwowalne kolekcje
-
-TO DO
-
 \subsubsection{Stosowanie poleceÒ bazodanowych ze strony projektu C\# za pomocπ Linq to Entities}
 
 Zastosowane narzÍdzie Entity Framework nie tylko w znacznym stopniu upraszcza po≥πczenie bazy danych z projektem programistycznym ale takøe umoøliwia w nim proste i intuicyjne wykonywanie poleceÒ bazodanowych. W projekcie w celu zaimplementowania za≥oøonych funkcjonalnoúci stosowano trzy podstawowe polecenia modyfikujπce zawartoúÊ bazy: Insert, Update oraz Delete.  Entity Framework domyúlnie zawiera modu≥ LINQ to Entities, ktÛry umoøliwia wykorzystanie sk≥adni technologii LINQ [przypis] do operowania na bazodanowym ürÛdle danych.
 
-W celu wykonania polecenia SELECT zwracajπcego rekordy w bazie danych naleøy za pomocπ przedstawionego schematu wybraÊ nazwÍ tabeli z obiektu wygenerowanego przez Entity Framework a nastÍpnie uøyÊ polecenia \textsl{where} definiujπcego wyszukiwanπ zaleønoúÊ. Finalnie poleceniem \textsl{select} ustaliÊ moøna wczeúniej zdefiniowanπ zwracanπ zmiennπ, w ktÛrej przechowywane sπ wyszukane elementy. Tym sposobem dane przechowywane w bazie danych poddane zosta≥y translacji na poziom obiektÛw, z ktÛrych moøliwe jest korzystania z poziomu C\# w sposÛb standardowy dla obiektÛw.
+W celu wykonania polecenia SELECT zwracajπcego rekordy z bazy danych naleøy za pomocπ przedstawionego schematu wybraÊ nazwÍ tabeli z obiektu kontekstu wygenerowanego przez Entity Framework, a nastÍpnie uøyÊ polecenia \textsl{where} definiujπcego wyszukiwanπ zaleønoúÊ. Finalnie poleceniem \textsl{select} nastÍpuje ustalenie zdefiniowanej zwracanej zmiennej, w ktÛrej przechowywane sπ wyszukane elementy. Tym sposobem dane przechowywane w bazie danych poddane zostajπ translacji na poziom obiektÛw, z ktÛrych moøliwe jest korzystanie z poziomu C\# w sposÛb standardowy.
 
 \begin{lstlisting}[caption= {Opis polecenia select}]
 var exampleQuerry = (from records in _context.TableName
@@ -228,14 +250,17 @@ var exampleQuerry = (from records in _context.TableName
 		select records);
 \end{lstlisting}
 
-Edycja danych znajdujπcych siÍ w bazie danych z poziomu projektu programistycznego realizowana jest poprzez modyfikacjÍ opisanego polecenia \textsl{SELECT}. Modyfikacja ta polega na przekszta≥ceniu otrzymanego obiektu na typ klasy modelu Entity, ktÛra reprezentuje 
+Edycja danych znajdujπcych siÍ w bazie danych z poziomu projektu programistycznego realizowana jest poprzez modyfikacjÍ opisanego polecenia \textsl{SELECT}. Modyfikacja ta polega na przekszta≥ceniu typu otrzymanego obiektu na typ klasy modelu Entity, ktÛra reprezentuje interesujπcπ nas bazodanowπ tabelÍ. W przypadku operowania na jednym rekordzie, przekszta≥cenie te naleøy dokonaÊ pos≥ugujπc siÍ metodπ \textsl{SingleOrDefault}, natomiast w przypadku wielu rekordÛw metodπ \textsl{ToList}, ktÛra dokona konwersji na listÍ obiektÛw o interesujπcym nas typie. Do takiego utworzonego obiektu, programista ma moøliwoúÊ odwo≥ywania siÍ i dokonywania zmian w standardowy dla jÍzyka C\# sposÛb. Po wszelkich modyfikacjach, wszystkie zmiany naleøy potwierdziÊ metodπ \textsl{SaveChanges} na obiekcie modelu Entity, ktÛra uaktualnia zmodyfikowane elementy na poziomie bazy danych.
 
-Po tak przeprowadzonej operacji otrzymujemy obiekt kolekcji \textsl{IQueryable}, ktÛry za pomocπ metody \textsl{ToList} moøna bezproblemowo przekszta≥ciÊ na ListÍ o typie zadanym nazwπ wyszukanej tabeli Entity modelu, na ktÛrej 
-TO DO
+\begin{lstlisting}[caption= {Potwierdzenie dokonanych zmian}]
+_context.SaveChanges()
+\end{lstlisting}
 
-- opis linq to entities (select)
-- insert
-- update
+Dodanie rekordu do bazy danych jest operacjπ, ktÛre nie wymaga znajomoúci sk≥adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, ktÛra reprezentuje bazodanowπ tabelÍ, do ktÛrej nowy rekord ma byÊ dodany, a nastÍpnie uzupe≥nieniu jego elementÛw danymi. Tak zbudowany obiekt naleøy dodaÊ do obiektu kontekstu, odwo≥ujπc siÍ do jego w≥aúciwoúci o nazwie interesujπcej nas tabeli bazy danych, a nastÍpnie w parametrze metody \textsl{Add} umieúciÊ wczeúniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych naleøy potwierdziÊ na obiekcie kontekstu.
+
+\begin{lstlisting}[caption= {Dodanie rekordu do tabeli}]
+_context.TableName.Add(tableObject);
+\end{lstlisting}
 
 \subsection{Automatyzacja wydawania kolejnych wersji programu}
 \subsubsection{Continuous Integration ñ definicja}
@@ -245,9 +270,9 @@ TO DO
 \section{Testowanie aplikacji}
 \subsection{Przeprowadzenie operacji logowania uøytkownika}
 
-Podstawowym modu≥em kaødej aplikacji wspierajπcej pracÍ wielu uøytkownikÛw na ich dedykowanych kontach jest modu≥ logowania. Po uruchomieniu aplikacji, ktÛra jest przedmiotem projektu, oczom uøytkownika ukazuje siÍ okno, ktÛrego zadaniem jest sprawdzenie jego toøsamoúci oraz w sytuacji jej potwierdzenia, prze≥πczenie go do odpowiedniego okna g≥Ûwnego aplikacji, w zaleønoúci od posiadanych przez niego uprawnieÒ. 
+Podstawowym modu≥em kaødej aplikacji wspierajπcej pracÍ wielu uøytkownikÛw na ich dedykowanych kontach jest modu≥ logowania. Po uruchomieniu aplikacji, ktÛra jest przedmiotem projektu, oczom uøytkownika ukazuje siÍ okno, ktÛrego zadaniem jest sprawdzenie jego toøsamoúci oraz w sytuacji jej potwierdzenia, prze≥πczenie do odpowiedniego okna g≥Ûwnego aplikacji, w zaleønoúci od posiadanych uprawnieÒ. 
 
-SCREEN OKNA LOGOWANIA
+SCREEN OKNA LOGOWANIA (wrzuciÊ po poprawkach wizualnych programu)
 
 Proces logowania od strony uøytkownika polega na wprowadzeniu z poziomu klawiatury swojej nazwy konta sk≥adajπcej siÍ z imienia oraz nazwiska oddzielonych kropkπ oraz has≥a, ktÛre wybrano do zabezpieczenia swojego konta. Aplikacja na podstawie tych informacji przeprowadza operacjÍ ich weryfikacji, komunikujπc siÍ z bazπ danych i wyszukujπc w odpowiednich tabelach rekordy, ktÛre pasujπ do otrzymanego schematu. W zaleønoúci od rezultatu tej akcji, uøytkownikowi zwracana jest odpowiednia odpowiedü. 
 
@@ -255,12 +280,13 @@ W sytuacji podania poprawnego loginu oraz has≥a, aplikacja ukrywa okno logowania
 
 Wpisanie b≥Ídnego has≥a lub nazwy konta wychwytywane jest przez mechanizm modu≥u logowania, ktÛry zwraca informacjÍ o problemie wraz z jego opisem. W celu zwiÍkszenia bezpieczeÒstwa wypisywana jest ogÛlna informacja o otrzymaniu b≥Ídnych danych, a nie wyszczegÛlniona, ktÛra informacja zosta≥a podana b≥Ídnie.
 
-SCREEN B£ DNEGO WPISANIA DANYCH
+TODO: SCREEN B£ DNEGO WPISANIA DANYCH (wrzuciÊ po poprawkach wizualnych programu)
 
 Pierwsze logowanie jest specyficznπ formπ logowania, w ktÛrym uøytkownik posiada obowiπzek wpisania has≥a, z ktÛrego bÍdzie korzysta≥ w pracy z aplikacjπ. W chwili wpisania nazwy uøytkownika, program w tle przeprowadza operacjÍ walidacji statusu konta i w sytuacji wykrycia, iø uøytkownik loguje siÍ pierwszy raz, wyúwietla stosownπ informacjÍ, ktÛra instruuje go o dalszych krokach. 
-/odnoúnik do zrzutu ekranu ilustrujπcπ tÍ sytacjÍ/
 
-SCREEN PIERWSZEGO LOGOWANIA
+TODO: /odnoúnik do zrzutu ekranu ilustrujπcπ tÍ sytacjÍ/ (wrzuciÊ po poprawkach wizualnych programu)
+
+TODO: SCREEN PIERWSZEGO LOGOWANIA (wrzuciÊ po poprawkach wizualnych programu)
 
 \subsection{Zarzπdzanie kontem sprzedawcy oraz administratora  (obs≥uga)}
 
@@ -300,14 +326,18 @@ Modu≥ logowania jest czÍúciπ systemu, do ktÛrego dostÍp udostÍpniony jest kaødem
 
 Pole wpisywania has≥a przez uøytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka - PasswordBox. Jest to zmodyfikowana kontrolka TextBox dostÍpna w technologi WPF, ktÛra wyúwietla swojπ zawartoúÊ w postaci ukrytej, uniemoøliwiajπc jednoczeúnie wykonanie na jej zawartoúci operacji kopiowania oraz wycinania z poziomu klawiatury oraz myszy. Zabezpiecza to przed niechcianym podejrzeniem has≥a oraz jego odzyskania przez osobÍ trzeciπ.
 
-ZRZUT KONTROLKI
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{PasswordBox.jpg}
+    \caption{Kontrolka PasswordBox z przestawionymi aspektami bezpieczeÒstwa, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
 
 Sama operacja sprawdzania poprawnoúci wpisanego has≥a zosta≥a zaprojektowana w taki sposÛb, aby otrzymane z kontrolki has≥o nie by≥o nigdzie zapisywane i porÛwnywane w postaci jawnej. W chwili wpisania has≥a przez uøytkownika oraz klikniÍcia przycisku logowania, has≥o przekszta≥cane jest za pomocπ algorytmu haszujπcego na skrÛt, ktÛry porÛwnywany jest ze skrÛtem has≥a dopasowanemu wpisanej nazwie uøytkownika uøytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostÍp do dalszej czÍúci programu.
 
-ZRZUT REKORDU W BAZIE DANYCH + KOD POR”WNUJ•CY HAS£A
+TODO: ZRZUT REKORDU W BAZIE DANYCH (HASHE HASEL) + KOD POR”WNUJ•CY HAS£A GDY W£•CZ  HASZE
 
-\subsubsection{Szyfrowanie hase≥ - funkcja haszujπca SHA2}
-Zastosowana funkcja haszujπca - SHA2
+\subsubsection{Szyfrowanie hase≥ - funkcja skrÛtu SHA2}
+Pytanie: czy dzia≥ jest warty opisania. czy SHA2 skrÛtowo opisaÊ w bezpieczeÒstwie procesu logowania
 
 
 \subsection{Konto administratora i uøytkownika ñ ListView}
@@ -332,9 +362,7 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 E=mc^2
 \end{equation}
 
-Lorem Ipsum generator (\texttt{http://lipsum.pl/index.php});
 
-Moskalom przez konar b≥ysnÍ≥o jako po zadzwonieniu na wzmiankÍ Warszawy rzek≥, podnios≥szy g≥owÍ: Pan úwiata wie, øe gotyckiej sπ nasze spraw bernardyÒskie. cÛø by znaczyÊ w poÒczochach, ze úwiecami w uczciwoúci, w oknie sta≥ patrzπc, dumajπc wonnymi powiewami kwiatÛw oddychajπc oblicze aø do dworu. Tu úmiech m≥odzieøy mowÍ Wojskiego zag≥uszy≥. Wstano od dzisiaj nie dozwala≥, by tu RykÛw przerwa≥ i s≥udzy. I oglπda czule, jako úwieca przez grzecznoúÊ nie po duszy, a ja wam s≥uøyÊ, moje panny cÛrki choÊ suknia krÛtka, oko paÒskie konia tuczy. Wojski towarzystwa nam siÍ damom, starcom i tuø nad b≥Íkitnym Niemnem rozciπgnionych. Do zobaczenia! tak gadaÊ: CÛø z≥ego, øe tamuje progresy, øe mi wybaczy, Øe w poÒczochach, ze srebrnymi klamrami trzewiki peruka z nowych goúci. W takim Litwinka tylko siÍ jak mnich na prawo, kozio≥ka, z brabanckich koronek poprawia≥a, to mÛwiπc, øe odg≥os trπbki i ubiory. By≥a to mÛwiπc, øe jacyú Francuzi wymowny zrobili wynalazek: iø ludzie sπ architektury. ChoÊ SÍdzia tuø to mÛwiπc, øe przeszkadza kulturze, øe jacyú Francuzi wymowny zrobili wynalazek: iø ludzie sπ architektury. ChoÊ SÍdzia wie, øe nauczyciel ≥adny i dwiestu.
 
 %% UWaga na \newlineTekst oraz \newlineSpis. Moøna teø uøyÊ \newline, dzia≥a jak \newlineSpis\newlineTekst
 \section[Tytu≥ drugiego rozdzia≥u. Bardzo d≥ugi \ldots]

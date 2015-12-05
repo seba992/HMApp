@@ -9,9 +9,11 @@
     </Window.DataContext>
 
     <Grid>
-        <Button x:Name="LoginButton" Content="Zaloguj" HorizontalAlignment="Left" Margin="201,152,0,0" VerticalAlignment="Top" Width="75" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PassPasswordBox}"/>
+        <Button x:Name="LoginButton" Content="Zaloguj" HorizontalAlignment="Left" Margin="201,237,0,0" VerticalAlignment="Top" Width="75" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=PassPasswordBox}"/>
         <TextBox x:Name="LoginTextBox" HorizontalAlignment="Left" Height="23" Margin="180,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding UserLogin, Mode=TwoWay}"/>
         <PasswordBox x:Name="PassPasswordBox" HorizontalAlignment="Left" Margin="180,108,0,0" VerticalAlignment="Top" Height="23" Width="120"/>
+        <Label Content="Nazwa użytkownika:" HorizontalAlignment="Left" Margin="58,80,0,0" VerticalAlignment="Top"/>
+        <Label Content="Hasło:" HorizontalAlignment="Left" Margin="132,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.105,-0.077"/>
 
     </Grid>
 </Window>

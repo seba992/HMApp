@@ -82,26 +82,29 @@ namespace DiamondApp.ViewModels
                     where u.Login == _userLogin
                     select u);
 
-                if (userToLogin.Count() == 1 && userToLogin.SingleOrDefault().FirstLogin.ToUpper() == "T") // jesli jest jeden i tylko jeden user
+                // jeżeli w bazie jest tylko jeden użytkownik o podanej nazwie użytkownika oraz jest to jego pierwsze logowanie
+                if (userToLogin.Count() == 1 && userToLogin.SingleOrDefault().FirstLogin.ToUpper() == "T") 
                 { 
                     //.Password = ShaConverter.sha256_hash(passBox.Password);
-                    userToLogin.First().Password = passBox.Password;
-                    userToLogin.First().FirstLogin = "f";
-                    UserId = userToLogin.First().Id;
-                    _userType = userToLogin.First().AccountPrivileges.AccountType;
-                    _ctx.SaveChanges();
-                    _allowToLog = true;
+                    userToLogin.First().Password = passBox.Password;    // przypisz do konta użytkownika wpisane przez niego hasło
+                    userToLogin.First().FirstLogin = "f";   // zmień tryb logowania
+                    UserId = userToLogin.First().Id;    // przypisz Id użytkownika w celu umożliwienia jego jednoznacznej identyfikacji
+                    _userType = userToLogin.First().AccountPrivileges.AccountType;  // uzyskaj typ konta użytkownika znajdujący się w bazie danych
+                    _ctx.SaveChanges(); // zapisz zmiany
+                    _allowToLog = true; // umożliwienie zalogowania się
                 }
                 //.Password == ShaConverter.sha256_hash(passBox.Password))
+                // jeśli w bazie jest tylko jeden użytkownik o podanej nazwie użytkownika oraz podana nazwa konta oraz przypisane do niego hasło jest poprawne
                 else if (userToLogin.Count() == 1 && userToLogin.First().Login == _userLogin && userToLogin.First().Password == passBox.Password)
                 {
                     _userType = userToLogin.First().AccountPrivileges.AccountType;
-                    UserId = userToLogin.First().Id;
+                    UserId = userToLogin.First().Id; 
                     _allowToLog = true;
                 }
+                // jeżli użytkownik otrzymał dostęp do logowania
                 if (_allowToLog)
                 {
-                    // if typ konta to je wlacz
+                    // w zależności od typu konta uruchom okno główne
                     if (_userType.ToUpper() == "A")
                     {
                         AdminMainView adminMainView = new AdminMainView(_userId);
@@ -116,7 +119,7 @@ namespace DiamondApp.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Błędny typ konta usera");      // TO DELETE
+                        MessageBox.Show("Błędny typ konta usera");
                     }
                 }
                 else
