@@ -656,7 +656,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <ComboBox x:Name="CbUser" HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="PropositionsSeller Mode=TwoWay,      UpdateSourceTrigger=PropertyChanged}" Visibility="Hidden"/>
+        <ComboBox x:Name="CbUser" HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="{Binding PropositionsSeller}" Visibility="Hidden"/>
         <Label x:Name="Luser" Content="Użytkownicy" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0" HorizontalContentAlignment="Right" Visibility="Hidden"/>
         <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}" Click="VisibleElementAfterSavePropClick"/>
     </Grid>

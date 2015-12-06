@@ -3946,6 +3946,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 var editClient = (from q in _ctx.PropClient
                                   where q.Id_proposition == idProposition
                                   select q).SingleOrDefault();
+
                 if (editClient != null)
                 {
                     //editClient.Id_proposition = idProposition;
@@ -5269,6 +5270,7 @@ namespace DiamondApp.ViewModels.UserViewModels
          * (imie+nazwisko użytkownika , imie+nazwisko klienta, nazwa firmy klienta, data aktualizacji*/
         private void SelectAllPropositions()
         {
+        
             var myQuerry = (from prop in _ctx.Proposition
                             from user in _ctx.Users
                             where user.Id == _userId
