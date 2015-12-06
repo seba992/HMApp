@@ -4224,7 +4224,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 // !! PROPOSITION !! 
                 string propstate;
-                if (SelectedPropState != null)
+                if (SelectedPropState != null )
                     propstate = SelectedPropState; //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
                 else
                     propstate = _propStates[0];
@@ -4365,10 +4365,17 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 //Edycja Propozycji
                 // !! PROPCLIENT !!
                 var prop = (from q in _ctx.Proposition
-                    where q.Id == _idProposition
-                    select q).SingleOrDefault();
-                prop.Status = SelectedPropState;
+                            where q.Id == _idProposition
+                            select q).SingleOrDefault();
+                
                 int idProposition = _idProposition;
+                var findState = (from q in _ctx.PropositionStates_Dictionary
+                    where q.Status == SelectedPropState
+                    select q).SingleOrDefault();
+                prop.Status = findState.Status;
+                prop.UpdateDate = AddNewProposition.UpdateDate;
+                prop.Id_user = _userId;
+                _ctx.SaveChanges();
                 var editClient = (from q in _ctx.PropClient
                                   where q.Id_proposition == idProposition
                                   select q).SingleOrDefault();
@@ -5116,12 +5123,18 @@ namespace DiamondApp.ViewModels.AdminViewModels
             SetDefaultValues();
             CleanProperties(GetType());
 
-          
+            if (SelectedProposition != null )
+                _idProposition = SelectedProposition.PropositionId;
+            SelectedProposition = null;
+            var updateProposition = (from q in _ctx.Proposition
+                                     where q.Id == _idProposition
+                                     select q).SingleOrDefault();
+
             var querry = (from user in _ctx.Users
                           where user.Id == _userId
                           select new AddNewProposition
                           {
-                              UpdateDate = DateTime.Today,
+                              UpdateDate = updateProposition.UpdateDate,
                               UserFirstName = user.Name,
                               UserSurname = user.Surname,
                               UserPhoneNum = user.PhoneNum,
@@ -5129,19 +5142,12 @@ namespace DiamondApp.ViewModels.AdminViewModels
                               IsCreated = true
                           }).SingleOrDefault();
 
-            AddNewProposition = querry; 
-
-            
-            if (SelectedProposition !=null)
-                _idProposition = SelectedProposition.PropositionId;
-            SelectedProposition = null;
-            
+            AddNewProposition = querry;
             try
             {
+               
                 
-                 SelectedPropState = (from q in _ctx.Proposition
-                        where q.Id == _idProposition
-                        select q.Status).SingleOrDefault();
+                SelectedPropState = updateProposition.Status;
                     var editClient = (from q in _ctx.PropClient
                         where q.Id_proposition == _idProposition
                         select q).SingleOrDefault();
@@ -6203,6 +6209,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
         private void HallListFunction()
         {
 
+            PropStates = (from q in _ctx.PropositionStates_Dictionary
+                select q.Status).ToList();
             var hallDict1 = (from hd in _ctx.PropReservationDetails_Dictionary_HallCapacity
                              select hd.Hall).ToList();
             HallList = hallDict1;
@@ -6478,7 +6486,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             PaymentSuggestInvServName = null;
             PaymentSuggestIndividOrder = null;
             PaymentSuggestCarPark = null;
-
+            SelectedPropState = null;
 
 //            foreach (var propertyInfo in properties)
 //            {

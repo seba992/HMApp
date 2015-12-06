@@ -174,7 +174,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Id_user" Type="int" Nullable="false" />
           <Property Name="UpdateDate" Type="date" Nullable="false" />
-          <Property Name="Status" Type="varchar" MaxLength="15" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="PropositionStates_Dictionary">
           <Key>
@@ -449,7 +449,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__AccountTy__5165187F">
+        <Association Name="FK__Users__AccountTy__534D60F1">
           <End Role="AccountPrivileges" Type="Self.AccountPrivileges" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
@@ -550,7 +550,7 @@
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropReservationDetails" EntitySet="PropReservationDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__AccountTy__5165187F" Association="Self.FK__Users__AccountTy__5165187F">
+          <AssociationSet Name="FK__Users__AccountTy__534D60F1" Association="Self.FK__Users__AccountTy__534D60F1">
             <End Role="AccountPrivileges" EntitySet="AccountPrivileges" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
@@ -865,7 +865,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Id_user" Type="Int32" Nullable="false" />
           <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PropExtraServicesDiscount" Relationship="DiamondDBModel.FK__PropExtra__Id_pr__45F365D3" FromRole="Proposition" ToRole="PropExtraServicesDiscount" />
           <NavigationProperty Name="PropHallEquipment" Relationship="DiamondDBModel.FK_PropHallEquipment_Proposition" FromRole="Proposition" ToRole="PropHallEquipment" />
           <NavigationProperty Name="PropHallEquipmentDiscount" Relationship="DiamondDBModel.FK__PropHallE__Id_pr__47DBAE45" FromRole="Proposition" ToRole="PropHallEquipmentDiscount" />
