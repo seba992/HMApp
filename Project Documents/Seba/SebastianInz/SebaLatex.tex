@@ -82,6 +82,9 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 \subsubsection{.NET/C\#}
 \subsubsection{WPF}
 \subsubsection{XAML}
+
+XAML jest to oparty na XML\cite{Xml} deklaratywny jÍzyk znacznikÛw, ktÛrego zadaniem jest opis interfejsu uøytkownika obecnego w zastosowanej przez zespÛ≥ technologii WPF. W technologii tej jÍzyk XAML umoøliwia zaprojektowanie oraz u≥oøenie wszystkich elementÛw wizualnych takich jak kontrolki, ramki oraz okna, a takøe pozwala na u≥atwienie pracy pomiÍdzy programistami (back-end) oraz grafikami (front-end), ktÛrzy tworzπ graficzny interfejs uøytkownika. Graficy, przez wzglπd na zakres ich obowiπzkÛw, nie czÍsto znajπ jÍzyk programowania C\#. Problem ten rozwiπzuje w≥aúnie XAML, ktÛry umoøliwia zrozumienie przez niech zasady dzia≥ania poszczegÛlnych okien, powiπzania miÍdzy nimi oraz projektowanie interfejsu w prosty sposÛb z poziomu drzewiastej struktury lub dedykowanego narzÍdzia Expression Blend, ktÛre umoøliwia przeprowadzenie wszystkich powyøszych operacji z poziomu swojego úrodowiska graficznego.
+
 \subsection{Wykorzystane narzÍdzia}
 \subsubsection{Visual Studio 2013}
 \subsubsection{SQL Server Management Studio}
@@ -110,7 +113,7 @@ Wszystkie przedstawione funkcjonalnoúci narzÍdzia Trello umoøliwi≥y zespo≥owi up
 
 \subsubsection{SourceTree + GitHub}
 
-pisze tutaj sobie co lalala
+
 
 \subsubsection{ReSharper}
 
@@ -154,11 +157,18 @@ Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit jest ustalanie z 
 
 W inøynierii oprogramowania analogicznie jak w innych dziedzinach, w ktÛrych przeprowadzana jest operacja budowania zadanego przedmiotu, naleøy starannie zaplanowaÊ jego proces. W tym calu naleøy kierowaÊ siÍ przyjÍtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mÛwiπ o tym, iø naleøy dok≥adnie okreúliÊ wymagania, ktÛre powinno budowane oprogramowanie spe≥niaÊ, a nastÍpnie ustaliÊ jego ogÛlnπ architekturÍ. Punkt ten jest niebywale waøny z racji na problematycznoúÊ zmiany architektury zbudowanego juø systemu. W celu zobrazowania tego zagadnienia moøna przywo≥aÊ operacjÍ budowy budynku. Wszelkie zmiany dotyczπce jego konstrukcji sπ ciÍøkie do zrealizowania w sytuacji, w ktÛrej jest on juø fizycznie gotowy. Kolejne fazy polegajπ na realizacji opisanej wczeúniej architektury poprzez implementacjÍ wszystkich komponentÛw oprogramowania wraz z ich wzajemnymi po≥πczeniami, przetestowanie ca≥ego systemu oraz jego finalne uruchomienie wraz z usuwaniem wykrytych podczas jego dzia≥ania b≥ÍdÛw.
 
-Odnoszπc siÍ do planowania architektury systemu bardzo pomocne okazujπ siÍ dostÍpne wzorce architektoniczne. Wzorce te sπ to sprawdzone oraz zaakceptowane sposoby rozwiπzania okreúlonego problemu z dziedziny architektury oprogramowania, okreúlajπce ogÛlnπ strukturÍ systemu informatycznego, zasady komunikacji pomiÍdzy komponentami oraz elementy wchodzπce w jego sk≥ad wraz z opisem ich funkcji. WybÛr odpowiedniego wzorca w duøej mierze zaleøny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwiπzaniem jest MVVM (Model View ViewModel), ktÛry jest zmodyfikowanπ wersjπ wzorca MVC, zawierajπcπ specjalizacjÍ modelu prezentacji.
+Odnoszπc siÍ do planowania architektury systemu bardzo pomocne okazujπ siÍ dostÍpne wzorce architektoniczne. Wzorce te sπ to sprawdzone oraz zaakceptowane sposoby rozwiπzania okreúlonego problemu z dziedziny architektury oprogramowania, okreúlajπce ogÛlnπ strukturÍ systemu informatycznego, zasady komunikacji pomiÍdzy komponentami oraz elementy wchodzπce w jego sk≥ad wraz z opisem ich funkcji. WybÛr odpowiedniego wzorca w duøej mierze zaleøny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwiπzaniem jest MVVM (Model View ViewModel) \cite{MvvmOpis}, ktÛry jest zmodyfikowanπ wersjπ wzorca MVC, zawierajπcπ specjalizacjÍ modelu prezentacji.
 
 \subsubsection{Zastosowany wzorzec architektoniczny ñ MVVM}
 
 MVVM jest to wzorzec, ktÛry dziÍki funkcjonalnoúci odseparowania warstwy prezentacji od warstwy logiki biznesowej, umoøliwia napisanie ≥atwo testowalnej oraz prostej w rozbudowanie aplikacji, ktÛrej fragment kodu moøe zostaÊ ponownie uøyty w innych projektach. Opisywany wzorzec cieszy siÍ duøπ popularnoúciπ w gronie developerÛw WPF z powodu moøliwoúci wykorzystania najwiÍkszych atutÛw tej technologii, takich jak komendy (command), wiπzania (binding) oraz zachowania (behavior). Kod aplikacji o architekturze Model-View-ViewModel podzielony jest, zgodnie z jego nazwπ na trzy oddzielne warstwy Model, View oraz ViewModel, z ktÛrych kaøda przechowuje dedykowane dla siebie dane i spe≥nia okreúlone funkcje.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{MvvmDiagram.jpg}
+    \caption{Graficzny podzia≥ przep≥ywu danych w modelu MVVM, \newlineTekst èrÛd≥o: Tomasz Malesza, \newlineTekst http://www.tomaszmalesza.pl/wp-content/uploads/2012/08/MVVM\_Relation1.jpg}
+\end{figure}
+
 
 Model to warstwa, ktÛra odpowiedzialna jest w omawianym wzorcu za logikÍ biznesowπ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu inøynierskiego warstwa ta reprezentowana jest przez przez klasy, ktÛre utworzone zosta≥y za pomocπ biblioteki Entity Framework, s≥uøπcej do odwzorowania relacyjnej bazy danych na obiekty dostÍpne z poziomu kodu. Wszelkie klasy zawierajπce dane, ktÛre maja przekazane byÊ z poziomu modelu do warstwy widoku, z ktÛrego uøytkownik moøe owe informacje odczytaÊ zobowiπzane sπ do implementacji interfejsu INotifyPropertyChanged lub INotifyCollectionChanged, ktÛry wspÛ≥pracuje z bindingiem \cite{DataBinding} wykorzystywanym w WPF.
 
@@ -204,13 +214,16 @@ W celu przeciwdzia≥ania przedstawionym problemom zdecydowano siÍ zastosowaÊ dedy
 //ADO.NET
 
 //wymagane manualne dodanie pliku konfiguracyjnego po≥πczenia
-SqlConnection connection = new SqlConnection(connectionString);
+SqlConnection connection = 
+    new SqlConnection(connectionString);
 
 SqlCommand command = 
     new SqlCommand(@"INSERT INTO [TestDb].[Users]  
     VALUES (@Login, @Password)", connection);           
-command.Parameters.Add(new SqlParameter("Login", "TestLogin"));
-command.Parameters.Add(new SqlParameter("Password","TestPa$$"));            
+command.Parameters.Add(
+    new SqlParameter("Login", "TestLogin"));
+command.Parameters.Add(
+    new SqlParameter("Password","TestPa$$"));            
 connection.Open();
 command.ExecuteNonQuery();
 connection.Close();
@@ -322,9 +335,9 @@ SCREEN TAB5
 \subsection{Przeprowadzenie operacji logowania uøytkownika}
 \subsubsection{BezpieczeÒstwo procesu logowania}
 
-Modu≥ logowania jest czÍúciπ systemu, do ktÛrego dostÍp udostÍpniony jest kaødemu uøytkownikowi korzystajπcego z prezentowanej aplikacji. Implikuje to koniecznoúÊ jego zabezpieczenia przed niepowo≥anym uøyciem dotyczπcym dostÍpu do poufnych danych, takich jak dane osobiste oraz has≥a, dla ktÛrych dobrπ praktykπ odnoszπcπ siÍ do bezpieczeÒstwa jest ich nieprzechowywanie w øadnym miejscu w postaci jawnej.
+Modu≥ logowania jest czÍúciπ systemu, do ktÛrego dostÍp ma kaødy uøytkownik korzystajπcy z prezentowanej aplikacji. Implikuje to koniecznoúÊ jego zabezpieczenia przed niepowo≥anym uøyciem dotyczπcym dostÍpu do poufnych danych, takich jak dane osobiste oraz has≥a, dla ktÛrych dobrπ praktykπ odnoszπcπ siÍ do bezpieczeÒstwa jest ich nieprzechowywanie w øadnym miejscu w postaci jawnej.
 
-Pole wpisywania has≥a przez uøytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka - PasswordBox. Jest to zmodyfikowana kontrolka TextBox dostÍpna w technologi WPF, ktÛra wyúwietla swojπ zawartoúÊ w postaci ukrytej, uniemoøliwiajπc jednoczeúnie wykonanie na jej zawartoúci operacji kopiowania oraz wycinania z poziomu klawiatury oraz myszy. Zabezpiecza to przed niechcianym podejrzeniem has≥a oraz jego odzyskania przez osobÍ trzeciπ.
+Pole wpisywania has≥a przez uøytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka - PasswordBox. Jest to zmodyfikowana kontrolka TextBox dostÍpna w technologi WPF, ktÛra wyúwietla swojπ zawartoúÊ w postaci ukrytej, uniemoøliwiajπc jednoczeúnie wykonanie na jej zawartoúci operacji kopiowania oraz wycinania z poziomu klawiatury oraz myszy. Zabezpiecza to przed niechcianym podejrzeniem has≥a oraz jego odzyskaniem przez osobÍ trzeciπ.
 
 \begin{figure}[ht]
     \centering
@@ -332,13 +345,14 @@ Pole wpisywania has≥a przez uøytkownika w oknie logowania stanowi dedykowana dla
     \caption{Kontrolka PasswordBox z przestawionymi aspektami bezpieczeÒstwa, èrÛd≥o: Opracowanie w≥asne.}
 \end{figure}
 
-Sama operacja sprawdzania poprawnoúci wpisanego has≥a zosta≥a zaprojektowana w taki sposÛb, aby otrzymane z kontrolki has≥o nie by≥o nigdzie zapisywane i porÛwnywane w postaci jawnej. W chwili wpisania has≥a przez uøytkownika oraz klikniÍcia przycisku logowania, has≥o przekszta≥cane jest za pomocπ algorytmu haszujπcego na skrÛt, ktÛry porÛwnywany jest ze skrÛtem has≥a dopasowanemu wpisanej nazwie uøytkownika uøytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostÍp do dalszej czÍúci programu.
+Sama operacja sprawdzania poprawnoúci wpisanego has≥a zosta≥a zaprojektowana w taki sposÛb, aby otrzymane z kontrolki has≥o nie by≥o nigdzie zapisywane i porÛwnywane w postaci jawnej. W chwili wpisania has≥a przez uøytkownika oraz klikniÍcia przycisku logowania, has≥o przekszta≥cane jest za pomocπ algorytmu haszujπcego SHA-256 na skrÛt, ktÛry porÛwnywany jest ze skrÛtem has≥a dopasowanemu wpisanej nazwie uøytkownika uøytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostÍp do dalszej czÍúci programu.
+
+%Zastosowanπ w module logowania funkcjπ haszujπcπ jest SHA-256 naleøπca do rodziny szyfrÛw %SHA-2. Rodzina ta jest nastÍpcπ SHA-1, ktÛrej algorytmy okaza≥y siÍ zbyt s≥abe%\cite{SHA1Slabosc}. SHA-256 uznawa
 
 TODO: ZRZUT REKORDU W BAZIE DANYCH (HASHE HASEL) + KOD POR”WNUJ•CY HAS£A GDY W£•CZ  HASZE
 
 \subsubsection{Szyfrowanie hase≥ - funkcja skrÛtu SHA2}
-Pytanie: czy dzia≥ jest warty opisania. czy SHA2 skrÛtowo opisaÊ w bezpieczeÒstwie procesu logowania
-
+potrzebne ????
 
 \subsection{Konto administratora i uøytkownika ñ ListView}
 \subsection{Tworzenie propozycji cenowej}
@@ -434,7 +448,12 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 \begin{thebibliography}{12}
 
 % wstÍp
-\bibitem{LiczbaHoteli} http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
+\bibitem{LiczbaHoteli} 
+http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
+
+%xml
+\bibitem{Xml}
+http://www.w3schools.com/xml/xml\_whatis.asp
 
 % trello
 \bibitem{Kanban}
@@ -463,7 +482,8 @@ https://opensource.org/licenses/MS-PL
 \bibitem{FazyProdukcjiOprogramowania} 
 Jaszkiewicz A. \textsl{Inøynieria oprogramowania}, Wydawnictwo Helion, 1997
 
-% Windows 8. Programowanie aplikacji z wykorzystaniem C# i XAML <- o MVVM
+\bibitem{MvvmOpis} 
+Petzold C. \textsl{Windows 8. Programowanie aplikacji z wykorzystaniem C\# i XAML}, Wydawnistwo Helion, Gliwice 2013
 
 \bibitem{LogikaBiznesowa}
 Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletny przewodnik dla programistÛw interaktywnych aplikacji internetowych w Visual Studio}, Wydawnictwo Helion, Gliwice 2014
@@ -474,6 +494,11 @@ MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET
 %entity
 \bibitem{AdnotacjeCodeFirst}
 https://msdn.microsoft.com/en-us/data/jj591583
+
+
+%techiczne logowanie
+\bibitem{SHA1Slabosc}
+Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 
 %Nazwisko I. \textsl{tytu≥}, miasto, rok
 \bibitem{nazwa} Jakaú pozycja literatury
