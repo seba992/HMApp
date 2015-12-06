@@ -320,3 +320,7 @@ insert into PropPaymentSuggestions_Dictionary_Fourth values (' ')
 insert into PropReservationDetails_Dictionary_HallCapacity (Hall,Area,TheatrePeopleNumber,UshapePeopleNumber) values (' ',null,null,null)
 insert into PropReservationDetails_Dictionary_HallSettings values (' ')
 insert into PropHallEquipmnet_Dictionary_Second values (' ')
+
+insert into PropositionStates_Dictionary values ('Nowa')
+insert into PropositionStates_Dictionary values ('W trakcie realizacji')
+insert into PropositionStates_Dictionary values ('Zrealizowana')

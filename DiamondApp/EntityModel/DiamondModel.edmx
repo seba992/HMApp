@@ -176,6 +176,13 @@
           <Property Name="UpdateDate" Type="date" Nullable="false" />
           <Property Name="Status" Type="varchar" MaxLength="15" />
         </EntityType>
+        <EntityType Name="PropositionStates_Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="PropPaymentSuggestions">
           <Key>
             <PropertyRef Name="Id" />
@@ -487,6 +494,7 @@
           <EntitySet Name="PropMenuPosition" EntityType="Self.PropMenuPosition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropMergeTypes_Dictionary" EntityType="Self.PropMergeTypes_Dictionary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proposition" EntityType="Self.Proposition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PropositionStates_Dictionary" EntityType="Self.PropositionStates_Dictionary" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropPaymentSuggestions" EntityType="Self.PropPaymentSuggestions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropPaymentSuggestions_Dictionary_First" EntityType="Self.PropPaymentSuggestions_Dictionary_First" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PropPaymentSuggestions_Dictionary_Fourth" EntityType="Self.PropPaymentSuggestions_Dictionary_Fourth" Schema="dbo" store:Type="Tables" />
@@ -798,6 +806,7 @@
             <End Role="Proposition" EntitySet="Proposition" />
             <End Role="PropMenuPosition" EntitySet="PropMenuPosition" />
           </AssociationSet>
+          <EntitySet Name="PropositionStates_Dictionary" EntityType="DiamondDBModel.PropositionStates_Dictionary" />
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
           <Key>
@@ -1127,6 +1136,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PropositionStates_Dictionary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1441,6 +1457,14 @@
                 <ScalarProperty Name="BruttoPrice" ColumnName="BruttoPrice" />
                 <ScalarProperty Name="TypeOfService" ColumnName="TypeOfService" />
                 <ScalarProperty Name="Id_proposition" ColumnName="Id_proposition" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropositionStates_Dictionary">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropositionStates_Dictionary">
+              <MappingFragment StoreEntitySet="PropositionStates_Dictionary">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

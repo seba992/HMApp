@@ -17,8 +17,8 @@ namespace DiamondApp.ViewModels
         private int _idProposition; //id propozycji
         private AdminProposition _selectedProposition;  // wyciagnieta pojedyńcza propozycja
         private bool _saveFlag = false; // czy edycja czy dodanie nowej jeśli nie zostały żadna wybrana
-        private List<string> _state = new List<string> { "Nierozpatrzona", "Gotowa" };
-        private string _selectState;
+        private List<string> _propStates = new List<string> { "Nierozpatrzona", "Gotowa" };
+        private string _selectedState;
 
         private int _userId;
         // public List<Proposition> propositionList;
@@ -226,22 +226,22 @@ namespace DiamondApp.ViewModels
             }
         }
 
-        public List<string> State
+        public List<string> PropStates
         {
-            get { return _state; }
+            get { return _propStates; }
             set
             {
-                _state = value;
-                RaisePropertyChanged("State");
+                _propStates = value;
+                RaisePropertyChanged("PropStates");
             }
         }
-        public string SelectState
+        public string SelectedState
         {
-            get { return _selectState; }
+            get { return _selectedState; }
             set
             {
-                _selectState = value;
-                RaisePropertyChanged("SelectState");
+                _selectedState = value;
+                RaisePropertyChanged("SelectedState");
             }
         }
 
@@ -3793,10 +3793,10 @@ namespace DiamondApp.ViewModels
                 // dupa1
                 // !! PROPOSITION !! 
                 string propstate;
-                if (SelectState != null)
-                    propstate = SelectState; //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
+                if (SelectedState != null)
+                    propstate = SelectedState; //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
                 else
-                    propstate = _state[0];
+                    propstate = _propStates[0];
                 var propositionToBase = new Proposition
                 {
                     Id_user = _userId,
@@ -3940,7 +3940,7 @@ namespace DiamondApp.ViewModels
                 var prop = (from q in _ctx.Proposition
                             where q.Id == _idProposition
                             select q).SingleOrDefault();
-                prop.Status = SelectState;
+                prop.Status = SelectedState;
                 int idProposition = _idProposition;
                 var editClient = (from q in _ctx.PropClient
                                   where q.Id_proposition == idProposition
@@ -4834,7 +4834,7 @@ namespace DiamondApp.ViewModels
             try
             {
 
-                SelectState = (from q in _ctx.Proposition
+                SelectedState = (from q in _ctx.Proposition
                                where q.Id == _idProposition
                                select q.Status).SingleOrDefault();
                 var editClient = (from q in _ctx.PropClient
@@ -5828,7 +5828,7 @@ namespace DiamondApp.ViewModels
             HallCapacity = null;
             HallPrice = null;
             AddNewProposition = null;
-            SelectState = null;
+            SelectedState = null;
 
             //tab2
             PropHallEqThing0 = null;

@@ -54,5 +54,6 @@ namespace DiamondApp.EntityModel
         public virtual DbSet<PropAccomodation> PropAccomodation { get; set; }
         public virtual DbSet<PropExtraServices> PropExtraServices { get; set; }
         public virtual DbSet<PropMenuPosition> PropMenuPosition { get; set; }
+        public virtual DbSet<PropositionStates_Dictionary> PropositionStates_Dictionary { get; set; }
     }
 }

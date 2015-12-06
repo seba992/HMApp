@@ -47,6 +47,7 @@
         <AssociationConnector Association="DiamondDBModel.FK__PropExtra__Id_pr__3D5E1FD2" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="25.875" />
         <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropositionStates_Dictionary" Width="1.5" PointX="0.75" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

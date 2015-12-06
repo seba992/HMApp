@@ -19,8 +19,8 @@ namespace DiamondApp.ViewModels
         private bool _saveFlag;  // czy edycja czy dodanie nowej jeśli nie zostały żadna wybrana
         private AdminProposition _selectedProposition; // wybrana poropozycja
         private int _idProposition;  //id propozycji
-        private List<string> _state = new List<string>(2);
-        private string _selectState;
+        private List<string> _propStates = new List<string>(2);
+        private string _selectedPropState;
 
         private List<AdminProposition> _propositionList;
         private List<User> _userListGrid;
@@ -223,22 +223,22 @@ namespace DiamondApp.ViewModels
             }
         }
         //Stan propozycji
-        public List<string> State
+        public List<string> PropStates
         {
-            get { return _state; }
+            get { return _propStates; }
             set
             {
-                _state = value;
-                RaisePropertyChanged("State");
+                _propStates = value;
+                RaisePropertyChanged("PropStates");
             }
         }
-        public string SelectState
+        public string SelectedPropState
         {
-            get { return _selectState;}
+            get { return _selectedPropState;}
             set
             {
-                _selectState = value;
-                RaisePropertyChanged("SelectState");
+                _selectedPropState = value;
+                RaisePropertyChanged("SelectedPropState");
             }
         }
 
@@ -4086,9 +4086,9 @@ namespace DiamondApp.ViewModels
                 select hd.Setting).ToList();
             HallSettingList = hallDict2;
 
-            //TODO: Lisu tabela w bazie ! ; D
-//            _state.Add("Nierozpatrzona");
-//            _state.Add("Gotowa");
+            var propstates = (from ps in _ctx.PropositionStates_Dictionary
+                select ps.Status).ToList();
+            PropStates = propstates;
 
             // wypelnianie listy dodatkowego wyposazenia sali 2tab
             var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
@@ -4223,10 +4223,10 @@ namespace DiamondApp.ViewModels
 
                 // !! PROPOSITION !! 
                 string propstate;
-                if (SelectState != null)
-                    propstate = SelectState; //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
+                if (SelectedPropState != null)
+                    propstate = SelectedPropState; //TODO uaktualnić ewentualnie z enuma lub obgadać jak rozwiązać
                 else
-                    propstate = _state[0];
+                    propstate = _propStates[0];
                 var propositionToBase = new Proposition
                 {
                     Id_user = _userId,
@@ -4366,7 +4366,7 @@ namespace DiamondApp.ViewModels
                 var prop = (from q in _ctx.Proposition
                     where q.Id == _idProposition
                     select q).SingleOrDefault();
-                prop.Status = SelectState;
+                prop.Status = SelectedPropState;
                 int idProposition = _idProposition;
                 var editClient = (from q in _ctx.PropClient
                                   where q.Id_proposition == idProposition
@@ -5138,7 +5138,7 @@ namespace DiamondApp.ViewModels
             try
             {
                 
-                 SelectState = (from q in _ctx.Proposition
+                 SelectedPropState = (from q in _ctx.Proposition
                         where q.Id == _idProposition
                         select q.Status).SingleOrDefault();
                     var editClient = (from q in _ctx.PropClient
@@ -5911,14 +5911,16 @@ namespace DiamondApp.ViewModels
                 _fifthTabBruttoValue.Add(new decimal());
 
             //First Tab state list
- //           for (int i = 0; i < _state.Capacity; i++)
-                _state.Add("Nierozpatrzona");
-                _state.Add("Gotowa");
+ //           for (int i = 0; i < _propStates.Capacity; i++)
+  //              _propStates.Add("Nierozpatrzona");
+  //              _propStates.Add("Gotowa");
         }
 
         private void SetDefaultValues()
         {
-            SelectState = State[0];
+            var s = (from x in _ctx.PropositionStates_Dictionary
+                select x.Status).ToList();
+            SelectedPropState = s[0];
             PropHallEquipmentDiscountValue = 0;
             PropAccomDiscountValue = 0;
             DefaultViewVatIndex = 1;
@@ -6301,8 +6303,8 @@ namespace DiamondApp.ViewModels
             //tab1
 
             //if not working, bug is here >_<
-            _state = null;
-            SelectState = null;
+            _propStates = null;
+            SelectedPropState = null;
 
 
             PropositionReservDetailsStartData = null;

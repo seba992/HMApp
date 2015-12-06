@@ -167,6 +167,9 @@
     <Compile Include="EntityModel\Proposition.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityModel\PropositionStates_Dictionary.cs">
+      <DependentUpon>DiamondModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityModel\PropPaymentSuggestions.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
