@@ -33,24 +33,7 @@
                     <GridViewColumn Width="200" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
                     <GridViewColumn Width="130" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat=\{0:yyyy-MM-dd\}}" />
                     <GridViewColumn Width="70" Header="Status" DisplayMemberBinding="{Binding Status}" />
-
-                    <GridViewColumn Header="Stan" Width="130">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <ComboBox  Width="110">
-                                    <ComboBoxItem IsSelected="True" Content="Nierozpatrzona"/>
-                                    <ComboBoxItem Content="Gotowa" />
-                                </ComboBox>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn Width="60">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Edytuj" Padding="5,2" Command="{Binding ChangePropositionCommand}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                  
                     <GridViewColumn Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

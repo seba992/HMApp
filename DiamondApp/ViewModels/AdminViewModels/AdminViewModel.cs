@@ -22,16 +22,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
         private int _idProposition;  //id propozycji
         private List<string> _propStates = new List<string>(2);
         private string _selectedPropState;
-
+        private Users _propositionsSeller;
         private List<AdminProposition> _propositionList;
-        private List<User> _userListGrid;
         private AddNewProposition _addNewProposition;
         
         private PropClient _propositionClient = new PropClient();   // obiekt zawierajacy dane propozycji klienta (1 tab gora)
         private PropReservationDetails _propositionReservDetails = new PropReservationDetails();     // obiekt zawierajacy dane szczegolow zamownienia (1 tab dol)
         private List<string> _hallList; // lista sal (controlbox 1tab)
         private List<string> _hallSettingList; // lista sal (controlbox 1tab)
-        
+        private List<User> _userListGrid;
+
         private PropReservationDetails_Dictionary_HallCapacity _hallCapacity = new PropReservationDetails_Dictionary_HallCapacity();    // obiekt zawierajacy dane wybranej sali (1 tab dol)
         private string _eventMonth; // miesiac wydarzenia potrzebny do ustalenia celi sali
         private List<Users> _usersList; // lista uzytkownikow TODO: FOR WHAT
@@ -116,7 +116,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             SelectAllUsers();
             FillNeededList();
             PropDefaultSeller();
-           SetDefaultValues();
+            SetDefaultValues();
         }
 
         #endregion
@@ -142,14 +142,31 @@ namespace DiamondApp.ViewModels.AdminViewModels
             }
         }
 
-        public List<User> UsersListGrid
+        public Users PropositionsSeller
         {
-            get { return _userListGrid; }
+             get
+            {
+                return _propositionsSeller;
+            }
             set
             {
-                SelectAllUsers();
-                _userListGrid = value;
-                RaisePropertyChanged("UsersListGrid");
+                _propositionsSeller = value;
+                var myQuerry = (from prop in _ctx.Proposition
+                                from user in _ctx.Users
+                                where user.Id == _userId
+                                where prop.Id_user == value.Id
+                                select new AdminProposition
+                                {
+                                    PropositionId = prop.Id,
+                                    UserFirstName = user.Name,
+                                    UserSurname = user.Surname,
+                                    CustomerFullName = prop.PropClient.CustomerFullName,
+                                    CompanyName = prop.PropClient.CompanyName,
+                                    UpdateDate = prop.UpdateDate,
+                                    Status = prop.Status
+                                }).ToList();
+                PropositionsList = myQuerry;
+                RaisePropertyChanged("PropositionsSeller");
             }
         }
 
@@ -5676,6 +5693,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
 
         private ICommand _addUserCommand;
+        
 
         public ICommand AddUserCommand
         {
