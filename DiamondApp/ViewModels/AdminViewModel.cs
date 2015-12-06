@@ -1990,8 +1990,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuPosAmount0");
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
-                if (PropMenuTypeOfServ0 != null && PropMenuPosDays0 != null && PropMenuPosAmount0 != null
-                    && ThirdTabNettoPrice0 != null && ThirdTabNettoPrice0 !=null)
+                if (PropMenuTypeOfServ0 != null && PropMenuPosDays0 != null && PropMenuPosAmount0 != null && ThirdTabNettoPrice0 != null)
                 {
                     ThirdTabNettoValue0 = ComputeNettoValue((decimal) ThirdTabNettoPrice0, PropMenuPosAmount0,
                         PropMenuPosDays0);
@@ -2015,8 +2014,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuPosAmount1");
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
-                if (PropMenuTypeOfServ1 != null && PropMenuPosDays1 != null && PropMenuPosAmount1 != null
-                    && ThirdTabNettoPrice1 != null && ThirdTabNettoPrice1 != null)
+                if (PropMenuTypeOfServ1 != null && PropMenuPosDays1 != null && PropMenuPosAmount1 != null && ThirdTabNettoPrice1 != null)
                 {
                     ThirdTabNettoValue1 = ComputeNettoValue((decimal)ThirdTabNettoPrice1, PropMenuPosAmount1,
                         PropMenuPosDays1);
@@ -2039,8 +2037,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuPosAmount2");
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
-                if (PropMenuTypeOfServ2 != null && PropMenuPosDays2 != null && PropMenuPosAmount2 != null
-                    && ThirdTabNettoPrice2 != null && ThirdTabNettoPrice2 != null)
+                if (PropMenuTypeOfServ2 != null && PropMenuPosDays2 != null && PropMenuPosAmount2 != null && ThirdTabNettoPrice2 != null)
                 {
                     ThirdTabNettoValue2 = ComputeNettoValue((decimal)ThirdTabNettoPrice2, PropMenuPosAmount2,
                         PropMenuPosDays2);
@@ -2063,8 +2060,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuPosAmount3");
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
-                if (PropMenuTypeOfServ3 != null && PropMenuPosDays3 != null && PropMenuPosAmount3 != null
-                    && ThirdTabNettoPrice3 != null && ThirdTabNettoPrice3 != null)
+                if (PropMenuTypeOfServ3 != null && PropMenuPosDays3 != null && PropMenuPosAmount3 != null && ThirdTabNettoPrice3 != null)
                 {
                     ThirdTabNettoValue3 = ComputeNettoValue((decimal)ThirdTabNettoPrice3, PropMenuPosAmount3,
                         PropMenuPosDays3);
@@ -2087,8 +2083,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuPosAmount4");
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
-                if (PropMenuTypeOfServ4 != null && PropMenuPosDays4 != null && PropMenuPosAmount4 != null
-                    && ThirdTabNettoPrice4 != null && ThirdTabNettoPrice4 != null)
+                if (PropMenuTypeOfServ4 != null && PropMenuPosDays4 != null && PropMenuPosAmount4 != null && ThirdTabNettoPrice4 != null)
                 {
                     ThirdTabNettoValue4 = ComputeNettoValue((decimal)ThirdTabNettoPrice4, PropMenuPosAmount4,
                         PropMenuPosDays4);
@@ -2111,8 +2106,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuPosAmount5");
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
-                if (PropMenuTypeOfServ5 != null && PropMenuPosDays5 != null && PropMenuPosAmount5 != null
-                    && ThirdTabNettoPrice5 != null && ThirdTabNettoPrice5 != null)
+                if (PropMenuTypeOfServ5 != null && PropMenuPosDays5 != null && PropMenuPosAmount5 != null && ThirdTabNettoPrice5 != null)
                 {
                     ThirdTabNettoValue5 = ComputeNettoValue((decimal)ThirdTabNettoPrice5, PropMenuPosAmount5,
                         PropMenuPosDays5);
@@ -2135,8 +2129,7 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("PropMenuPosAmount6");
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
-                if (PropMenuTypeOfServ6 != null && PropMenuPosDays6 != null && PropMenuPosAmount6 != null
-                    && ThirdTabNettoPrice6 != null && ThirdTabNettoPrice6 != null)
+                if (PropMenuTypeOfServ6 != null && PropMenuPosDays6 != null && PropMenuPosAmount6 != null && ThirdTabNettoPrice6 != null)
                 {
                     ThirdTabNettoValue6 = ComputeNettoValue((decimal)ThirdTabNettoPrice6, PropMenuPosAmount6,
                         PropMenuPosDays6);
@@ -4342,9 +4335,6 @@ namespace DiamondApp.ViewModels
 
                 try
                 {
-                    // Your code...
-                    // Could also be before try if you know the exception occurs in SaveChanges
-
                     _ctx.SaveChanges();
                 }
                 catch (DbEntityValidationException e)
@@ -6055,7 +6045,7 @@ namespace DiamondApp.ViewModels
             var netto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
                 where typeofservice == s.ThingName
                 select s.NettoMini).SingleOrDefault();
-            float? toret = (float?) netto + (float?)netto*vat.Value/100;
+            float? toret = netto + netto*vat.Value/100;
             return toret;
         }
 
@@ -6075,7 +6065,7 @@ namespace DiamondApp.ViewModels
 //                price = 0;
             var mergeValue =
                 _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new {x = x.DefaultValue}).FirstOrDefault();
+                    .Select(x => new {x = x.DefaultValue}).FirstOrDefault();
 
             if (mergeValue != null && mergeValue.x != null)
             {
@@ -6093,7 +6083,7 @@ namespace DiamondApp.ViewModels
         {
             var mergeValue =
                 _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new {x = x.DefaultValue})
+                    .Select(x => new {x = x.DefaultValue})
                     .FirstOrDefault();
 
             if (mergeValue != null && mergeValue.x != null)

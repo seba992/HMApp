@@ -650,7 +650,7 @@
                     <TextBox x:Name="UdSumaZamowieniaNettoTextBox" Grid.Column="7" Grid.Row="10" Margin="3" IsEnabled="False" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FullSumNetto, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="UdSumaZamowieniaBruttoTextBox" Grid.Column="9" Grid.Row="10" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FullSumBrutto, StringFormat=\{0:c\}}" />
 
-                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="10" Margin="29,0,0,0" Grid.Row="9" Stroke="Black" VerticalAlignment="Top" Width="1012" Grid.ColumnSpan="10"/>
+                    <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="10" Margin="29,0,0,0" Grid.Row="9" Grid.Column="0" Stroke="Black" VerticalAlignment="Top" Width="1012" Grid.ColumnSpan="10"/>
 
 
                 </Grid>

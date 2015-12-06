@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,7 +6,6 @@ using System.Windows.Input;
 using DiamondApp.EntityModel;
 using DiamondApp.Tools;
 using DiamondApp.Views;
-using Microsoft.Practices.ServiceLocation;
 
 namespace DiamondApp.ViewModels
 {
@@ -59,7 +57,7 @@ namespace DiamondApp.ViewModels
             {
                 if (_loginCommand == null)
                 {
-                    _loginCommand = new RelayCommand<PasswordBox>((t) => LoginExecute(t), (t) => CanLoginExecute(t));
+                    _loginCommand = new RelayCommand<PasswordBox>(LoginExecute, CanLoginExecute);
                 }
                 return _loginCommand;
             }          
