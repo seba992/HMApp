@@ -151,21 +151,26 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propositionsSeller = value;
-                var myQuerry = (from prop in _ctx.Proposition
-                                from user in _ctx.Users
-                                where user.Id == _userId
-                                where prop.Id_user == value.Id
-                                select new AdminProposition
-                                {
-                                    PropositionId = prop.Id,
-                                    UserFirstName = user.Name,
-                                    UserSurname = user.Surname,
-                                    CustomerFullName = prop.PropClient.CustomerFullName,
-                                    CompanyName = prop.PropClient.CompanyName,
-                                    UpdateDate = prop.UpdateDate,
-                                    Status = prop.Status
-                                }).ToList();
-                PropositionsList = myQuerry;
+                if (value.Id == 0)
+                    SelectAllPropositions();
+                else
+                {
+                    var myQuerry = (from prop in _ctx.Proposition
+                        from user in _ctx.Users
+                        where user.Id == _userId
+                        where prop.Id_user == value.Id
+                        select new AdminProposition
+                        {
+                            PropositionId = prop.Id,
+                            UserFirstName = user.Name,
+                            UserSurname = user.Surname,
+                            CustomerFullName = prop.PropClient.CustomerFullName,
+                            CompanyName = prop.PropClient.CompanyName,
+                            UpdateDate = prop.UpdateDate,
+                            Status = prop.Status
+                        }).ToList();
+                    PropositionsList = myQuerry;
+                }
                 RaisePropertyChanged("PropositionsSeller");
             }
         }
@@ -5729,6 +5734,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             var q = (from s in _ctx.Users
                      where s.Proposition.Any()
                      select s).ToList();
+            q.Add(new Users());
             UsersList = q;
         }
 
