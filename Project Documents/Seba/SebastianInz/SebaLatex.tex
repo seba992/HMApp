@@ -323,13 +323,25 @@ TODO: SCREEN PIERWSZEGO LOGOWANIA (wrzuciæ po poprawkach wizualnych programu)
 
 Modu³ tworzenia nowej propozycji cenowej umo¿liwia u¿ytkownikowi aplikacji przeprowadzenie procesu utworzenia schematu wymaganych przez klienta us³ug wraz z ich zapisem do bazy danych. Tym sposobem wszelkie ustalenia dokonane podczas spotkania z potencjalnym klientem zapisywane s¹ na centralnym serwerze, z którego w razie potrzeby mo¿na wybran¹ propozycjê pobraæ i wygenerowaæ jej plik w formacie PDF lub dokonaæ jej edycji.
 
-W czasie spotkania sprzedawcy z klientem, chc¹c przedstawiæ ofertê cenow¹ dotycz¹c¹ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g³ównym aplikacji opcjê stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siê forma przeznaczona do wpisywania wymaganych danych. Forma ta przez wzgl¹d na kilka typów us³ug podzielona zosta³a na piêæ zak³adek, z których ka¿da zawiera odpowiednia pola, umo¿liwiaj¹ce ustalenie wszelkich elementów konkretnej us³ugi.
+W czasie spotkania sprzedawcy z klientem, chc¹c przedstawiæ ofertê cenow¹ dotycz¹c¹ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g³ównym aplikacji opcjê stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siê forma przeznaczona do wpisania wymaganych danych. Forma ta przez wzgl¹d na kilka typów us³ug podzielona zosta³a na piêæ zak³adek, z których ka¿da zawiera odpowiednia pola, umo¿liwiaj¹ce ustalenie wszelkich elementów konkretnej us³ugi.
 
 \subsubsection{Opis klienta}
 
 IN PROGRESS
 
-Pierwsza zak³adka dotyczy wszelkich informacji dotycz¹cych  danych osobowych sprzedawcy, klienta oraz ogólnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, któr¹ reprezentuje, pobierane s¹ automatycznie z bazy danych. Operacja ta jest mo¿liwa dziêki przechowywaniu w programie informacji o tym, na jakie konto u¿ytkownik zosta³ zalogowany. Wszelkie pozosta³e dane sprzedawca ma obowi¹zek uzupe³niæ samodzielnie, uzyskuj¹c informacje od klienta. 
+Pierwsza zak³adka zawiera wszelkie informacje dotycz¹ce danych osobowych sprzedawcy, klienta oraz ogólnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, któr¹ reprezentuje, pobierane s¹ automatycznie z bazy danych. Operacja ta jest mo¿liwa dziêki przechowywaniu w programie informacji o tym, na jakie konto u¿ytkownik zosta³ zalogowany. Wszelkie pozosta³e dane sprzedawca ma obowi¹zek uzupe³niæ samodzielnie, uzyskuj¹c informacje od klienta. 
+
+\begin{itemize}
+\item \textsl{Nazwa klienta} 
+
+Przez wzgl¹d na mo¿liwoœæ obs³ugi klientów biznesowych wprowadzone zosta³o pole umo¿liwiaj¹ce wpisanie nazwy firmy, któr¹ klient reprezentuje. W celu jednoznacznej identyfikacji ka¿dej propozycji cenowej, uznano i¿ pole to bêdzie jedn¹ z kolumn listy propozycji okna g³ównego.
+
+\item \textsl{Adres klienta} 
+
+Pole to przeznaczone jest do wpisania adresu klienta zarówno w przypadku osoby indywidualnej jak i firmy. Po analizie wszelkich za³o¿eñ projektowych nie wyst¹pi³a koniecznoœæ rozdzielenia danych adresowych - potrzebne s¹ one tylko i wy³¹cznie do opisu klienta na wygenerowanym dokumencie PDF.
+\item Trzeci punkt
+\item \ldots
+\end{itemize}
 
 TODO: po edycji graficznej wrzuciæ tab1
 \subsubsection{Szczegó³y rezerwacji}
@@ -378,6 +390,10 @@ potrzebne ????
 \subsubsection{DataGridView a dynamiczna komunikacja z Baz¹ danych}
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 \section{Perspektywy rozwoju oprogramowania}
+
+- wersja offline
+- pierwsze logowanie: ponowne wpisanie has³a dla potwierdzenia zgodnoœci
+- dynamicznie rozwijane listy podczas tworzenia propozycji cenowej (iloœæ rzeczy do wyboru w ka¿dym tabie)
 
 %% UWaga na \newlineTekst oraz \newlineSpis. Mo¿na te¿ u¿yæ \newline, dzia³a jak \newlineSpis\newlineTekst
 \section[Tytu³ drugiego rozdzia³u. Bardzo d³ugi \ldots]
