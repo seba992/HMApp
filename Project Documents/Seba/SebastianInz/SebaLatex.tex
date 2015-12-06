@@ -85,6 +85,16 @@ XAML jest to oparty na XML\cite{Xml} deklaratywny jÍzyk znacznikÛw, ktÛrego zada
 \subsection{Wykorzystane narzÍdzia}
 \subsubsection{Visual Studio 2013}
 \subsubsection{SQL Server Management Studio}
+
+W trakcie prac nad projektem wykorzystano darmowe narzÍdzie do zarzπdzania bazπ danych SQL Server Management Studio 2012 Express \cite{SQL Server Management Studio Express} wynika to z istniejπcej infrastruktury opartej na rozwiπzaniach Microsoftu, co u≥atwi≥o nam pracÍ i proces projektowania ca≥ej bazy danych. DziÍki przejrzystemu interfejsowi uøytkownika, moøna w bardzo ≥atwy sposÛb tworzyÊ nawet bardzo skomplikowane struktury, bez koniecznoúci znajomoúci jÍzyka tworzπcego bazÍ danych.  Program ten u≥atwi≥ tworzenie wymaganej przez sieÊ hotelowπ bazy danych. Istnieje rÛwnieø moøliwoúÊ generowania skryptÛw, ktÛrych zadaniem jest odtworzenie ca≥ej struktury bazy danych. W programie jest rÛwnieø moøliwoúÊ tworzenia diagramÛw: wszystkich jak rÛwnieø wybranych tabel. Te moøliwoúci przedstawia zrzut ekranu. Umoøliwia to diagnozowanie problemu braku po≥πczeÒ niektÛrych tabel z resztπ struktury. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{diagrambazy.jpg}
+    \caption{Interfejs SQL Server Management Studio Express, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+Wykorzystujπc wbudowane mechanizmy moøliwe jest ≥atwe wpisywanie poczπtkowych danych takich jak: uøytkownicy systemu, ceny produktÛw, ich edycja na poziomie bazy. Umoøliwia to sprawdzenie, czy baza dzia≥a zgodnie oczekiwaniami. W ten sposÛb moøna úledziÊ dzia≥anie naszego programu w trakcie pracy. SprawdziÊ moøna czy wszystkie elementy prawid≥owo dzia≥ajπ i czy w poprawny sposÛb jest zapisywana dana pozycja.
+
 \subsubsection{Trello}
 
 Podczas pracy zespo≥owej napotyka siÍ liczne problemy zwiπzane z organizacjπ pracy, jej synchronizacjπ oraz podzia≥em obowiπzkÛw. StopieÒ zaawansowania przedstawionych problemÛw dodatkowo wzrasta, w sytuacji, gdy wspÛ≥praca zespo≥u przebiega zdalnie. W takich okolicznoúciach warto pos≥uøyÊ siÍ dedykowanymi narzÍdziami, ktÛre umoøliwiajπ prostπ, szybkπ i skutecznπ komunikacjÍ wspierajπcπ pracÍ wielu osÛb nad jednym projektem. 
@@ -172,7 +182,7 @@ MVVM jest to wzorzec, ktÛry dziÍki funkcjonalnoúci odseparowania warstwy prezent
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{MvvmDiagram.jpg}
-    \caption{Przep≥yw danych w modelu MVVM, \newline èrÛd≥o: www.tomaszmalesza.pl}
+    \caption{Przep≥yw danych w modelu MVVM, èrÛd≥o: www.tomaszmalesza.pl}
 \end{figure}
 %www.tomaszmalesza.pl/wp-content/uploads/2012/08/MVVM\_Relation1.jpg
 
@@ -303,7 +313,7 @@ TODO: SCREEN B£ DNEGO WPISANIA DANYCH (wrzuciÊ po poprawkach wizualnych programu
 
 Pierwsze logowanie jest specyficznπ formπ logowania, w ktÛrym uøytkownik posiada obowiπzek wpisania has≥a, z ktÛrego bÍdzie korzysta≥ w pracy z aplikacjπ. W chwili wpisania nazwy uøytkownika, program w tle przeprowadza operacjÍ walidacji statusu konta i w sytuacji wykrycia, iø uøytkownik loguje siÍ pierwszy raz, wyúwietla stosownπ informacjÍ, ktÛra instruuje go o dalszych krokach. 
 
-TODO: /odnoúnik do zrzutu ekranu ilustrujπcπ tÍ sytacjÍ/ (wrzuciÊ po poprawkach wizualnych programu)
+TODO: /odnoúnik do zrzutu ekranu ilustrujπcπ opisanπ sytuacjÍ/ (wrzuciÊ po poprawkach wizualnych programu)
 
 TODO: SCREEN PIERWSZEGO LOGOWANIA (wrzuciÊ po poprawkach wizualnych programu)
 
@@ -311,23 +321,25 @@ TODO: SCREEN PIERWSZEGO LOGOWANIA (wrzuciÊ po poprawkach wizualnych programu)
 
 \subsection{Tworzenie nowej propozycji cenowej}
 
-Modu≥ tworzenia nowej propozycji cenowej umoøliwia uøytkownikowi aplikacji przeprowadzenie procesu utworzenia schematu wymaganych przez klienta us≥ug wraz z ich zapisem do bazy danych. Tym sposobem wszelkie ustalenia dokonane podczas spotkania z potencjalnym klientem zapisywane sπ na centralnym serwerze, z ktÛrego w razie potrzeby moøna wymaganπ propozycjÍ pobraÊ i wygenerowaÊ jej plik w formacie PDF lub dokonaÊ jej edycji.
+Modu≥ tworzenia nowej propozycji cenowej umoøliwia uøytkownikowi aplikacji przeprowadzenie procesu utworzenia schematu wymaganych przez klienta us≥ug wraz z ich zapisem do bazy danych. Tym sposobem wszelkie ustalenia dokonane podczas spotkania z potencjalnym klientem zapisywane sπ na centralnym serwerze, z ktÛrego w razie potrzeby moøna wybranπ propozycjÍ pobraÊ i wygenerowaÊ jej plik w formacie PDF lub dokonaÊ jej edycji.
 
-W czasie spotkania sprzedawcy z klientem, chcπc przedstawiÊ ofertÍ cenowπ dotyczπcπ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g≥Ûwnym aplikacji opcjÍ stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siÍ forma przeznaczona do wpisywania wymaganych danych. Forma ta przez wzglπd na kilka typÛw us≥ug podzielona jest na piÍÊ zak≥adek, z ktÛrych kaøda zawiera odpowiednia pola, umoøliwiajπce ustalenie wszelkich elementÛw konkretnej us≥ugi.
+W czasie spotkania sprzedawcy z klientem, chcπc przedstawiÊ ofertÍ cenowπ dotyczπcπ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g≥Ûwnym aplikacji opcjÍ stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siÍ forma przeznaczona do wpisywania wymaganych danych. Forma ta przez wzglπd na kilka typÛw us≥ug podzielona zosta≥a na piÍÊ zak≥adek, z ktÛrych kaøda zawiera odpowiednia pola, umoøliwiajπce ustalenie wszelkich elementÛw konkretnej us≥ugi.
 
 \subsubsection{Opis klienta}
 
+IN PROGRESS
+
 Pierwsza zak≥adka dotyczy wszelkich informacji dotyczπcych  danych osobowych sprzedawcy, klienta oraz ogÛlnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, ktÛrπ reprezentuje, pobierane sπ automatycznie z bazy danych. Operacja ta jest moøliwa dziÍki przechowywaniu w programie informacji o tym, na jakie konto uøytkownik zosta≥ zalogowany. Wszelkie pozosta≥e dane sprzedawca ma obowiπzek uzupe≥niÊ samodzielnie, uzyskujπc informacje od klienta. 
 
-SCREEN TAB1
+TODO: po edycji graficznej wrzuciÊ tab1
 \subsubsection{SzczegÛ≥y rezerwacji}
-SCREEN TAB2
+TODO: po edycji graficznej wrzuciÊ tab2
 \subsubsection{Us≥ugi gastronomiczne}
-SCREEN TAB3
+TODO: po edycji graficznej wrzuciÊ tab3
 \subsubsection{Us≥ugi noclegowe}
-SCREEN TAB4
+TODO: po edycji graficznej wrzuciÊ tab4
 \subsubsection{Us≥ugi dodatkowe i forma p≥atnoúci}
-SCREEN TAB5
+TODO: po edycji graficznej wrzuciÊ tab5
 
 \subsection{Edycja istniejπcej propozycji cenowej}
 \subsection{Tworzenie pliku PDF istniejπcej propozycji cenowej}
@@ -355,7 +367,7 @@ Sama operacja sprawdzania poprawnoúci wpisanego has≥a zosta≥a zaprojektowana w t
 
 %Zastosowanπ w module logowania funkcjπ haszujπcπ jest SHA-256 naleøπca do rodziny szyfrÛw %SHA-2. Rodzina ta jest nastÍpcπ SHA-1, ktÛrej algorytmy okaza≥y siÍ zbyt s≥abe%\cite{SHA1Slabosc}. SHA-256 uznawa
 
-TODO: ZRZUT REKORDU W BAZIE DANYCH (HASHE HASEL) + KOD POR”WNUJ•CY HAS£A GDY W£•CZ  HASZE
+TODO: zrzut rekordu w bazie danych (hashe hasel) + kod porownujacy hasla: wrzuciÊ gdy w≥πczÍ haszowanie w aplikacji
 
 \subsubsection{Szyfrowanie hase≥ - funkcja skrÛtu SHA2}
 potrzebne ????
@@ -367,31 +379,17 @@ potrzebne ????
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 \section{Perspektywy rozwoju oprogramowania}
 
-\begin{equation}
-a^2+b^2=c^2
-\end{equation}
-
-\begin{tw}
-Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
-\end{tw}
-
-\begin{dd}
-Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
-\end{dd}
-\begin{equation}
-E=mc^2
-\end{equation}
-
-
-
 %% UWaga na \newlineTekst oraz \newlineSpis. Moøna teø uøyÊ \newline, dzia≥a jak \newlineSpis\newlineTekst
 \section[Tytu≥ drugiego rozdzia≥u. Bardzo d≥ugi \ldots]
         {Tytu≥ drugiego rozdzia≥u. \newlineTekst Bardzo d≥ugi tytu≥. \newlineTekst
           Jego \newlineSpis formatowanie jest trudniejsze}
+CACHE
 
 Tu jest wnÍtrze rozdzia≥u drugiego.
 
 \dodatek{MÛj specjalny dodatek}
+
+CACHE
 
 Tu treúÊ dodatku. ZwrÛÊmy uwagÍ na sposÛb numerowania dodatku, 
 moøliwa jest zmiana numerowania, patrz wyjaúnienia.
@@ -399,10 +397,11 @@ moøliwa jest zmiana numerowania, patrz wyjaúnienia.
 %% to wpisuje siÍ do spisu treúci, ale bez numeru rozdzia≥u,
 %% moøna teø uøywaÊ \dodatek{Tytu≥}, ktÛry jest numerowany, ale inaczej niø rozdzia≥y.
 \dodatkowo{Rysunki}
-
+CACHE
 
 
 \dodatkowo{Za≥πczniki}
+CACHE
 
 Tu programy
 
@@ -506,6 +505,13 @@ https://msdn.microsoft.com/en-us/data/jj591583
 \bibitem{SHA1Slabosc}
 Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 
+%Nazwisko I. \textsl{tytu≥}, miasto, rok
+
+
+%---
+
+\bibitem{SQL Server Management Studio Express}
+https://www.microsoft.com/en-us/download/details.aspx?id=29062
 %Nazwisko I. \textsl{tytu≥}, miasto, rok
 \bibitem{nazwa} Jakaú pozycja literatury
 

@@ -622,7 +622,7 @@ namespace DiamondApp.Tools
                 paragraph.Format.Font.Bold = true;
 
                 //add logo
-                Image image = section.AddImage("logo.png");
+                Image image = section.AddImage("../../Resources/MainPdfLogo.png");
                 image.Width = Unit.FromPoint(593);
                 image.Height = Unit.FromPoint(125);
                 image.RelativeVertical = RelativeVertical.Page;
