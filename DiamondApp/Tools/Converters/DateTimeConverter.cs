@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace DiamondApp.Tools
+namespace DiamondApp.Tools.Converters
 {
     public static class DateTimeConverter
     {

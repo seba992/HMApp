@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DiamondApp.ViewModels;
 using DiamondApp.Tools;
+using DiamondApp.Tools.Pdf;
+using DiamondApp.ViewModels.UserViewModels;
 using Microsoft.Win32;
 
 namespace DiamondApp.Views

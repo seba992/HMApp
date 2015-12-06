@@ -98,109 +98,109 @@
     <Compile Include="DataGridFillingObjects\AddNewProposition.cs" />
     <Compile Include="DataGridFillingObjects\AdminProposition.cs" />
     <Compile Include="DataGridFillingObjects\User.cs" />
-    <Compile Include="EntityModel\AccountPrivileges.cs">
+    <Compile Include="Model\AccountPrivileges.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\DiamondModel.Context.cs">
+    <Compile Include="Model\DiamondModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DiamondModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\DiamondModel.cs">
+    <Compile Include="Model\DiamondModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\DiamondModel.Designer.cs">
+    <Compile Include="Model\DiamondModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DiamondModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropAccomodation.cs">
+    <Compile Include="Model\PropAccomodation.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropAccomodationDiscount.cs">
+    <Compile Include="Model\PropAccomodationDiscount.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropAccomodation_Dictionary.cs">
+    <Compile Include="Model\PropAccomodation_Dictionary.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropClient.cs">
+    <Compile Include="Model\PropClient.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropExtraServices.cs">
+    <Compile Include="Model\PropExtraServices.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropExtraServicesDiscount.cs">
+    <Compile Include="Model\PropExtraServicesDiscount.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropExtraServices_Dictionary.cs">
+    <Compile Include="Model\PropExtraServices_Dictionary.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropHallEquipment.cs">
+    <Compile Include="Model\PropHallEquipment.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropHallEquipmentDiscount.cs">
+    <Compile Include="Model\PropHallEquipmentDiscount.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropHallEquipmnet_Dictionary_First.cs">
+    <Compile Include="Model\PropHallEquipmnet_Dictionary_First.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropHallEquipmnet_Dictionary_Second.cs">
+    <Compile Include="Model\PropHallEquipmnet_Dictionary_Second.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropMenuGastronomicThings_Dictionary_First.cs">
+    <Compile Include="Model\PropMenuGastronomicThings_Dictionary_First.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropMenuMerge.cs">
+    <Compile Include="Model\PropMenuMerge.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropMenuMerge_Dictionary_First.cs">
+    <Compile Include="Model\PropMenuMerge_Dictionary_First.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropMenuPosition.cs">
+    <Compile Include="Model\PropMenuPosition.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropMergeTypes_Dictionary.cs">
+    <Compile Include="Model\PropMergeTypes_Dictionary.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\Proposition.cs">
+    <Compile Include="Model\Proposition.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropositionStates_Dictionary.cs">
+    <Compile Include="Model\PropositionStates_Dictionary.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions.cs">
+    <Compile Include="Model\PropPaymentSuggestions.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_First.cs">
+    <Compile Include="Model\PropPaymentSuggestions_Dictionary_First.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Fourth.cs">
+    <Compile Include="Model\PropPaymentSuggestions_Dictionary_Fourth.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Second.cs">
+    <Compile Include="Model\PropPaymentSuggestions_Dictionary_Second.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropPaymentSuggestions_Dictionary_Third.cs">
+    <Compile Include="Model\PropPaymentSuggestions_Dictionary_Third.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropReservationDetails.cs">
+    <Compile Include="Model\PropReservationDetails.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropReservationDetails_Dictionary_HallCapacity.cs">
+    <Compile Include="Model\PropReservationDetails_Dictionary_HallCapacity.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropReservationDetails_Dictionary_HallPrices.cs">
+    <Compile Include="Model\PropReservationDetails_Dictionary_HallPrices.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\PropReservationDetails_Dictionary_HallSettings.cs">
+    <Compile Include="Model\PropReservationDetails_Dictionary_HallSettings.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\Users.cs">
+    <Compile Include="Model\Users.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityModel\VatList.cs">
+    <Compile Include="Model\VatList.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -211,6 +211,7 @@
     <Compile Include="Tools\Converters\DateTimeConverter.cs" />
     <Compile Include="Tools\Pdf\PdfMaker.cs" />
     <Compile Include="Tools\MvvmClasses\RelayCommand.cs" />
+    <Compile Include="Tools\MvvmClasses\RelayCommandGeneric.cs" />
     <Compile Include="ViewModels\AdminViewModels\AddUserViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\DictionaryViewModel.cs" />
@@ -223,7 +224,6 @@
     <Compile Include="Views\AdminMainView.xaml.cs">
       <DependentUpon>AdminMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tools\MvvmClasses\RelayCommandGeneric.cs" />
     <Compile Include="Tools\Converters\ShaConverter.cs" />
     <Compile Include="ViewModels\UserViewModels\UserViewModel.cs" />
     <Compile Include="Properties\Annotations1.cs" />
@@ -299,11 +299,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="EntityModel\DiamondModel.edmx">
+    <EntityDeploy Include="Model\DiamondModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DiamondModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="EntityModel\DiamondModel.edmx.diagram">
+    <None Include="Model\DiamondModel.edmx.diagram">
       <DependentUpon>DiamondModel.edmx</DependentUpon>
       <SubType>Designer</SubType>
     </None>
@@ -322,12 +322,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MainPdfLogo.png" />
-    <Content Include="EntityModel\DiamondModel.Context.tt">
+    <Content Include="Model\DiamondModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DiamondModel.edmx</DependentUpon>
       <LastGenOutput>DiamondModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="EntityModel\DiamondModel.tt">
+    <Content Include="Model\DiamondModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DiamondModel.edmx</DependentUpon>
       <LastGenOutput>DiamondModel.cs</LastGenOutput>

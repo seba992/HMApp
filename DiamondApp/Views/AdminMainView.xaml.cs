@@ -4,6 +4,8 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using DiamondApp.ViewModels;
 using DiamondApp.Tools;
+using DiamondApp.Tools.Pdf;
+using DiamondApp.ViewModels.AdminViewModels;
 using Microsoft.Win32;
 
 namespace DiamondApp.Views

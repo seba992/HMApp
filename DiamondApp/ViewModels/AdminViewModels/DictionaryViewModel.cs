@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows;
-using System.Windows.Controls;
-using DiamondApp.EntityModel;
-using DiamondApp.Tools;
+using DiamondApp.Model;
+using DiamondApp.Tools.MvvmClasses;
 
-
-namespace DiamondApp.ViewModels
+namespace DiamondApp.ViewModels.AdminViewModels
 {
     public class DictionaryViewModel : ObservableObject
     {

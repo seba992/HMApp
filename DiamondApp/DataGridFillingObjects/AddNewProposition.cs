@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DiamondApp.Tools;
+using DiamondApp.Tools.MvvmClasses;
 
-namespace DiamondApp.DataGridObjectClasses
+namespace DiamondApp.DataGridFillingObjects
 {
     public class AddNewProposition : ObservableObject
     {

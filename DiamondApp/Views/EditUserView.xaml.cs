@@ -1,4 +1,4 @@
-﻿using DiamondApp.EntityModel;
+﻿using DiamondApp.Model;
 using DiamondApp.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DiamondApp.ViewModels.AdminViewModels;
 
 namespace DiamondApp.Views
 {

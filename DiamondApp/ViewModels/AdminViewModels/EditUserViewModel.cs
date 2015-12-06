@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Controls;
-using DiamondApp.EntityModel;
-using DiamondApp.Tools;
-using DiamondApp;
-using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices;
-using DiamondApp.ViewModels;
-using DiamondApp.Views;
-using DiamondApp.DataGridObjectClasses;
+using DiamondApp.DataGridFillingObjects;
+using DiamondApp.Model;
+using DiamondApp.Tools.MvvmClasses;
 
-namespace DiamondApp.ViewModels
+namespace DiamondApp.ViewModels.AdminViewModels
 {
     public class EditUserViewModel : ObservableObject
     {

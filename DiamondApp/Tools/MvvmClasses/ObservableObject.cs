@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace DiamondApp.Tools
+namespace DiamondApp.Tools.MvvmClasses
 {
     public class ObservableObject : INotifyPropertyChanged
     {

@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using DiamondApp.DataGridObjectClasses;
-using DiamondApp.EntityModel;
-using DiamondApp.Tools;
+using DiamondApp.DataGridFillingObjects;
+using DiamondApp.Model;
+using DiamondApp.Tools.Converters;
+using DiamondApp.Tools.MvvmClasses;
 using DiamondApp.Views;
-using System.Data.Entity.Validation;
 
-namespace DiamondApp.ViewModels
+namespace DiamondApp.ViewModels.AdminViewModels
 {
     public class AdminViewModel : ObservableObject
     {

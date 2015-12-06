@@ -2,10 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
+        xmlns:adminViewModels="clr-namespace:DiamondApp.ViewModels.AdminViewModels"
         Title="AddUserView" ResizeMode="NoResize" Height="271" Width="265">
 
     <Window.DataContext>
-        <viewModels:AddUserViewModel/>
+        <adminViewModels:AddUserViewModel/>
     </Window.DataContext>
 
     <Grid>

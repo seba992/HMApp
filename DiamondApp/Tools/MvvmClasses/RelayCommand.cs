@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace DiamondApp.Tools
+namespace DiamondApp.Tools.MvvmClasses
 {
     public class RelayCommand : ICommand
     {

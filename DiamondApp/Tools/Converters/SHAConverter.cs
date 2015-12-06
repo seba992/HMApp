@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DiamondApp.Tools
+namespace DiamondApp.Tools.Converters
 {
     public static class ShaConverter
     {

@@ -4,11 +4,12 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using DiamondApp.EntityModel;
-using DiamondApp.Tools;
-using DiamondApp.DataGridObjectClasses;
+using DiamondApp.DataGridFillingObjects;
+using DiamondApp.Model;
+using DiamondApp.Tools.Converters;
+using DiamondApp.Tools.MvvmClasses;
 
-namespace DiamondApp.ViewModels
+namespace DiamondApp.ViewModels.UserViewModels
 {
     public class UserViewModel : ObservableObject
     {

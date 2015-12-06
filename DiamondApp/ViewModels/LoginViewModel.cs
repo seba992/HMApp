@@ -3,8 +3,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using DiamondApp.EntityModel;
-using DiamondApp.Tools;
+using DiamondApp.Model;
+using DiamondApp.Tools.MvvmClasses;
 using DiamondApp.Views;
 
 namespace DiamondApp.ViewModels

@@ -10,8 +10,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Media.Animation;
-using DiamondApp.EntityModel;
+using DiamondApp.Model;
 using DiamondApp.ViewModels;
+using DiamondApp.ViewModels.AdminViewModels;
 
 namespace DiamondApp.Views
 {

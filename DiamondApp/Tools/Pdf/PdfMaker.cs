@@ -1,29 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
-using PdfSharp;
-using PdfSharp.Charting;
-using PdfSharp.Pdf;
-using PdfSharp.Fonts;
-using PdfSharp.Internal;
-using PdfSharp.Drawing;
-using PdfSharp.Forms;
-using PdfSharp.SharpZipLib;
-using MigraDoc;
+using DiamondApp.Model;
+using DiamondApp.Tools.MvvmClasses;
 using MigraDoc.DocumentObjectModel;
-using MigraDoc.Rendering;
-using MigraDoc.RtfRendering;
-using DiamondApp.Tools;
-using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.DocumentObjectModel.Shapes;
-using DiamondApp.DataGridObjectClasses;
-using DiamondApp.EntityModel;
+using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.Rendering;
 
-namespace DiamondApp.Tools
+namespace DiamondApp.Tools.Pdf
 {
     public class PdfMaker : ObservableObject
     {
