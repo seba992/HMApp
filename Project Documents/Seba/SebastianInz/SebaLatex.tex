@@ -1,12 +1,9 @@
 \documentclass[twoside]{projektInzynierskiMS}
 \usepackage{polski}
 \usepackage[cp1250]{inputenc}
-\usepackage{amsmath}
-
+%\usepackage{amsmath}
 \usepackage{listings}
-\usepackage{xcolor}
-\lstdefinestyle{sharpc}{language=[Sharp]C, frame=lr, rulecolor=\color{blue!80!black}}
-
+%\usepackage{xcolor}
 \usepackage{color}
 \usepackage{graphicx}
 %\drukJednostronny
@@ -135,18 +132,27 @@ Waønym aspektem kaødego rodzaju oprogramowania uøytkowego jest stopieÒ trudnoúci
 
 Domyúlnie technologia WPF podobnie jak WinForms posiada wbudowany pakiet kontrolek graficznych wraz z ich licznymi w≥asnoúciami i zdarzeniami. W≥asnoúci te umoøliwiajπ okreúlenie dok≥adnej formy uøytej kontrolki dotyczπcej jej koloru, wielkoúci, po≥oøenia, wyrÛwnania, nazwy oraz widocznoúci. Zdarzenia kontrolki z kolei odpowiadajπ za jej reakcje w czasie interakcji z uøytkownikiem oprogramowania w ktÛrym zosta≥a zastosowana. Zdarzenia te dotyczπ dla przyk≥adu klikniÍcia w kontrolkÍ, przesuniÍcia kursora myszki nad niπ oraz jej przesuniÍcia.
 
-Liczba domyúlnych kontrolek dla zaimplementowania niektÛrych funkcjonalnoúci nie jest jednak wystarczajπca. Odwo≥ujπc siÍ do przytoczonego przyk≥adu wpisania daty przez uøytkownika, WPF wymaga od programisty duøego wk≥adu pracy do prawid≥owego wykonania ten funkcjonalnoúci. Z pomocπ przychodzπ jednak dedykowane biblioteki rozszerzajπce, z ktÛrych jednπ jest Extended WPF Toolkit.
+Liczba domyúlnych kontrolek dla zaimplementowania niektÛrych funkcjonalnoúci nie jest jednak wystarczajπca. Odwo≥ujπc siÍ do przytoczonego przyk≥adu wpisania daty przez uøytkownika, WPF wymaga od programisty duøego wk≥adu pracy do prawid≥owego wykonania tej funkcjonalnoúci. Z pomocπ przychodzπ jednak dedykowane biblioteki rozszerzajπce, z ktÛrych jednπ jest Extended WPF Toolkit.
 
 Extended WPF Toolkit jest to darmowa biblioteka przeznaczona dla technologii WPF, ktÛra rozpowszechniana jest na zasadach Microsoft Public Licence \cite{MicrosoftPublicLicence}. Biblioteka ta w znacznym zakresie rozszerza liczbÍ domyúlnych kontrolek umoøliwiajπc szybkπ i prostπ implementacjÍ licznych funkcjonalnoúci, ktÛrych nie umoøliwia≥y kontrolki domyúlne. 
 
-Jednym z elementÛw, dla ktÛrych przedstawiona biblioteka znalaz≥a zastosowanie w projekcie jest wpisywanie przez uøytkownika wartoúci liczbowej do ustalonego pola. Kontrolka IntegerUpDown umoøliwia programiúcie zapisanie w jej w≥asnoúciach zakresu przyjmowanych liczb, ktÛre niweluje koniecznoúÊ implementacji dodatkowej walidacji. Dodajπc do tego domyúlne funkcje powyøszej kontrolki odnoszπce siÍ do wewnÍtrznego sprawdzania typu wpisanych przez uøytkownika znakÛw, podkreúlania i nieprzyjmowania b≥Ídnych danych oraz dwÛch graficznych przyciskÛw, ktÛre umoøliwiajπ po ich naciúniÍciu zmiany wpisanej wartoúci, kontrolka ta doskonale nadaje siÍ do przedstawionej funkcjonalnoúci odciπøajπc przy tym w znaczny sposÛb programistÍ.
+Jednym z elementÛw, dla ktÛrych przedstawiona biblioteka znalaz≥a zastosowanie w projekcie jest wpisywanie przez uøytkownika wartoúci liczbowej do ustalonego pola. Kontrolka IntegerUpDown umoøliwia programiúcie zapisanie w jej w≥asnoúciach zakresu przyjmowanych liczb, ktÛre niwelujπ koniecznoúÊ implementacji dodatkowej walidacji. Dodajπc do tego domyúlne funkcje powyøszej kontrolki odnoszπce siÍ do wewnÍtrznego sprawdzania typu wpisanych przez uøytkownika znakÛw, podkreúlania i nieprzyjmowania b≥Ídnych danych oraz dwÛch graficznych przyciskÛw, ktÛre umoøliwiajπ po ich naciúniÍciu zmiany wpisanej wartoúci, kontrolka ta doskonale nadaje siÍ do przedstawionej funkcjonalnoúci odciπøajπc przy tym w znaczny sposÛb programistÍ.
 
-Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit jest ustalanie z poziomu programu daty. Kontrolka DatePicker umoøliwia uøytkownikowi wyboru daty w ustandaryzowanym formacie. Po operacji naciúniÍcia kursorem myszki w przedstawianπ kontrolkÍ wyúwietlany jest przejrzysty kalendarz, w ktÛrym proces wyboru daty polega na wybraniu przez uøytkownika odpowiedniego roku, miesiπca, a nastÍpnie klikniÍcia w dzieÒ odpowiadajπcy jego potrzebom.
+Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit w projekcie jest ustalanie z poziomu programu daty oraz godziny. Do tych celÛw pos≥uøono siÍ dwiema dodatkowymi kontrolkami: DatePicker oraz TimePicker.
+Kontrolka DatePicker umoøliwia uøytkownikowi wyboru daty w ustandaryzowanym formacie. Po operacji naciúniÍcia kursorem myszki w przedstawianπ kontrolkÍ wyúwietlany jest przejrzysty kalendarz, w ktÛrym proces wyboru daty polega na wybraniu przez uøytkownika odpowiedniego roku, miesiπca, a nastÍpnie klikniÍcia w dzieÒ odpowiadajπcy jego potrzebom. Istnieje takøe moøliwoúÊ wpisania rÍcznie daty, z tπ rÛønicπ, iø musi byÊ ona podana w formacie RRRR-MM-DD. Zapis daty w innych formatach zostanie automatycznie wykryty przez mechanizmy wewnÍtrzne kontrolki jako niepoprawny, a wpisana wartoúÊ usuniÍta.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.25\textwidth]{ExtendedWpfDataPicker.jpg}
     \caption{Kontrolka DatePicker, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+
+Walidacja godziny, analogicznie jak daty, takøe moøe doprowadziÊ do wielu problemÛw na tle jednolitego formatu danych. Zastosowana kontrolka TimePicker niweluje ten problem poprzez wprowadzenie mechanizmÛw czuwajπcych nad prawid≥owym formatem wpisanej godziny i w przypadku b≥Ídnego jej wprowadzenia, podobnie jak DatePicker, usuwa jπ. Uøytkownik samodzielnie moøe wpisaÊ godzinÍ w formacie GG:MM lub za pomocπ przyciskÛw odpowiednio ustaliÊ jej wartoúci.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.25\textwidth]{ExtendedWpfTimePicker.jpg}
+    \caption{Kontrolka TimePicker, èrÛd≥o: Opracowanie w≥asne.}
 \end{figure}
 
 \subsubsection{PDFsharp \& MigraDoc}
@@ -166,9 +172,9 @@ MVVM jest to wzorzec, ktÛry dziÍki funkcjonalnoúci odseparowania warstwy prezent
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{MvvmDiagram.jpg}
-    \caption{Graficzny podzia≥ przep≥ywu danych w modelu MVVM, \newlineTekst èrÛd≥o: Tomasz Malesza, \newlineTekst http://www.tomaszmalesza.pl/wp-content/uploads/2012/08/MVVM\_Relation1.jpg}
+    \caption{Przep≥yw danych w modelu MVVM, \newline èrÛd≥o: www.tomaszmalesza.pl}
 \end{figure}
-
+%www.tomaszmalesza.pl/wp-content/uploads/2012/08/MVVM\_Relation1.jpg
 
 Model to warstwa, ktÛra odpowiedzialna jest w omawianym wzorcu za logikÍ biznesowπ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu inøynierskiego warstwa ta reprezentowana jest przez przez klasy, ktÛre utworzone zosta≥y za pomocπ biblioteki Entity Framework, s≥uøπcej do odwzorowania relacyjnej bazy danych na obiekty dostÍpne z poziomu kodu. Wszelkie klasy zawierajπce dane, ktÛre maja przekazane byÊ z poziomu modelu do warstwy widoku, z ktÛrego uøytkownik moøe owe informacje odczytaÊ zobowiπzane sπ do implementacji interfejsu INotifyPropertyChanged lub INotifyCollectionChanged, ktÛry wspÛ≥pracuje z bindingiem \cite{DataBinding} wykorzystywanym w WPF.
 
@@ -213,7 +219,7 @@ W celu przeciwdzia≥ania przedstawionym problemom zdecydowano siÍ zastosowaÊ dedy
 \begin{lstlisting}[caption= {Dodanie rekordu w ADO.NET oraz Entity Framework}]
 //ADO.NET
 
-//wymagane manualne dodanie pliku konfiguracyjnego po≥πczenia
+//wymagane manualne dodanie pliku konfiguracji po≥πczenia
 SqlConnection connection = 
     new SqlConnection(connectionString);
 
@@ -230,7 +236,7 @@ connection.Close();
 
 //Entity Framework
 
-// EF automatycznie odczyta plik konfiguracyjny po≥πczenia
+// EF automatycznie odczyta plik konfiguracji po≥πczenia
 DiamondDBEntities dataContext = new DiamondDBEntities();
 
 TestUser newUser = new TestUser

@@ -1,8 +1,10 @@
 \documentclass[twoside]{projektInzynierskiMS}
 \usepackage{polski}
 \usepackage[cp1250]{inputenc}
-\usepackage{amsmath}
-
+%\usepackage{amsmath}
+\usepackage{listings}
+%\usepackage{xcolor}
+\usepackage{color}
 \usepackage{graphicx}
 %\drukJednostronny
 
@@ -29,7 +31,7 @@
 %\subsectionWzory
 % \sectionWzory  
 
-\rozdzialy
+%\rozdzialy
 
 
 %\literowaNumeracjaDodatkow %% w≥πczy numeracjÍ dodatkÛw literami
@@ -39,9 +41,9 @@
 \bezWyjasnien
 
 %% standardowe komendy \newtheorem  dzia≥ajπ jak w oryginale
-%\newtheorem{tw}{Twierdzenie}[subsection]
-%\newtheorem{twa}{Twierdzenie}[section]
-%\newtheorem{dd}{Definicja}[subsection]
+\newtheorem{tw}{Twierdzenie}[subsection]
+\newtheorem{twa}{Twierdzenie}[section]
+\newtheorem{dd}{Definicja}[subsection]
 
 \begin{document}
 
@@ -61,16 +63,29 @@ Dostrzegajπc powyøsze problemy zdecydowano siÍ wykonaÊ dedykowanπ aplikacjÍ bazo
 
 Kolejnym atutem przedstawionego rozwiπzania by≥oby umoøliwienie kierownictwu z poziomu kont administratorskich kontroli pracownikÛw poprzez zdalny wglπd w przygotowywane przez nich propozycje cenowe, a co za tym idzie ustalanych z klientem cen oraz zniøek. Menadøer sprzedaøy za pomocπ swojego uprzywilejowanego konta posiada≥by rÛwnieø moøliwoúÊ aktualizacji odpowiednich tabel danych, dziÍki czemu zmiany natychmiastowo by≥yby widocznie na kontach sprzedawcÛw. Zmiany te dotyczy≥yby moøliwoúci modyfikacji cen oferowanych us≥ug i produktÛw oraz kontroli sk≥adu pracowniczego poprzez funkcjonalnoúÊ dodawania, usuwania a takøe modyfikacji ich kont. 
 
+
+\begin{twa}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{twa}
+\begin{dd}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{dd}
+
 \section{Analiza przedwdroøeniowa}
 \section{Istniejπce rozwiπzania konkurencyjne}
+
 \section{Zastosowane rozwiπzania}
 \subsection{Wykorzystana technologia}
 \subsubsection{.NET/C\#}
 \subsubsection{WPF}
 \subsubsection{XAML}
+
+XAML jest to oparty na XML\cite{Xml} deklaratywny jÍzyk znacznikÛw, ktÛrego zadaniem jest opis interfejsu uøytkownika obecnego w zastosowanej przez zespÛ≥ technologii WPF. W technologii tej jÍzyk XAML umoøliwia zaprojektowanie oraz u≥oøenie wszystkich elementÛw wizualnych takich jak kontrolki, ramki oraz okna, a takøe pozwala na u≥atwienie pracy pomiÍdzy programistami (back-end) oraz grafikami (front-end), ktÛrzy tworzπ graficzny interfejs uøytkownika. Graficy, przez wzglπd na zakres ich obowiπzkÛw, nie czÍsto znajπ jÍzyk programowania C\#. Problem ten rozwiπzuje w≥aúnie XAML, ktÛry umoøliwia zrozumienie przez niech zasady dzia≥ania poszczegÛlnych okien, powiπzania miÍdzy nimi oraz projektowanie interfejsu w prosty sposÛb z poziomu drzewiastej struktury lub dedykowanego narzÍdzia Expression Blend, ktÛre umoøliwia przeprowadzenie wszystkich powyøszych operacji z poziomu swojego úrodowiska graficznego.
+
 \subsection{Wykorzystane narzÍdzia}
 \subsubsection{Visual Studio 2013}
 \subsubsection{SQL Server Management Studio}
+
 W trakcie prac nad projektem wykorzystano darmowe narzÍdzie do zarzπdzania bazπ danych SQL Server Management Studio 2012 Express \cite{SQL Server Management Studio Express} wynika to z istniejπcej infrastruktury opartej na rozwiπzaniach Microsoftu, co u≥atwi≥o nam pracÍ i proces projektowania ca≥ej bazy danych. DziÍki przejrzystemu interfejsowi uøytkownika, moøna w bardzo ≥atwy sposÛb tworzyÊ nawet bardzo skomplikowane struktury, bez koniecznoúci znajomoúci jÍzyka tworzπcego bazÍ danych.  Program ten u≥atwi≥ tworzenie wymaganej przez sieÊ hotelowπ bazy danych. Istnieje rÛwnieø moøliwoúÊ generowania skryptÛw, ktÛrych zadaniem jest odtworzenie ca≥ej struktury bazy danych. W programie jest rÛwnieø moøliwoúÊ tworzenia diagramÛw: wszystkich jak rÛwnieø wybranych tabel. Te moøliwoúci przedstawia zrzut ekranu. Umoøliwia to diagnozowanie problemu braku po≥πczeÒ niektÛrych tabel z resztπ struktury. 
 
 \begin{figure}[ht]
@@ -78,47 +93,48 @@ W trakcie prac nad projektem wykorzystano darmowe narzÍdzie do zarzπdzania bazπ 
     \includegraphics[width=1\textwidth]{diagrambazy.jpg}
     \caption{Interfejs SQL Server Management Studio Express, èrÛd≥o: Opracowanie w≥asne.}
 \end{figure}
-Wykorzystujπc wbudowane mechanizmy moøliwe jest ≥atwe wpisywanie poczπtkowych danych takich jak: uøytkownicy systemu, ceny produktÛw, ich edycja na poziomie bazy. Umoøliwia to sprawdzenie, czy baza dzia≥a zgodnie oczekiwaniami. W ten sposÛb moøna úledziÊ dzia≥anie naszego programu w trakcie pracy. SprawdziÊ moøna czy wszystkie elementy prawid≥owo dzia≥ajπ i czy w poprawny sposÛb jest zapisywana dana pozycja.  
- 
+Wykorzystujπc wbudowane mechanizmy moøliwe jest ≥atwe wpisywanie poczπtkowych danych takich jak: uøytkownicy systemu, ceny produktÛw, ich edycja na poziomie bazy. Umoøliwia to sprawdzenie, czy baza dzia≥a zgodnie oczekiwaniami. W ten sposÛb moøna úledziÊ dzia≥anie naszego programu w trakcie pracy. SprawdziÊ moøna czy wszystkie elementy prawid≥owo dzia≥ajπ i czy w poprawny sposÛb jest zapisywana dana pozycja.
+
 \subsubsection{Trello}
 
 Podczas pracy zespo≥owej napotyka siÍ liczne problemy zwiπzane z organizacjπ pracy, jej synchronizacjπ oraz podzia≥em obowiπzkÛw. StopieÒ zaawansowania przedstawionych problemÛw dodatkowo wzrasta, w sytuacji, gdy wspÛ≥praca zespo≥u przebiega zdalnie. W takich okolicznoúciach warto pos≥uøyÊ siÍ dedykowanymi narzÍdziami, ktÛre umoøliwiajπ prostπ, szybkπ i skutecznπ komunikacjÍ wspierajπcπ pracÍ wielu osÛb nad jednym projektem. 
 Trello jest to darmowa aplikacja, ktÛrej przeznaczeniem jest wspieranie organizacji pracy grupowej opierajπc siÍ na metodyce Kanban \cite{Kanban}, ktÛra zaadoptowana zosta≥a na potrzeby inøynierii oprogramowania. Potencjalny wzrost wydajnoúci pracy przy uøyciu Trello ma nastπpiÊ dziÍki scentralizowanemu systemowi zarzπdzania projektem, ktÛry opiera siÍ na wirtualnych tablicach, na ktÛrych ulokowane sπ listy zadaÒ.
-
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{trello.jpg}
     \caption{Interfejs aplikacji webowej Trello, èrÛd≥o: Opracowanie w≥asne.}
 \end{figure}
 
-Listy te umoøliwiajπ konstruowanie zadaÒ w postaci tak zwanych kafelek, ktÛre w bardzo intuicyjny sposÛb moøna przenosiÊ pomiÍdzy listami za pomocπ techniki drag-and-drop. Kaøda kafelka reprezentujπca zadanie w Trello posiada szereg dodatkowych funkcji. W czasie pracy nad projektem wykorzystano opcjÍ przypisania konkretnej osoby lub grupy osÛb do zadania, co jednoznacznie determinowa≥o odpowiedzialnoúÊ jego wykonania oraz funkcjÍ utworzenia listy czynnoúci, ktÛre naleøy wykonaÊ w celu realizacji zadania. Dodatkowym waønym aspektem jest data, ktÛra po wspÛlnych ustaleniach przypisywana jest do konkretnego zadania i stanowi ostateczny termin wprowadzenia danej funkcjonalnoúci.
-
+Listy te umoøliwiajπ konstruowanie zadaÒ w postaci tak zwanych kafelek, ktÛre w bardzo intuicyjny sposÛb moøna przenosiÊ pomiÍdzy listami za pomocπ techniki drag-and-drop. Kaøda kafelka reprezentujπca zadanie w Trello posiada szereg dodatkowych funkcjonalnoúci. W czasie pracy nad projektem wykorzystano opcjÍ przypisania konkretnej osoby lub grupy osÛb do zadania, co jednoznacznie determinowa≥o odpowiedzialnoúÊ jego wykonania oraz funkcjÍ utworzenia listy czynnoúci, ktÛre naleøy wykonaÊ w celu realizacji zadania. Dodatkowym waønym aspektem jest data, ktÛra po wspÛlnych ustaleniach przypisywana jest do konkretnego zadania i stanowi ostateczny termin wprowadzenia danej funkcjonalnoúci.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.75\textwidth]{trello2.jpg}
+
     \caption{SzczegÛ≥y zadania na pojedynczej kafelce., èrÛd≥o: Opracowanie w≥asne.}
 \end{figure}
 
-Ciekawπ opcjπ godnπ przedstawienia sπ takøe powiadomienia zmian, ktÛre w sposÛb automatyczny przekazywane sπ na skrzynkÍ elektronicznπ lub jako powiadomienia push na urzπdzenia przenoúne. 
+Ciekawπ funkcjonalnoúciπ godnπ przedstawienia sπ takøe powiadomienia zmian, ktÛre w sposÛb automatyczny przekazywane sπ na skrzynkÍ elektronicznπ lub jako powiadomienia push na urzπdzenia przenoúne. 
 DziÍki temu, iø narzÍdzie Trello dostÍpne jest w postaci webowej, a takøe jako aplikacja mobilna na Androida, iOS oraz Windows 8 \cite{PlatformyTrello}, dostÍp do niej jest w znaczny sposÛb u≥atwiony. Umoøliwia to otrzymanie niemal natychmiastowej informacji o naniesionych zmianach w projekcie lub zbliøajπcym siÍ terminie ukoÒczenia zadania, do ktÛrego jesteúmy przypisani.
 
-Wszystkie przedstawione funkcjonalnoúci narzÍdzia Trello umoøliwi≥y zespo≥owi uproszczenie i przyspieszenie procesu organizacji pracy nad projektem co w konsekwencji doprowadzi≥o do oszczÍdnoúci czasowych, ktÛre przeznaczone zosta≥y na implementacje modu≥Ûw budowanego systemu.
+Wszystkie przedstawione funkcjonalnoúci narzÍdzia Trello umoøliwi≥y zespo≥owi uproszczenie i przyspieszenie procesu organizacji pracy nad projektem co w konsekwencji doprowadzi≥o do oszczÍdnoúci czasowych, ktÛre przeznaczone zosta≥y na elementy imlementacyjne budowanego systemu.
 
 \subsubsection{SourceTree + GitHub}
+
+
+
 \subsubsection{ReSharper}
 
 WydajnoúÊ pracy w projektach developerskich jest kluczowπ kwestiπ, ktÛra bezpoúrednio przek≥ada siÍ na korzyúci finansowe i zaoszczÍdzony czas. Istniejπ narzÍdzia, ktÛrych przeznaczeniem jest zwiÍkszenie efektywnoúci pracy programisty poprzez zautomatyzowanie czÍsto powtarzajπcych siÍ czynnoúci oraz nadzorowanie pisanego kodu wed≥ug ustalonych wczeúniej zasad.
 
 ReSharper jest to narzÍdzie zaprojektowane z myúlπ o programistach .NET \cite{.NETOpis} pracujπcych w Microsoft Visual Studio, ktÛre w znacznym stopniu rozszerza dostÍpnπ funkcjonalnoúÊ wyøej wymienionego úrodowiska, u≥atwiajπc tym samym pisanie oraz refaktoryzacjÍ kodu.
 
-Funkcje dostÍpne z poziomu ReSharpera moøna podzieliÊ na kilkanaúcie modu≥Ûw, z ktÛrych jednym z najwaøniejszych jest modu≥ zajmujπcy siÍ inspekcjπ kodu. Podczas pracy programisty z uruchomionym w tle ReSharperem, w czasie rzeczywistym sprawdzane jest ponad 1700 regu≥ dotyczπcych prawid≥owoúci kodu i w sytuacji znalezienia nieúcis≥oúci, znaleziony wyjπtek natychmiast wyúwietlany jest na poziomie graficznego interfejsu Visual Studio z dok≥adnym jego opisem i miejscem wystπpienia. Wyjπtki te dotyczπ miÍdzy innymi moøliwoúci zastπpienia fragmentu kodu jego wydajniejszπ wersjπ /dodaÊ screen/, ostrzeøeniem programisty przed kodem, ktÛry potencjalnie moøe doprowadziÊ do nieprawid≥owego dzia≥ania ca≥ego oprogramowania lub informacjπ o fragmencie, ktÛry jest kodem martwym \cite{MartwyKod}. 
+Funkcje dostÍpne z poziomu ReSharpera moøna podzieliÊ na kilkanaúcie modu≥Ûw, z ktÛrych jednym z najwaøniejszych jest modu≥ zajmujπcy siÍ inspekcjπ kodu. Podczas pracy programisty z uruchomionym w tle ReSharperem, w czasie rzeczywistym sprawdzane jest ponad 1700 regu≥ dotyczπcych prawid≥owoúci kodu i w sytuacji znalezienia nieúcis≥oúci, znaleziony wyjπtek natychmiast wyúwietlany jest na poziomie graficznego interfejsu Visual Studio z dok≥adnym jego opisem i miejscem wystπpienia. Wyjπtki te dotyczπ miÍdzy innymi moøliwoúci zastπpienia fragmentu kodu jego wydajniejszπ wersjπ <przyklad>, ostrzeøeniem programisty przed kodem, ktÛry potencjalnie moøe doprowadziÊ do nieprawid≥owego dzia≥ania ca≥ego oprogramowania lub informacjπ o fragmencie, ktÛry jest kodem martwym \cite{MartwyKod}. 
 
-Kolejnym bardzo istotnym modu≥em jest modu≥ generowania kodu. Podczas programowania wiele czynnoúci takich jak pisanie nowych klas, metod, implementacja interfejsÛw czy zmiana nazw wielokrotnie siÍ powtarza. DziÍki odpowiednim skrÛtom klawiszowym wszystkie te elementy ReSharper wykona za programistÍ. Przeniesie on wybranπ klasÍ do oddzielnego pliku, utworzy na podstawie nazwy i jej typu szablon brakujπcej metody, wygeneruje wymagane przy dziedziczeniu interfejsu wszystkie jego elementy oraz automatycznie zamieni wybranπ nazwÍ na nowπ, w kaødym miejscu jej wystÍpowania. SzczegÛlnie ostatnia opcja przy rozbudowanym systemie jest wyjπtkowo przydatna i znacznie skraca czas wykonywanej czynnoúci.
+Kolejnym bardzo istotnym modu≥em jest funkcja generowania kodu. Podczas programowania wiele czynnoúci takich jak pisanie nowych klas, metod, implementacja interfejsÛw czy zmiana nazw wielokrotnie siÍ powtarza. DziÍki odpowiednim skrÛtom klawiszowym wszystkie te elementy ReSharper wykona za programistÍ. Przeniesie on wybranπ klasÍ do oddzielnego pliku, utworzy na podstawie nazwy i jej typu szablon brakujπcej metody, wygeneruje wymagane przy dziedziczeniu interfejsu wszystkie jego elementy oraz automatycznie zamieni wybranπ nazwÍ na nowπ, w kaødym miejscu jej wystÍpowania. SzczegÛlnie ostatnia opcja przy rozbudowanym systemie jest wyjπtkowo przydatna i znacznie skraca czas wykonywanej czynnoúci.
 
 Przedstawione funkcjonalnoúci ReSharpera wraz z wieloma innymi dostÍpnymi do zapoznania siÍ pod \cite{ReSharperFunkcje} elementami, umoøliwi≥y skrÛcenie etapu implementacji wymaganych w projekcie modu≥Ûw poprzez zautomatyzowanie powtarzajπcych siÍ czynnoúci i zniwelowanie pojawiajπcych siÍ zagroøeÒ juø we wczesnej fazie pisania kodu. Korzyúciπ p≥ynπcπ z tego rozwiπzania by≥a oszczÍdnoúÊ czasowa, ktÛra umoøliwi≥a zwrÛcenie wiÍkszej uwagi na aspekt przetestowania wdroøonych rozwiπzaÒ.
 
 \subsubsection{Jenkins}
-
 \subsection{Biblioteki zewnÍtrzne}
 \subsubsection{Extended WPF Toolkit}
 
@@ -126,13 +142,14 @@ Waønym aspektem kaødego rodzaju oprogramowania uøytkowego jest stopieÒ trudnoúci
 
 Domyúlnie technologia WPF podobnie jak WinForms posiada wbudowany pakiet kontrolek graficznych wraz z ich licznymi w≥asnoúciami i zdarzeniami. W≥asnoúci te umoøliwiajπ okreúlenie dok≥adnej formy uøytej kontrolki dotyczπcej jej koloru, wielkoúci, po≥oøenia, wyrÛwnania, nazwy oraz widocznoúci. Zdarzenia kontrolki z kolei odpowiadajπ za jej reakcje w czasie interakcji z uøytkownikiem oprogramowania w ktÛrym zosta≥a zastosowana. Zdarzenia te dotyczπ dla przyk≥adu klikniÍcia w kontrolkÍ, przesuniÍcia kursora myszki nad niπ oraz jej przesuniÍcia.
 
-Liczba domyúlnych kontrolek dla zaimplementowania niektÛrych funkcjonalnoúci nie jest jednak wystarczajπca. Odwo≥ujπc siÍ do przytoczonego przyk≥adu wpisania daty przez uøytkownika, WPF wymaga od programisty duøego wk≥adu pracy do prawid≥owego wykonania ten funkcjonalnoúci. Z pomocπ przychodzπ jednak dedykowane biblioteki rozszerzajπce, z ktÛrych jednπ jest Extended WPF Toolkit.
+Liczba domyúlnych kontrolek dla zaimplementowania niektÛrych funkcjonalnoúci nie jest jednak wystarczajπca. Odwo≥ujπc siÍ do przytoczonego przyk≥adu wpisania daty przez uøytkownika, WPF wymaga od programisty duøego wk≥adu pracy do prawid≥owego wykonania tej funkcjonalnoúci. Z pomocπ przychodzπ jednak dedykowane biblioteki rozszerzajπce, z ktÛrych jednπ jest Extended WPF Toolkit.
 
 Extended WPF Toolkit jest to darmowa biblioteka przeznaczona dla technologii WPF, ktÛra rozpowszechniana jest na zasadach Microsoft Public Licence \cite{MicrosoftPublicLicence}. Biblioteka ta w znacznym zakresie rozszerza liczbÍ domyúlnych kontrolek umoøliwiajπc szybkπ i prostπ implementacjÍ licznych funkcjonalnoúci, ktÛrych nie umoøliwia≥y kontrolki domyúlne. 
 
-Jednym z elementÛw, dla ktÛrych przedstawiona biblioteka znalaz≥a zastosowanie w projekcie jest wpisywanie przez uøytkownika wartoúci liczbowej do ustalonego pola. Kontrolka IntegerUpDown umoøliwia programiúcie zapisanie w jej w≥asnoúciach zakresu przyjmowanych liczb, ktÛre niweluje koniecznoúÊ implementacji dodatkowej walidacji. Dodajπc do tego domyúlne funkcje powyøszej kontrolki odnoszπce siÍ do wewnÍtrznego sprawdzania typu wpisanych przez uøytkownika znakÛw, podkreúlania i nieprzyjmowania b≥Ídnych danych oraz dwÛch graficznych przyciskÛw, ktÛre umoøliwiajπ po ich naciúniÍciu zmiany wpisanej wartoúci, kontrolka ta doskonale nadaje siÍ do przedstawionej funkcjonalnoúci odciπøajπc przy tym w znaczny sposÛb programistÍ.
+Jednym z elementÛw, dla ktÛrych przedstawiona biblioteka znalaz≥a zastosowanie w projekcie jest wpisywanie przez uøytkownika wartoúci liczbowej do ustalonego pola. Kontrolka IntegerUpDown umoøliwia programiúcie zapisanie w jej w≥asnoúciach zakresu przyjmowanych liczb, ktÛre niwelujπ koniecznoúÊ implementacji dodatkowej walidacji. Dodajπc do tego domyúlne funkcje powyøszej kontrolki odnoszπce siÍ do wewnÍtrznego sprawdzania typu wpisanych przez uøytkownika znakÛw, podkreúlania i nieprzyjmowania b≥Ídnych danych oraz dwÛch graficznych przyciskÛw, ktÛre umoøliwiajπ po ich naciúniÍciu zmiany wpisanej wartoúci, kontrolka ta doskonale nadaje siÍ do przedstawionej funkcjonalnoúci odciπøajπc przy tym w znaczny sposÛb programistÍ.
 
-Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit jest ustalanie z poziomu programu daty. Kontrolka DatePicker umoøliwia uøytkownikowi wyboru daty w ustandaryzowanym formacie. Po operacji naciúniÍcia kursorem myszki w przedstawianπ kontrolkÍ wyúwietlany jest przejrzysty kalendarz, w ktÛrym proces wyboru daty polega na wybraniu przez uøytkownika odpowiedniego roku, miesiπca, a nastÍpnie klikniÍcia w dzieÒ odpowiadajπcy jego potrzebom.
+Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit w projekcie jest ustalanie z poziomu programu daty oraz godziny. Do tych celÛw pos≥uøono siÍ dwiema dodatkowymi kontrolkami: DatePicker oraz TimePicker.
+Kontrolka DatePicker umoøliwia uøytkownikowi wyboru daty w ustandaryzowanym formacie. Po operacji naciúniÍcia kursorem myszki w przedstawianπ kontrolkÍ wyúwietlany jest przejrzysty kalendarz, w ktÛrym proces wyboru daty polega na wybraniu przez uøytkownika odpowiedniego roku, miesiπca, a nastÍpnie klikniÍcia w dzieÒ odpowiadajπcy jego potrzebom. Istnieje takøe moøliwoúÊ wpisania rÍcznie daty, z tπ rÛønicπ, iø musi byÊ ona podana w formacie RRRR-MM-DD. Zapis daty w innych formatach zostanie automatycznie wykryty przez mechanizmy wewnÍtrzne kontrolki jako niepoprawny, a wpisana wartoúÊ usuniÍta.
 
 \begin{figure}[ht]
     \centering
@@ -140,20 +157,34 @@ Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit jest ustalanie z 
     \caption{Kontrolka DatePicker, èrÛd≥o: Opracowanie w≥asne.}
 \end{figure}
 
-\subsubsection{PDFsharp \& MigraDoc}
+Walidacja godziny, analogicznie jak daty, takøe moøe doprowadziÊ do wielu problemÛw na tle jednolitego formatu danych. Zastosowana kontrolka TimePicker niweluje ten problem poprzez wprowadzenie mechanizmÛw czuwajπcych nad prawid≥owym formatem wpisanej godziny i w przypadku b≥Ídnego jej wprowadzenia, podobnie jak DatePicker, usuwa jπ. Uøytkownik samodzielnie moøe wpisaÊ godzinÍ w formacie GG:MM lub za pomocπ przyciskÛw odpowiednio ustaliÊ jej wartoúci.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.25\textwidth]{ExtendedWpfTimePicker.jpg}
+    \caption{Kontrolka TimePicker, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+
+\subsubsection{PDFsharp \& MigraDoc}
 
 \section{Implementacja}
 \subsection{Architektura aplikacji}
 \subsubsection{Wzorce architektoniczne oprogramowania}
 
-W inøynierii oprogramowania analogicznie jak w innych dziedzinach, w ktÛrych przeprowadzana jest operacja budowania zadanego przedmiotu, naleøy starannie zaplanowaÊ jego proces. W tym celu naleøy kierowaÊ siÍ przyjÍtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mÛwiπ o tym, iø naleøy dok≥adnie okreúliÊ wymagania, ktÛre powinno budowane oprogramowanie spe≥niaÊ, a nastÍpnie ustaliÊ jego ogÛlnπ architekturÍ. Punkt ten jest niebywale waøny z racji na problematycznoúÊ zmiany architektury zbudowanego juø systemu. W celu zobrazowania tego zagadnienia moøna przywo≥aÊ operacjÍ budowy budynku. Wszelkie zmiany dotyczπce jego konstrukcji sπ ciÍøkie do zrealizowania w sytuacji, w ktÛrej jest on juø fizycznie gotowy. Kolejne fazy polegajπ na realizacji opisanej wczeúniej architektury poprzez implementacjÍ wszystkich komponentÛw oprogramowania wraz z ich wzajemnymi po≥πczeniami, przetestowanie ca≥ego systemu oraz jego finalne uruchomienie wraz z usuwaniem wykrytych podczas jego dzia≥ania b≥ÍdÛw.
+W inøynierii oprogramowania analogicznie jak w innych dziedzinach, w ktÛrych przeprowadzana jest operacja budowania zadanego przedmiotu, naleøy starannie zaplanowaÊ jego proces. W tym calu naleøy kierowaÊ siÍ przyjÍtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mÛwiπ o tym, iø naleøy dok≥adnie okreúliÊ wymagania, ktÛre powinno budowane oprogramowanie spe≥niaÊ, a nastÍpnie ustaliÊ jego ogÛlnπ architekturÍ. Punkt ten jest niebywale waøny z racji na problematycznoúÊ zmiany architektury zbudowanego juø systemu. W celu zobrazowania tego zagadnienia moøna przywo≥aÊ operacjÍ budowy budynku. Wszelkie zmiany dotyczπce jego konstrukcji sπ ciÍøkie do zrealizowania w sytuacji, w ktÛrej jest on juø fizycznie gotowy. Kolejne fazy polegajπ na realizacji opisanej wczeúniej architektury poprzez implementacjÍ wszystkich komponentÛw oprogramowania wraz z ich wzajemnymi po≥πczeniami, przetestowanie ca≥ego systemu oraz jego finalne uruchomienie wraz z usuwaniem wykrytych podczas jego dzia≥ania b≥ÍdÛw.
 
-Odnoszπc siÍ do planowania architektury systemu bardzo pomocne okazujπ siÍ dostÍpne wzorce architektoniczne. Wzorce te sπ to sprawdzone oraz zaakceptowane sposoby rozwiπzania okreúlonego problemu z dziedziny architektury oprogramowania, okreúlajπce ogÛlnπ strukturÍ systemu informatycznego, zasady komunikacji pomiÍdzy komponentami oraz elementy wchodzπce w jego sk≥ad wraz z opisem ich funkcji. WybÛr odpowiedniego wzorca w duøej mierze zaleøny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwiπzaniem jest MVVM (Model View ViewModel), ktÛry jest zmodyfikowanπ wersjπ wzorca MVC, zawierajπcπ specjalizacjÍ modelu prezentacji.
+Odnoszπc siÍ do planowania architektury systemu bardzo pomocne okazujπ siÍ dostÍpne wzorce architektoniczne. Wzorce te sπ to sprawdzone oraz zaakceptowane sposoby rozwiπzania okreúlonego problemu z dziedziny architektury oprogramowania, okreúlajπce ogÛlnπ strukturÍ systemu informatycznego, zasady komunikacji pomiÍdzy komponentami oraz elementy wchodzπce w jego sk≥ad wraz z opisem ich funkcji. WybÛr odpowiedniego wzorca w duøej mierze zaleøny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwiπzaniem jest MVVM (Model View ViewModel) \cite{MvvmOpis}, ktÛry jest zmodyfikowanπ wersjπ wzorca MVC, zawierajπcπ specjalizacjÍ modelu prezentacji.
 
 \subsubsection{Zastosowany wzorzec architektoniczny ñ MVVM}
 
 MVVM jest to wzorzec, ktÛry dziÍki funkcjonalnoúci odseparowania warstwy prezentacji od warstwy logiki biznesowej, umoøliwia napisanie ≥atwo testowalnej oraz prostej w rozbudowanie aplikacji, ktÛrej fragment kodu moøe zostaÊ ponownie uøyty w innych projektach. Opisywany wzorzec cieszy siÍ duøπ popularnoúciπ w gronie developerÛw WPF z powodu moøliwoúci wykorzystania najwiÍkszych atutÛw tej technologii, takich jak komendy (command), wiπzania (binding) oraz zachowania (behavior). Kod aplikacji o architekturze Model-View-ViewModel podzielony jest, zgodnie z jego nazwπ na trzy oddzielne warstwy Model, View oraz ViewModel, z ktÛrych kaøda przechowuje dedykowane dla siebie dane i spe≥nia okreúlone funkcje.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{MvvmDiagram.jpg}
+    \caption{Przep≥yw danych w modelu MVVM, \newline èrÛd≥o: www.tomaszmalesza.pl}
+\end{figure}
+%www.tomaszmalesza.pl/wp-content/uploads/2012/08/MVVM\_Relation1.jpg
 
 Model to warstwa, ktÛra odpowiedzialna jest w omawianym wzorcu za logikÍ biznesowπ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu inøynierskiego warstwa ta reprezentowana jest przez przez klasy, ktÛre utworzone zosta≥y za pomocπ biblioteki Entity Framework, s≥uøπcej do odwzorowania relacyjnej bazy danych na obiekty dostÍpne z poziomu kodu. Wszelkie klasy zawierajπce dane, ktÛre maja przekazane byÊ z poziomu modelu do warstwy widoku, z ktÛrego uøytkownik moøe owe informacje odczytaÊ zobowiπzane sπ do implementacji interfejsu INotifyPropertyChanged lub INotifyCollectionChanged, ktÛry wspÛ≥pracuje z bindingiem \cite{DataBinding} wykorzystywanym w WPF.
 
@@ -163,13 +194,13 @@ Wastwa widoku (View) odpowiedzialna jest za wyúwietlanie danych i pe≥ni rolÍ wy≥
 
 \subsubsection{Model aplikacji}
 
-todo after refactor:
+TODO: after refactor.
 
 - opis warstw (model == baza danych)
 
-- podzia≥ view/viewmodeli
+- podzial view/viewmodeli
 
-- ilustracja podzia≥u foldery+klasy
+- ilustracja podzialu foldery+klasy
 
 \subsection{Architektura bazy danych}
 \subsubsection{Definicja bazy danych}
@@ -189,49 +220,126 @@ W przypadku technologii .NET, w ktÛrej prowadzony jest prezentowany projekt, sta
 
 W celu przeciwdzia≥ania przedstawionym problemom zdecydowano siÍ zastosowaÊ dedykowany framework, ktÛry upraszcza developerowi przeprowadzanie wszelkich bazodanowych operacji.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\textwidth]{EntityAdonet.jpg}
-    \caption{PorÛwnanie operacji dodania uøytkownika w ADO.NET oraz Entity Framework, èrÛd≥o: Opracowanie w≥asne.}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=1\textwidth]{EntityAdonet.jpg}
+%    \caption{PorÛwnanie operacji dodania uøytkownika w ADO.NET oraz Entity Framework, èrÛd≥o: %Opracowanie w≥asne.}
+%\end{figure}
+
+\begin{lstlisting}[caption= {Dodanie rekordu w ADO.NET oraz Entity Framework}]
+//ADO.NET
+
+//wymagane manualne dodanie pliku konfiguracji po≥πczenia
+SqlConnection connection = 
+    new SqlConnection(connectionString);
+
+SqlCommand command = 
+    new SqlCommand(@"INSERT INTO [TestDb].[Users]  
+    VALUES (@Login, @Password)", connection);           
+command.Parameters.Add(
+    new SqlParameter("Login", "TestLogin"));
+command.Parameters.Add(
+    new SqlParameter("Password","TestPa$$"));            
+connection.Open();
+command.ExecuteNonQuery();
+connection.Close();
+
+//Entity Framework
+
+// EF automatycznie odczyta plik konfiguracji po≥πczenia
+DiamondDBEntities dataContext = new DiamondDBEntities();
+
+TestUser newUser = new TestUser
+{
+    Login = "TestLogin", Password = "TestPa$$word",
+};
+dataContext.Users.Add(newUser);
+dataContext.SaveChanges(); 
+\end{lstlisting}
 
 \subsubsection{Zastosowane narzÍdzie ORM ñ Entity Framework} 
 
 Entity Framework jest to dedykowane dla platformy .NET narzÍdzie mapowania obiektowo-relacyjnego, ktÛre wspiera budowÍ trÛjwarstwowych aplikacji bazodanowych. Budowa obiektowego modelu bazy danych w prezentowanym frameworku moøe przebiegaÊ w zaleønoúci od potrzeb trzema úcieøkami.
 
-Pierwszπ opcjπ jest podejúcie Database First, ktÛre okazuje siÍ przydatne w sytuacji, gdy fizyczna baza danych juø istnieje. W tym przypadku, korzystajπc z wbudowanego we framework Designera, istnieje moøliwoúÊ okreúlenia lokalizacji bazy oraz automatycznego jej mapowania, w wyniku ktÛrego wygenerowane zostajπ potrzebne klasy obiektowego modelu bazy danych.
+Pierwszπ opcjπ jest podejúcie Database First, ktÛre okazuje siÍ przydatne w sytuacji, gdy jest obecna dzia≥ajπca fizycznie baza danych. W tym przypadku, korzystajπc z wbudowanego we framework Designera, istnieje moøliwoúÊ okreúlenia lokalizacji bazy oraz automatycznego jej mapowania, w wyniku ktÛrego wygenerowane zostajπ potrzebne klasy obiektowego modelu bazy danych.
 
 Kolejnπ metodπ jest Code First umoøliwiajπce utworzenie fizycznego modelu bazy danych na podstawie w≥asnorÍcznie napisanych klas w jÍzyku C\# wraz z jej odpowiednimi adnotacjami \cite{AdnotacjeCodeFirst}.
 
 Ostatnie podejúcie to Model First, ktÛre polega na zbudowaniu fizycznego modelu bazy danych pos≥ugujπc siÍ kreatorem, ktÛry z znacznym stopniu u≥atwia tworzenie encji oraz w≥aúciwoúci bazy danych. åcieøka ta jest wykorzystywana w sytuacji posiadania wy≥πcznie schematu bazy danych. Ze zbudowanego modelu generowana jest fizyczny model bazy danych jak i rÛwnieø klasy, ktÛre reprezentujπ model obiektowy.
 
-\subsubsection{Dostosowanie Entity Framework do wymagaÒ zwiπzanych ze wzorcem MVVM}
+\subsubsection{Stosowanie poleceÒ bazodanowych ze strony projektu C\# za pomocπ Linq to Entities}
 
-TODO: 
-- ulokowanie, budowa, screen, zmiana na obserwowalne kolekcje
+Zastosowane narzÍdzie Entity Framework nie tylko w znacznym stopniu upraszcza po≥πczenie bazy danych z projektem programistycznym ale takøe umoøliwia w nim proste i intuicyjne wykonywanie poleceÒ bazodanowych. W projekcie w celu zaimplementowania za≥oøonych funkcjonalnoúci stosowano trzy podstawowe polecenia modyfikujπce zawartoúÊ bazy: Insert, Update oraz Delete.  Entity Framework domyúlnie zawiera modu≥ LINQ to Entities, ktÛry umoøliwia wykorzystanie sk≥adni technologii LINQ [przypis] do operowania na bazodanowym ürÛdle danych.
 
-\subsubsection{Uøycie bazy danych ze strony projektu C\#}
+W celu wykonania polecenia SELECT zwracajπcego rekordy z bazy danych naleøy za pomocπ przedstawionego schematu wybraÊ nazwÍ tabeli z obiektu kontekstu wygenerowanego przez Entity Framework, a nastÍpnie uøyÊ polecenia \textsl{where} definiujπcego wyszukiwanπ zaleønoúÊ. Finalnie poleceniem \textsl{select} nastÍpuje ustalenie zdefiniowanej zwracanej zmiennej, w ktÛrej przechowywane sπ wyszukane elementy. Tym sposobem dane przechowywane w bazie danych poddane zostajπ translacji na poziom obiektÛw, z ktÛrych moøliwe jest korzystanie z poziomu C\# w sposÛb standardowy.
 
-TODO:
-- opis linq to entities
+\begin{lstlisting}[caption= {Opis polecenia select}]
+var exampleQuerry = (from records in _context.TableName
+		where table.ColumnName == _valueToFind
+		select records);
+\end{lstlisting}
+
+Edycja danych znajdujπcych siÍ w bazie danych z poziomu projektu programistycznego realizowana jest poprzez modyfikacjÍ opisanego polecenia \textsl{SELECT}. Modyfikacja ta polega na przekszta≥ceniu typu otrzymanego obiektu na typ klasy modelu Entity, ktÛra reprezentuje interesujπcπ nas bazodanowπ tabelÍ. W przypadku operowania na jednym rekordzie, przekszta≥cenie te naleøy dokonaÊ pos≥ugujπc siÍ metodπ \textsl{SingleOrDefault}, natomiast w przypadku wielu rekordÛw metodπ \textsl{ToList}, ktÛra dokona konwersji na listÍ obiektÛw o interesujπcym nas typie. Do takiego utworzonego obiektu, programista ma moøliwoúÊ odwo≥ywania siÍ i dokonywania zmian w standardowy dla jÍzyka C\# sposÛb. Po wszelkich modyfikacjach, wszystkie zmiany naleøy potwierdziÊ metodπ \textsl{SaveChanges} na obiekcie modelu Entity, ktÛra uaktualnia zmodyfikowane elementy na poziomie bazy danych.
+
+\begin{lstlisting}[caption= {Potwierdzenie dokonanych zmian}]
+_context.SaveChanges()
+\end{lstlisting}
+
+Dodanie rekordu do bazy danych jest operacjπ, ktÛre nie wymaga znajomoúci sk≥adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, ktÛra reprezentuje bazodanowπ tabelÍ, do ktÛrej nowy rekord ma byÊ dodany, a nastÍpnie uzupe≥nieniu jego elementÛw danymi. Tak zbudowany obiekt naleøy dodaÊ do obiektu kontekstu, odwo≥ujπc siÍ do jego w≥aúciwoúci o nazwie interesujπcej nas tabeli bazy danych, a nastÍpnie w parametrze metody \textsl{Add} umieúciÊ wczeúniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych naleøy potwierdziÊ na obiekcie kontekstu.
+
+\begin{lstlisting}[caption= {Dodanie rekordu do tabeli}]
+_context.TableName.Add(tableObject);
+\end{lstlisting}
 
 \subsection{Automatyzacja wydawania kolejnych wersji programu}
 \subsubsection{Continuous Integration ñ definicja}
 \subsubsection{Continuous Deployment ñ definicja}
 \subsubsection{Continuous Delivery ñ definicja}
 \subsubsection{Schemat budowania programu}
-\section{Specyfikacja zewnÍtrzna}
+\section{Testowanie aplikacji}
+\subsection{Przeprowadzenie operacji logowania uøytkownika}
 
-\subsection{Logowanie}
+Podstawowym modu≥em kaødej aplikacji wspierajπcej pracÍ wielu uøytkownikÛw na ich dedykowanych kontach jest modu≥ logowania. Po uruchomieniu aplikacji, ktÛra jest przedmiotem projektu, oczom uøytkownika ukazuje siÍ okno, ktÛrego zadaniem jest sprawdzenie jego toøsamoúci oraz w sytuacji jej potwierdzenia, prze≥πczenie do odpowiedniego okna g≥Ûwnego aplikacji, w zaleønoúci od posiadanych uprawnieÒ. 
+
+SCREEN OKNA LOGOWANIA (wrzuciÊ po poprawkach wizualnych programu)
+
+Proces logowania od strony uøytkownika polega na wprowadzeniu z poziomu klawiatury swojej nazwy konta sk≥adajπcej siÍ z imienia oraz nazwiska oddzielonych kropkπ oraz has≥a, ktÛre wybrano do zabezpieczenia swojego konta. Aplikacja na podstawie tych informacji przeprowadza operacjÍ ich weryfikacji, komunikujπc siÍ z bazπ danych i wyszukujπc w odpowiednich tabelach rekordy, ktÛre pasujπ do otrzymanego schematu. W zaleønoúci od rezultatu tej akcji, uøytkownikowi zwracana jest odpowiednia odpowiedü. 
+
+W sytuacji podania poprawnego loginu oraz has≥a, aplikacja ukrywa okno logowania oraz uruchamia odpowiednie dla posiadanych uprawnieÒ okno g≥Ûwne. Istniejπ jednak inne schematy przeprowadzenia operacji logowania, takie jak wpisanie b≥Ídnego  has≥a lub loginu, nie uzupe≥nienie nazwy uøytkownika lub pierwsze logowanie na konto, ktÛre zgodnie z ustalonymi przez zespÛ≥ za≥oøeniami projektowymi ma umoøliwiaÊ ustalenie has≥a przez logujπcego siÍ uøytkownika.
+
+Wpisanie b≥Ídnego has≥a lub nazwy konta wychwytywane jest przez mechanizm modu≥u logowania, ktÛry zwraca informacjÍ o problemie wraz z jego opisem. W celu zwiÍkszenia bezpieczeÒstwa wypisywana jest ogÛlna informacja o otrzymaniu b≥Ídnych danych, a nie wyszczegÛlniona, ktÛra informacja zosta≥a podana b≥Ídnie.
+
+TODO: SCREEN B£ DNEGO WPISANIA DANYCH (wrzuciÊ po poprawkach wizualnych programu)
+
+Pierwsze logowanie jest specyficznπ formπ logowania, w ktÛrym uøytkownik posiada obowiπzek wpisania has≥a, z ktÛrego bÍdzie korzysta≥ w pracy z aplikacjπ. W chwili wpisania nazwy uøytkownika, program w tle przeprowadza operacjÍ walidacji statusu konta i w sytuacji wykrycia, iø uøytkownik loguje siÍ pierwszy raz, wyúwietla stosownπ informacjÍ, ktÛra instruuje go o dalszych krokach. 
+
+TODO: /odnoúnik do zrzutu ekranu ilustrujπcπ opisanπ sytuacjÍ/ (wrzuciÊ po poprawkach wizualnych programu)
+
+TODO: SCREEN PIERWSZEGO LOGOWANIA (wrzuciÊ po poprawkach wizualnych programu)
 
 \subsection{Zarzπdzanie kontem sprzedawcy oraz administratora  (obs≥uga)}
 
 \subsection{Tworzenie nowej propozycji cenowej}
+
+Modu≥ tworzenia nowej propozycji cenowej umoøliwia uøytkownikowi aplikacji przeprowadzenie procesu utworzenia schematu wymaganych przez klienta us≥ug wraz z ich zapisem do bazy danych. Tym sposobem wszelkie ustalenia dokonane podczas spotkania z potencjalnym klientem zapisywane sπ na centralnym serwerze, z ktÛrego w razie potrzeby moøna wybranπ propozycjÍ pobraÊ i wygenerowaÊ jej plik w formacie PDF lub dokonaÊ jej edycji.
+
+W czasie spotkania sprzedawcy z klientem, chcπc przedstawiÊ ofertÍ cenowπ dotyczπcπ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g≥Ûwnym aplikacji opcjÍ stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siÍ forma przeznaczona do wpisywania wymaganych danych. Forma ta przez wzglπd na kilka typÛw us≥ug podzielona zosta≥a na piÍÊ zak≥adek, z ktÛrych kaøda zawiera odpowiednia pola, umoøliwiajπce ustalenie wszelkich elementÛw konkretnej us≥ugi.
+
 \subsubsection{Opis klienta}
+
+IN PROGRESS
+
+Pierwsza zak≥adka dotyczy wszelkich informacji dotyczπcych  danych osobowych sprzedawcy, klienta oraz ogÛlnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, ktÛrπ reprezentuje, pobierane sπ automatycznie z bazy danych. Operacja ta jest moøliwa dziÍki przechowywaniu w programie informacji o tym, na jakie konto uøytkownik zosta≥ zalogowany. Wszelkie pozosta≥e dane sprzedawca ma obowiπzek uzupe≥niÊ samodzielnie, uzyskujπc informacje od klienta. 
+
+TODO: po edycji graficznej wrzuciÊ tab1
 \subsubsection{SzczegÛ≥y rezerwacji}
+TODO: po edycji graficznej wrzuciÊ tab2
 \subsubsection{Us≥ugi gastronomiczne}
+TODO: po edycji graficznej wrzuciÊ tab3
 \subsubsection{Us≥ugi noclegowe}
+TODO: po edycji graficznej wrzuciÊ tab4
 \subsubsection{Us≥ugi dodatkowe i forma p≥atnoúci}
+TODO: po edycji graficznej wrzuciÊ tab5
 
 \subsection{Edycja istniejπcej propozycji cenowej}
 \subsection{Tworzenie pliku PDF istniejπcej propozycji cenowej}
@@ -242,10 +350,27 @@ TODO:
 \subsection{Modyfikacja s≥ownikÛw cenowych}
 \section{Specyfikacja wewnÍtrzna}
 
-\subsection{Logowanie}
-\subsubsection{Funkcja haszujπca}
-\subsubsection{SHA-2}
-\subsubsection{Pierwsze logowanie}
+\subsection{Przeprowadzenie operacji logowania uøytkownika}
+\subsubsection{BezpieczeÒstwo procesu logowania}
+
+Modu≥ logowania jest czÍúciπ systemu, do ktÛrego dostÍp ma kaødy uøytkownik korzystajπcy z prezentowanej aplikacji. Implikuje to koniecznoúÊ jego zabezpieczenia przed niepowo≥anym uøyciem dotyczπcym dostÍpu do poufnych danych, takich jak dane osobiste oraz has≥a, dla ktÛrych dobrπ praktykπ odnoszπcπ siÍ do bezpieczeÒstwa jest ich nieprzechowywanie w øadnym miejscu w postaci jawnej.
+
+Pole wpisywania has≥a przez uøytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka - PasswordBox. Jest to zmodyfikowana kontrolka TextBox dostÍpna w technologi WPF, ktÛra wyúwietla swojπ zawartoúÊ w postaci ukrytej, uniemoøliwiajπc jednoczeúnie wykonanie na jej zawartoúci operacji kopiowania oraz wycinania z poziomu klawiatury oraz myszy. Zabezpiecza to przed niechcianym podejrzeniem has≥a oraz jego odzyskaniem przez osobÍ trzeciπ.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{PasswordBox.jpg}
+    \caption{Kontrolka PasswordBox z przestawionymi aspektami bezpieczeÒstwa, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+
+Sama operacja sprawdzania poprawnoúci wpisanego has≥a zosta≥a zaprojektowana w taki sposÛb, aby otrzymane z kontrolki has≥o nie by≥o nigdzie zapisywane i porÛwnywane w postaci jawnej. W chwili wpisania has≥a przez uøytkownika oraz klikniÍcia przycisku logowania, has≥o przekszta≥cane jest za pomocπ algorytmu haszujπcego SHA-256 na skrÛt, ktÛry porÛwnywany jest ze skrÛtem has≥a dopasowanemu wpisanej nazwie uøytkownika uøytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostÍp do dalszej czÍúci programu.
+
+%Zastosowanπ w module logowania funkcjπ haszujπcπ jest SHA-256 naleøπca do rodziny szyfrÛw %SHA-2. Rodzina ta jest nastÍpcπ SHA-1, ktÛrej algorytmy okaza≥y siÍ zbyt s≥abe%\cite{SHA1Slabosc}. SHA-256 uznawa
+
+TODO: zrzut rekordu w bazie danych (hashe hasel) + kod porownujacy hasla: wrzuciÊ gdy w≥πczÍ haszowanie w aplikacji
+
+\subsubsection{Szyfrowanie hase≥ - funkcja skrÛtu SHA2}
+potrzebne ????
 
 \subsection{Konto administratora i uøytkownika ñ ListView}
 \subsection{Tworzenie propozycji cenowej}
@@ -254,17 +379,59 @@ TODO:
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 \section{Perspektywy rozwoju oprogramowania}
 
-\dodatkowo{Programy}
+%% UWaga na \newlineTekst oraz \newlineSpis. Moøna teø uøyÊ \newline, dzia≥a jak \newlineSpis\newlineTekst
+\section[Tytu≥ drugiego rozdzia≥u. Bardzo d≥ugi \ldots]
+        {Tytu≥ drugiego rozdzia≥u. \newlineTekst Bardzo d≥ugi tytu≥. \newlineTekst
+          Jego \newlineSpis formatowanie jest trudniejsze}
+CACHE
+
+Tu jest wnÍtrze rozdzia≥u drugiego.
+
+\dodatek{MÛj specjalny dodatek}
+
+CACHE
+
+Tu treúÊ dodatku. ZwrÛÊmy uwagÍ na sposÛb numerowania dodatku, 
+moøliwa jest zmiana numerowania, patrz wyjaúnienia.
+          
+%% to wpisuje siÍ do spisu treúci, ale bez numeru rozdzia≥u,
+%% moøna teø uøywaÊ \dodatek{Tytu≥}, ktÛry jest numerowany, ale inaczej niø rozdzia≥y.
+\dodatkowo{Rysunki}
+CACHE
+
+
+\dodatkowo{Za≥πczniki}
+CACHE
 
 Tu programy
 
 \begin{verbatim}
-#include <stdio.h>
+	//ADO.NET
+    SqlConnection connection = new SqlConnection(connectionString);
 
-int main()
-{
-   printf("Hello world\n");
-}
+    SqlCommand command = 
+    		new SqlCommand(@"INSERT INTO [TestDb].[Users]  
+        	    VALUES (@Login, @Password)", connection);
+            
+    command.Parameters.Add(
+    		new SqlParameter("Login", "TestLogin"));
+    command.Parameters.Add(
+	    	new SqlParameter("Password","TestPa$$word"));
+            
+    connection.Open();
+    command.ExecuteNonQuery();
+    connection.Close();
+
+    //Entity Framework
+    DiamondDBEntities dataContext = new DiamondDBEntities();
+    // EF automatycznie odczyta plik konfiguracyjny aplikacji
+
+    TestUser newUser = new TestUser
+    {
+        Login = "TestLogin", Password = "TestPa$$word",
+    };
+    dataContext.Users.Add(newUser);
+    dataContext.SaveChanges();  
 \end{verbatim}
 
 \noindent
@@ -280,20 +447,27 @@ Oraz
 \end{verbatim*}
 \end{minipage}
 
-
+\begin{tw}
+Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
+\end{tw}
 \begin{thebibliography}{12}
 
-% SwstÍp
-\bibitem{LiczbaHoteli} http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
+% wstÍp
+\bibitem{LiczbaHoteli} 
+http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
 
-% Strello
+%xml
+\bibitem{Xml}
+http://www.w3schools.com/xml/xml\_whatis.asp
+
+% trello
 \bibitem{Kanban}
 KrasiÒski M.: \textsl{Nauki o zarzπdzaniu}, Wydawnictwo Uniwersytetu Ekonomicznego we Wroc≥awiu, Wroc≥aw, 2013, str.24-32
 
 \bibitem{PlatformyTrello} 
 https://trello.com/platforms
 
-% SReSharper
+% ReSharper
 %znalesc ksiazke w ktorej jest opis .NET
 \bibitem{.NETOpis}
 Chappell D.: \textsl{Understanding .NET (2nd Edition)}, Wydawnictwo Addison-Wesley Professional, POPRAWI∆
@@ -307,12 +481,14 @@ https://www.jetbrains.com/resharper/features/
 \bibitem{MicrosoftPublicLicence} 
 https://opensource.org/licenses/MS-PL
 
-% Swpf extended - na razie brak
+%wpf extended - na razie brak
 
-% Swzorce architektoniczne oprogramowania
+% wzorce architektoniczne oprogramowania
 \bibitem{FazyProdukcjiOprogramowania} 
 Jaszkiewicz A. \textsl{Inøynieria oprogramowania}, Wydawnictwo Helion, 1997
-% Windows 8. Programowanie aplikacji z wykorzystaniem C# i XAML <- o MVVM
+
+\bibitem{MvvmOpis} 
+Petzold C. \textsl{Windows 8. Programowanie aplikacji z wykorzystaniem C\# i XAML}, Wydawnistwo Helion, Gliwice 2013
 
 \bibitem{LogikaBiznesowa}
 Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletny przewodnik dla programistÛw interaktywnych aplikacji internetowych w Visual Studio}, Wydawnictwo Helion, Gliwice 2014
@@ -320,9 +496,17 @@ Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletn
 \bibitem{DataBinding}
 MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
 
-% Sentity
+%entity
 \bibitem{AdnotacjeCodeFirst}
 https://msdn.microsoft.com/en-us/data/jj591583
+
+
+%techiczne logowanie
+\bibitem{SHA1Slabosc}
+Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
+
+%Nazwisko I. \textsl{tytu≥}, miasto, rok
+
 
 %---
 
@@ -331,6 +515,9 @@ https://www.microsoft.com/en-us/download/details.aspx?id=29062
 %Nazwisko I. \textsl{tytu≥}, miasto, rok
 \bibitem{nazwa} Jakaú pozycja literatury
 
+
 \end{thebibliography}
+
 \listoffigures
+
 \end{document}
