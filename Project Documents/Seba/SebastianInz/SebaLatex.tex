@@ -373,18 +373,47 @@ Pierwsza zak³adka zawiera wszelkie informacje dotycz¹ce danych osobowych sprzeda
 
 \item \textsl{TABELA SAL}
 
-\tab W zale¿noœci od wybranej z listy rozwijanej sali oraz uprzednio wybranej dacie rozpoczêcia wydarzenia, sprzedawca ma mo¿liwoœæ otrzymania informacji o cenie sali, jej powierzchni oraz liczbie dostêpnych miejsc. Informacje te w czasie ustalania szczegó³ów transakcji umo¿liwiaj¹ wybór optymalnego dla potrzeb klienta pomieszczenia, w którym przez wzgl¹d na liczbê dostêpnych miejsc bêdzie mo¿na rozlokowaæ wszystkich uczestników. Wybrana z listy rozwijanej sala wraz z dat¹ rozpoczêcia jednoznacznie identyfikuje pomieszczenie oraz jej cenê, której rekord w sposób automatyczny dodawany jest jako pierwszy w kolejnej zak³adce opisuj¹cej szczegó³y rezerwacji.
+\tab W zale¿noœci od wybranej z listy rozwijanej sali oraz uprzednio wybranej dacie rozpoczêcia wydarzenia, sprzedawca ma mo¿liwoœæ otrzymania informacji o cenie sali, jej powierzchni oraz liczbie dostêpnych miejsc. Informacje te w czasie ustalania szczegó³ów transakcji umo¿liwiaj¹ wybór optymalnego dla potrzeb klienta pomieszczenia, w którym przez wzgl¹d na liczbê dostêpnych miejsc bêdzie mo¿na rozlokowaæ wszystkich uczestników. Wybrana z listy rozwijanej sala wraz z dat¹ rozpoczêcia jednoznacznie identyfikuje cenê oraz nazwê pomieszczenia, której rekord w sposób automatyczny dodawany jest jako pierwszy w kolejnej zak³adce opisuj¹cej szczegó³y rezerwacji.
 
-\item \ldots
 \end{itemize}
 
-TODO: po edycji graficznej wrzuciæ tab1 testuje jaki jest margines testuje jaki jest margines testuje jaki jest margines testuje jaki jest margines 
-\subsubsection{Szczegó³y rezerwacji}
-TODO: po edycji graficznej wrzuciæ tab2
+TODO: po edycji graficznej wrzuciæ tab1 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+
+\subsubsection{Sala i jej wyposa¿enie}
+
+Druga zak³adka modu³u tworzenia nowej propozycji cenowej dotyczy szczegó³ów rezerwacji dotycz¹cych sali, jej dodatkowego wyposa¿enia oraz cen poszczególnych elementów. Na tym etapie negocjowany jest równie¿ rabat dotycz¹cy finalnej ceny wybranej przez klienta sali.
+
+\begin{itemize}
+\item \textsl{WYBÓR WYPOSA¯ENIA}
+
+\tab Dodanie elementów wyposa¿enia dodatkowego sali umo¿liwiaj¹ rozwijane listy, które zawieraj¹ dostêpne dla hotelu wyposa¿enia dodatkowe, z których klient mo¿e skorzystaæ. Po jego wybraniu, sprzedawca zobowi¹zany jest na drodze negocjacji ustaliæ z klientem \textsl{cenê jednostkow¹ brutto}, podaæ jego \textsl{iloœæ} oraz \textsl{liczbê dni}, przez które bêdzie u¿ywane. Tak wpisane informacje zostan¹ przeliczone, a efekt obliczeñ widoczny zostanie w polu \textsl{wartoœæ brutto}. \textsl{Ceny jednostkowe netto} oraz ca³kowite \textsl{wartoœci netto} s¹ równie¿ obliczane automatycznie na podstawie podanych cen brutto oraz ustalonej równie¿ z poziomu rozwijanej listy stawki VAT.
+
+\item \textsl{RABATY}
+
+\tab Ceny tabelaryczne wynajmowanych sal s¹ cenami umownymi, narzuconymi przez menad¿era odgórnie. Sprzedawca jednak ma prawo ich obni¿ania na drodze negocjacji w celu  przedstawienia klientowi korzystnej oferty na tle konkurencji. Po operacji wyboru sali, w polu \textsl{"Standardowa cena sali"} widoczna jest jej cena, któr¹ za pomoc¹ znajduj¹cego siê poni¿ej pola mo¿na redukowaæ. W chwili zmiany wartoœci rabatu, wszelkie wartoœci cenowe jego dotycz¹ce s¹ w czasie rzeczywistym  odœwie¿ane, co u³atwia ich kontrolê przez sprzedawcê.
+\end{itemize}
+
+TODO: po edycji graficznej wrzuciæ tab2 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+
 \subsubsection{Us³ugi gastronomiczne}
-TODO: po edycji graficznej wrzuciæ tab3
+
+\tab Kolejnym krokiem w czasie procesu tworzenia propozycji cenowej jest wybór us³ug zwi¹zanych z gastronomi¹. Zasada dzia³ania us³ug gastronomicznych jest podobna do poprzedniej zak³adki, z t¹ ró¿nic¹ i¿ wewnêtrzne mechanizmy sprawdzaj¹ce powi¹zania s¹ znacznie bardziej skomplikowane.
+
+\begin{itemize}
+\item \textsl{WYBÓR ELEMENTÓW GASTRONOMICZNYCH}
+
+\tab Wszelkie elementy gastronomiczne przez wzgl¹d na ich iloœæ podzielone zosta³y na kategorie, które umo¿liwiaj¹ proste wyszukanie interesuj¹cego elementu. W celu dodania elementu gastronomicznego nale¿y z pierwszej rozwijanej listy wybraæ interesuj¹c¹ kategoriê oraz z drugiej listy wybraæ konkretny element tej kategorii. Po wykonaniu przedstawionych operacji aktualne ceny jednostkowe wraz z podatkiem VAT zostaj¹ automatycznie uzupe³nione, co usuwa ze sprzedawcy koniecznoœæ ich manualnego sprawdzania. Po wyborze iloœci oraz liczby dni przez które produkt ma byæ dostêpny, z poziomu tabeli wyœwietlana zostaje jego zsumowana wartoœæ.
+
+\item \textsl{MAR¯E}
+
+Pobierane z bazy danych ceny produktów s¹ cenami przyjêtymi jako minimalne ceny po których produkt mo¿e zostaæ sprzedany. W celu wygenerowania wiêkszego przychodu sprzedawca ma mo¿liwoœæ podwy¿szenia ceny produktu poprzez ustalenie wielkoœci jego mar¿y, których domyœlne wartoœci ustalone zosta³y przez menad¿era sprzeda¿y. Przedstawiane mar¿e podzielone zosta³y na piêæ kategorii przez wzgl¹d na ich specyfikê - dla przyk³adu mar¿a na napoje alkoholowe jest z definicji znacznie wiêksza ni¿ na potrawy bufetowe lub produkty niskobud¿etowe.
+
+TODO: po edycji graficznej wrzuciæ tab3 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+\end{itemize}
 \subsubsection{Us³ugi noclegowe}
-TODO: po edycji graficznej wrzuciæ tab4
+
+Zak³adka us³ug noclegowych opisuje liczbê oraz rodzaj wybranych pokoi hotelowych. Lista dostêpnych pokoi wraz z wyszczególnionymi cenami automatycznie dostarczana jest do okna z bazy danych. Rol¹ sprzedawcy jest wybór odpowiedniej ich iloœci oraz liczby dni. Jedyn¹ mo¿liwoœci¹ obni¿enia ustalonych przez menad¿era ceny jest ustalenie rabatu, który jednakowo obowi¹zuje wszystkie rodzaje pokoi. Po wpisaniu odpowiednich wartoœci, wewnêtrzne mechanizmy programu przeliczaj¹ wszystkie wartoœci umo¿liwiaj¹c podgl¹d ich zsumowanych wartoœci netto i brutto.
+
 \subsubsection{Us³ugi dodatkowe i forma p³atnoœci}
 TODO: po edycji graficznej wrzuciæ tab5
 

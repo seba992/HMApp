@@ -175,8 +175,8 @@
 
                 </Grid>
             </TabItem>
-
-            <TabItem x:Name="SecondGrid" Header="SZCZEGÓŁY REZERWACJI" Height="23" VerticalAlignment="Top">
+<!--            SZCZEGÓŁY REZERWACJI-->
+            <TabItem x:Name="SecondGrid" Header="SALA I JEJ WYPOSAŻENIE" Height="23" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5">
 
                     <Grid.RowDefinitions>
@@ -279,8 +279,8 @@
 
 
                     <!--definicja wierszy cel sali /dol srodek/-->
-                    <Label Grid.Column="1"  Grid.Row="9" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
-                    <Label Grid.Column="1"  Grid.Row="10" Content="Rabat od bara (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="1"  Grid.Row="9" Content="Standardowa cena sali: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Column="1"  Grid.Row="10" Content="Rabat (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Column="1"  Grid.Row="11" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>
 
                     <TextBox x:Name="SrCenaStandardTextBox" Grid.Column="2" Grid.Row="9" Margin="3" HorizontalContentAlignment="Center" Text="{Binding PropHallEquipmentDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>
@@ -633,7 +633,7 @@
                     <TextBox x:Name="UdWartoscBruttoTextBox4" Grid.Column="9" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabBruttoValue3, StringFormat=\{0:c\}}" />
 
                     <TextBox x:Name="UdSumaWartoscNettoTextBox" Grid.Column="7" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabSumNettoValue, StringFormat=\{0:c\}}" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="UdSumaWartoscBruttoTextBox" Grid.Column="9" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding FifthTabSumBruttoValue, StringFormat=\{0:c\}}" />
+                    <TextBox x:Name="UdSumaWartoscBruttoTextBox" Grid.Column="9" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FifthTabSumBruttoValue, StringFormat=\{0:c\}}" />
 
                     <Label Grid.Row="6" Grid.Column="0" Content="PODSUMOWANIE:" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Grid.ColumnSpan="2" Margin="3,27,51,3" Grid.RowSpan="2" />
 
