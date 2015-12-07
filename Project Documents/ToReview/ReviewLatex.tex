@@ -7,6 +7,7 @@
 \usepackage{color}
 \usepackage{graphicx}
 %\drukJednostronny
+\usepackage{tabto}
 
 %% tytu≥ promotor i autor (\title to komenda standardowa)
 \title{Projekt i wykonanie aplikacji bazodanowej wspomagajπcej pracÍ wybranej sieci hotelowej}
@@ -46,6 +47,8 @@
 \newtheorem{dd}{Definicja}[subsection]
 
 \begin{document}
+\TabPositions{0.75cm}
+
 
 Obecna sytuacja rynkowa zwiπzana z istnieniem duøej iloúci firm w zakresie kaødej branøy wymusza na przedsiÍbiorcach ciπg≥e zwiÍkszanie swojej atrakcyjnoúci oraz konkurencyjnoúci w celu zdobycia potencjalnego klienta. W realizacji powyøszego zadania konieczne jest wdraøanie nowoczesnych metod umoøliwiajπcych miÍdzy innymi obniøenie kosztÛw pracy, co wprost przek≥ada siÍ na niøszπ cenÍ produktu koÒcowego. Niøsza cena dla klienta jest jednym z najwaøniejszych elementÛw, ktÛry determinuje wybÛr konkretnego us≥ugodawcy. Aspekt ten dotyczy takøe branøy hotelarskiej, ktÛra w sposÛb bezpoúredni dotyczy naszej pracy.
 	Liczba hoteli w Polsce od kilkunastu lat nieprzerwanie roúnie \cite{LiczbaHoteli}. Implikuje to koniecznoúÊ wzmoøonej walki o klienta w celu utrzymania siÍ na rynku. Obniøenie cen us≥ug wynajmu pokoi, sal konferencyjnych oraz cateringÛw przy zachowaniu odpowiedniego poziomu dochodÛw jest problemem, z ktÛrym zmaga siÍ kaøda sieÊ hotelowa. PrzedsiÍbiorcy przeúcigajπ siÍ w znajdowaniu coraz to nowszych i efektywniejszych rozwiπzaÒ, ktÛre majπ na celu rozwiπzanie owego problemu. W XXI wieku duøπ pomocπ w tym zakresie okazuje siÍ informatyzacja.
@@ -205,7 +208,7 @@ MVVM jest to wzorzec, ktÛry dziÍki funkcjonalnoúci odseparowania warstwy prezent
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.8\textwidth]{MvvmDiagram.jpg}
-    \caption{Przep≥yw danych w modelu MVVM, \newline èrÛd≥o: www.tomaszmalesza.pl}
+    \caption{Przep≥yw danych w modelu MVVM, èrÛd≥o: www.tomaszmalesza.pl}
 \end{figure}
 %www.tomaszmalesza.pl/wp-content/uploads/2012/08/MVVM\_Relation1.jpg
 
@@ -346,21 +349,93 @@ TODO: SCREEN PIERWSZEGO LOGOWANIA (wrzuciÊ po poprawkach wizualnych programu)
 
 Modu≥ tworzenia nowej propozycji cenowej umoøliwia uøytkownikowi aplikacji przeprowadzenie procesu utworzenia schematu wymaganych przez klienta us≥ug wraz z ich zapisem do bazy danych. Tym sposobem wszelkie ustalenia dokonane podczas spotkania z potencjalnym klientem zapisywane sπ na centralnym serwerze, z ktÛrego w razie potrzeby moøna wybranπ propozycjÍ pobraÊ i wygenerowaÊ jej plik w formacie PDF lub dokonaÊ jej edycji.
 
-W czasie spotkania sprzedawcy z klientem, chcπc przedstawiÊ ofertÍ cenowπ dotyczπcπ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g≥Ûwnym aplikacji opcjÍ stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siÍ forma przeznaczona do wpisywania wymaganych danych. Forma ta przez wzglπd na kilka typÛw us≥ug podzielona zosta≥a na piÍÊ zak≥adek, z ktÛrych kaøda zawiera odpowiednia pola, umoøliwiajπce ustalenie wszelkich elementÛw konkretnej us≥ugi.
+W czasie spotkania sprzedawcy z klientem, chcπc przedstawiÊ ofertÍ cenowπ dotyczπcπ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g≥Ûwnym aplikacji opcjÍ stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siÍ forma przeznaczona do wpisania wymaganych danych. Forma ta przez wzglπd na kilka typÛw us≥ug podzielona zosta≥a na piÍÊ zak≥adek, z ktÛrych kaøda zawiera odpowiednia pola, umoøliwiajπce ustalenie wszelkich elementÛw konkretnej us≥ugi.
 
 \subsubsection{Opis klienta}
 
 IN PROGRESS
 
-Pierwsza zak≥adka dotyczy wszelkich informacji dotyczπcych  danych osobowych sprzedawcy, klienta oraz ogÛlnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, ktÛrπ reprezentuje, pobierane sπ automatycznie z bazy danych. Operacja ta jest moøliwa dziÍki przechowywaniu w programie informacji o tym, na jakie konto uøytkownik zosta≥ zalogowany. Wszelkie pozosta≥e dane sprzedawca ma obowiπzek uzupe≥niÊ samodzielnie, uzyskujπc informacje od klienta. 
+Pierwsza zak≥adka zawiera wszelkie informacje dotyczπce danych osobowych sprzedawcy, klienta oraz ogÛlnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, ktÛrπ reprezentuje, pobierane sπ automatycznie z bazy danych. Operacja ta jest moøliwa dziÍki przechowywaniu w programie informacji o tym, na jakie konto uøytkownik zosta≥ zalogowany. Wszelkie pozosta≥e dane sprzedawca ma obowiπzek uzupe≥niÊ samodzielnie, uzyskujπc informacje od klienta. 
 
-TODO: po edycji graficznej wrzuciÊ tab1
-\subsubsection{SzczegÛ≥y rezerwacji}
-TODO: po edycji graficznej wrzuciÊ tab2
+\begin{itemize}
+\item \textsl{NAZWA FIRMY} 
+
+\tab Przez wzglπd na moøliwoúÊ obs≥ugi klientÛw biznesowych wprowadzone zosta≥o pole umoøliwiajπce wpisanie nazwy firmy, ktÛrπ klient reprezentuje. W celu jednoznacznej identyfikacji kaødej propozycji cenowej, uznano iø pole to bÍdzie jednπ z kolumn listy propozycji okna g≥Ûwnego.
+
+\item \textsl{ADRES KLIENTA} 
+
+\tab Pole to przeznaczone jest do wpisania adresu klienta zarÛwno w przypadku osoby indywidualnej jak i firmy. Po analizie wszelkich za≥oøeÒ projektowych nie wystπpi≥a koniecznoúÊ rozdzielenia danych adresowych - potrzebne sπ one tylko i wy≥πcznie do opisu klienta na wygenerowanym dokumencie PDF.
+\item \textsl{NIP} 
+
+\tab Kolejne pole opcjonalne, ktÛre w przypadku klientÛw biznesowych przeznaczone jest do wpisania numeru identyfikacji podatkowej.
+
+\item \textsl{TERMIN WAØNOåCI PROPOZYCJI}
+
+\tab Utworzona dla klienta propozycja cenowa posiada ustalony okres waønoúci, ktÛry domyúlnie wykosi cztery dni od sporzπdzenia i zapisania propozycji cenowej przez sprzedawcÍ. Spowodowane jest to czÍstymi zmianami cennikÛw i unikniÍcia sytuacji, w ktÛrej klient po d≥ugim okresie czasu bÍdzie chcia≥ z posiadanej propozycji cenowej skorzystaÊ. Sprzedawca dziÍki modu≥owi edycji propozycji posiada moøliwoúÊ aktualizacji terminu waønoúci propozycji, dziÍki czemu utworzona propozycja cenowa nie musi byÊ tworzona ponownie od podstaw. 
+
+\item \textsl{KONTAKT ZE STRONY ZAMAWIAJ•CEGO}
+
+\tab Jest to podkategoria zawierajπca cztery pola tekstowe, ktÛre przeznaczone sπ do wpisania imienia i nazwiska klienta, jego numeru telefonu oraz adresu e-mail. Ostatnie pole tekstowe (\textsl{Osoba decyzyjna}) umoøliwia wpisanie osoby, ktÛra posiada uprawnienie do dokupywania us≥ug nieuwzglÍdnionych w propozycji cenowej w czasie trwania wydarzenia. Zdarza siÍ, iø podczas wydarzenia, organizator chce dobraÊ dla goúci dodatkowe us≥ugi, ktÛre nie sπ uwzglÍdnione w ofercie, na bazie ktÛrej wydarzenie jest przeprowadzane. W tej sytuacji w celu unikniÍcia pÛüniejszych problemÛw dotyczπcych zwiÍkszenia kwoty koÒcowej wydarzenia, wybierana jest osoba, ktÛra decyduje jakie elementy mogπ byÊ dokupione. Ilustrujπc tÍ sytuacjÍ moøna pos≥uøyÊ siÍ przyk≥adem imprezy weselnej do ktÛrej b≥Ídnie przewidziano liczbÍ dostÍpnych napoi. Osoba decyzyjna moøe tÍ wartoúÊ zwiÍkszyÊ z pe≥nπ odpowiedzialnoúciπ zwiÍkszenia kosztÛw. ZawartoúÊ pola tekstowego osoby decyzyjnej automatycznie wype≥niana jest zawartoúciπ pola tekstowego \textsl{ImiÍ i nazwisko}. Istnieje jednak moøliwoúÊ, aby sprzedawca zmieni≥ tπ wartoúÊ na innπ poniewaø nie zawsze osoba klienta moøe byÊ osobπ decyzyjnπ w czasie trwania wydarzenia.
+
+\item \textsl{TERMIN (od - do)}
+
+\tab Pola te okreúlajπ datÍ rozpoczÍcia oraz datÍ zakoÒczenia organizowanego wydarzenia. Data rozpoczÍcia odgrywa istotnπ rolÍ w tworzonej propozycji przez fakt, iø ceny sal uzaleønione sπ w≥aúnie od miesiπca, w ktÛrym dane wydarzenie bÍdzie organizowane. Po wyborze daty, w polu \textsl{Miesiπc} ukazuje siÍ nazwa miesiπca na podstawie ktÛrego dobierana bÍdzie cena wybranej w pÛüniejszym etapie tworzenia propozycji cenowej sali.
+
+\item \textsl{CZAS TRWANIA (od - do)}
+
+\tab Czas trwania definiuje planowane godziny, w czasie ktÛrych przeprowadzone ma byÊ wydarzenie. Bezpoúrednio odwo≥ujπ siÍ one do wpisanej uprzednio daty rozpoczÍcia oraz zakoÒczenia. Na tej podstawie moøliwe jest dok≥adne okreúlenie okresu trwania wydarzenia.
+
+\item \textsl{ILOå∆ OS”B}
+
+\tab Pole to okreúla planowanπ liczbÍ osÛb, ktÛre majπ w danym wydarzeniu uczestniczyÊ. W celu weryfikacji, czy dana liczba osÛb fizycznie zmieúci siÍ na wybranej sali, sprzedawca ma moøliwoúÊ pos≥uøyÊ siÍ dostÍpnπ poniøej prezentowanych pÛl tabelπ pomocniczπ.
+
+\item \textsl{STATUS PROPOZYCJI}
+
+\tab Pole to jest polem informacyjnym, ktÛry opisuje status tworzonej propozycji. Domyúlnym statusem podczas stworzenia nowej propozycji jest \textsl{"Nowa"}, ktÛrπ sprzedawca w sytuacji oczekiwania na decyzjÍ klienta ma obowiπzek zmieniÊ na \textsl{"W trakcie realizacji"}, natomiast po sfinalizowaniu transakcji oznaczyÊ jako \textsl{"Zrealizowana"}. Status propozycji cenowej wyúwietlany jest na liúcie wszystkich propozycji w oknie g≥Ûwnym.
+
+\item \textsl{TABELA SAL}
+
+\tab W zaleønoúci od wybranej z listy rozwijanej sali oraz uprzednio wybranej dacie rozpoczÍcia wydarzenia, sprzedawca ma moøliwoúÊ otrzymania informacji o cenie sali, jej powierzchni oraz liczbie dostÍpnych miejsc. Informacje te w czasie ustalania szczegÛ≥Ûw transakcji umoøliwiajπ wybÛr optymalnego dla potrzeb klienta pomieszczenia, w ktÛrym przez wzglπd na liczbÍ dostÍpnych miejsc bÍdzie moøna rozlokowaÊ wszystkich uczestnikÛw. Wybrana z listy rozwijanej sala wraz z datπ rozpoczÍcia jednoznacznie identyfikuje cenÍ oraz nazwÍ pomieszczenia, ktÛrej rekord w sposÛb automatyczny dodawany jest jako pierwszy w kolejnej zak≥adce opisujπcej szczegÛ≥y rezerwacji.
+
+\end{itemize}
+
+TODO: po edycji graficznej wrzuciÊ tab1 (poszczegÛlne pola, podzielone na dzia≥y, graficzne reprezentacja opisywanych rzeczy)
+
+\subsubsection{Sala i jej wyposaøenie}
+
+Druga zak≥adka modu≥u tworzenia nowej propozycji cenowej dotyczy szczegÛ≥Ûw rezerwacji dotyczπcych sali, jej dodatkowego wyposaøenia oraz cen poszczegÛlnych elementÛw. Na tym etapie negocjowany jest rÛwnieø rabat dotyczπcy finalnej ceny wybranej przez klienta sali.
+
+\begin{itemize}
+\item \textsl{WYB”R WYPOSAØENIA}
+
+\tab Dodanie elementÛw wyposaøenia dodatkowego sali umoøliwiajπ rozwijane listy, ktÛre zawierajπ dostÍpne dla hotelu wyposaøenia dodatkowe, z ktÛrych klient moøe skorzystaÊ. Po jego wybraniu, sprzedawca zobowiπzany jest na drodze negocjacji ustaliÊ z klientem \textsl{cenÍ jednostkowπ brutto}, podaÊ jego \textsl{iloúÊ} oraz \textsl{liczbÍ dni}, przez ktÛre bÍdzie uøywane. Tak wpisane informacje zostanπ przeliczone, a efekt obliczeÒ widoczny zostanie w polu \textsl{wartoúÊ brutto}. \textsl{Ceny jednostkowe netto} oraz ca≥kowite \textsl{wartoúci netto} sπ rÛwnieø obliczane automatycznie na podstawie podanych cen brutto oraz ustalonej rÛwnieø z poziomu rozwijanej listy stawki VAT.
+
+\item \textsl{RABATY}
+
+\tab Ceny tabelaryczne wynajmowanych sal sπ cenami umownymi, narzuconymi przez menadøera odgÛrnie. Sprzedawca jednak ma prawo ich obniøania na drodze negocjacji w celu  przedstawienia klientowi korzystnej oferty na tle konkurencji. Po operacji wyboru sali, w polu \textsl{"Standardowa cena sali"} widoczna jest jej cena, ktÛrπ za pomocπ znajdujπcego siÍ poniøej pola moøna redukowaÊ. W chwili zmiany wartoúci rabatu, wszelkie wartoúci cenowe jego dotyczπce sπ w czasie rzeczywistym  odúwieøane, co u≥atwia ich kontrolÍ przez sprzedawcÍ.
+\end{itemize}
+
+TODO: po edycji graficznej wrzuciÊ tab2 (poszczegÛlne pola, podzielone na dzia≥y, graficzne reprezentacja opisywanych rzeczy)
+
 \subsubsection{Us≥ugi gastronomiczne}
-TODO: po edycji graficznej wrzuciÊ tab3
+
+\tab Kolejnym krokiem w czasie procesu tworzenia propozycji cenowej jest wybÛr us≥ug zwiπzanych z gastronomiπ. Zasada dzia≥ania us≥ug gastronomicznych jest podobna do poprzedniej zak≥adki, z tπ rÛønicπ iø wewnÍtrzne mechanizmy sprawdzajπce powiπzania sπ znacznie bardziej skomplikowane.
+
+\begin{itemize}
+\item \textsl{WYB”R ELEMENT”W GASTRONOMICZNYCH}
+
+\tab Wszelkie elementy gastronomiczne przez wzglπd na ich iloúÊ podzielone zosta≥y na kategorie, ktÛre umoøliwiajπ proste wyszukanie interesujπcego elementu. W celu dodania elementu gastronomicznego naleøy z pierwszej rozwijanej listy wybraÊ interesujπcπ kategoriÍ oraz z drugiej listy wybraÊ konkretny element tej kategorii. Po wykonaniu przedstawionych operacji aktualne ceny jednostkowe wraz z podatkiem VAT zostajπ automatycznie uzupe≥nione, co usuwa ze sprzedawcy koniecznoúÊ ich manualnego sprawdzania. Po wyborze iloúci oraz liczby dni przez ktÛre produkt ma byÊ dostÍpny, z poziomu tabeli wyúwietlana zostaje jego zsumowana wartoúÊ.
+
+\item \textsl{MARØE}
+
+Pobierane z bazy danych ceny produktÛw sπ cenami przyjÍtymi jako minimalne ceny po ktÛrych produkt moøe zostaÊ sprzedany. W celu wygenerowania wiÍkszego przychodu sprzedawca ma moøliwoúÊ podwyøszenia ceny produktu poprzez ustalenie wielkoúci jego marøy, ktÛrych domyúlne wartoúci ustalone zosta≥y przez menadøera sprzedaøy. Przedstawiane marøe podzielone zosta≥y na piÍÊ kategorii przez wzglπd na ich specyfikÍ - dla przyk≥adu marøa na napoje alkoholowe jest z definicji znacznie wiÍksza niø na potrawy bufetowe lub produkty niskobudøetowe.
+
+TODO: po edycji graficznej wrzuciÊ tab3 (poszczegÛlne pola, podzielone na dzia≥y, graficzne reprezentacja opisywanych rzeczy)
+\end{itemize}
 \subsubsection{Us≥ugi noclegowe}
-TODO: po edycji graficznej wrzuciÊ tab4
+
+Zak≥adka us≥ug noclegowych opisuje liczbÍ oraz rodzaj wybranych pokoi hotelowych. Lista dostÍpnych pokoi wraz z wyszczegÛlnionymi cenami automatycznie dostarczana jest do okna z bazy danych. Rolπ sprzedawcy jest wybÛr odpowiedniej ich iloúci oraz liczby dni. Jedynπ moøliwoúciπ obniøenia ustalonych przez menadøera ceny jest ustalenie rabatu, ktÛry jednakowo obowiπzuje wszystkie rodzaje pokoi. Po wpisaniu odpowiednich wartoúci, wewnÍtrzne mechanizmy programu przeliczajπ wszystkie wartoúci umoøliwiajπc podglπd ich zsumowanych wartoúci netto i brutto.
+
 \subsubsection{Us≥ugi dodatkowe i forma p≥atnoúci}
 TODO: po edycji graficznej wrzuciÊ tab5
 
@@ -401,6 +476,10 @@ potrzebne ????
 \subsubsection{DataGridView a dynamiczna komunikacja z Bazπ danych}
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 \section{Perspektywy rozwoju oprogramowania}
+
+- wersja offline
+- pierwsze logowanie: ponowne wpisanie has≥a dla potwierdzenia zgodnoúci
+- dynamicznie rozwijane listy podczas tworzenia propozycji cenowej (iloúÊ rzeczy do wyboru w kaødym tabie)
 
 %% UWaga na \newlineTekst oraz \newlineSpis. Moøna teø uøyÊ \newline, dzia≥a jak \newlineSpis\newlineTekst
 \section[Tytu≥ drugiego rozdzia≥u. Bardzo d≥ugi \ldots]
@@ -475,25 +554,46 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 \end{tw}
 \begin{thebibliography}{12}
 
-% wstÍp
+%Seba wstÍp
 \bibitem{LiczbaHoteli} 
 http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
 
-%xml
+%Lisu wstÍp
+\bibitem {iloscFirm}
+http://stat.gov.pl/obszary-tematyczne/podmioty-gospodarcze-wyniki-finansowe/przedsiebiorstwa-niefinansowe/male-i-srednie-przedsiebiorstwa-niefinansowe-w-polsce-w-latach-2009-2013,22,1.html
+
+\bibitem {SystemERP}
+Jerzy Kisielnicki, Ma≥gorzata PaÒkowska, Henryk Sroka.:\textsl{Zintegrowane systemy informatyczne. Dobre praktyki wdroøeÒ systemÛw klasy ERP}, Wydawnictwo Naukowe PWN, Warszawa 2012
+
+\bibitem {Vtiger}
+https://www.vtiger.com/
+
+\bibitem {ISOF}
+http://www.isof.pl/
+
+\bibitem {CrmVison}
+https://crmvision.pl/
+
+%Seba xml
 \bibitem{Xml}
 http://www.w3schools.com/xml/xml\_whatis.asp
 
-% trello
+%Lisu SQL Server Management Studio
+\bibitem{SQL Server Management Studio Express}
+https://www.microsoft.com/en-us/download/details.aspx?id=29062
+%Nazwisko I. \textsl{tytu≥}, miasto, rok
+
+%Seba trello
 \bibitem{Kanban}
 KrasiÒski M.: \textsl{Nauki o zarzπdzaniu}, Wydawnictwo Uniwersytetu Ekonomicznego we Wroc≥awiu, Wroc≥aw, 2013, str.24-32
 
 \bibitem{PlatformyTrello} 
 https://trello.com/platforms
 
-% ReSharper
+%Seba ReSharper
 %znalesc ksiazke w ktorej jest opis .NET
 \bibitem{.NETOpis}
-Chappell D.: \textsl{Understanding .NET (2nd Edition)}, Wydawnictwo Addison-Wesley Professional, POPRAWI∆
+Chappell D.: \textsl{Understanding .NET (2nd Edition)}, Wydawnictwo Addison-Wesley Professional, Boston 2006
 
 \bibitem{MartwyKod}
 Martin R.C.: \textsl{Czysty kod. PodrÍcznik dobrego programisty}, Wydawnictwo Helion, Gliwice 2014
@@ -504,9 +604,9 @@ https://www.jetbrains.com/resharper/features/
 \bibitem{MicrosoftPublicLicence} 
 https://opensource.org/licenses/MS-PL
 
-%wpf extended - na razie brak
+%Seba wpf extended - na razie brak
 
-% wzorce architektoniczne oprogramowania
+%Seba wzorce architektoniczne oprogramowania
 \bibitem{FazyProdukcjiOprogramowania} 
 Jaszkiewicz A. \textsl{Inøynieria oprogramowania}, Wydawnictwo Helion, 1997
 
@@ -519,12 +619,12 @@ Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletn
 \bibitem{DataBinding}
 MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
 
-%entity
+%Seba entity
 \bibitem{AdnotacjeCodeFirst}
 https://msdn.microsoft.com/en-us/data/jj591583
 
 
-%techiczne logowanie
+%Seba techiczne logowanie
 \bibitem{SHA1Slabosc}
 Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 
@@ -532,22 +632,6 @@ Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 
 
 %---
-
-\bibitem{SQL Server Management Studio Express}
-https://www.microsoft.com/en-us/download/details.aspx?id=29062
-%Nazwisko I. \textsl{tytu≥}, miasto, rok
-
-\bibitem {iloscFirm}
-http://stat.gov.pl/obszary-tematyczne/podmioty-gospodarcze-wyniki-finansowe/przedsiebiorstwa-niefinansowe/male-i-srednie-przedsiebiorstwa-niefinansowe-w-polsce-w-latach-2009-2013,22,1.html
-
-\bibitem {SystemERP}
-Jerzy Kisielnicki, Ma≥gorzata PaÒkowska, Henryk Sroka.:\textsl{Zintegrowane systemy informatyczne. Dobre praktyki wdroøeÒ systemÛw klasy ERP}, Wydawnictwo Naukowe PWN, Warszawa 2012
-\bibitem {Vtiger}
-https://www.vtiger.com/
-\bibitem {ISOF}
-http://www.isof.pl/
-\bibitem {CrmVison}
-https://crmvision.pl/
 
 \end{thebibliography}
 
