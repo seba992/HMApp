@@ -292,8 +292,8 @@ insert into PropReservationDetails_Dictionary_HallCapacity (Hall,Area,TheatrePeo
 insert into PropReservationDetails_Dictionary_HallCapacity (Hall,Area,TheatrePeopleNumber,UShapePeopleNumber) values ('VIP',45,30,20)
 
 insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Podkowa - U')
-insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Szkolne')
 insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Teatr')
+insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Szkolne')
 insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Prezentacja')
 insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Inne')
 insert into [PropReservationDetails_Dictionary_HallSettings] (Setting) values ('Do ustalenia')

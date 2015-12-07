@@ -97,13 +97,14 @@
                         <ColumnDefinition Width="130.5"/>
                         <ColumnDefinition Width="122.5"/>
                         <ColumnDefinition Width="114.5" />
-                        <ColumnDefinition Width="136.5"/>
+                        <ColumnDefinition Width="23.731"/>
+                        <ColumnDefinition Width="113.269"/>
                         <ColumnDefinition Width="121" />
                         <ColumnDefinition Width="130"/>
                         <ColumnDefinition Width="30" />
                     </Grid.ColumnDefinitions>
 
-                    <Rectangle Grid.ColumnSpan="6" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="94" Margin="118,3,0,-4" Grid.Row="13" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Top" Width="516"/>
+                    <Rectangle Grid.ColumnSpan="7" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="94" Margin="118,3,0,-4" Grid.Row="13" Grid.RowSpan="3" Stroke="Black" VerticalAlignment="Top" Width="541"/>
 
                     <Label Grid.Row="0" Grid.Column="0" Content="DOTYCZY:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
                     <Label Grid.Row="1" Grid.Column="0" Content="ADRES:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
@@ -115,18 +116,18 @@
                     <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
                     <Label Grid.Row="10" Grid.Column="0" Content="TERMIN (od - do):" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
                     <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA (od - do):" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
-                    <Label Grid.Row="0" Grid.Column="4" Content="NAZWA FIRMY: " Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="1" Grid.Column="4" Content="ADRES KLIENTA: " Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="2" Grid.Column="4" Content="NIP: " Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="3" Grid.Column="4" Content="TERMIN WAŻNOŚCI PROPOZYCJI:" Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="4" Grid.Column="4" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold" Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="5" Grid.Column="4" Content="IMIĘ I NAZWISKO:" Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="6" Grid.Column="4" Content="TELEFON:" Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="7" Grid.Column="4" Content="ADRES E-MAIL:" Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="8" Grid.Column="4" Content="OSOBA DECYZYJNA:" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="0" Grid.Column="4" Content="NAZWA FIRMY: " Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="1" Grid.Column="4" Content="ADRES KLIENTA: " Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="2" Grid.Column="4" Content="NIP: " Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="3" Grid.Column="4" Content="TERMIN WAŻNOŚCI PROPOZYCJI:" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="4" Grid.Column="4" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="5" Grid.Column="4" Content="IMIĘ I NAZWISKO:" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="6" Grid.Column="4" Content="TELEFON:" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="7" Grid.Column="4" Content="ADRES E-MAIL:" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="8" Grid.Column="4" Content="OSOBA DECYZYJNA:" Grid.ColumnSpan="3"/>
                     <Label Grid.Row="9" Grid.Column="0" Content="OGÓLNE INFORMACJE O WYDARZENIU: " FontWeight="Bold" Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="10" Content="ILOŚĆ OSÓB:" Grid.ColumnSpan="4" Margin="3" Grid.Column="4"/>
-                    <Label Grid.Row="11" Grid.Column="4" Content="USTAWIENIE SALI:" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="10" Content="ILOŚĆ OSÓB:" Grid.ColumnSpan="5" Margin="3" Grid.Column="4"/>
+                    <Label Grid.Row="11" Grid.Column="4" Content="USTAWIENIE SALI:" Grid.ColumnSpan="3"/>
 
                     <TextBox x:Name="DotyczyTextBox" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Margin="3" Text="{Binding AddNewProposition.CompanyName}" Grid.ColumnSpan="2" IsEnabled="False"/>
                     <TextBox x:Name="DotyczyNipTextBox" Grid.Row="2" Grid.Column="2" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.OurNip}" Grid.ColumnSpan="2" IsEnabled="False"/>
@@ -141,35 +142,35 @@
                     <xctk:TimePicker x:Name="GodzinaOdTimePicker" Grid.Row="11" Grid.Column="2" Text="{Binding PropositionReservDetailsStartTime}" Margin="3"/>
                     <xctk:TimePicker x:Name="GodzinaDoTimePicker" Grid.Row="11" Grid.Column="3" Text="{Binding PropositionReservDetailsEndTime}" Margin="3"/>
 
-                    <TextBox x:Name="DlaTextBox" Grid.Column="6" Grid.Row="0" Margin="3" Text="{Binding PropositionClientCompanyName, Mode=TwoWay}" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="6" Grid.Row="1" Margin="3" AcceptsReturn="True" Text="{Binding PropositionClientCompanyAdress, Mode=TwoWay}" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="DlaNipTextBox" Grid.Column="6" Grid.Row="2" Margin="3" Text="{Binding PropositionClientNip, Mode=TwoWay}" MaxLength="10" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="TerminWaznoSciDatePicker" Grid.Row="3" Grid.Column="6" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.ValidityPropDate, StringFormat=\{0:yyyy-MM-dd\}}" IsEnabled="False" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="DlaTextBox" Grid.Column="7" Grid.Row="0" Margin="3" Text="{Binding PropositionClientCompanyName, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="DlaAdresTextBox" Grid.Column="7" Grid.Row="1" Margin="3" AcceptsReturn="True" Text="{Binding PropositionClientCompanyAdress, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="DlaNipTextBox" Grid.Column="7" Grid.Row="2" Margin="3" Text="{Binding PropositionClientNip, Mode=TwoWay}" MaxLength="10" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="TerminWaznoSciDatePicker" Grid.Row="3" Grid.Column="7" Margin="3" VerticalContentAlignment="Center" Text="{Binding AddNewProposition.ValidityPropDate, StringFormat=\{0:yyyy-MM-dd\}}" IsEnabled="False" Grid.ColumnSpan="2"/>
 
-                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="6" Grid.Row="5" Margin="3" Text="{Binding PropositionClientCustromerFullName, Mode=TwoWay}" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="6" Grid.Row="6" Margin="3" Text="{Binding PropositionClientPhoneNum, Mode=TwoWay}" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="6" Grid.Row="7" Margin="3" Text="{Binding PropositionClientCustomerEmail, Mode=TwoWay}" Grid.ColumnSpan="2" />
-                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="6" Grid.Row="8" Margin="3" Text="{Binding PropositionClientDecisingPerFullName, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="NazwaKlientaTextBox" Grid.Column="7" Grid.Row="5" Margin="3" Text="{Binding PropositionClientCustromerFullName, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="TelefonKlientaTextBox" Grid.Column="7" Grid.Row="6" Margin="3" Text="{Binding PropositionClientPhoneNum, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="KlientEmailTextBox" Grid.Column="7" Grid.Row="7" Margin="3" Text="{Binding PropositionClientCustomerEmail, Mode=TwoWay}" Grid.ColumnSpan="2" />
+                    <TextBox x:Name="OsobaDecyzyjnaTextBox" Grid.Column="7" Grid.Row="8" Margin="3" Text="{Binding PropositionClientDecisingPerFullName, Mode=TwoWay}" Grid.ColumnSpan="2" />
 
-                    <xctk:IntegerUpDown x:Name="IloscOsobTextBox" Grid.Column="6" Grid.Row="10" Margin="3" Minimum="1" Maximum="100000" Value="{Binding PropositionReservDetailsPeopleNumber}" Grid.ColumnSpan="2"/>
-                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="6" Grid.Row="11" Margin="3" ItemsSource="{Binding HallSettingList}" SelectedItem="{Binding PropositionReservDetailsHallSetting}" Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100" Grid.ColumnSpan="2"/>
+                    <xctk:IntegerUpDown x:Name="IloscOsobTextBox" Grid.Column="7" Grid.Row="10" Margin="3" Minimum="1" Maximum="100000" Value="{Binding PropositionReservDetailsPeopleNumber}" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="UstawienieSaliComboBox" Grid.Column="7" Grid.Row="11" Margin="3" ItemsSource="{Binding HallSettingList}" SelectedItem="{Binding PropositionReservDetailsHallSetting}" Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100" Grid.ColumnSpan="2"/>
 
                     <Label Grid.Column="1" Grid.Row="13" Content="Sala" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
-                    <Label Grid.Column="2" Grid.Row="13" Content="Powierzchnia" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
-                    <Label Grid.Column="3" Grid.Row="13" Content="Uł. Teatr" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
-                    <Label Grid.Column="4" Grid.Row="13" Content="Uł. Podkowa" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Column="2" Grid.Row="13" Content="Powierzchnia (m2)" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Column="3" Grid.Row="13" Content="Uł. Teatr (il. osób)" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
+                    <Label Grid.Column="4" Grid.Row="13" Grid.ColumnSpan="2" Content="Uł. Podkowa (il. osób)" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="3"/>
 
                     <ComboBox x:Name="OkTabelaSalaComboBox" Grid.Column="1" Grid.Row="14" Margin="3" HorizontalContentAlignment="Center" ItemsSource="{Binding HallList}" SelectedItem="{Binding PropositionReservDetailsHall}" Text="Wybierz rodzaj sali" ScrollViewer.VerticalScrollBarVisibility="Visible" MaxDropDownHeight="100"/>
                     <TextBox x:Name="OkTabelaSalaPowTextBox" Grid.Column="2" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding HallCapacity.Area}"/>
                     <TextBox x:Name="OkTabelaSalaPowTeatrTextBox" Grid.Column="3" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding HallCapacity.TheatrePeopleNumber}"/>
-                    <TextBox x:Name="OkTabelaSalaPowUTextBox" Grid.Column="4" Grid.Row="14" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding HallCapacity.UShapePeopleNumber}"/>
+                    <TextBox x:Name="OkTabelaSalaPowUTextBox" Grid.Column="4" Grid.Row="14" Grid.ColumnSpan="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding HallCapacity.UShapePeopleNumber}"/>
 
                     <Label Grid.Row="15" Grid.Column="1" Content="Cena z tabeli: " HorizontalContentAlignment="Right" Margin="3" />
                     <TextBox x:Name="OkTabelaSalaCena" Grid.Column="2" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text = "{Binding HallPrice, StringFormat=\{0:c\}}" />
                     <Label Grid.Row="15" Grid.Column="3" Content="Miesiąc: " HorizontalContentAlignment="Right" Margin="3" />
-                    <TextBox x:Name="OkSalaMiesiac" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding EventMonth}"/>
-                    <Label Content="Zmiana stanu " Grid.Column="6" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top"  Width="122" Height="31"/>
-                    <ComboBox Grid.Column="7" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top" SelectedIndex="0" Width="127" Height="28" ItemsSource="{Binding PropStates}" SelectedItem="{Binding SelectedPropState}"/>
+                    <TextBox x:Name="OkSalaMiesiac" Grid.Column="4" Grid.Row="15" Grid.ColumnSpan="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding EventMonth}"/>
+                    <Label Content="STATUS PROPOZYCJI: " Grid.Column="7" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top"  Width="122" Height="31"/>
+                    <ComboBox Grid.Column="8" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top" SelectedIndex="0" Width="127" Height="28" ItemsSource="{Binding PropStates}" SelectedItem="{Binding SelectedPropState}"/>
 
 
                 </Grid>

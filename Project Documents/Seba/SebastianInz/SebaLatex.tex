@@ -7,6 +7,8 @@
 \usepackage{color}
 \usepackage{graphicx}
 %\drukJednostronny
+\usepackage{tabto}
+
 
 %% tytu³ promotor i autor (\title to komenda standardowa)
 \title{Projekt i wykonanie aplikacji bazodanowej wspomagaj¹cej pracê wybranej sieci hotelowej}
@@ -46,6 +48,8 @@
 \newtheorem{dd}{Definicja}[subsection]
 
 \begin{document}
+\TabPositions{0.75cm}
+
 
 Obecna sytuacja rynkowa zwi¹zana z istnieniem du¿ej iloœci firm w zakresie ka¿dej bran¿y wymusza na przedsiêbiorcach ci¹g³e zwiêkszanie swojej atrakcyjnoœci oraz konkurencyjnoœci w celu zdobycia potencjalnego klienta. W realizacji powy¿szego zadania konieczne jest wdra¿anie nowoczesnych metod umo¿liwiaj¹cych miêdzy innymi obni¿enie kosztów pracy, co wprost przek³ada siê na ni¿sz¹ cenê produktu koñcowego. Ni¿sza cena dla klienta jest jednym z najwa¿niejszych elementów, który determinuje wybór konkretnego us³ugodawcy. Aspekt ten dotyczy tak¿e bran¿y hotelarskiej, która w sposób bezpoœredni dotyczy naszej pracy.
 	Liczba hoteli w Polsce od kilkunastu lat nieprzerwanie roœnie \cite{LiczbaHoteli}. Implikuje to koniecznoœæ wzmo¿onej walki o klienta w celu utrzymania siê na rynku. Obni¿enie cen us³ug wynajmu pokoi, sal konferencyjnych oraz cateringów przy zachowaniu odpowiedniego poziomu dochodów jest problemem, z którym zmaga siê ka¿da sieæ hotelowa. Przedsiêbiorcy przeœcigaj¹ siê w znajdowaniu coraz to nowszych i efektywniejszych rozwi¹zañ, które maj¹ na celu rozwi¹zanie owego problemu. W XXI wieku du¿¹ pomoc¹ w tym zakresie okazuje siê informatyzacja.
@@ -332,18 +336,49 @@ IN PROGRESS
 Pierwsza zak³adka zawiera wszelkie informacje dotycz¹ce danych osobowych sprzedawcy, klienta oraz ogólnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, któr¹ reprezentuje, pobierane s¹ automatycznie z bazy danych. Operacja ta jest mo¿liwa dziêki przechowywaniu w programie informacji o tym, na jakie konto u¿ytkownik zosta³ zalogowany. Wszelkie pozosta³e dane sprzedawca ma obowi¹zek uzupe³niæ samodzielnie, uzyskuj¹c informacje od klienta. 
 
 \begin{itemize}
-\item \textsl{Nazwa klienta} 
+\item \textsl{NAZWA FIRMY} 
 
-Przez wzgl¹d na mo¿liwoœæ obs³ugi klientów biznesowych wprowadzone zosta³o pole umo¿liwiaj¹ce wpisanie nazwy firmy, któr¹ klient reprezentuje. W celu jednoznacznej identyfikacji ka¿dej propozycji cenowej, uznano i¿ pole to bêdzie jedn¹ z kolumn listy propozycji okna g³ównego.
+\tab Przez wzgl¹d na mo¿liwoœæ obs³ugi klientów biznesowych wprowadzone zosta³o pole umo¿liwiaj¹ce wpisanie nazwy firmy, któr¹ klient reprezentuje. W celu jednoznacznej identyfikacji ka¿dej propozycji cenowej, uznano i¿ pole to bêdzie jedn¹ z kolumn listy propozycji okna g³ównego.
 
-\item \textsl{Adres klienta} 
+\item \textsl{ADRES KLIENTA} 
 
-Pole to przeznaczone jest do wpisania adresu klienta zarówno w przypadku osoby indywidualnej jak i firmy. Po analizie wszelkich za³o¿eñ projektowych nie wyst¹pi³a koniecznoœæ rozdzielenia danych adresowych - potrzebne s¹ one tylko i wy³¹cznie do opisu klienta na wygenerowanym dokumencie PDF.
-\item Trzeci punkt
+\tab Pole to przeznaczone jest do wpisania adresu klienta zarówno w przypadku osoby indywidualnej jak i firmy. Po analizie wszelkich za³o¿eñ projektowych nie wyst¹pi³a koniecznoœæ rozdzielenia danych adresowych - potrzebne s¹ one tylko i wy³¹cznie do opisu klienta na wygenerowanym dokumencie PDF.
+\item \textsl{NIP} 
+
+\tab Kolejne pole opcjonalne, które w przypadku klientów biznesowych przeznaczone jest do wpisania numeru identyfikacji podatkowej.
+
+\item \textsl{TERMIN WA¯NOŒCI PROPOZYCJI}
+
+\tab Utworzona dla klienta propozycja cenowa posiada ustalony okres wa¿noœci, który domyœlnie wykosi cztery dni od sporz¹dzenia i zapisania propozycji cenowej przez sprzedawcê. Spowodowane jest to czêstymi zmianami cenników i unikniêcia sytuacji, w której klient po d³ugim okresie czasu bêdzie chcia³ z posiadanej propozycji cenowej skorzystaæ. Sprzedawca dziêki modu³owi edycji propozycji posiada mo¿liwoœæ aktualizacji terminu wa¿noœci propozycji, dziêki czemu utworzona propozycja cenowa nie musi byæ tworzona ponownie od podstaw. 
+
+\item \textsl{KONTAKT ZE STRONY ZAMAWIAJ¥CEGO}
+
+\tab Jest to podkategoria zawieraj¹ca cztery pola tekstowe, które przeznaczone s¹ do wpisania imienia i nazwiska klienta, jego numeru telefonu oraz adresu e-mail. Ostatnie pole tekstowe (\textsl{Osoba decyzyjna}) umo¿liwia wpisanie osoby, która posiada uprawnienie do dokupywania us³ug nieuwzglêdnionych w propozycji cenowej w czasie trwania wydarzenia. Zdarza siê, i¿ podczas wydarzenia, organizator chce dobraæ dla goœci dodatkowe us³ugi, które nie s¹ uwzglêdnione w ofercie, na bazie której wydarzenie jest przeprowadzane. W tej sytuacji w celu unikniêcia póŸniejszych problemów dotycz¹cych zwiêkszenia kwoty koñcowej wydarzenia, wybierana jest osoba, która decyduje jakie elementy mog¹ byæ dokupione. Ilustruj¹c tê sytuacjê mo¿na pos³u¿yæ siê przyk³adem imprezy weselnej do której b³êdnie przewidziano liczbê dostêpnych napoi. Osoba decyzyjna mo¿e tê wartoœæ zwiêkszyæ z pe³n¹ odpowiedzialnoœci¹ zwiêkszenia kosztów. Zawartoœæ pola tekstowego osoby decyzyjnej automatycznie wype³niana jest zawartoœci¹ pola tekstowego \textsl{Imiê i nazwisko}. Istnieje jednak mo¿liwoœæ, aby sprzedawca zmieni³ t¹ wartoœæ na inn¹ poniewa¿ nie zawsze osoba klienta mo¿e byæ osob¹ decyzyjn¹ w czasie trwania wydarzenia.
+
+\item \textsl{TERMIN (od - do)}
+
+\tab Pola te okreœlaj¹ datê rozpoczêcia oraz datê zakoñczenia organizowanego wydarzenia. Data rozpoczêcia odgrywa istotn¹ rolê w tworzonej propozycji przez fakt, i¿ ceny sal uzale¿nione s¹ w³aœnie od miesi¹ca, w którym dane wydarzenie bêdzie organizowane. Po wyborze daty, w polu \textsl{Miesi¹c} ukazuje siê nazwa miesi¹ca na podstawie którego dobierana bêdzie cena wybranej w póŸniejszym etapie tworzenia propozycji cenowej sali.
+
+\item \textsl{CZAS TRWANIA (od - do)}
+
+\tab Czas trwania definiuje planowane godziny, w czasie których przeprowadzone ma byæ wydarzenie. Bezpoœrednio odwo³uj¹ siê one do wpisanej uprzednio daty rozpoczêcia oraz zakoñczenia. Na tej podstawie mo¿liwe jest dok³adne okreœlenie okresu trwania wydarzenia.
+
+\item \textsl{ILOŒÆ OSÓB}
+
+\tab Pole to okreœla planowan¹ liczbê osób, które maj¹ w danym wydarzeniu uczestniczyæ. W celu weryfikacji, czy dana liczba osób fizycznie zmieœci siê na wybranej sali, sprzedawca ma mo¿liwoœæ pos³u¿yæ siê dostêpn¹ poni¿ej prezentowanych pól tabel¹ pomocnicz¹.
+
+\item \textsl{STATUS PROPOZYCJI}
+
+\tab Pole to jest polem informacyjnym, który opisuje status tworzonej propozycji. Domyœlnym statusem podczas stworzenia nowej propozycji jest \textsl{"Nowa"}, któr¹ sprzedawca w sytuacji oczekiwania na decyzjê klienta ma obowi¹zek zmieniæ na \textsl{"W trakcie realizacji"}, natomiast po sfinalizowaniu transakcji oznaczyæ jako \textsl{"Zrealizowana"}. Status propozycji cenowej wyœwietlany jest na liœcie wszystkich propozycji w oknie g³ównym.
+
+\item \textsl{TABELA SAL}
+
+\tab W zale¿noœci od wybranej z listy rozwijanej sali oraz uprzednio wybranej dacie rozpoczêcia wydarzenia, sprzedawca ma mo¿liwoœæ otrzymania informacji o cenie sali, jej powierzchni oraz liczbie dostêpnych miejsc. Informacje te w czasie ustalania szczegó³ów transakcji umo¿liwiaj¹ wybór optymalnego dla potrzeb klienta pomieszczenia, w którym przez wzgl¹d na liczbê dostêpnych miejsc bêdzie mo¿na rozlokowaæ wszystkich uczestników. Wybrana z listy rozwijanej sala wraz z dat¹ rozpoczêcia jednoznacznie identyfikuje pomieszczenie oraz jej cenê, której rekord w sposób automatyczny dodawany jest jako pierwszy w kolejnej zak³adce opisuj¹cej szczegó³y rezerwacji.
+
 \item \ldots
 \end{itemize}
 
-TODO: po edycji graficznej wrzuciæ tab1
+TODO: po edycji graficznej wrzuciæ tab1 testuje jaki jest margines testuje jaki jest margines testuje jaki jest margines testuje jaki jest margines 
 \subsubsection{Szczegó³y rezerwacji}
 TODO: po edycji graficznej wrzuciæ tab2
 \subsubsection{Us³ugi gastronomiczne}
