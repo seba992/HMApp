@@ -9,6 +9,8 @@
 %\drukJednostronny
 \usepackage{tabto}
 
+\renewcommand*{\refname}{Bibliografia}
+
 %% tytu³ promotor i autor (\title to komenda standardowa)
 \title{Projekt i wykonanie aplikacji bazodanowej wspomagaj¹cej pracê wybranej sieci hotelowej}
 \promotor{dr. Jaros³aw Karcewicz}
@@ -197,7 +199,7 @@ Walidacja godziny, analogicznie jak daty, tak¿e mo¿e doprowadziæ do wielu proble
 \subsection{Architektura aplikacji}
 \subsubsection{Wzorce architektoniczne oprogramowania}
 
-W in¿ynierii oprogramowania analogicznie jak w innych dziedzinach, w których przeprowadzana jest operacja budowania zadanego przedmiotu, nale¿y starannie zaplanowaæ jego proces. W tym calu nale¿y kierowaæ siê przyjêtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mówi¹ o tym, i¿ nale¿y dok³adnie okreœliæ wymagania, które powinno budowane oprogramowanie spe³niaæ, a nastêpnie ustaliæ jego ogóln¹ architekturê. Punkt ten jest niebywale wa¿ny z racji na problematycznoœæ zmiany architektury zbudowanego ju¿ systemu. W celu zobrazowania tego zagadnienia mo¿na przywo³aæ operacjê budowy budynku. Wszelkie zmiany dotycz¹ce jego konstrukcji s¹ ciê¿kie do zrealizowania w sytuacji, w której jest on ju¿ fizycznie gotowy. Kolejne fazy polegaj¹ na realizacji opisanej wczeœniej architektury poprzez implementacjê wszystkich komponentów oprogramowania wraz z ich wzajemnymi po³¹czeniami, przetestowaniem ca³ego systemu oraz jego finalnemu uruchomieniu wraz z usuwaniem wykrytych podczas jego dzia³ania b³êdów.
+W in¿ynierii oprogramowania analogicznie jak w innych dziedzinach, w których przeprowadzana jest operacja budowania zadanego przedmiotu, nale¿y starannie zaplanowaæ jego proces. W tym celu nale¿y kierowaæ siê przyjêtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mówi¹ o tym, i¿ nale¿y dok³adnie okreœliæ wymagania, które powinno budowane oprogramowanie spe³niaæ, a nastêpnie ustaliæ jego ogóln¹ architekturê. Punkt ten jest niebywale wa¿ny z racji na problematycznoœæ zmiany architektury zbudowanego ju¿ systemu. W celu zobrazowania tego zagadnienia mo¿na przywo³aæ operacjê budowy budynku. Wszelkie zmiany dotycz¹ce jego konstrukcji s¹ ciê¿kie do zrealizowania w sytuacji, w której jest on ju¿ fizycznie gotowy. Kolejne fazy polegaj¹ na realizacji opisanej wczeœniej architektury poprzez implementacjê wszystkich komponentów oprogramowania wraz z ich wzajemnymi po³¹czeniami, przetestowaniem ca³ego systemu oraz jego finalnemu uruchomieniu wraz z usuwaniem wykrytych podczas jego dzia³ania b³êdów.
 
 Odnosz¹c siê do planowania architektury systemu bardzo pomocne okazuj¹ siê dostêpne wzorce architektoniczne. Wzorce te s¹ to sprawdzone oraz zaakceptowane sposoby rozwi¹zania danego problemu z dziedziny architektury oprogramowania, okreœlaj¹ce ogóln¹ strukturê systemu informatycznego, zasady komunikacji pomiêdzy komponentami oraz elementy wchodz¹ce w jego sk³ad wraz z opisem ich funkcji. Wybór odpowiedniego wzorca w du¿ej mierze zale¿ny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwi¹zaniem jest MVVM (Model View ViewModel) \cite{MvvmOpis}, który jest zmodyfikowan¹ wersj¹ wzorca MVC, zawieraj¹c¹ specjalizacjê modelu prezentacji.
 
@@ -212,7 +214,7 @@ MVVM jest to wzorzec, który dziêki funkcjonalnoœci odseparowania warstwy prezent
 \end{figure}
 %www.tomaszmalesza.pl/wp-content/uploads/2012/08/MVVM\_Relation1.jpg
 
-Model to warstwa, która odpowiedzialna jest w omawianym wzorcu za logikê biznesow¹ aplikacjil \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu in¿ynierskiego warstwa ta reprezentowana jest przez przez klasy, które utworzone zosta³y za pomoc¹ biblioteki Entity Framework, s³u¿¹cej do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Wszelkie klasy zawieraj¹ce dane, które maja przekazane byæ z poziomu modelu do warstwy widoku, z którego u¿ytkownik mo¿e owe informacje odczytaæ zobowi¹zane s¹ do implementacji interfejsu INotifyPropertyChanged lub INotifyCollectionChanged, który wspó³pracuje z bindingiem \cite{DataBinding} wykorzystywanym w WPF.
+Model to warstwa, która odpowiedzialna jest w omawianym wzorcu za logikê biznesow¹ aplikacji \cite{LogikaBiznesowa}. W przypadku przedstawianego projektu in¿ynierskiego warstwa ta reprezentowana jest przez przez klasy, które utworzone zosta³y za pomoc¹ biblioteki Entity Framework, s³u¿¹cej do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Wszelkie klasy zawieraj¹ce dane, które maja przekazane byæ z poziomu modelu do warstwy widoku, z którego u¿ytkownik mo¿e owe informacje odczytaæ zobowi¹zane s¹ do implementacji interfejsu INotifyPropertyChanged lub INotifyCollectionChanged, który wspó³pracuje z bindingiem \cite{DataBinding} wykorzystywanym w WPF.
 
 ViewModel zajmuje siê reprezentacj¹ danych, które wysy³ane s¹ do widoku, nie maj¹c przy tym ¿adnej referencji do niego. Widok odnosi siê do elementów ViewModelu za poœrednictwem komend oraz wspomnianych operacji bindowania, co zapewnia pe³n¹ separacjê warstwy ViewModelu i umo¿liwia przetestowanie jej odrêbnie od modelu i czêœci prezentuj¹cej.
 
@@ -292,7 +294,7 @@ Pierwsz¹ opcj¹ jest podejœcie Database First, które okazuje siê przydatne w sytu
 
 Kolejn¹ metod¹ jest Code First umo¿liwiaj¹ce utworzenie fizycznego modelu bazy danych na podstawie w³asnorêcznie napisanych klas w jêzyku C\# wraz z jej odpowiednimi adnotacjami \cite{AdnotacjeCodeFirst}.
 
-Ostatnie podejœcie to Model First, które polega na zbudowaniu fizycznego modelu bazy danych pos³uguj¹c siê wbudowanemu we framework Designerowi, który z znacznym stopniu u³atwia tworzenie encji oraz w³aœciwoœci bazy danych. Œcie¿ka ta jest wykorzystywana w sytuacji posiadania wy³¹cznie schematu bazy danych. Ze zbudowanego modelu generowany jest fizyczny model bazy danych jak i równie¿ klasy, które reprezentuj¹ model obiektowy.
+Ostatnie podejœcie to Model First, które polega na zbudowaniu fizycznego modelu bazy danych pos³uguj¹c siê wbudowanemu we framework Designerowi, który w znacznym stopniu u³atwia tworzenie encji oraz w³aœciwoœci bazy danych. Œcie¿ka ta jest wykorzystywana w sytuacji posiadania wy³¹cznie schematu bazy danych. Ze zbudowanego modelu generowany jest fizyczny model bazy danych jak i równie¿ klasy, które reprezentuj¹ model obiektowy.
 
 \subsubsection{Stosowanie poleceñ bazodanowych ze strony projektu C\# za pomoc¹ Linq to Entities}
 
@@ -306,7 +308,7 @@ var exampleQuerry = (from records in _context.TableName
 		select records);
 \end{lstlisting}
 
-Edycja danych znajduj¹cych siê w bazie danych z poziomu projektu programistycznego realizowana jest poprzez modyfikacjê opisanego polecenia \textsl{SELECT}. Modyfikacja ta polega na przekszta³ceniu typu otrzymanego obiektu na typ klasy modelu Entity, która reprezentuje interesuj¹c¹ nas bazodanow¹ tabelê. W przypadku operowania na jednym rekordzie, przekszta³cenie te nale¿y dokonaæ pos³uguj¹c siê metod¹ \textsl{SingleOrDefault}, natomiast w przypadku wielu rekordów metod¹ \textsl{ToList}, która dokona konwersji na listê obiektów o interesuj¹cym nas typie. Do takiego utworzonego obiektu, programista ma mo¿liwoœæ odwo³ywania siê i dokonywania zmian w standardowy dla jêzyka C\# sposób. Po operacji modyfikacji, wszystkie zmiany nale¿y potwierdziæ metod¹ \textsl{SaveChanges} na obiekcie modelu Entity, która uaktualnia zmodyfikowane elementy na poziomie bazy danych.
+Edycja danych znajduj¹cych siê w bazie danych z poziomu projektu programistycznego realizowana jest poprzez modyfikacjê opisanego polecenia \textsl{SELECT}. Modyfikacja ta polega na przekszta³ceniu typu otrzymanego obiektu na typ klasy modelu Entity, który reprezentuje edytowan¹ bazodanow¹ tabelê. W przypadku operowania na jednym rekordzie, przekszta³cenie te nale¿y dokonaæ pos³uguj¹c siê metod¹ \textsl{SingleOrDefault}, natomiast w przypadku wielu rekordów metod¹ \textsl{ToList}, która dokona konwersji na listê obiektów po¿¹danego typu. Do takiego utworzonego obiektu, programista ma mo¿liwoœæ odwo³ywania siê i dokonywania zmian w standardowy dla jêzyka C\# sposób. Po operacji modyfikacji, wszystkie zmiany nale¿y potwierdziæ metod¹ \textsl{SaveChanges} na obiekcie modelu Entity, która uaktualnia zmodyfikowane elementy na poziomie bazy danych.
 
 \begin{lstlisting}[caption= {Potwierdzenie dokonanych zmian}]
 _context.SaveChanges()
@@ -434,12 +436,29 @@ Pobierane z bazy danych ceny produktów s¹ cenami przyjêtymi jako minimalne ceny 
 
 TODO: po edycji graficznej wrzuciæ tab3 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
 \end{itemize}
+
 \subsubsection{Us³ugi noclegowe}
 
 Zak³adka us³ug noclegowych opisuje liczbê oraz rodzaj wybranych pokoi hotelowych. Lista dostêpnych pokoi wraz z wyszczególnionymi cenami automatycznie dostarczana jest do okna z bazy danych. Rol¹ sprzedawcy jest wybór odpowiedniej ich iloœci oraz liczby dni. Jedyn¹ mo¿liwoœci¹ obni¿enia ustalonych przez menad¿era cen jest ustalenie rabatu, który jednakowo obowi¹zuje wszystkie rodzaje pokoi. Po wpisaniu odpowiednich wartoœci, wewnêtrzne mechanizmy programu przeliczaj¹ wszystkie wartoœci umo¿liwiaj¹c podgl¹d ich zsumowanych wartoœci netto i brutto.
 
+TODO: po edycji graficznej wrzuciæ tab4 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+
 \subsubsection{Us³ugi dodatkowe i forma p³atnoœci}
-TODO: po edycji graficznej wrzuciæ tab5
+
+Ostatni¹ zak³adk¹ procesu tworzenia nowej propozycji cenowej jest zak³adka umo¿liwiaj¹ca dodanie indywidualnie ustalanych elementów, które nie s¹ dostêpne w zakresie standardowych us³ug oferowanych przez sieæ hotelow¹ oraz finalnej formy w której realizowana bêdzie zap³ata.
+
+W celu realizacji procesu dodania us³ugi niestandardowej, pracownik ma obowi¹zek uzyskania od prze³o¿onego informacji dotycz¹cej fizycznej mo¿liwoœci jej realizacji podczas organizowanego wydarzenia i w sytuacji akceptacji mo¿e zapisaæ jej nazwê w polu \textsl{Rodzaj us³ugi}, uzupe³niæ ustalon¹ cenê brutto wraz z wartoœci¹ VAT oraz wybraæ iloœæ oraz liczbê dni. Tak utworzony rekord us³ugi zostanie, analogicznie jak w przypadku poprzednich zak³adek odpowiednio przeliczony i wyœwietlony w polach dotycz¹cych wartoœci
+
+\begin{itemize}
+\item \textsl{US£UGI DODATKOWE}
+
+
+TODO: po edycji graficznej wrzuciæ tab5 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+\end{itemize}
+
+\subsubsection{Zapis nowej propozycji cenowej}
+
+
 
 \subsection{Edycja istniej¹cej propozycji cenowej}
 \subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
@@ -562,6 +581,7 @@ Oraz
 \begin{tw}
 Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
 \end{tw}
+
 \begin{thebibliography}{12}
 
 %Seba wstêp
