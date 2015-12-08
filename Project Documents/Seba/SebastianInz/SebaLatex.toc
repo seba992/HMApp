@@ -2,67 +2,72 @@
 \contentsline {section}{\numberline {1}\kernsekcyjny Geneza projektu}{11}
 \contentsline {section}{\numberline {2}\kernsekcyjny Analiza przedwdro\.zeniowa}{15}
 \contentsline {section}{\numberline {3}\kernsekcyjny Istniej\k ace rozwi\k azania konkurencyjne}{17}
-\contentsline {section}{\numberline {4}\kernsekcyjny Zastosowane rozwi\k azania}{19}
-\contentsline {subsection}{\numberline {4.1}\kernsubsekcyjny Wykorzystana technologia}{19}
-\contentsline {subsubsection}{\numberline {4.1.1}\kernsubsubsekcyjny .NET/C\#}{19}
-\contentsline {subsubsection}{\numberline {4.1.2}\kernsubsubsekcyjny WPF}{19}
-\contentsline {subsubsection}{\numberline {4.1.3}\kernsubsubsekcyjny XAML}{19}
-\contentsline {subsection}{\numberline {4.2}\kernsubsekcyjny Wykorzystane narz\k edzia}{19}
-\contentsline {subsubsection}{\numberline {4.2.1}\kernsubsubsekcyjny Visual Studio 2013}{19}
-\contentsline {subsubsection}{\numberline {4.2.2}\kernsubsubsekcyjny SQL Server Management Studio}{19}
-\contentsline {subsubsection}{\numberline {4.2.3}\kernsubsubsekcyjny Trello}{20}
-\contentsline {subsubsection}{\numberline {4.2.4}\kernsubsubsekcyjny SourceTree + GitHub}{22}
-\contentsline {subsubsection}{\numberline {4.2.5}\kernsubsubsekcyjny ReSharper}{22}
-\contentsline {subsubsection}{\numberline {4.2.6}\kernsubsubsekcyjny Jenkins}{23}
-\contentsline {subsection}{\numberline {4.3}\kernsubsekcyjny Biblioteki zewn\k etrzne}{23}
-\contentsline {subsubsection}{\numberline {4.3.1}\kernsubsubsekcyjny Extended WPF Toolkit}{24}
-\contentsline {subsubsection}{\numberline {4.3.2}\kernsubsubsekcyjny PDFsharp \& MigraDoc}{25}
-\contentsline {section}{\numberline {5}\kernsekcyjny Implementacja}{27}
-\contentsline {subsection}{\numberline {5.1}\kernsubsekcyjny Architektura aplikacji}{27}
-\contentsline {subsubsection}{\numberline {5.1.1}\kernsubsubsekcyjny Wzorce architektoniczne oprogramowania}{27}
-\contentsline {subsubsection}{\numberline {5.1.2}\kernsubsubsekcyjny Zastosowany wzorzec architektoniczny \IeC {\textendash } MVVM}{27}
-\contentsline {subsubsection}{\numberline {5.1.3}\kernsubsubsekcyjny Model aplikacji}{29}
-\contentsline {subsection}{\numberline {5.2}\kernsubsekcyjny Architektura bazy danych}{29}
-\contentsline {subsubsection}{\numberline {5.2.1}\kernsubsubsekcyjny Definicja bazy danych}{29}
-\contentsline {subsubsection}{\numberline {5.2.2}\kernsubsubsekcyjny MS-SQL \IeC {\textendash } Zastosowany system zarz\k adzania baz\k a danych}{29}
-\contentsline {subsubsection}{\numberline {5.2.3}\kernsubsubsekcyjny Budowa bazy danych u\.zytej w projekcie}{29}
-\contentsline {subsection}{\numberline {5.3}\kernsubsekcyjny Komunikacja bazy danych z projektem programistycznym}{29}
-\contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Mapowanie obiektowo-relacyjne}{29}
-\contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny Zastosowane narz\k edzie ORM \IeC {\textendash } Entity Framework}{31}
-\contentsline {subsubsection}{\numberline {5.3.3}\kernsubsubsekcyjny Stosowanie polece\'n bazodanowych ze strony projektu C\# za pomoc\k a Linq to Entities}{32}
-\contentsline {subsection}{\numberline {5.4}\kernsubsekcyjny Automatyzacja wydawania kolejnych wersji programu}{33}
-\contentsline {subsubsection}{\numberline {5.4.1}\kernsubsubsekcyjny Continuous Integration \IeC {\textendash } definicja}{33}
-\contentsline {subsubsection}{\numberline {5.4.2}\kernsubsubsekcyjny Continuous Deployment \IeC {\textendash } definicja}{33}
-\contentsline {subsubsection}{\numberline {5.4.3}\kernsubsubsekcyjny Continuous Delivery \IeC {\textendash } definicja}{33}
-\contentsline {subsubsection}{\numberline {5.4.4}\kernsubsubsekcyjny Schemat budowania programu}{33}
-\contentsline {section}{\numberline {6}\kernsekcyjny Testowanie aplikacji}{35}
-\contentsline {subsection}{\numberline {6.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{35}
-\contentsline {subsection}{\numberline {6.2}\kernsubsekcyjny Zarz\k adzanie kontem sprzedawcy oraz administratora (obs\IeC {\l }uga)}{36}
-\contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{36}
-\contentsline {subsubsection}{\numberline {6.3.1}\kernsubsubsekcyjny Opis klienta}{36}
-\contentsline {subsubsection}{\numberline {6.3.2}\kernsubsubsekcyjny Sala i jej wyposa\.zenie}{39}
-\contentsline {subsubsection}{\numberline {6.3.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{40}
-\contentsline {subsubsection}{\numberline {6.3.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{41}
-\contentsline {subsubsection}{\numberline {6.3.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{41}
-\contentsline {subsection}{\numberline {6.4}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{41}
-\contentsline {subsection}{\numberline {6.5}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{41}
-\contentsline {subsection}{\numberline {6.6}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{41}
-\contentsline {subsubsection}{\numberline {6.6.1}\kernsubsubsekcyjny Dodawanie konta}{41}
-\contentsline {subsubsection}{\numberline {6.6.2}\kernsubsubsekcyjny Edycja konta}{41}
-\contentsline {subsubsection}{\numberline {6.6.3}\kernsubsubsekcyjny Usuwanie konta}{41}
-\contentsline {subsection}{\numberline {6.7}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{41}
-\contentsline {section}{\numberline {7}\kernsekcyjny Specyfikacja wewn\k etrzna}{43}
-\contentsline {subsection}{\numberline {7.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{43}
-\contentsline {subsubsection}{\numberline {7.1.1}\kernsubsubsekcyjny Bezpiecze\'nstwo procesu logowania}{43}
-\contentsline {subsubsection}{\numberline {7.1.2}\kernsubsubsekcyjny Szyfrowanie hase\IeC {\l } - funkcja skr\'otu SHA2}{44}
-\contentsline {subsection}{\numberline {7.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{44}
-\contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{44}
-\contentsline {subsection}{\numberline {7.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{44}
-\contentsline {subsubsection}{\numberline {7.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{44}
-\contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{44}
-\contentsline {section}{\numberline {8}\kernsekcyjny Perspektywy rozwoju oprogramowania}{45}
-\contentsline {section}{\numberline {9}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{47}
-\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{49}
-\contentsline {section}{Rysunki}{51}
-\contentsline {section}{Za\IeC {\l }\k aczniki}{53}
-\contentsline {section}{Literatura}{55}
+\contentsline {section}{\numberline {4}\kernsekcyjny Zastosowane rozwi\k azania}{21}
+\contentsline {subsection}{\numberline {4.1}\kernsubsekcyjny Wykorzystana technologia}{21}
+\contentsline {subsubsection}{\numberline {4.1.1}\kernsubsubsekcyjny .NET/C\#}{21}
+\contentsline {subsubsection}{\numberline {4.1.2}\kernsubsubsekcyjny WPF}{21}
+\contentsline {subsubsection}{\numberline {4.1.3}\kernsubsubsekcyjny XAML}{21}
+\contentsline {subsection}{\numberline {4.2}\kernsubsekcyjny Wykorzystane narz\k edzia}{21}
+\contentsline {subsubsection}{\numberline {4.2.1}\kernsubsubsekcyjny Visual Studio 2013}{21}
+\contentsline {subsubsection}{\numberline {4.2.2}\kernsubsubsekcyjny SQL Server Management Studio}{21}
+\contentsline {subsubsection}{\numberline {4.2.3}\kernsubsubsekcyjny Trello}{22}
+\contentsline {subsubsection}{\numberline {4.2.4}\kernsubsubsekcyjny SourceTree + GitHub}{24}
+\contentsline {subsubsection}{\numberline {4.2.5}\kernsubsubsekcyjny ReSharper}{24}
+\contentsline {subsubsection}{\numberline {4.2.6}\kernsubsubsekcyjny Jenkins}{25}
+\contentsline {subsection}{\numberline {4.3}\kernsubsekcyjny Biblioteki zewn\k etrzne}{26}
+\contentsline {subsubsection}{\numberline {4.3.1}\kernsubsubsekcyjny Extended WPF Toolkit}{26}
+\contentsline {subsubsection}{\numberline {4.3.2}\kernsubsubsekcyjny PDFsharp \& MigraDoc}{28}
+\contentsline {section}{\numberline {5}\kernsekcyjny Implementacja}{29}
+\contentsline {subsection}{\numberline {5.1}\kernsubsekcyjny Architektura aplikacji}{29}
+\contentsline {subsubsection}{\numberline {5.1.1}\kernsubsubsekcyjny Wzorce architektoniczne oprogramowania}{29}
+\contentsline {subsubsection}{\numberline {5.1.2}\kernsubsubsekcyjny Zastosowany wzorzec architektoniczny \IeC {\textendash } MVVM}{29}
+\contentsline {subsubsection}{\numberline {5.1.3}\kernsubsubsekcyjny Model aplikacji}{31}
+\contentsline {subsection}{\numberline {5.2}\kernsubsekcyjny Architektura bazy danych}{31}
+\contentsline {subsubsection}{\numberline {5.2.1}\kernsubsubsekcyjny Definicja bazy danych}{31}
+\contentsline {subsubsection}{\numberline {5.2.2}\kernsubsubsekcyjny MS-SQL \IeC {\textendash } Zastosowany system zarz\k adzania baz\k a danych}{31}
+\contentsline {subsubsection}{\numberline {5.2.3}\kernsubsubsekcyjny Budowa bazy danych u\.zytej w projekcie}{31}
+\contentsline {subsection}{\numberline {5.3}\kernsubsekcyjny Komunikacja bazy danych z projektem programistycznym}{31}
+\contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Mapowanie obiektowo-relacyjne}{31}
+\contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny Zastosowane narz\k edzie ORM \IeC {\textendash } Entity Framework}{33}
+\contentsline {subsubsection}{\numberline {5.3.3}\kernsubsubsekcyjny Stosowanie polece\'n bazodanowych ze strony projektu C\# za pomoc\k a Linq to Entities}{34}
+\contentsline {subsection}{\numberline {5.4}\kernsubsekcyjny Automatyzacja wydawania kolejnych wersji programu}{35}
+\contentsline {subsubsection}{\numberline {5.4.1}\kernsubsubsekcyjny Continuous Integration \IeC {\textendash } definicja}{35}
+\contentsline {subsubsection}{\numberline {5.4.2}\kernsubsubsekcyjny Continuous Deployment \IeC {\textendash } definicja}{35}
+\contentsline {subsubsection}{\numberline {5.4.3}\kernsubsubsekcyjny Continuous Delivery \IeC {\textendash } definicja}{35}
+\contentsline {subsubsection}{\numberline {5.4.4}\kernsubsubsekcyjny Schemat budowania programu}{35}
+\contentsline {section}{\numberline {6}\kernsekcyjny Testowanie aplikacji}{37}
+\contentsline {subsection}{\numberline {6.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{37}
+\contentsline {subsection}{\numberline {6.2}\kernsubsekcyjny Zarz\k adzanie kontem sprzedawcy oraz administratora (obs\IeC {\l }uga)}{38}
+\contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{38}
+\contentsline {subsubsection}{\numberline {6.3.1}\kernsubsubsekcyjny Opis klienta}{38}
+\contentsline {subsubsection}{\numberline {6.3.2}\kernsubsubsekcyjny Sala i jej wyposa\.zenie}{41}
+\contentsline {subsubsection}{\numberline {6.3.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{42}
+\contentsline {subsubsection}{\numberline {6.3.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{43}
+\contentsline {subsubsection}{\numberline {6.3.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{43}
+\contentsline {subsection}{\numberline {6.4}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{43}
+\contentsline {subsection}{\numberline {6.5}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{43}
+\contentsline {subsection}{\numberline {6.6}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{43}
+\contentsline {subsubsection}{\numberline {6.6.1}\kernsubsubsekcyjny Dodawanie konta}{43}
+\contentsline {subsubsection}{\numberline {6.6.2}\kernsubsubsekcyjny Edycja konta}{43}
+\contentsline {subsubsection}{\numberline {6.6.3}\kernsubsubsekcyjny Usuwanie konta}{43}
+\contentsline {subsection}{\numberline {6.7}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{44}
+\contentsline {section}{\numberline {7}\kernsekcyjny Specyfikacja wewn\k etrzna}{45}
+\contentsline {subsection}{\numberline {7.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{45}
+\contentsline {subsubsection}{\numberline {7.1.1}\kernsubsubsekcyjny Bezpiecze\'nstwo procesu logowania}{45}
+\contentsline {subsubsection}{\numberline {7.1.2}\kernsubsubsekcyjny Szyfrowanie hase\IeC {\l } - funkcja skr\'otu SHA2}{46}
+\contentsline {subsection}{\numberline {7.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{46}
+\contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{46}
+\contentsline {subsubsection}{\numberline {7.3.1}\kernsubsubsekcyjny Opis klienta}{46}
+\contentsline {subsubsection}{\numberline {7.3.2}\kernsubsubsekcyjny Sala i jej wyposa\.zenie}{46}
+\contentsline {subsubsection}{\numberline {7.3.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{46}
+\contentsline {subsubsection}{\numberline {7.3.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{46}
+\contentsline {subsubsection}{\numberline {7.3.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{46}
+\contentsline {subsection}{\numberline {7.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{46}
+\contentsline {subsubsection}{\numberline {7.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{46}
+\contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{46}
+\contentsline {section}{\numberline {8}\kernsekcyjny Perspektywy rozwoju oprogramowania}{47}
+\contentsline {section}{\numberline {9}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{49}
+\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{51}
+\contentsline {section}{Rysunki}{53}
+\contentsline {section}{Za\IeC {\l }\k aczniki}{55}
+\contentsline {section}{Literatura}{57}
