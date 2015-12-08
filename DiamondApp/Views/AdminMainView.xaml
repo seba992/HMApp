@@ -314,8 +314,8 @@
                     </Grid.RowDefinitions>
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="125.5" />
-                        <ColumnDefinition Width="129.5"/>
+                        <ColumnDefinition Width="95" />
+                        <ColumnDefinition Width="161"/>
                         <ColumnDefinition Width="178" />
                         <ColumnDefinition Width="179" />
                         <ColumnDefinition Width="61" />
@@ -326,7 +326,7 @@
                     </Grid.ColumnDefinitions>
 
                     <!--definicja calej tabeli/-->
-                    <Label Grid.Row="1" Grid.Column="0" Content="KATEGORIA USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
+                    <Label Grid.Row="1" Grid.Column="0" Content="KATEGORIA" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="1" Grid.Column="1" Content="RODZAJ USŁUGI" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="1" Grid.Column="2" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
                     <Label Grid.Row="1" Grid.Column="3" Content="CENA JEDNOSTKOWA NETTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
