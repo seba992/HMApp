@@ -202,8 +202,9 @@ Walidacja godziny, analogicznie jak daty, tak¿e mo¿e doprowadziæ do wielu proble
 
 \section{Implementacja}
 \subsection{Architektura aplikacji}
-\subsubsection{Wzorce architektoniczne oprogramowania}
 
+\subsubsection{Wzorce architektoniczne oprogramowania}
+\label{rozdzial:FazyOprogramowania}
 W in¿ynierii oprogramowania analogicznie jak w innych dziedzinach, w których przeprowadzana jest operacja budowania zadanego przedmiotu, nale¿y starannie zaplanowaæ jego proces. W tym celu nale¿y kierowaæ siê przyjêtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mówi¹ o tym, i¿ nale¿y dok³adnie okreœliæ wymagania, które powinno budowane oprogramowanie spe³niaæ, a nastêpnie ustaliæ jego ogóln¹ architekturê. Punkt ten jest niebywale wa¿ny z racji na problematycznoœæ zmiany architektury zbudowanego ju¿ systemu. W celu zobrazowania tego zagadnienia mo¿na przywo³aæ operacjê budowy budynku. Wszelkie zmiany dotycz¹ce jego konstrukcji s¹ ciê¿kie do zrealizowania w sytuacji, w której jest on ju¿ fizycznie gotowy. Kolejne fazy polegaj¹ na realizacji opisanej wczeœniej architektury poprzez implementacjê wszystkich komponentów oprogramowania wraz z ich wzajemnymi po³¹czeniami, przetestowaniem ca³ego systemu oraz jego finalnemu uruchomieniu wraz z usuwaniem wykrytych podczas jego dzia³ania b³êdów.
 
 Odnosz¹c siê do planowania architektury systemu bardzo pomocne okazuj¹ siê dostêpne wzorce architektoniczne. Wzorce te s¹ to sprawdzone oraz zaakceptowane sposoby rozwi¹zania danego problemu z dziedziny architektury oprogramowania, okreœlaj¹ce ogóln¹ strukturê systemu informatycznego, zasady komunikacji pomiêdzy komponentami oraz elementy wchodz¹ce w jego sk³ad wraz z opisem ich funkcji. Wybór odpowiedniego wzorca w du¿ej mierze zale¿ny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwi¹zaniem jest MVVM (Model View ViewModel) \cite{MvvmOpis}, który jest zmodyfikowan¹ wersj¹ wzorca MVC, zawieraj¹c¹ specjalizacjê modelu prezentacji.
@@ -501,10 +502,26 @@ QUESTION: Czy potrzebne bêdzie szczegó³owe opisywanie funkcji skrótu + opis dzia
 
 \section{Perspektywy rozwoju oprogramowania}
 
+W fazie implementacji za³o¿onych modu³ów prezentowanej aplikacji napotkano na wiele problemów zwi¹zanych ze zmian¹ wymagañ projektowych i sposobem realizacji ustalonych funkcjonalnoœci. Wraz z biegiem czasu powstawa³y nowe pomys³y dotycz¹ce usprawnienia istniej¹cych rozwi¹zañ, które niejednokrotnie zwiêkszy³yby ich wydajnoœæ oraz efektywnoœæ. Rozwi¹zania te nie zawsze mog³y byæ jednak wprowadzone przez pryzmat czasu którego to wymaga³y w celu ich implementacji, przetestowania oraz po³¹czenia z istniej¹cym ju¿ systemem. Niejednokrotnie proponowane zmiany wi¹za³y siê tak¿e z modyfikacj¹ istniej¹cej architektury systemu, co w znacz¹cy sposób zmienia³oby zaplanowany wczeœniej harmonogram prac i wyd³u¿a³oby finalne ukoñczenie projektu.
+
+\subsection{wersja offline}
 
 - wersja offline
+\subsection{logowanie}
+
 - pierwsze logowanie: ponowne wpisanie has³a dla potwierdzenia zgodnoœci
+
+\subsection{tworzenie propozycji}
+
 - dynamicznie rozwijane listy podczas tworzenia propozycji cenowej (iloœæ rzeczy do wyboru w ka¿dym tabie)
+
+\subsection{historia zmian propozycji cenowej}
+
+- widoczne logi zmian, widaæ co sprzedawca edytowa³ i kiedy
+
+\subsection{modu³ statystyk}
+
+- kto ile zorganizowa³ wydarzeñ, na jakie kwoty, ogólna aktywnoœæ sprzedawców widoczna z konta administratora
 
 %% UWaga na \newlineTekst oraz \newlineSpis. Mo¿na te¿ u¿yæ \newline, dzia³a jak \newlineSpis\newlineTekst
 \section[Tytu³ drugiego rozdzia³u. Bardzo d³ugi \ldots]
