@@ -67,6 +67,10 @@
 \contentsline {subsubsection}{\numberline {7.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{48}
 \contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{48}
 \contentsline {section}{\numberline {8}\kernsekcyjny Perspektywy rozwoju oprogramowania}{49}
+\contentsline {subsection}{\numberline {8.1}\kernsubsekcyjny logowanie}{50}
+\contentsline {subsection}{\numberline {8.2}\kernsubsekcyjny tworzenie propozycji}{50}
+\contentsline {subsection}{\numberline {8.3}\kernsubsekcyjny historia zmian propozycji cenowej}{50}
+\contentsline {subsection}{\numberline {8.4}\kernsubsekcyjny modu\IeC {\l } statystyk}{50}
 \contentsline {section}{\numberline {9}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{51}
 \contentsline {section}{Dodatek: M\'oj specjalny dodatek}{53}
 \contentsline {section}{Rysunki}{55}
