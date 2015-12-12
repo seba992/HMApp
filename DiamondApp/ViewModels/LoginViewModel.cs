@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using DiamondApp.Model;
 using DiamondApp.Tools.MvvmClasses;
+using DiamondApp.Tools.Validators;
 using DiamondApp.Views;
 
 namespace DiamondApp.ViewModels
@@ -18,6 +19,7 @@ namespace DiamondApp.ViewModels
         private string _userType;
         private string _userLogin;
         private bool _allowToLog;
+        private bool _isWrongPassword;
 
         public LoginViewModel()
         {
@@ -36,11 +38,11 @@ namespace DiamondApp.ViewModels
                 RaisePropertyChanged("UserLogin");
                 _loginCommand.RaiseCanExecuteChanged(); // sprawdz czy user nacisnal przycisk logowania
                 // działa - odkomentować gdy wersja beta :D
-//                var q = (from s in _ctx.Users
-//                    where _userLogin == s.Login
-//                    select s).SingleOrDefault();
-//                if (q != null && q.FirstLogin.ToUpper() == "T")
-//                    MessageBox.Show("Wymagana zmiana hasła! Wprowadź swoje nowe hasło celu jego ustawienia.");
+                var q = (from s in _ctx.Users
+                    where _userLogin == s.Login
+                    select s).SingleOrDefault();
+                if (q != null && q.FirstLogin.ToUpper() == "T")
+                    MessageBox.Show("Wymagana zmiana hasła! Wprowadź swoje nowe hasło celu jego ustawienia.");
             }
         }
 
@@ -82,25 +84,34 @@ namespace DiamondApp.ViewModels
 
                 // jeżeli w bazie jest tylko jeden użytkownik o podanej nazwie użytkownika oraz jest to jego pierwsze logowanie
                 if (userToLogin.Count() == 1 && userToLogin.SingleOrDefault().FirstLogin.ToUpper() == "T") 
-                { 
-                    //.Password = ShaConverter.sha256_hash(passBox.Password);
-                    userToLogin.First().Password = passBox.Password;    // przypisz do konta użytkownika wpisane przez niego hasło
-                    userToLogin.First().FirstLogin = "f";   // zmień tryb logowania
-                    UserId = userToLogin.First().Id;    // przypisz Id użytkownika w celu umożliwienia jego jednoznacznej identyfikacji
-                    _userType = userToLogin.First().AccountPrivileges.AccountType;  // uzyskaj typ konta użytkownika znajdujący się w bazie danych
-                    _ctx.SaveChanges(); // zapisz zmiany
-                    _allowToLog = true; // umożliwienie zalogowania się
+                {
+                    if (PasswordValidator.ValidatePassword(passBox.Password))
+                    {
+                        //.Password = ShaConverter.sha256_hash(passBox.Password);
+                        userToLogin.First().Password = passBox.Password;    // przypisz do konta użytkownika wpisane przez niego hasło
+                        userToLogin.First().FirstLogin = "f";   // zmień tryb logowania
+                        UserId = userToLogin.First().Id;    // przypisz Id użytkownika w celu umożliwienia jego jednoznacznej identyfikacji
+                        _userType = userToLogin.First().AccountPrivileges.AccountType;  // uzyskaj typ konta użytkownika znajdujący się w bazie danych
+                        _ctx.SaveChanges(); // zapisz zmiany
+                        _allowToLog = true; // umożliwienie zalogowania się
+                        _isWrongPassword = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hasło musi zawierac 8-15 znaków, dużą literę, małą literę oraz cyfrę. Spróbuj ponownie");
+                        _isWrongPassword = true;
+                    }
                 }
                 //.Password == ShaConverter.sha256_hash(passBox.Password))
                 // jeśli w bazie jest tylko jeden użytkownik o podanej nazwie użytkownika oraz podana nazwa konta oraz przypisane do niego hasło jest poprawne
                 else if (userToLogin.Count() == 1 && userToLogin.First().Login == _userLogin && userToLogin.First().Password == passBox.Password)
                 {
                     _userType = userToLogin.First().AccountPrivileges.AccountType;
-                    UserId = userToLogin.First().Id; 
+                    UserId = userToLogin.First().Id;
                     _allowToLog = true;
                 }
                 // jeżli użytkownik otrzymał dostęp do logowania
-                if (_allowToLog)
+                if (_allowToLog && _isWrongPassword == false)
                 {
                     // w zależności od typu konta uruchom okno główne
                     if (_userType.ToUpper() == "A")
@@ -122,10 +133,18 @@ namespace DiamondApp.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Podana nazwa użytkownika i/lub hasło jest niepoprawne!" +
-                                    "Spróbuj ponownie!");
-                    UserLogin = string.Empty;
-                    passBox.Clear();
+                    if (_isWrongPassword)
+                    {
+                        passBox.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Podana nazwa użytkownika i/lub hasło jest niepoprawne!" +
+                                        "Spróbuj ponownie!");
+                        UserLogin = string.Empty;
+                        passBox.Clear();
+                    }
+
                 }
             }
             catch (Exception ex)

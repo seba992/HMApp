@@ -212,6 +212,7 @@
     <Compile Include="Tools\Pdf\PdfMaker.cs" />
     <Compile Include="Tools\MvvmClasses\RelayCommand.cs" />
     <Compile Include="Tools\MvvmClasses\RelayCommandGeneric.cs" />
+    <Compile Include="Tools\Validators\PasswordValidator.cs" />
     <Compile Include="ViewModels\AdminViewModels\AddUserViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModels\DictionaryViewModel.cs" />
