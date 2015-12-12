@@ -98,7 +98,8 @@ namespace DiamondApp.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Hasło musi zawierac 8-15 znaków, dużą literę, małą literę oraz cyfrę. Spróbuj ponownie");
+                        MessageBox.Show("Hasło musi zawierac przynajmniej 8 znaków w tym przynajmniej jedną dużą literę, małą literę oraz cyfrę. " + Environment.NewLine+
+                                        "Spróbuj ponownie!");
                         _isWrongPassword = true;
                     }
                 }
