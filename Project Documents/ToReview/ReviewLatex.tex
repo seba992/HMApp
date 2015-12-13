@@ -518,7 +518,7 @@ TODO: po edycji graficznej wrzuciæ przycisk zapisu + odwo³anie do niego
 \subsubsection{Edycja konta}
 \subsubsection{Usuwanie konta}
 \subsection{Modyfikacja s³owników cenowych}
-Modyfikacja s³owników cenowych odbywaæ siê mo¿e tylko z poziomu administratora. Z menu nale¿y wybraæ „Edytuj s³ownik". Zostanie otwarte nowe okno, gdzie mo¿na wybraæ typ s³ownika, który bêdzie edytowany. Okno te mo¿na zaobserwowaæ na rysunku \ref{rys:editdic}. Jedynie w przypadku gastronomi istnieje mo¿liwoœæ wybrania z grupy produktów. Edycja nastêpuje poprzez wpisywanie wartoœci w poszczególnych komórkach tabeli w zale¿noœci, któr¹ pozycjê chce siê edytowaæ. Wciskaj¹c przycisk „ENTER” nastêpuje zapis edytowanego wiersza do bazy danych. Istnieje równie¿ mo¿liwoœæ dodawania nowych pozycji. W ostatnim pustym wierszu tabeli nale¿y wype³niæ wszystkie komórki, by móc dodaæ do bazy. Odœwie¿enie tabeli w przypadku dodania nowego produktu nastêpuje po ich prze³¹czeniu.  
+Modyfikacja s³owników cenowych odbywaæ siê mo¿e tylko z poziomu administratora. Z menu nale¿y wybraæ „Edytuj s³ownik". Zostanie otwarte nowe okno, gdzie mo¿na wybraæ typ s³ownika, który bêdzie edytowany. Okno te mo¿na zaobserwowaæ na rysunku [TODO  screen]. Jedynie w przypadku gastronomi istnieje mo¿liwoœæ wybrania z grupy produktów. Edycja nastêpuje poprzez wpisywanie wartoœci w poszczególnych komórkach tabeli w zale¿noœci, któr¹ pozycjê chce siê edytowaæ. Wciskaj¹c przycisk „ENTER” nastêpuje zapis edytowanego wiersza do bazy danych. Istnieje równie¿ mo¿liwoœæ dodawania nowych pozycji. W ostatnim pustym wierszu tabeli nale¿y wype³niæ wszystkie komórki, by móc dodaæ do bazy. Odœwie¿enie tabeli w przypadku dodania nowego produktu nastêpuje po ich prze³¹czeniu.  
 % \begin{figure}[ht]
 %   \centering
 %    \includegraphics[width=1\textwidth]{editdic.jpg}
@@ -559,22 +559,24 @@ TODO: zrzut informacji o z³ym haœle
 U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami. Przedstawia to  listing\ref{listing:Wyci¹ganie}
 \begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:Wyci¹ganie}]
  var myProposition = (from prop in _ctx.Proposition
-                            from user in _ctx.Users 
-                            where user.Id == _userId		
-                            where prop.Id_user == _userId 
-                            // szuka propozycji u¿ytkownika zalogowanego
-                            select new AdminProposition
-                            {
-                                PropositionId = prop.Id,
-                                UserFirstName = user.Name,
-                                UserSurname = user.Surname,
-                                CustomerFullName = prop.PropClient.CustomerFullName,
-                                CompanyName = prop.PropClient.CompanyName,
-                                UpdateDate = prop.UpdateDate,
-                                Status = prop.Status
-                            }).ToList();
+                      from user in _ctx.Users 
+                      where user.Id == _userId		
+                      where prop.Id_user == _userId 
+            // szuka propozycji u¿ytkownika zalogowanego
+            select new AdminProposition
+            {
+             PropositionId = prop.Id,
+             UserFirstName = user.Name,
+             UserSurname = user.Surname,
+             CustomerFullName = prop.PropClient
+             				.CustomerFullName,
+             CompanyName = prop.PropClient.CompanyName,
+             UpdateDate = prop.UpdateDate,
+             Status = prop.Status
+            }).ToList();
             PropositionsList = myProposition; 
-//przypisanie do listy propozycji w prawid³owej formie do wyœwietlenia
+//przypisanie do listy propozycji 
+//w prawid³owej formie do wyœwietlenia
 \end{lstlisting}
 Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje listing \ref{listing:Wyci¹ganie} Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
 \begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:Wyci¹ganie}]
@@ -582,7 +584,8 @@ Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytko
                      where s.Proposition.Any()
                      select s).ToList();
             userlist.Add(new Users()); 
- //dodanie pustego u¿ytkownika by móc wyœwietliæ wszystkie propozycje
+ //dodanie pustego u¿ytkownika by 
+ //móc wyœwietliæ wszystkie propozycje
             UsersList = userlist;
 
 \end{lstlisting}
@@ -689,8 +692,9 @@ http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
 \bibitem {iloscFirm}
 http://stat.gov.pl/obszary-tematyczne/podmioty-gospodarcze-wyniki-finansowe/przedsiebiorstwa-niefinansowe/male-i-srednie-przedsiebiorstwa-niefinansowe-w-polsce-w-latach-2009-2013,22,1.html
 
+% 
 \bibitem {SystemERP}
-Jerzy Kisielnicki, Ma³gorzata Pañkowska, Henryk Sroka.:\textsl{Zintegrowane systemy informatyczne. Dobre praktyki wdro¿eñ systemów klasy ERP}, Wydawnictwo Naukowe PWN, Warszawa 2012
+Jerzy Kisielnicki, Ma³gorzata Pañkowska, Henryk Sroka.:\textsl{Zintegrowane systemy informatyczne. Dobre praktyki wdro¿eñ systemów klasy ERP}, Wydawnictwo Naukowe PWN, Warszawa, 2012
 
 \bibitem {ProfitCRM}
 http://www.profitcrm.pl/crm
@@ -699,9 +703,22 @@ http://meteoryt.pl/
 \bibitem {Gestor}
 https://www.insert.com.pl
 
+\bibitem {WPF}
+ Adam Nathan \textsl{WPF 4.5. Ksiêga eksperta}, Wydawnictwo Helion, Gliwice , 2015
+ 
 %Seba xml
 \bibitem{Xml}
 http://www.w3schools.com/xml/xml\_whatis.asp
+%Lis T_SQL
+\bibitem {bazy}
+Jeffrey D. Ullman, Jennifer Widom
+\textsl{Podstawowy kurs systemów baz danych. Wydanie III} Wydawnictwo Helion, Gliwice , 2011 
+%LIS Visual Studio
+\bibitem {VS}
+https://www.visualstudio.com/pl-pl/downloads/download-visual-studio-vs.aspx
+
+\bibitem {VSG}
+https://visualstudiogallery.msdn.microsoft.com
 
 %Lisu SQL Server Management Studio
 \bibitem{SQL Server Management Studio Express}
@@ -755,19 +772,9 @@ Magennis T., \textsl{LINQ to Objects w C\# 4.0}, Wydawnictwo Helion, Gliwice 201
 \bibitem{SHA1Slabosc}
 Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 
-%%LIS
-\bibitem {WPF}
- Adam Nathan \textsl{WPF 4.5. Ksiêga eksperta}, Wydawnictwo Helion , 2015
- \bibitem {baza}
-	Jeffrey D. Ullman, Jennifer Widom  \textsl{Podstawowy kurs systemów baz danych. Wydanie III},
-	 Wydawnictwo Helion , 2011
-\bibitem {VS}
-https://www.visualstudio.com/pl-pl/downloads/download-visual-studio-vs.aspx
-\bibitem {VSG}
-https://visualstudiogallery.msdn.microsoft.com
-\bibitem {bazy}
-Jeffrey D. Ullman, Jennifer Widom
-\textsl{Podstawowy kurs systemów baz danych. Wydanie III} Wydawnictwo Helion , 2011
+
+
+
 %Nazwisko I. \textsl{tytu³}, miasto, rok
 
 
