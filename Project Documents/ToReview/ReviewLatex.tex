@@ -453,6 +453,8 @@ TODO: po edycji graficznej wrzuciæ tab5 (poszczególne pola, podzielone na dzia³y
 
 Operacja zapisu nowej propozycji cenowej mo¿liwa jest do wykonania w ka¿dej chwili tworzenia propozycji. Sprzedawca nie ma obowi¹zku tworzenia pe³nego dokumentu, który w sposób natychmiastowy przekazywany bêdzie klientowi. Dostêpna z poziomu menu opcja edycji istniej¹cej propozycji znosi koniecznoœæ jej finalnego utworzenia za pierwszym razem. W sytuacji chêci zapisu tworzonej propozycji, sprzedawca zobowi¹zany jest nacisn¹æ przycisk \textsl{Zapisz propozycjê}, który po odpowiedniej konwersji danych zapisze wszystkie wymagane do póŸniejszej edycji elementy do bazy danych.
 
+TODO: po edycji graficznej wrzuciæ przycisk zapisu + odwo³anie do niego
+
 \subsection{Edycja istniej¹cej propozycji cenowej}
 \subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
 \subsection{Modyfikacja kont u¿ytkowników/sprzedawców}
@@ -476,14 +478,18 @@ Pole wpisywania has³a przez u¿ytkownika w oknie logowania stanowi dedykowana dla
     \label{rys:PasswordBox}
 \end{figure}
 
-Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili wpisania has³a przez u¿ytkownika oraz klikniêcia przycisku logowania, has³o przekszta³cane jest za pomoc¹ algorytmu haszuj¹cego SHA-256 na skrót, który porównywany jest ze skrótem has³a dopasowanemu wpisanej nazwie u¿ytkownika u¿ytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostêp do dalszej czêœci programu.
+Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili wpisania has³a przez u¿ytkownika oraz klikniêcia przycisku logowania, nastêpuje sprawdzenie ustalonych zasad dotycz¹cych z³o¿onoœci has³a opisanych w rozdziale \ref{dzial:ZlozonoscHasel} oraz w sytuacji ich zatwierdzeñ has³o przekszta³cane jest za pomoc¹ 256-bitowej odmiany algorytmu haszuj¹cego SHA-2 na skrót, który porównywany jest ze skrótem has³a dopasowanemu wpisanej nazwie u¿ytkownika u¿ytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostêp do dalszej czêœci programu.
 
 %Zastosowan¹ w module logowania funkcj¹ haszuj¹c¹ jest SHA-256 nale¿¹ca do rodziny szyfrów %SHA-2. Rodzina ta jest nastêpc¹ SHA-1, której algorytmy okaza³y siê zbyt s³abe%\cite{SHA1Slabosc}. SHA-256 uznawa
 
 TODO: zrzut rekordu w bazie danych (hashe hasel) + kod porownujacy hasla: wrzuciæ gdy w³¹czê haszowanie w aplikacji
 
-\subsubsection{Szyfrowanie hase³ - funkcja skrótu SHA2}
-QUESTION: Czy potrzebne bêdzie szczegó³owe opisywanie funkcji skrótu + opis dzia³ania algorytmu SHA ??
+\subsubsection{Wymagania z³o¿onoœci hase³}
+\label{dzial:ZlozonoscHasel}
+
+Ustalenie has³a przez u¿ytkownika programu implikuje obowi¹zek walidacji wprowadzonego przez niego ci¹gu znaków w celu sprawdzenia jego poziomu bezpieczeñstwa. Krótkie has³a s¹ bardziej podatne próbê ich z³amania, ni¿ d³u¿sze ci¹gi, sk³adaj¹ce siê zarówno z liter jak i cyfr. W tym celu, w czasie ustalania przez u¿ytkownika nowego has³a, wprowadzona zosta³a metoda, której zadaniem jest weryfikacja za³o¿onych z góry aspektów, które musi has³o spe³niaæ w celu jego akceptacji. Wymogami tymi jest d³ugoœæ has³a, które sk³adaæ siê musi z przynajmniej oœmiu znaków, posiadanie minimum jednej du¿ej oraz ma³ej litery, a tak¿e obecnoœæ w jego sk³adzie cyfry. W przypadku niespe³nienia chocia¿ jednej z przedstawionych zasad, has³o jest automatycznie odrzucane, a u¿ytkownik informowany jest o zaistnia³ym problemie.
+
+TODO: zrzut informacji o z³ym haœle
 
 \subsection{Konto administratora i u¿ytkownika – ListView}
 
