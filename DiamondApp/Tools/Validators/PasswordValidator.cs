@@ -4,34 +4,33 @@ namespace DiamondApp.Tools.Validators
 {
     public static class PasswordValidator
     {
-        public static bool ValidatePassword(string password)
+        public static bool ValidatePassword(string pass)
         {
-            const int MIN_LENGTH = 8;
+            // minimalna wymagana długość hasła
+            const int minLength = 8;
 
-            if (password == null) throw new ArgumentNullException();
+            // sprawdzenie czy hasło jest puste
+            if (pass == null) 
+                return false;
 
-            bool meetsLengthRequirements = password.Length >= MIN_LENGTH;
-            bool hasUpperCaseLetter = false;
-            bool hasLowerCaseLetter = false;
+            bool isPassLengthOk = pass.Length >= minLength;
+            bool hasUpperCaseChar = false;
+            bool hasLowerCaseChar = false;
             bool hasDecimalDigit = false;
 
-            if (meetsLengthRequirements)
+            if (isPassLengthOk)
             {
-                foreach (char c in password)
+                // sprawdzanie czy hasło zawiera dużą literę, małą literę oraz cyfrę
+                foreach (char letter in pass)
                 {
-                    if (char.IsUpper(c)) hasUpperCaseLetter = true;
-                    else if (char.IsLower(c)) hasLowerCaseLetter = true;
-                    else if (char.IsDigit(c)) hasDecimalDigit = true;
+                    if (char.IsUpper(letter)) hasUpperCaseChar = true;
+                    else if (char.IsLower(letter)) hasLowerCaseChar = true;
+                    else if (char.IsDigit(letter)) hasDecimalDigit = true;
                 }
             }
-
-            bool isValid = meetsLengthRequirements
-                        && hasUpperCaseLetter
-                        && hasLowerCaseLetter
-                        && hasDecimalDigit
-                        ;
+            bool isValid = (isPassLengthOk && hasUpperCaseChar
+                            && hasLowerCaseChar && hasDecimalDigit);
             return isValid;
-
         }
     }
 }
