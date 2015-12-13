@@ -21,7 +21,7 @@
 	
 \autor{Sebastian Nalepka}{225265}{3} {Wk≥ad pracy seby}
 
-\autor{Mateusz Ogiermann}{112233}{0}	
+\autor{Mateusz Ogiermann}{226591}{0}	
 {Wk≥ad pracy ogi}
 	
 	
@@ -130,7 +130,57 @@ Wymagane wtedy sπ tyko podstawowe elementy jak nazwa, kod i jednostka miary towa
 
 \section{Zastosowane rozwiπzania}
 \subsection{Wykorzystana technologia}
-\subsubsection{.NET/C\#}
+
+\subsubsection{.NET Framework/C\#}
+
+.NET Framework jest platformπ programistycznπ firmy Microsoft, po raz pierwszy wydany w 2002 r. S≥uøy do wytwarzania oprogramowania dla systemÛw operacyjnych Windows, Windows Phone, Windows Server i Microsoft Azure \cite{Clr}. G≥Ûwnymi komponentami platformy sπ:
+
+\begin{itemize}
+
+\item \textsl{Kompilatory jÍzykÛw wysokiego poziomu}
+
+\tab Umoøliwiajπ kompilacjÍ programÛw napisanych w jÍzykach C++/CLI, C\#, F\#, J\#, Visual Basic .NET.
+
+\item \textsl{CLR (ang. Common Language Runtime)}
+
+\tab CLR jest tzw. úrodowiskiem uruchomieniowym jÍzyka wspÛlnego. Jego zadaniem jest kompilacja i uruchamianie tzw. kodu zarzπdzanego (ang. managed code) zapisanego w standardowym jÍzyku poúrednim CIL (ang. Common Intermediate Language), gwarantujπc funkcje wymagane do dzia≥ania aplikacji \cite{Clr2}. 
+
+\tab BCL jest standardowπ bibliotekπ klas, zawiera standardowe funkcjonalnoúci programistyczne takie jak definicje typÛw danych, odczyt i zapis plikÛw czy obs≥uga kolekcji zawarte w przestrzeni nazw \textit{System} \cite{Bcl} 
+
+\item \textsl{FCL (ang. Framework Class Library)}
+
+\tab FCL jest rozszerzeniem BCL, obejmuje rozszerzony zestaw bibliotek m. in. silniki graficzne Windows Forms i WPF \cite{Fcl}.
+
+\item \textsl{CTS (ang. Common Type System)} 
+
+\tab WspÛlny system typÛw CTS definiuje jak uøywane i deklarowane sπ typy danych w jÍzykach programowania platformy .NET udostÍpnianych przez CLR \cite{Cts}.
+
+\item \textsl{CLS (ang. Common Language Specification)}
+
+\tab WspÛlna specyfikacja jÍzyka CLS jest zestawem podstawowych zasad ktÛre spe≥niajπ jÍzyki programowania rodziny .NET \cite{Cls}.
+
+\end{itemize}
+
+
+Platforma .NET zapewnia wsparcie dla jÍzyka C\#, ktÛry jest obecnie jednym z najpopularniejszych jÍzykÛw programowania na úwiecie. Wed≥ug rankingu firmy TIOBE Software z grudnia 2015 r. znajduje siÍ on na piπtym miejscu, spoúrÛd piÍÊdziesiÍciu sklasyfikowanych jÍzykÛw. Poczπwszy od 2000 r. jÍzyk C\# awansowa≥ z dziesiπtego miejsca na piπte \cite{CRanking}. 
+
+C\# jest nowoczesnym, obiektowym jÍzykiem programowania, wyprodukowanym przez firmÍ Microsoft. Zosta≥ wydany po raz pierwszy w lipcu 2002 r. G≥Ûwnym projektantem jÍzyka jest duÒski inøynier oprogramowania Anders Hejlsberg \cite{chash}. Moøe zostaÊ wykorzystywany do pisania aplikacji desktopowych, internetowych oraz mobilnych. Programy napisane w C\# kompilowane sπ do kodu poúredniego zapisanego w jÍzyku CIL (ang. Common Intermediate Language) i wykonywane w úrodowisku uruchomieniowym .NET Framework. Jest on uznawany za prosty w nauce jÍzyk, poniewaø posiada szereg modu≥Ûw oraz udogodnieÒ u≥atwiajπcych pracÍ programistom, takich jak \cite{cadv}:
+
+\begin{itemize}
+
+\item \textsl{Odúmiecanie pamiÍci (ang. Garbage collection)}
+
+\tab Dynamicznie przydzielona pamiÍÊ jest zwalniana automatycznie.
+
+\item \textsl{Brak koniecznoúci tworzenia plikÛw nag≥Ûwkowych .h w porÛwnaniu do jÍzyka C++}
+
+\item \textsl{MoøliwoúÊ przeciπøania operatorÛw w porÛwnaniu do jÍzyka Java}
+
+\item \textsl{Zmienne inicjalizowane sπ swoimi domyúlnymi wartoúciami}
+
+\item \textsl{Wprowadzenie dodatkowych elementÛw sk≥adowych klas, takich jak w≥aúciwoúci i indeksery}
+
+\end{itemize}
 \subsubsection{WPF}
 
 WPF (ang. Windows Presentation Foundation) \cite{WPF} jest technologiπ wprowadzonπ w .Net 3.0. Wykorzystuje jÍzyk XML, a dok≥adnie jego odmianÍ XAML. Do wyúwietlania okien wykorzystywana jest grafika wektorowa, co jest wspomagane przez karty graficzne. Cechuje siÍ on bardzo duøπ elastycznoúciπ w tworzeniu interfejsu, miedzy innymi tworzenie przycisku z obrazkiem. Technologia ta zosta≥a zaprojektowana, tak øeby w jak najwiÍkszym stopniu odseparowaÊ wyglπd aplikacji od innych warstw programu. W niektÛrych przypadkach wiπøe siÍ z dodatkowym nak≥adem pracy w stosunku do technologii Winforms  np. wyúwietlany obrazek w kontrolerze ListView . Jeúli chodzi o wyglπd aplikacji dziÍki duøej elastycznoúci jest moøliwe tworzenie programÛw z interfejsem 3D. Nie tylko rÛøni siÍ moøliwoúciami tworzenia interfejsÛw, ale i wewnÍtrznymi mechanizmami. WPF wykorzystuje dedykowany mechanizm do prezentacji aplikacji, w stosunku do WinformsÛw, ktÛry wywo≥uje tylko elementy WinAPI. Wiπøe siÍ to z brakiem wiÍkszych moøliwoúci edycji wyglπdu aplikacji. NastÍpnπ cechπ istotnπ z punktu dzia≥ania programu jest odúwieøanie elementÛw okna. W przypadku Winformsach najechanie na jakikolwiek element z w≥aúciwoúciπ zmiany wyglπdu np. zmiany podúwietlania po najechaniu powoduje odúwieøenie ca≥ego okna programu, co nie ma miejsca w przypadku programÛw tworzonych w WPF. Bardzo dobre wsparcie dla wzorca architektonicznego MVVM uzyskuje siÍ poprzez moøliwoúÊ pod≥πczania (binding) w≥aúciwoúci z zewnÍtrznych klas. Ten typ podejúcia umoøliwia szybkie tworzenie elementÛw programu.
@@ -185,7 +235,60 @@ DziÍki temu, iø narzÍdzie Trello dostÍpne jest w postaci webowej, a takøe jako a
 
 Wszystkie przedstawione funkcjonalnoúci narzÍdzia Trello umoøliwi≥y zespo≥owi uproszczenie i przyspieszenie procesu organizacji pracy nad projektem co w konsekwencji doprowadzi≥o do oszczÍdnoúci czasowych, ktÛre przeznaczone zosta≥y na elementy implementacyjne budowanego systemu.
 
+\newpage
+
 \subsubsection{SourceTree + GitHub}
+
+Oprogramowanie wytwarzane jest przez kilkuosobowe zespo≥y programistyczne, a pliki ürÛd≥owe projektÛw przechowywane sπ na serwerach. Jednym z aspektÛw pracy zespo≥owej jest ≥πczenie rÛwnolegle wytwarzanego kodu ürÛd≥owego przez poszczegÛlnych programistÛw. W tym celu zespo≥y uøywajπ systemÛw kontroli wersji (ang. version control system) ktÛre umoøliwiajπ integracjÍ zmian wykonanych na plikach. W prostym jÍzyku oznacza to, øe programista pobiera aktualnπ wersjÍ plikÛw i odsy≥a je do serwera wraz z nowym kodem ürÛd≥owym \cite{version}. Istniejπ trzy rodzaje systemÛw kontroli wersji \cite{versionrodzaje}:
+
+\begin{itemize}
+
+\item \textsl{Lokalne (np. RCS)}
+
+\tab Umoøliwiajπ kontrolÍ plikÛw tylko na lokalnych komputerach.
+
+\item \textsl{Scentralizowane (np. SVN)}
+
+\tab Oparte o architekturÍ typu klient-serwer. Starsze wersje plikÛw przechowywane sπ tylko na serwerze.
+
+\item \textsl{Rozproszone (np. Git)}
+
+\tab OpartÍ o architekturÍ P2P. W odrÛønieniu od systemÛw scentralizowanych, archiwalne wersje plikÛw przechowywane sπ zarÛwno na serwerze jak i na komputerach programistÛw, co zabezpiecza przed utratπ danych.
+
+\end{itemize}
+
+Popularnym systemem kontroli wersji jest Git, wydany na darmowej licencji. Zosta≥ stworzony przez Linusa Torvalds'a, po raz piewszy wydany w 2005 roku \cite{git0}. Posiada w≥asnπ stronÍ internetowπ, zawierajπcπ dokumentacje oraz pliki binarne programu \cite{git}. Jest wieloplatformowy, posiada dystrybucje dedykowane zarÛwno dla systemÛw rodziny Linux, jak i Windows czy OS X. Posiada nastÍpujπce zalety, ktÛre zdecydowa≥y o uøyciu systemu do synchronizacji zmian w niniejszym projekcie \cite{gitadv}:
+
+\begin{itemize}
+\item \textsl{BezpieczeÒstwo danych}
+
+\tab W razie awarii serwera, moøna odtworzyÊ poprzednie wersje plikÛw na podstawie lokalnej kopii.
+
+\item \textsl{RÛwnoleg≥a praca}
+
+\tab Git umoøliwia niezaleøny rozwÛj oprogramowania, poprzez tworzenie tzw. ga≥Ízi (ang. branch). Zazwyczaj projekty dzielone sπ na ga≥Ízie poszczegÛlnych programistÛw i ga≥πü g≥Ûwna tzw. master branch. Ga≥Ízie mogπ byÊ ≥πczone (ang. merge) w dowolnym momencie.
+
+\item \textsl{OszczÍdnoúÊ przestrzeni dyskowej}
+
+\tab W porÛwnaniu do SVN, gdzie kaøda ga≥πü jest kopiπ ca≥ego projektu Git posiada mechanizmy synchronizujπce rÛønice pomiÍdzy poszczegÛlnymi wersjami plikÛw. 
+
+\end{itemize}
+
+Historia zmian dokonanych w plikach ürÛd≥owych zapisywana jest za pomocπ polecenia commit, ktÛre nadaje identyfikator aktualnej wersji projektu, opis zmian (opcjonalnie) oraz spis zmodyfikowanych plikÛw. Pliki na serwer wysy≥ane sπ za pomocπ komendy push. Pobieranie plikÛw zamieszczanych na serwerze przez pozosta≥ych cz≥onkÛw zespo≥u umoøliwia komenda fetch, natomiast synchronizacjÍ zmian z lokalnπ kopiπ umoøliwia komenda pull. 
+Git jest programem dzia≥ajπcym w linii poleceÒ. Istnieje rÛwnieø graficzna nak≥adka na Git'a, ktÛrπ jest Atlassian SourceTree. Jest on darmowym programem, jednak po up≥ywie trzydziestu dni od instalacji, uøytkownik zobowiπzany jest do rejestracji konta w celu dalszego korzystania z aplikacji \cite{treelic}. Posiada dystrybucje dla systemu Windows oraz OS X. OprÛcz standardowych funkcjonalnoúci Git'a umoøliwia podglπd zmian w plikach dla poszczegÛlnych commit'Ûw \cite{tree}. Podczas pracy nad projektem programistycznym, prawdopodobnπ sytuacjπ jest dokonanie zmian na tym samym pliku przez dwÛch programistÛw. Jeúli zmiany wzajemnie siÍ wykluczajπ, problem moøna rozwiπzaÊ za pomocπ zewnÍtrznego narzÍdzia do rozwiπzywania konfliktÛw SVN. Umoøliwia on uøytkownikowi porÛwnanie rÛønic w poszczegÛlnych wersjach pliku. Programista wybiera bloki kodu ürÛd≥owego ktÛre majπ zostaÊ zapisane w pliku, zatwierdza zmiany a konflikt zostaje oznaczony jako rozwiπzany.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{tree.jpg}
+    \caption{Atlassian SourceTree, èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
+GitHub.com jest darmowym serwisem internetowym ktÛry pozwala na przechowywanie projektÛw programistycznych, wspiera system kontroli wersji Git. Pierwsza wersja zosta≥a zamieszczona na serwerze, w kwietniu 2008 roku \cite{github}. GitHub umoøliwia m. in. tworzenie i zarzπdzanie repozytoriami (np. nadawanie uprawnieÒ dostÍpu wspÛ≥pracownikom), podglπd plikÛw danego projektu. Ciekawπ funkcjonalnosciπ serwisu jest rÛwnieø opracowywanie statystyk uøytkownikÛw, i prezentowanie ich wk≥adu w konkretny projekt w formie wykresÛw.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{github.jpg}
+    \caption{Statystyka wk≥adu z dnia 13 grudnia 2015 r., èrÛd≥o: Opracowanie w≥asne.}
+\end{figure}
 
 
 
@@ -202,6 +305,10 @@ Kolejnym bardzo istotnym modu≥em jest modu≥ generowania kodu. Podczas programowa
 Przedstawione funkcjonalnoúci ReSharpera wraz z wieloma innymi dostÍpnymi do zapoznania siÍ pod \cite{ReSharperFunkcje} elementami, umoøliwi≥y skrÛcenie etapu implementacji wymaganych w projekcie modu≥Ûw poprzez zautomatyzowanie powtarzajπcych siÍ czynnoúci i zniwelowanie pojawiajπcych siÍ zagroøeÒ juø we wczesnej fazie pisania kodu. Korzyúciπ p≥ynπcπ z tego rozwiπzania by≥a oszczÍdnoúÊ czasowa, ktÛra umoøliwi≥a zwrÛcenie wiÍkszej uwagi na aspekt przetestowania zastosowanych rozwiπzaÒ.
 
 \subsubsection{Jenkins}
+
+Jenkins Continuous Integration Server jest darmowym, wieloplatformowym narzÍdzien s≥uøacym do ciπg≥ej integracji projektÛw programistycznych. Zosta≥ napisany w jÍzyku Java, wywodzi siÍ od narzÍdzia Hudson. Zosta≥ wydany po raz pierwszy w 2011 r. \cite{jenkins}. Posiada szereg wtyczek zapewniajπcych funkcjonalnoúci takie jak statyczna analiza kodu, automatyczne tworzenie dokumentacji kodu ürÛd≥owego, powiadomienia e-mail. Pozwala na budowanie oraz testowanie projektÛw w popularnych jÍzykach programowania, m. in. w jezyku C\# czy Java. Jenkins jest aplikacjπ internetowπ, domyúlnie dzia≥ajπca na porcie 8080. Zadania do wykonania definiowane sπ w postaci planÛw (ang. job) ktÛre mogπ byÊ uruchamiane cyklicznie, zgodnie z okreúlonym harmonogramem lub manualnie \cite{jenkins2}.
+ROZDZIA£ DO SKONCZENIA
+
 \subsection{Biblioteki zewnÍtrzne}
 \subsubsection{Extended WPF Toolkit}
 
@@ -235,6 +342,12 @@ Walidacja godziny, analogicznie jak daty, takøe moøe doprowadziÊ do wielu proble
 \end{figure}
 
 \subsubsection{PDFsharp \& MigraDoc}
+
+PDF (ang. Portable Document Format) czyli tzw. przenoúny format dokumentÛw, zosta≥ zaprojektowany i wdroøony przez firmÍ Adobe Systems w 1992 r. Dokumenty przechowywane w tym formacie mogπ zawieraÊ proste dane tekstowe, jak rÛwnieø düwiÍki, grafiki czy tabele. Jednπ z zalet formatu jest jego uniwersalnoúÊ, wyglπd pliku jest spÛjny niezaleønie od systemu operacyjnego uøytkownika \cite{DefinicjaPdf}. Darmowe narzÍdzia, takie jak Adobe Acrobat Reader, Foxit Reader umoøliwiajπ podglπd plikÛw PDF. WiÍkszoúÊ pakietÛw biurowych takich jak, Microsoft Office czy Apache OpenOffice umoøliwia zapis plikÛw do formatu PDF. PopularnoúÊ PDF stale wzrasta \cite{PopularnoscPdf}. Wszelkie rachunki, faktury, prace naukowe sπ archiwizowane w postaci plikÛw PDF. 
+
+Jednym z celÛw projektu, jest przedstawienie szczegÛ≥Ûw transakcji pomiÍdzy klientem, a sprzedawcπ w formie lekkiego i przejrzystego dokumentu. Format PDF spe≥nia za≥oøone wymagania. Do implementacji modu≥u tworzπcego dokument wykorzystano bibliotekÍ PDFSharp \& Migradoc Foundation dla jÍzyka C\#.
+
+PDFSharp \& Migradoc Foundation jest darmowπ bibliotekπ umoøliwiajπcπ tworzenie dokumentÛw PDF w jÍzykach programowania z rodziny .NET. Oferowane funkcjonalnoúci to m. in. tworzenie paragrafÛw, tabel, formatowanie tekstu, za≥πczanie oraz skalowanie grafiki. Projekt posiada dedykowanπ stronÍ internetowπ zawierajπcπ dokumentacjÍ i przyk≥adowe programy wraz z kodami ürÛd≥owymi \cite{PdfSharp}. Instalacja w Microsoft Visual Studio jest moøliwa za pomocπ menedøera pakietÛw Nuget. 
 
 \section{Implementacja}
 \subsection{Architektura aplikacji}
@@ -365,10 +478,16 @@ Edycja danych znajdujπcych siÍ w bazie danych z poziomu projektu programistyczne
 Dodanie rekordu do bazy danych jest operacjπ, ktÛre nie wymaga znajomoúci sk≥adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, ktÛra reprezentuje bazodanowπ tabelÍ, do ktÛrej nowy rekord ma byÊ dodany, a nastÍpnie uzupe≥nieniu jego elementÛw danymi. Tak zbudowany obiekt naleøy dodaÊ do obiektu kontekstu, odwo≥ujπc siÍ do jego w≥aúciwoúci o nazwie interesujπcej nas tabeli bazy danych, a nastÍpnie w parametrze metody \textsl{Add} umieúciÊ wczeúniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych naleøy potwierdziÊ na obiekcie kontekstu. Przedstawienie opisanej operacji z poziomu kodu, dostÍpne jest rÛwnieø do wglπdu w drugiej czÍúci listingu \ref{listing:AdoEntityCompare}.
 
 \subsection{Automatyzacja wydawania kolejnych wersji programu}
-\subsubsection{Continuous Integration ñ definicja}
-\subsubsection{Continuous Deployment ñ definicja}
-\subsubsection{Continuous Delivery ñ definicja}
+\subsubsection{Continuous Integration/Continuous Delivery/Continuous Deployment}
+
+Ciπg≥a integracja (ang. Continuous Integration, CI) jest praktykπ stosowanπ podczas procesu wytwarzania oprogramowania. Cz≥onkowie zespo≥Ûw programistycznych synchronizujπ zmiany w kodzie ürÛd≥owym przynajmniej raz dziennie, dπøπc do wielokrotnej intagracji jednego dnia. Kaøda integracja weryfikowana jest przez narzÍdzia do automatyzacji (ang. build automation), takie jak Jenkins. Dla kaødej zmiany kodu ürÛd≥owego w repozytorium kompilacja, czy testy jednostkowe mogπ zostaÊ wykonane automatycznie, co prowadzi do wczeúniejszego wykrywania b≥ÍdÛw. Stosowanie tej praktyki umoøliwia zmniejszenie iloúci pracy podczas ≥πczenia zmian projektÛw programistycznych \cite{ci}.
+
+Ciπg≥a dostawa (ang. Continuous Delivery) jest podejúciem w inøynierii oprogramowania ktÛrego podstawowym za≥oøeniem jest zapewnienie wysokiej jakoúci oraz poprawnoúci dzia≥ania cyklicznie wytwarzanego oprogramowania. Wynikiem procesu jest stabilna wersja oprogramowania, ktÛra moøe zostaÊ dostarczona do klienta w dowolnym czasie \cite{cdel}. RozwiniÍciem praktyki jest ciπg≥e wdraøanie (ang. Continuous Deployment), ktÛre umoøliwia automatyczne wydawanie aplikacji do lini produkcyjnej \cite{cdr}.
+
+\subsubsection{Programy i pluginy uøyte w Jenkins}
 \subsubsection{Schemat budowania programu}
+
+Kolejne wersje niniejszego projektu sπ wydawane zgodnie z zasadami Continuous Delivery. Plan \textit{Build Project} pobiera kod ürÛd≥owy z repozytorium zapisanym na GitHubie. CA£A SEKCJA DO DOKONCZENIA.
 \section{Testowanie aplikacji}
 \subsection{Przeprowadzenie operacji logowania uøytkownika}
 
@@ -513,10 +632,152 @@ TODO: po edycji graficznej wrzuciÊ przycisk zapisu + odwo≥anie do niego
 
 \subsection{Edycja istniejπcej propozycji cenowej}
 \subsection{Tworzenie pliku PDF istniejπcej propozycji cenowej}
+
+Aby zapisaÊ propozycjÍ cenowπ do pliku PDF, w oknie g≥Ûwnym uøytkownik wybiera z menu rozwijanego \textit{Menu} opcjÍ \textit{Lista propozycji}. Zostaje wyúwietlona lista propozycji cenowych.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.25\textwidth]{pdf.jpg}
+    \caption{Wyúwietlanie listy propozycji cenowych, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ListaPropozycji}
+\end{figure}
+
+Zostaje wyúwietlona lista propozycji cenowych. Po klikniÍciu przycisku \textit{Zapisz do PDF}, pojawia siÍ dialog wyboru plikÛw. Uøytkownik wpisuje nazwÍ pliku oraz lokalizacjÍ zapisu. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{df2.jpg}
+    \caption{Zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ZapisDoPdf}
+\end{figure}
+
+Jeøeli operacja siÍ powiod≥a, uøytkownik otrzyma komunikat.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.25\textwidth]{pdf3.jpg}
+    \caption{Poprawny zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ZapisDoPdf2}
+\end{figure}
+
 \subsection{Modyfikacja kont uøytkownikÛw/sprzedawcÛw}
 \subsubsection{Dodawanie konta}
+
+Aby utworzyÊ nowe konto uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Dodaj}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{dodaj.jpg}
+    \caption{Dodawanie uøytkownika z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:DodajUzytkownika}
+\end{figure}
+
+NastÍpnie pojawia siÍ okno do ktÛrego wpisywane sπ dane uøytkownika. Aby dodaÊ uøytkownika naleøy kliknπÊ przycisk \textit{Dodaj}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{dodaj2.jpg}
+    \caption{Dodawanie uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:DodajUøytkownika2}
+\end{figure}
+
+Jeøeli dodawanie zakoÒczono sukcesem, uøytkownik otrzyma komunikat.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{dodaj3.jpg}
+    \caption{Komunikat o poprawnym utworzeniu konta, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:DodajUzytkownika3}
+\end{figure}
+
+W przeciwnyk wypadku, uøytkownik otrzyma komunikat o b≥Ídzie.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{dodaj4.jpg}
+    \caption{Komunikat o b≥Ídach podczas prÛby utworzenia konta, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:DodajUzytkownika4}
+\end{figure}
+
 \subsubsection{Edycja konta}
+
+Aby edytowaÊ dane uøytkownikÛw, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Edytuj}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{edytujuz.jpg}
+    \caption{Edyja danych uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:EdytujUzytkownika}
+\end{figure}
+
+NastÍpnie zostanie otwarte nowe okno, ktÛre wyúwietla dane uøytkownikÛw w tabeli. Aby edytowaÊ dane naleøy zaznaczyÊ wybranπ komÛrkÍ, wpisaÊ tekst.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.75\textwidth]{edytujuz2.jpg}
+    \caption{Okno edycji danych uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:EdytujUzytkownika2}
+\end{figure}
+
 \subsubsection{Usuwanie konta}
+
+Aby usunπÊ konto uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{UsuÒ}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{rm.jpg}
+    \caption{Usuwanie uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:UsunUzytkownika}
+\end{figure}
+
+NastÍpnie pojawia siÍ okno, w ktÛrym z listy rozwijanej administrator wybiera konto. Aby usunπÊ konto naleøy kliknπÊ przycisk \textit{UsuÒ}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{rm2.jpg}
+    \caption{Okno usuwanie uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:UsunUzytkownika2}
+\end{figure}
+
+Jeøeli usuwanie powiod≥o siÍ, zostaje wyúwietlony komunikat.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{rm3.jpg}
+    \caption{Komunikat o poprawnym usuniÍciu konta uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:UsunUzytkownika3}
+\end{figure}
+
+\subsubsection{Resetowanie hase≥}
+
+
+Aby zresetowaÊ has≥o uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Resetuj has≥o}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{resetuj.jpg}
+    \caption{Resetowanie hase≥ uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ResetujHaslo}
+\end{figure}
+
+NastÍpnie pojawia siÍ okno, w ktÛrym z listy rozwijanej administrator wybiera konto. Aby zresetowaÊ konto naleøy kliknπÊ przycisk \textit{Resetuj}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{reset2.jpg}
+    \caption{Okno resetowania hase≥, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ResetujHaslo2}
+\end{figure}
+
+Jeøeli operacjπ powiod≥a siÍ, uøytkownik otrzyma komunikat.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{reset3.jpg}
+    \caption{Komunikat o poprawnym usuniecia konta, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ResetujHaslo3}
+\end{figure}
+
 \subsection{Modyfikacja s≥ownikÛw cenowych}
 Modyfikacja s≥ownikÛw cenowych odbywaÊ siÍ moøe tylko z poziomu administratora. Z menu naleøy wybraÊ ÑEdytuj s≥ownik". Zostanie otwarte nowe okno, gdzie moøna wybraÊ typ s≥ownika, ktÛry bÍdzie edytowany. Okno te moøna zaobserwowaÊ na rysunku [TODO  screen]. Jedynie w przypadku gastronomi istnieje moøliwoúÊ wybrania z grupy produktÛw. Edycja nastÍpuje poprzez wpisywanie wartoúci w poszczegÛlnych komÛrkach tabeli w zaleønoúci, ktÛrπ pozycjÍ chce siÍ edytowaÊ. Wciskajπc przycisk ÑENTERî nastÍpuje zapis edytowanego wiersza do bazy danych. Istnieje rÛwnieø moøliwoúÊ dodawania nowych pozycji. W ostatnim pustym wierszu tabeli naleøy wype≥niÊ wszystkie komÛrki, by mÛc dodaÊ do bazy. Odúwieøenie tabeli w przypadku dodania nowego produktu nastÍpuje po ich prze≥πczeniu.  
 % \begin{figure}[ht]
@@ -600,7 +861,78 @@ Edycja propozycji w obydwu przypadkach odbywa siÍ w ten sam sposÛb poprzez wybra
 
 \subsection{Edycja s≥ownikÛw oraz kont uøytkownikÛw}
 \subsubsection{DataGridView a dynamiczna komunikacja z Bazπ danych}
+
+Aby umoøliwiúc edycjÍ danych z poziomu DataGridView, zaimplementowano funckjÍ obs≥ugujπcπ zdarzenie DataGridRowEditEndingEventArgs. Kiedy edycja danje komÛrki zostaje zakoÒczona, wywo≥ywane jest wnÍtrze funkcji ktÛrej zadaniem jest dynamiczne przechwycenie nowej wartoúci i aktualizacja bazy danych. Uøycie zmiennej dynamic, podyktowane jest tym øe jest ona sprawdzana podczas wywo≥ania, a nie kompilacji \cite{dynamic} co umoøliwia odwo≥anie do nowych wartoúci zapisanych w komÛrkach. Kod funkcji jest jest nastÍpujπcy: 
+
+\begin{verbatim}
+
+//pobranie identyfikatora uøytkownika ktÛrego wiersz jest zaznaczony w DataGridView, 
+//oraz zapis do zmiennej typu int
+object item = UserList.SelectedItem;
+string ID = (UserList.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+
+int selected = Int32.Parse(ID);
+
+//zapis danych z poszczegÛlnych kolumn do zmiennej dynamicznej
+dynamic userRow = UserList.SelectedItem;
+
+//konwersja rodzaju konta z liczby na tekst
+int tmp = 0;
+if (userRow.UserAccountType == "Administrator")
+	tmp = 1;
+else
+    tmp = 2;
+
+//deklaracja obiektu bazy danych
+DiamondDBEntities _ctx = new DiamondDBEntities();
+Users userUpdate = (from user in _ctx.Users
+                    where user.Id == selected
+                    select user).First();
+	
+	//przypisanie nowych wartoúci z komÛrek do poszczegÛlnych kolumn tabeli Users
+	userUpdate.Name = userRow.UserName;
+	userUpdate.Surname = userRow.UserSurname;
+	userUpdate.PhoneNum = userRow.UserPhoneNumber;
+	userUpdate.Email = userRow.UserEmail;
+	userUpdate.Position = userRow.UserPosition;
+	userUpdate.AccountType = tmp;
+	userUpdate.Login = userRow.UserLogin;
+	
+	//zapis danych do bazy
+	_ctx.SaveChanges();
+\end{verbatim}
+
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
+
+Za pomocπ mechanizmÛw biblioteki MigraDoc, zaimplementowano funckje tworzπce tabele propozycji cenowej:
+\begin{verbatim}
+//inicjalizacja nowej tabeli
+Table table = document.LastSection.AddTable();
+table.Borders.Visible = true;
+table.Format.Font.Size = 10;
+table.Format.Font.Name = "Calibri";
+
+//dodawanie nowej kolumny
+Column column = table.AddColumn("3.750cm");
+column.Format.Alignment = ParagraphAlignment.Left;
+
+//dodawanie nowego wiersza, z przyk≥adowymi atrybutami
+Row row = table.AddRow();
+row.Cells[0].Shading.Color = Colors.LightGray;
+row.Cells[0].AddParagraph("WYNAJEM");
+\end{verbatim}
+
+Poniøszy kod, umoøliwia zapis dokumentu w formacie PDF.
+
+\begin{verbatim}
+// deklaracja obiektu klasy PdfDocumentRenderer
+PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always);
+//renderowanie dokumentu
+renderDocument.Document = document;
+renderDocument.RenderDocument();
+//zapis do pliku
+renderDocument.Save(path);
+\end{verbatim}
 
 \section{Perspektywy rozwoju oprogramowania}
 
@@ -703,6 +1035,33 @@ http://meteoryt.pl/
 \bibitem {Gestor}
 https://www.insert.com.pl
 
+\bibitem {Clr}
+https://msdn.microsoft.com/pl-pl/library/w0x726c2(v=vs.110).aspx
+
+\bibitem {Clr2}
+https://msdn.microsoft.com/pl-pl/vstudio/cc511286
+
+\bibitem {Bcl}
+http://www.thebestcsharpprogrammerintheworld.com/fundamentals/Base-Class-Library.aspx
+
+\bibitem {Fcl}
+http://www.etechpulse.com/2013/04/difference-between-bcl-and-fcl-in-net.html
+
+\bibitem {Cts}
+https://msdn.microsoft.com/en-us/library/zcx1eb1e(v=vs.110).aspx
+
+\bibitem {Cls}
+https://msdn.microsoft.com/library/12a7a7h3(v=vs.100).aspx
+
+\bibitem {CRanking}
+http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
+
+\bibitem {chash}
+http://antyweb.pl/hello-world-czyli-krotka-historia-jezykow-programowania/
+
+\bibitem {cadv}
+http://urriellu.net/en/articles-software/csharp-advantages.html
+
 \bibitem {WPF}
  Adam Nathan \textsl{WPF 4.5. KsiÍga eksperta}, Wydawnictwo Helion, Gliwice , 2015
  
@@ -732,6 +1091,30 @@ KrasiÒski M.: \textsl{Nauki o zarzπdzaniu}, Wydawnictwo Uniwersytetu Ekonomiczne
 \bibitem{PlatformyTrello} 
 https://trello.com/platforms
 
+\bibitem{version} 
+http://www.gajdaw.pl/varia/subversion-system-kontroli-wersji-tutorial/p1.html
+
+\bibitem{versionrodzaje}
+http://blog.undicom.pl/systemy-kontroli-wersji-ktore-wybrac/
+
+\bibitem{git0}
+https://git-scm.com/book/en/v2/Getting-Started-A-Short-History-of-Git
+
+\bibitem{git}
+https://git-scm.com/
+
+\bibitem{gitadv}
+http://leniwy.eu/news,18,Git-poradnik-poczatkujacego.html
+
+\bibitem{treelic}
+https://answers.atlassian.com/questions/303753/sourcetree-free-license
+
+\bibitem{tree}
+https://www.atlassian.com/software/sourcetree/overview
+
+\bibitem{github}
+https://github.com/blog/40-we-launched
+
 %Seba ReSharper
 %znalesc ksiazke w ktorej jest opis .NET
 \bibitem{.NETOpis}
@@ -743,8 +1126,23 @@ Martin R.C.: \textsl{Czysty kod. PodrÍcznik dobrego programisty}, Wydawnictwo He
 \bibitem{ReSharperFunkcje} 
 https://www.jetbrains.com/resharper/features/
 
+\bibitem{jenkins}
+https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
+
+\bibitem{jenkins2}
+http://techwriter.pl/jenkins-opis-narzedzia/
+
 \bibitem{MicrosoftPublicLicence} 
 https://opensource.org/licenses/MS-PL
+
+\bibitem{DefinicjaPdf}
+https://acrobat.adobe.com/pl/pl/products/about-adobe-pdf.html
+
+\bibitem{PopularnoscPdf} 
+http://www.download.net.pl/jak-zapisac-dowolny-dokument-do-pliku-pdf/n/3662/
+
+\bibitem{PdfSharp} 
+http://www.pdfsharp.net/
 
 %Seba wpf extended - na razie brak
 
@@ -768,9 +1166,21 @@ https://msdn.microsoft.com/en-us/data/jj591583
 \bibitem{LINQ}
 Magennis T., \textsl{LINQ to Objects w C\# 4.0}, Wydawnictwo Helion, Gliwice 2012
 
+\bibitem{ci}
+http://www.martinfowler.com/articles/continuousIntegration.html
+
+\bibitem{cdel}
+http://www.infoq.com/articles/cd-benefits-challenges
+
+\bibitem{cdr}
+https://puppetlabs.com/blog/continuous-delivery-vs-continuous-deployment-whats-diff
+
 %Seba techiczne logowanie
 \bibitem{SHA1Slabosc}
 Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
+
+\bibitem{dynamic}
+http://www.pzielinski.com/?p=831
 
 
 
