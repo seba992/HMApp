@@ -556,8 +556,8 @@ Ustalenie has³a przez u¿ytkownika programu implikuje obowi¹zek walidacji wprowad
 TODO: zrzut informacji o z³ym haœle
 
 \subsection{Konto administratora i u¿ytkownika – ListView}
-U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami. Przedstawia to  listing\ref{listing:Wyci¹ganie}
-\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:Wyci¹ganie}]
+U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami. Przedstawia to  listing \ref{listing:propuser}
+\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:propuser}]
  var myProposition = (from prop in _ctx.Proposition
                       from user in _ctx.Users 
                       where user.Id == _userId		
@@ -578,8 +578,8 @@ U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana 
 //przypisanie do listy propozycji 
 //w prawid³owej formie do wyœwietlenia
 \end{lstlisting}
-Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje listing \ref{listing:Wyci¹ganie} Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
-\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:Wyci¹ganie}]
+Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje listing \ref{listing:user} Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
+\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:user}]
  var userlist = (from s in _ctx.Users
                      where s.Proposition.Any()
                      select s).ToList();
