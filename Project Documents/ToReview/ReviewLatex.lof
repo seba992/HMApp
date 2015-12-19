@@ -1,27 +1,12 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Spos\'ob dodawania towaru w ofercie, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{18}
-\contentsline {figure}{\numberline {2}{\ignorespaces Interfejs programu Asysten CRM, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{19}
-\contentsline {figure}{\numberline {3}{\ignorespaces Interfejs programu Gestor GT, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{20}
-\contentsline {figure}{\numberline {4}{\ignorespaces Interfejs SQL Server Management Studio Express, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{26}
-\contentsline {figure}{\numberline {5}{\ignorespaces Interfejs aplikacji webowej Trello, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{27}
-\contentsline {figure}{\numberline {6}{\ignorespaces Szczeg\'o\IeC {\l }y zadania na pojedynczej kafelce., \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{28}
-\contentsline {figure}{\numberline {7}{\ignorespaces Atlassian SourceTree, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{30}
-\contentsline {figure}{\numberline {8}{\ignorespaces Statystyka wk\IeC {\l }adu z dnia 13 grudnia 2015 r., \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{31}
-\contentsline {figure}{\numberline {9}{\ignorespaces Kontrolka DatePicker, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{34}
-\contentsline {figure}{\numberline {10}{\ignorespaces Kontrolka TimePicker, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{35}
-\contentsline {figure}{\numberline {11}{\ignorespaces Przep\IeC {\l }yw danych w modelu MVVM, \'Zr\'od\IeC {\l }o: www.tomaszmalesza.pl}}{38}
-\contentsline {figure}{\numberline {12}{\ignorespaces Wy\'swietlanie listy propozycji cenowych, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{55}
-\contentsline {figure}{\numberline {13}{\ignorespaces Zapis propozycji cenowej do pliku PDF, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{55}
-\contentsline {figure}{\numberline {14}{\ignorespaces Poprawny zapis propozycji cenowej do pliku PDF, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{56}
-\contentsline {figure}{\numberline {15}{\ignorespaces Dodawanie u\.zytkownika z poziomu menu rozwijanego, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{56}
-\contentsline {figure}{\numberline {16}{\ignorespaces Dodawanie u\.zytkownika, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{57}
-\contentsline {figure}{\numberline {17}{\ignorespaces Komunikat o poprawnym utworzeniu konta, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{57}
-\contentsline {figure}{\numberline {18}{\ignorespaces Komunikat o b\IeC {\l }\k edach podczas pr\'oby utworzenia konta, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{58}
-\contentsline {figure}{\numberline {19}{\ignorespaces Edyja danych u\.zytkownik\'ow z poziomu menu rozwijanego, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{58}
-\contentsline {figure}{\numberline {20}{\ignorespaces Okno edycji danych u\.zytkownik\'ow, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{59}
-\contentsline {figure}{\numberline {21}{\ignorespaces Usuwanie u\.zytkownik\'ow z poziomu menu rozwijanego, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{59}
-\contentsline {figure}{\numberline {22}{\ignorespaces Okno usuwanie u\.zytkownik\'ow, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{60}
-\contentsline {figure}{\numberline {23}{\ignorespaces Komunikat o poprawnym usuni\k eciu konta u\.zytkownika, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{60}
-\contentsline {figure}{\numberline {24}{\ignorespaces Resetowanie hase\IeC {\l } u\.zytkownik\'ow z poziomu menu rozwijanego, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{61}
-\contentsline {figure}{\numberline {25}{\ignorespaces Okno resetowania hase\IeC {\l }, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{61}
-\contentsline {figure}{\numberline {26}{\ignorespaces Komunikat o poprawnym usuniecia konta, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{62}
-\contentsline {figure}{\numberline {27}{\ignorespaces Kontrolka PasswordBox z przedstawieniem aspekt\'ow bezpiecze\'nstwa, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{62}
+\contentsline {figure}{\numberline {1}{\ignorespaces Spos\'ob dodawania towaru w ofercie, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{16}
+\contentsline {figure}{\numberline {2}{\ignorespaces Interfejs programu Asysten CRM, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{17}
+\contentsline {figure}{\numberline {3}{\ignorespaces Interfejs programu Gestor GT, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{18}
+\contentsline {figure}{\numberline {4}{\ignorespaces Interfejs SQL Server Management Studio Express, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{24}
+\contentsline {figure}{\numberline {5}{\ignorespaces Interfejs aplikacji webowej Trello, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{25}
+\contentsline {figure}{\numberline {6}{\ignorespaces Szczeg\'o\IeC {\l }y zadania na pojedynczej kafelce., \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{26}
+\contentsline {figure}{\numberline {7}{\ignorespaces Atlassian SourceTree, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{28}
+\contentsline {figure}{\numberline {8}{\ignorespaces Statystyka wk\IeC {\l }adu z dnia 13 grudnia 2015 r., \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{29}
+\contentsline {figure}{\numberline {9}{\ignorespaces Kontrolka DatePicker, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{32}
+\contentsline {figure}{\numberline {10}{\ignorespaces Kontrolka TimePicker, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{33}
+\contentsline {figure}{\numberline {11}{\ignorespaces Przep\IeC {\l }yw danych w modelu MVVM, \'Zr\'od\IeC {\l }o: www.tomaszmalesza.pl}}{36}
+\contentsline {figure}{\numberline {12}{\ignorespaces Kontrolka PasswordBox z przedstawieniem aspekt\'ow bezpiecze\'nstwa, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{55}

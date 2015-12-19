@@ -9,7 +9,31 @@
 %\drukJednostronny
 \usepackage{tabto}
 
+\renewcommand{\lstlistingname}{Kod ürÛd≥owy}
+\renewcommand\lstlistlistingname{Kody ürÛd≥owe}
 \renewcommand*{\refname}{Bibliografia}
+
+\definecolor{bluekeywords}{rgb}{0,0,1}
+\definecolor{greencomments}{rgb}{0,0.5,0}
+\definecolor{redstrings}{rgb}{0.64,0.08,0.08}
+\definecolor{xmlcomments}{rgb}{0.5,0.5,0.5}
+\definecolor{types}{rgb}{0.17,0.57,0.68}
+
+\usepackage{listings}
+\lstset{language=[Sharp]C,
+captionpos=b,
+showtabs=false,
+breaklines=true,
+showstringspaces=false,
+breakatwhitespace=true,
+escapeinside={(*@}{@*)},
+commentstyle=\color{greencomments},
+morekeywords={partial, var, value, get, set},
+keywordstyle=\color{bluekeywords},
+stringstyle=\color{redstrings},
+basicstyle=\ttfamily\small
+}
+
 
 %% tytu≥ promotor i autor (\title to komenda standardowa)
 \title{Projekt i wykonanie aplikacji bazodanowej wspomagajπcej pracÍ wybranej sieci hotelowej}
@@ -65,14 +89,6 @@ Kolejnym dostrzeøonym problemem jest zagadnienie czasoch≥onnoúci wyszukiwania da
 Dostrzegajπc powyøsze problemy zdecydowano siÍ wykonaÊ dedykowanπ aplikacjÍ bazodanowπ, ktÛrej celem jest ich rozwiπzanie. Za≥oøono, øe konieczne by by≥o, aby kaødy ze sprzedawcÛw posiada≥ moøliwoúÊ uruchomienia na swoim s≥uøbowym komputerze programu, ktÛry dziÍki po≥πczeniu z bazπ danych i wykorzystaniu jej funkcjonalnoúci umoøliwi≥by przyspieszenie procesu przeprowadzania transakcji z klientem poprzez automatycznπ aktualizacjÍ cennikÛw oraz przedstawienie listy produktÛw gastronomicznych w skategoryzowany sposÛb. DziÍki przechowywaniu wszystkich propozycji cenowych w bazie danych, zanika≥aby koniecznoúÊ samodzielnej ich kategoryzacji i dbania o bezpieczeÒstwo na lokalnym komputerze. Umoøliwi≥oby to pracownikom pracÍ na rÛønych maszynach, co w znaczny sposÛb zwiÍkszy≥oby ich elastycznoúÊ.
 
 Kolejnym atutem przedstawionego rozwiπzania by≥oby umoøliwienie kierownictwu z poziomu kont administratorskich kontroli pracownikÛw poprzez zdalny wglπd w przygotowywane przez nich propozycje cenowe, a co za tym idzie ustalanych z klientem cen oraz zniøek. Menadøer sprzedaøy za pomocπ swojego uprzywilejowanego konta posiada≥by rÛwnieø moøliwoúÊ aktualizacji odpowiednich tabel danych, dziÍki czemu zmiany natychmiastowo by≥yby widocznie na kontach sprzedawcÛw. Zmiany te dotyczy≥yby moøliwoúci modyfikacji cen oferowanych us≥ug i produktÛw oraz kontroli sk≥adu pracowniczego poprzez funkcjonalnoúÊ dodawania, usuwania a takøe modyfikacji ich kont. 
-
-
-\begin{twa}
-Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
-\end{twa}
-\begin{dd}
-Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
-\end{dd}
 
 \section{Analiza przedwdroøeniowa}
 \section{Istniejπce rozwiπzania konkurencyjne}
@@ -419,11 +435,12 @@ Przedstawiona translacja danych okaza≥a siÍ bardzo praktyczna przez wzglπd na zn
 
 Aplikacje komputerowe, ktÛrych funkcjonalnoúci zorientowane sπ na wielu uøytkownikÛw lub wymuszajπ koniecznoúÊ ciπg≥ego przechowywania i przetwarzania duøych iloúci danych bardzo czÍsto korzystajπ z systemÛw bazodanowych. Systemy te umoøliwiajπ nieprzerwane magazynowanie duøej iloúci informacji, a takøe szybkie ich wyszukiwanie, sortowanie, dodawanie, edycjÍ oraz usuwanie. Przedstawione aspekty sπ bardzo trudne do zaimplementowania wewnπtrz standardowych aplikacji. 
 
-W przypadku technologii .NET, w ktÛrej prowadzony jest prezentowany projekt, standardowa komunikacja aplikacji z bazπ danych odbywa siÍ za poúrednictwem protoko≥u ADO.NET. Przy jego uøyciu programista ma obowiπzek kaødorazowo nawiπzaÊ po≥πczenie z bazπ, rÍcznie wprowadziÊ zapytanie SQL, odebraÊ wynik i zapisaÊ go w odpowiednim obiekcie oraz zamknπÊ po≥πczenie. Schemat ten w znacznym stopniu utrudnia utrzymanie prawid≥owego dzia≥ania aplikacji w przypadku jej rozbudowy lub modyfikacji bazy danych. Napisane zapytanie SQL w øadnym stopniu nie jest sprawdzane ze wzglÍdu na jego poprawnπ formÍ, a w sytuacji zmiany przyk≥adowo nazwy kolumny w wykorzystywanej bazie danych, programista w celu utrzymania prawid≥owej pracy aplikacji ma obowiπzek aktualizacji wszystkich zapytaÒ, ktÛre dotyczy≥y zmienionej kolumny. Przedstawione zagadnienie wraz z porÛwnaniem analogicznej operacji w technologii mapowania obiektowo-relacyjnej przedstawione zosta≥o z poziomu kodu w listingu \ref{listing:AdoEntityCompare}.
+W przypadku technologii .NET, w ktÛrej prowadzony jest prezentowany projekt, standardowa komunikacja aplikacji z bazπ danych odbywa siÍ za poúrednictwem protoko≥u ADO.NET. Przy jego uøyciu programista ma obowiπzek kaødorazowo nawiπzaÊ po≥πczenie z bazπ, rÍcznie wprowadziÊ zapytanie SQL, odebraÊ wynik i zapisaÊ go w odpowiednim obiekcie oraz zamknπÊ po≥πczenie. Schemat ten w znacznym stopniu utrudnia utrzymanie prawid≥owego dzia≥ania aplikacji w przypadku jej rozbudowy lub modyfikacji bazy danych. Napisane zapytanie SQL w øadnym stopniu nie jest sprawdzane ze wzglÍdu na jego poprawnπ formÍ, a w sytuacji zmiany przyk≥adowo nazwy kolumny w wykorzystywanej bazie danych, programista w celu utrzymania prawid≥owej pracy aplikacji ma obowiπzek aktualizacji wszystkich zapytaÒ, ktÛre dotyczy≥y zmienionej kolumny. Przedstawione zagadnienie wraz z porÛwnaniem analogicznej operacji w technologii mapowania obiektowo-relacyjnej przedstawione zosta≥o z poziomu kodu w kodzie ürÛd≥owym \ref{listing:AdoEntityCompare}.
 
 W celu przeciwdzia≥ania przedstawionym problemom zdecydowano siÍ zastosowaÊ dedykowany framework, ktÛry upraszcza developerowi przeprowadzanie wszelkich bazodanowych operacji.
 
-\begin{lstlisting}[caption= {PorÛwnanie operacji dodania uøytkownika w ADO.NET oraz Entity Framework} \label{listing:AdoEntityCompare}]
+
+\begin{lstlisting}[caption={PorÛwnanie operacji dodania uøytkownika w ADO.NET oraz Entity Framework}, label={listing:AdoEntityCompare}]
 
 //ADO.NET
 //wymagane manualne dodanie pliku konfiguracji po≥πczenia
@@ -444,9 +461,7 @@ connection.Close();
 // EF automatycznie odczyta plik konfiguracji po≥πczenia
 MyEntities dataContext = new MyEntities();
 TestUser newUser = new TestUser
-{
-    Login = "TestLogin", Password = "TestPa$$word",
-};
+{ Login = "TestLogin", Password = "TestPa$$word" };
 dataContext.Users.Add(newUser);
 dataContext.SaveChanges(); 
 \end{lstlisting}
@@ -465,9 +480,9 @@ Ostatnie podejúcie to Model First, ktÛre polega na zbudowaniu fizycznego modelu 
 
 Zastosowane narzÍdzie Entity Framework nie tylko w znacznym stopniu upraszcza po≥πczenie bazy danych z projektem programistycznym ale takøe umoøliwia w nim proste i intuicyjne wykonywanie poleceÒ bazodanowych. W projekcie w celu zaimplementowania za≥oøonych funkcjonalnoúci stosowano trzy podstawowe polecenia modyfikujπce zawartoúÊ bazy: Insert, Update oraz Delete. Entity Framework domyúlnie zawiera modu≥ \textsl{LINQ to Entities}, ktÛry umoøliwia wykorzystanie sk≥adni technologii LINQ \cite{LINQ} do operowania na bazodanowym ürÛdle danych.
 
-W celu wykonania polecenia SELECT zwracajπcego rekordy z bazy danych naleøy za pomocπ przedstawionego w listingu \ref{listing:SelectOpis} schematu wybraÊ nazwÍ tabeli z obiektu kontekstu wygenerowanego przez Entity Framework, a nastÍpnie uøyÊ polecenia \textsl{where} definiujπcego wyszukiwanπ zaleønoúÊ. Finalnie poleceniem \textsl{select} nastÍpuje ustalenie zdefiniowanej wczeúniej zwracanej zmiennej, w ktÛrej przechowywane sπ wyszukane elementy. Tym sposobem dane przechowywane w bazie danych poddane zostajπ translacji na poziom obiektÛw, z ktÛrych moøliwe jest korzystanie z poziomu C\# w sposÛb standardowy.
+W celu wykonania polecenia SELECT zwracajπcego rekordy z bazy danych naleøy za pomocπ przedstawionego w kodzie ürÛd≥owym \ref{listing:SelectOpis} schematu wybraÊ nazwÍ tabeli z obiektu kontekstu wygenerowanego przez Entity Framework, a nastÍpnie uøyÊ polecenia \textsl{where} definiujπcego wyszukiwanπ zaleønoúÊ. Finalnie poleceniem \textsl{select} nastÍpuje ustalenie zdefiniowanej wczeúniej zwracanej zmiennej, w ktÛrej przechowywane sπ wyszukane elementy. Tym sposobem dane przechowywane w bazie danych poddane zostajπ translacji na poziom obiektÛw, z ktÛrych moøliwe jest korzystanie z poziomu C\# w sposÛb standardowy.
 
-\begin{lstlisting}[caption= {Opis polecenia select} \label{listing:SelectOpis}]
+\begin{lstlisting}[caption= {Opis polecenia select}, label={listing:SelectOpis}]
 var exampleQuerry = (from records in _context.TableName
 		where table.ColumnName == _valueToFind
 		select records);
@@ -635,148 +650,148 @@ TODO: po edycji graficznej wrzuciÊ przycisk zapisu + odwo≥anie do niego
 
 Aby zapisaÊ propozycjÍ cenowπ do pliku PDF, w oknie g≥Ûwnym uøytkownik wybiera z menu rozwijanego \textit{Menu} opcjÍ \textit{Lista propozycji}. Zostaje wyúwietlona lista propozycji cenowych.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.25\textwidth]{pdf.jpg}
-    \caption{Wyúwietlanie listy propozycji cenowych, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:ListaPropozycji}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.25\textwidth]{pdf.jpg}
+%    \caption{Wyúwietlanie listy propozycji cenowych, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:ListaPropozycji}
+%\end{figure}
 
 Zostaje wyúwietlona lista propozycji cenowych. Po klikniÍciu przycisku \textit{Zapisz do PDF}, pojawia siÍ dialog wyboru plikÛw. Uøytkownik wpisuje nazwÍ pliku oraz lokalizacjÍ zapisu. 
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.75\textwidth]{df2.jpg}
-    \caption{Zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:ZapisDoPdf}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.75\textwidth]{df2.jpg}
+%    \caption{Zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:ZapisDoPdf}
+%\end{figure}
 
 Jeøeli operacja siÍ powiod≥a, uøytkownik otrzyma komunikat.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.25\textwidth]{pdf3.jpg}
-    \caption{Poprawny zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:ZapisDoPdf2}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.25\textwidth]{pdf3.jpg}
+%    \caption{Poprawny zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:ZapisDoPdf2}
+%\end{figure}
 
 \subsection{Modyfikacja kont uøytkownikÛw/sprzedawcÛw}
 \subsubsection{Dodawanie konta}
 
 Aby utworzyÊ nowe konto uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Dodaj}.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{dodaj.jpg}
-    \caption{Dodawanie uøytkownika z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:DodajUzytkownika}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{dodaj.jpg}
+%    \caption{Dodawanie uøytkownika z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:DodajUzytkownika}
+%\end{figure}
 
 NastÍpnie pojawia siÍ okno do ktÛrego wpisywane sπ dane uøytkownika. Aby dodaÊ uøytkownika naleøy kliknπÊ przycisk \textit{Dodaj}.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{dodaj2.jpg}
-    \caption{Dodawanie uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:DodajUøytkownika2}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{dodaj2.jpg}
+%    \caption{Dodawanie uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:DodajUøytkownika2}
+%\end{figure}
 
 Jeøeli dodawanie zakoÒczono sukcesem, uøytkownik otrzyma komunikat.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{dodaj3.jpg}
-    \caption{Komunikat o poprawnym utworzeniu konta, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:DodajUzytkownika3}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{dodaj3.jpg}
+%    \caption{Komunikat o poprawnym utworzeniu konta, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:DodajUzytkownika3}
+%\end{figure}
 
 W przeciwnyk wypadku, uøytkownik otrzyma komunikat o b≥Ídzie.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{dodaj4.jpg}
-    \caption{Komunikat o b≥Ídach podczas prÛby utworzenia konta, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:DodajUzytkownika4}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{dodaj4.jpg}
+%    \caption{Komunikat o b≥Ídach podczas prÛby utworzenia konta, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:DodajUzytkownika4}
+%\end{figure}
 
 \subsubsection{Edycja konta}
 
 Aby edytowaÊ dane uøytkownikÛw, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Edytuj}.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{edytujuz.jpg}
-    \caption{Edyja danych uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:EdytujUzytkownika}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{edytujuz.jpg}
+%    \caption{Edyja danych uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:EdytujUzytkownika}
+%\end{figure}
 
 NastÍpnie zostanie otwarte nowe okno, ktÛre wyúwietla dane uøytkownikÛw w tabeli. Aby edytowaÊ dane naleøy zaznaczyÊ wybranπ komÛrkÍ, wpisaÊ tekst.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.75\textwidth]{edytujuz2.jpg}
-    \caption{Okno edycji danych uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:EdytujUzytkownika2}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.75\textwidth]{edytujuz2.jpg}
+%    \caption{Okno edycji danych uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:EdytujUzytkownika2}
+%\end{figure}
 
 \subsubsection{Usuwanie konta}
 
 Aby usunπÊ konto uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{UsuÒ}.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{rm.jpg}
-    \caption{Usuwanie uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:UsunUzytkownika}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{rm.jpg}
+%    \caption{Usuwanie uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:UsunUzytkownika}
+%\end{figure}
 
 NastÍpnie pojawia siÍ okno, w ktÛrym z listy rozwijanej administrator wybiera konto. Aby usunπÊ konto naleøy kliknπÊ przycisk \textit{UsuÒ}.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{rm2.jpg}
-    \caption{Okno usuwanie uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:UsunUzytkownika2}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{rm2.jpg}
+%    \caption{Okno usuwanie uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:UsunUzytkownika2}
+%\end{figure}
 
 Jeøeli usuwanie powiod≥o siÍ, zostaje wyúwietlony komunikat.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{rm3.jpg}
-    \caption{Komunikat o poprawnym usuniÍciu konta uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:UsunUzytkownika3}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{rm3.jpg}
+%    \caption{Komunikat o poprawnym usuniÍciu konta uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:UsunUzytkownika3}
+%\end{figure}
 
 \subsubsection{Resetowanie hase≥}
 
 
 Aby zresetowaÊ has≥o uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Resetuj has≥o}.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{resetuj.jpg}
-    \caption{Resetowanie hase≥ uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:ResetujHaslo}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{resetuj.jpg}
+%    \caption{Resetowanie hase≥ uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:ResetujHaslo}
+%\end{figure}
 
 NastÍpnie pojawia siÍ okno, w ktÛrym z listy rozwijanej administrator wybiera konto. Aby zresetowaÊ konto naleøy kliknπÊ przycisk \textit{Resetuj}.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{reset2.jpg}
-    \caption{Okno resetowania hase≥, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:ResetujHaslo2}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{reset2.jpg}
+%    \caption{Okno resetowania hase≥, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:ResetujHaslo2}
+%\end{figure}
 
 Jeøeli operacjπ powiod≥a siÍ, uøytkownik otrzyma komunikat.
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.35\textwidth]{reset3.jpg}
-    \caption{Komunikat o poprawnym usuniecia konta, èrÛd≥o: Opracowanie w≥asne.}
-	\label{rys:ResetujHaslo3}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=0.35\textwidth]{reset3.jpg}
+%    \caption{Komunikat o poprawnym usuniecia konta, èrÛd≥o: Opracowanie w≥asne.}
+%	\label{rys:ResetujHaslo3}
+%\end{figure}
 
 \subsection{Modyfikacja s≥ownikÛw cenowych}
 
@@ -933,7 +948,11 @@ renderDocument.RenderDocument();
 renderDocument.Save(path);
 \end{verbatim}
 
-\section{Perspektywy rozwoju oprogramowania}
+\section{Podsumowanie oraz perspektywy rozwoju oprogramowania}
+
+Celem prezentowanego projektu by≥o wykonanie aplikacji bazodanowej wspierajπcej pracÍ wybranej sieci hotelowej, ktÛra umoøliwia zautomatyzowanie procesu tworzenia propozycji cenowej, uproszczenie sposobu aktualizacji wszelkich cennikÛw us≥ug dostÍpnych w hotelu oraz moøliwoúÊ kontroli pracownikÛw przez kierownictwo. Przedstawione cele zosta≥y w pe≥ni zrealizowane, czego efektem jest dzia≥ajπca aplikacja bazodanowa posiadajπca szereg modu≥Ûw umoøliwiajπcych ich osiπgniÍcie. 
+
+DziÍki zastosowaniu úrodowiska bazodanowego, pracownicy majπ pewnoúÊ, iø dane dotyczπce cen us≥ug na ktÛrych pracujπ sπ danymi aktualnymi, ktÛre aktualizowane sπ na bieøπco z poziomu konta menadøera sprzedaøy. Aspekt ten usprawnienia proces aktualizacji danych, niwelujπc potrzebÍ korzystania ze skrzynek elektronicznych. Menadøer sprzedaøy w sytuacji aktualizacji danej ceny ma obowiπzek edycji odpowiedniej tabeli z poziomu swojego uprzywilejowanego konta, a po≥πczenie aplikacji z bazπ danych automatycznie zapewni wprowadzenie zmiany na kontach wszystkich pracownikÛw. Baza danych oraz skategoryzowanie wszystkich produktÛw gastronomicznych, zwalnia natomiast z uøytkownika koniecznoúÊ manualnego wyszukiwania okreúlonego elementu w czasie tworzenia propozycji cenowej. Wprowadzona funkcja kategorii, umoøliwia wybÛr okreúlonego typu produktu oraz kolejno wybranie go z listy ktÛra pozbawiona jest wszystkich produktÛw, ktÛre do wybranej kategorii nie zosta≥y przypisane. Korzyúciπ p≥ynπcπ z przedstawionej funkcji jest oszczÍdnoúÊ czasu pracownika, ktÛra umoøliwia przyspieszenie procesu tworzenia nowej propozycji cenowej lub edycji juø istniejπcej. Kaøda propozycja cenowa, dziÍki przypisaniu do osoby, ktÛra jπ tworzy≥a moøliwa jest rÛwnieø do wglπdu z poziomu uprzywilejowanego konta. DziÍki temu kierownictwo ma moøliwoúÊ przeglπdania przygotowywanych przez pracownikÛw ofert, a co za tym idzie wzglπd we wszelkie ustalone z klientami ceny oraz zniøki.
 
 W fazie implementacji za≥oøonych modu≥Ûw prezentowanej aplikacji napotkano na wiele problemÛw zwiπzanych ze zmianπ wymagaÒ projektowych i sposobem realizacji ustalonych funkcjonalnoúci. Wraz z biegiem czasu powstawa≥y nowe pomys≥y dotyczπce usprawnienia istniejπcych rozwiπzaÒ, ktÛre niejednokrotnie zwiÍkszy≥yby ich wydajnoúÊ oraz efektywnoúÊ. Rozwiπzania te nie zawsze mog≥y byÊ jednak wprowadzone przez pryzmat czasu ktÛrego to wymaga≥y w celu ich implementacji, przetestowania oraz po≥πczenia z istniejπcym juø systemem. Proponowane zmiany wiπza≥y siÍ takøe z modyfikacjπ istniejπcej architektury systemu, co w znaczπcy sposÛb zmienia≥oby zaplanowany wczeúniej harmonogram prac i wyd≥uøa≥oby finalne ukoÒczenie projektu.
 
@@ -1164,4 +1183,5 @@ http://www.pzielinski.com/?p=831
 
 \listoffigures
 
+\lstlistoflistings
 \end{document}
