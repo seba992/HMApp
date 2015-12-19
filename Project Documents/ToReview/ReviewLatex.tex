@@ -17,13 +17,11 @@
 
 
 %% ka¿dy autor musi mieæ 4 argumenty: imiê nazwisko, nr albumu, procent wk³adu, opis wk³adu
-\autor{£ukasz Lis}{112233}{1} {Wk³ad pracy lisa}
+\autor{£ukasz Lis}{112233}{1} {~7.5 strony na 13.12.2015r.}
 	
-\autor{Sebastian Nalepka}{225265}{3} {Wk³ad pracy seby}
+\autor{Sebastian Nalepka}{225265}{3} {~23 strony na 13.12.2015r.}
 
-\autor{Mateusz Ogiermann}{226591}{0}	
-{Wk³ad pracy ogi}
-	
+\autor{Mateusz Ogiermann}{226591}{0} {~9 stron na 13.12.2015r.}	
 	
 
 
@@ -862,10 +860,13 @@ Aby umo¿liwiœc edycjê danych z poziomu DataGridView, zaimplementowano funckjê ob
 
 \begin{verbatim}
 
-//pobranie identyfikatora u¿ytkownika którego wiersz jest zaznaczony w DataGridView, 
-//oraz zapis do zmiennej typu int
+//pobranie identyfikatora u¿ytkownika którego wiersz 
+//jest zaznaczony w DataGridView oraz zapis do zmiennej typu int
 object item = UserList.SelectedItem;
-string ID = (UserList.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+string ID = 
+    (UserList.SelectedCells[0]
+             .Column
+             .GetCellContent(item) as TextBlock).Text;
 
 int selected = Int32.Parse(ID);
 
@@ -885,7 +886,8 @@ Users userUpdate = (from user in _ctx.Users
                     where user.Id == selected
                     select user).First();
 	
-	//przypisanie nowych wartoœci z komórek do poszczególnych kolumn tabeli Users
+	//przypisanie nowych wartoœci z komórek do poszczególnych 
+	//kolumn tabeli Users
 	userUpdate.Name = userRow.UserName;
 	userUpdate.Surname = userRow.UserSurname;
 	userUpdate.PhoneNum = userRow.UserPhoneNumber;
@@ -922,7 +924,8 @@ Poni¿szy kod, umo¿liwia zapis dokumentu w formacie PDF.
 
 \begin{verbatim}
 // deklaracja obiektu klasy PdfDocumentRenderer
-PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always);
+PdfDocumentRenderer renderDocument = 
+    new PdfDocumentRenderer(true,PdfSharp.Pdf.PdfFontEmbedding.Always);
 //renderowanie dokumentu
 renderDocument.Document = document;
 renderDocument.RenderDocument();
@@ -963,35 +966,6 @@ CACHE
 CACHE
 
 Tu programy
-
-\begin{verbatim}
-	//ADO.NET
-    SqlConnection connection = new SqlConnection(connectionString);
-
-    SqlCommand command = 
-    		new SqlCommand(@"INSERT INTO [TestDb].[Users]  
-        	    VALUES (@Login, @Password)", connection);
-            
-    command.Parameters.Add(
-    		new SqlParameter("Login", "TestLogin"));
-    command.Parameters.Add(
-	    	new SqlParameter("Password","TestPa$$word"));
-            
-    connection.Open();
-    command.ExecuteNonQuery();
-    connection.Close();
-
-    //Entity Framework
-    DiamondDBEntities dataContext = new DiamondDBEntities();
-    // EF automatycznie odczyta plik konfiguracyjny aplikacji
-
-    TestUser newUser = new TestUser
-    {
-        Login = "TestLogin", Password = "TestPa$$word",
-    };
-    dataContext.Users.Add(newUser);
-    dataContext.SaveChanges();  
-\end{verbatim}
 
 \noindent
 Oraz 
