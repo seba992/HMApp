@@ -20,7 +20,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
 
         private DiamondDBEntities _ctx;
-        private List<DiamondDBEntities> _items;
+//        private List<DiamondDBEntities> _items;
         private List<PropMenuGastronomicThings_Dictionary_First> _gastronomic;
         private List<PropReservationDetails_Dictionary_HallPrices> _hallPrices;
         private List<string> _filter;
