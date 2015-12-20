@@ -2,8 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
-        Title="EditUserView" ResizeMode="NoResize" Height="490" Width="860">
-    <Grid>
+        Title="Edytuj użytkownika" ResizeMode="NoResize" Height="490" Width="860">
+    <Grid  Background="#FF1F7AC7">
         <DataGrid ItemsSource="{Binding UsersListGrid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowEditEnding="UserList_RowEditEnding" x:Name ="UserList" HorizontalAlignment="Left" Height="452" VerticalAlignment="Top" Width="844" IsHitTestVisible="True" AutoGenerateColumns="False" CanUserAddRows="False" Visibility="Visible">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding UserId}" Header="Id" />

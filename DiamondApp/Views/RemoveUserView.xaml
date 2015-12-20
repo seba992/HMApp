@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
-        Title="RemoveUserView" ResizeMode="NoResize" Height="129" Width="265">
+        Title="Usuń użytkownika" ResizeMode="NoResize" Height="129" Width="265">
 
-    <Grid>
+    <Grid  Background="#FF1F7AC7">
         <GroupBox Header="Usuń użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Height="87" Width="238" Margin="6
                   ,0,0,0">
             <ComboBox ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="User Mode=TwoWay,      UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,10,-2,0" VerticalAlignment="Top" Width="210" Text="{Binding Path=UserLogin}"/>

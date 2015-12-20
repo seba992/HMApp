@@ -5485,7 +5485,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                 var position1 = extra.Find(item => item.ServiceType == dic[1]);
                                 if (position != null)
                                 {
-                                    MessageBox.Show(position.ServiceType +"11111111");
+                                    //MessageBox.Show(position.ServiceType +"11111111");
                                     PropExtraServType0 = position.ServiceType;
                                     PropExtraServVat0 = position.Vat;
                                     PropExtraServAmount0 = position.Amount;
@@ -5496,7 +5496,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                 }
                                 else if (position1!=null)
                                 {
-                                    MessageBox.Show(position1.ServiceType + "2222");
+                                    //MessageBox.Show(position1.ServiceType + "2222");
                                     PropExtraServType0 = position1.ServiceType;
                                     PropExtraServVat0 = position1.Vat;
                                     PropExtraServAmount0 = position1.Amount;
@@ -5506,7 +5506,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                 }
                                 else
                                 {
-                                    MessageBox.Show(extra[0].ServiceType );
+                                    //MessageBox.Show(extra[0].ServiceType );
                                     PropExtraServType1 = extra[0].ServiceType;
                                     PropExtraServVat1 = extra[0].Vat;
                                     PropExtraServAmount1 = extra[0].Amount;
@@ -5523,7 +5523,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                             break;
                         case 1:
-                            MessageBox.Show(extra[1].ServiceType);
+                            //MessageBox.Show(extra[1].ServiceType);
                             if (nullFisrtRow > 0)
                             {
                                 PropExtraServType2 = extra[1].ServiceType;
@@ -5543,7 +5543,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                             }
                             break;
                         case 2:
-                            MessageBox.Show(extra[2].ServiceType);
+                           // MessageBox.Show(extra[2].ServiceType);
                             if (nullFisrtRow > 0)
                             {
                                 PropExtraServType3 = extra[2].ServiceType;
@@ -5562,7 +5562,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                             }
                             break;
                         case 3:
-                            MessageBox.Show(extra[3].ServiceType);
+                            //MessageBox.Show(extra[3].ServiceType);
                             if (nullFisrtRow > 0)
                             {
                                 PropExtraServType3 = extra[3].ServiceType;
