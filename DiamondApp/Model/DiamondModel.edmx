@@ -253,7 +253,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Hall" Type="varchar" MaxLength="20" />
           <Property Name="January" Type="int" />
-          <Property Name="Febuary" Type="int" />
+          <Property Name="February" Type="int" />
           <Property Name="March" Type="int" />
           <Property Name="April" Type="int" />
           <Property Name="May" Type="int" />
@@ -704,26 +704,6 @@
           <Property Name="TheatrePeopleNumber" Type="Int32" />
           <Property Name="UShapePeopleNumber" Type="Int32" />
         </EntityType>
-        <EntityType Name="PropReservationDetails_Dictionary_HallPrices">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Hall" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="January" Type="Int32" />
-          <Property Name="Febuary" Type="Int32" />
-          <Property Name="March" Type="Int32" />
-          <Property Name="April" Type="Int32" />
-          <Property Name="May" Type="Int32" />
-          <Property Name="June" Type="Int32" />
-          <Property Name="July" Type="Int32" />
-          <Property Name="August" Type="Int32" />
-          <Property Name="September" Type="Int32" />
-          <Property Name="October" Type="Int32" />
-          <Property Name="November" Type="Int32" />
-          <Property Name="December" Type="Int32" />
-          <Property Name="Other" Type="Int32" />
-        </EntityType>
         <EntityContainer Name="DiamondDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="PropAccomodation_Dictionary" EntityType="Self.PropAccomodation_Dictionary" />
           <EntitySet Name="PropExtraServices_Dictionary" EntityType="Self.PropExtraServices_Dictionary" />
@@ -741,7 +721,6 @@
           <EntitySet Name="PropPaymentSuggestions_Dictionary_Third" EntityType="Self.PropPaymentSuggestions_Dictionary_Third" />
           <EntitySet Name="PropReservationDetails" EntityType="Self.PropReservationDetails" />
           <EntitySet Name="PropReservationDetails_Dictionary_HallCapacity" EntityType="Self.PropReservationDetails_Dictionary_HallCapacity" />
-          <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="Self.PropReservationDetails_Dictionary_HallPrices" />
           <EntitySet Name="PropMenuMerge" EntityType="DiamondDBModel.PropMenuMerge" />
           <EntitySet Name="AccountPrivileges" EntityType="DiamondDBModel.AccountPrivileges" />
           <EntitySet Name="Users" EntityType="DiamondDBModel.Users" />
@@ -807,6 +786,7 @@
             <End Role="PropMenuPosition" EntitySet="PropMenuPosition" />
           </AssociationSet>
           <EntitySet Name="PropositionStates_Dictionary" EntityType="DiamondDBModel.PropositionStates_Dictionary" />
+          <EntitySet Name="PropReservationDetails_Dictionary_HallPrices" EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallPrices" />
         </EntityContainer>
         <EntityType Name="PropMenuMerge">
           <Key>
@@ -1143,6 +1123,26 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="PropReservationDetails_Dictionary_HallPrices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hall" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="January" Type="Int32" />
+          <Property Name="February" Type="Int32" />
+          <Property Name="March" Type="Int32" />
+          <Property Name="April" Type="Int32" />
+          <Property Name="May" Type="Int32" />
+          <Property Name="June" Type="Int32" />
+          <Property Name="July" Type="Int32" />
+          <Property Name="August" Type="Int32" />
+          <Property Name="September" Type="Int32" />
+          <Property Name="October" Type="Int32" />
+          <Property Name="November" Type="Int32" />
+          <Property Name="December" Type="Int32" />
+          <Property Name="Other" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1301,27 +1301,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PropReservationDetails_Dictionary_HallPrices">
-            <EntityTypeMapping TypeName="DiamondDBModel.PropReservationDetails_Dictionary_HallPrices">
-              <MappingFragment StoreEntitySet="PropReservationDetails_Dictionary_HallPrices">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Hall" ColumnName="Hall" />
-                <ScalarProperty Name="January" ColumnName="January" />
-                <ScalarProperty Name="Febuary" ColumnName="Febuary" />
-                <ScalarProperty Name="March" ColumnName="March" />
-                <ScalarProperty Name="April" ColumnName="April" />
-                <ScalarProperty Name="May" ColumnName="May" />
-                <ScalarProperty Name="June" ColumnName="June" />
-                <ScalarProperty Name="July" ColumnName="July" />
-                <ScalarProperty Name="August" ColumnName="August" />
-                <ScalarProperty Name="September" ColumnName="September" />
-                <ScalarProperty Name="October" ColumnName="October" />
-                <ScalarProperty Name="November" ColumnName="November" />
-                <ScalarProperty Name="December" ColumnName="December" />
-                <ScalarProperty Name="Other" ColumnName="Other" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PropMenuMerge">
             <EntityTypeMapping TypeName="DiamondDBModel.PropMenuMerge">
               <MappingFragment StoreEntitySet="PropMenuMerge">
@@ -1465,6 +1444,27 @@
             <EntityTypeMapping TypeName="DiamondDBModel.PropositionStates_Dictionary">
               <MappingFragment StoreEntitySet="PropositionStates_Dictionary">
                 <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropReservationDetails_Dictionary_HallPrices">
+            <EntityTypeMapping TypeName="DiamondDBModel.PropReservationDetails_Dictionary_HallPrices">
+              <MappingFragment StoreEntitySet="PropReservationDetails_Dictionary_HallPrices">
+                <ScalarProperty Name="Other" ColumnName="Other" />
+                <ScalarProperty Name="December" ColumnName="December" />
+                <ScalarProperty Name="November" ColumnName="November" />
+                <ScalarProperty Name="October" ColumnName="October" />
+                <ScalarProperty Name="September" ColumnName="September" />
+                <ScalarProperty Name="August" ColumnName="August" />
+                <ScalarProperty Name="July" ColumnName="July" />
+                <ScalarProperty Name="June" ColumnName="June" />
+                <ScalarProperty Name="May" ColumnName="May" />
+                <ScalarProperty Name="April" ColumnName="April" />
+                <ScalarProperty Name="March" ColumnName="March" />
+                <ScalarProperty Name="February" ColumnName="February" />
+                <ScalarProperty Name="January" ColumnName="January" />
+                <ScalarProperty Name="Hall" ColumnName="Hall" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

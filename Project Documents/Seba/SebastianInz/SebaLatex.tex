@@ -313,7 +313,14 @@ Wydajnoœæ pracy w projektach developerskich jest kluczow¹ kwesti¹, która bezpoœr
 
 ReSharper jest to narzêdzie zaprojektowane z myœl¹ o programistach .NET \cite{.NETOpis} pracuj¹cych w Microsoft Visual Studio, które w znacznym stopniu rozszerza dostêpn¹ funkcjonalnoœæ wy¿ej wymienionego œrodowiska, u³atwiaj¹c tym samym pisanie oraz refaktoryzacjê kodu.
 
-Funkcje dostêpne z poziomu ReSharpera mo¿na podzieliæ na kilkanaœcie modu³ów, z których jednym z najwa¿niejszych jest modu³ zajmuj¹cy siê inspekcj¹ kodu. Podczas pracy programisty z uruchomionym w tle ReSharperem, w czasie rzeczywistym sprawdzane jest ponad 1700 regu³ dotycz¹cych prawid³owoœci kodu i w sytuacji znalezienia nieœcis³oœci, znaleziony wyj¹tek natychmiast wyœwietlany jest na poziomie graficznego interfejsu Visual Studio z dok³adnym jego opisem i miejscem wyst¹pienia. Wyj¹tki te dotycz¹ miêdzy innymi mo¿liwoœci zast¹pienia fragmentu kodu jego wydajniejsz¹ wersj¹ (TODO: screen z przyk³adem), ostrze¿eniem programisty przed kodem, który potencjalnie mo¿e doprowadziæ do nieprawid³owego dzia³ania ca³ego oprogramowania lub informacj¹ o fragmencie, który jest kodem martwym \cite{MartwyKod}. 
+Funkcje dostêpne z poziomu ReSharpera mo¿na podzieliæ na kilkanaœcie modu³ów, z których jednym z najwa¿niejszych jest modu³ zajmuj¹cy siê inspekcj¹ kodu. Podczas pracy programisty z uruchomionym w tle ReSharperem, w czasie rzeczywistym sprawdzane jest ponad 1700 regu³ dotycz¹cych prawid³owoœci kodu i w sytuacji znalezienia nieœcis³oœci, znaleziony wyj¹tek natychmiast wyœwietlany jest na poziomie graficznego interfejsu Visual Studio z dok³adnym jego opisem i miejscem wyst¹pienia. Wyj¹tki te dotycz¹ miêdzy innymi mo¿liwoœci zast¹pienia fragmentu kodu jego wydajniejsz¹ wersj¹, ostrze¿eniem programisty przed kodem, który potencjalnie mo¿e doprowadziæ do nieprawid³owego dzia³ania ca³ego oprogramowania lub informacj¹ o fragmencie, który jest kodem martwym \cite{MartwyKod}. Przyk³ad kodu, który spowodowaæ mo¿e nieprawid³owe dzia³anie aplikacji oraz przyk³adowe jego rozwi¹zania dostêpne s¹ do wgl¹du na rysunku \ref{rys:ResharperNullReference}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{ResharperNullReference.jpg}
+    \caption{Informacja Resharpera dotycz¹ca potencjalnej mo¿liwoœci wyst¹pienia wyj¹tku NullReferenceException, ród³o: Opracowanie w³asne.}
+    \label{rys:ResharperNullReference}
+\end{figure}
 
 Kolejnym bardzo istotnym modu³em jest modu³ generowania kodu. Podczas programowania wiele czynnoœci takich jak pisanie nowych klas, metod, implementacja interfejsów czy zmiana nazw wielokrotnie siê powtarza. Dziêki odpowiednim skrótom klawiszowym wszystkie te elementy ReSharper wykona za programistê. Przeniesie on wybran¹ klasê do oddzielnego pliku, utworzy na podstawie nazwy i jej typu szablon brakuj¹cej metody, wygeneruje wymagane przy dziedziczeniu interfejsu wszystkie jego elementy oraz automatycznie zamieni wybran¹ nazwê na now¹, w ka¿dym miejscu jej wystêpowania. Szczególnie ostatnia opcja w pracy przy rozbudowanym systemie jest wyj¹tkowo przydatna i znacznie skraca czas wykonywanej czynnoœci.
 
@@ -392,12 +399,11 @@ Wastwa widoku (View) odpowiedzialna jest za wyœwietlanie danych i pe³ni rolê wy³
 
 \subsubsection{Model aplikacji}
 
+Pytanie do promotora:  Opisywaæ podzia³ klas, strukturê folderów aplikacji ? Jest to bardzo techniczna kwestia, nie wiem, czy potrzebna
+
 TODO: after refactor.
-
 - opis warstw (model == baza danych)
-
 - podzial view/viewmodeli
-
 - ilustracja podzialu foldery+klasy
 
 \subsection{Architektura bazy danych}
@@ -519,15 +525,30 @@ Proces logowania od strony u¿ytkownika polega na wprowadzeniu z poziomu klawiatu
 
 W sytuacji podania poprawnego loginu oraz has³a, aplikacja ukrywa okno logowania oraz uruchamia odpowiednie dla posiadanych uprawnieñ okno g³ówne. Istniej¹ jednak inne schematy przeprowadzenia operacji logowania, takie jak wpisanie b³êdnego  has³a lub loginu, nie uzupe³nienie nazwy u¿ytkownika lub pierwsze logowanie na konto, które zgodnie z ustalonymi przez zespó³ za³o¿eniami projektowymi ma umo¿liwiaæ ustalenie has³a przez loguj¹cego siê u¿ytkownika.
 
-Wpisanie b³êdnego has³a lub nazwy konta wychwytywane jest przez mechanizm modu³u logowania, który zwraca informacjê o problemie wraz z jego opisem. W celu zwiêkszenia bezpieczeñstwa wypisywana jest ogólna informacja o otrzymaniu b³êdnych danych, a nie wyszczególniona, która informacja zosta³a podana b³êdnie.
+Wpisanie b³êdnego has³a lub nazwy konta wychwytywane jest przez mechanizm modu³u logowania, który zwraca informacjê ukazan¹ na rysunku \ref{rys:UzytkownikLogowanieZleDane} o problemie wraz z jego opisem. W celu zwiêkszenia bezpieczeñstwa wypisywana jest ogólna informacja o otrzymaniu b³êdnych danych, a nie wyszczególniona, która informacja zosta³a podana b³êdnie.
 
-TODO: SCREEN B£ÊDNEGO WPISANIA DANYCH (wrzuciæ po poprawkach wizualnych programu)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UzytkownikLogowanieZleDane.jpg}
+    \caption{Informacja otrzymania b³êdnych danych podczas operacji logowania, ród³o: Opracowanie w³asne.}
+    \label{rys:UzytkownikLogowanieZleDane}
+\end{figure}
 
-Pierwsze logowanie jest specyficzn¹ form¹ logowania, w którym u¿ytkownik posiada obowi¹zek wpisania has³a, z którego bêdzie korzysta³ w pracy z aplikacj¹. W chwili wpisania nazwy u¿ytkownika, program w tle przeprowadza operacjê walidacji statusu konta i w sytuacji wykrycia, i¿ u¿ytkownik loguje siê pierwszy raz, wyœwietla stosown¹ informacjê, która instruuje go o dalszych krokach. Ustalone przez u¿ytkownika has³o ma obowi¹zek spe³niaæ okreœlone jego zasady bezpieczeñstwa dotycz¹ce posiadania przynajmniej oœmiu znaków, co najmniej jednej du¿ej oraz ma³ej litery, a tak¿e cyfry.
+Pierwsze logowanie jest specyficzn¹ form¹ logowania, w którym u¿ytkownik posiada obowi¹zek wpisania has³a, z którego bêdzie korzysta³ w pracy z aplikacj¹. W chwili wpisania nazwy u¿ytkownika, program w tle przeprowadza operacjê walidacji statusu konta i w sytuacji wykrycia, i¿ u¿ytkownik loguje siê pierwszy raz, wyœwietla stosown¹ informacjê przedstawion¹ na rysunku \ref{rys:UzytkownikLogowaniePierwsze}, która instruuje go o dalszych krokach. Ustalone przez u¿ytkownika has³o ma obowi¹zek spe³niaæ okreœlone jego zasady bezpieczeñstwa dotycz¹ce posiadania przynajmniej oœmiu znaków, co najmniej jednej du¿ej oraz ma³ej litery, a tak¿e cyfry. U¿ytkownik w sytuacji wpisania has³a, nie spe³niaj¹cej powy¿szej polityki bezpieczeñstwa poinformowany zostanie stosown¹ informacj¹, która przedstawiona zosta³a na rysunku \ref{rys:UzytkownikLogowanieSilaHasla}.
 
-TODO: /odnoœnik do zrzutu ekranu ilustruj¹c¹ opisan¹ sytuacjê/ (wrzuciæ po poprawkach wizualnych programu)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UzytkownikLogowaniePierwsze.jpg}
+    \caption{Okno informacji podczas pierwszego logowania, ród³o: Opracowanie w³asne.}
+    \label{rys:UzytkownikLogowaniePierwsze}
+\end{figure}
 
-TODO: SCREEN PIERWSZEGO LOGOWANIA (wrzuciæ po poprawkach wizualnych programu)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UzytkownikLogowanieSilaHasla.jpg}
+    \caption{Okno informuj¹ce o polityce bezpieczeñstwa hase³, ród³o: Opracowanie w³asne.}
+    \label{rys:UzytkownikLogowanieSilaHasla}
+\end{figure}
 
 \subsection{Zarz¹dzanie kontem sprzedawcy oraz administratora  (obs³uga)}
 
@@ -538,8 +559,9 @@ Modu³ tworzenia nowej propozycji cenowej umo¿liwia u¿ytkownikowi aplikacji przep
 W czasie kontaktu sprzedawcy z klientem, chc¹c przedstawiæ ofertê cenow¹ dotycz¹c¹ organizowanego przez klienta wydarzenia, sprzedawca posiada w menu g³ównym aplikacji opcjê stworzenia nowej propozycji cenowej. W sytuacji wybrania przedstawionej opcji, oczom sprzedawcy ukazuje siê forma przeznaczona do wpisania wymaganych danych. Forma ta przez wzgl¹d na kilka typów us³ug podzielona zosta³a na piêæ zak³adek, z których ka¿da zawiera odpowiednia pola, umo¿liwiaj¹ce ustalenie wszelkich elementów konkretnej us³ugi.
 
 \subsubsection{Opis klienta}
+\label{dzial:OpisKlientaUzytkownik}
 
-Pierwsza zak³adka zawiera wszelkie informacje dotycz¹ce danych osobowych sprzedawcy, klienta oraz ogólnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, któr¹ reprezentuje, pobierane s¹ automatycznie z bazy danych. Operacja ta jest mo¿liwa do wykonania dziêki przechowywaniu w programie informacji o tym, na jakie konto u¿ytkownik zosta³ zalogowany. Wszelkie pozosta³e dane sprzedawca ma obowi¹zek uzupe³niæ samodzielnie bazuj¹c na potrzebach klienta.
+Pierwsza zak³adka, której okno graficzne dostêpnej jest do wgl¹du przy rysunku \ref{rys:UzytkownikNowaPropozycjaTab1} zawiera wszelkie informacje dotycz¹ce danych osobowych sprzedawcy, klienta oraz ogólnych danych o organizowanym wydarzeniu. Dane osobowe sprzedawcy oraz informacje o firmie, któr¹ reprezentuje, pobierane s¹ automatycznie z bazy danych. Operacja ta jest mo¿liwa do wykonania dziêki przechowywaniu w programie informacji o tym, na jakie konto u¿ytkownik zosta³ zalogowany. Wszelkie pozosta³e dane sprzedawca ma obowi¹zek uzupe³niæ samodzielnie bazuj¹c na potrzebach klienta.
 
 \begin{itemize}
 \item \textsl{NAZWA FIRMY} 
@@ -560,7 +582,7 @@ Pierwsza zak³adka zawiera wszelkie informacje dotycz¹ce danych osobowych sprzeda
 
 \item \textsl{KONTAKT ZE STRONY ZAMAWIAJ¥CEGO}
 
-\tab Jest to podkategoria zawieraj¹ca cztery pola tekstowe, które przeznaczone s¹ do wpisania imienia i nazwiska klienta, jego numeru telefonu oraz adresu e-mail. Ostatnie pole tekstowe (\textsl{Osoba decyzyjna}) umo¿liwia wpisanie osoby, która posiadaæ bêdzie uprawnienie do dokupywania us³ug nieuwzglêdnionych w propozycji cenowej w czasie trwania wydarzenia. Zdarza siê, i¿ podczas jego trwania, organizator chce dobraæ dla goœci dodatkowe us³ugi, które nie s¹ uwzglêdnione w ofercie, na bazie której wydarzenie jest przeprowadzane. W tej sytuacji w celu unikniêcia póŸniejszych problemów dotycz¹cych zwiêkszenia kwoty koñcowej wydarzenia, wybierana jest osoba, która decyduje jakie elementy mog¹ byæ dokupione. Ilustruj¹c tê sytuacjê mo¿na pos³u¿yæ siê przyk³adem imprezy weselnej do której b³êdnie przewidziano liczbê dostêpnych napoi. Osoba decyzyjna mo¿e tê wartoœæ zwiêkszyæ z pe³n¹ odpowiedzialnoœci¹ zwiêkszenia kosztów. Zawartoœæ pola tekstowego osoby decyzyjnej automatycznie wype³niana jest zawartoœci¹ pola tekstowego \textsl{Imiê i nazwisko}. Istnieje jednak mo¿liwoœæ, aby sprzedawca zmieni³ t¹ wartoœæ na inn¹ poniewa¿ nie zawsze osoba klienta jest osob¹ decyzyjn¹ w czasie trwania wydarzenia.
+\tab Jest to podkategoria, zawieraj¹ca cztery pola tekstowe, które przeznaczone s¹ do wpisania imienia i nazwiska klienta, jego numeru telefonu oraz adresu e-mail. Ostatnie pole tekstowe (\textsl{Osoba decyzyjna}) umo¿liwia wpisanie osoby, która posiadaæ bêdzie uprawnienie do dokupywania us³ug nieuwzglêdnionych w propozycji cenowej w czasie trwania wydarzenia. Zdarza siê, i¿ podczas jego trwania, organizator chce dobraæ dla goœci dodatkowe us³ugi, które nie s¹ uwzglêdnione w ofercie, na bazie której wydarzenie jest przeprowadzane. W tej sytuacji w celu unikniêcia póŸniejszych problemów dotycz¹cych zwiêkszenia kwoty koñcowej wydarzenia, wybierana jest osoba, która decyduje jakie elementy mog¹ byæ dokupione. Ilustruj¹c tê sytuacjê mo¿na pos³u¿yæ siê przyk³adem imprezy weselnej do której b³êdnie przewidziano liczbê dostêpnych napoi. Osoba decyzyjna mo¿e tê wartoœæ zwiêkszyæ z pe³n¹ odpowiedzialnoœci¹ zwiêkszenia kosztów. Zawartoœæ pola tekstowego osoby decyzyjnej automatycznie wype³niana jest zawartoœci¹ pola tekstowego \textsl{Imiê i nazwisko}. Istnieje jednak mo¿liwoœæ, aby sprzedawca zmieni³ t¹ wartoœæ na inn¹ poniewa¿ nie zawsze osoba klienta jest osob¹ decyzyjn¹ w czasie trwania wydarzenia.
 
 \item \textsl{TERMIN (od - do)}
 
@@ -584,11 +606,17 @@ Pierwsza zak³adka zawiera wszelkie informacje dotycz¹ce danych osobowych sprzeda
 
 \end{itemize}
 
-TODO: po edycji graficznej wrzuciæ tab1 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UzytkownikNowaPropozycjaTab1.jpg}
+    \caption{Okno tworzenia propozycji cenowej. Zak³adka kontakt ze strony zamawiaj¹cego, ród³o: Opracowanie w³asne.}
+    \label{rys:UzytkownikNowaPropozycjaTab1}
+\end{figure}
 
 \subsubsection{Sala i jej wyposa¿enie}
+\label{dzial:SalaIWyposazenieUzytkownik}
 
-Druga zak³adka modu³u tworzenia nowej propozycji cenowej dotyczy szczegó³ów rezerwacji dotycz¹cych sali, jej dodatkowego wyposa¿enia oraz cen poszczególnych elementów. Na tym etapie negocjowany jest równie¿ rabat dotycz¹cy finalnej ceny wybranej przez klienta sali.
+Druga zak³adka modu³u tworzenia nowej propozycji cenowej widoczna pod rysunkiem \ref{rys:UzytkownikNowaPropozycjaTab2}, dotyczy szczegó³ów rezerwacji dotycz¹cych sali, jej dodatkowego wyposa¿enia oraz cen poszczególnych elementów. Na tym etapie negocjowany jest równie¿ rabat dotycz¹cy finalnej ceny wybranej przez klienta sali.
 
 \begin{itemize}
 \item \textsl{WYBÓR WYPOSA¯ENIA}
@@ -600,11 +628,17 @@ Druga zak³adka modu³u tworzenia nowej propozycji cenowej dotyczy szczegó³ów reze
 \tab Ceny tabelaryczne wynajmowanych sal s¹ cenami umownymi, narzuconymi przez menad¿era odgórnie. Sprzedawca ma jednak prawo ich obni¿ania na drodze negocjacji w celu przedstawienia klientowi korzystnej oferty na tle konkurencji. Po operacji wyboru sali, w polu \textsl{"Standardowa cena sali"} widoczna jest jej cena, któr¹ za pomoc¹ znajduj¹cego siê poni¿ej pola mo¿na redukowaæ. W chwili zmiany wartoœci rabatu, wszelkie wartoœci cenowe jego dotycz¹ce s¹ w czasie rzeczywistym  odœwie¿ane, co u³atwia ich kontrolê przez sprzedawcê.
 \end{itemize}
 
-TODO: po edycji graficznej wrzuciæ tab2 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UzytkownikNowaPropozycjaTab2.jpg}
+    \caption{Okno tworzenia propozycji cenowej. Zak³adka sali i jej wyposa¿enia, ród³o: Opracowanie w³asne.}
+    \label{rys:UzytkownikNowaPropozycjaTab2}
+\end{figure}
 
 \subsubsection{Us³ugi gastronomiczne}
+\label{dzial:UslugiGastronomiczneUzytkownik}
 
-\tab Kolejnym krokiem w czasie procesu tworzenia propozycji cenowej jest wybór us³ug zwi¹zanych z gastronomi¹. Zasada dzia³ania us³ug gastronomicznych jest podobna do poprzedniej zak³adki, z t¹ ró¿nic¹ i¿ wewnêtrzne mechanizmy sprawdzaj¹ce powi¹zania s¹ znacznie bardziej skomplikowane.
+\tab Kolejnym krokiem w czasie procesu tworzenia propozycji cenowej jest wybór us³ug zwi¹zanych z gastronomi¹. Zasada dzia³ania us³ug gastronomicznych, których okno widoczne jest pod rysunkiem \ref{rys:UzytkownikNowaPropozycjaTab3}, podobna jest do poprzedniej zak³adki, z t¹ ró¿nic¹ i¿ wewnêtrzne mechanizmy sprawdzaj¹ce powi¹zania s¹ znacznie bardziej skomplikowane.
 
 \begin{itemize}
 \item \textsl{WYBÓR ELEMENTÓW GASTRONOMICZNYCH}
@@ -615,18 +649,31 @@ TODO: po edycji graficznej wrzuciæ tab2 (poszczególne pola, podzielone na dzia³y
 
 Pobierane z bazy danych ceny produktów s¹ cenami przyjêtymi jako minimalne ceny po których produkt mo¿e zostaæ sprzedany. W celu wygenerowania wiêkszego przychodu sprzedawca ma mo¿liwoœæ podwy¿szenia ceny produktu poprzez ustalenie wielkoœci jego mar¿y, których domyœlne wartoœci ustalone zosta³y przez menad¿era sprzeda¿y. Przedstawiane mar¿e podzielone zosta³y na piêæ kategorii przez wzgl¹d na ich specyfikê - dla przyk³adu mar¿a na napoje alkoholowe jest z definicji znacznie wiêksza ni¿ na potrawy bufetowe lub produkty niskobud¿etowe.
 
-TODO: po edycji graficznej wrzuciæ tab3 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UzytkownikNowaPropozycjaTab3.jpg}
+    \caption{Okno tworzenia propozycji cenowej. Zak³adka elementów gastronomicznych, ród³o: Opracowanie w³asne.}
+    \label{rys:UzytkownikNowaPropozycjaTab3}
+\end{figure}
+
 \end{itemize}
 
 \subsubsection{Us³ugi noclegowe}
+\label{dzial:UslugiNoclegoweUzytkownik}
 
-Zak³adka us³ug noclegowych opisuje liczbê oraz rodzaj wybranych pokoi hotelowych. Lista dostêpnych pokoi wraz z wyszczególnionymi cenami automatycznie dostarczana jest do okna z bazy danych. Rol¹ sprzedawcy jest wybór odpowiedniej ich iloœci oraz liczby dni. Jedyn¹ mo¿liwoœci¹ obni¿enia ustalonych przez menad¿era cen jest ustalenie rabatu, który jednakowo obowi¹zuje wszystkie rodzaje pokoi. Po wpisaniu odpowiednich wartoœci, wewnêtrzne mechanizmy programu przeliczaj¹ wszystkie wartoœci umo¿liwiaj¹c podgl¹d ich zsumowanych wartoœci netto i brutto.
+Zak³adka us³ug noclegowych widoczna pod rysunkiem \ref{rys:UzytkownikNowaPropozycjaTab4} opisuje liczbê oraz rodzaj wybranych pokoi hotelowych. Lista dostêpnych pokoi wraz z wyszczególnionymi cenami automatycznie dostarczana jest do okna z bazy danych. Rol¹ sprzedawcy jest wybór odpowiedniej ich iloœci oraz liczby dni. Jedyn¹ mo¿liwoœci¹ obni¿enia ustalonych przez menad¿era cen jest ustalenie rabatu, który jednakowo obowi¹zuje wszystkie rodzaje pokoi. Po wpisaniu odpowiednich wartoœci, wewnêtrzne mechanizmy programu przeliczaj¹ wszystkie wartoœci umo¿liwiaj¹c podgl¹d ich zsumowanych wartoœci netto i brutto.
 
-TODO: po edycji graficznej wrzuciæ tab4 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UzytkownikNowaPropozycjaTab4.jpg}
+    \caption{Okno tworzenia propozycji cenowej. Zak³adka dotycz¹ca us³ug noclegowych, ród³o: Opracowanie w³asne.}
+    \label{rys:UzytkownikNowaPropozycjaTab4}
+\end{figure}
 
 \subsubsection{Us³ugi dodatkowe i forma p³atnoœci}
+\label{dzial:UslugiDodatkoweIPlatnoscUzytkownik}
 
-Ostatni¹ zak³adk¹ procesu tworzenia nowej propozycji cenowej jest zak³adka umo¿liwiaj¹ca ustalenie finalnej formy w której realizowana bêdzie zap³ata, dodanie indywidualnie ustalanych z klientem elementów, które nie s¹ dostêpne w zakresie standardowych us³ug oferowanych przez sieæ hotelow¹ oraz rezerwacjê miejsc parkingowych dla uczestników organizowanego wydarzenia. Przez wzgl¹d, i¿ przedstawiana zak³adka jest ostatni¹ czêœci¹ tworzenia propozycji cenowej, zawiera tak¿e pola zawieraj¹ce ca³kowity koszt netto oraz brutto wszystkich wybranych wczeœniej us³ug.
+Ostatni¹ zak³adk¹ procesu tworzenia nowej propozycji cenowej widoczn¹ pod rysunkiem \ref{rys:UzytkownikNowaPropozycjaTab5} jest zak³adka umo¿liwiaj¹ca ustalenie finalnej formy w której realizowana bêdzie zap³ata, dodanie indywidualnie ustalanych z klientem elementów, które nie s¹ dostêpne w zakresie standardowych us³ug oferowanych przez sieæ hotelow¹ oraz rezerwacjê miejsc parkingowych dla uczestników organizowanego wydarzenia. Przez wzgl¹d, i¿ przedstawiana zak³adka jest ostatni¹ czêœci¹ tworzenia propozycji cenowej, zawiera tak¿e pola zawieraj¹ce ca³kowity koszt netto oraz brutto wszystkich wybranych wczeœniej us³ug.
 
 \begin{itemize}
 \item \textsl{US£UGI DODATKOWE}
@@ -641,14 +688,18 @@ Ostatni¹ zak³adk¹ procesu tworzenia nowej propozycji cenowej jest zak³adka umo¿l
 
 \tab Podkategoria ta jest finalnym elementem tworzonej propozycji cenowej. Umo¿liwia ona sprzedawcy wybór formy w jakiej klient chce dokonaæ p³atnoœci, nazwy us³ugi zapisanej na fakturze oraz sposobu zap³aty za zamówienia indywidualne oraz parking. Opcje wszystkich przedstawionych elementów dostêpne s¹ z poziomu rozwijanych list, umo¿liwiaj¹c tym samym sprzedawcy bardzo szybk¹ mo¿liwoœæ ich wyboru.
 
-TODO: po edycji graficznej wrzuciæ tab5 (poszczególne pola, podzielone na dzia³y, graficzne reprezentacja opisywanych rzeczy)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UzytkownikNowaPropozycjaTab5.jpg}
+    \caption{Okno tworzenia propozycji cenowej. Zak³adka dotycz¹ca us³ug dodatkowych oraz formê zap³aty za organizowane wydarzenie, ród³o: Opracowanie w³asne.}
+    \label{rys:UzytkownikNowaPropozycjaTab5}
+\end{figure}
+
 \end{itemize}
 
 \subsubsection{Zapis nowej propozycji cenowej}
 
-Operacja zapisu nowej propozycji cenowej mo¿liwa jest do wykonania w ka¿dej chwili tworzenia propozycji. Sprzedawca nie ma obowi¹zku tworzenia pe³nego dokumentu, który w sposób natychmiastowy przekazywany bêdzie klientowi. Dostêpna z poziomu menu opcja edycji istniej¹cej propozycji znosi koniecznoœæ jej finalnego utworzenia za pierwszym razem. W sytuacji chêci zapisu tworzonej propozycji, sprzedawca zobowi¹zany jest nacisn¹æ przycisk \textsl{Zapisz propozycjê}, który po odpowiedniej konwersji danych zapisze wszystkie wymagane do póŸniejszej edycji elementy do bazy danych.
-
-TODO: po edycji graficznej wrzuciæ przycisk zapisu + odwo³anie do niego
+Operacja zapisu nowej propozycji cenowej mo¿liwa jest do wykonania w ka¿dej chwili tworzenia propozycji. Sprzedawca nie ma obowi¹zku tworzenia pe³nego dokumentu, który w sposób natychmiastowy przekazywany bêdzie klientowi. Dostêpna z poziomu menu opcja edycji istniej¹cej propozycji umo¿liwia jej finalne zakoñczenie w dowolnym czasie w przysz³oœci. W sytuacji chêci zapisu tworzonej propozycji, sprzedawca zobowi¹zany jest nacisn¹æ przycisk \textsl{Zapisz propozycjê}, który po odpowiedniej konwersji danych zapisze wszystkie wymagane do póŸniejszej edycji elementy do bazy danych. Lokalizacja przycisku umiejscowiona jest w prawym górnym rogu ka¿dej zak³adki tworzenia nowej propozycji cenowej. Jej wygl¹d dostêpny jest do wgl¹du w przywo³anym ju¿ rysunku \ref{rys:UzytkownikNowaPropozycjaTab5}.
 
 \subsection{Edycja istniej¹cej propozycji cenowej}
 \subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
@@ -817,18 +868,51 @@ Pole wpisywania has³a przez u¿ytkownika w oknie logowania stanowi dedykowana dla
     \label{rys:PasswordBox}
 \end{figure}
 
-Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili wpisania has³a przez u¿ytkownika oraz klikniêcia przycisku logowania, nastêpuje sprawdzenie ustalonych zasad dotycz¹cych z³o¿onoœci has³a opisanych w rozdziale \ref{dzial:ZlozonoscHasel} oraz w sytuacji ich zatwierdzeñ has³o przekszta³cane jest za pomoc¹ 256-bitowej odmiany algorytmu haszuj¹cego SHA-2 na skrót, który porównywany jest ze skrótem has³a dopasowanemu wpisanej nazwie u¿ytkownika u¿ytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostêp do dalszej czêœci programu.
+Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili wpisania has³a przez u¿ytkownika oraz klikniêcia przycisku logowania, nastêpuje sprawdzenie ustalonych zasad dotycz¹cych z³o¿onoœci has³a opisanych w rozdziale \ref{dzial:ZlozonoscHasel} oraz w sytuacji ich pozytywnego rozpatrzenia, has³o przekszta³cane jest za pomoc¹ 256-bitowej odmiany algorytmu haszuj¹cego SHA-2 na skrót, który porównywany jest ze skrótem has³a dopasowanemu wpisanej nazwie u¿ytkownika u¿ytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostêp do dalszej czêœci programu.
 
-%Zastosowan¹ w module logowania funkcj¹ haszuj¹c¹ jest SHA-256 nale¿¹ca do rodziny szyfrów %SHA-2. Rodzina ta jest nastêpc¹ SHA-1, której algorytmy okaza³y siê zbyt s³abe%\cite{SHA1Slabosc}. SHA-256 uznawa
+%TODO: hasze hasel screen z bazy jak wlaczy sie hashowanie
 
-TODO: zrzut rekordu w bazie danych (hashe hasel) + kod porownujacy hasla: wrzuciæ gdy w³¹czê haszowanie w aplikacji
+
 
 \subsubsection{Wymagania z³o¿onoœci hase³}
 \label{dzial:ZlozonoscHasel}
 
-Ustalenie has³a przez u¿ytkownika programu implikuje obowi¹zek walidacji wprowadzonego przez niego ci¹gu znaków w celu sprawdzenia jego poziomu bezpieczeñstwa. Krótkie has³a s¹ bardziej podatne próbê ich z³amania, ni¿ d³u¿sze ci¹gi, sk³adaj¹ce siê zarówno z liter jak i cyfr. W tym celu, w czasie ustalania przez u¿ytkownika nowego has³a, wprowadzona zosta³a metoda, której zadaniem jest weryfikacja za³o¿onych z góry aspektów, które musi has³o spe³niaæ w celu jego akceptacji. Wymogami tymi jest d³ugoœæ has³a, które sk³adaæ siê musi z przynajmniej oœmiu znaków, posiadanie minimum jednej du¿ej oraz ma³ej litery, a tak¿e obecnoœæ w jego sk³adzie cyfry. W przypadku niespe³nienia chocia¿ jednej z przedstawionych zasad, has³o jest automatycznie odrzucane, a u¿ytkownik informowany jest o zaistnia³ym problemie.
+Ustalenie has³a przez u¿ytkownika programu implikuje obowi¹zek walidacji wprowadzonego przez niego ci¹gu znaków w celu sprawdzenia jego poziomu bezpieczeñstwa. Krótkie has³a s¹ bardziej podatne próbê ich z³amania, ni¿ d³u¿sze ci¹gi, sk³adaj¹ce siê zarówno z liter jak i cyfr. W tym celu, w czasie ustalania przez u¿ytkownika nowego has³a, wprowadzona zosta³a metoda widoczna przy kodzie Ÿród³owym \ref{listing:ValidatePasswordMethod}, której zadaniem jest weryfikacja za³o¿onych z góry aspektów, które musi has³o spe³niaæ w celu jego akceptacji. Wymogami tymi jest d³ugoœæ has³a, które sk³adaæ siê musi z przynajmniej oœmiu znaków, posiadanie minimum jednej du¿ej oraz ma³ej litery, a tak¿e obecnoœæ w jego sk³adzie cyfry. W przypadku niespe³nienia chocia¿ jednej z przedstawionych zasad, has³o jest automatycznie odrzucane, a u¿ytkownik informowany jest o zaistnia³ym problemie.
 
-TODO: zrzut informacji o z³ym haœle
+\begin{lstlisting}[caption={Metoda weryfikuj¹ca poprawnoœæ wpisanego przez u¿ytkownika has³a}, label={listing:ValidatePasswordMethod}]
+
+public static bool ValidatePassword(string pass)
+{
+    // minimalna wymagana d³ugoœæ has³a
+    const int minLength = 8;
+    // sprawdzenie czy has³o jest puste
+    if (pass == null) 
+        return false;
+    // sprawdzenie poprawnoœci d³ugoœci has³a
+    bool isPassLengthOk = pass.Length >= minLength;
+    bool hasUpperCaseChar = false;
+    bool hasLowerCaseChar = false;
+    bool hasDecimalDigit = false;
+    if (isPassLengthOk)
+    {
+        // sprawdzanie czy has³o zawiera du¿¹ literê, ma³¹ literê oraz cyfrê
+        foreach (char letter in pass)
+        {
+            if (char.IsUpper(letter)) 
+            	hasUpperCaseChar = true;
+            else if (char.IsLower(letter)) 
+            	hasLowerCaseChar = true;
+            else if (char.IsDigit(letter)) 
+            	hasDecimalDigit = true;
+        }
+    }
+    bool isValid = (isPassLengthOk && hasUpperCaseChar
+                    && hasLowerCaseChar && hasDecimalDigit);
+    // true == has³o poprawne, false == has³o niepoprawne
+    return isValid;
+}
+
+\end{lstlisting}
 
 \subsection{Konto administratora i u¿ytkownika – ListView}
 U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami. Przedstawia to  listing \ref{listing:propuser}
@@ -866,12 +950,11 @@ Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytko
 \end{lstlisting}
 
 Edycja propozycji w obydwu przypadkach odbywa siê w ten sam sposób poprzez wybranie propozycji z ListView nastêpuje przypisanie identyfikatora z bazy danych do zmiennej i wyszukanie wszystkich elementów danej propozycji. Z kolei wype³niane s¹ wszystkie pola, które zosta³y zaznaczone. 
+
 \subsection{Tworzenie propozycji cenowej}
-\subsubsection{Opis klienta}
-\subsubsection{Sala i jej wyposa¿enie}
-\subsubsection{Us³ugi gastronomiczne}
-\subsubsection{Us³ugi noclegowe}
-\subsubsection{Us³ugi dodatkowe i forma p³atnoœci}
+
+Modu³ tworzenia propozycji cenowej wraz z modu³em jej edycji jest najbardziej rozbudowanym modu³em prezentowanej aplikacji, który przez fakt aktywnej komunikacji z baz¹ danych w celu pobrania potrzebnych s³ownikowych oraz zapisu wybranych przez u¿ytkownika elementów posiada skomplikowan¹ logikê dzia³ania. 
+Najwa¿niejszym elementem koniecznym do prawid³owej pracy prezentowanego modu³u by³a kontrola przesy³anych pomiêdzy baz¹ a aplikacj¹ danych. Pola obiektów, które zawiera³y puste wartoœci wymaga³y szczegó³owej kontroli i konwersji typu NULL na typ obs³ugiwany przez odbiorcê. Wymóg ten by³ konieczny przez wzgl¹d na mo¿liwoœæ wyst¹pienia wyj¹tku, który przerywa³ pracê ca³ej aplikacji. Zgodnie z za³o¿eniami projektowymi, u¿ytkownik w czasie tworzenia propozycji cenowej ma mo¿liwoœæ wype³niania tylko jej czêœci. Dodaj¹c do tego fakt, i¿ u¿ytkownik przypadkowo mo¿e wype³niæ dla przyk³adu rekord zawieraj¹cy element gastronomiczny bez wpisania jego dni lub iloœci, szczegó³owa kontrola zawartoœci obiektów by³a priorytetowa. W sytuacji nie wpisania wszystkich kolumn rekordu odnosz¹cego siê do elementu zak³adki opisywanej w punktach \ref{dzial:SalaIWyposazenieUzytkownik}, \ref{dzial:UslugiGastronomiczneUzytkownik}, \ref{dzial:UslugiNoclegoweUzytkownik} oraz \ref{dzial:UslugiDodatkoweIPlatnoscUzytkownik}, przy zapisie propozycji do bazy danych, rekord ten jest wychwytywany przez mechanizmy waliduj¹ce i usuwany.
 
 \subsection{Edycja s³owników oraz kont u¿ytkowników}
 \subsubsection{DataGridView a dynamiczna komunikacja z Baz¹ danych}
@@ -953,7 +1036,7 @@ renderDocument.RenderDocument();
 renderDocument.Save(path);
 \end{verbatim}
 
-\section{Podsumowanie oraz perspektywy rozwoju oprogramowania}
+\section{Podsumowanie i perspektywy rozwoju \newlineTekst oprogramowania}
 
 Celem prezentowanego projektu by³o wykonanie aplikacji bazodanowej wspieraj¹cej pracê wybranej sieci hotelowej, która umo¿liwia zautomatyzowanie procesu tworzenia propozycji cenowej, uproszczenie sposobu aktualizacji wszelkich cenników us³ug dostêpnych w hotelu oraz mo¿liwoœæ kontroli pracowników przez kierownictwo. Przedstawione cele zosta³y w pe³ni zrealizowane, czego efektem jest dzia³aj¹ca aplikacja bazodanowa posiadaj¹ca szereg modu³ów umo¿liwiaj¹cych ich osi¹gniêcie. 
 
@@ -982,19 +1065,9 @@ mo¿liwa jest zmiana numerowania, patrz wyjaœnienia.
           
 %% to wpisuje siê do spisu treœci, ale bez numeru rozdzia³u,
 %% mo¿na te¿ u¿ywaæ \dodatek{Tytu³}, który jest numerowany, ale inaczej ni¿ rozdzia³y.
-\dodatkowo{Rysunki}
-CACHE
-
 
 \dodatkowo{Za³¹czniki}
-CACHE
-
-Tu programy
-
-\noindent
-Oraz 
-
-\bigskip
+CACHE zalaczniki
 
 \vrule\hspace{10pt}\begin{minipage}{10cm}
 \begin{verbatim*}

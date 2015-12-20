@@ -10,13 +10,13 @@ namespace DiamondApp.DataGridFillingObjects
 
         public string CompanyName
         {
-            get { return "Zmienić tą durną nazwę " + Environment.NewLine + " nic innego nie przyszło mi do głowy "+Environment.NewLine+" :("; }
+            get { return "Sieć hotelowa Gliwice *****" + Environment.NewLine + "ul. Inżynierska 5 " + Environment.NewLine + "55-555 Nibylandia"; }
             set { }
         }
 
         public string OurNip
         {
-            get { return "12323434545"; }
+            get { return "1234567890"; }
             set { }
         }
 

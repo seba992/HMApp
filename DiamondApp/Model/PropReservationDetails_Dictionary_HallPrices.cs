@@ -17,7 +17,7 @@ namespace DiamondApp.Model
         public int Id { get; set; }
         public string Hall { get; set; }
         public Nullable<int> January { get; set; }
-        public Nullable<int> Febuary { get; set; }
+        public Nullable<int> February { get; set; }
         public Nullable<int> March { get; set; }
         public Nullable<int> April { get; set; }
         public Nullable<int> May { get; set; }
