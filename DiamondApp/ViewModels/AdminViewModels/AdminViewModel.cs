@@ -4373,7 +4373,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     }
                     throw;
                 }
-                MessageBox.Show("dodano nowa propozycje");
+                Xceed.Wpf.Toolkit.MessageBox.Show("Dodano nową propozycję cenową!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 // po dodaniu propozycji odśwież listę propozycji
                 SelectAllPropositions();
@@ -5098,7 +5098,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 SelectedProposition = null;
                 _idProposition = 0;
                 SelectAllPropositions();
-                MessageBox.Show("edytowano istniejaca propozycje");
+
+                Xceed.Wpf.Toolkit.MessageBox.Show("Edytowano istniejącą propozycję cenową!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 

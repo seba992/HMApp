@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using DiamondApp.Model;
 using DiamondApp.Tools.MvvmClasses;
 using DiamondApp.Tools.Validators;
@@ -42,7 +43,7 @@ namespace DiamondApp.ViewModels
                     where _userLogin == s.Login
                     select s).SingleOrDefault();
                 if (q != null && q.FirstLogin.ToUpper() == "T")
-                    MessageBox.Show("Wymagana zmiana hasła! Wprowadź swoje nowe hasło celu jego ustawienia.");
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Wymagana zmiana hasła! Wprowadź swoje nowe hasło celu jego ustawienia.", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information); 
             }
         }
 
@@ -98,8 +99,8 @@ namespace DiamondApp.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Hasło musi zawierac przynajmniej 8 znaków w tym przynajmniej jedną dużą literę, małą literę oraz cyfrę. " + Environment.NewLine+
-                                        "Spróbuj ponownie!");
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Hasło musi zawierac przynajmniej 8 znaków w tym przynajmniej jedną dużą literę, małą literę oraz cyfrę. " + 
+                            Environment.NewLine + "Spróbuj ponownie!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
                         _isWrongPassword = true;
                     }
                 }
@@ -129,7 +130,7 @@ namespace DiamondApp.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Błędny typ konta usera");
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Błędny typ konta usera", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
                 else
@@ -140,8 +141,8 @@ namespace DiamondApp.ViewModels
                     }
                     else
                     {
-                        MessageBox.Show("Podana nazwa użytkownika i/lub hasło jest niepoprawne!" +
-                                        "Spróbuj ponownie!");
+                        Xceed.Wpf.Toolkit.MessageBox.Show("Podana nazwa użytkownika i/lub hasło jest niepoprawne!" + Environment.NewLine +
+                                        "Spróbuj ponownie!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
                         UserLogin = string.Empty;
                         passBox.Clear();
                     }
@@ -150,8 +151,10 @@ namespace DiamondApp.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show("Błąd połączenia z bazą danych. Skontaktuj się z administratorem.");
+                Xceed.Wpf.Toolkit.MessageBox.Show("Błąd połączenia z bazą danych. Skontaktuj się z administratorem.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                
+                //MessageBox.Show(ex.ToString());
+                //MessageBox.Show("Błąd połączenia z bazą danych. Skontaktuj się z administratorem.");
             }   
         }
     }

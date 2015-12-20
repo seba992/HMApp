@@ -38,19 +38,19 @@
 \contentsline {section}{\numberline {6}\kernsekcyjny Testowanie aplikacji}{45}
 \contentsline {subsection}{\numberline {6.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{45}
 \contentsline {subsection}{\numberline {6.2}\kernsubsekcyjny Zarz\k adzanie kontem sprzedawcy oraz administratora (obs\IeC {\l }uga)}{46}
-\contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{46}
-\contentsline {subsubsection}{\numberline {6.3.1}\kernsubsubsekcyjny Opis klienta}{46}
-\contentsline {subsubsection}{\numberline {6.3.2}\kernsubsubsekcyjny Sala i jej wyposa\.zenie}{49}
-\contentsline {subsubsection}{\numberline {6.3.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{50}
-\contentsline {subsubsection}{\numberline {6.3.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{51}
-\contentsline {subsubsection}{\numberline {6.3.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{51}
-\contentsline {subsubsection}{\numberline {6.3.6}\kernsubsubsekcyjny Zapis nowej propozycji cenowej}{52}
+\contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{47}
+\contentsline {subsubsection}{\numberline {6.3.1}\kernsubsubsekcyjny Opis klienta}{47}
+\contentsline {subsubsection}{\numberline {6.3.2}\kernsubsubsekcyjny Sala i jej wyposa\.zenie}{50}
+\contentsline {subsubsection}{\numberline {6.3.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{51}
+\contentsline {subsubsection}{\numberline {6.3.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{52}
+\contentsline {subsubsection}{\numberline {6.3.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{52}
+\contentsline {subsubsection}{\numberline {6.3.6}\kernsubsubsekcyjny Zapis nowej propozycji cenowej}{53}
 \contentsline {subsection}{\numberline {6.4}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{53}
 \contentsline {subsection}{\numberline {6.5}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{53}
-\contentsline {subsection}{\numberline {6.6}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{53}
-\contentsline {subsubsection}{\numberline {6.6.1}\kernsubsubsekcyjny Dodawanie konta}{53}
-\contentsline {subsubsection}{\numberline {6.6.2}\kernsubsubsekcyjny Edycja konta}{53}
-\contentsline {subsubsection}{\numberline {6.6.3}\kernsubsubsekcyjny Usuwanie konta}{53}
+\contentsline {subsection}{\numberline {6.6}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{54}
+\contentsline {subsubsection}{\numberline {6.6.1}\kernsubsubsekcyjny Dodawanie konta}{54}
+\contentsline {subsubsection}{\numberline {6.6.2}\kernsubsubsekcyjny Edycja konta}{54}
+\contentsline {subsubsection}{\numberline {6.6.3}\kernsubsubsekcyjny Usuwanie konta}{54}
 \contentsline {subsubsection}{\numberline {6.6.4}\kernsubsubsekcyjny Resetowanie hase\IeC {\l }}{54}
 \contentsline {subsection}{\numberline {6.7}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{54}
 \contentsline {section}{\numberline {7}\kernsekcyjny Specyfikacja wewn\k etrzna}{55}

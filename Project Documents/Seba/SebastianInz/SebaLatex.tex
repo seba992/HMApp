@@ -506,9 +506,14 @@ Kolejne wersje niniejszego projektu sπ wydawane zgodnie z zasadami Continuous De
 \section{Testowanie aplikacji}
 \subsection{Przeprowadzenie operacji logowania uøytkownika}
 
-Podstawowym modu≥em kaødej aplikacji wspierajπcej pracÍ wielu uøytkownikÛw na ich dedykowanych kontach jest modu≥ logowania. Po uruchomieniu aplikacji, ktÛra jest przedmiotem projektu, oczom uøytkownika ukazuje siÍ okno, ktÛrego zadaniem jest sprawdzenie jego toøsamoúci oraz w sytuacji jej potwierdzenia, prze≥πczenie do odpowiedniego okna g≥Ûwnego aplikacji, w zaleønoúci od posiadanych uprawnieÒ. 
+Podstawowym modu≥em kaødej aplikacji wspierajπcej pracÍ wielu uøytkownikÛw na ich dedykowanych kontach jest modu≥ logowania. Po uruchomieniu aplikacji, ktÛra jest przedmiotem projektu, oczom uøytkownika ukazuje siÍ widocznie na rysunku \ref{rys:UzytkownikLogowanie} okno, ktÛrego zadaniem jest sprawdzenie jego toøsamoúci oraz w sytuacji jej potwierdzenia, prze≥πczenie do odpowiedniego okna g≥Ûwnego aplikacji, w zaleønoúci od posiadanych uprawnieÒ. 
 
-TODO: SCREEN OKNA LOGOWANIA (wrzuciÊ po poprawkach wizualnych programu)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.85\textwidth]{UzytkownikLogowanie.jpg}
+    \caption{Okno procesu logowania, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:UzytkownikLogowanie}
+\end{figure}
 
 Proces logowania od strony uøytkownika polega na wprowadzeniu z poziomu klawiatury swojej nazwy konta sk≥adajπcej siÍ z imienia oraz nazwiska oddzielonych kropkπ oraz has≥a, ktÛre wybrano do zabezpieczenia swojego konta. Aplikacja na podstawie tych informacji przeprowadza operacjÍ ich weryfikacji, komunikujπc siÍ z bazπ danych i wyszukujπc w odpowiednich tabelach rekordy, ktÛre pasujπ do otrzymanego schematu. W zaleønoúci od rezultatu tej akcji, uøytkownikowi zwracana jest odpowiednia odpowiedü. 
 
