@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
         xmlns:adminViewModels="clr-namespace:DiamondApp.ViewModels.AdminViewModels"
-        Title="AddUserView" ResizeMode="NoResize" Height="271" Width="265">
+        Title="Dodaj użytkownika" ResizeMode="NoResize" Height="271" Width="265">
 
     <Window.DataContext>
         <adminViewModels:AddUserViewModel/>
     </Window.DataContext>
 
-    <Grid>
+    <Grid Background="#FF1F7AC7">
         <TextBlock HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.79,1.003"><Run Text="Imię"/><Run Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="20,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Nazwisko:"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="20,80,0,0" TextWrapping="Wrap" Text="Numer telefonu:" VerticalAlignment="Top" RenderTransformOrigin="0.452,2.068"/>
