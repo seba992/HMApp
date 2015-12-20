@@ -1119,9 +1119,10 @@ Users userUpdate = (from user in _ctx.Users
 
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 
-Za pomoc¹ mechanizmów biblioteki MigraDoc, zaimplementowano funckje tworz¹ce tabele propozycji cenowej:
+Za pomoc¹ mechanizmów biblioteki MigraDoc, zaimplementowano funckje tworz¹ce tabele propozycji cenowej. Poni¿ej, znajduje siê przyk³adowy kod Ÿród³owy który tworzy now¹ kolumnê oraz w tabeli:
+
 \begin{verbatim}
-//inicjalizacja nowej tabeli
+//inicjalizacja nowej tabeli, ustawienie czcionki i jej rozmiaru
 Table table = document.LastSection.AddTable();
 table.Borders.Visible = true;
 table.Format.Font.Size = 10;
@@ -1137,18 +1138,18 @@ row.Cells[0].Shading.Color = Colors.LightGray;
 row.Cells[0].AddParagraph("WYNAJEM");
 \end{verbatim}
 
-Poni¿szy kod, umo¿liwia zapis dokumentu w formacie PDF.
+Poni¿szy kod zosta³ u¿yty w implementacji funkcji zapisuj¹cej propozycjê cenow¹ do pliku PDF:
 
-\begin{verbatim}
+\begin{lstlisting}[caption= {Implementacja i opis funkcji zapisuj¹cej propozycjê cenow¹ do pliku PDF}, label={listing:SavePdf}]
 // deklaracja obiektu klasy PdfDocumentRenderer
 PdfDocumentRenderer renderDocument = 
-    new PdfDocumentRenderer(true,PdfSharp.Pdf.PdfFontEmbedding.Always);
+new PdfDocumentRenderer(true,PdfSharp.Pdf.PdfFontEmbedding.Always);
 //renderowanie dokumentu
 renderDocument.Document = document;
 renderDocument.RenderDocument();
 //zapis do pliku
 renderDocument.Save(path);
-\end{verbatim}
+\end{lstlisting}
 
 \section{Podsumowanie i perspektywy rozwoju \newlineTekst oprogramowania}
 
@@ -1355,6 +1356,15 @@ http://www.infoq.com/articles/cd-benefits-challenges
 
 \bibitem{cdr}
 https://puppetlabs.com/blog/continuous-delivery-vs-continuous-deployment-whats-diff
+
+\bibitem{SonarLang}
+http://docs.sonarqube.org/display/PLUG/Plugin+Library
+
+\bibitem{MsScaner}
+http://docs.sonarqube.org/display/SONARNEXT/Installing+and+Configuring+SonarQube+Scanner+for+Jenkins
+
+\bibitem{SQALE}
+http://www.sonarsource.com/products/plugins/governance/sqale/installation-and-usage/$\#$understandingSqaleRatings
 
 %Seba techiczne logowanie
 \bibitem{SHA1Slabosc}
