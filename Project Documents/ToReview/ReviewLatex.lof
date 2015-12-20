@@ -4,9 +4,23 @@
 \contentsline {figure}{\numberline {4}{\ignorespaces Interfejs SQL Server Management Studio Express, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{24}
 \contentsline {figure}{\numberline {5}{\ignorespaces Interfejs aplikacji webowej Trello, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{25}
 \contentsline {figure}{\numberline {6}{\ignorespaces Szczeg\'o\IeC {\l }y zadania na pojedynczej kafelce., \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{26}
-\contentsline {figure}{\numberline {7}{\ignorespaces Atlassian SourceTree, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{28}
-\contentsline {figure}{\numberline {8}{\ignorespaces Statystyka wk\IeC {\l }adu z dnia 13 grudnia 2015 r., \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{29}
-\contentsline {figure}{\numberline {9}{\ignorespaces Kontrolka DatePicker, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{32}
-\contentsline {figure}{\numberline {10}{\ignorespaces Kontrolka TimePicker, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{33}
-\contentsline {figure}{\numberline {11}{\ignorespaces Przep\IeC {\l }yw danych w modelu MVVM, \'Zr\'od\IeC {\l }o: www.tomaszmalesza.pl}}{36}
-\contentsline {figure}{\numberline {12}{\ignorespaces Kontrolka PasswordBox z przedstawieniem aspekt\'ow bezpiecze\'nstwa, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{55}
+\contentsline {figure}{\numberline {7}{\ignorespaces Atlassian SourceTree - okno g\IeC {\l }\'owne, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{28}
+\contentsline {figure}{\numberline {8}{\ignorespaces Interfejs repozytorium w witrynie GiHub.com, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{29}
+\contentsline {figure}{\numberline {9}{\ignorespaces Statystyka wk\IeC {\l }adu pracy z dnia 13 grudnia 2015 r., \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{29}
+\contentsline {figure}{\numberline {10}{\ignorespaces Informacja Resharpera dotycz\k aca potencjalnej mo\.zliwo\'sci wyst\k apienia wyj\k atku NullReferenceException, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{30}
+\contentsline {figure}{\numberline {11}{\ignorespaces Kontrolka DatePicker, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{33}
+\contentsline {figure}{\numberline {12}{\ignorespaces Kontrolka TimePicker, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{34}
+\contentsline {figure}{\numberline {13}{\ignorespaces Przep\IeC {\l }yw danych w modelu MVVM, \'Zr\'od\IeC {\l }o: www.tomaszmalesza.pl}}{36}
+\contentsline {figure}{\numberline {14}{\ignorespaces Lista zada\'n w SonarQube, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{45}
+\contentsline {figure}{\numberline {15}{\ignorespaces Plan ci\k ag\IeC {\l }ej integracji w Jenkins'ie, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{46}
+\contentsline {figure}{\numberline {16}{\ignorespaces Okno procesu logowania, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{47}
+\contentsline {figure}{\numberline {17}{\ignorespaces Informacja otrzymania b\IeC {\l }\k ednych danych podczas operacji logowania, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{48}
+\contentsline {figure}{\numberline {18}{\ignorespaces Okno informacji podczas pierwszego logowania, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{49}
+\contentsline {figure}{\numberline {19}{\ignorespaces Okno informuj\k ace o polityce bezpiecze\'nstwa hase\IeC {\l }, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{49}
+\contentsline {figure}{\numberline {20}{\ignorespaces Okno tworzenia propozycji cenowej. Zak\IeC {\l }adka kontakt ze strony zamawiaj\k acego, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{53}
+\contentsline {figure}{\numberline {21}{\ignorespaces Okno tworzenia propozycji cenowej. Zak\IeC {\l }adka sali i jej wyposa\.zenia, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{54}
+\contentsline {figure}{\numberline {22}{\ignorespaces Okno tworzenia propozycji cenowej. Zak\IeC {\l }adka element\'ow gastronomicznych, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{56}
+\contentsline {figure}{\numberline {23}{\ignorespaces Okno tworzenia propozycji cenowej. Zak\IeC {\l }adka dotycz\k aca us\IeC {\l }ug noclegowych, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{57}
+\contentsline {figure}{\numberline {24}{\ignorespaces Okno tworzenia propozycji cenowej. Zak\IeC {\l }adka dotycz\k aca us\IeC {\l }ug dodatkowych oraz form\k e zap\IeC {\l }aty za organizowane wydarzenie, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{58}
+\contentsline {figure}{\numberline {25}{\ignorespaces Edycja propozycji, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{59}
+\contentsline {figure}{\numberline {26}{\ignorespaces Kontrolka PasswordBox z przedstawieniem aspekt\'ow bezpiecze\'nstwa, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{61}

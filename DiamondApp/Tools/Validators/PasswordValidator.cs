@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DiamondApp.Tools.Validators
+﻿namespace DiamondApp.Tools.Validators
 {
     public static class PasswordValidator
     {
@@ -13,7 +11,9 @@ namespace DiamondApp.Tools.Validators
             if (pass == null) 
                 return false;
 
+            // sprawdzenie poprawności długości hasła
             bool isPassLengthOk = pass.Length >= minLength;
+
             bool hasUpperCaseChar = false;
             bool hasLowerCaseChar = false;
             bool hasDecimalDigit = false;
@@ -30,6 +30,7 @@ namespace DiamondApp.Tools.Validators
             }
             bool isValid = (isPassLengthOk && hasUpperCaseChar
                             && hasLowerCaseChar && hasDecimalDigit);
+            // true == hasło poprawne, false == hasło niepoprawne
             return isValid;
         }
     }

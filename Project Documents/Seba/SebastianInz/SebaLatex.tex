@@ -91,6 +91,8 @@ Dostrzegaj¹c powy¿sze problemy zdecydowano siê wykonaæ dedykowan¹ aplikacjê bazo
 Kolejnym atutem przedstawionego rozwi¹zania by³oby umo¿liwienie kierownictwu z poziomu kont administratorskich kontroli pracowników poprzez zdalny wgl¹d w przygotowywane przez nich propozycje cenowe, a co za tym idzie ustalanych z klientem cen oraz zni¿ek. Menad¿er sprzeda¿y za pomoc¹ swojego uprzywilejowanego konta posiada³by równie¿ mo¿liwoœæ aktualizacji odpowiednich tabel danych, dziêki czemu zmiany natychmiastowo by³yby widocznie na kontach sprzedawców. Zmiany te dotyczy³yby mo¿liwoœci modyfikacji cen oferowanych us³ug i produktów oraz kontroli sk³adu pracowniczego poprzez funkcjonalnoœæ dodawania, usuwania a tak¿e modyfikacji ich kont. 
 
 \section{Analiza przedwdro¿eniowa}
+
+
 \section{Istniej¹ce rozwi¹zania konkurencyjne}
 Wraz ze wzrostem liczby firm \cite{iloscFirm} dzia³aj¹cych w Polsce istnieje koniecznoœæ lepszego, szybszego zarz¹dzania. Wi¹¿e siê to z rozwojem informatyzacji. Mo¿na w ten sposób zautomatyzowaæ wiele procesów w firmie miedzy innymi: zarz¹dzanie magazynem, kontrolê sprzeda¿y, zapotrzebowanie przedsiêbiorstwa na ró¿ne produkty. Do tego celu wdra¿ane s¹ zintegrowane systemy informatyczne, których zadaniem jest po³¹czenie wszystkich elementów przedsiêbiorstwa, w jeden scentralizowany system. Wykorzystuje siê do tego oprogramowania klasy ERP (ang. enterprise resource planning – ERP)\cite{SystemERP}. W sk³ad takiego oprogramowania mo¿e wchodziæ wiele modu³ów: finansowoœæ, stany magazynowe, kontakt z klientem, w zale¿noœci, co w danym przedsiêbiorstwie jest wymagane. Wymogiem takiego systemu jest by wszystkie modu³y by³y niezale¿ne, poniewa¿ ka¿da firma nie potrzebuje ich wszystkich, ale musz¹ siê umieæ z sob¹ komunikowaæ by móc w lepszy sposób zarz¹dzaæ. W wypadku kontaktu z klientem wprowadza siê systemy, które sprawnie obs³uguj¹ sprawy zwi¹zane z reklamacjami, wsparciem technicznym i innymi rzeczami zwi¹zanymi z jego obs³ug¹. Z tym zwi¹zane jest wystawianie propozycji cenowej. Jest to proces czasoch³onny ze wzglêdu na koniecznoœæ aktualizowania cenników, mo¿liwego wyposa¿enia sal i innych spraw zwi¹zanych z organizowanym wydarzeniem. Modu³ CRM(ang. customer relationship management – CRM), który wspomaga proces kontaktu z klientem zawiera komponent wspomaganie procesu wystawiania propozycji. Komponent ten nie tylko automatyzuje proces wystawiania propozycji cenowej, ale jest równie¿ odpowiedzialny, za sprzeda¿ oferowanych towarów i us³ug. W nastêpnej czêœci tego rozdzia³u przedstawiono ró¿ne systemy CRM, których istnieje wersja darmowa.
 
@@ -135,7 +137,7 @@ Wymagane wtedy s¹ tyko podstawowe elementy jak nazwa, kod i jednostka miary towa
 
 \item \textsl{Tworzenie szablonów typu dokumentów} 
 
-\tab W programie ProfitCRM  istnieje równie¿ mo¿liwoœæ zdefiniowania w³asnego szablonu. Proces tworzenia nowego szablonu jest procesem skomplikowanym. Najlepszym rozwi¹zanie jest skopiowanie istniej¹cych w systemie szablonów, poniewa¿ ich edycja jest zablokowana.  Nastêpnie edytowanie skopiowanego. Nie powiod³o siê równie¿ wygenerowanie PDF o wygl¹dzie zbli¿onym do wygl¹du przedstawionego przez sieæ hotelow¹. . Niestety w programie Asystent CRM edycja wzorów dokumentów do druku jest bardzo trudna w realizacji dla zwyk³ego sprzedawcy. Jest to spowodowane sposobem edycji. Bez znajomoœci programowania nie ma mo¿liwoœæ stworzyæ nowej wersji dokumentu, co utrudnia zmianê wygl¹du pod dan¹ firmê. W ostatnim przetestowanym programie czyli Gestor GT nie ma ¿adnej mo¿liwoœci edycji szablonów dokumentów.
+\tab W programie ProfitCRM  istnieje równie¿ mo¿liwoœæ zdefiniowania w³asnego szablonu. Proces tworzenia nowego szablonu jest procesem skomplikowanym. Najlepszym rozwi¹zanie jest skopiowanie istniej¹cych w systemie szablonów, poniewa¿ ich edycja jest zablokowana.  Nastêpnie edytowanie skopiowanego. Nie powiod³o siê równie¿ wygenerowanie PDF o wygl¹dzie zbli¿onym do wygl¹du przedstawionego przez sieæ hotelow¹. Niestety w programie Asystent CRM edycja wzorów dokumentów do druku jest bardzo trudna w realizacji dla zwyk³ego sprzedawcy. Jest to spowodowane sposobem edycji. Bez znajomoœci programowania nie ma mo¿liwoœci stworzenia nowej wersji dokumentu, co utrudnia zmianê wygl¹du pod dan¹ firmê. W ostatnim przetestowanym programie czyli Gestor GT nie ma ¿adnej mo¿liwoœci edycji szablonów dokumentów.
 
 \item \textsl{Cena}
  
@@ -144,6 +146,15 @@ Wymagane wtedy s¹ tyko podstawowe elementy jak nazwa, kod i jednostka miary towa
 
 \section{Zastosowane rozwi¹zania}
 \subsection{Wykorzystana technologia}
+
+Niniejszy rozdzia³ zawiera opis technologii wykorzystanych do implementacji aplikacji. Zakres opisu obejmuje nastêpuj¹ce komponenty:
+
+\begin{itemize}
+\item \textsl{Jêzyk programowania}
+\item \textsl{Silnik graficzny}
+\item \textsl{Jêzyk opisu graficznego interfejsu u¿ytkownika}
+\item \textsl{Jêzyk zapytañ bazy danych}
+\end{itemize}
 
 \subsubsection{.NET Framework/C\#}
 
@@ -252,7 +263,7 @@ Wszystkie przedstawione funkcjonalnoœci narzêdzia Trello umo¿liwi³y zespo³owi up
 
 \newpage
 
-\subsubsection{SourceTree + GitHub}
+\subsubsection{Git/SourceTree/GitHub}
 
 Oprogramowanie wytwarzane jest przez kilkuosobowe zespo³y programistyczne, a pliki Ÿród³owe projektów przechowywane s¹ na serwerach. Jednym z aspektów pracy zespo³owej jest ³¹czenie równolegle wytwarzanego kodu Ÿród³owego przez poszczególnych programistów. W tym celu zespo³y u¿ywaj¹ systemów kontroli wersji (ang. version control system) które umo¿liwiaj¹ integracjê zmian wykonanych na plikach. W prostym jêzyku oznacza to, ¿e programista pobiera aktualn¹ wersjê plików i odsy³a je do serwera wraz z nowym kodem Ÿród³owym \cite{version}. Istniej¹ trzy rodzaje systemów kontroli wersji \cite{versionrodzaje}:
 
@@ -264,11 +275,11 @@ Oprogramowanie wytwarzane jest przez kilkuosobowe zespo³y programistyczne, a pli
 
 \item \textsl{Scentralizowane (np. SVN)}
 
-\tab Oparte o architekturê typu klient-serwer. Starsze wersje plików przechowywane s¹ tylko na serwerze.
+\tab Oparte o architekturê typu klient-serwer. Poprzednie wersje plików przechowywane s¹ tylko na serwerze.
 
 \item \textsl{Rozproszone (np. Git)}
 
-\tab Opartê o architekturê P2P. W odró¿nieniu od systemów scentralizowanych, archiwalne wersje plików przechowywane s¹ zarówno na serwerze jak i na komputerach programistów, co zabezpiecza przed utrat¹ danych.
+\tab Opartê o architekturê P2P. Poprzednie wersje plików przechowywane s¹ na serwerze i w lokalnych repozytoriach, co zabezpiecza przed utrat¹ danych.
 
 \end{itemize}
 
@@ -290,23 +301,33 @@ Popularnym systemem kontroli wersji jest Git, wydany na darmowej licencji. Zosta
 \end{itemize}
 
 Historia zmian dokonanych w plikach Ÿród³owych zapisywana jest za pomoc¹ polecenia commit, które nadaje identyfikator aktualnej wersji projektu, opis zmian (opcjonalnie) oraz spis zmodyfikowanych plików. Pliki na serwer wysy³ane s¹ za pomoc¹ komendy push. Pobieranie plików zamieszczanych na serwerze przez pozosta³ych cz³onków zespo³u umo¿liwia komenda fetch, natomiast synchronizacjê zmian z lokaln¹ kopi¹ umo¿liwia komenda pull. 
-Git jest programem dzia³aj¹cym w linii poleceñ. Istnieje równie¿ graficzna nak³adka na Git'a, któr¹ jest Atlassian SourceTree. Jest on darmowym programem, jednak po up³ywie trzydziestu dni od instalacji, u¿ytkownik zobowi¹zany jest do rejestracji konta w celu dalszego korzystania z aplikacji \cite{treelic}. Posiada dystrybucje dla systemu Windows oraz OS X. Oprócz standardowych funkcjonalnoœci Git'a umo¿liwia podgl¹d zmian w plikach dla poszczególnych commit'ów \cite{tree}. Podczas pracy nad projektem programistycznym, prawdopodobn¹ sytuacj¹ jest dokonanie zmian na tym samym pliku przez dwóch programistów. Jeœli zmiany wzajemnie siê wykluczaj¹, problem mo¿na rozwi¹zaæ za pomoc¹ zewnêtrznego narzêdzia do rozwi¹zywania konfliktów SVN. Umo¿liwia on u¿ytkownikowi porównanie ró¿nic w poszczególnych wersjach pliku. Programista wybiera bloki kodu Ÿród³owego które maj¹ zostaæ zapisane w pliku, zatwierdza zmiany a konflikt zostaje oznaczony jako rozwi¹zany.
+Git jest programem dzia³aj¹cym w linii poleceñ. Istnieje równie¿ graficzna nak³adka na Git'a, któr¹ jest Atlassian SourceTree. Jest on darmowym programem, jednak po up³ywie trzydziestu dni od instalacji, u¿ytkownik zobowi¹zany jest do rejestracji konta w celu dalszego korzystania z aplikacji \cite{treelic}. Posiada dystrybucje dla systemu Windows oraz OS X. Oprócz standardowych funkcjonalnoœci Git'a umo¿liwia podgl¹d zmian w plikach dla poszczególnych commit'ów \cite{tree}. Podczas pracy nad projektem programistycznym, prawdopodobn¹ sytuacj¹ jest dokonanie zmian na tym samym pliku przez dwóch programistów. Jeœli zmiany wzajemnie siê wykluczaj¹, problem mo¿na rozwi¹zaæ za pomoc¹ zewnêtrznego narzêdzia do rozwi¹zywania konfliktów SVN. Umo¿liwia on u¿ytkownikowi porównanie ró¿nic w poszczególnych wersjach pliku. Programista wybiera bloki kodu Ÿród³owego które maj¹ zostaæ zapisane w pliku, zatwierdza zmiany a konflikt zostaje oznaczony jako rozwi¹zany. Rysunek \ref{rys:SourceTree} przedstawia okno g³ówne SourceTree.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{tree.jpg}
-    \caption{Atlassian SourceTree, ród³o: Opracowanie w³asne.}
+    \caption{Atlassian SourceTree - okno g³ówne, ród³o: Opracowanie w³asne.}
+    \label{rys:SourceTree}
 \end{figure}
-GitHub.com jest darmowym serwisem internetowym który pozwala na przechowywanie projektów programistycznych, wspiera system kontroli wersji Git. Pierwsza wersja zosta³a zamieszczona na serwerze, w kwietniu 2008 roku \cite{github}. GitHub umo¿liwia m. in. tworzenie i zarz¹dzanie repozytoriami (np. nadawanie uprawnieñ dostêpu wspó³pracownikom), podgl¹d plików danego projektu. Ciekaw¹ funkcjonalnosci¹ serwisu jest równie¿ opracowywanie statystyk u¿ytkowników, i prezentowanie ich wk³adu w konkretny projekt w formie wykresów.
+
+
+GitHub.com jest darmowym serwisem internetowym który pozwala na przechowywanie projektów programistycznych, wspiera system kontroli wersji Git. Pierwsza wersja zosta³a wydana, w kwietniu 2008 roku \cite{github}. GitHub umo¿liwia miêdzy innymi tworzenie i zarz¹dzanie repozytoriami (np. nadawanie uprawnieñ dostêpu wspó³pracownikom), podgl¹d plików danego projektu. Rysunek \ref{rys:RepozytoriumWWW} przedstawia repozytorium niniejszego projektu. Ciekaw¹ funkcjonalnoœci¹ serwisu przedstawion¹ na rysunku \ref{rys:GitHub}, jest opracowywanie statystyk u¿ytkowników, i prezentowanie ich wk³adu w konkretny projekt w formie wykresów. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{repowww.jpg}
+    \caption{Interfejs repozytorium w witrynie GiHub.com, ród³o: Opracowanie w³asne.}
+    \label{rys:RepozytoriumWWW}
+\end{figure}
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.85\textwidth]{github.jpg}
-    \caption{Statystyka wk³adu z dnia 13 grudnia 2015 r., ród³o: Opracowanie w³asne.}
+    \caption{Statystyka wk³adu pracy z dnia 13 grudnia 2015 r., ród³o: Opracowanie w³asne.}
+    \label{rys:GitHub}
 \end{figure}
 
-
-
+\clearpage
 \subsubsection{ReSharper}
 
 Wydajnoœæ pracy w projektach developerskich jest kluczow¹ kwesti¹, która bezpoœrednio przek³ada siê na korzyœci finansowe i zaoszczêdzony czas. Istniej¹ narzêdzia, których przeznaczeniem jest zwiêkszenie efektywnoœci pracy programisty poprzez zautomatyzowanie czêsto powtarzaj¹cych siê czynnoœci oraz nadzorowanie pisanego kodu wed³ug ustalonych wczeœniej zasad.
@@ -328,8 +349,7 @@ Przedstawione funkcjonalnoœci ReSharpera wraz z wieloma innymi dostêpnymi do zap
 
 \subsubsection{Jenkins}
 
-Jenkins Continuous Integration Server jest darmowym, wieloplatformowym narzêdzien s³u¿acym do ci¹g³ej integracji projektów programistycznych. Zosta³ napisany w jêzyku Java, wywodzi siê od narzêdzia Hudson. Zosta³ wydany po raz pierwszy w 2011 r. \cite{jenkins}. Posiada szereg wtyczek zapewniaj¹cych funkcjonalnoœci takie jak statyczna analiza kodu, automatyczne tworzenie dokumentacji kodu Ÿród³owego, powiadomienia e-mail. Pozwala na budowanie oraz testowanie projektów w popularnych jêzykach programowania, m. in. w jezyku C\# czy Java. Jenkins jest aplikacj¹ internetow¹, domyœlnie dzia³aj¹ca na porcie 8080. Zadania do wykonania definiowane s¹ w postaci planów (ang. job) które mog¹ byæ uruchamiane cyklicznie, zgodnie z okreœlonym harmonogramem lub manualnie \cite{jenkins2}.
-ROZDZIA£ DO SKONCZENIA
+Jenkins Continuous Integration Server jest darmowym, wieloplatformowym narzêdziem s³u¿acym do ci¹g³ej integracji projektów programistycznych. Zosta³ napisany w jêzyku Java, wywodzi siê od narzêdzia Hudson. Zosta³ wydany po raz pierwszy w 2011 r. \cite{jenkins}. Posiada szereg wtyczek zapewniaj¹cych funkcjonalnoœci takie jak statyczna analiza kodu, automatyczne tworzenie dokumentacji kodu Ÿród³owego, powiadomienia e-mail, pobieranie plików z repozytoriów. Pozwala na budowanie oraz testowanie projektów w popularnych jêzykach programowania, m. in. w jezyku C\# czy Java. Jenkins jest aplikacj¹ internetow¹, domyœlnie dzia³aj¹c¹ na porcie 8080. Zadania do wykonania definiowane s¹ w postaci planów (ang. job) które mog¹ byæ uruchamiane cyklicznie, zgodnie z okreœlonym harmonogramem lub manualnie. Plany wykonywane s¹ w tzw. obszarach roboczych (ang. wokrspace) które s¹ katalogami na dysku \cite{jenkins2}. 
 
 \subsection{Biblioteki zewnêtrzne}
 \subsubsection{Extended WPF Toolkit}
@@ -363,7 +383,7 @@ Walidacja godziny, analogicznie jak daty, tak¿e mo¿e doprowadziæ do wielu proble
     \label{rys:TimePicker}
 \end{figure}
 
-\subsubsection{PDFsharp \& MigraDoc}
+\subsubsection{PDFsharp \& MigraDoc Foundation}
 
 PDF (ang. Portable Document Format) czyli tzw. przenoœny format dokumentów, zosta³ zaprojektowany i wdro¿ony przez firmê Adobe Systems w 1992 r. Dokumenty przechowywane w tym formacie mog¹ zawieraæ proste dane tekstowe, jak równie¿ dŸwiêki, grafiki czy tabele. Jedn¹ z zalet formatu jest jego uniwersalnoœæ, wygl¹d pliku jest spójny niezale¿nie od systemu operacyjnego u¿ytkownika \cite{DefinicjaPdf}. Darmowe narzêdzia, takie jak Adobe Acrobat Reader, Foxit Reader umo¿liwiaj¹ podgl¹d plików PDF. Wiêkszoœæ pakietów biurowych takich jak, Microsoft Office czy Apache OpenOffice umo¿liwia zapis plików do formatu PDF. Popularnoœæ PDF stale wzrasta \cite{PopularnoscPdf}. Wszelkie rachunki, faktury, prace naukowe s¹ archiwizowane w postaci plików PDF. 
 
@@ -498,17 +518,103 @@ Edycja danych znajduj¹cych siê w bazie danych z poziomu projektu programistyczne
 
 Dodanie rekordu do bazy danych jest operacj¹, które nie wymaga znajomoœci sk³adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, która reprezentuje bazodanow¹ tabelê, do której nowy rekord ma byæ dodany, a nastêpnie uzupe³nieniu jego elementów danymi. Tak zbudowany obiekt nale¿y dodaæ do obiektu kontekstu, odwo³uj¹c siê do jego w³aœciwoœci o nazwie interesuj¹cej nas tabeli bazy danych, a nastêpnie w parametrze metody \textsl{Add} umieœciæ wczeœniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych nale¿y potwierdziæ na obiekcie kontekstu. Przedstawienie opisanej operacji z poziomu kodu, dostêpne jest równie¿ do wgl¹du w drugiej czêœci listingu \ref{listing:AdoEntityCompare}.
 
-\subsection{Automatyzacja wydawania kolejnych wersji programu}
-\subsubsection{Continuous Integration/Continuous Delivery/Continuous Deployment}
+\section{Automatyzacja wydawania kolejnych wersji aplikacji}
+\subsection{Continuous Integration/Continuous Delivery/Continuous Deployment}
 
 Ci¹g³a integracja (ang. Continuous Integration, CI) jest praktyk¹ stosowan¹ podczas procesu wytwarzania oprogramowania. Cz³onkowie zespo³ów programistycznych synchronizuj¹ zmiany w kodzie Ÿród³owym przynajmniej raz dziennie, d¹¿¹c do wielokrotnej intagracji jednego dnia. Ka¿da integracja weryfikowana jest przez narzêdzia do automatyzacji (ang. build automation), takie jak Jenkins. Dla ka¿dej zmiany kodu Ÿród³owego w repozytorium kompilacja, czy testy jednostkowe mog¹ zostaæ wykonane automatycznie, co prowadzi do wczeœniejszego wykrywania b³êdów. Stosowanie tej praktyki umo¿liwia zmniejszenie iloœci pracy podczas ³¹czenia zmian projektów programistycznych \cite{ci}.
 
 Ci¹g³a dostawa (ang. Continuous Delivery) jest podejœciem w in¿ynierii oprogramowania którego podstawowym za³o¿eniem jest zapewnienie wysokiej jakoœci oraz poprawnoœci dzia³ania cyklicznie wytwarzanego oprogramowania. Wynikiem procesu jest stabilna wersja oprogramowania, która mo¿e zostaæ dostarczona do klienta w dowolnym czasie \cite{cdel}. Rozwiniêciem praktyki jest ci¹g³e wdra¿anie (ang. Continuous Deployment), które umo¿liwia automatyczne wydawanie aplikacji do lini produkcyjnej \cite{cdr}.
 
-\subsubsection{Programy i pluginy u¿yte w Jenkins}
-\subsubsection{Schemat budowania programu}
+\subsection{Programy i wtyczki u¿yte w Jenkins}
 
-Kolejne wersje niniejszego projektu s¹ wydawane zgodnie z zasadami Continuous Delivery. Plan \textit{Build Project} pobiera kod Ÿród³owy z repozytorium zapisanym na GitHubie. CA£A SEKCJA DO DOKONCZENIA.
+\subsubsection{SonarQube}
+
+SonarQube jest darmow¹, wieloplatformow¹ aplikacj¹ s³u¿¹c¹ do zarz¹dzania jakoœci¹ kodu Ÿród³owego. Zosta³a napisan¹ w jêzykach Java i Ruby. Domyœlnie dzia³a na porcie 9000. Posiada szereg wtyczek zapewniaj¹cych wsparcie dla popularnych jêzyków programowania takich jak Java, C++, Objective-C, C\# czy PHP \cite{SonarLang}, które umo¿liwiaj¹ statyczn¹ analizê kodu. W przypadku niniejszego projektu u¿yto wtyczkê SonarQube Scanner for MSBuild, która zawiera zbiór zasad okreœlaj¹cych poprawnoœæ kodu w jêzyku C\#. Wsparcie SonarQube w Jenkins'ie, umo¿liwia wykorzystywanie narzêdzia w planach ci¹g³ej integracji \cite{MsScaner}. Podstawowe parametry wyliczane w analizie s¹ nastêpuj¹ce:
+
+\begin{itemize}
+\item \textsl{Liczba linii kodu Ÿród³owego}
+\item \textsl{Liczba plików i katalogów}
+\item \textsl{Liczba funkcji, klas}
+\item \textsl{Liczba powtórzeñ bloków kodu}
+\item \textsl{Liczba potencjalnych b³êdów i przybli¿ony czas potrzebny do ich rozwi¹zania}
+\item \textsl{Ocena jakoœci w skali SQALE}
+\end{itemize}
+
+Przyk³adowy raport analizy kodu niniejszego projektu zosta³ przedstawiony na rysunku \ref{rys:RaportAnalizy}.
+
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[width=1\textwidth]{sonarraport.jpg}
+%    \caption{Raport statycznej analizy kodu Ÿród³owego, ród³o: Opracowanie w³asne.}
+%    \label{rys:RaportAnalizy}
+%\end{figure}
+
+SonarQube na podstawie raportu analizy dokonuje oceny jakoœci kodu w skali SQALE (ang. Software Quality Assessment based on Lifecycle Expectations). Ocena jest wyliczana ze wzoru \cite{SQALE}:
+
+\begin{center}
+$\displaystyle\frac{\mbox{Liczba dni potrzebnych do naprawienia b³êdów}}{\mbox{Liczba dni potrzebnych do naprawy b³êdu z jednej linii kodu * Liczba linii kodu Ÿród³owego}}$
+\end{center}
+
+Wynik dzia³ania jest przedstawiany w procentach. Im mniejsza wartoœæ, tym jakoœæ kodu jest wy¿sza. Oceny odpowiadaj¹ce wartoœciom wyliczonym ze wzoru s¹ nastêpuj¹ce:
+
+\begin{itemize}
+\item \textsl{A - mniej ni¿ 10\% }
+\item \textsl{B - od 11\% do 20\%}
+\item \textsl{C - od 21\% do 50\%}
+\item \textsl{D - od 51\% do 100\%}
+\item \textsl{E - powy¿ej 100\%}
+\end{itemize}
+
+Potencjalne b³êdy zapisywane s¹ na liœcie zadañ, pokazanej na rysunku \ref{rys:SonarIssues}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{SonarIssues.jpg}
+    \caption{Lista zadañ w SonarQube, ród³o: Opracowanie w³asne.}
+    \label{rys:SonarIssues}
+\end{figure} 
+
+\subsection{Schemat budowania projektu}
+
+Kolejne wersje niniejszego projektu s¹ wydawane zgodnie z zasadami Continuous Delivery. Utworzono plan w Jenkins'ie który wykonuje nastêpuj¹ce zadania:
+
+\begin{itemize}
+\item \textsl{Pobranie kodu Ÿród³owego} 
+
+\tab Pliki zawieraj¹ce kod Ÿród³owy s¹ pobierane z repozytorium do obszaru roboczego.
+
+\item \textsl{Rozpoczêcie statycznej analizy kodu} 
+
+\tab Za pomoc¹ wtyczki SonarQube Scanner for MSBuild, SonarQube Scanner rozpoczyna statyczn¹ analizê kodu Ÿród³owego.
+
+\item \textsl{Aktualizacja bibliotek} 
+
+\tab W projekcie zosta³y u¿yte zewnêtrzne biblioteki takie jak PDFSharp \& Migradoc Foundation. Kod zostanie skompilowany poprawnie po przywróceniu (ang. restore) bibliotek przy u¿yciu NuGet Package Manager.
+
+\item \textsl{Kompilacja kodu Ÿród³owego} 
+
+\tab Kod Ÿród³owy zostaje skompilowany przy u¿yciu MSBuild, który jest kompilatorem zintegrowanego œrodowiska programistycznego Visual Studio. 
+
+\item \textsl{Raport analizy} 
+
+\tab Raport statycznej analizy kodu zostaje opublikowany w SonarQube. 
+
+\item \textsl{Utworzenie paczki zip} 
+
+\tab Je¿eli kompilacja kodu siê powiod³a, zostaje utworzone archiwum w formacie zip. Zawiera plik wykonywalny, w formacie exe oraz niezbêdne do poprawnego dzia³ania aplikacji pliki. Paczka zawieraj¹ca kolejn¹ wersjê aplikacji, mo¿e zostaæ dostarczona do potencjalnego klienta w dowolnym czasie.
+
+\end{itemize}
+
+Rysunek \ref{rys:JenkinsSek} przedstawia stronê wygenerowan¹ dla planu.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{jenkinsek.jpg}
+    \caption{Plan ci¹g³ej integracji w Jenkins'ie, ród³o: Opracowanie w³asne.}
+    \label{rys:JenkinsSek}
+\end{figure}
+
+
 \section{Testowanie aplikacji}
 \subsection{Przeprowadzenie operacji logowania u¿ytkownika}
 
@@ -582,7 +688,7 @@ Pierwsza zak³adka, której okno graficzne dostêpnej jest do wgl¹du przy rysunku \
 
 \item \textsl{KONTAKT ZE STRONY ZAMAWIAJ¥CEGO}
 
-\tab Jest to podkategoria, zawieraj¹ca cztery pola tekstowe, które przeznaczone s¹ do wpisania imienia i nazwiska klienta, jego numeru telefonu oraz adresu e-mail. Ostatnie pole tekstowe (\textsl{Osoba decyzyjna}) umo¿liwia wpisanie osoby, która posiadaæ bêdzie uprawnienie do dokupywania us³ug nieuwzglêdnionych w propozycji cenowej w czasie trwania wydarzenia. Zdarza siê, i¿ podczas jego trwania, organizator chce dobraæ dla goœci dodatkowe us³ugi, które nie s¹ uwzglêdnione w ofercie, na bazie której wydarzenie jest przeprowadzane. W tej sytuacji w celu unikniêcia póŸniejszych problemów dotycz¹cych zwiêkszenia kwoty koñcowej wydarzenia, wybierana jest osoba, która decyduje jakie elementy mog¹ byæ dokupione. Ilustruj¹c tê sytuacjê mo¿na pos³u¿yæ siê przyk³adem imprezy weselnej do której b³êdnie przewidziano liczbê dostêpnych napoi. Osoba decyzyjna mo¿e tê wartoœæ zwiêkszyæ z pe³n¹ odpowiedzialnoœci¹ zwiêkszenia kosztów. Zawartoœæ pola tekstowego osoby decyzyjnej automatycznie wype³niana jest zawartoœci¹ pola tekstowego \textsl{Imiê i nazwisko}. Istnieje jednak mo¿liwoœæ, aby sprzedawca zmieni³ t¹ wartoœæ na inn¹ poniewa¿ nie zawsze osoba klienta jest osob¹ decyzyjn¹ w czasie trwania wydarzenia.
+\tab Jest to podkategoria zawieraj¹ca cztery pola tekstowe, które przeznaczone s¹ do wpisania imienia i nazwiska klienta, jego numeru telefonu oraz adresu e-mail. Ostatnie pole tekstowe (\textsl{Osoba decyzyjna}) umo¿liwia wpisanie osoby, która posiadaæ bêdzie uprawnienie do dokupywania us³ug nieuwzglêdnionych w propozycji cenowej w czasie trwania wydarzenia. Zdarza siê, i¿ podczas jego trwania, organizator chce dobraæ dla goœci dodatkowe us³ugi, które nie s¹ uwzglêdnione w ofercie, na bazie której wydarzenie jest przeprowadzane. W tej sytuacji w celu unikniêcia póŸniejszych problemów dotycz¹cych zwiêkszenia kwoty koñcowej wydarzenia, wybierana jest osoba, która decyduje jakie elementy mog¹ byæ dokupione. Ilustruj¹c tê sytuacjê mo¿na pos³u¿yæ siê przyk³adem imprezy weselnej do której b³êdnie przewidziano liczbê dostêpnych napoi. Osoba decyzyjna mo¿e tê wartoœæ zwiêkszyæ z pe³n¹ odpowiedzialnoœci¹ zwiêkszenia kosztów. Zawartoœæ pola tekstowego osoby decyzyjnej automatycznie wype³niana jest zawartoœci¹ pola tekstowego \textsl{Imiê i nazwisko}. Istnieje jednak mo¿liwoœæ, aby sprzedawca zmieni³ t¹ wartoœæ na inn¹ poniewa¿ nie zawsze osoba klienta jest osob¹ decyzyjn¹ w czasie trwania wydarzenia.
 
 \item \textsl{TERMIN (od - do)}
 
@@ -699,12 +805,20 @@ Ostatni¹ zak³adk¹ procesu tworzenia nowej propozycji cenowej widoczn¹ pod rysunk
 
 \subsubsection{Zapis nowej propozycji cenowej}
 
-Operacja zapisu nowej propozycji cenowej mo¿liwa jest do wykonania w ka¿dej chwili tworzenia propozycji. Sprzedawca nie ma obowi¹zku tworzenia pe³nego dokumentu, który w sposób natychmiastowy przekazywany bêdzie klientowi. Dostêpna z poziomu menu opcja edycji istniej¹cej propozycji umo¿liwia jej finalne zakoñczenie w dowolnym czasie w przysz³oœci. W sytuacji chêci zapisu tworzonej propozycji, sprzedawca zobowi¹zany jest nacisn¹æ przycisk \textsl{Zapisz propozycjê}, który po odpowiedniej konwersji danych zapisze wszystkie wymagane do póŸniejszej edycji elementy do bazy danych. Lokalizacja przycisku umiejscowiona jest w prawym górnym rogu ka¿dej zak³adki tworzenia nowej propozycji cenowej. Jej wygl¹d dostêpny jest do wgl¹du w przywo³anym ju¿ rysunku \ref{rys:UzytkownikNowaPropozycjaTab5}.
+Operacja zapisu nowej propozycji cenowej mo¿liwa jest do wykonania w ka¿dej chwili tworzenia propozycji. Sprzedawca nie ma obowi¹zku tworzenia pe³nego dokumentu, który w sposób natychmiastowy przekazywany bêdzie klientowi. Dostêpna z poziomu menu opcja edycji istniej¹cej propozycji umo¿liwia jej finalne zakoñczenie w dowolnym czasie. W sytuacji chêci zapisu tworzonej propozycji, sprzedawca zobowi¹zany jest nacisn¹æ przycisk \textsl{Zapisz propozycjê}, który po odpowiedniej konwersji danych zapisze wszystkie wymagane do póŸniejszej edycji elementy do bazy danych. Lokalizacja przycisku umiejscowiona jest w prawym górnym rogu ka¿dej zak³adki tworzenia nowej propozycji cenowej. Jej wygl¹d dostêpny jest do wgl¹du w przywo³anym ju¿ rysunku \ref{rys:UzytkownikNowaPropozycjaTab5}.
 
 \subsection{Edycja istniej¹cej propozycji cenowej}
+Edycja istniej¹cej propozycji cenowej odbywa siê poprzez zaznaczenie w oknie g³ówny programu wybranej propozycji cenowej, a nastêpnie z menu wybrania "Edytuj". U¿ytkownik zostanie przeniesiony do okna tworzenia nowej propozycji, ale ju¿ z wype³nionymi wczeœniej polami. Sprzedawca ma mo¿liwoœæ dodawania nowych produktów a usuwanie odbywa siê poprzez wybranie pustego pola na liœcie rozwijalnej. Mo¿na to zaobserwowaæ na rysunku \ref{rys:editProp}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{editpro.jpg}
+    \caption{Edycja propozycji, ród³o: Opracowanie w³asne.}
+	\label{rys:editProp}
+\end{figure}
+
 \subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
 
-Aby zapisaæ propozycjê cenow¹ do pliku PDF, w oknie g³ównym u¿ytkownik wybiera z menu rozwijanego \textit{Menu} opcjê \textit{Lista propozycji}. Zostaje wyœwietlona lista propozycji cenowych.
+Aby zapisaæ propozycjê cenow¹ do pliku PDF, nale¿y wybraæ z menu rozwijanego \textit{Menu} opcjê \textit{Lista propozycji}. 
 
 %\begin{figure}[ht]
 %    \centering
@@ -713,7 +827,7 @@ Aby zapisaæ propozycjê cenow¹ do pliku PDF, w oknie g³ównym u¿ytkownik wybiera z
 %	\label{rys:ListaPropozycji}
 %\end{figure}
 
-Zostaje wyœwietlona lista propozycji cenowych. Po klikniêciu przycisku \textit{Zapisz do PDF}, pojawia siê dialog wyboru plików. U¿ytkownik wpisuje nazwê pliku oraz lokalizacjê zapisu. 
+Rysunek  Po klikniêciu przycisku \textit{Zapisz do PDF}, pojawia siê dialog wyboru plików. U¿ytkownik wpisuje nazwê pliku oraz lokalizacjê zapisu. 
 
 %\begin{figure}[ht]
 %    \centering
@@ -761,7 +875,7 @@ Je¿eli dodawanie zakoñczono sukcesem, u¿ytkownik otrzyma komunikat.
 %	\label{rys:DodajUzytkownika3}
 %\end{figure}
 
-W przeciwnyk wypadku, u¿ytkownik otrzyma komunikat o b³êdzie.
+W przeciwnym wypadku, u¿ytkownik otrzyma komunikat o b³êdzie.
 
 %\begin{figure}[ht]
 %    \centering
@@ -959,9 +1073,9 @@ Najwa¿niejszym elementem koniecznym do prawid³owej pracy prezentowanego modu³u b
 \subsection{Edycja s³owników oraz kont u¿ytkowników}
 \subsubsection{DataGridView a dynamiczna komunikacja z Baz¹ danych}
 
-Aby umo¿liwiœc edycjê danych z poziomu DataGridView, zaimplementowano funckjê obs³uguj¹c¹ zdarzenie DataGridRowEditEndingEventArgs. Kiedy edycja danje komórki zostaje zakoñczona, wywo³ywane jest wnêtrze funkcji której zadaniem jest dynamiczne przechwycenie nowej wartoœci i aktualizacja bazy danych. U¿ycie zmiennej dynamic, podyktowane jest tym ¿e jest ona sprawdzana podczas wywo³ania, a nie kompilacji \cite{dynamic} co umo¿liwia odwo³anie do nowych wartoœci zapisanych w komórkach. Kod funkcji jest jest nastêpuj¹cy: 
+Aby umo¿liwiæ edycjê danych z poziomu DataGridView, zaimplementowano funckjê obs³uguj¹c¹ zdarzenie \textit{DataGridRowEditEndingEventArgs}. Kiedy edycja danej komórki zostaje zakoñczona, wywo³ywana jest funkcja której zadaniem jest dynamiczne przechwytywanie nowych wartoœci oraz aktualizacja bazy danych. U¿ycie zmiennej dynamic, podyktowane jest faktem, i¿ jest ona sprawdzana podczas wywo³ania, a nie kompilacji \cite{dynamic}. Umo¿liwia to odwo³anie do nowych wartoœci zapisanych w komórkach. Funkcja jest wykorzystywana w module s³u¿¹cym do edycji danych pracowników. Poni¿ej znajduje siê kod Ÿród³owy funkcji:
 
-\begin{verbatim}
+\begin{lstlisting}[caption= {Implementacja i opis funkcji aktualizuj¹cej bazê danych z poziomu DataGridView}, label={listing:DynamicGridView}]
 
 //pobranie identyfikatora u¿ytkownika którego wiersz 
 //jest zaznaczony w DataGridView oraz zapis do zmiennej typu int
@@ -1001,7 +1115,7 @@ Users userUpdate = (from user in _ctx.Users
 	
 	//zapis danych do bazy
 	_ctx.SaveChanges();
-\end{verbatim}
+\end{lstlisting}
 
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 

@@ -4,3 +4,4 @@
 \contentsline {lstlisting}{\numberline {4}{Polecenie wyci\k agaj\k ace wszystkie propozycje u\.zytkownika} }{63}
 \contentsline {lstlisting}{\numberline {5}{Polecenie wyci\k agaj\k ace wszystkie propozycje u\.zytkownika} }{64}
 \contentsline {lstlisting}{\numberline {6}Implementacja i opis funkcji aktualizuj\k acej baz\k e danych z poziomu DataGridView}{65}
+\contentsline {lstlisting}{\numberline {7}Implementacja i opis funkcji zapisuj\k acej propozycj\k e cenow\k a do pliku PDF}{67}
