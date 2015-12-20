@@ -148,7 +148,7 @@ namespace DiamondApp.Views
 
 
 
-                    hallUpdate.Febuary = hallRow.Febuary;
+                    hallUpdate.February = hallRow.Febuary;
                     hallUpdate.January = hallRow.January;
                     hallUpdate.March = hallRow.March;
                     hallUpdate.April = hallRow.April;
@@ -166,7 +166,7 @@ namespace DiamondApp.Views
                 else
                 {
                     PropReservationDetails_Dictionary_HallPrices hallUpdate = new PropReservationDetails_Dictionary_HallPrices();
-                    hallUpdate.Febuary = hallRow.Febuary;
+                    hallUpdate.February = hallRow.Febuary;
                     hallUpdate.January = hallRow.January;
                     hallUpdate.March = hallRow.March;
                     hallUpdate.April = hallRow.April;

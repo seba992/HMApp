@@ -41,7 +41,6 @@ namespace DiamondApp.Model
         public virtual DbSet<PropPaymentSuggestions_Dictionary_Third> PropPaymentSuggestions_Dictionary_Third { get; set; }
         public virtual DbSet<PropReservationDetails> PropReservationDetails { get; set; }
         public virtual DbSet<PropReservationDetails_Dictionary_HallCapacity> PropReservationDetails_Dictionary_HallCapacity { get; set; }
-        public virtual DbSet<PropReservationDetails_Dictionary_HallPrices> PropReservationDetails_Dictionary_HallPrices { get; set; }
         public virtual DbSet<PropMenuMerge> PropMenuMerge { get; set; }
         public virtual DbSet<AccountPrivileges> AccountPrivileges { get; set; }
         public virtual DbSet<Users> Users { get; set; }
@@ -55,5 +54,6 @@ namespace DiamondApp.Model
         public virtual DbSet<PropExtraServices> PropExtraServices { get; set; }
         public virtual DbSet<PropMenuPosition> PropMenuPosition { get; set; }
         public virtual DbSet<PropositionStates_Dictionary> PropositionStates_Dictionary { get; set; }
+        public virtual DbSet<PropReservationDetails_Dictionary_HallPrices> PropReservationDetails_Dictionary_HallPrices { get; set; }
     }
 }

@@ -21,7 +21,6 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropPaymentSuggestions_Dictionary_Third" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails" Width="1.5" PointX="7.5" PointY="34.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallCapacity" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallPrices" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuMerge" Width="1.5" PointX="7.5" PointY="39" />
         <EntityTypeShape EntityType="DiamondDBModel.AccountPrivileges" Width="1.5" PointX="0.75" PointY="19.5" />
         <EntityTypeShape EntityType="DiamondDBModel.Users" Width="1.5" PointX="3" PointY="18.625" />
@@ -48,6 +47,7 @@
         <EntityTypeShape EntityType="DiamondDBModel.PropMenuPosition" Width="1.5" PointX="7.5" PointY="25.875" />
         <AssociationConnector Association="DiamondDBModel.FK__PropMenuP__Id_pr__31EC6D26" />
         <EntityTypeShape EntityType="DiamondDBModel.PropositionStates_Dictionary" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="DiamondDBModel.PropReservationDetails_Dictionary_HallPrices" Width="1.5" PointX="10.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
