@@ -3,16 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
         xmlns:adminViewModels="clr-namespace:DiamondApp.ViewModels.AdminViewModels"
-        Title="DictionaryView" Height="513" Width="813">
+        Title="Edycja słowników" Height="513" Width="813">
 
     <Window.DataContext>
         <adminViewModels:DictionaryViewModel/>
     </Window.DataContext>
 
-    <Grid>
+    <Grid Background="#FF1F7AC7">
         <ComboBox x:Name="Ctyp" HorizontalAlignment="Left" Margin="290,0,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Filter}" Visibility="Hidden" SelectedValue="{Binding SelectedFilter}"/>
         <Label x:Name="LTyp" Content="Typ produktu" HorizontalAlignment="Left" Margin="144,-2,0,0" VerticalAlignment="Top" Width="126" Visibility="Hidden"/>
-        <DataGrid x:Name="GstronomicGrid" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="459" Width="805" RowEditEnding="RowEditGstronomic" ItemsSource="{Binding Gastronomic}" AutoGenerateColumns="False" Visibility="Hidden">
+        <DataGrid x:Name="GstronomicGrid" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="459" Width="805" RowEditEnding="RowEditGstronomic"
+                  ItemsSource="{Binding Gastronomic}" AutoGenerateColumns="False" Visibility="Hidden"  AlternatingRowBackground="LightBlue" AlternationCount="2">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
 
@@ -83,7 +84,8 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <DataGrid x:Name="RoomGrid" HorizontalAlignment="Left" Margin="0,28,0,0" VerticalAlignment="Top" Height="444" Width="795" ItemsSource="{Binding ListAccomaDictionaries}" AutoGenerateColumns="False" RowEditEnding="RowEditAccoma">
+        <DataGrid x:Name="RoomGrid" HorizontalAlignment="Left" Margin="0,28,0,0" VerticalAlignment="Top" Height="444" Width="795" ItemsSource="{Binding ListAccomaDictionaries}"
+                  AutoGenerateColumns="False" RowEditEnding="RowEditAccoma"  AlternatingRowBackground="LightBlue" AlternationCount="2" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
 
@@ -114,7 +116,8 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="HallGrid" HorizontalAlignment="Left" Margin="0,22,0,0" VerticalAlignment="Top" Height="459" Width="805" RowEditEnding="RowEditHall" ItemsSource="{Binding HallPrices}" AutoGenerateColumns="False">
+        <DataGrid x:Name="HallGrid" HorizontalAlignment="Left" Margin="0,22,0,0" VerticalAlignment="Top" Height="459" Width="805" RowEditEnding="RowEditHall" ItemsSource="{Binding HallPrices}"
+                  AutoGenerateColumns="False"  AlternatingRowBackground="LightBlue"  AlternationCount="2" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
 
@@ -303,7 +306,7 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Wybór słownika" HorizontalAlignment="Left" Margin="455,1,0,0" VerticalAlignment="Top" Height="23" Width="145"/>
+        <Label Content="Wybór słownika" HorizontalAlignment="Left" Margin="455,-6,0,0" VerticalAlignment="Top" Height="28" Width="145"/>
         <ComboBox x:Name="DictionaryList" HorizontalAlignment="Left" Margin="605,1,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="1.739,0.682" ItemsSource="{Binding ListTable}" SelectedItem="{Binding SelectTable}" SelectionChanged="Changeview" SelectedValue="{Binding SelectTable}"  IsSynchronizedWithCurrentItem="False" />
       
     </Grid>
