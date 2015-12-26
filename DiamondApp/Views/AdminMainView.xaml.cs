@@ -76,9 +76,10 @@ namespace DiamondApp.Views
 
             if (openFileDialog.ShowDialog() == true)
                 path = openFileDialog.FileName;
+                PdfMaker pdf = new PdfMaker();
+                pdf.createPdf(value,path);
 
-            PdfMaker pdf = new PdfMaker();
-            pdf.createPdf(value,path);
+
         }
     }
 }

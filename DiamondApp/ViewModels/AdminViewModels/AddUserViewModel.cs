@@ -124,13 +124,12 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 _ctx.Users.Add(addUser);
                 _ctx.SaveChanges();
-                MessageBox.Show("Konto użytkownika zostało utworzone!");
+                Xceed.Wpf.Toolkit.MessageBox.Show("Konto użytkownika zostało utworzone!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
                 Application.Current.MainWindow.Hide();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Wystąpił błąd! Konto użytkownika nie zostało utworzone.");
-                MessageBox.Show(ex.ToString());
+                Xceed.Wpf.Toolkit.MessageBox.Show("Wystąpił błąd! Konto użytkownika nie zostało utworzone", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
             } 
         }
     }

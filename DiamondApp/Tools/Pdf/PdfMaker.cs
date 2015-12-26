@@ -26,21 +26,23 @@ namespace DiamondApp.Tools.Pdf
         public bool savePdf(Document document, string path)
         {
             bool isSucces = false;
-            try
+            if (String.IsNullOrEmpty(path) != true)
             {
-                //save document
-                PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always);
-                renderDocument.Document = document;
-                renderDocument.RenderDocument();
-                renderDocument.Save(path);
-                isSucces = true;
-                MessageBox.Show("Wygenerowano PDF !");
-            }
-            catch (Exception ex)
-            {
-                isSucces = false;
-                MessageBox.Show(ex.ToString());
-                MessageBox.Show("Nie udało się wygenerować PDF");
+                try
+                {
+                    //save document
+                    PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always);
+                    renderDocument.Document = document;
+                    renderDocument.RenderDocument();
+                    renderDocument.Save(path);
+                    isSucces = true;
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Wygenerowano plik PDF propozycji cenowej!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    isSucces = false;
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Wystąpił błąd! Plik PDF propozycji cenowej nie został wygenerowany.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
 
             return isSucces;
@@ -349,7 +351,7 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[0].MergeRight = 4;
                 row.Cells[0].Shading.Color = Colors.Gray; 
                 row.Cells[0].Format.Font.Size = 13;
-                row.Cells[0].AddParagraph("SERDECZNIE ZAPRASZAMY DO HOTELI NAZWA");
+                row.Cells[0].AddParagraph("SERDECZNIE ZAPRASZAMY DO NASZYCH HOTELI");
                 row.Cells[0].Format.Font.Color = Colors.White;
 
             }
@@ -602,7 +604,7 @@ namespace DiamondApp.Tools.Pdf
 
                 //default section and paragraph, formatting paragraph
                 Section section = document.AddSection();
-                Paragraph paragraph = section.AddParagraph("Hotel Nazwa Hotelu Jakas Jakas ****");
+                Paragraph paragraph = section.AddParagraph("Nazwa Hotelu ****");
                 paragraph.Format.Font.Size = 14;
                 paragraph.Format.Font.Color = Colors.DarkRed;
                 paragraph.Format.SpaceBefore = "2.2cm";

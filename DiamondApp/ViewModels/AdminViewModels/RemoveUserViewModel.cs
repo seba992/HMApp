@@ -75,13 +75,13 @@ namespace DiamondApp.ViewModels.AdminViewModels
                              select o).First();
                 _ctx.Users.Remove(order);
                 _ctx.SaveChanges();
-                MessageBox.Show("Konto użytkownika zostało usunięte!");
+                Xceed.Wpf.Toolkit.MessageBox.Show("Konto użytkownika zostało usunięte!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
                 Application.Current.MainWindow.Hide();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Wystąpił błąd!");
-                MessageBox.Show(ex.ToString());
+                Xceed.Wpf.Toolkit.MessageBox.Show("Wystąpił błąd! Konto użytkownika nie zostało usunięte.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+
             }
         }
 

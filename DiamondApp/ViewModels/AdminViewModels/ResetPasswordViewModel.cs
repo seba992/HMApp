@@ -77,13 +77,12 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 _ctx.SaveChanges();
 
-                MessageBox.Show("Hasło użytkownika zostało zresetowane!");
+                Xceed.Wpf.Toolkit.MessageBox.Show("Hasło użytkownika zostało zresetowane!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
                 Application.Current.MainWindow.Hide();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Wystąpił błąd!");
-                MessageBox.Show(ex.ToString());
+                Xceed.Wpf.Toolkit.MessageBox.Show("Wystąpił błąd! Hasło użytkownika nie zostało zresetowane.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
