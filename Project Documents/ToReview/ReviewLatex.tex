@@ -37,7 +37,7 @@ basicstyle=\ttfamily\small
 
 %% tytu³ promotor i autor (\title to komenda standardowa)
 \title{Projekt i wykonanie aplikacji bazodanowej wspomagaj¹cej pracê wybranej sieci hotelowej}
-\promotor{dr. Jaros³aw Karcewicz}
+\promotor{dr in¿. Jaros³aw Karcewicz}
 
 
 %% ka¿dy autor musi mieæ 4 argumenty: imiê nazwisko, nr albumu, procent wk³adu, opis wk³adu
@@ -92,6 +92,27 @@ Kolejnym atutem przedstawionego rozwi¹zania by³oby umo¿liwienie kierownictwu z p
 
 \section{Analiza przedwdro¿eniowa}
 
+W rozdziale \textsl{Geneza pracy} przedstawiono problemy sieci hotelowej, wystêpuj¹ce podczas przeprowadzania transakcji z klientem. S¹ one podstawowymi czynnikami determinuj¹cymi docelow¹ formê aplikacji, dobór narzêdzi i technologii oraz wymagania które nale¿y spe³niæ w celu wdro¿enia proponowanego rozwi¹zania. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemów operacyjnych jest u¿ywany. Jak pokazuj¹ rankingi, jednymi z najczêœciej u¿ywanych systemów operacyjnych s¹ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekœcie doboru technologii oznacza to, i¿ warto zastosowaæ rozwi¹zania firmy Microsoft które s¹ w pe³ni zintegrowane z systemami Windows, ze wzglêdu na ich wysok¹ wydajnoœæ oraz popularnoœæ. Fundamentalnym elementem aplikacji jest baza danych w której przechowywane s¹ detale transakcji, szczegó³owe listy oferowanych us³ug czy dane osobowe pracowników. Firma Microsoft oferuje produkt SQL Server, który posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jêzyków platformy programistycznej .NET Framework. SQL Server w wersji darmowej mo¿e zostaæ u¿yty do w projektach czysto hobbystycznych jak i w pe³ni komercyjnych co jest jego du¿ym atutem. W rankingu portalu db-engines.com SQL Server zajmuje 3 pozycjê, nieprzerwanie od 2014 r. poœród ponad 200 sklasyfikowanych silników baz danych \cite{SQLRanking}. Wystarczaj¹cym kryterium które musi zostaæ spe³nione aby firma mog³a korzystaæ z aplikacji bazuj¹cej na tym silniku, jest przygotowanie jednego serwera centralnego z którym za poœrednictwem aplikacji ³¹cz¹ siê pracownicy. Opisane rozwi¹zanie eliminuje jeden z problemów, którym jest synchronizacja danych pomiêdzy pracownikami, takich jak aktualne wersje propozycji cenowych oraz listy oferowanych us³ug. 
+
+Popularnym jêzykiem platformy programistycznej .NET Framework jest jêzyk C\#. Umo¿liwia on tworzenie nowoczesnych aplikacji okienkowych, przy u¿yciu bibliotek graficznych takich jak WPF. Tworzenie okien i ich komponentów takich jak przyciski, listy rozwijane czy pola tekstowe jest proste i wygodne dla programistów, poniewa¿ nie wymagaj¹ du¿ych ingerencji w kod Ÿród³owy. Manipulacja komponentami okien odbywa siê poprzez modelowanie elementów graficznych w kreatorze. Umo¿liwia on tworzenie graficznego interfejsu u¿ytkownika podobnie jak w popularnych programach s³u¿¹cych do obróbki grafiki. Do zaprojektowanego w ten sposób interfejsu, wystarczy podpi¹æ konkretne funkcjonalnoœci zaimplementowane w kodzie Ÿród³owym. Mog¹ to byæ operacje takie jak zapisywanie propozycji cenowych do pliku PDF poprzez klikniêcie przycisku. W konsekwencji czas implementacji aplikacji ulega redukcji. Istotn¹ kwesti¹ podczas implementacji oprogramowania jest komunikacja aplikacji z zasobami bazy danych z poziomu kodu Ÿród³owego. Dla jêzyka C\# firma Microsoft zaprojektowa³a system Entity Framework który s³u¿y do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Zapytania bazodanowe takie jak usuwanie czy modyfikacja tabel s¹ implementowane w kodzie operuj¹cym na obiektach utworzonych przez Entity Framework. 
+
+Jednym z ostatnich aspektów wytwarzania oprogramowania jest wybranie, jakiego typu bêdzie to aplikacja. Za³o¿eniem niniejszego projektu in¿ynierskiego jest implementacja aplikacji desktopowej. Zalety tradycyjnych aplikacji desktopowych, które spowodowa³y wybór tego typu s¹ nastêpuj¹ce:
+
+\begin{itemize}
+\item \textsl{Prostota w implementacji GUI} 
+
+\tab Szereg bibliotek graficznych dla jêzyka C\# pozwala na szybkie i przyjemne projektowanie graficznego interfejsu u¿ytkownika co przek³ada siê na szybkoœæ i koszty implementacji projektów.
+
+\item \textsl{£atwoœæ obs³ugi aplikacji desktopowych} 
+
+\tab Aplikacje desktopowe s¹ zazwyczaj prostsze w obs³udze, ze wzglêdu na spójny i prosty interfejs tworzony za pomoc¹ kreatorów. 
+
+\item \textsl{Brak problemów zgodnoœci} 
+
+\tab U¿ytkownicy korzystaj¹ z ró¿nych przegl¹darek internetowych takich jak Mozilla Firefox, Google Chrome, Safari czy Opera. Dostosowanie wygl¹du, skalowalnoœci oraz funkcjonalnoœci dla ró¿nych przegl¹darek jest czasoch³onne, podczas gdy w przypadku aplikacji desktopowych wymieniony problem nie wystêpuje.
+\end{itemize}
+
+W kontekœcie wdro¿enia, aplikacja powinna zostaæ zainstalowana na stacjach roboczych pracowników co jest drugim warunkiem koniecznym do wprowadzenia nowej infrastruktury IT dla pracowników dzia³u sprzeda¿y. Je¿eli w przysz³oœci aplikacja by³aby rozwijana, za pomoc¹ narzêdzi Continuous Integration kolejne wersje oprogramowania mog¹ zostaæ szybko dostarczone sieci hotelowej w postaci paczki zip, co zosta³o szerzej opisane w rozdziale \textsl{Automatyzacja wydawania kolejnych wersji aplikacji}. 
 
 
 
@@ -1293,6 +1314,14 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 %Seba wstêp
 \bibitem{LiczbaHoteli} 
 http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
+
+%ogi analiza
+\bibitem{Systemy} 
+http://www.ranking.pl/pl/rankings/operating-systems.html
+
+%ogi analiza
+\bibitem{SQLRanking} 
+http://db-engines.com/en/ranking
 
 %Lisu wstêp
 \bibitem {iloscFirm}
