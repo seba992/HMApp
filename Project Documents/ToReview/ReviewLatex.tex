@@ -93,6 +93,8 @@ Kolejnym atutem przedstawionego rozwiπzania by≥oby umoøliwienie kierownictwu z p
 \section{Analiza przedwdroøeniowa}
 
 
+
+
 \section{Istniejπce rozwiπzania konkurencyjne}
 Wraz ze wzrostem liczby firm \cite{iloscFirm} dzia≥ajπcych w Polsce istnieje koniecznoúÊ lepszego, szybszego zarzπdzania. Wiπøe siÍ to z rozwojem informatyzacji. Moøna w ten sposÛb zautomatyzowaÊ wiele procesÛw w firmie miedzy innymi: zarzπdzanie magazynem, kontrolÍ sprzedaøy, zapotrzebowanie przedsiÍbiorstwa na rÛøne produkty. Do tego celu wdraøane sπ zintegrowane systemy informatyczne, ktÛrych zadaniem jest po≥πczenie wszystkich elementÛw przedsiÍbiorstwa, w jeden scentralizowany system. Wykorzystuje siÍ do tego oprogramowania klasy ERP (ang. enterprise resource planning ñ ERP)\cite{SystemERP}. W sk≥ad takiego oprogramowania moøe wchodziÊ wiele modu≥Ûw: finansowoúÊ, stany magazynowe, kontakt z klientem, w zaleønoúci, co w danym przedsiÍbiorstwie jest wymagane. Wymogiem takiego systemu jest by wszystkie modu≥y by≥y niezaleøne, poniewaø kaøda firma nie potrzebuje ich wszystkich, ale muszπ siÍ umieÊ z sobπ komunikowaÊ by mÛc w lepszy sposÛb zarzπdzaÊ. W wypadku kontaktu z klientem wprowadza siÍ systemy, ktÛre sprawnie obs≥ugujπ sprawy zwiπzane z reklamacjami, wsparciem technicznym i innymi rzeczami zwiπzanymi z jego obs≥ugπ. Z tym zwiπzane jest wystawianie propozycji cenowej. Jest to proces czasoch≥onny ze wzglÍdu na koniecznoúÊ aktualizowania cennikÛw, moøliwego wyposaøenia sal i innych spraw zwiπzanych z organizowanym wydarzeniem. Modu≥ CRM(ang. customer relationship management ñ CRM), ktÛry wspomaga proces kontaktu z klientem zawiera komponent wspomaganie procesu wystawiania propozycji. Komponent ten nie tylko automatyzuje proces wystawiania propozycji cenowej, ale jest rÛwnieø odpowiedzialny, za sprzedaø oferowanych towarÛw i us≥ug. W nastÍpnej czÍúci tego rozdzia≥u przedstawiono rÛøne systemy CRM, ktÛrych istnieje wersja darmowa.
 
@@ -446,6 +448,7 @@ Walidacja godziny, analogicznie jak daty, takøe moøe doprowadziÊ do wielu proble
     \label{rys:TimePicker}
 \end{figure}
 
+\newpage
 \subsubsection{PDFsharp \& MigraDoc Foundation}
 
 PDF (ang. Portable Document Format) czyli tzw. przenoúny format dokumentÛw, zosta≥ zaprojektowany i wdroøony przez firmÍ Adobe Systems w 1992 r. Dokumenty przechowywane w tym formacie mogπ zawieraÊ proste dane tekstowe, jak rÛwnieø düwiÍki, grafiki czy tabele. Jednπ z zalet formatu jest jego uniwersalnoúÊ, wyglπd pliku jest spÛjny niezaleønie od systemu operacyjnego uøytkownika \cite{DefinicjaPdf}. Darmowe narzÍdzia, takie jak Adobe Acrobat Reader, Foxit Reader umoøliwiajπ podglπd plikÛw PDF. WiÍkszoúÊ pakietÛw biurowych takich jak, Microsoft Office czy Apache OpenOffice umoøliwia zapis plikÛw do formatu PDF. PopularnoúÊ PDF stale wzrasta \cite{PopularnoscPdf}. Wszelkie rachunki, faktury, prace naukowe sπ archiwizowane w postaci plikÛw PDF. 
@@ -640,12 +643,12 @@ SonarQube jest darmowπ, wieloplatformowπ aplikacjπ s≥uøπcπ do zarzπdzania jakoúc
 
 Przyk≥adowy raport analizy kodu niniejszego projektu zosta≥ przedstawiony na rysunku \ref{rys:RaportAnalizy}.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=1\textwidth]{sonarraport.jpg}
-%    \caption{Raport statycznej analizy kodu ürÛd≥owego, èrÛd≥o: Opracowanie w≥asne.}
-%    \label{rys:RaportAnalizy}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{sonarraport.jpg}
+    \caption{Raport statycznej analizy kodu ürÛd≥owego, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:RaportAnalizy}
+\end{figure}
 
 SonarQube na podstawie raportu analizy dokonuje oceny jakoúci kodu w skali SQALE (ang. Software Quality Assessment based on Lifecycle Expectations). Ocena jest wyliczana ze wzoru \cite{SQALE}:
 
@@ -915,151 +918,119 @@ Edycja istniejπcej propozycji cenowej odbywa siÍ poprzez zaznaczenie w oknie g≥Û
 
 \subsection{Tworzenie pliku PDF istniejπcej propozycji cenowej}
 
-Aby zapisaÊ propozycjÍ cenowπ do pliku PDF, naleøy wybraÊ z menu rozwijanego \textit{Menu} opcjÍ \textit{Lista propozycji}. 
+Jednπ z najwaøniejszych funkcjonalnoúci niniejszej aplikacji jest moøliwoúÊ zapisu propozycji cenowych do pliku PDF. W menu rozwijanym znajduje siÍ pozycja \textsl{Lista propozycji}, co zosta≥o przedstawione na rysunku \ref{rys:ListaPropozycji}.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.25\textwidth]{pdf.jpg}
-%    \caption{Wyúwietlanie listy propozycji cenowych, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:ListaPropozycji}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{pdf.jpg}
+    \caption{Wyúwietlanie listy propozycji cenowych, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ListaPropozycji}
+\end{figure}
 
-Rysunek  Po klikniÍciu przycisku \textit{Zapisz do PDF}, pojawia siÍ dialog wyboru plikÛw. Uøytkownik wpisuje nazwÍ pliku oraz lokalizacjÍ zapisu. 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{df2.jpg}
+    \caption{Zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ZapisDoPdf}
+\end{figure}
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.75\textwidth]{df2.jpg}
-%    \caption{Zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:ZapisDoPdf}
-%\end{figure}
+\newpage
+Po klikniÍciu w opcjÍ \textsl{Lista propozycji} zostaje wyúwietlona lista istniejπcych propozycji cenowych. OprÛcz podstawowych parametrÛw propozycji cenowych, w ostatniej kolumnie listy pojawia siÍ przycisk \textsl{Zapisz do PDF} ktÛrego klikniÍcie otwiera dialog wyboru pliku. Uøytkownik wpisuje dowolnπ nazwÍ pliku, oraz wybiera lokalizacjÍ zapisu pliku co zosta≥o pokazane na rysunku \ref{rys:ZapisDoPdf}. Jeøeli proces generowania pliku PDF przebiegnie pomyúlnie, zostaje wyúwietlony komunikat z informacjπ o sukcesie, przedstawiony na rysunku \ref{rys:ZapisDoPdf2}. (dodaÊ odnoúnik do za≥πcznika - wygenerowanego przez program PDF).
 
-Jeøeli operacja siÍ powiod≥a, uøytkownik otrzyma komunikat.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.25\textwidth]{pdf3.jpg}
-%    \caption{Poprawny zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:ZapisDoPdf2}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pdf3.jpg}
+    \caption{Poprawny zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ZapisDoPdf2}
+\end{figure}
 
 \subsection{Modyfikacja kont uøytkownikÛw/sprzedawcÛw}
+
+Uøytkownicy z uprawnieniami administratora posiadajπ moøliwoúÊ wykonywania podstawowych operacji zwiπzanych z zarzπdzaniem kontami pracownikÛw. Rysunek \ref{rys:UserOpMenu} przedstawia menu \textsl{Uøytkownicy} w ktÛrym znajdujπ siÍ dostÍpne w tym module funkcjonalnoúci. Po klikniÍciu wybranej pozycji z menu, zostaje otwarte nowe okno w ktÛrym administrator moøe wykonaÊ operacje danego typu.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{UserOpMenu.jpg}
+    \caption{Menu rozwijane modu≥u s≥uøπcego do zarzπdzania kontami pracownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:UserOpMenu}
+\end{figure}
+
+\newpage
 \subsubsection{Dodawanie konta}
 
-Aby utworzyÊ nowe konto uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Dodaj}.
+Pierwszπ z funkcjonalnoúci zaimplementowanych w module, jest moøliwoúÊ utworzenia nowego konta. Rysunek \ref{rys:DodajUøytkownika2} przedstawia okno zawierajπce pola tekstowe do ktÛrych wpisywane sπ dane osobowe pracownika, oraz listÍ rozwijanπ z ktÛrej wybierany jest typ konta. Po klikniÍciu przycisku \textsl{Dodaj} w przypadku poprawnego wykonania operacji dodawania konta, wyúwietlana jest informacja przedstawiona na rysunku \ref{rys:DodajUøytkownika3}. W sytuacji niepowodzenia, zostaje wyúwietlany komunikat o b≥Ídzie co moøna zaobserwowaÊ na rysunku \ref{rys:DodajUøytkownika4}.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{dodaj.jpg}
-%    \caption{Dodawanie uøytkownika z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:DodajUzytkownika}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{dodaj2.jpg}
+    \caption{Dodawanie nowego konta uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:DodajUøytkownika2}
+\end{figure}
 
-NastÍpnie pojawia siÍ okno do ktÛrego wpisywane sπ dane uøytkownika. Aby dodaÊ uøytkownika naleøy kliknπÊ przycisk \textit{Dodaj}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dodaj3.jpg}
+    \caption{Komunikat o poprawnym zapisie konta uøytkownika w bazie danych, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:DodajUøytkownika3}
+\end{figure}
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{dodaj2.jpg}
-%    \caption{Dodawanie uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:DodajUøytkownika2}
-%\end{figure}
-
-Jeøeli dodawanie zakoÒczono sukcesem, uøytkownik otrzyma komunikat.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{dodaj3.jpg}
-%    \caption{Komunikat o poprawnym utworzeniu konta, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:DodajUzytkownika3}
-%\end{figure}
-
-W przeciwnym wypadku, uøytkownik otrzyma komunikat o b≥Ídzie.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{dodaj4.jpg}
-%    \caption{Komunikat o b≥Ídach podczas prÛby utworzenia konta, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:DodajUzytkownika4}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dodaj4.jpg}
+    \caption{Komunikat o b≥Ídzie podczas zapisu konta uøytkownika do bazy danych, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:DodajUøytkownika4}
+\end{figure}
 
 \subsubsection{Edycja konta}
 
-Aby edytowaÊ dane uøytkownikÛw, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Edytuj}.
+Kolejnπ funkcjonalnoúciπ jest moøliwoúÊ edycji danych pracownikÛw. Informacje o kontach wyúwietlane sπ w formie tabeli. Edycja polega na zaznaczeniu wybranej komÛrki w tabeli i wpisaniu nowej wartoúci. Zapis nowej wartoúci do bazy danych potwierdzany jest klikniÍciem przycisku \textsl{Enter}, bπdü zaznaczeniem innej kolumny. Rysunek \ref{rys:EdytujUzytkownika} zawiera wygenerowanπ dla potrzeb projektu, listÍ uøytkownikÛw. ZbieønoúÊ osÛb i nazwisk jest przypadkowa.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{edytujuz.jpg}
-%    \caption{Edyja danych uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:EdytujUzytkownika}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{edytujuz2.jpg}
+    \caption{Tabela zawierajπca dane uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:EdytujUzytkownika}
+\end{figure}
 
-NastÍpnie zostanie otwarte nowe okno, ktÛre wyúwietla dane uøytkownikÛw w tabeli. Aby edytowaÊ dane naleøy zaznaczyÊ wybranπ komÛrkÍ, wpisaÊ tekst.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.75\textwidth]{edytujuz2.jpg}
-%    \caption{Okno edycji danych uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:EdytujUzytkownika2}
-%\end{figure}
-
+\newpage
 \subsubsection{Usuwanie konta}
 
-Aby usunπÊ konto uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{UsuÒ}.
+W przypadku zmian kadrowych, administrator posiada moøliwoúÊ usuwania kont uøytkownikÛw. Rysunek \ref{rys:UsunKonto} przedstawia okno obs≥ugujπce funkcjonalnoúÊ usuwania, ktÛre posiada listÍ rozwijanπ zawierajπca loginy uøytkownikÛw. Po wybraniu loginu uøytkownika, ktÛrego konto ma zostaÊ usuniÍte naleøy kliknπÊ przycisk \textsl{UsuÒ}. Pomyúlne usuniÍcia konta z bazy danych jest potwierdzane komunikatem wyúwietlanym na rysunku \ref{rys:UsunKonto2}.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{rm.jpg}
-%    \caption{Usuwanie uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:UsunUzytkownika}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{rm2.jpg}
+    \caption{Okno usuwania kont uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:UsunKonto}
+\end{figure}
 
-NastÍpnie pojawia siÍ okno, w ktÛrym z listy rozwijanej administrator wybiera konto. Aby usunπÊ konto naleøy kliknπÊ przycisk \textit{UsuÒ}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{rm3.jpg}
+    \caption{Komunikat o poprawnym usuniÍciu konta uøytkownika z bazy danych, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:UsunKonto2}
+\end{figure}
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{rm2.jpg}
-%    \caption{Okno usuwanie uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:UsunUzytkownika2}
-%\end{figure}
-
-Jeøeli usuwanie powiod≥o siÍ, zostaje wyúwietlony komunikat.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{rm3.jpg}
-%    \caption{Komunikat o poprawnym usuniÍciu konta uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:UsunUzytkownika3}
-%\end{figure}
-
+\newpage
 \subsubsection{Resetowanie hase≥}
 
+Istnieje moøliwoúÊ, iø uøytkownik nie pamiÍta swojego has≥a. W takim przypadku administrator korzysta z opcji resetowania has≥a, co umoøliwia uøytkownikowi ustawienie nowego has≥a podczas kolejnej prÛby logowania. Na rysunku \ref{rys:ResetujHaslo} przedstawiono okno w ktÛrym znajduje siÍ lista rozwijana, wype≥niona loginami uøytkownikÛw tak samo jak w module s≥uøπcym do usuwania kont. Po wybraniu loginu z listy naleøy kliknπÊ przycisk \textsl{Resetuj}. Komunikat o pomyúlnym usuniÍciu konta z bazy danych znajduje siÍ na rysunku \ref{rys:ResetujHaslo2}.
 
-Aby zresetowaÊ has≥o uøytkownika, w oknie g≥Ûwnym administrator wybiera z menu rozwijanego \textit{Uøytkownicy} opcjÍ \textit{Resetuj has≥o}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{reset2.jpg}
+    \caption{Okno resetowania hase≥ uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ResetujHaslo}
+\end{figure}
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{resetuj.jpg}
-%    \caption{Resetowanie hase≥ uøytkownikÛw z poziomu menu rozwijanego, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:ResetujHaslo}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{reset3.jpg}
+    \caption{Komunikat o powodzeniu operacji usuwania konta uøytkownika z bazy danych, èrÛd≥o: Opracowanie w≥asne.}
+	\label{rys:ResetujHaslo2}
+\end{figure}
 
-NastÍpnie pojawia siÍ okno, w ktÛrym z listy rozwijanej administrator wybiera konto. Aby zresetowaÊ konto naleøy kliknπÊ przycisk \textit{Resetuj}.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{reset2.jpg}
-%    \caption{Okno resetowania hase≥, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:ResetujHaslo2}
-%\end{figure}
-
-Jeøeli operacjπ powiod≥a siÍ, uøytkownik otrzyma komunikat.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{reset3.jpg}
-%    \caption{Komunikat o poprawnym usuniecia konta, èrÛd≥o: Opracowanie w≥asne.}
-%	\label{rys:ResetujHaslo3}
-%\end{figure}
-
+\newpage
 \subsection{Modyfikacja s≥ownikÛw cenowych}
  Modyfikacja s≥ownikÛw cenowych odbywaÊ siÍ moøe tylko z poziomu administratora. Z menu naleøy wybraÊ ÑEdytuj s≥ownik". Zostanie otwarte nowe okno, gdzie bÍdzie moøna wybraÊ typ s≥ownika, ktÛry bÍdzie edytowany. Niestety nie wszystkie s≥oniki sπ edytowalne wynika to z faktu, braku cen produktÛw ktÛre sπ ustawiane przez sprzedawce. Pierwsze klikniecie w komÛrkÍ powoduje jej zaznaczenie, drugie wybranie, dopiero po trzecim klikniÍciu jest moøliwa edycja komÛrki. Edycja nastÍpuje poprzez wpisywanie wartoúci w poszczegÛlnych komÛrkach tabeli w zaleønoúci, ktÛrπ pozycjÍ chce siÍ edytowaÊ. Wciskajπc przycisk ÑENTERî nastÍpuje zapis edytowanego wiersza do bazy danych. Istnieje rÛwnieø moøliwoúÊ dodawania nowych pozycji. W ostatnim pustym wierszu tabeli naleøy wype≥niÊ wszystkie komÛrki, by mÛc dodaÊ do bazy. W trakcie edycja jak i dodawania istnieje kontrola typÛw danych jeúli w komÛrce ma byÊ liczba a bÍdziemy chcieli wpisaÊ tekst komÛrka podúwietli siÍ na czerwono. Odúwieøenie tabeli w przypadku dodania nowego produktu nastÍpuje po ponownym uruchomieniu okna edycji s≥ownikÛw. 
  \begin{itemize}
@@ -1195,10 +1166,9 @@ Najwaøniejszym elementem koniecznym do prawid≥owej pracy prezentowanego modu≥u b
 \subsection{Edycja s≥ownikÛw oraz kont uøytkownikÛw}
 \subsubsection{DataGridView a dynamiczna komunikacja z Bazπ danych}
 
-Aby umoøliwiÊ edycjÍ danych z poziomu DataGridView, zaimplementowano funckjÍ obs≥ugujπcπ zdarzenie \textit{DataGridRowEditEndingEventArgs}. Kiedy edycja danej komÛrki zostaje zakoÒczona, wywo≥ywana jest funkcja ktÛrej zadaniem jest dynamiczne przechwytywanie nowych wartoúci oraz aktualizacja bazy danych. Uøycie zmiennej dynamic, podyktowane jest faktem, iø jest ona sprawdzana podczas wywo≥ania, a nie kompilacji \cite{dynamic}. Umoøliwia to odwo≥anie do nowych wartoúci zapisanych w komÛrkach. Funkcja jest wykorzystywana w module s≥uøπcym do edycji danych pracownikÛw. Poniøej znajduje siÍ kod ürÛd≥owy funkcji:
+Aby umoøliwiÊ edycjÍ danych z poziomu DataGridView, zaimplementowano funckjÍ obs≥ugujπcπ zdarzenie \textit{DataGridRowEditEndingEventArgs}. Kiedy edycja danej komÛrki zostaje zakoÒczona, wywo≥ywana jest funkcja ktÛrej zadaniem jest dynamiczne przechwytywanie nowych wartoúci oraz aktualizacja bazy danych. Uøycie zmiennej dynamic, podyktowane jest faktem, iø jest ona sprawdzana podczas wywo≥ania, a nie kompilacji \cite{dynamic}. Umoøliwia to odwo≥anie do nowych wartoúci zapisanych w komÛrkach. Funkcja jest wykorzystywana w module s≥uøπcym do edycji danych pracownikÛw. ImplementacjÍ funkcji przedstawia kod ürÛd≥owy \ref{listing:DynamicGridView}:
 
 \begin{lstlisting}[caption= {Implementacja i opis funkcji aktualizujπcej bazÍ danych z poziomu DataGridView}, label={listing:DynamicGridView}]
-
 //pobranie identyfikatora uøytkownika ktÛrego wiersz 
 //jest zaznaczony w DataGridView oraz zapis do zmiennej typu int
 object item = UserList.SelectedItem;
@@ -1241,9 +1211,9 @@ Users userUpdate = (from user in _ctx.Users
 
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 
-Za pomocπ mechanizmÛw biblioteki MigraDoc, zaimplementowano funckje tworzπce tabele propozycji cenowej. Poniøej, znajduje siÍ przyk≥adowy kod ürÛd≥owy ktÛry tworzy nowπ kolumnÍ oraz w tabeli:
+Za pomocπ mechanizmÛw biblioteki MigraDoc, zaimplementowano funckje tworzπce tabele propozycji cenowej. Kod ürÛd≥owy \ref{listing:PdfSharpTable} przedstawia prostπ funkcjÍ tworzπca tabelÍ z jednπ kolumnπ i wierszem. 
 
-\begin{verbatim}
+\begin{lstlisting}[caption= {Implementacja i opis funkcji tworzπcej prostπ tabelÍ przy uøyciu biblioteki PDFSharp \& MigraDoc}, label={listing:PdfSharpTable}]
 //inicjalizacja nowej tabeli, ustawienie czcionki i jej rozmiaru
 Table table = document.LastSection.AddTable();
 table.Borders.Visible = true;
@@ -1260,7 +1230,7 @@ row.Cells[0].Shading.Color = Colors.LightGray;
 row.Cells[0].AddParagraph("WYNAJEM");
 \end{verbatim}
 
-Poniøszy kod zosta≥ uøyty w implementacji funkcji zapisujπcej propozycjÍ cenowπ do pliku PDF:
+Kod ürÛd≥owy \ref{listing:SavePdf} przedstawia implementacjÍ funkcji zapisujπcej wygenerowane przez program tabele propozycji cenowej do pliku PDF.
 
 \begin{lstlisting}[caption= {Implementacja i opis funkcji zapisujπcej propozycjÍ cenowπ do pliku PDF}, label={listing:SavePdf}]
 // deklaracja obiektu klasy PdfDocumentRenderer
