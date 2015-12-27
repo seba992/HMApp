@@ -4287,7 +4287,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 {
                     if (_propHallEquipment[i].Things != null && _propHallEquipment[i].BruttoPrice != null
                         && _propHallEquipment[i].Amount != null && _propHallEquipment[i].Days != null
-                        && _propHallEquipment[i].Things != " " && _propHallEquipment[i].BruttoPrice == 0) 
+                        && _propHallEquipment[i].Things != " " && _propHallEquipment[i].BruttoPrice != 0) 
                     {
                         _propHallEquipment[i].Id_proposition = currentPropositionId;
                         _ctx.PropHallEquipment.Add(_propHallEquipment[i]);
