@@ -10,12 +10,12 @@
     </Window.DataContext>
 
     <Grid Background="#FF1F7AC7">
-        <TextBlock HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.79,1.003"><Run Text="Imię"/><Run Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="20,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Nazwisko:"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="20,80,0,0" TextWrapping="Wrap" Text="Numer telefonu:" VerticalAlignment="Top" RenderTransformOrigin="0.452,2.068"/>
-        <TextBlock HorizontalAlignment="Left" Margin="20,110,0,0" TextWrapping="Wrap" Text="E-mail:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="20,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Stanowisko:"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="20,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Typ konta:"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.79,1.003"><Run Text="Imię"/><Run Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,50,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top "><Run Text="Nazwisko:"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,80,0,0" TextWrapping="Wrap" Text="Numer telefonu:" Foreground="White" VerticalAlignment="Top" RenderTransformOrigin="0.452,2.068"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,110,0,0" TextWrapping="Wrap" Text="E-mail:" Foreground="White" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,140,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top"><Run Text="Stanowisko:"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="20,170,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top"><Run Text="Typ konta:"/><LineBreak/><Run/></TextBlock>
         <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="111,20,0,0" TextWrapping="Wrap" Text="{Binding Path=UserName}"  VerticalAlignment="Top" Width="120" />
         <TextBox x:Name="SurnameTextBox" HorizontalAlignment="Left" Height="23" Margin="111,50,0,0" TextWrapping="Wrap" Text="{Binding Path=UserSurname}" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.608,0.652"/>
         <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="111,80,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPhoneNumber}" VerticalAlignment="Top" Width="120"/>
@@ -26,6 +26,6 @@
             <ComboBoxItem Content="Sprzedawca" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <Button Content="Dodaj" HorizontalAlignment="Left" Margin="156,197,0,0" VerticalAlignment="Top" Width="75" Command="{Binding AddUserCommand}"/>
-        <GroupBox Header="Dodaj użytkownika" HorizontalAlignment="Left" VerticalAlignment="Top" Height="230" Width="240" Margin="6,0,0,0"/>
+        <GroupBox Header="Dodaj użytkownika" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="230" Width="240" Margin="6,0,0,0"/>
     </Grid>
 </Window>
