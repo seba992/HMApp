@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using DiamondApp.Model;
+using DiamondApp.Tools.Converters;
 using DiamondApp.Tools.MvvmClasses;
 using DiamondApp.Tools.Validators;
 using DiamondApp.Views;
@@ -88,8 +89,8 @@ namespace DiamondApp.ViewModels
                 {
                     if (PasswordValidator.ValidatePassword(passBox.Password))
                     {
-                        //.Password = ShaConverter.sha256_hash(passBox.Password);
-                        userToLogin.First().Password = passBox.Password;    // przypisz do konta użytkownika wpisane przez niego hasło
+                        //.Password = passBox.Password;
+                        userToLogin.First().Password = ShaConverter.sha256_hash(passBox.Password);    // przypisz do konta użytkownika wpisane przez niego hasło
                         userToLogin.First().FirstLogin = "f";   // zmień tryb logowania
                         UserId = userToLogin.First().Id;    // przypisz Id użytkownika w celu umożliwienia jego jednoznacznej identyfikacji
                         _userType = userToLogin.First().AccountPrivileges.AccountType;  // uzyskaj typ konta użytkownika znajdujący się w bazie danych
@@ -104,9 +105,9 @@ namespace DiamondApp.ViewModels
                         _isWrongPassword = true;
                     }
                 }
-                //.Password == ShaConverter.sha256_hash(passBox.Password))
+                //.Password == passBox.Password)
                 // jeśli w bazie jest tylko jeden użytkownik o podanej nazwie użytkownika oraz podana nazwa konta oraz przypisane do niego hasło jest poprawne
-                else if (userToLogin.Count() == 1 && userToLogin.First().Login == _userLogin && userToLogin.First().Password == passBox.Password)
+                else if (userToLogin.Count() == 1 && userToLogin.First().Login == _userLogin && userToLogin.First().Password == ShaConverter.sha256_hash(passBox.Password))
                 {
                     _userType = userToLogin.First().AccountPrivileges.AccountType;
                     UserId = userToLogin.First().Id;

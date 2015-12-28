@@ -51,7 +51,18 @@
 
             </MenuItem>
         </Menu>
-
+        <ComboBox x:Name="CbUser" HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" SelectedItem="{Binding PropositionsSeller}" Visibility="{Binding OtherElementVisibility}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                <Run Text="{Binding Name}" />
+                <Run Text="{Binding Surname}" />
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <Label x:Name="Luser" Content="Użytkownicy:" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0" HorizontalContentAlignment="Right" Background="Transparent" Foreground="White"   Visibility="{Binding OtherElementVisibility}" />
+        <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}"  Visibility="{Binding EditPropVisibility}"/>
         <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="551" Width="1044.5" Visibility="{Binding EditPropVisibility}">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
                 <Grid Background="#FFD8D8D8" Margin="-2">
@@ -190,6 +201,9 @@
                         <ColumnDefinition Width="125" />
                     </Grid.ColumnDefinitions>
 
+
+                    <!--definicja wierszy wielkosci sali /dol prawo/-->
+
                     <!--definicja górnych 6 wierszy-->
                     <Label Grid.Row="0" Grid.Column="0" Content="WYNAJEM" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Grid.ColumnSpan="2"/>
                     <Label Grid.Row="0" Grid.Column="2" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom"/>
@@ -272,8 +286,6 @@
                     <xctk:IntegerUpDown x:Name="SrRabatOdBaraCustIntUpDown" Grid.Column="4" Grid.Row="10" Margin="32.5,17,46,19" Minimum="0" Maximum="100" Value="{Binding PropHallEquipmentDiscountValue}" Grid.ColumnSpan="3" Grid.RowSpan="2" />
                     <TextBox x:Name="SrCenaPoRabacieTextBox" Grid.Column="4" Grid.Row="11" Margin="32.5,17,46,-11" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding PropHallPriceAfterDiscount, StringFormat=\{0:c\}}" Grid.ColumnSpan="3"/>
 
-
-                    <!--definicja wierszy wielkosci sali /dol prawo/-->
 
                 </Grid>
             </TabItem>
@@ -452,6 +464,17 @@
                         <ColumnDefinition Width="2" />
                     </Grid.ColumnDefinitions>
 
+                    <!--                    <Label Grid.Column="1"  Grid.Row="13" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <!--                    <TextBox x:Name="UNCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="13" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount4, StringFormat=\{0:c\}}" />-->
+
+                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="11" Content="Dopłata do Biznes: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="12" Content="Dopłata do Apartament: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Content="Dopłata do dwójke: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
+
+                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoBiznesIntUpDown" Grid.Column="6" Grid.Row="11" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountBussSurcharge}"/>-->
+                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoApartamentIntUpDown" Grid.Column="6" Grid.Row="12" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountAparSurcharge}"/>-->
+                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoDwojkaIntUpDown" Grid.Column="6" Grid.Row="13" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountDoubleSurcharge}"/>-->
+
                     <!--definicja calej tabeli/-->
                     <Label Grid.Column="0" Content="RODZAJ POKOJU" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="0,15,0,0"/>
                     <Label Grid.Column="1" Content="CENA JEDNOSTKOWA BRUTTO" HorizontalContentAlignment="Center" VerticalContentAlignment="Bottom" Margin="0,15,0,0"/>
@@ -525,18 +548,8 @@
                     <Rectangle Grid.ColumnSpan="5" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="54" Margin="170,26,0,0" Grid.Row="10" Stroke="Black" VerticalAlignment="Top" Width="360" Grid.RowSpan="3" Grid.Column="1"/>
                     <!--                    <Label Grid.Column="1"  Grid.Row="11" Content="Cena Standard: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
                     <Label Grid.Column="1"  Grid.Row="11" Content="Rabat (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Grid.ColumnSpan="2" Margin="80,10,115,26" Grid.RowSpan="2" VerticalAlignment="Center" Height="26"/>
-                    <!--                    <Label Grid.Column="1"  Grid.Row="13" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
                     <!--                    <TextBox x:Name="UNCenaStandardTextBox" Grid.Column="2" Grid.Row="11" HorizontalContentAlignment="Center" Text="{Binding PropAccomDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False"/>-->
                     <xctk:IntegerUpDown x:Name="UnRabatOdBaraCustIntUpDown" Grid.Column="2" Grid.Row="11" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountValue}" Grid.ColumnSpan="4" Margin="80,7,70,23" Grid.RowSpan="2"/>
-                    <!--                    <TextBox x:Name="UNCenaPoRabacieTextBox" Grid.Column="2" Grid.Row="13" HorizontalContentAlignment="Center" IsEnabled="False" Text="{Binding ComputePriceAfterDiscount4, StringFormat=\{0:c\}}" />-->
-
-                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="11" Content="Dopłata do Biznes: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
-                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="12" Content="Dopłata do Apartament: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
-                    <!--                    <Label Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="13" Content="Dopłata do dwójke: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom"/>-->
-
-                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoBiznesIntUpDown" Grid.Column="6" Grid.Row="11" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountBussSurcharge}"/>-->
-                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoApartamentIntUpDown" Grid.Column="6" Grid.Row="12" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountAparSurcharge}"/>-->
-                    <!--                    <xctk:IntegerUpDown x:Name="UNDoplataDoDwojkaIntUpDown" Grid.Column="6" Grid.Row="13" Minimum="0" Maximum="100"  Value="{Binding PropAccomDiscountDoubleSurcharge}"/>-->
 
                 </Grid>
             </TabItem>
@@ -646,18 +659,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <ComboBox x:Name="CbUser" HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" SelectedItem="{Binding PropositionsSeller}" Visibility="{Binding OtherElementVisibility}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
-                <Run Text="{Binding Name}" />
-                <Run Text="{Binding Surname}" />
-                    </TextBlock>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-        <Label x:Name="Luser" Content="Użytkownicy:" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0" HorizontalContentAlignment="Right" Background="Transparent" Foreground="White"   Visibility="{Binding OtherElementVisibility}" />
-        <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}"  Visibility="{Binding EditPropVisibility}"/>
         <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="520" Margin="5,62,0,0" VerticalAlignment="Top" Width="1056" SelectedValue="{Binding SelectedProposition}" 
                   IsHitTestVisible="True" SelectionMode="Single" ItemContainerStyle="{StaticResource ListViewStyle}"
                   AlternationCount="2" Visibility="{Binding OtherElementVisibility}">
@@ -666,8 +667,8 @@
                     <GridViewColumn Width="180" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
                     <GridViewColumn Width="200" Header="Nazwa klienta" DisplayMemberBinding="{Binding CustomerFullName}" />
                     <GridViewColumn Width="295" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
-                    <GridViewColumn Width="150" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat=\{0:yyyy-MM-dd\}}" />
-                    <GridViewColumn Width="120" Header="Status" DisplayMemberBinding="{Binding Status}" />
+                    <GridViewColumn Width="135" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat=\{0:yyyy-MM-dd\}}" />
+                    <GridViewColumn Width="110" Header="Status" DisplayMemberBinding="{Binding Status}" />
 
                     <!--                    cache comment to copy into userform, admin cant change prop status from grid
                     its complicated, TO RESOLVE ON REVIEV!!! -->
