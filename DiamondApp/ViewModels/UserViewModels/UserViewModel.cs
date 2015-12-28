@@ -5792,6 +5792,7 @@ namespace DiamondApp.ViewModels.UserViewModels
             _fifthTabBruttoValue = new List<decimal>(4);
             _propPaymentSugg = new PropPaymentSuggestions();
             _selectedType = new List<string>(7);
+            _filter = new List<string>(7);
             _propMenuGastThingDict0 = new ObservableCollection<string>();
             _propMenuGastThingDict1 = new ObservableCollection<string>();
             _propMenuGastThingDict2 = new ObservableCollection<string>();
@@ -5871,6 +5872,11 @@ namespace DiamondApp.ViewModels.UserViewModels
             //FifthTabBruttoValueList
             for (int i = 0; i < _fifthTabBruttoValue.Capacity; i++)
                 _fifthTabBruttoValue.Add(new decimal());
+
+            Filter.Add(" ");
+            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                             group x by x.SpecificType into g
+                             select g.Key).ToList());
             
         }
 

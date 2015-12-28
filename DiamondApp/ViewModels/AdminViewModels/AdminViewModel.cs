@@ -4270,12 +4270,15 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
         private void CreateNewPropositionExecute(object obj)
         {
+
             InitializeObjects();
             FillNeededList();
             SetDefaultValues();
+   
             CleanProperties(GetType());
             PropDefaultSeller();
             ChangeView(true);
+           
             _saveFlag = false;
             var querry = (from user in _ctx.Users
                           where user.Id == _userId
@@ -4300,6 +4303,10 @@ namespace DiamondApp.ViewModels.AdminViewModels
                              select hd.Setting).ToList();
             HallSettingList = hallDict2;
 
+            Filter.Add(" ");
+            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                             group x by x.SpecificType into g
+                             select g.Key).ToList());
             var propstates = (from ps in _ctx.PropositionStates_Dictionary
                               select ps.Status).ToList();
             PropStates = propstates;
@@ -4324,10 +4331,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             PropMenuGastThingDict4 = new ObservableCollection<string>(gastThingDict);
             PropMenuGastThingDict5 = new ObservableCollection<string>(gastThingDict);
             PropMenuGastThingDict6 = new ObservableCollection<string>(gastThingDict);
-            Filter.Add(" ");
-            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                             group x by x.SpecificType into g
-                             select g.Key).ToList());
+       
 
             // wypelnienie domyslnych marzy
             var merges = (from m in _ctx.PropMenuMerge_Dictionary_First
@@ -4652,10 +4656,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 }
 
                 _ctx.SaveChanges();
-                var propEquipment = (from q in _ctx.PropHallEquipment
-                                     where q.Id_proposition == idProposition
-                                     select q).ToList();
-                var hall = propEquipment.Find(item => item.Things == PropHallEqThing0);
+               
+
                 var dicount = (from q in _ctx.PropHallEquipmentDiscount
                                where q.Id_proposition == idProposition
                                select q).SingleOrDefault();
@@ -4673,7 +4675,10 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 }
                 _ctx.SaveChanges();
 
-
+                var propEquipment = (from q in _ctx.PropHallEquipment
+                                     where q.Id_proposition == idProposition
+                                     select q).ToList();
+                var hall = propEquipment.ElementAtOrDefault(0);
                 if (hall != null)
                 {
                     if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
@@ -4703,7 +4708,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropHallEqThing1 != null)
                 {
-                    var thing1 = propEquipment.Find(item => item.Things == PropHallEqThing1);
+                    var thing1 = propEquipment.ElementAtOrDefault(1);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -4729,7 +4734,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _ctx.SaveChanges();
                 if (PropHallEqThing2 != null)
                 {
-                    var thing1 = propEquipment.Find(item => item.Things == PropHallEqThing2);
+                    var thing1 =  propEquipment.ElementAtOrDefault(2);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -4756,7 +4761,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _ctx.SaveChanges();
                 if (PropHallEqThing3 != null)
                 {
-                    var thing1 = propEquipment.Find(item => item.Things == PropHallEqThing3);
+                    var thing1 = propEquipment.ElementAtOrDefault(3);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -4783,7 +4788,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _ctx.SaveChanges();
                 if (PropHallEqThing4 != null)
                 {
-                    var thing1 = propEquipment.Find(item => item.Things == PropHallEqThing4);
+                    var thing1 = propEquipment.ElementAtOrDefault(4);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -4810,7 +4815,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropHallEqThing5 != null)
                 {
-                    var thing1 = propEquipment.Find(item => item.Things == PropHallEqThing5);
+                    var thing1 = propEquipment.ElementAtOrDefault(5);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -6180,6 +6185,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             _fifthTabBruttoValue = new List<decimal>(4);
             _propPaymentSugg = new PropPaymentSuggestions();
             _selectedType = new List<string>(7);
+            _filter = new List<string>(7);
             _propMenuGastThingDict0 = new ObservableCollection<string>();
             _propMenuGastThingDict1 = new ObservableCollection<string>();
             _propMenuGastThingDict2 = new ObservableCollection<string>();
@@ -6262,6 +6268,11 @@ namespace DiamondApp.ViewModels.AdminViewModels
             //FifthTabBruttoValueList
             for (int i = 0; i < _fifthTabBruttoValue.Capacity; i++)
                 _fifthTabBruttoValue.Add(new decimal());
+
+            Filter.Add(" ");
+            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                             group x by x.SpecificType into g
+                             select g.Key).ToList());
 
             //First Tab state list
             //           for (int i = 0; i < _propStates.Capacity; i++)
@@ -6564,7 +6575,10 @@ namespace DiamondApp.ViewModels.AdminViewModels
             var hallDict2 = (from hd in _ctx.PropReservationDetails_Dictionary_HallSettings
                              select hd.Setting).ToList();
             HallSettingList = hallDict2;
-
+            Filter.Add(" ");
+            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                             group x by x.SpecificType into g
+                             select g.Key).ToList());
             // wypelnianie listy dodatkowego wyposazenia sali 2tab
             var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
                                   select he.Things).ToList();
@@ -6753,13 +6767,13 @@ namespace DiamondApp.ViewModels.AdminViewModels
             PropMenuPosAmount4 = null;
             PropMenuPosAmount5 = null;
 
-            SelectedType0 = " ";
-            SelectedType1 = " ";
-            SelectedType2 = " ";
-            SelectedType3 = " ";
-            SelectedType4 = " ";
-            SelectedType5 = " ";
-            SelectedType6 = " ";
+            SelectedType0 = null;
+            SelectedType1 = null;
+            SelectedType2 = null;
+            SelectedType3 = null;
+            SelectedType4 = null;
+            SelectedType5 = null;
+            SelectedType6 = null;
 
             //tab4
 

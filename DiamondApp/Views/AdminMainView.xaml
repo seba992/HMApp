@@ -679,7 +679,16 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <ComboBox x:Name="CbUser" HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" DisplayMemberPath="Login" SelectedItem="{Binding PropositionsSeller}" Visibility="{Binding OtherElementVisibility}"/>
+        <ComboBox x:Name="CbUser" HorizontalAlignment="Left" Margin="885,33,0,0" VerticalAlignment="Top" Width="163" ItemsSource="{Binding UsersList}" SelectedItem="{Binding PropositionsSeller}" Visibility="{Binding OtherElementVisibility}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                <Run Text="{Binding Name}" />
+                <Run Text="{Binding Surname}" />
+                    </TextBlock>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <Label x:Name="Luser" Content="Użytkownicy:" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0" HorizontalContentAlignment="Right" Background="Transparent" Foreground="White"   Visibility="{Binding OtherElementVisibility}" />
         <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}"  Visibility="{Binding EditPropVisibility}"/>
     </Grid>
