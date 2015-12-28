@@ -47,7 +47,7 @@ namespace DiamondApp.Views
 
             //selectDictionry = DictionaryList.SelectionBoxItem.ToString();
             selectDictionry = DictionaryList.SelectedItem.ToString();
-            //MessageBox.Show(selectDictionry.ToString());
+           
 
             switch (selectDictionry)
             {
@@ -198,7 +198,6 @@ namespace DiamondApp.Views
             string ID = (RoomGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
             int selected = Int32.Parse(ID);
             dynamic roomRow = RoomGrid.SelectedItem;
-            MessageBox.Show(roomRow.Id + "   " + selected.ToString());
             if (selected != 0)
             {
                 PropAccomodation_Dictionary roomUpdate = (from q in _ctx.PropAccomodation_Dictionary

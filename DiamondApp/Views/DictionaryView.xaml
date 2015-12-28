@@ -89,7 +89,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Pokój" >
+                <DataGridTemplateColumn IsReadOnly="True" Header="Pokój" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding TypeOfRoom, UpdateSourceTrigger=PropertyChanged}"/>
@@ -121,7 +121,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Sala" >
+                <DataGridTemplateColumn IsReadOnly="True" Header="Sala" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Hall, UpdateSourceTrigger=PropertyChanged}"/>
