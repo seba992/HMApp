@@ -52,39 +52,6 @@
             </MenuItem>
         </Menu>
 
-        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="519" Margin="5,62,0,0" VerticalAlignment="Top" Width="1056" SelectedValue="{Binding SelectedProposition}" 
-                  IsHitTestVisible="True" SelectionMode="Single" ItemContainerStyle="{StaticResource ListViewStyle}"
-                  AlternationCount="2" Visibility="{Binding OtherElementVisibility}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
-                    <GridViewColumn Width="200" Header="Nazwa klienta" DisplayMemberBinding="{Binding CustomerFullName}" />
-                    <GridViewColumn Width="200" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
-                    <GridViewColumn Width="200" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat=\{0:yyyy-MM-dd\}}" />
-                    <GridViewColumn Width="70" Header="Status" DisplayMemberBinding="{Binding Status}" />
-
-                    <!--                    cache comment to copy into userform, admin cant change prop status from grid
-                    its complicated, TO RESOLVE ON REVIEV!!! -->
-
-                    <!--                        <GridViewColumn.CellTemplate>-->
-                    <!--                            <DataTemplate>-->
-                    <!--                                <ComboBox  Width="150">-->
-                    <!--                                    <ComboBoxItem IsSelected="True"  Content="Nierozpatrzona"/>-->
-                    <!--                                    <ComboBoxItem Content="Gotowa"  />-->
-                    <!--                                </ComboBox>-->
-                    <!--                            </DataTemplate>-->
-                    <!--                        </GridViewColumn.CellTemplate>-->
-                    <GridViewColumn Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Zapisz do PDF" Click="Button_Click" CommandParameter="{Binding PropositionId}" Padding="5,2"/>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-
         <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="551" Width="1044.5" Visibility="{Binding EditPropVisibility}">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
                 <Grid Background="#FFD8D8D8" Margin="-2">
@@ -691,6 +658,38 @@
         </ComboBox>
         <Label x:Name="Luser" Content="Użytkownicy:" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0" HorizontalContentAlignment="Right" Background="Transparent" Foreground="White"   Visibility="{Binding OtherElementVisibility}" />
         <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}"  Visibility="{Binding EditPropVisibility}"/>
+        <ListView ItemsSource="{Binding PropositionsList, Mode=TwoWay}" x:Name ="AdminProposition" HorizontalAlignment="Left" Height="520" Margin="5,62,0,0" VerticalAlignment="Top" Width="1056" SelectedValue="{Binding SelectedProposition}" 
+                  IsHitTestVisible="True" SelectionMode="Single" ItemContainerStyle="{StaticResource ListViewStyle}"
+                  AlternationCount="2" Visibility="{Binding OtherElementVisibility}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="180" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
+                    <GridViewColumn Width="200" Header="Nazwa klienta" DisplayMemberBinding="{Binding CustomerFullName}" />
+                    <GridViewColumn Width="295" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
+                    <GridViewColumn Width="150" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat=\{0:yyyy-MM-dd\}}" />
+                    <GridViewColumn Width="120" Header="Status" DisplayMemberBinding="{Binding Status}" />
+
+                    <!--                    cache comment to copy into userform, admin cant change prop status from grid
+                    its complicated, TO RESOLVE ON REVIEV!!! -->
+
+                    <!--                        <GridViewColumn.CellTemplate>-->
+                    <!--                            <DataTemplate>-->
+                    <!--                                <ComboBox  Width="150">-->
+                    <!--                                    <ComboBoxItem IsSelected="True"  Content="Nierozpatrzona"/>-->
+                    <!--                                    <ComboBoxItem Content="Gotowa"  />-->
+                    <!--                                </ComboBox>-->
+                    <!--                            </DataTemplate>-->
+                    <!--                        </GridViewColumn.CellTemplate>-->
+                    <GridViewColumn Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Zapisz do PDF" Click="Button_Click" CommandParameter="{Binding PropositionId}" Padding="5,2"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
 
