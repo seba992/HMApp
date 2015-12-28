@@ -41,30 +41,7 @@ namespace DiamondApp.Views
             Application.Current.Shutdown();
         }
 
-        private void VisibleElement(object sender, RoutedEventArgs e)
-        {
-            switch (((MenuItem)sender).Header.ToString())
-            {
-                case "Edytuj":
-                case "Dodaj":
-                    this.UserProposition.Visibility = Visibility.Hidden;
-                    this.TabControlProposition.Visibility = Visibility.Visible;
-                    this.SavePropositionButton.Visibility = Visibility.Visible;
-                    break;
-                default:
-                    this.UserProposition.Visibility = Visibility.Visible;
-                    this.TabControlProposition.Visibility = Visibility.Hidden;
-                    this.SavePropositionButton.Visibility = Visibility.Hidden;
-                    break;
-            }
-        }
-        private void VisibleElementAfterSavePropClick(object sender, RoutedEventArgs e)
-        {
-            UserProposition.Visibility = Visibility.Visible;
-            TabControlProposition.Visibility = Visibility.Hidden;
-            SavePropositionButton.Visibility = Visibility.Hidden;
-        }
-
+       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button _myButton = (Button)sender;

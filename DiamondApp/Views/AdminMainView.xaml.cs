@@ -30,39 +30,7 @@ namespace DiamondApp.Views
         {
             Application.Current.Shutdown();
         }
-
-        private void VisibleElement(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show(((MenuItem)sender).Header.ToString());
-            switch (((MenuItem)sender).Header.ToString())
-            {
-                case "Edytuj":
-                        
-                case "Dodaj":
-                    AdminProposition.Visibility = Visibility.Hidden;
-                    Luser.Visibility =Visibility.Hidden;
-                    CbUser.Visibility = Visibility.Hidden;
-                    TabControlProposition.Visibility = Visibility.Visible;
-                    SavePropositionButton.Visibility = Visibility.Visible;
-                    break;
-                default:
-                    AdminProposition.Visibility = Visibility.Visible;
-                    Luser.Visibility =Visibility.Visible;
-                    CbUser.Visibility = Visibility.Visible;
-                    TabControlProposition.Visibility = Visibility.Hidden;
-                    SavePropositionButton.Visibility = Visibility.Hidden;
-                    break;
-            }
-        }
-
-        private void VisibleElementAfterSavePropClick(object sender, RoutedEventArgs e)
-        {
-            AdminProposition.Visibility = Visibility.Visible;
-           
-            TabControlProposition.Visibility = Visibility.Hidden;
-            SavePropositionButton.Visibility = Visibility.Hidden;
-        }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button myButton = (Button)sender;
