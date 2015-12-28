@@ -31,6 +31,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         public void SelectAllUsers()
         {
             var myQuerry = (from user in _ctx.Users
+                            orderby user.Surname
                             select new User
                             {
                                 UserId = user.Id,
