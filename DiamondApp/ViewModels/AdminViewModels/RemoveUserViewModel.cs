@@ -13,7 +13,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         private DiamondDBEntities _ctx;
         public RelayCommand _removeUserCommand;
         private List<Users> _userList;
-        private string _userLogin;
+        private Users _userLogin;
 
         public RemoveUserViewModel()
         {
@@ -21,10 +21,14 @@ namespace DiamondApp.ViewModels.AdminViewModels
             SelectAllUsers();
         }
 
-        public string UserLogin
+        public Users UserLogin
         {
             get { return _userLogin; }
-            set { _userLogin = value; }
+            set
+            {
+                _userLogin = value;
+                RaisePropertyChanged("UserLogin");
+            }
         }
 
         public void SelectAllUsers()
@@ -60,18 +64,19 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
         private bool CanRemoveUserExecute()
         {
-            if (string.IsNullOrEmpty(_userLogin))
-                return false;
+          //  if (_userLogin != null)
+            //    return false;
             return true;
         }
 
         private void RemoveUserExecute()
         {
+            MessageBox.Show(_userLogin.Id.ToString());
             try
             {
-                MessageBox.Show(_userLogin.ToString());
+                
                 var order = (from o in _ctx.Users
-                             where o.Surname == _userLogin
+                             where o.Id == _userLogin.Id
                              select o).First();
                 _ctx.Users.Remove(order);
                 _ctx.SaveChanges();

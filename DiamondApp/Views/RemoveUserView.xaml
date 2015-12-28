@@ -7,19 +7,17 @@
     <Grid  Background="#FF1F7AC7">
         <GroupBox Header="Usuń użytkownika" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="87" Width="238" Margin="6
                   ,0,0,0">
-            <ComboBox ItemsSource="{Binding UsersList}" HorizontalAlignment="Left" Margin="10,10,-2,0" VerticalAlignment="Top" Width="210" SelectedItem="User Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }" Text="{Binding Path=UserLogin}">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock>
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="Name"/>
-                                    <Binding Path="Surname"/>
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
+            <ComboBox ItemsSource="{Binding UsersList}" HorizontalAlignment="Left" Margin="10,10,-2,0" VerticalAlignment="Top" Width="210" SelectedItem="{Binding UserLogin }" >
+                
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                    <Run Text="{Binding Name}" />
+                                    <Run Text="{Binding Surname}" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+               
             </ComboBox>
         </GroupBox>
         <Button Content="Usuń" HorizontalAlignment="Left" Margin="85,55,0,0" VerticalAlignment="Top" Width="75" Command="{Binding RemoveUserCommand}"/>
