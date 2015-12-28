@@ -14,6 +14,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
         public RelayCommand _removeUserCommand;
         private List<Users> _userList;
         private string _userLogin;
+        private string _userName;
+        private string _userSurname;
 
         public RemoveUserViewModel()
         {
@@ -25,6 +27,18 @@ namespace DiamondApp.ViewModels.AdminViewModels
         {
             get { return _userLogin; }
             set { _userLogin = value; }
+        }
+
+        public string UserName
+        {
+            get { return _userName; }
+            set { _userName = value; }
+        }
+
+        public string UserSurname
+        {
+            get { return _userSurname; }
+            set { _userSurname = value; }
         }
 
         public void SelectAllUsers()
