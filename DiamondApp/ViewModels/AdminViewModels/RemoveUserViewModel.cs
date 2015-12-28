@@ -14,8 +14,6 @@ namespace DiamondApp.ViewModels.AdminViewModels
         public RelayCommand _removeUserCommand;
         private List<Users> _userList;
         private string _userLogin;
-        private string _userName;
-        private string _userSurname;
 
         public RemoveUserViewModel()
         {
@@ -29,26 +27,14 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set { _userLogin = value; }
         }
 
-        public string UserName
-        {
-            get { return _userName; }
-            set { _userName = value; }
-        }
-
-        public string UserSurname
-        {
-            get { return _userSurname; }
-            set { _userSurname = value; }
-        }
-
         public void SelectAllUsers()
         {
             var q = (from s in _ctx.Users
+                     orderby s.Surname
                      select s).ToList();
 
             UsersList = q;
         }
-
 
         public List<Users> UsersList
         {
@@ -83,9 +69,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
         {
             try
             {
-
+                MessageBox.Show(_userLogin.ToString());
                 var order = (from o in _ctx.Users
-                             where o.Login == _userLogin
+                             where o.Surname == _userLogin
                              select o).First();
                 _ctx.Users.Remove(order);
                 _ctx.SaveChanges();

@@ -343,7 +343,7 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[0].MergeRight = 3;
                 row.Cells[0].Format.Font.Size = 7;
                 row.Cells[0].AddParagraph("Zgodnie z treścią art. 71 Kodeksu Cywilnego niniejsza propozycja cenowa nie stanowi oferty handlowej ma jedynie charakter informacyjny. Informacja  jest ważna do Po upływie tego terminu lub/i w przypadku zmniejszenia ilości zarezerwowanych pokoi lub/i zmniejszenia ilości uczestników spotkania, Hotel zastrzega sobie prawo do zmiany proponowanych cen lub wycofania tych cen. Po upływie terminu jw. Hotel także nie gwarantuje dostępności pokoi i sal konferencyjnych. W przypadku zainteresowania terminem Państwa zapytania (niniejszej oferty) ze strony innego klienta, poprosimy o potwierdzenie Państwa rezerwacji i zawarcie umowy w ciągu 24 godzin lub dokonanie rezerwacji gwaratowanej bez możliwości anulacji bezkosztowej.");
-                row.Cells[4].AddParagraph("2015-11-24");
+                row.Cells[4].AddParagraph(UpdatedDate(propId).ToString());
                 row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[4].Format.Font.Bold = true;
 
