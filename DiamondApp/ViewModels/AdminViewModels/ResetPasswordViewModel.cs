@@ -13,7 +13,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         private DiamondDBEntities _ctx;
         public RelayCommand _resetPasswordCommand;
         private List<Users> _userList;
-        private string _userLogin;
+        private Users _userProp;
 
         public ResetPasswordViewModel()
         {
@@ -21,16 +21,21 @@ namespace DiamondApp.ViewModels.AdminViewModels
             SelectAllUsers();
         }
 
-        public string UserLogin
+        public Users UserProp
         {
-            get { return _userLogin; }
-            set { _userLogin = value; }
+            get { return _userProp; }
+            set
+            {
+                _userProp = value;
+                RaisePropertyChanged("UserProp");
+            }
         }
 
         public void SelectAllUsers()
         {
             var q = (from s in _ctx.Users
-                     select s).ToList();
+                     orderby s.Surname
+                     select s ).ToList();
 
             UsersList = q;
         }
@@ -60,7 +65,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
         private bool CanResetPasswordExecute()
         {
-            if (string.IsNullOrEmpty(_userLogin))
+            if (_userProp == null)
                 return false;
             return true;
         }
@@ -70,7 +75,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             try
             {
                 Users userUpdate = (from user in _ctx.Users
-                                    where user.Login == _userLogin // int selected!!! you know what i want up to date
+                                    where user.Id == _userProp.Id // int selected!!! you know what i want up to date
                                     select user).First();
 
                 userUpdate.FirstLogin = "t";
