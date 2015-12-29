@@ -655,6 +655,9 @@ Drugi cz³on bazy danych stanowi¹ tabele zwi¹zane z tworzon¹ propozycj¹ cenow¹. S
 Podzia³ taki uwzglêdnia mo¿liwoœæ dalszego rozwoju aplikacji. Mo¿liwe jest dodawanie nowych s³owników która bêd¹ zwieraæ inne elementy zwi¹zane z tworzon¹ propozycj¹ cenowa. Dodanie nowej tabeli do s³owników,  która bêdzie wi¹za³a siê z now¹  grupy produktów.
 
 \subsection{Komunikacja bazy danych z projektem programistycznym}
+
+Po³¹czenie bazy danych z projektem programistycznym jest kluczow¹ kwesti¹ dotycz¹c¹ poprawnoœci dzia³ania aplikacji bazodanowej. Ci¹g³e, stabilne i kontrolowane po³¹czenie umo¿liwia bezproblemowe przesy³anie danych z gwarancj¹ ich niezmiennoœci oraz stosown¹ informacj¹ w sytuacji wyst¹pienia b³êdu komunikacyjnego. W technologii .NET mo¿liwe jest jest standardowe podejœcie dostarczane przez ADO.NET oraz nowsze dotycz¹ce komunikacji na poziomie obiektów.
+
 \subsubsection{Mapowanie obiektowo-relacyjne}
 
 Pojêcie mapowania obiektowo-relacyjnego (ORM) odnosi siê do  programistycznego terminu dotycz¹cego wspó³pracy z baz¹ danych, wykorzystuj¹c idee programowania obiektowego. Konkretnie rzecz ujmuj¹c chodzi o zamianê danych, przechowywanych w postaci tabelarycznej w relacyjnej bazie danych na postaæ obiektow¹ dostêpn¹ z poziomu u¿ywanego jêzyka programowania lub w drug¹ stronê.
@@ -666,7 +669,6 @@ Aplikacje komputerowe, których funkcjonalnoœci zorientowane s¹ na wielu u¿ytkown
 W przypadku technologii .NET, w której prowadzony jest prezentowany projekt, standardowa komunikacja aplikacji z baz¹ danych odbywa siê za poœrednictwem protoko³u ADO.NET. Przy jego u¿yciu programista ma obowi¹zek ka¿dorazowo nawi¹zaæ po³¹czenie z baz¹, rêcznie wprowadziæ zapytanie SQL, odebraæ wynik i zapisaæ go w odpowiednim obiekcie oraz zamkn¹æ po³¹czenie. Schemat ten w znacznym stopniu utrudnia utrzymanie prawid³owego dzia³ania aplikacji w przypadku jej rozbudowy lub modyfikacji bazy danych. Napisane zapytanie SQL w ¿adnym stopniu nie jest sprawdzane ze wzglêdu na jego poprawn¹ formê, a w sytuacji zmiany przyk³adowo nazwy kolumny w wykorzystywanej bazie danych, programista w celu utrzymania prawid³owej pracy aplikacji ma obowi¹zek aktualizacji wszystkich zapytañ, które dotyczy³y zmienionej kolumny. Przedstawione zagadnienie wraz z porównaniem analogicznej operacji w technologii mapowania obiektowo-relacyjnej przedstawione zosta³o z poziomu kodu w kodzie Ÿród³owym \ref{listing:AdoEntityCompare}.
 
 W celu przeciwdzia³ania przedstawionym problemom zdecydowano siê zastosowaæ dedykowany framework, który upraszcza developerowi przeprowadzanie wszelkich bazodanowych operacji.
-
 
 \begin{lstlisting}[caption={Porównanie operacji dodania u¿ytkownika w ADO.NET oraz Entity Framework}, label={listing:AdoEntityCompare}]
 
