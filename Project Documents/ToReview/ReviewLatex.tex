@@ -237,6 +237,7 @@ WPF (ang. Windows Presentation Foundation) \cite{WPF} jest technologiπ, ktÛrπ wp
 DziÍki bardzo dobremu wsparciu dla wzorca architektonicznego MVVM. Istnieje moøliwoúÊ pod≥πczania (binding) w≥aúciwoúci z zewnÍtrznych klas. Ten typ podejúcia umoøliwia szybkie tworzenie elementÛw programu, rozwijanie w sposÛb niezaleøny interfejsu uøytkownik od silnika aplikacji.
 
 \subsubsection{XAML}
+\label{dzial:XAML}
 
 XAML jest to oparty na XML\cite{Xml} deklaratywny jÍzyk znacznikÛw, ktÛrego zadaniem jest opis interfejsu uøytkownika obecnego w zastosowanej przez zespÛ≥ technologii WPF. W technologii tej jÍzyk XAML umoøliwia zaprojektowanie oraz u≥oøenie wszystkich elementÛw wizualnych takich jak kontrolki, ramki oraz okna, a takøe pozwala na rozdzielenie pracy pomiÍdzy programistami (back-end) oraz grafikami (front-end), ktÛrzy tworzπ graficzny interfejs uøytkownika. Graficy, przez wzglπd na zakres obowiπzkÛw, nie czÍsto znajπ jÍzyk programowania C\#. Problem ten rozwiπzuje w≥aúnie XAML, ktÛry umoøliwia zrozumienie przez nich zasady dzia≥ania poszczegÛlnych okien, powiπzaÒ miÍdzy nimi oraz projektowanie interfejsu w prosty sposÛb z poziomu drzewiastej struktury lub dedykowanego narzÍdzia Expression Blend, ktÛre umoøliwia przeprowadzenie wszystkich powyøszych operacji z poziomu swojego úrodowiska graficznego.
 \subsubsection{T-SQl}
@@ -484,6 +485,7 @@ W celu przeprowadzenia procesu budowy aplikacji w sposÛb umoøliwiajπcy jego efek
 Odnoszπc siÍ do planowania architektury systemu bardzo pomocne okazujπ siÍ dostÍpne wzorce architektoniczne. Wzorce te sπ to sprawdzone oraz zaakceptowane sposoby rozwiπzania danego problemu z dziedziny architektury oprogramowania, okreúlajπce ogÛlnπ strukturÍ systemu informatycznego, zasady komunikacji pomiÍdzy komponentami oraz elementy wchodzπce w jego sk≥ad wraz z opisem ich funkcji. WybÛr odpowiedniego wzorca w duøej mierze zaleøny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwiπzaniem jest MVVM (Model View ViewModel) \cite{MvvmOpis}, ktÛry jest zmodyfikowanπ wersjπ wzorca MVC, zawierajπcπ specjalizacjÍ modelu prezentacji.
 
 \subsubsection{Zastosowany wzorzec architektoniczny ñ MVVM}
+\label{dzial:MVVMBindowanieCommandy}
 
 MVVM jest to wzorzec, ktÛry dziÍki funkcjonalnoúci odseparowania warstwy prezentacji od warstwy logiki biznesowej, umoøliwia napisanie ≥atwo testowalnej oraz prostej w rozbudowanie aplikacji, ktÛrej fragment kodu moøe zostaÊ ponownie uøyty w innych projektach. Opisywany wzorzec cieszy siÍ duøπ popularnoúciπ w gronie developerÛw WPF z powodu moøliwoúci wykorzystania najwiÍkszych atutÛw tej technologii, takich jak komendy (command), wiπzania (binding) oraz zachowania (behavior). Kod aplikacji o architekturze Model-View-ViewModel podzielony jest, zgodnie z jego nazwπ na trzy oddzielne warstwy Model, View oraz ViewModel, z ktÛrych kaøda przechowuje dedykowane dla siebie dane i spe≥nia okreúlone funkcje. Z graficznym podzia≥em wraz z kierunkiem przep≥ywu danych moøna zapoznaÊ siÍ pod rysunkiem \ref{rys:MvvmDiagram}.
 
@@ -504,22 +506,80 @@ Wastwa widoku (View) odpowiedzialna jest za wyúwietlanie danych i pe≥ni rolÍ wy≥
 \subsubsection{Model aplikacji}
 \label{dzial:ModelApki}
 
-Stosowanie wzorca MVVM doprowadzi≥o w prezentowanym projekcie do powstania rozbudowanego schematu solucji, w ktÛrej sk≥ad wchodzi ponad szeúÊdziesiπt plikÛw. DziÍki uporzπdkowanej strukturze podzia≥u na katalogi, uda≥o siÍ jednak zachowaÊ porzπdek umoøliwiajπcy p≥ynne oraz intuicyjne odnalezienie szukanych elementÛw. Wszystkie pliki podzielone zosta≥y pomiÍdzy szeúÊ folderÛw, ktÛrych nazwy jednoznacznie determinujπ ich zastosowanie. Sama zawartoúÊ przedstawionych katalogÛw zbudowana jest rÛwnieø w sposÛb umoøliwiajπcy szybkie odnalezienie pliku, ktÛry zawiera szukane elementy. 
+Stosowanie wzorca MVVM doprowadzi≥o w prezentowanym projekcie do powstania rozbudowanego schematu solucji, w ktÛrej sk≥ad wchodzi ponad szeúÊdziesiπt plikÛw. DziÍki uporzπdkowanej strukturze podzia≥u na katalogi przedstawionej na rysunku \ref{rys:ModelFoldery}, uda≥o siÍ jednak zachowaÊ porzπdek umoøliwiajπcy p≥ynne oraz intuicyjne odnalezienie szukanych elementÛw. Wszystkie pliki podzielone zosta≥y pomiÍdzy szeúÊ folderÛw, ktÛrych nazwy jednoznacznie determinujπ ich zastosowanie. Sama zawartoúÊ przedstawionych katalogÛw zbudowana jest rÛwnieø w sposÛb umoøliwiajπcy szybkie odnalezienie pliku, ktÛry zawiera szukane elementy. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{ModelFoldery.jpg}
+    \caption{Struktura folderÛw w projekcie, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:ModelFoldery}
+\end{figure}
+\newpage
 
 \begin{itemize}
-\item \textsl{DataGridFillingObjects}
+\item \textsl{FillingObjects}
 
-Folder \textsl{DataGridFillingObjects} zawiera, jak sama nazwa wskazuje, pliki obiektÛw, ktÛre uøywane sπ do wype≥niania tabel uøytkownika w prezentowanej aplikacji. 
+Folder \textsl{FillingObjects} ukazany na rysunku \ref{rys:ModelFillingObjectsFolder} zawiera, jak sama nazwa wskazuje, pliki obiektÛw, ktÛre uøywane sπ do wype≥niania elementÛw wymagajπcych pobranie danych z poziomu bazy danych. DziÍki samodzielnie zdefiniowanej strukturze obiektÛw, moøliwe jest proste wype≥nienie wszystkich domyúlnych elementÛw szablonu nowej propozycji cenowej (\textsl{AddNewProposition.cs} oraz danych uøytkownika jπ tworzπcego (\textsl{AdminProposition.cs} oraz \textsl{UserProposition.cs}).
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.35\textwidth]{ModelFillingObjectsFolder.jpg}
+    \caption{Folder FillingObjects, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:ModelFillingObjectsFolder}
+\end{figure}
+
+\item \textsl{Model}
+
+\textsl{Model} jest to katalog przedstawiony na obrazku \ref{rys:ModelModelFolder}, ktÛry w przypadku prezentowanego projektu zawiera utworzonπ przez Entity Framework strukturÍ obiektowπ relacyjnej bazy danych. Liczba plikÛw, ktÛre zawiera uzaleøniona jest bezpoúrednio od liczby tabel uøytej w bazie. W czasie dzia≥aÒ implementacyjnych nie jest konieczna wiedza o szczegÛ≥owej strukturze przedstawianego folderu, a tylko ktÛra bazodanowa tabela zawiera jakie dane.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{ModelModelFolder.jpg}
+    \caption{Folder Modelu, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:ModelModelFolder}
+\end{figure}
+
+\item \textsl{Resources}
+
+Jest to folder zawierajπcy, ktÛrym przeznaczeniem jest przechowywanie wszelkich ürÛde≥ graficznych wykorzystywanych projekcie. W prezentowanym przyk≥adzie zawiera on tylko jeden plik bÍdπcy nag≥Ûwkiem graficznym stosowanym w generowanym pliku PDF propozycji cenowej.
+
+\item \textsl{Tools}
+
+Katalog narzÍdzi, ktÛrego graficzna reprezentacja dostÍpna jest do zobaczenia na rysunku \ref{rys:ModelToolFolder} jest najbardziej rozbudowanym katalogiem w drzewie solucji. Przez wzglπd na jego szerokie zastosowanie zawiera on trzy podfoldery, ktÛre uúciúlajπ definicjÍ elementÛw w nich siÍ znajdujπcych. Podkatalog \textsl{Converters} posiada dwa konwertery, ktÛre umoøliwiajπ konwersjÍ obiektu napisu na jego skrÛt (\textsl{Shaconverter.cs}) oraz numeru miesiπca na jego angielskπ oraz polskπ nazwÍ (\textsl{DateTimeConverter.cs}. Folder \textsl{MvvmClasses} jest bardzo waønym elementem przez wzglπd na zawartoúÊ klas niezbÍdnych do prawid≥owego schematu dzia≥ania wzorca MVVM. Pliki ktÛre zawiera umoøliwiajπ p≥ynne odúwieøanie widoki z poziomu ViewModeli (\textsl{ObservableObject.cs}) oraz wykonywanie akcji po naciúniÍciu przyciskÛw (\textsl{RelayCommand.cs} oraz \textsl{RelayCommandGeneric.cs}). Przeznaczeniem kolejnego folderu jest tworzenie pliku PDF wybranej propozycji cenowe, natomiast ostatniego katalogu - sprawdzenie z≥oøonoúci has≥a, ktÛre uniemoøliwia uøytkownikowi ustawienie has≥a zbyt s≥abego.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{ModelToolFolder.jpg}
+    \caption{Folder Tools, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:ModelToolFolder}
+\end{figure}
+
+\item \textsl{ViewModels}
+
+Kolejnym prezentowanym folderem jest \textsl{ViewModels} przedstawiony na rysunku \ref{rys:ModelViewModelFolder}, ktÛry zawiera kolejne pliki dostosowane do pracy ze wzorcem MVVM. Struktura folderu podzielona zosta≥a ze wzglÍdu na funkcjonalnoúci dostÍpne z poziomu konta zwyk≥ego uøytkownika oraz jego uprzywilejowanego odpowiednika. Pliki obecne w folderze \textsl{ViewModels} odpowiadajπ na interakcjÍ uøytkownika i realizujπ akcjÍ okna w ktÛrym obecnie pracuje.
+Logika okna g≥Ûwnego oraz wszelkie akcje w nim dostÍpne obs≥ugiwane sπ zaleønie od typu konta zalogowanego uøytkownika w plikach \textsl{AdminViewModel.cs} oraz \textsl{UserViewModel.cs}. Funkcje dotyczπce dodawania, edycji danych uøytkownikÛw oraz jego usuwania wykonywane sπ kolejno w \textsl{AddUserViewModel.cs}, \textsl{EditUserViewModel.cs} oraz \textsl{RemoveUserViewModel.cs}. Obs≥uga edycji s≥ownikÛw natomiast jak sama nazwa wskazuje umiejscowiona jest w folderze \textsl{DictionaryViewModel.cs}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{ModelViewModelFolder.jpg}
+    \caption{Folder ViewModels, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:ModelViewModelFolder}
+\end{figure}
+
+\item \textsl{Views}
+
+Ostatni katalog jak katalogiem najwaøniejszym ze strony uøytkownika, gdyø zawiera definicje budowy i rozmieszczenia okien wystÍpujπcych w programie wraz z umiejscowieniem wszelkich elementÛw ktÛre posiadajπ. W tym w≥aúnie miejscu wykorzystywany jest opisywany w rozdziale \ref{dzial:XAML} jÍzyk XAML umoøliwiajπc przeprowadzenie operacji bindowania i komend, ktÛre wspomniane by≥y w dziale \ref{dzial:MVVMBindowanieCommandy}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{ModelViewFolder.jpg}
+    \caption{Folder Views, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:ModelViewFolder}
+\end{figure}
 
 \end{itemize}
-Pytanie do promotora:  OpisywaÊ podzia≥ klas, strukturÍ folderÛw aplikacji ? Jest to bardzo techniczna kwestia, nie wiem, czy potrzebna
 
-TODO: after refactor.
-- opis warstw (model == baza danych)
-- podzial view/viewmodeli
-- ilustracja podzialu foldery+klasy
-
+\newpage
 
 \subsection{Architektura bazy danych}
 
