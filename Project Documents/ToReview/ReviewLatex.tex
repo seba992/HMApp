@@ -584,7 +584,8 @@ Ostatni katalog jak katalogiem najwa¿niejszym ze strony u¿ytkownika, gdy¿ zawier
 \subsection{Architektura bazy danych}
 
 \subsubsection{Definicja bazy danych}
-Bazy danych mo¿na porównaæ do archiwum firmy gdzie s¹ przechowywane wszelakie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ tak jak dane jednej osoby, a kolumny to s¹ poszczególne dane typu imiê nazwisko pesel itp.. Tak jak pesel jest unikatowy dla osoby w firmie tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez na przyk³ad pesel danej osoby to w drugim segregatorze nazywa siê kluczem obcym, a samo po³¹czenie relacj¹. Rozró¿niamy kilka relacji:
+Bazy danych porównaæ mo¿na do archiwum firmy w którym przechowywane s¹ wszelkie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ taki jak dla przyk³adu dane jednej osoby. Kolumny natomiast s¹ to poszczególne dane typu imiê, nazwisko oraz pesel. Tak jak pesel jest unikatowy dla osoby tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez dla przyk³adu numer pesel danej osoby to tak zwana relacja, w której w drugim segregatorze pesel stanowi klucz obcy.
+W terminologii bazodanowej rozró¿niæ mo¿na kilka relacji, które przekszta³cone zosta³y z [] na potrzeby przedstawianego przyk³adu:
 \begin{enumerate}
   \item Jeden do, wielu kiedy jedna koszulka w segregatorze ³¹czy siê z wieloma koszulkami w drugim.
   \item Jeden do jednego wystêpuje wtedy, kiedy jedna teczka ³¹czy siê tylko z teczk¹ inn¹ w pojedynczy sposób.
@@ -1406,12 +1407,14 @@ http://stat.gov.pl/obszary-tematyczne/podmioty-gospodarcze-wyniki-finansowe/prze
 
 % 
 \bibitem {SystemERP}
-Jerzy Kisielnicki, Ma³gorzata Pañkowska, Henryk Sroka.:\textsl{Zintegrowane systemy informatyczne. Dobre praktyki wdro¿eñ systemów klasy ERP}, Wydawnictwo Naukowe PWN, Warszawa, 2012
+Kisielnicki J., Pañkowska M., Sroka H.: \textsl{Zintegrowane systemy informatyczne. Dobre praktyki wdro¿eñ systemów klasy ERP}, Wydawnictwo Naukowe PWN, Warszaw, 2012
 
 \bibitem {ProfitCRM}
 http://www.profitcrm.pl/crm
+
 \bibitem {AsystentCRM}
 http://meteoryt.pl/
+
 \bibitem {Gestor}
 https://www.insert.com.pl
 
@@ -1443,7 +1446,7 @@ http://antyweb.pl/hello-world-czyli-krotka-historia-jezykow-programowania/
 http://urriellu.net/en/articles-software/csharp-advantages.html
 
 \bibitem {WPF}
- Adam Nathan \textsl{WPF 4.5. Ksiêga eksperta}, Wydawnictwo Helion, Gliwice , 2015
+ Adam Nathan \textsl{WPF 4.5. Ksiêga eksperta}, Wydawnictwo Helion, Gliwice 2015
  
 %Seba xml
 \bibitem{Xml}
@@ -1451,11 +1454,11 @@ http://www.w3schools.com/xml/xml\_whatis.asp
 
 %Lis T_SQL
 \bibitem {T-SQL}
- Itzik Ben-Gan  \textsl{Microsoft SQL Server 2012. Podstawy jêzyka T-SQL} Wydawnictwo Helion, Gliwice , 2012
+ Itzik B.:  \textsl{Microsoft SQL Server 2012. Podstawy jêzyka T-SQL} Wydawnictwo Helion, Gliwice 2012
 
 \bibitem {bazy}
 Jeffrey D. Ullman, Jennifer Widom
-\textsl{Podstawowy kurs systemów baz danych. Wydanie III} Wydawnictwo Helion, Gliwice , 2011 
+\textsl{Podstawowy kurs systemów baz danych. Wydanie III} Wydawnictwo Helion, Gliwice 2011 
 
 %LIS Visual Studio
 \bibitem {VS}
@@ -1539,27 +1542,32 @@ http://www.pdfsharp.net/
 
 %Seba wzorce architektoniczne oprogramowania
 \bibitem{FazyProdukcjiOprogramowania} 
-Jaszkiewicz A. \textsl{In¿ynieria oprogramowania}, Wydawnictwo Helion, 1997
+Jaszkiewicz A.: \textsl{In¿ynieria oprogramowania}, Wydawnictwo Helion, 1997
 
 \bibitem{MvvmOpis} 
-Petzold C. \textsl{Windows 8. Programowanie aplikacji z wykorzystaniem C\# i XAML}, Wydawnistwo Helion, Gliwice 2013
+Petzold C.: \textsl{Windows 8. Programowanie aplikacji z wykorzystaniem C\# i XAML}, Wydawnistwo Helion, Gliwice 2013
 
 \bibitem{LogikaBiznesowa}
 Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletny przewodnik dla programistów interaktywnych aplikacji internetowych w Visual Studio}, Wydawnictwo Helion, Gliwice 2014
 
 \bibitem{DataBinding}
-MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
+MacDonald M.: \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
 
 %Lis MS-SQL
 \bibitem{MS-SQL}
-LeBlanc Patrick  \textsl{Microsoft SQL Server 2012. Krok po kroku},Wydawnictwo Helion, Gliwice 2012
+LeBlanc P.: \textsl{Microsoft SQL Server 2012. Krok po kroku} ,Wydawnictwo Helion, Gliwice 2012
+
+%Seba za lisa
+%Nazwisko I. \textsl{tytu³}, miasto, rok
+\bibitem{RelacjeBazDanych}
+Yank K.: \textsl{PHP i MySQL. Od nowicjusza do wojownika ninja}, Wydawnictwo Helion, Gliwice 2013
 
 %Seba entity
 \bibitem{AdnotacjeCodeFirst}
 https://msdn.microsoft.com/en-us/data/jj591583
 
 \bibitem{LINQ}
-Magennis T., \textsl{LINQ to Objects w C\# 4.0}, Wydawnictwo Helion, Gliwice 2012
+Magennis T.: \textsl{LINQ to Objects w C\# 4.0}, Wydawnictwo Helion, Gliwice 2012
 
 \bibitem{ci}
 http://www.martinfowler.com/articles/continuousIntegration.html
