@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DiamondApp.DataGridFillingObjects
+namespace DiamondApp.FillingObjects
 {
     public class AdminProposition
     {

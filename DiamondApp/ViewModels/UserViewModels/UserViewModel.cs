@@ -5,7 +5,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using DiamondApp.DataGridFillingObjects;
+using DiamondApp.FillingObjects;
 using DiamondApp.Model;
 using DiamondApp.Tools.Converters;
 using DiamondApp.Tools.MvvmClasses;

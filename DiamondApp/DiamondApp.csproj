@@ -95,9 +95,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataGridFillingObjects\AddNewProposition.cs" />
-    <Compile Include="DataGridFillingObjects\AdminProposition.cs" />
-    <Compile Include="DataGridFillingObjects\User.cs" />
+    <Compile Include="FillingObjects\AddNewProposition.cs" />
+    <Compile Include="FillingObjects\AdminProposition.cs" />
+    <Compile Include="FillingObjects\UserProposition.cs" />
     <Compile Include="Model\AccountPrivileges.cs">
       <DependentUpon>DiamondModel.tt</DependentUpon>
     </Compile>

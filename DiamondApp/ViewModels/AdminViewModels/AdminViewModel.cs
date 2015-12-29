@@ -5,7 +5,7 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using DiamondApp.DataGridFillingObjects;
+using DiamondApp.FillingObjects;
 using DiamondApp.Model;
 using DiamondApp.Tools.Converters;
 using DiamondApp.Tools.MvvmClasses;
@@ -6001,7 +6001,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
 
         private ICommand _addUserCommand;
-        private List<User> _userListGrid;
+        private List<UserProposition> _userListGrid;
 
 
         public ICommand AddUserCommand
@@ -6045,7 +6045,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         public void SelectAllUsers()
         {
             var myQuerry = (from user in _ctx.Users
-                            select new User
+                            select new UserProposition
                             {
                                 UserId = user.Id,
                                 UserName = user.Name,

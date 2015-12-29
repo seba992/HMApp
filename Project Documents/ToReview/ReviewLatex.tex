@@ -308,7 +308,7 @@ Wykorzystuj¹c wbudowane mechanizmy mo¿liwe jest ³atwe wpisywanie pocz¹tkowych da
 	\item \textsl{Edytor zapytañ}
 		
 	\tab
-	Jest to edytor wspomagaj¹c jêzyki Transact-SQL, MDX, DMX, lub XML/A. dziêki kolorowaniu s³ów kluczowych w trakcie pisania skryptów zwiêksza to czytelnoœæ kodu. Wykorzystuje siê tez jako interfejs do zapytañ Transact-SQL. Równie¿ jak opisany wczeœniej Visual Studio wykorzystuje mechanizm IntelliSense odpowiedzialny za podpowiadanie kolumn tabel.  Ma mo¿liwoœæ wykrywania b³êdów nieprawid³owej sk³adni.Wyœwietla b³êdy, ostrze¿enia i komunikaty informacyjne, które s¹ zwracane przez serwer.
+	Jest to edytor wspomagaj¹cy jêzyki Transact-SQL, MDX, DMX lub XML/A, który dziêki kolorowaniu s³ów kluczowych w trakcie pisania skryptów zwiêksza czytelnoœæ kodu. Wykorzystuje siê te¿ jako interfejs do zapytañ Transact-SQL. Równie¿ jak opisany wczeœniej Visual Studio wykorzystuje mechanizm IntelliSense odpowiedzialny za podpowiadanie kolumn tabel. Ma mo¿liwoœæ wykrywania b³êdów nieprawid³owej sk³adni. Wyœwietla b³êdy, ostrze¿enia i komunikaty informacyjne, które s¹ zwracane przez serwer.
 \item \textsl{Object Explorer}
 		
 	\tab
@@ -504,14 +504,22 @@ Wastwa widoku (View) odpowiedzialna jest za wyœwietlanie danych i pe³ni rolê wy³
 \subsubsection{Model aplikacji}
 \label{dzial:ModelApki}
 
+Stosowanie wzorca MVVM doprowadzi³o w prezentowanym projekcie do powstania rozbudowanego schematu solucji, w której sk³ad wchodzi ponad szeœædziesi¹t plików. Dziêki uporz¹dkowanej strukturze podzia³u na katalogi, uda³o siê jednak zachowaæ porz¹dek umo¿liwiaj¹cy p³ynne oraz intuicyjne odnalezienie szukanych elementów. Wszystkie pliki podzielone zosta³y pomiêdzy szeœæ folderów, których nazwy jednoznacznie determinuj¹ ich zastosowanie. Sama zawartoœæ przedstawionych katalogów zbudowana jest równie¿ w sposób umo¿liwiaj¹cy szybkie odnalezienie pliku, który zawiera szukane elementy. 
+
+\begin{itemize}
+\item \textsl{DataGridFillingObjects}
+
+Folder \textsl{DataGridFillingObjects} zawiera, jak sama nazwa wskazuje, pliki obiektów, które u¿ywane s¹ do wype³niania tabel u¿ytkownika w prezentowanej aplikacji. 
 
 
+\end{itemize}
 Pytanie do promotora:  Opisywaæ podzia³ klas, strukturê folderów aplikacji ? Jest to bardzo techniczna kwestia, nie wiem, czy potrzebna
 
 TODO: after refactor.
 - opis warstw (model == baza danych)
 - podzial view/viewmodeli
 - ilustracja podzialu foldery+klasy
+
 
 \subsection{Architektura bazy danych}
 
@@ -684,7 +692,7 @@ Przyk³adowy raport analizy kodu niniejszego projektu zosta³ przedstawiony na rys
 SonarQube na podstawie raportu analizy dokonuje oceny jakoœci kodu w skali SQALE (ang. Software Quality Assessment based on Lifecycle Expectations). Ocena jest wyliczana ze wzoru \cite{SQALE}:
 
 \begin{center}
-$\displaystyle\frac{\mbox{Liczba dni potrzebnych do naprawienia b³êdów}}{\mbox{Liczba dni potrzebnych do naprawy b³êdu z jednej linii kodu * Liczba linii kodu Ÿród³owego}}$
+$\displaystyle\frac{\mbox{Liczba dni potrzebnych do naprawienia b³êdów}}{\mbox{Liczba dni potrzebnych do naprawy b³êdu z jednej linii kodu * Liczba linii kodu}}$
 \end{center}
 
 Wynik dzia³ania jest przedstawiany w procentach. Im mniejsza wartoœæ, tym jakoœæ kodu jest wy¿sza. Oceny odpowiadaj¹ce wartoœciom wyliczonym ze wzoru s¹ nastêpuj¹ce:
@@ -1173,7 +1181,7 @@ U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana 
 //przypisanie do listy propozycji 
 //w prawid³owej formie do wyœwietlenia
 \end{lstlisting}
-Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje kod Ÿród³owy \ref{listing:user} Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
+Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje kod Ÿród³owy \ref{listing:user}. Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
 \begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:user}]
  var userlist = (from s in _ctx.Users
                      where s.Proposition.Any()
@@ -1263,8 +1271,9 @@ Kod Ÿród³owy \ref{listing:SavePdf} przedstawia implementacjê funkcji zapisuj¹cej
 
 \begin{lstlisting}[caption= {Implementacja i opis funkcji zapisuj¹cej propozycjê cenow¹ do pliku PDF}, label={listing:SavePdf}]
 // deklaracja obiektu klasy PdfDocumentRenderer
-PdfDocumentRenderer renderDocument = 
-new PdfDocumentRenderer(true,PdfSharp.Pdf.PdfFontEmbedding.Always);
+PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(
+   true,PdfSharp.Pdf.PdfFontEmbedding.Always
+);
 //renderowanie dokumentu
 renderDocument.Document = document;
 renderDocument.RenderDocument();
@@ -1499,13 +1508,13 @@ http://www.martinfowler.com/articles/continuousIntegration.html
 http://www.infoq.com/articles/cd-benefits-challenges
 
 \bibitem{cdr}
-https://puppetlabs.com/blog/continuous-delivery-vs-continuous-deployment-whats-diff
+https://puppetlabs.com/blog/continuous-delivery-vs-continuous- \newline deployment-whats-diff
 
 \bibitem{SonarLang}
 http://docs.sonarqube.org/display/PLUG/Plugin+Library
 
 \bibitem{MsScaner}
-http://docs.sonarqube.org/display/SONARNEXT/Installing+and+Configuring+SonarQube+Scanner+for+Jenkins
+http://docs.sonarqube.org/display/SONARNEXT/Installing+and+ \newline Configuring+SonarQube+Scanner+for+Jenkins
 
 \bibitem{SQALE}
 http://www.sonarsource.com/products/plugins/governance/sqale/installation-and-usage/$\#$understandingSqaleRatings

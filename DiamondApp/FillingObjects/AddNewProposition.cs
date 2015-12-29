@@ -1,7 +1,7 @@
 ﻿using System;
 using DiamondApp.Tools.MvvmClasses;
 
-namespace DiamondApp.DataGridFillingObjects
+namespace DiamondApp.FillingObjects
 {
     public class AddNewProposition : ObservableObject
     {

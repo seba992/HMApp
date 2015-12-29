@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using DiamondApp.DataGridFillingObjects;
+using DiamondApp.FillingObjects;
 using DiamondApp.Model;
 using DiamondApp.Tools.MvvmClasses;
 
@@ -9,7 +9,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
     public class EditUserViewModel : ObservableObject
     {
         private DiamondDBEntities _ctx;
-        private List<User> _userListGrid;
+        private List<UserProposition> _userListGrid;
 
         public EditUserViewModel()
         {
@@ -17,7 +17,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             SelectAllUsers();
         }
 
-        public List<User> UsersListGrid
+        public List<UserProposition> UsersListGrid
         {
             get { return _userListGrid; }
             set
@@ -32,7 +32,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         {
             var myQuerry = (from user in _ctx.Users
                             orderby user.Surname
-                            select new User
+                            select new UserProposition
                             {
                                 UserId = user.Id,
                                 UserName = user.Name,

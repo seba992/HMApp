@@ -1,6 +1,6 @@
-﻿namespace DiamondApp.DataGridFillingObjects
+﻿namespace DiamondApp.FillingObjects
 {
-    public class User
+    public class UserProposition
     {
         public int UserId
         { get; set; }

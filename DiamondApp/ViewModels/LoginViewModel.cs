@@ -27,8 +27,8 @@ namespace DiamondApp.ViewModels
         {
             _ctx = new DiamondDBEntities();
 //             komentarz w celu wydajniejszych testów - LAG ON FIRST QUERRY
-//            var users = (from s in _ctx.Users
-//                select s).ToList();
+            var users = (from s in _ctx.Users
+                select s).ToList();
         }
 
         public string UserLogin
