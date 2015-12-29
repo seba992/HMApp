@@ -110,7 +110,7 @@ Dokonuj¹c podsumowania przedstawionych problemów oraz jej analizy przez zespó³ u
 
 \item \textsl{Wprowadzenie dwóch typów kont u¿ytkowników przez fakt na ró¿ny zakres obowi¹zków s³u¿bowych,}
 
-\item \textsl{Aktualizacja wszelkich danych bez koniecznoœci ingerencji osobistej sprzedawcy (aktualizacja ze strony menad¿era automatycznie powinna byæ dostêpna na kontach sprzedawców,}
+\item \textsl{Aktualizacja wszelkich danych bez koniecznoœci ingerencji osobistej sprzedawcy (aktualizacja ze strony menad¿era automatycznie powinna byæ dostêpna na kontach sprzedawców),}
 
 \item \textsl{Zaprzestanie aktualizacji danych za pomoc¹ skrzynek elektronicznych (aktualizacja cenników z poziomu konta administratora),}
 
@@ -165,15 +165,15 @@ W kontekœcie wdro¿enia, aplikacja powinna zostaæ zainstalowana na stacjach roboc
 \section{Istniej¹ce rozwi¹zania konkurencyjne}
 Wraz ze wzrostem liczby firm \cite{iloscFirm} dzia³aj¹cych w Polsce istnieje koniecznoœæ lepszego, szybszego zarz¹dzania. Wi¹¿e siê to z rozwojem informatyzacji. Mo¿na w ten sposób zautomatyzowaæ wiele procesów w firmie miedzy innymi: zarz¹dzanie magazynem, kontrolê sprzeda¿y, zapotrzebowanie przedsiêbiorstwa na ró¿ne produkty. Do tego celu wdra¿ane s¹ zintegrowane systemy informatyczne, których zadaniem jest po³¹czenie wszystkich elementów przedsiêbiorstwa, w jeden scentralizowany system. Wykorzystuje siê do tego oprogramowania klasy ERP (ang. enterprise resource planning – ERP)\cite{SystemERP}. W sk³ad takiego oprogramowania mo¿e wchodziæ wiele modu³ów: finansowoœæ, stany magazynowe, kontakt z klientem, w zale¿noœci, co w danym przedsiêbiorstwie jest wymagane. Wymogiem takiego systemu jest by wszystkie modu³y by³y niezale¿ne, poniewa¿ ka¿da firma nie potrzebuje ich wszystkich, ale musz¹ siê umieæ z sob¹ komunikowaæ by móc w lepszy sposób zarz¹dzaæ. W wypadku kontaktu z klientem wprowadza siê systemy, które sprawnie obs³uguj¹ sprawy zwi¹zane z reklamacjami, wsparciem technicznym i innymi rzeczami zwi¹zanymi z jego obs³ug¹. Z tym zwi¹zane jest wystawianie propozycji cenowej. Jest to proces czasoch³onny ze wzglêdu na koniecznoœæ aktualizowania cenników, mo¿liwego wyposa¿enia sal i innych spraw zwi¹zanych z organizowanym wydarzeniem. Modu³ CRM(ang. customer relationship management – CRM), który wspomaga proces kontaktu z klientem zawiera komponent wspomaganie procesu wystawiania propozycji. Komponent ten nie tylko automatyzuje proces wystawiania propozycji cenowej, ale jest równie¿ odpowiedzialny, za sprzeda¿ oferowanych towarów i us³ug. W nastêpnej czêœci tego rozdzia³u przedstawiono ró¿ne systemy CRM, których istnieje wersja darmowa.
 
-Do sprawdzenia dostêpnych rozwi¹zañ zosta³y wytypowane trzy programy, które spe³niaj¹ wymagania sieci hotelowej s¹ to: ProfitCRM\cite{ProfitCRM} i Asystent CRM\cite{AsystentCRM} Gestor GT \cite{Gestor}.
+Do sprawdzenia dostêpnych rozwi¹zañ zosta³y wytypowane trzy programy, które spe³niaj¹ wymagania sieci hotelowej s¹ to: ProfitCRM\cite{ProfitCRM} i Asystent CRM\cite{AsystentCRM} Gestor GT \cite{Gestor}. Zosta³y one wytypowane z powodu mo¿liwoœci pod³¹czenia do istniej¹cej ju¿ infrastruktury w firmie opartej na badzie MS-SQL. Eliminuje to koniecznoœæ ingerencji sprzedawcy w proces aktualizowania danych. Wa¿nym czynnikiem wyboru tych programów jest mo¿liwoœæ generowania PDF zapisanych propozycji. Czynnikiem wp³ywaj¹cym jest równie¿ przejrzystoœæ interfejsu u¿ytkownika. Ma to istotne znaczenie, poniewa¿ nie ka¿dy u¿ytkownik mia³ kontakt z tego typu systemem wspomagaj¹cym sprzeda¿. Wykorzystanie aplikacji  desktopowej gwarantuje nam równie¿ wiêksz¹ kontrolê nad dostêpem do danych. Element ten jest istotny z punktu bezpieczeñstwa. Przydatn¹ funkcj¹ jest integracja  z skrzynk¹ pocztow¹, której wy³¹cznym zadaniem jest kontakt z klientem. 
+
 
 \begin{itemize}
+
 \item \textsl{Interfejs u¿ytkownika} 
 
 \tab Wygl¹d aplikacji w niektórych przypadkach pozostawia³ wiele do ¿yczenia a niektóre zaskoczy³y nietypowym interfejsem. W przypadku programu ProfitCRM interfejs u¿ytkownika jest trochê za bardzo poœciskany, co utrudnia³o znalezienie odpowiednich elementów potrzebnych w danym momencie. Najistotniejsz¹ wad¹ programu jest bardzo wolno reaguj¹cy interfejs u¿ytkownika, co utrudnia pracê. Czêsto zdarza siê, ¿e jakieœ okienko np. edycja szablonów zniknie i nie ma mo¿liwoœci robienia czegokolwiek w programie. Bardzo ma³o intuicyjnie zorganizowany jest zapis oferty do formatu PDF, poniewa¿ nie robi siê tego poprzez przycisk drukuj tylko poprzez podgl¹d dokumentu i eksportuj do PDF. Kiedy dodawany jest nowy towar lub te¿ us³uga otwiera siê nowe okno z polami, które trzeba wype³niæ. S¹ to nazwa, kod towaru. Niestety us³ugi te musz¹ mieæ jednostkê miary. W tym te¿ oknie istnieje mo¿liwoœæ dodawania zdjêæ, komentarzy i dodawania ich do grup.  Drugim ze sposobów dodawania towaru jest klikniêcie w o³ówek, który mo¿na zaobserwowaæ na rysunku
-\ref{rys:rysunek olowka}
-
- w procesie tworzenia oferty.
+\ref{rys:rysunek olowka} w procesie tworzenia oferty.
   \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{olowek.jpg}
@@ -181,9 +181,7 @@ Do sprawdzenia dostêpnych rozwi¹zañ zosta³y wytypowane trzy programy, które spe³
     \label{rys:rysunek olowka}
 \end{figure}
 
-Wymagane wtedy s¹ tyko podstawowe elementy jak nazwa, kod i jednostka miary towaru. Podobny interfejs u¿ytkownika prezentuje Asystent CRM z t¹ tyko ró¿nic¹, ¿e jego przyciski s¹ zdecydowanie wiêksze i jest ich te¿ mniej w jednym oknie. Dziêki przejrzystemu interfejsowi u¿ytkownika przedstawia rysunek \ref {rys:interfejsAsystenta}
-
- jest bardzo prosta nawigacja w programie.
+Wymagane wtedy s¹ tyko podstawowe elementy jak nazwa, kod i jednostka miary towaru. Podobny interfejs u¿ytkownika prezentuje Asystent CRM z t¹ tyko ró¿nic¹, ¿e jego przyciski s¹ zdecydowanie wiêksze i jest ich te¿ mniej w jednym oknie. Dziêki przejrzystemu interfejsowi u¿ytkownika przedstawia rysunek \ref {rys:interfejsAsystenta} jest bardzo prosta nawigacja w programie.
  
  \begin{figure}[ht]
     \centering
@@ -204,19 +202,26 @@ Wymagane wtedy s¹ tyko podstawowe elementy jak nazwa, kod i jednostka miary towa
 
 \tab Testowane programy ProfitCRM i Asystent CRM dzia³aj¹ w wersji darmowej przez 30 dni, jedynie Gestor GT w wersji darmowej mo¿na u¿ywaæ przez 45 dni. W ProfitCRM  i Gestor GT dodawany jest Microsoft SQL Server 2008. Asystent CRM jest pozbawiony dodatkowych mo¿liwoœci.
 
-\item \textsl{Tworzenie szablonów typu dokumentów} 
+\item \textsl{Tworzenie szablonów dokumentów PDF} 
 
-\tab W programie ProfitCRM  istnieje równie¿ mo¿liwoœæ zdefiniowania w³asnego szablonu. Proces tworzenia nowego szablonu jest procesem skomplikowanym. Najlepszym rozwi¹zanie jest skopiowanie istniej¹cych w systemie szablonów, poniewa¿ ich edycja jest zablokowana.  Nastêpnie edytowanie skopiowanego. Nie powiod³o siê równie¿ wygenerowanie PDF o wygl¹dzie zbli¿onym do wygl¹du przedstawionego przez sieæ hotelow¹. Niestety w programie Asystent CRM edycja wzorów dokumentów do druku jest bardzo trudna w realizacji dla zwyk³ego sprzedawcy. Jest to spowodowane sposobem edycji. Bez znajomoœci
+\tab W programie ProfitCRM  istnieje równie¿ mo¿liwoœæ zdefiniowania w³asnego szablonu. Proces tworzenia nowego szablonu jest procesem skomplikowanym, ale naj³atwiejszym z poœród reszty. Najlepszym rozwi¹zanie jest skopiowanie istniej¹cych w systemie szablonów, poniewa¿ ich edycja jest zablokowana.  Nastêpnie edytowanie skopiowanego. Nie powiod³o siê równie¿ wygenerowanie PDF o wygl¹dzie zbli¿onym do wygl¹du przedstawionego przez sieæ hotelow¹. Niestety w programie Asystent CRM edycja wzorów dokumentów do druku jest bardzo trudna w realizacji dla zwyk³ego sprzedawcy. Jest to spowodowane sposobem edycji. Bez znajomoœci
 programowania nie ma mo¿liwoœci stworzenia nowej wersji dokumentu, co utrudnia zmianê wygl¹du pod dana firmê. W ostatnim przetestowanym programie czyli Gestor GT nie ma ¿adnej mo¿liwoœci edycji szablonów dokumentów.
 
 \item \textsl{Cena}
  
-\tab Koszt licencji programu ProfitCRM na jedno stanowisko pracy wynosi 736 z³ w przypadku programu Asystent CRM, w zale¿noœci od wersji od 79-369 z³. Gestor GT kosztuje 859.77z³ jest to najdro¿szy produkt z poœród wybranych
+\tab Koszt licencji programu ProfitCRM na jedno stanowisko pracy wynosi 736 z³ w przypadku programu Asystent CRM, w zale¿noœci od wersji od 79-369 z³. Gestor GT kosztuje 859.77z³ jest to najdro¿szy produkt z poœród wybranych.
+
+\item \textsl{Integracja z skrzynk¹ pocztow¹}
+ 
+\tab
+	Przydatn¹ funkcj¹ jest integracja z elektroniczn¹ skrzynk¹ pocztow¹. W programie ProfitCRM wykorzystuje siê w tym celu zewnêtrzne programy takie jak  MS Outlook i Mozilla Thunderbird. Umo¿liwia on równie¿ gromadzenie ca³ej korespondencji z kontrahentem w jednym miejscu nawet jeœli komputer, z którego zosta³a wys³ana wiadomoœæ jest wy³¹czony. W Asystent CRM istnieje zintegrowany klient pocztowy, który umo¿liwia pod³¹czenie wielu kont z ró¿nych serwisów pocztowych bez koniecznoœci instalowania klienta poczty elektronicznej. Gestor GT ma zbli¿one rozwi¹zanie w stosunku do Asystent CRM. Miedzy innymi tworzenie szablonów maili. 
+
 \end{itemize}
 
-Podsumowuj¹c powy¿sze programy mo¿na zauwa¿yæ, ¿e proces dodawania produktów jest bardzo zbli¿ony. Podobnie sprawa wygl¹da z procesem wystawiania ofert, faktur. Najwiêksz¹ mo¿liwoœci¹ personalizacji wystawianych dokumentów ma program ProfitCRM. Poniewa¿ ¿aden z tych programów nie oferowa³ mo¿liwoœci wystawianie propozycji cenowej, a tak ¿¹danie mia³a sieæ hotelowa dlatego wynik³a koniecznoœæ stworzenia dedykowanej aplikacji. 
+Podsumowuj¹c powy¿sze programy mo¿na zauwa¿yæ, ¿e proces dodawania produktów jest bardzo zbli¿ony, odbywa siê poprzez nowo otwarte okno. Proces wystawiania faktur, ofert jest taki sam odbywa siê to przez klikniecie w guzik oferta/faktura. Ka¿dy z nich udostêpnia równie¿ bardo du¿¹ iloœæ zdefiniowanych szablonów wystawiania dokumentów. Dwa z nich ProfitCRM, Asystent CRM w wersji testowej mia³y równie¿ mo¿liwoœæ tworzenia nowych szablonów dla dokumentów. Najlepszym rozwi¹zanie w tworzeniu szablonów dokumentów ma program ProfitCRM. Przenosz¹c predefiniowanych elementów np. pola tekstowa. Umo¿liwia równie¿ tworzenie  wielu wariantów jednej oferty, u³atwia to proces dostosowania oferty do konkretnego klienta. Warianty te mog¹ siê ró¿niæ np. walut¹. Istotn¹ z punktu widzenia relacji z klientem jest sprawdzanie zadowolenia klienta z obs³ugi sieci hotelowej umo¿liwia to wy³¹cznie ProfitCRM poprzez system ankiet. Niestety brak podzia³u na grupy towarów w programie Gestor GT utrudnia zarz¹dzanie nimi i tworzenie ofert. Jedyna mo¿liwoœci¹ tworzenia propozycji cenowej jest edycja szablonów dokumentów z ofert¹ w sposób zbli¿ony do przedstawionego w analizie dokumentu.
 
 \section{Pomys³ na rozwi¹zanie problemu}
+Analizuj¹c powy¿sze rozwi¹zania i aspekty zwi¹zane z wymaganiami stawianymi przed aplikacj¹, wynik³a koniecznoœæ zrealizowania dedykowanej aplikacji, której zadaniem jest tworzenie propozycji cenowej zgodnie z wymaganiami sieci hotelowej. Najbardziej istotnym element programu jest mo¿liwoœæ generowania PDF propozycji cenowej bez zbêdnego wysi³ku z strony sprzedawcy. Niestety program tego nie realizowa³ w prosty sposób. Jest to zwi¹zane z problem prawnym s³owa ,,oferta" poniewa¿ zgodnie z treœci¹ art. 71 Kodeksu Cywilnego  propozycja cenowa nie stanowi oferty handlowej, a jedynie pe³ni funkcjê informacyjn¹. Zosta³ wykorzystany sposób podzia³u u¿ytkowników na dwie grupy: administrator i u¿ytkownik co odpowiada roli menad¿era i sprzedawcy. Z stanowiskiem  menad¿era wi¹¿e siê mo¿liwoœæ podgl¹dania propozycji wystawianych przez sprzedawców. Zosta³o to zrealizowane w oknie g³ównym programu w postaci tabeli. By nie utrudniaæ nawigacji w oknie menad¿era niektóre z elementów zosta³y przeniesione do osobnych okien.  Kolejnym wymaganiem przedstawionym przez sieæ hoteli zwi¹zanym z aktualizacj¹ wszelkich danych wykorzystanych do tworzenia propozycji, zostanie stworzone  wyspecjalizowane okno z wyznaczonymi elementami do zmiany cen produktów. Ka¿dy u¿ytkownik równie¿ administrator aplikacji ma swój dedykowany element sk³adowy okna g³ównego, w którym jest mo¿liwoœæ dodawania, edycji i zapisywania propozycji cenowej.Do edycji wykorzystany zostanie element tworz¹cy now¹ propozycje, by nie duplikowaæ elementów. Administrator poprzez osobne okna ma mo¿liwoœæ dodawania, usuwania i edycje kont sprzedawców.   
 
 \section{Zastosowane rozwi¹zania technologiczne}
 
@@ -636,18 +641,6 @@ Ostatni katalog jak katalogiem najwa¿niejszym ze strony u¿ytkownika, gdy¿ zawier
 
 \subsection{Architektura bazy danych}
 
-\subsubsection{Definicja bazy danych}
-Bazy danych porównaæ mo¿na do archiwum firmy w którym przechowywane s¹ wszelkie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ taki jak dla przyk³adu dane jednej osoby. Kolumny natomiast s¹ to poszczególne dane typu imiê, nazwisko oraz pesel. Tak jak pesel jest unikatowy dla osoby tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez dla przyk³adu numer pesel danej osoby to tak zwana relacja, w której w drugim segregatorze pesel stanowi klucz obcy.
-W terminologii bazodanowej rozró¿niæ mo¿na kilka relacji, które przekszta³cone zosta³y z \cite{RelacjeBazDanych} na potrzeby przedstawianego przyk³adu:
-
-\begin{enumerate}
-  \item Jeden do, wielu kiedy jedna koszulka w segregatorze ³¹czy siê z wieloma koszulkami w drugim.
-  \item Jeden do jednego wystêpuje wtedy, kiedy jedna teczka ³¹czy siê tylko z teczk¹ inn¹ w pojedynczy sposób.
-  \item Wiele do wielu wystêpuje wtedy, kiedy jedna koszulka z jednego segregatora odpowiada wielu w drugim i na odwrót.
-\end{enumerate}
-
-W projekcie zosta³a wykorzystana baza relacyjna, która dzia³a na powy¿szym przyk³adzie. Wa¿nym z punktu widzenia projektowania aplikacji bazodanowej jest odpowiednie zaprojektowanie struktury tabel i po³¹czeñ miedzy nim. Nie mo¿na lekcewa¿yæ tego procesu. Gdy siê Ÿle zaprojektuje bazê mog¹ wynikn¹æ w póŸniejszym czasie problemy z jej dalszym rozwojem. Istnieje jeszcze gorszy scenariusz, gdy w trakcie dalszych prac baza danych nie bêdzie spe³nia³a swojego zadania. Efektem Ÿle zaprojektowanej bazy danych mo¿e byæ d³ugoœæ wykonywanych zapytaæ jak i bardzo du¿a z³o¿onoœæ. Wi¹¿e siê to z koniecznoœci¹ przeprojektowania od pocz¹tku ca³ej bazy lub starania siê w programie ukryæ te niedomagania.
-
 \subsubsection{MS-SQL – Zastosowany system zarz¹dzania baz¹ danych}
 
 Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W sieci hotelowej wykorzystane s¹ technologie Microsoftu. Produktem tej firmy zwi¹zanym z powy¿sz¹ tematyk¹ jest  serwer z rodziny  MS-SQL\cite{MS-SQL}. Serwer ten umo¿liwia tworzenie baz danych dwóch typów relacyjny jak i nierelacyjnych. Tworzenie baz danych mo¿e siê odbywaæ w dwojaki sposób poprzez:
@@ -682,7 +675,7 @@ W tym silniku bazodanowym mo¿na wyszczególniæ kilka komponentów:
 
 \subsubsection{Budowa bazy danych u¿ytej w projekcie}
 
-Bazy danych mo¿na porównaæ do archiwum firmy gdzie s¹ przechowywane wszelakie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ tak jak dane jednej osoby, a kolumny to s¹ poszczególne dane typu imiê nazwisko pesel itp. Tak jak pesel jest unikatowy dla osoby w firmie tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez na przyk³ad pesel danej osoby to w drugim segregatorze nazywa siê kluczem obcym, a samo po³¹czenie relacj¹. Rozró¿niamy kilka relacji:
+Bazy danych mo¿na porównaæ do archiwum firmy gdzie s¹ przechowywane wszelakie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ tak jak dane jednej osoby, a kolumny to s¹ poszczególne dane typu imiê nazwisko pesel itp. Tak jak pesel jest unikatowy dla osoby w firmie tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez na przyk³ad pesel danej osoby to w drugim segregatorze nazywa siê kluczem obcym, a samo po³¹czenie relacj¹. Istnieje  kilka relacji\cite{RelacjeBazDanych}:
 \begin{enumerate}
   \item Jeden do, wielu kiedy jedna koszulka w segregatorze ³¹czy siê z wieloma koszulkami w drugim.
   \item Jeden do jednego wystêpuje wtedy, kiedy jedna teczka ³¹czy siê tylko z teczk¹ inn¹ w pojedynczy sposób.
@@ -697,12 +690,25 @@ Bazê, która zosta³a wykorzystana w projekcie mo¿na podzieliæ na dwie g³ówne czêœ
 	\item \textsl{Czêœæ s³ownikowa}
 	
 \tab 
-Tabele s³ownikowe przez wzgl¹d na funkcje, któr¹ pe³ni¹ nie s¹ powi¹zane z innymi tabelami Taki podzia³ tabel na dwa osobne zbiory zosta³ spowodowany bezpieczeñstwem. Jeœli istnia³aby relacja ³¹cz¹ca te dwie tabele to zmiana wartoœæ w tabeli s³ownikowej powodowa³aby zmianê cen produktów w starszych propozycja. Efektem unikniêcia tego typu problemów jest rozdzielenie na dwie odseparowane czêœci.  Gdyby tak nie by³o wtedy mo¿liwoœæ odtworzenia starej propozycji cenowej by³aby niemo¿liwa, co jest efektem niepo¿¹danym z punktu widzenia dzia³ania aplikacji.  
+Tabele s³ownikowe przez wzgl¹d na funkcje, któr¹ pe³ni¹ nie s¹ powi¹zane z innymi tabelami Taki podzia³ tabel na dwa osobne zbiory zosta³ spowodowany bezpieczeñstwem. Jeœli istnia³aby relacja ³¹cz¹ca te dwie tabele to zmiana wartoœæ w tabeli s³ownikowej powodowa³aby zmianê cen produktów w starszych propozycja. Efektem unikniêcia tego typu problemów jest rozdzielenie na dwie odseparowane czêœci.  Gdyby tak nie by³o wtedy mo¿liwoœæ odtworzenia starej propozycji cenowej by³aby niemo¿liwa, co jest efektem niepo¿¹danym z punktu widzenia dzia³ania aplikacji. Przedstawia to rysunek \ref{Schemat:Slownikow1}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{dicSchemat1.jpg}
+    \caption{Czêœci s³ownikowej bazy, ród³o: Opracowanie w³asne.}
+    \label{Schemat:Slownikow1}
+\end{figure} 
+
 
 \item \textsl{Czêœæ Propozycji}
 	
 \tab 
-Drugi cz³on bazy danych stanowi¹ tabele zwi¹zane z tworzon¹ propozycj¹ cenow¹. S¹ one podzielone w logiczny sposób uwzglêdniaj¹c podzia³ przyk³adowej propozycji cenowej przedstawione przez sieæ hotelow¹: produkty gastronomiczne, wyposa¿enie sali, szczegó³y rezerwacji, szczegó³y klienta. Jest to te¿ najbardziej rozbudowana czêœæ bazy danych wi¹¿¹ siê te¿ z ni¹ konta u¿ytkowników kto, któr¹ propozycje cenow¹ wystawi³. Wi¹¿e ze sob¹ koniecznoœæ nadawania uprawnieñ u¿ytkownikom w systemie. Aktualnie istniej¹ tylko dwa typy sprzedawca i administrator. Do ka¿dej stworzonej propozycji cenowej s¹ te¿ do³¹czane rabaty na poszczególne jej elementy: gastronomie, wyposa¿enie sali    
+Drugi cz³on bazy danych stanowi¹ tabele zwi¹zane z tworzon¹ propozycj¹ cenow¹. S¹ one podzielone w logiczny sposób uwzglêdniaj¹c podzia³ przyk³adowej propozycji cenowej przedstawione przez sieæ hotelow¹: produkty gastronomiczne, wyposa¿enie sali, szczegó³y rezerwacji, szczegó³y klienta. Jest to te¿ najbardziej rozbudowana czêœæ bazy danych wi¹¿¹ siê te¿ z ni¹ konta u¿ytkowników kto, któr¹ propozycje cenow¹ wystawi³. Wi¹¿e ze sob¹ koniecznoœæ nadawania uprawnieñ u¿ytkownikom w systemie. Aktualnie istniej¹ tylko dwa typy kont sprzedawca i administrator. Do ka¿dej stworzonej propozycji cenowej s¹ te¿ do³¹czane rabaty na poszczególne jej elementy: gastronomie, wyposa¿enie sali. Ca³a bazê przedstawia rysunek \ref{Schemat:Prop1}  
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{schProp.jpg}
+    \caption{Czêœci tworzonej propozycji, ród³o: Opracowanie w³asne.}
+    \label{Schemat:Prop1}
+\end{figure}   
 
 \end{itemize}
 Podzia³ taki uwzglêdnia mo¿liwoœæ dalszego rozwoju aplikacji. Mo¿liwe jest dodawanie nowych s³owników która bêd¹ zwieraæ inne elementy zwi¹zane z tworzon¹ propozycj¹ cenowa. Dodanie nowej tabeli do s³owników,  która bêdzie wi¹za³a siê z now¹  grupy produktów.
