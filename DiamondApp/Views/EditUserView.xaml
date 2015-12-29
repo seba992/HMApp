@@ -8,7 +8,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding UserId}" Header="Id" />
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Imię" >
+                <DataGridTemplateColumn IsReadOnly="False" Header="Imię" SortMemberPath="UserName" CanUserSort="true" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"/>
@@ -21,7 +21,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Nazwisko">
+                <DataGridTemplateColumn IsReadOnly="False" Header="Nazwisko" SortMemberPath="UserSurname" CanUserSort="true">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding UserSurname, UpdateSourceTrigger=PropertyChanged}"/>
@@ -34,7 +34,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Nr Telefonu">
+                <DataGridTemplateColumn IsReadOnly="False" Header="Nr Telefonu" SortMemberPath="UserPhoneNumber" CanUserSort="true">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding UserPhoneNumber, UpdateSourceTrigger=PropertyChanged}"/>
@@ -47,7 +47,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="E-mail">
+                <DataGridTemplateColumn IsReadOnly="False" Header="E-mail" SortMemberPath="UserEmail" CanUserSort="true">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged}"/>
@@ -60,7 +60,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Stanowisko">
+                <DataGridTemplateColumn IsReadOnly="False" Header="Stanowisko" SortMemberPath="UserPosition" CanUserSort="true">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding UserPosition, UpdateSourceTrigger=PropertyChanged}"/>
@@ -73,7 +73,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Typ konta">
+                <DataGridTemplateColumn IsReadOnly="False" Header="Typ konta" SortMemberPath="UserAccountType" CanUserSort="true">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding UserAccountType, UpdateSourceTrigger=PropertyChanged}"/>
@@ -89,7 +89,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Login">
+                <DataGridTemplateColumn IsReadOnly="False" Header="Login" SortMemberPath="UserLogin" CanUserSort="true">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding UserLogin, UpdateSourceTrigger=PropertyChanged}"/>
