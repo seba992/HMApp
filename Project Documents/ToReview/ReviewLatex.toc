@@ -64,5 +64,4 @@
 \contentsline {subsubsection}{\numberline {9.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{91}
 \contentsline {subsection}{\numberline {9.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{93}
 \contentsline {section}{\numberline {10}\kernsekcyjny Podsumowanie i perspektywy rozwoju \relax oprogramowania}{95}
-\contentsline {section}{Za\IeC {\l }\k aczniki}{97}
-\contentsline {section}{Bibliografia}{99}
+\contentsline {section}{Bibliografia}{97}

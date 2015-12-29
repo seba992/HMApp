@@ -92,19 +92,29 @@ Usprawnienie procesu tworzenia nowej propozycji cenowej oraz zarzπdzania zmianam
 
 Drugi zas≥yszany element usprawniajπcy pracÍ menadøera to moøliwoúÊ przeglπdania utworzonych przez pracownikÛw propozycji cenowych. W chwili obecnej opcja ta jest niemoøliwa do wykonania pomijajπc fakt dostarczenia menadøerowi propozycji drogπ elektronicznπ przez pracownika. Rozwiπzanie to implikuje jednak koniecznoúÊ dodatkowej pracy sprzedawcy, a w przypadku zmodyfikowania wys≥anej propozycji cenowej obowiπzku poinformowania o tym fakcie menadøera oraz wys≥ania zaktualizowanej wersji w celu weryfikacji.
 
+Waønym elementem wyciπgniÍtym z rozpoznania zosta≥ szablon PDF widoczny na rysunku \ref{rys:SzablonPropozycji} w postaci arkusza kalkulacyjnego, ktÛry opracowany zosta≥ na podstawie burzy mÛzgÛw oraz aktualnej wersji dokumentu, na bazie ktÛrej tworzona jest propozycja cenowa. Szablon ten w znacznym stopniu u≥atwia rozlokowanie wszelkich elementÛw oraz ukazuje iteracyjny proces tworzenia propozycji, ktÛry naleøy zaimplementowaÊ w tworzonej aplikacji. Przedstawia on poøπdane przez pracownikÛw u≥oøenie elementÛw propozycji oraz ukazuje wszelkie zaleønoúci, ktÛre wystÍpujπ w czasie jej tworzenia.
+
+\newpage
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=.89\textwidth]{SzablonPropozycji.jpg}
+    \caption{Szablon propozycji cenowej, èrÛd≥o: Opracowanie
+     w≥asne.}
+    \label{rys:SzablonPropozycji}
+\end{figure}
+
 Dokonujπc podsumowania przedstawionych problemÛw oraz jej analizy przez zespÛ≥ utworzono ogÛlnπ listÍ za≥oøeÒ, ktÛre konieczne sπ w celu uprawnienia procesu tworzenia propozycji cenowej ze strony zarÛwno sprzedawcy, jak i menadøera. Przedstawiona lista zawiera takøe elementy, ktÛre na drodze dedukcji uznane zosta≥y przez zespÛ≥ jako warte wprowadzenia.
 
 \begin{itemize}
 
-\item \textsl{Wprowadzenie dwÛch typÛw kont przez fakt na rÛøny zakres obowiπzkÛw s≥uøbowych,}
+\item \textsl{Wprowadzenie dwÛch typÛw kont uøytkownikÛw przez fakt na rÛøny zakres obowiπzkÛw s≥uøbowych,}
 
-\item \textsl{Aktualizacja wszelkich danych bez koniecznoúci ingerencji osobistej sprzedawcy,}
+\item \textsl{Aktualizacja wszelkich danych bez koniecznoúci ingerencji osobistej sprzedawcy (aktualizacja ze strony menadøera automatycznie powinna byÊ dostÍpna na kontach sprzedawcÛw,}
 
 \item \textsl{Zaprzestanie aktualizacji danych za pomocπ skrzynek elektronicznych (aktualizacja cennikÛw z poziomu konta administratora),}
 
-\item \textsl{Przeniesienie procesu tworzenia nowej propozycji cenowej na poziom aplikacji (zaprzestanie uøywania arkuszy kalkulacyjnych,}
-
-\item \textsl{Funkcja tworzenia dokumentu PDF zapisanej propozycji cenowej,}
+\item \textsl{Zaprzestanie uøywania arkuszy kalkulacyjnych (przeniesienie procesu tworzenia nowej propozycji cenowej na poziom aplikacji),}
 
 \item \textsl{MoøliwoúÊ utworzenia propozycji cenowej zarÛwno z poziomu konta uøytkownika, jak i administratora,}
 
@@ -116,13 +126,17 @@ Dokonujπc podsumowania przedstawionych problemÛw oraz jej analizy przez zespÛ≥ u
 
 \item \textsl{Wprowadzenie centralnego zarzπdzania pracownikami z poziomu dedykowanego dla kaødej osoby konta,}
 
-\item \textsl{Umoøliwienie dodawania, edycji, usuwania kont z poziomu konta administratorskiego}
+\item \textsl{Umoøliwienie dodawania, edycji, usuwania kont z poziomu konta administratorskiego,}
 
 \item \textsl{MoøliwoúÊ przeglπdania tworzonych przez sprzedawcÛw propozycji cenowych z poziomu konta administratorskiego}
 
 \item \textsl{Walidacja wprowadzanych przez uøytkownika danych oraz informowanie go o potencjalnych b≥Ídach}
 
+\item \textsl{Funkcja tworzenia dokumentu PDF zapisanej propozycji cenowej,}
+
 \end{itemize}
+
+
 
 --- END SEBA ---
 
@@ -1396,12 +1410,6 @@ W fazie implementacji za≥oøonych modu≥Ûw prezentowanej aplikacji napotkano na wi
 Pierwszym pomys≥em rozbudowy prezentowanego systemu jest wprowadzenie funkcji tworzenia propozycji offline. Zgodnie z ustalonymi wymaganiami projektowymi, osoba korzystajπca z aplikacji zobowiπzana jest do posiadania dostÍpu do sieci Internet. W przypadku jego braku, praca z programem przez wzglπd na koniecznoúÊ weryfikacji toøsamoúci na podstawie bazy danych jest niemoøliwa. Wersja offline wprowadzi≥aby moøliwoúÊ stworzenia nowej propozycji cenowej w sytuacji braku po≥πczenia internetowego oraz zapis wszystkich jego elementÛw w postaci pliku na lokalnym dysku twardym. Implikuje to jednak szereg problemÛw do rozwiπzania na tle synchronizacji z bazπ danych oraz szablonu tworzonej propozycji. W sytuacji utworzenia nowej propozycji offline oraz pÛüniejszym uzyskaniu dostÍpu do sieci, wszystkie jej elementy synchronizowane byÊ powinny z bazπ danych oraz lokalnie usuwane. Komplikacja na tle schematu tworzenia propozycji dotyczy≥aby z kolei sposobu wype≥nienia pÛl, ktÛrych zawartoúÊ zaleøna jest od bazy danych.
 
 NastÍpnπ modyfikacjπ moøliwπ do wprowadzenia w przypadku rozwoju projektu jest modyfikacja obecnie zaimplementowanego szablonu wyboru elementÛw dostÍpnych us≥ug. W chwili obecnej liczba moøliwych do wyboru elementÛw kaødej us≥ugi jest z gÛry ustalona. Modyfikacja wprowadza≥aby dynamicznie rozwijane rekordy, ktÛrych liczba zaleøna by≥aby od liczby wybranych elementÛw. Zmiana ta g≥Íboko ingerowa≥aby w obecnπ architekturÍ modu≥u tworzenia propozycji i wymaga≥aby jej gruntownej przebudowy dotyczπcej zmiany stosowanych kontrolek graficznych, implementacji ich zachowaÒ oraz walidacji wprowadzanych danych.
-         
-%% to wpisuje siÍ do spisu treúci, ale bez numeru rozdzia≥u,
-%% moøna teø uøywaÊ \dodatek{Tytu≥}, ktÛry jest numerowany, ale inaczej niø rozdzia≥y.
-
-\dodatkowo{Za≥πczniki}
-TODO OGI
 
 \begin{thebibliography}{12}
 
