@@ -15,7 +15,7 @@
         <Style x:Key="ListViewStyle" TargetType="{x:Type ListViewItem}">
             <Style.Triggers>
                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="LightBlue"></Setter>
+                    <Setter Property="Background" Value="LightGray"></Setter>
                 </Trigger>
             </Style.Triggers>
         </Style>
