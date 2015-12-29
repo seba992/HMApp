@@ -82,7 +82,51 @@ Kolejnym atutem przedstawionego rozwi¹zania by³oby umo¿liwienie kierownictwu z p
 
 \section{Specyfikacja wymagañ projektowych}
 
-W rozdziale \ref{dzial:geneza} przedstawiono problemy sieci hotelowej, wystêpuj¹ce podczas przeprowadzania transakcji z klientem. S¹ one podstawowymi czynnikami determinuj¹cymi docelow¹ formê aplikacji, dobór narzêdzi i technologii oraz wymagania które nale¿y spe³niæ w celu wdro¿enia proponowanego rozwi¹zania. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemów operacyjnych jest u¿ywany. Jak pokazuj¹ rankingi, jednymi z najczêœciej u¿ywanych systemów operacyjnych s¹ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekœcie doboru technologii oznacza to, i¿ warto zastosowaæ rozwi¹zania firmy Microsoft które s¹ w pe³ni zintegrowane z systemami Windows, ze wzglêdu na ich wysok¹ wydajnoœæ oraz popularnoœæ. Fundamentalnym elementem aplikacji jest baza danych w której przechowywane s¹ detale transakcji, szczegó³owe listy oferowanych us³ug czy dane osobowe pracowników. Firma Microsoft oferuje produkt SQL Server, który posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jêzyków platformy programistycznej .NET Framework. SQL Server w wersji darmowej mo¿e zostaæ u¿yty do w projektach czysto hobbystycznych jak i w pe³ni komercyjnych co jest jego du¿ym atutem. W rankingu portalu db-engines.com SQL Server zajmuje 3 pozycjê, nieprzerwanie od 2014 r. poœród ponad 200 sklasyfikowanych silników baz danych \cite{SQLRanking}. Wystarczaj¹cym kryterium które musi zostaæ spe³nione aby firma mog³a korzystaæ z aplikacji bazuj¹cej na tym silniku, jest przygotowanie jednego serwera centralnego z którym za poœrednictwem aplikacji ³¹cz¹ siê pracownicy. Opisane rozwi¹zanie eliminuje jeden z problemów, którym jest synchronizacja danych pomiêdzy pracownikami, takich jak aktualne wersje propozycji cenowych oraz listy oferowanych us³ug. 
+Dostrzegaj¹c problematykê dzia³aj¹cego obecnie rozwi¹zania dokonano rozpoznania maj¹cego na celu spisanie za³o¿eñ projektowych, które umo¿liwi¹ zniwelowanie aktualnych problemów zwi¹zanych z przeprowadzaniem operacji tworzenia nowej propozycji cenowej. W czasie rozmów ze sprzedawcami pierwszym elementem, który zosta³ przedstawiony w celu usprawnienia ich pracy by³a forma dokumentów na bazie których pracuj¹. Wykazywano inicjatywê, aby owe dokumenty dotycz¹ce cenników us³ug aktualizowane by³y bez ingerencji ka¿dego pracownika, umo¿liwiaj¹c przy tym ci¹g³¹ pracê bez obawy o posiadanie nieaktualnych danych. 
+
+Kolejn¹ sugesti¹ ze strony pracowników by³o wycofanie koniecznoœci pracy z oprogramowaniem Microsoft Excel przez wzgl¹d na b³êdy spowodowane obowi¹zkiem dokonywania rêcznych obliczeñ oraz przypadkowym usuwaniem formu³ z pól. Problem ten polega³ na tym, i¿ tylko czêœæ pól w arkuszu, na którym przeprowadzana by³a praca nale¿a³o modyfikowaæ. W przypadku wpisania wartoœci do pola zawieraj¹cego formu³ê, owa formu³a zosta³a usuwana co skutkowa³o reakcj¹ ³añcuchow¹ polegaj¹c¹ na b³êdnym wyliczaniu wartoœci w pozosta³ych miejscach. Proces ten bardzo niekorzystnie wp³ywa³ na pracê sprzedawcy, który dodatkowo zobligowany by³ do kontroli wartoœci cenowych tworzonej propozycji oraz w sytuacji b³êdu, powtórzeniu ca³ego procesu od nowa na poprawnie dzia³aj¹cej wersji arkusza kalkulacyjnego. 
+
+Ostatnim elementem, w sprawie którego ka¿dy ze sprzedawców dostrzeg³ problem oraz mo¿liwoœæ ulepszenia by³a rozbudowana lista produktów gastronomicznych i ich cen. Operowanie z ow¹ list¹ przez sprzedawców opiera siê na manualnym wyszukiwaniu interesuj¹cego produktu oraz sprawdzaniu jego ceny, co przez fakt du¿ej iloœci produktów jest czasoch³onne. Zasugerowano, aby ulepszenie listy polega³o na podzieleniu produktów na kategoriê oraz wyborze z ustalonej kategorii odpowiedniego produktu. Tym sposobem dostêpna lista elementów do wyboru by³aby znacznie mniejsza, co przek³ada³oby siê na znaczn¹ oszczêdnoœæ czasow¹.
+
+Usprawnienie procesu tworzenia nowej propozycji cenowej oraz zarz¹dzania zmianami dotyczy równie¿ menad¿era sprzeda¿y. Podczas zasiêgania opinii o mo¿liwoœci usprawniania jego pracy otrzymano informacjê o chêci zaprzestania dystrybucji nowych wersji cenników oraz arkusza Microsoft Excel poprzez skrzynki elektroniczne. Proces ten okaza³ siê czasoch³onny poprzez czêste aktualizacje danych i obowi¹zek ich przesy³ania ca³ej kadrze pracowników, w której dodatkowo nastêpuj¹ liczne rotacje osobowe. Przy tym punkcie dostrze¿ono jednoczeœnie mo¿liwoœæ wprowadzenia centralnego zarz¹dzania kontami pracowników, które umo¿liwi³yby w prosty sposób wdro¿enie nowych osób oraz usuniêcie starych.
+
+Drugi zas³yszany element usprawniaj¹cy pracê menad¿era to mo¿liwoœæ przegl¹dania utworzonych przez pracowników propozycji cenowych. W chwili obecnej opcja ta jest niemo¿liwa do wykonania pomijaj¹c fakt dostarczenia menad¿erowi propozycji drog¹ elektroniczn¹ przez pracownika. Rozwi¹zanie to implikuje jednak koniecznoœæ dodatkowej pracy sprzedawcy, a w przypadku zmodyfikowania wys³anej propozycji cenowej obowi¹zku poinformowania o tym fakcie menad¿era oraz wys³ania zaktualizowanej wersji w celu weryfikacji.
+
+Dokonuj¹c podsumowania przedstawionych problemów oraz jej analizy przez zespó³ utworzono ogóln¹ listê za³o¿eñ, które konieczne s¹ w celu uprawnienia procesu tworzenia propozycji cenowej ze strony zarówno sprzedawcy, jak i menad¿era. Przedstawiona lista zawiera tak¿e elementy, które na drodze dedukcji uznane zosta³y przez zespó³ jako warte wprowadzenia.
+
+\begin{itemize}
+
+\item \textsl{Wprowadzenie dwóch typów kont przez fakt na ró¿ny zakres obowi¹zków s³u¿bowych,}
+
+\item \textsl{Aktualizacja wszelkich danych bez koniecznoœci ingerencji osobistej sprzedawcy,}
+
+\item \textsl{Zaprzestanie aktualizacji danych za pomoc¹ skrzynek elektronicznych (aktualizacja cenników z poziomu konta administratora),}
+
+\item \textsl{Przeniesienie procesu tworzenia nowej propozycji cenowej na poziom aplikacji (zaprzestanie u¿ywania arkuszy kalkulacyjnych,}
+
+\item \textsl{Funkcja tworzenia dokumentu PDF zapisanej propozycji cenowej,}
+
+\item \textsl{Mo¿liwoœæ utworzenia propozycji cenowej zarówno z poziomu konta u¿ytkownika, jak i administratora,}
+
+\item \textsl{Mo¿liwoœæ zapisu utworzonej propozycji cenowej wraz z opcj¹ jej póŸniejszej modyfikacji,}
+
+\item \textsl{Zautomatyzowanie przeprowadzanych obliczeñ w miejscach, w których jest to mo¿liwe (odci¹¿enie sprzedawcy),}
+
+\item \textsl{Podzia³ produktów gastronomicznych na kategorie i mo¿liwoœæ wyboru szukanego elementu z krótkiej listy,}
+
+\item \textsl{Wprowadzenie centralnego zarz¹dzania pracownikami z poziomu dedykowanego dla ka¿dej osoby konta,}
+
+\item \textsl{Umo¿liwienie dodawania, edycji, usuwania kont z poziomu konta administratorskiego}
+
+\item \textsl{Mo¿liwoœæ przegl¹dania tworzonych przez sprzedawców propozycji cenowych z poziomu konta administratorskiego}
+
+\item \textsl{Walidacja wprowadzanych przez u¿ytkownika danych oraz informowanie go o potencjalnych b³êdach}
+
+\end{itemize}
+
+--- END SEBA ---
+
+W rozdziale \ref{dzial:geneza} przedstawiono problemy sieci hotelowej, wystêpuj¹ce podczas przeprowadzania transakcji z klientem. S¹ one podstawowymi czynnikami determinuj¹cymi docelow¹ formê aplikacji, dobór narzêdzi i technologii oraz wymagania które nale¿y spe³niæ w celu wdro¿enia proponowanego rozwi¹zania. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemów operacyjnych jest u¿ywany. Jak pokazuj¹ rankingi, jednymi z najczêœciej u¿ywanych systemów operacyjnych s¹ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekœcie doboru technologii oznacza to, i¿ warto zastosowaæ rozwi¹zania firmy Microsoft które s¹ w pe³ni zintegrowane z systemami Windows, ze wzglêdu na ich wysok¹ wydajnoœæ oraz popularnoœæ. Fundamentalnym elementem aplikacji jest baza danych w której przechowywane s¹ detale transakcji, szczegó³owe listy oferowanych us³ug czy dane osobowe pracowników. Firma Microsoft oferuje produkt SQL Server, który posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jêzyków platformy programistycznej .NET Framework. SQL Server w wersji darmowej mo¿e zostaæ u¿yty do w projektach czysto hobbystycznych jak i w pe³ni komercyjnych co jest jego du¿ym atutem. W rankingu portalu \textsl{db-engines.com} SQL Server zajmuje 3 pozycjê, nieprzerwanie od 2014 roku poœród ponad 200 sklasyfikowanych silników baz danych \cite{SQLRanking}. Wystarczaj¹cym kryterium które musi zostaæ spe³nione aby firma mog³a korzystaæ z aplikacji bazuj¹cej na tym silniku, jest przygotowanie jednego serwera centralnego z którym za poœrednictwem aplikacji ³¹cz¹ siê pracownicy. Opisane rozwi¹zanie eliminuje jeden z problemów, którym jest synchronizacja danych pomiêdzy pracownikami, takich jak aktualne wersje propozycji cenowych oraz listy oferowanych us³ug. 
 
 Popularnym jêzykiem platformy programistycznej .NET Framework jest jêzyk C\#. Umo¿liwia on tworzenie nowoczesnych aplikacji okienkowych, przy u¿yciu bibliotek graficznych takich jak WPF. Tworzenie okien i ich komponentów takich jak przyciski, listy rozwijane czy pola tekstowe jest proste i wygodne dla programistów, poniewa¿ nie wymagaj¹ du¿ych ingerencji w kod Ÿród³owy. Manipulacja komponentami okien odbywa siê poprzez modelowanie elementów graficznych w kreatorze. Umo¿liwia on tworzenie graficznego interfejsu u¿ytkownika podobnie jak w popularnych programach s³u¿¹cych do obróbki grafiki. Do zaprojektowanego w ten sposób interfejsu, wystarczy podpi¹æ konkretne funkcjonalnoœci zaimplementowane w kodzie Ÿród³owym. Mog¹ to byæ operacje takie jak zapisywanie propozycji cenowych do pliku PDF poprzez klikniêcie przycisku. W konsekwencji czas implementacji aplikacji ulega redukcji. Istotn¹ kwesti¹ podczas implementacji oprogramowania jest komunikacja aplikacji z zasobami bazy danych z poziomu kodu Ÿród³owego. Dla jêzyka C\# firma Microsoft zaprojektowa³a system Entity Framework który s³u¿y do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Zapytania bazodanowe takie jak usuwanie czy modyfikacja tabel s¹ implementowane w kodzie operuj¹cym na obiektach utworzonych przez Entity Framework. 
 
@@ -158,7 +202,9 @@ programowania nie ma mo¿liwoœci stworzenia nowej wersji dokumentu, co utrudnia z
 
 Podsumowuj¹c powy¿sze programy mo¿na zauwa¿yæ, ¿e proces dodawania produktów jest bardzo zbli¿ony. Podobnie sprawa wygl¹da z procesem wystawiania ofert, faktur. Najwiêksz¹ mo¿liwoœci¹ personalizacji wystawianych dokumentów ma program ProfitCRM. Poniewa¿ ¿aden z tych programów nie oferowa³ mo¿liwoœci wystawianie propozycji cenowej, a tak ¿¹danie mia³a sieæ hotelowa dlatego wynik³a koniecznoœæ stworzenia dedykowanej aplikacji. 
 
-\section{Zastosowane rozwi¹zania}
+\section{Pomys³ na rozwi¹zanie problemu}
+
+\section{Zastosowane rozwi¹zania technologiczne}
 
 Niniejszy rozdzia³ zawiera opis technologii wykorzystanych do implementacji prezentowanej aplikacji. Zakres opisu obejmuje wszelkie komponenty techniczne, które znalaz³y zastosowanie w projekcie:
 

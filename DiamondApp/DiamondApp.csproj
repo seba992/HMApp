@@ -239,7 +239,6 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Tools\MvvmClasses\WeakActionGeneric.cs" />
     <Compile Include="Views\RemoveUserView.xaml.cs">
       <DependentUpon>RemoveUserView.xaml</DependentUpon>
     </Compile>
