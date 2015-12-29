@@ -16,8 +16,6 @@ namespace DiamondApp.Tools.Pdf
         private float orderNettoSum = 0;
         private float orderBruttoSum = 0;
 
-
-
         public PdfMaker()
         {
             _ctx = new DiamondDBEntities();
@@ -276,19 +274,19 @@ namespace DiamondApp.Tools.Pdf
                 table.Format.Font.Name = "Calibri";
 
                 //Create table columns
-                Column column = table.AddColumn("5.42cm");
+                Column column = table.AddColumn("5.22cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
-                column = table.AddColumn("5.42cm");
+                column = table.AddColumn("5.22cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
-                column = table.AddColumn("3.96cm");
+                column = table.AddColumn("4.16cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
-                column = table.AddColumn("2.5cm");
+                column = table.AddColumn("2.6cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
-                column = table.AddColumn("2.5cm");
+                column = table.AddColumn("2.6cm");
                 column.Format.Alignment = ParagraphAlignment.Left;
 
                 table.Rows.Height = 3;
@@ -318,9 +316,10 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[0].AddParagraph("NAZWA USŁUGI NA FAKTURZE:");
                 row.Cells[1].AddParagraph(InvoiceServiceName(propId));
                 row.Cells[2].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[2].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Bottom;
                 row.Cells[2].Format.Font.Bold = true;
                 row.Cells[2].Format.Font.Size = 6;
-                row.Cells[2].AddParagraph("W przypadku zlecenia podpis osoby upoważnionej, data i pieczęć firmy:");
+                row.Cells[2].AddParagraph("W przypadku zlecenia podpis osoby upoważnionej, data i pieczęć firmy");
 
                 row = table.AddRow();
                 row.Cells[2].MergeRight = 2;
@@ -345,6 +344,7 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[0].AddParagraph("Zgodnie z treścią art. 71 Kodeksu Cywilnego niniejsza propozycja cenowa nie stanowi oferty handlowej ma jedynie charakter informacyjny. Informacja  jest ważna do Po upływie tego terminu lub/i w przypadku zmniejszenia ilości zarezerwowanych pokoi lub/i zmniejszenia ilości uczestników spotkania, Hotel zastrzega sobie prawo do zmiany proponowanych cen lub wycofania tych cen. Po upływie terminu jw. Hotel także nie gwarantuje dostępności pokoi i sal konferencyjnych. W przypadku zainteresowania terminem Państwa zapytania (niniejszej oferty) ze strony innego klienta, poprosimy o potwierdzenie Państwa rezerwacji i zawarcie umowy w ciągu 24 godzin lub dokonanie rezerwacji gwaratowanej bez możliwości anulacji bezkosztowej.");
                 row.Cells[4].AddParagraph(UpdatedDate(propId).ToString());
                 row.Cells[4].Format.Alignment = ParagraphAlignment.Center;
+                row.Cells[4].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
                 row.Cells[4].Format.Font.Bold = true;
 
                 row = table.AddRow();
@@ -391,6 +391,15 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[5].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[6].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+
+                row.Cells[1].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[2].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[3].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[4].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[5].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[6].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[7].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+
                 row.Cells[0].AddParagraph(extra[i].ServiceType);
                 row.Cells[1].AddParagraph(Convert.ToDecimal(extra[i].BruttoPrice.ToString()).ToString("#,##0.00")+ " zł");
                 row.Cells[2].AddParagraph(Convert.ToDecimal(netto.ToString()).ToString("#,##0.00") + " zł");
@@ -451,6 +460,15 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[5].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[6].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+
+                row.Cells[1].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[2].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[3].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[4].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[5].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[6].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[7].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+
                 row.Cells[0].AddParagraph(extra[i].TypeOfService);
                 row.Cells[1].AddParagraph(Convert.ToDecimal(extra[i].BruttoPrice.ToString()).ToString("#,##0.00") + " zł");
                 row.Cells[2].AddParagraph(Convert.ToDecimal(netto.ToString()).ToString("#,##0.00") + " zł");
@@ -507,6 +525,15 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[5].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[6].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+
+                row.Cells[1].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[2].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[3].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[4].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[5].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[6].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[7].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+
                 row.Cells[0].AddParagraph(extra[i].TypeOfRoom);
                 row.Cells[1].AddParagraph(Convert.ToDecimal(extra[i].BruttoPrice.ToString()).ToString("#,##0.00") + " zł");
                 row.Cells[2].AddParagraph(Convert.ToDecimal(netto.ToString()).ToString("#,##0.00") + " zł");
@@ -562,6 +589,15 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[5].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[6].Format.Alignment = ParagraphAlignment.Center;
                 row.Cells[7].Format.Alignment = ParagraphAlignment.Center;
+
+                row.Cells[1].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[2].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[3].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[4].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[5].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[6].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+                row.Cells[7].VerticalAlignment = MigraDoc.DocumentObjectModel.Tables.VerticalAlignment.Center;
+
                 row.Cells[0].AddParagraph(extra[i].Things);
                 row.Cells[1].AddParagraph(Convert.ToDecimal(extra[i].BruttoPrice.ToString()).ToString("#,##0.00") + " zł");
                 row.Cells[2].AddParagraph(Convert.ToDecimal(netto.ToString()).ToString("#,##0.00") + " zł");
