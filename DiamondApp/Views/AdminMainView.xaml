@@ -62,7 +62,6 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <Label x:Name="Luser" Content="Użytkownicy:" HorizontalAlignment="Left" Height="22" Margin="767,35,0,0" VerticalAlignment="Top" Width="111" Padding="0" HorizontalContentAlignment="Right" Background="Transparent" Foreground="White"   Visibility="{Binding OtherElementVisibility}" />
-        <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}"  Visibility="{Binding EditPropVisibility}"/>
         <TabControl x:Name="TabControlProposition"  HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Height="551" Width="1044.5" Visibility="{Binding EditPropVisibility}">
             <TabItem x:Name="FirstGrid" Header="OPIS KLIENTA">
                 <Grid Background="#FFD8D8D8" Margin="-2">
@@ -691,6 +690,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button x:Name="SavePropositionButton" Content="Zapisz Propozycję" HorizontalAlignment="Left" Margin="936,33,0,0" VerticalAlignment="Top" Width="118" Command="{Binding SavePropositionCommand}"  Visibility="{Binding EditPropVisibility}"/>
     </Grid>
 </Window>
 
