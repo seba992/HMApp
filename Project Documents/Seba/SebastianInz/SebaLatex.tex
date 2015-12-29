@@ -92,16 +92,37 @@ Kolejnym atutem przedstawionego rozwi¹zania by³oby umo¿liwienie kierownictwu z p
 
 \section{Analiza przedwdro¿eniowa}
 
+W rozdziale \textsl{Geneza pracy} przedstawiono problemy sieci hotelowej, wystêpuj¹ce podczas przeprowadzania transakcji z klientem. S¹ one podstawowymi czynnikami determinuj¹cymi docelow¹ formê aplikacji, dobór narzêdzi i technologii oraz wymagania które nale¿y spe³niæ w celu wdro¿enia proponowanego rozwi¹zania. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemów operacyjnych jest u¿ywany. Jak pokazuj¹ rankingi, jednymi z najczêœciej u¿ywanych systemów operacyjnych s¹ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekœcie doboru technologii oznacza to, i¿ warto zastosowaæ rozwi¹zania firmy Microsoft które s¹ w pe³ni zintegrowane z systemami Windows, ze wzglêdu na ich wysok¹ wydajnoœæ oraz popularnoœæ. Fundamentalnym elementem aplikacji jest baza danych w której przechowywane s¹ detale transakcji, szczegó³owe listy oferowanych us³ug czy dane osobowe pracowników. Firma Microsoft oferuje produkt SQL Server, który posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jêzyków platformy programistycznej .NET Framework. SQL Server w wersji darmowej mo¿e zostaæ u¿yty do w projektach czysto hobbystycznych jak i w pe³ni komercyjnych co jest jego du¿ym atutem. W rankingu portalu db-engines.com SQL Server zajmuje 3 pozycjê, nieprzerwanie od 2014 r. poœród ponad 200 sklasyfikowanych silników baz danych \cite{SQLRanking}. Wystarczaj¹cym kryterium które musi zostaæ spe³nione aby firma mog³a korzystaæ z aplikacji bazuj¹cej na tym silniku, jest przygotowanie jednego serwera centralnego z którym za poœrednictwem aplikacji ³¹cz¹ siê pracownicy. Opisane rozwi¹zanie eliminuje jeden z problemów, którym jest synchronizacja danych pomiêdzy pracownikami, takich jak aktualne wersje propozycji cenowych oraz listy oferowanych us³ug. 
+
+Popularnym jêzykiem platformy programistycznej .NET Framework jest jêzyk C\#. Umo¿liwia on tworzenie nowoczesnych aplikacji okienkowych, przy u¿yciu bibliotek graficznych takich jak WPF. Tworzenie okien i ich komponentów takich jak przyciski, listy rozwijane czy pola tekstowe jest proste i wygodne dla programistów, poniewa¿ nie wymagaj¹ du¿ych ingerencji w kod Ÿród³owy. Manipulacja komponentami okien odbywa siê poprzez modelowanie elementów graficznych w kreatorze. Umo¿liwia on tworzenie graficznego interfejsu u¿ytkownika podobnie jak w popularnych programach s³u¿¹cych do obróbki grafiki. Do zaprojektowanego w ten sposób interfejsu, wystarczy podpi¹æ konkretne funkcjonalnoœci zaimplementowane w kodzie Ÿród³owym. Mog¹ to byæ operacje takie jak zapisywanie propozycji cenowych do pliku PDF poprzez klikniêcie przycisku. W konsekwencji czas implementacji aplikacji ulega redukcji. Istotn¹ kwesti¹ podczas implementacji oprogramowania jest komunikacja aplikacji z zasobami bazy danych z poziomu kodu Ÿród³owego. Dla jêzyka C\# firma Microsoft zaprojektowa³a system Entity Framework który s³u¿y do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Zapytania bazodanowe takie jak usuwanie czy modyfikacja tabel s¹ implementowane w kodzie operuj¹cym na obiektach utworzonych przez Entity Framework. 
+
+Jednym z ostatnich aspektów wytwarzania oprogramowania jest wybranie, jakiego typu bêdzie to aplikacja. Za³o¿eniem niniejszego projektu in¿ynierskiego jest implementacja aplikacji desktopowej. Zalety tradycyjnych aplikacji desktopowych, które spowodowa³y wybór tego typu s¹ nastêpuj¹ce:
+
+\begin{itemize}
+\item \textsl{Prostota w implementacji GUI} 
+
+\tab Szereg bibliotek graficznych dla jêzyka C\# pozwala na szybkie i przyjemne projektowanie graficznego interfejsu u¿ytkownika co przek³ada siê na szybkoœæ i koszty implementacji projektów.
+
+\item \textsl{£atwoœæ obs³ugi aplikacji desktopowych} 
+
+\tab Aplikacje desktopowe s¹ zazwyczaj prostsze w obs³udze, ze wzglêdu na spójny i prosty interfejs tworzony za pomoc¹ kreatorów. 
+
+\item \textsl{Brak problemów zgodnoœci} 
+
+\tab U¿ytkownicy korzystaj¹ z ró¿nych przegl¹darek internetowych takich jak Mozilla Firefox, Google Chrome, Safari czy Opera. Dostosowanie wygl¹du, skalowalnoœci oraz funkcjonalnoœci dla ró¿nych przegl¹darek jest czasoch³onne, podczas gdy w przypadku aplikacji desktopowych wymieniony problem nie wystêpuje.
+\end{itemize}
+
+W kontekœcie wdro¿enia, aplikacja powinna zostaæ zainstalowana na stacjach roboczych pracowników co jest drugim warunkiem koniecznym do wprowadzenia nowej infrastruktury IT dla pracowników dzia³u sprzeda¿y. Je¿eli w przysz³oœci aplikacja by³aby rozwijana, za pomoc¹ narzêdzi Continuous Integration kolejne wersje oprogramowania mog¹ zostaæ szybko dostarczone sieci hotelowej w postaci paczki zip, co zosta³o szerzej opisane w rozdziale \textsl{Automatyzacja wydawania kolejnych wersji aplikacji}. 
 
 \section{Istniej¹ce rozwi¹zania konkurencyjne}
 Wraz ze wzrostem liczby firm \cite{iloscFirm} dzia³aj¹cych w Polsce istnieje koniecznoœæ lepszego, szybszego zarz¹dzania. Wi¹¿e siê to z rozwojem informatyzacji. Mo¿na w ten sposób zautomatyzowaæ wiele procesów w firmie miedzy innymi: zarz¹dzanie magazynem, kontrolê sprzeda¿y, zapotrzebowanie przedsiêbiorstwa na ró¿ne produkty. Do tego celu wdra¿ane s¹ zintegrowane systemy informatyczne, których zadaniem jest po³¹czenie wszystkich elementów przedsiêbiorstwa, w jeden scentralizowany system. Wykorzystuje siê do tego oprogramowania klasy ERP (ang. enterprise resource planning – ERP)\cite{SystemERP}. W sk³ad takiego oprogramowania mo¿e wchodziæ wiele modu³ów: finansowoœæ, stany magazynowe, kontakt z klientem, w zale¿noœci, co w danym przedsiêbiorstwie jest wymagane. Wymogiem takiego systemu jest by wszystkie modu³y by³y niezale¿ne, poniewa¿ ka¿da firma nie potrzebuje ich wszystkich, ale musz¹ siê umieæ z sob¹ komunikowaæ by móc w lepszy sposób zarz¹dzaæ. W wypadku kontaktu z klientem wprowadza siê systemy, które sprawnie obs³uguj¹ sprawy zwi¹zane z reklamacjami, wsparciem technicznym i innymi rzeczami zwi¹zanymi z jego obs³ug¹. Z tym zwi¹zane jest wystawianie propozycji cenowej. Jest to proces czasoch³onny ze wzglêdu na koniecznoœæ aktualizowania cenników, mo¿liwego wyposa¿enia sal i innych spraw zwi¹zanych z organizowanym wydarzeniem. Modu³ CRM(ang. customer relationship management – CRM), który wspomaga proces kontaktu z klientem zawiera komponent wspomaganie procesu wystawiania propozycji. Komponent ten nie tylko automatyzuje proces wystawiania propozycji cenowej, ale jest równie¿ odpowiedzialny, za sprzeda¿ oferowanych towarów i us³ug. W nastêpnej czêœci tego rozdzia³u przedstawiono ró¿ne systemy CRM, których istnieje wersja darmowa.
 
-Do sprawdzenia dostêpnych rozwi¹zañ zosta³y wytypowane trzy program, które spe³niaj¹ wymagania sieci hotelowej s¹ to: ProfitCRM\cite{ProfitCRM} i Asystent CRM\cite{AsystentCRM} Gestor GT \cite{Gestor}.
+Do sprawdzenia dostêpnych rozwi¹zañ zosta³y wytypowane trzy programy, które spe³niaj¹ wymagania sieci hotelowej s¹ to: ProfitCRM\cite{ProfitCRM} i Asystent CRM\cite{AsystentCRM} Gestor GT \cite{Gestor}.
 
 \begin{itemize}
 \item \textsl{Interfejs u¿ytkownika} 
 
-\tab Wygl¹d aplikacji w niektórych przypadka pozostawia³ wiele do ¿yczenia a niektóre zaskoczy³y nietypowym interfejsem. W przypadku programu ProfitCRM interfejs u¿ytkownika jest trochê za bardzo poœciskany, co utrudnia³o znalezienie odpowiednich elementów potrzebnych w danym momencie. Najistotniejsz¹ wad¹ programu jest bardzo wolno reaguj¹cy interfejs u¿ytkownika, co utrudnia pracê. Czêsto zdarza siê, ¿e jakieœ okienko np. edycja szablonów zniknie i nie ma mo¿liwoœci robienia czegokolwiek w programie. Bardzo ma³o intuicyjnie zorganizowany jest zapis oferty do formatu PDF, poniewa¿ nie robi siê tego poprzez przycisk drukuj tylko poprzez podgl¹d dokumentu i eksportuj do PDF. Kiedy dodawany jest nowy towar lub te¿ us³uga otwiera siê nowe okno z polami, które trzeba wype³niæ. S¹ to nazwa, kod towaru. Niestety us³ugi te musz¹ mieæ jednostkê miary. W tym te¿ oknie istnieje mo¿liwoœæ dodawania zdjêæ, komentarzy i dodawania ich do grup.  Drugim ze sposobów dodawania towaru jest klikniêcie w o³ówek, który mo¿na zaobserwowaæ na rysunku
+\tab Wygl¹d aplikacji w niektórych przypadkach pozostawia³ wiele do ¿yczenia a niektóre zaskoczy³y nietypowym interfejsem. W przypadku programu ProfitCRM interfejs u¿ytkownika jest trochê za bardzo poœciskany, co utrudnia³o znalezienie odpowiednich elementów potrzebnych w danym momencie. Najistotniejsz¹ wad¹ programu jest bardzo wolno reaguj¹cy interfejs u¿ytkownika, co utrudnia pracê. Czêsto zdarza siê, ¿e jakieœ okienko np. edycja szablonów zniknie i nie ma mo¿liwoœci robienia czegokolwiek w programie. Bardzo ma³o intuicyjnie zorganizowany jest zapis oferty do formatu PDF, poniewa¿ nie robi siê tego poprzez przycisk drukuj tylko poprzez podgl¹d dokumentu i eksportuj do PDF. Kiedy dodawany jest nowy towar lub te¿ us³uga otwiera siê nowe okno z polami, które trzeba wype³niæ. S¹ to nazwa, kod towaru. Niestety us³ugi te musz¹ mieæ jednostkê miary. W tym te¿ oknie istnieje mo¿liwoœæ dodawania zdjêæ, komentarzy i dodawania ich do grup.  Drugim ze sposobów dodawania towaru jest klikniêcie w o³ówek, który mo¿na zaobserwowaæ na rysunku
 \ref{rys:rysunek olowka}
 
  w procesie tworzenia oferty.
@@ -143,6 +164,8 @@ Wymagane wtedy s¹ tyko podstawowe elementy jak nazwa, kod i jednostka miary towa
  
 \tab Koszt licencji programu ProfitCRM na jedno stanowisko pracy wynosi 736 z³ w przypadku programu Asystent CRM, w zale¿noœci od wersji od 79-369 z³. Gestor GT kosztuje 859.77z³ jest to najdro¿szy produkt z poœród wybranych
 \end{itemize}
+
+Podsumowuj¹c powy¿sze programy mo¿na zauwa¿yæ, ¿e proces dodawania produktów jest bardzo zbli¿ony. Podobnie sprawa wygl¹da z procesem wystawiania ofert, faktur. Najwiêksz¹ mo¿liwoœci¹ personalizacji wystawianych dokumentów ma program ProfitCRM. Poniewa¿ ¿aden z tych programów nie oferowa³ mo¿liwoœci wystawianie propozycji cenowej, a tak ¿¹danie mia³a sieæ hotelowa dlatego wynik³a koniecznoœæ stworzenia dedykowanej aplikacji.
 
 \section{Zastosowane rozwi¹zania}
 \subsection{Wykorzystana technologia}
@@ -208,25 +231,70 @@ C\# jest nowoczesnym, obiektowym jêzykiem programowania, wyprodukowanym przez fi
 \end{itemize}
 \subsubsection{WPF}
 
-WPF (ang. Windows Presentation Foundation) \cite{WPF} jest technologi¹, któr¹ wprowadzono w .Net 3.0. Wykorzystuje jêzyk XML, a dok³adnie jego odmianê XAML. Do wyœwietlania okien wykorzystywana jest grafika wektorowa, co jest wspomagane przez karty graficzne. Cechuje siê on bardzo du¿¹ elastycznoœci¹ w tworzeniu interfejsu, miedzy innymi tworzenie przycisku z obrazkiem. Technologia ta zosta³a zaprojektowana, tak ¿eby w jak najwiêkszym stopniu odseparowaæ wygl¹d aplikacji od innych warstw programu. W niektórych przypadkach wi¹¿e siê z dodatkowym nak³adem pracy w stosunku do technologii Winforms  np. wyœwietlany obrazek w kontrolerze ListView . Jeœli chodzi o wygl¹d aplikacji dziêki du¿ej elastycznoœci jest mo¿liwe tworzenie programów z interfejsem 3D. Nie tylko ró¿ni siê mo¿liwoœciami tworzenia interfejsów, ale i wewnêtrznymi mechanizmami. WPF wykorzystuje dedykowany mechanizm do prezentacji aplikacji, w stosunku do Winformsów, który wywo³uje tylko elementy WinAPI. Wi¹¿e siê to z brakiem wiêkszych mo¿liwoœci edycji wygl¹du aplikacji. Nastêpn¹ cech¹ istotn¹ z punktu dzia³ania programu jest odœwie¿anie elementów okna. W przypadku Winformsów najechanie na jakikolwiek element z w³aœciwoœci¹ zmiany wygl¹du np. zmiany podœwietlania po najechaniu powoduje odœwie¿enie ca³ego okna programu, co nie ma miejsca w przypadku programów tworzonych w WPF. Bardzo dobre wsparcie dla wzorca architektonicznego MVVM uzyskuje siê poprzez mo¿liwoœæ pod³¹czania (binding) w³aœciwoœci z zewnêtrznych klas. Ten typ podejœcia umo¿liwia szybkie tworzenie elementów programu.
+WPF (ang. Windows Presentation Foundation) \cite{WPF} jest technologi¹, któr¹ wprowadzono w .Net 3.0. Wykorzystuje jêzyk XML, a dok³adnie jego odmianê XAML. Do wyœwietlania okien wykorzystywana jest grafika wektorowa, co jest wspomagane przez karty graficzne. Cechuje siê on bardzo du¿¹ elastycznoœci¹ w tworzeniu interfejsu, miêdzy innymi tworzenie przycisku z obrazkiem. Technologia ta zosta³a zaprojektowana tak, ¿eby w jak najwiêkszym stopniu odseparowaæ wygl¹d aplikacji od innych warstw programu. W niektórych przypadkach wi¹¿e siê z dodatkowym nak³adem pracy w stosunku do technologii Winforms  np. wyœwietlany obrazek w kontrolerze ListView . Jeœli chodzi o wygl¹d aplikacji dziêki du¿ej elastycznoœci jest mo¿liwe tworzenie programów z interfejsem 3D. Nie tylko ró¿ni siê mo¿liwoœciami tworzenia interfejsów, ale i wewnêtrznymi mechanizmami. WPF wykorzystuje dedykowany mechanizm do prezentacji aplikacji, w stosunku do Winformsów, który wywo³uje tylko elementy WinAPI. Wi¹¿e siê to z brakiem wiêkszych mo¿liwoœci edycji wygl¹du aplikacji. Nastêpn¹ cech¹ istotn¹ z punktu dzia³ania programu jest odœwie¿anie elementów okna. W przypadku Winformsów najechanie na jakikolwiek element z w³aœciwoœci¹ zmiany wygl¹du np. zmiany podœwietlania po najechaniu powoduje odœwie¿enie ca³ego okna programu, co nie ma miejsca w przypadku programów tworzonych w WPF. Natomiast technologia WPF obejmuje du¿¹ liczbê paneli, kontrolek, jest mo¿liwe ³¹czenie te¿ tych elementów, wyzwalacze i dodanie dynamicznych elementów. Mo¿liwe jest tworzenie stylów, szablonów, które u³atwiaj¹ proces tworzenia aplikacji. Wykorzystuje siê te elementy bardo czêsto. Tych elementów jest pozbawiony Winformsach. Jest te¿ mo¿liwe tworzenie wst¹¿ki znanej z innych produktów Microsoftu miedzy innymi Office. Pisz¹c program z wykorzystaniem WPF jest siê powi¹zanym z hierarchi¹ elementów jakie po sobie wystêpuj¹. Jeœli we wnêtrzu jakiegoœ elementu znajduje siê inny, który ma po³¹czenie z jakimœ polem klasy, a nie jest uœciœlona nazwa klasy, z której to w³aœciwoœæ pochodzi nastêpuje sprawdzenie czy element nadrzêdny nie ma pod³¹czonej klasy zawieraj¹cym t¹ w³aœciwoœæ. Drugim istotnym element jest kolejnoœæ dodawanych kontrolek. Ma wp³yw na widocznoœæ elementów, to co jest najbardziej na dole w kodzie XAML znajduje siê najbli¿ej u¿ytkownik.
+   
+Dziêki bardzo dobremu wsparciu dla wzorca architektonicznego MVVM. Istnieje mo¿liwoœæ pod³¹czania (binding) w³aœciwoœci z zewnêtrznych klas. Ten typ podejœcia umo¿liwia szybkie tworzenie elementów programu, rozwijanie w sposób niezale¿ny interfejsu u¿ytkownik od silnika aplikacji.
 
 \subsubsection{XAML}
 
 XAML jest to oparty na XML\cite{Xml} deklaratywny jêzyk znaczników, którego zadaniem jest opis interfejsu u¿ytkownika obecnego w zastosowanej przez zespó³ technologii WPF. W technologii tej jêzyk XAML umo¿liwia zaprojektowanie oraz u³o¿enie wszystkich elementów wizualnych takich jak kontrolki, ramki oraz okna, a tak¿e pozwala na rozdzielenie pracy pomiêdzy programistami (back-end) oraz grafikami (front-end), którzy tworz¹ graficzny interfejs u¿ytkownika. Graficy, przez wzgl¹d na zakres obowi¹zków, nie czêsto znaj¹ jêzyk programowania C\#. Problem ten rozwi¹zuje w³aœnie XAML, który umo¿liwia zrozumienie przez nich zasady dzia³ania poszczególnych okien, powi¹zañ miêdzy nimi oraz projektowanie interfejsu w prosty sposób z poziomu drzewiastej struktury lub dedykowanego narzêdzia Expression Blend, które umo¿liwia przeprowadzenie wszystkich powy¿szych operacji z poziomu swojego œrodowiska graficznego.
 \subsubsection{T-SQl}
 
-Jest to krótkie okreœlenie Transaction-SQL, które jest rozwiniêciem standardowego SQL. Jêzyk SQL zosta³ stworzony specjalne dla relacyjnych baz danych opracowa³a go na pocz¹tku lat 70 firma IBM \cite{bazy}, jest to standard otwarty. Wspó³czeœnie jest on wykorzystywany przez wiêkszoœæ firm do tworzenia zapytañ bazodanowych. Wiele firm dodaje swoje usprawnienia w zale¿noœci, co odczuje za stosowne by rozszerzyæ mo¿liwoœæ i przyspieszyæ pracê baz danych np. PL/SQL firmy Oracle.  
-T-SQL jest jêzykiem transakcyjny, polega na wykonywanie operacji, jeœli operacja zosta³a zaakceptowana to nastêpuje zapis do bazy, mo¿na to porównaæ do przelewów bankowych zabranie z jednego konta i przelaniu na drugie konto, jeœli na pierwszym koncie jest suma potrzebna do przelewu. W przeciwnym wypadku przelew nie nastêpuje tak jak zapis do bazy, jeœli dane bêd¹ nieprawid³owe. Umo¿liwia równie¿ tworzenie zmiennych, pêtli jak równie¿ instrukcji warunkowych.
+Jest to krótkie okreœlenie Transaction-SQL\cite{T-SQL}, które jest rozwiniêciem standardowego SQL. Jêzyk SQL zosta³ stworzony specjalne dla relacyjnych baz danych opracowa³a go na pocz¹tku lat 70 firma IBM \cite{bazy}, jest to standard otwarty. Wspó³czeœnie jest on wykorzystywany przez wiêkszoœæ firm do tworzenia zapytañ bazodanowych. Wiele firm dodaje swoje usprawnienia w zale¿noœci, co odczuje za stosowne by rozszerzyæ mo¿liwoœæ i przyspieszyæ pracê baz danych np. PL/SQL firmy Oracle.  
+T-SQL jest jêzykiem transakcyjny, polega na wykonywanie operacji, jeœli operacja zosta³a zaakceptowana to nastêpuje zapis do bazy, mo¿na to porównaæ do przelewów bankowych zabranie z jednego konta i przelaniu na drugie konto, jeœli na pierwszym koncie jest suma potrzebna do przelewu. W przeciwnym wypadku przelew nie nastêpuje tak jak zapis do bazy, jeœli dane bêd¹ nieprawid³owe. Umo¿liwia równie¿ tworzenie zmiennych, pêtli jak równie¿ instrukcji warunkowych. Pozwala na tworzenie obiektów, takie jak widoki, procedury sk³adowane, wyzwalacze i funkcje zdefiniowane przez u¿ytkownika.
 
 \subsection{Wykorzystane narzêdzia}
 \subsubsection{Visual Studio 2013}
 
-Do napisania projektu zosta³ wykorzystany Visual Studio w wersji 2013 \cite{VS} edycja Professional. Jest to bardzo rozbudowany kompilator ze zintegrowanym debuggerem. Wspiera on bardzo wiele jêzyków programowania miedzy innymi JavaScript, HTML, C\#, VB, XAML, C++.  Standardowym œrodowiskiem dla technologii jakimi s¹ WPF .NET/C\#  jest Visual Studio. Dziêki wbudowanym mechanizmom istnieje równie¿ mo¿liwoœci ich rozszerzania poprzez napisanie dodatków z wykorzystaniem SDK. Mo¿na równie¿ pobraæ ju¿ gotowe rozszerzenia z Visual  studio gallery  \cite{VSG} stworzonych przez innych u¿ytkowników zrzeszonych wœród produktów firmy Microsoft. Wbudowanym mechanizmem jest debugger, który umo¿liwia œledzenie programu krok po kroku. Pozwala to na szybkie znajdowanie b³êdów w kodzie i ich naprawê. Nastêpnym przydatnym mechanizmem jest system IntelliSense, który odpowiedzialny jest  za podpowiadanie elementów sk³adowych klas. Technologia to wspomagana jest równie¿ przez odpowiednie komentowanie kodu tak by te komentarze te¿ siê wyœwietla³y w podpowiedzi. Dziêki temu mechanizmowi istnieje mo¿liwoœæ szybszego odnajdywania poszczególnych elementów klasy, który s¹ w danym momencie wymagane. Wykorzystuj¹c odpowiednie udogodnienia istnieje mo¿liwoœæ szybszego pisania kodu, co przek³ada siê na iloœæ kodu do napisania przez programistê. Kolejnym istotnym elementem z punktu widzenia projektu jest mo¿liwoœæ projektowania okien w dwóch technologiach WPF i Winforms. U³atwia to pracê nad interfejsem u¿ytkownika, poniewa¿ wyeliminowana jest koniecznoœæ ci¹g³ego uruchamiania pisanego programu. Zawiera równie¿ wiele predefiniowanych elementów dla tworzonego wygl¹du miedzy innymi pola tekstowe, przyciski. Wykorzystuj¹c technikê drag-and-drop mo¿na w ³awy sposób ustawiaæ elementy w wybranym przez siebie miejscu.
+Visual Studio jest bardzo rozbudowanym œrodowiskiem pracy programistycznej, jest produktem typu IDE (ang. Integrated development environment-zintegrowane œrodowisko programistyczne).Wspiera on równie¿ bardzo wiele jêzyków programowania miedzy innymi JavaScript, HTML, C\#, VB, XAML, C++. 
+Produkt tego typu zwiera w sobie:
+\begin{itemize}
 
+\item \textsl{Edytor tekstu}
+
+\tab	 W Visual Studio edytor tekstu jest bardzo rozbudowany dziêki wielu systemom wspomagaj¹cych proces wytwarzania oprogramowania. Wa¿nym z punktu widzenia programisty jest wygl¹d kodu, by móc siê szybko i sprawnie w nim odnaleŸæ. Jednym z mechanizmów wspomagaj¹cych wygl¹d jest kolorowanie sk³adni. Typy zmiennych w zale¿noœci, czy jest to klasa kolor, wtedy jest zielony, jeœli inny typ przedefiniowany np. instrukcje warunkowe, pêtle, domyœlne zmienne niebieski. Drugim mechanizmem  jest system podpowiadania elementów sk³adowych klas, nazywanym IntelliSense.Technologia to wspomagana jest równie¿ przez odpowiednie komentowanie kodu tak by te komentarze te¿ siê wyœwietla³y w podpowiedzi. Dziêki temu mechanizmowi istnieje mo¿liwoœæ szybszego odnajdywania poszczególnych elementów klasy, który s¹ w danym momencie wymagane. Wykorzystuj¹c odpowiednie udogodnienia istnieje mo¿liwoœæ szybszego pisania kodu, co przek³ada siê na iloœæ kodu do napisania przez programistê.
+
+\item \textsl{Kompilator}
+
+\tab 	G³ównym i najwa¿niejszym elementem tego œrodowiska jest kompilator, który wytwarza program z linii kodu, a dok³adniej t³umaczy kod  zapisany w jêzyku programowania na kod zrozumia³y dla sprzêtu to znaczy maszynowy. W wypadku produktu linii Visual studio mo¿e on pracowaæ w dwóch trybach release i debug, ka¿dy z nich charakteryzuje siê innymi parametrami. W trybie debug gdy  program jest kompilowany  jest mo¿liwe debugowanie z wykorzystaniem wbudowanego debuggera, ale o tym w dalszej czêœci tego rozdzia³u. Niestety w tym trybie jest brak optymalizacji kodu, jest tworzona ca³a otoczka umo¿liwiaj¹ca debugowanie. W drugim trybie s¹ uruchamiane optymalizacje miedzy, innymi tak zwane inline, która polega w du¿ym uproszczeniu na przekopiowane na przyk³ad cia³a funkcji w miejsce w którym zosta³a ona wywo³ana. Dodatkowe mechanizmy optymalizacji powoduj¹ niemo¿liwoœæ znajdowania b³êdów.   
+
+\item \textsl{Debugger}
+
+\tab Debugger wbudowany w Visual Studio umo¿liwia szybkie znajdowanie b³êdów, dziêki mo¿liwoœci œledzenia programu krok po kroku w trakcie jego pracy. Ten mechanizm umo¿liwia podgl¹danie wartoœci zmiennych, co te¿ dana funkcja zwróci³a. Dziêki punktom zatrzymania (ang. breakpoint) jest mo¿liwe wyznaczenie miejsca zatrzymania, a w trakcie debugowania jest mo¿liwe tworzenie nowych punktów w innych elementach programu. Program mo¿na œledziæ w dwojaki sposób. Dok³adnie krok po kroku z wchodzeniem w poszczególne funkcje, klasy  nawet te, które zosta³y wykorzystane z zewnêtrznych Ÿróde³ lub te¿ wbudowane w œrodowisko programistyczne. Drug¹ mo¿liwoœci¹ jest œledzenie programu w danym bloku kodu, jest to du¿ym udogodnieniem, bo szukamy tylko w danej funkcji. Istnieje równie¿ opcja mieszania tych trybów co umo¿liwia znajdowanie b³êdów nie tylko w ca³ym projekcie ale w jego czêœci.   
+
+\end{itemize}
+
+Visual Studio istnieje w wielu wersjach tego œrodowiska programistycznego. Ka¿da charakteryzuje siê innymi elementami.
+\begin{itemize}
+
+	\item \textsl{Express Edition}
+	
+	\tab 
+	Jest to ca³kowicie darmowe narzêdzie do u¿ytku domowa i komercyjnego. Ograniczone jest do konkretnych rozwi¹zañ na przyk³ad aplikacji komputerowych, stron internetowych lub na platformy mobilne. 
+	
+	\item \textsl{Community Edition}
+	
+	\tab Tak jak powy¿sza wersja programu ta jest równie¿ darmowa ograniczona liczb¹ mo¿liwych u¿ytkowników korzystaj¹cych z niej do 5, jeœli ktoœ chce korzystaæ komercyjne to maksymalnie do 250 u¿ytkowników lub przychód nie wiêkszy ni¿ milion dolarów amerykañskich.\cite{VSlicencja}. W stosunku do poprzedniej wersji ma mo¿liwoœæ tworzenie aplikacji dla wiêkszej iloœci rozwi¹zañ. 	
+		
+	\item \textsl{Professional}
+	
+	\tab Do napisania projektu zosta³ wykorzystany Visual Studio w wersji 2013 \cite{VS} edycja Professional. Jest to produkt komercyjny, który zosta³ wykorzystany w ramach licencji studenckiej udostêpnionej w programie MSDN Academic Alliance (DreamSpark)  dla studentów Wydzia³u Matematyki Stosowanej \cite{msdn}. Dziêki temu studenci mog¹ poznaæ produkt komercyjny. Wersja ta umo¿liwia równie¿ pisanie testów jednostkowych, tworzenie aplikacji na Windows Phone, aplikacji chmurowych.  
+ 
+	
+	\item \textsl{Premium}
+	
+	\tab Zawiera	wszystkie elementy poprzednich wersji. Ma bardzo bogate rozbudowane œrodowisko testowe miedzy, innymi o przyk³adowe testy, plany testów i testy interfejsu u¿ytkownika.	
+
+	\item \textsl{Ultimate}
+	
+	\tab Jest to najbardziej rozbudowana wersja oprogramowania, umo¿liwia tworzenie instalatorów serwisów internetowych. Pozwala równie¿ na nagrywanie w trakcie dzia³ania aplikacji. Jeœli w trakcie nagrywania zdarzy siê  b³¹d nie jest wymagane jego ponowne symulowanie, lub te¿ próba jego odtworzenia. Umo¿liwia równie¿ przedstawiania zale¿noœci w kodzie w postaci diagramów UML. Dziêki temu mechanizmowi jest mo¿liwe zauwa¿enie wielu zale¿noœci, które czêsto potrafi¹ byæ bardzo zawi³e. Bardzo ciekaw¹ mechanizmem jest edytowanie kodu w trakcie debugowania co umo¿liwia na bie¿¹co naprawianie b³êdów.
+\end{itemize}
+ Standardowym œrodowiskiem dla technologii jakimi s¹ WPF .NET/C\#  jest Visual Studio. Dziêki wbudowanym mechanizmom istnieje równie¿ mo¿liwoœci ich rozszerzania poprzez napisanie dodatków z wykorzystaniem SDK. Mo¿na równie¿ pobraæ ju¿ gotowe rozszerzenia z Visual  Studio gallery  \cite{VSG} stworzonych przez innych u¿ytkowników zrzeszonych wœród produktów firmy Microsoft. Wykorzystuj¹c odpowiednie udogodnienia istnieje mo¿liwoœæ szybszego pisania kodu, co przek³ada siê na iloœæ kodu do napisania przez programistê.
+	 Kolejnym istotnym elementem z punktu widzenia projektu jest mo¿liwoœæ projektowania okien w dwóch technologiach WPF i Winforms. U³atwia to pracê nad interfejsem u¿ytkownika, poniewa¿ wyeliminowana jest koniecznoœæ ci¹g³ego uruchamiania pisanego programu, by zobaczyæ wygl¹d aplikacji. Zawiera równie¿ wiele predefiniowanych elementów dla tworzonego wygl¹du miedzy, innymi pola tekstowe, przyciski. Wykorzystuj¹c technikê drag-and-drop mo¿na w ³awy sposób ustawiaæ elementy w wybranym przez siebie miejscu.
 
 \subsubsection{SQL Server Management Studio}
 
-W trakcie prac nad projektem wykorzystano darmowe narzêdzie do zarz¹dzania baz¹ danych SQL Server Management Studio 2012 Express \cite{SQL Server Management Studio Express} wynika to z istniej¹cej infrastruktury opartej na rozwi¹zaniach Microsoftu, co u³atwi³o nam pracê i proces projektowania ca³ej bazy danych. Dziêki przejrzystemu interfejsowi u¿ytkownika, mo¿na w bardzo ³atwy sposób tworzyæ nawet bardzo skomplikowane struktury, bez koniecznoœci znajomoœci jêzyka tworz¹cego bazê danych.  Program ten u³atwi³ tworzenie wymaganej przez sieæ hotelow¹ bazy danych. Istnieje równie¿ mo¿liwoœæ generowania skryptów, których zadaniem jest odtworzenie ca³ej struktury bazy danych. W programie jest równie¿ mo¿liwoœæ tworzenia diagramów: wszystkich jak równie¿ wybranych tabel. Te mo¿liwoœci przedstawia rysunek  \ref{rys:interfejsSQL} Umo¿liwia to diagnozowanie problemu braku po³¹czeñ niektórych tabel z reszt¹ struktury. 
+W trakcie prac nad projektem wykorzystano darmowe narzêdzie do zarz¹dzania baz¹ danych SQL Server Management Studio 2012 Express \cite{SQL Server Management Studio Express} wynika to z istniej¹cej infrastruktury opartej na rozwi¹zaniach Microsoftu, co u³atwi³o pracê i proces projektowania ca³ej bazy danych. Dziêki przejrzystemu interfejsowi u¿ytkownika, mo¿na w bardzo ³atwy sposób tworzyæ nawet bardzo skomplikowane struktury, bez koniecznoœci znajomoœci jêzyka tworz¹cego bazê danych.  Program ten u³atwi³ tworzenie wymaganej przez sieæ hotelow¹ bazy danych. Istnieje równie¿ mo¿liwoœæ generowania skryptów, których zadaniem jest odtworzenie ca³ej struktury bazy danych. W programie jest równie¿ mo¿liwoœæ tworzenia diagramów: wszystkich jak równie¿ wybranych tabel. Te mo¿liwoœci przedstawia rysunek  \ref{rys:interfejsSQL} Umo¿liwia to diagnozowanie problemu braku po³¹czeñ niektórych tabel z reszt¹ struktury. 
 
 \begin{figure}[ht]
     \centering
@@ -234,7 +302,18 @@ W trakcie prac nad projektem wykorzystano darmowe narzêdzie do zarz¹dzania baz¹ 
     \caption{Interfejs SQL Server Management Studio Express, ród³o: Opracowanie w³asne.}
      \label{rys:interfejsSQL}
 \end{figure}
-Wykorzystuj¹c wbudowane mechanizmy mo¿liwe jest ³atwe wpisywanie pocz¹tkowych danych takich jak: u¿ytkownicy systemu, ceny produktów, ich edycja na poziomie bazy. Umo¿liwia to sprawdzenie, czy baza dzia³a zgodnie oczekiwaniami. W ten sposób mo¿na œledziæ dzia³anie naszego programu w trakcie pracy. Sprawdziæ mo¿na czy wszystkie elementy prawid³owo dzia³aj¹ i czy w poprawny sposób jest zapisywana dana pozycja.   
+Wykorzystuj¹c wbudowane mechanizmy mo¿liwe jest ³atwe wpisywanie pocz¹tkowych danych takich jak: u¿ytkownicy systemu, ceny produktów, ich edycja na poziomie bazy. Umo¿liwia to sprawdzenie, czy baza dzia³a zgodnie oczekiwaniami. W ten sposób mo¿na œledziæ dzia³anie programu w trakcie pracy. Sprawdziæ mo¿na czy wszystkie elementy prawid³owo dzia³aj¹ i czy w poprawny sposób jest zapisywana dana pozycja. W projekcie wykorzystano:
+\begin{itemize}
+	\item \textsl{Edytor zapytañ}
+		
+	\tab
+	Jest to edytor wspomagaj¹c jêzyki Transact-SQL, MDX, DMX, lub XML/A. dziêki kolorowaniu s³ów kluczowych w trakcie pisania skryptów zwiêksza to czytelnoœæ kodu. Wykorzystuje siê tez jako interfejs do zapytañ Transact-SQL. Równie¿ jak opisany wczeœniej Visual Studio wykorzystuje mechanizm IntelliSense odpowiedzialny za podpowiadanie kolumn tabel.  Ma mo¿liwoœæ wykrywania b³êdów nieprawid³owej sk³adni.Wyœwietla b³êdy, ostrze¿enia i komunikaty informacyjne, które s¹ zwracane przez serwer.
+\item \textsl{Object Explorer}
+		
+	\tab
+	Drugim wa¿nym elementem SQL Server Management Studio jest Object Explorer umo¿liwiaj¹cy przegl¹danie wielu instancji bazy danych. W tym te¿ elemencie jest mo¿liwoœæ generowania diagramów baz danych,  projektowania ca³ej bazy danych. Wyœwietla podgl¹d tabel  wyzwalacze, procedury. Podgl¹d tabel daje te¿ mo¿liwoœæ edycji danych  w tabeli jak i wybierania pieszych wierszy w danej tabeli. U³atwia to sprawdzenie zachowañ aplikacji na dane testowe. Dziêki graficznemu interfejsowi jest mo¿liwe w bardzo prosty sposób usuwanie bazy danych poprzez naciœniêcie przycisku ,,DELETE". Umo¿liwia generowanie skryptu dziêki, któremu mo¿na odtworzyæ ca³¹ strukturê bazy danych
+\end{itemize}  
+
 \subsubsection{Trello}
 
 Podczas pracy zespo³owej napotyka siê liczne problemy zwi¹zane z organizacj¹ pracy, jej synchronizacj¹ oraz podzia³em obowi¹zków. Stopieñ zaawansowania przedstawionych problemów dodatkowo wzrasta, w sytuacji, gdy wspó³praca zespo³u przebiega zdalnie. W takich okolicznoœciach warto pos³u¿yæ siê dedykowanymi narzêdziami, które umo¿liwiaj¹ prost¹, szybk¹ i skuteczn¹ komunikacjê wspieraj¹c¹ pracê wielu osób nad jednym projektem. 
@@ -383,6 +462,7 @@ Walidacja godziny, analogicznie jak daty, tak¿e mo¿e doprowadziæ do wielu proble
     \label{rys:TimePicker}
 \end{figure}
 
+\newpage
 \subsubsection{PDFsharp \& MigraDoc Foundation}
 
 PDF (ang. Portable Document Format) czyli tzw. przenoœny format dokumentów, zosta³ zaprojektowany i wdro¿ony przez firmê Adobe Systems w 1992 r. Dokumenty przechowywane w tym formacie mog¹ zawieraæ proste dane tekstowe, jak równie¿ dŸwiêki, grafiki czy tabele. Jedn¹ z zalet formatu jest jego uniwersalnoœæ, wygl¹d pliku jest spójny niezale¿nie od systemu operacyjnego u¿ytkownika \cite{DefinicjaPdf}. Darmowe narzêdzia, takie jak Adobe Acrobat Reader, Foxit Reader umo¿liwiaj¹ podgl¹d plików PDF. Wiêkszoœæ pakietów biurowych takich jak, Microsoft Office czy Apache OpenOffice umo¿liwia zapis plików do formatu PDF. Popularnoœæ PDF stale wzrasta \cite{PopularnoscPdf}. Wszelkie rachunki, faktury, prace naukowe s¹ archiwizowane w postaci plików PDF. 
@@ -427,6 +507,7 @@ TODO: after refactor.
 - ilustracja podzialu foldery+klasy
 
 \subsection{Architektura bazy danych}
+
 \subsubsection{Definicja bazy danych}
 Bazy danych mo¿na porównaæ do archiwum firmy gdzie s¹ przechowywane wszelakie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ tak jak dane jednej osoby, a kolumny to s¹ poszczególne dane typu imiê nazwisko pesel itp.. Tak jak pesel jest unikatowy dla osoby w firmie tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez na przyk³ad pesel danej osoby to w drugim segregatorze nazywa siê kluczem obcym, a samo po³¹czenie relacj¹. Rozró¿niamy kilka relacji:
 \begin{enumerate}
@@ -436,21 +517,64 @@ Bazy danych mo¿na porównaæ do archiwum firmy gdzie s¹ przechowywane wszelakie pr
 \end{enumerate}
 
 W projekcie zosta³a wykorzystana baza relacyjna, która dzia³a na powy¿szym przyk³adzie. Wa¿nym z punktu widzenia projektowania aplikacji bazodanowej jest odpowiednie zaprojektowanie struktury tabel i po³¹czeñ miedzy nim. Nie mo¿na lekcewa¿yæ tego procesu. Gdy siê Ÿle zaprojektuje bazê mog¹ wynikn¹æ w póŸniejszym czasie problemy z jej dalszym rozwojem. Istnieje jeszcze gorszy scenariusz, gdy w trakcie dalszych prac baza danych nie bêdzie spe³nia³a swojego zadania. Efektem Ÿle zaprojektowanej bazy danych mo¿e byæ d³ugoœæ wykonywanych zapytaæ jak i bardzo du¿a z³o¿onoœæ. Wi¹¿e siê to z koniecznoœci¹ przeprojektowania od pocz¹tku ca³ej bazy lub starania siê w programie ukryæ te niedomagania.
+
 \subsubsection{MS-SQL – Zastosowany system zarz¹dzania baz¹ danych}
 
-Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W sieci hotelowej wykorzystane s¹ technologie Microsoftu. Produktem tej firmy zwi¹zanym z powy¿sz¹ tematyk¹ jest  serwer z rodziny  MS-SQL. Serwer ten umo¿liwia tworzenie baz danych dwóch typów relacyjny jak i nierelacyjnych. Tworzenie baz danych mo¿e siê odbywaæ w dwojaki sposób:
+Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W sieci hotelowej wykorzystane s¹ technologie Microsoftu. Produktem tej firmy zwi¹zanym z powy¿sz¹ tematyk¹ jest  serwer z rodziny  MS-SQL\cite{MS-SQL}. Serwer ten umo¿liwia tworzenie baz danych dwóch typów relacyjny jak i nierelacyjnych. Tworzenie baz danych mo¿e siê odbywaæ w dwojaki sposób poprzez:
 \begin{enumerate}
 	\item	SQL Server Management Studio, który jest nak³adk¹ graficzn¹
 	\item	T-SQL. 
 \end{enumerate}
-Dziêki wbudowanym typom danych zabezpiecza to przed wpisaniem nieprawid³owej wartoœci w danym miejscu 
+Dziêki wbudowanym typom danych zabezpiecza to przed wpisaniem nieprawid³owej wartoœci w danym miejscu.
+Wbudowane mechanizmy kopii zapasowej plików i transakcji pozwalaj¹ na zapis ich na innym klastrze. W wypadku kiedy g³ówny klaster zostanie uszkodzony zadanie przejmuje drugi klaster. Istnieje równie¿ mo¿liwoœæ tworzenia testów rozwojowych bazy danych. Wykorzystuj¹c dziennik jest mo¿liwe diagnozowanie problemów z dzia³aniem bazy danych obci¹¿enie.
+
+W tym silniku bazodanowym mo¿na wyszczególniæ kilka komponentów:
+\begin{itemize}
+	\item \textsl{Interfejs T-SQL}
+
+	\tab
+ Komponent ten odpowiada za interpretacje zapytania lub innych instrukcji napisanych w jêzyku T-SQL i wys³anie wyników do u¿ytkownika. 
+ 	
+	\item \textsl{Podsystem bezpieczeñstwa}
+
+	\tab
+	Modu³ ten odpowiada za dostêp od bazy danych mo¿na go konfigurowaæ w dwojaki sposób wykorzystuj¹c  SQL Server Management Studio lub T-SQL. Modu³ ten umo¿liwia szyfrowanie ca³ej bazy lub tylko wybranych kolumn.
+	\item \textsl{SQL agent}
+	
+	\tab SQL agent odpowiada za automatyzacjê czêœci rzeczy miêdzy, innymi za tworzenie kopii zapasowej o okreœlonej godzinie. Dziêki takiemu planowaniu jest mo¿liwe równomierne roz³o¿enie obci¹¿enia serwera. Pozwala wysy³anie wiadomoœci w przypadku jakiegoœ krytycznego b³êdu, czy siê wykona³a jakiejœ zaplanowana czynnoœæ danego dnia.
+	\item \textsl{Replikant}
+	
+	\tab
+	Odpowiada on za rozpowszechnianie danych pomiêdzy ró¿nymi serwerami na przyk³ad FTP lub te¿ urz¹dzeniami. G³ównie ten modu³ wykorzystuje siê w przypadku serwer-serwer do tworzenie kopii zapasowej w tej sytuacji jeden serwer jest serwerem centralny a drugi kopi¹ zapasow¹. 
+	
+\end{itemize}
 
 \subsubsection{Budowa bazy danych u¿ytej w projekcie}
 
-Bazê, która zosta³a wykorzystana w projekcie mo¿na podzieliæ na dwie g³ówne czêœci: czêœci zawieraj¹c¹ domyœlne wartoœæ na przyk³ad cennik gastronomiczny, wyposa¿enia sali w dalszej czêœci zwane s³ownikami i czêœæ powi¹zana z tworzon¹ propozycj¹ cenow¹. Tabele s³ownikowe przez wzgl¹d na funkcje któr¹ pe³nia nie s¹ powi¹zane z innymi tabelami Taki podzia³ tabel na dwa osobne zbiory zosta³ spowodowany bezpieczeñstwem. Jeœli istnia³aby relacja ³¹cz¹ca te dwie tabele to zmiana wartoœæ w tabeli s³ownikowej powodowa³aby zmianê cen produktów w starszych propozycja. Efektem unikniêcia tego typu problemów jest rozdzielenie na dwie odseparowane czêœci.  Gdyby tak nie by³o wtedy mo¿liwoœæ odtworzenia starej propozycji cenowej by³aby niemo¿liwa, co jest efektem niepo¿¹danym z punktu widzenia dzia³ania aplikacji.  
+Bazy danych mo¿na porównaæ do archiwum firmy gdzie s¹ przechowywane wszelakie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ tak jak dane jednej osoby, a kolumny to s¹ poszczególne dane typu imiê nazwisko pesel itp. Tak jak pesel jest unikatowy dla osoby w firmie tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez na przyk³ad pesel danej osoby to w drugim segregatorze nazywa siê kluczem obcym, a samo po³¹czenie relacj¹. Rozró¿niamy kilka relacji:
+\begin{enumerate}
+  \item Jeden do, wielu kiedy jedna koszulka w segregatorze ³¹czy siê z wieloma koszulkami w drugim.
+  \item Jeden do jednego wystêpuje wtedy, kiedy jedna teczka ³¹czy siê tylko z teczk¹ inn¹ w pojedynczy sposób.
+  \item Wiele do wielu wystêpuje wtedy, kiedy jedna koszulka z jednego segregatora odpowiada wielu w drugim i na odwrót.
+\end{enumerate}
 
-Drugi cz³on bazy danych stanowi¹ tabele zwi¹zane z tworzon¹ propozycj¹ cenow¹. S¹ one podzielone w logiczny sposób uwzglêdniaj¹c podzia³ przyk³adowej propozycji cenowej przedstawione przez sieæ hotelow¹ na przyk³ad: produkty gastronomiczne, wyposa¿enie sali, szczegó³y rezerwacji.  Podzia³ taki uwzglêdnia mo¿liwoœæ dalszego rozwoju aplikacji.
+W projekcie zosta³a wykorzystana baza relacyjna, która dzia³a na powy¿szym przyk³adzie. Wa¿nym z punktu widzenia projektowania aplikacji bazodanowej jest odpowiednie zaprojektowanie struktury tabel i po³¹czeñ miedzy nim. Nie mo¿na lekcewa¿yæ tego procesu. Gdy siê Ÿle zaprojektuje bazê mog¹ wynikn¹æ w póŸniejszym czasie problemy z jej dalszym rozwojem. Istnieje jeszcze gorszy scenariusz, gdy w trakcie dalszych prac baza danych nie bêdzie spe³nia³a swojego zadania. Efektem Ÿle zaprojektowanej bazy danych mo¿e byæ d³ugoœæ wykonywanych zapytaæ jak i bardzo du¿a z³o¿onoœæ. Wi¹¿e siê to z koniecznoœci¹ przeprojektowania od pocz¹tku ca³ej bazy lub starania siê w programie ukryæ te niedomagania.
+
+
+Bazê, która zosta³a wykorzystana w projekcie mo¿na podzieliæ na dwie g³ówne czêœci: czêœci zawieraj¹c¹ domyœlne wartoœæ w dalszej czêœci zwane s³ownikami i czêœæ powi¹zana z tworzon¹ propozycj¹ cenow¹.
+\begin{itemize}
+	\item \textsl{Czêœæ s³ownikowa}
 	
+\tab 
+Tabele s³ownikowe przez wzgl¹d na funkcje, któr¹ pe³ni¹ nie s¹ powi¹zane z innymi tabelami Taki podzia³ tabel na dwa osobne zbiory zosta³ spowodowany bezpieczeñstwem. Jeœli istnia³aby relacja ³¹cz¹ca te dwie tabele to zmiana wartoœæ w tabeli s³ownikowej powodowa³aby zmianê cen produktów w starszych propozycja. Efektem unikniêcia tego typu problemów jest rozdzielenie na dwie odseparowane czêœci.  Gdyby tak nie by³o wtedy mo¿liwoœæ odtworzenia starej propozycji cenowej by³aby niemo¿liwa, co jest efektem niepo¿¹danym z punktu widzenia dzia³ania aplikacji.  
+
+\item \textsl{Czêœæ Propozycji}
+	
+\tab 
+Drugi cz³on bazy danych stanowi¹ tabele zwi¹zane z tworzon¹ propozycj¹ cenow¹. S¹ one podzielone w logiczny sposób uwzglêdniaj¹c podzia³ przyk³adowej propozycji cenowej przedstawione przez sieæ hotelow¹: produkty gastronomiczne, wyposa¿enie sali, szczegó³y rezerwacji, szczegó³y klienta. Jest to te¿ najbardziej rozbudowana czêœæ bazy danych wi¹¿¹ siê te¿ z ni¹ konta u¿ytkowników kto, któr¹ propozycje cenow¹ wystawi³. Wi¹¿e ze sob¹ koniecznoœæ nadawania uprawnieñ u¿ytkownikom w systemie. Aktualnie istniej¹ tylko dwa typy sprzedawca i administrator. Do ka¿dej stworzonej propozycji cenowej s¹ te¿ do³¹czane rabaty na poszczególne jej elementy: gastronomie, wyposa¿enie sali    
+
+\end{itemize}
+Podzia³ taki uwzglêdnia mo¿liwoœæ dalszego rozwoju aplikacji. Mo¿liwe jest dodawanie nowych s³owników która bêd¹ zwieraæ inne elementy zwi¹zane z tworzon¹ propozycj¹ cenowa. Dodanie nowej tabeli do s³owników,  która bêdzie wi¹za³a siê z now¹  grupy produktów.
 
 \subsection{Komunikacja bazy danych z projektem programistycznym}
 \subsubsection{Mapowanie obiektowo-relacyjne}
@@ -542,12 +666,12 @@ SonarQube jest darmow¹, wieloplatformow¹ aplikacj¹ s³u¿¹c¹ do zarz¹dzania jakoœc
 
 Przyk³adowy raport analizy kodu niniejszego projektu zosta³ przedstawiony na rysunku \ref{rys:RaportAnalizy}.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=1\textwidth]{sonarraport.jpg}
-%    \caption{Raport statycznej analizy kodu Ÿród³owego, ród³o: Opracowanie w³asne.}
-%    \label{rys:RaportAnalizy}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{sonarraport.jpg}
+    \caption{Raport statycznej analizy kodu Ÿród³owego, ród³o: Opracowanie w³asne.}
+    \label{rys:RaportAnalizy}
+\end{figure}
 
 SonarQube na podstawie raportu analizy dokonuje oceny jakoœci kodu w skali SQALE (ang. Software Quality Assessment based on Lifecycle Expectations). Ocena jest wyliczana ze wzoru \cite{SQALE}:
 
@@ -655,8 +779,6 @@ Pierwsze logowanie jest specyficzn¹ form¹ logowania, w którym u¿ytkownik posiada
     \caption{Okno informuj¹ce o polityce bezpieczeñstwa hase³, ród³o: Opracowanie w³asne.}
     \label{rys:UzytkownikLogowanieSilaHasla}
 \end{figure}
-
-\subsection{Zarz¹dzanie kontem sprzedawcy oraz administratora  (obs³uga)}
 
 \subsection{Tworzenie nowej propozycji cenowej}
 
@@ -808,163 +930,153 @@ Ostatni¹ zak³adk¹ procesu tworzenia nowej propozycji cenowej widoczn¹ pod rysunk
 Operacja zapisu nowej propozycji cenowej mo¿liwa jest do wykonania w ka¿dej chwili tworzenia propozycji. Sprzedawca nie ma obowi¹zku tworzenia pe³nego dokumentu, który w sposób natychmiastowy przekazywany bêdzie klientowi. Dostêpna z poziomu menu opcja edycji istniej¹cej propozycji umo¿liwia jej finalne zakoñczenie w dowolnym czasie. W sytuacji chêci zapisu tworzonej propozycji, sprzedawca zobowi¹zany jest nacisn¹æ przycisk \textsl{Zapisz propozycjê}, który po odpowiedniej konwersji danych zapisze wszystkie wymagane do póŸniejszej edycji elementy do bazy danych. Lokalizacja przycisku umiejscowiona jest w prawym górnym rogu ka¿dej zak³adki tworzenia nowej propozycji cenowej. Jej wygl¹d dostêpny jest do wgl¹du w przywo³anym ju¿ rysunku \ref{rys:UzytkownikNowaPropozycjaTab5}.
 
 \subsection{Edycja istniej¹cej propozycji cenowej}
-Edycja istniej¹cej propozycji cenowej odbywa siê poprzez zaznaczenie w oknie g³ówny programu wybranej propozycji cenowej, a nastêpnie z menu wybrania "Edytuj". U¿ytkownik zostanie przeniesiony do okna tworzenia nowej propozycji, ale ju¿ z wype³nionymi wczeœniej polami. Sprzedawca ma mo¿liwoœæ dodawania nowych produktów a usuwanie odbywa siê poprzez wybranie pustego pola na liœcie rozwijalnej. Mo¿na to zaobserwowaæ na rysunku \ref{rys:editProp}
+Edycja istniej¹cej propozycji cenowej odbywa siê poprzez zaznaczenie w oknie g³ówny programu wybranej propozycji cenowej, a nastêpnie z menu wybrania "Edytuj" co mo¿na zaobserwowaæ na rysunku \ref{rys:editProp}. U¿ytkownik zostanie przeniesiony do okna tworzenia nowej propozycji, ale ju¿ z wype³nionymi wczeœniej polami. Sprzedawca ma mo¿liwoœæ dodawania nowych produktów a usuwanie odbywa siê poprzez wybranie pustego pola na liœcie rozwijalnej. Zapis edytowalnej propozycji jest mo¿liwy w ka¿dym momencie edycji.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\textwidth]{editpro.jpg}
+    \includegraphics[width=0.95\textwidth]{editpro.jpg}
     \caption{Edycja propozycji, ród³o: Opracowanie w³asne.}
 	\label{rys:editProp}
 \end{figure}
 
 \subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
 
-Aby zapisaæ propozycjê cenow¹ do pliku PDF, nale¿y wybraæ z menu rozwijanego \textit{Menu} opcjê \textit{Lista propozycji}. 
+Jedn¹ z najwa¿niejszych funkcjonalnoœci niniejszej aplikacji jest mo¿liwoœæ zapisu propozycji cenowych do pliku PDF. W menu rozwijanym znajduje siê pozycja \textsl{Lista propozycji}, co zosta³o przedstawione na rysunku \ref{rys:ListaPropozycji}.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.25\textwidth]{pdf.jpg}
-%    \caption{Wyœwietlanie listy propozycji cenowych, ród³o: Opracowanie w³asne.}
-%	\label{rys:ListaPropozycji}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{pdf.jpg}
+    \caption{Wyœwietlanie listy propozycji cenowych, ród³o: Opracowanie w³asne.}
+	\label{rys:ListaPropozycji}
+\end{figure}
 
-Rysunek  Po klikniêciu przycisku \textit{Zapisz do PDF}, pojawia siê dialog wyboru plików. U¿ytkownik wpisuje nazwê pliku oraz lokalizacjê zapisu. 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{df2.jpg}
+    \caption{Zapis propozycji cenowej do pliku PDF, ród³o: Opracowanie w³asne.}
+	\label{rys:ZapisDoPdf}
+\end{figure}
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.75\textwidth]{df2.jpg}
-%    \caption{Zapis propozycji cenowej do pliku PDF, ród³o: Opracowanie w³asne.}
-%	\label{rys:ZapisDoPdf}
-%\end{figure}
+\newpage
+Po klikniêciu w opcjê \textsl{Lista propozycji} zostaje wyœwietlona lista istniej¹cych propozycji cenowych. Oprócz podstawowych parametrów propozycji cenowych, w ostatniej kolumnie listy pojawia siê przycisk \textsl{Zapisz do PDF} którego klikniêcie otwiera dialog wyboru pliku. U¿ytkownik wpisuje dowoln¹ nazwê pliku, oraz wybiera lokalizacjê zapisu pliku co zosta³o pokazane na rysunku \ref{rys:ZapisDoPdf}. Je¿eli proces generowania pliku PDF przebiegnie pomyœlnie, zostaje wyœwietlony komunikat z informacj¹ o sukcesie, przedstawiony na rysunku \ref{rys:ZapisDoPdf2}. (dodaæ odnoœnik do za³¹cznika - wygenerowanego przez program PDF).
 
-Je¿eli operacja siê powiod³a, u¿ytkownik otrzyma komunikat.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.25\textwidth]{pdf3.jpg}
-%    \caption{Poprawny zapis propozycji cenowej do pliku PDF, ród³o: Opracowanie w³asne.}
-%	\label{rys:ZapisDoPdf2}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pdf3.jpg}
+    \caption{Poprawny zapis propozycji cenowej do pliku PDF, ród³o: Opracowanie w³asne.}
+	\label{rys:ZapisDoPdf2}
+\end{figure}
 
 \subsection{Modyfikacja kont u¿ytkowników/sprzedawców}
+
+U¿ytkownicy z uprawnieniami administratora posiadaj¹ mo¿liwoœæ wykonywania podstawowych operacji zwi¹zanych z zarz¹dzaniem kontami pracowników. Rysunek \ref{rys:UserOpMenu} przedstawia menu \textsl{U¿ytkownicy} w którym znajduj¹ siê dostêpne w tym module funkcjonalnoœci. Po klikniêciu wybranej pozycji z menu, zostaje otwarte nowe okno w którym administrator mo¿e wykonaæ operacje danego typu.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{UserOpMenu.jpg}
+    \caption{Menu rozwijane modu³u s³u¿¹cego do zarz¹dzania kontami pracowników, ród³o: Opracowanie w³asne.}
+	\label{rys:UserOpMenu}
+\end{figure}
+
+\newpage
 \subsubsection{Dodawanie konta}
 
-Aby utworzyæ nowe konto u¿ytkownika, w oknie g³ównym administrator wybiera z menu rozwijanego \textit{U¿ytkownicy} opcjê \textit{Dodaj}.
+Pierwsz¹ z funkcjonalnoœci zaimplementowanych w module, jest mo¿liwoœæ utworzenia nowego konta. Rysunek \ref{rys:DodajU¿ytkownika2} przedstawia okno zawieraj¹ce pola tekstowe do których wpisywane s¹ dane osobowe pracownika, oraz listê rozwijan¹ z której wybierany jest typ konta. Po klikniêciu przycisku \textsl{Dodaj} w przypadku poprawnego wykonania operacji dodawania konta, wyœwietlana jest informacja przedstawiona na rysunku \ref{rys:DodajU¿ytkownika3}. W sytuacji niepowodzenia, zostaje wyœwietlany komunikat o b³êdzie co mo¿na zaobserwowaæ na rysunku \ref{rys:DodajU¿ytkownika4}.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{dodaj.jpg}
-%    \caption{Dodawanie u¿ytkownika z poziomu menu rozwijanego, ród³o: Opracowanie w³asne.}
-%	\label{rys:DodajUzytkownika}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{dodaj2.jpg}
+    \caption{Dodawanie nowego konta u¿ytkownika, ród³o: Opracowanie w³asne.}
+	\label{rys:DodajU¿ytkownika2}
+\end{figure}
 
-Nastêpnie pojawia siê okno do którego wpisywane s¹ dane u¿ytkownika. Aby dodaæ u¿ytkownika nale¿y klikn¹æ przycisk \textit{Dodaj}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dodaj3.jpg}
+    \caption{Komunikat o poprawnym zapisie konta u¿ytkownika w bazie danych, ród³o: Opracowanie w³asne.}
+	\label{rys:DodajU¿ytkownika3}
+\end{figure}
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{dodaj2.jpg}
-%    \caption{Dodawanie u¿ytkownika, ród³o: Opracowanie w³asne.}
-%	\label{rys:DodajU¿ytkownika2}
-%\end{figure}
-
-Je¿eli dodawanie zakoñczono sukcesem, u¿ytkownik otrzyma komunikat.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{dodaj3.jpg}
-%    \caption{Komunikat o poprawnym utworzeniu konta, ród³o: Opracowanie w³asne.}
-%	\label{rys:DodajUzytkownika3}
-%\end{figure}
-
-W przeciwnym wypadku, u¿ytkownik otrzyma komunikat o b³êdzie.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{dodaj4.jpg}
-%    \caption{Komunikat o b³êdach podczas próby utworzenia konta, ród³o: Opracowanie w³asne.}
-%	\label{rys:DodajUzytkownika4}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{dodaj4.jpg}
+    \caption{Komunikat o b³êdzie podczas zapisu konta u¿ytkownika do bazy danych, ród³o: Opracowanie w³asne.}
+	\label{rys:DodajU¿ytkownika4}
+\end{figure}
 
 \subsubsection{Edycja konta}
 
-Aby edytowaæ dane u¿ytkowników, w oknie g³ównym administrator wybiera z menu rozwijanego \textit{U¿ytkownicy} opcjê \textit{Edytuj}.
+Kolejn¹ funkcjonalnoœci¹ jest mo¿liwoœæ edycji danych pracowników. Informacje o kontach wyœwietlane s¹ w formie tabeli. Edycja polega na zaznaczeniu wybranej komórki w tabeli i wpisaniu nowej wartoœci. Zapis nowej wartoœci do bazy danych potwierdzany jest klikniêciem przycisku \textsl{Enter}, b¹dŸ zaznaczeniem innej kolumny. Rysunek \ref{rys:EdytujUzytkownika} zawiera wygenerowan¹ dla potrzeb projektu, listê u¿ytkowników. Zbie¿noœæ osób i nazwisk jest przypadkowa.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{edytujuz.jpg}
-%    \caption{Edyja danych u¿ytkowników z poziomu menu rozwijanego, ród³o: Opracowanie w³asne.}
-%	\label{rys:EdytujUzytkownika}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{edytujuz2.jpg}
+    \caption{Tabela zawieraj¹ca dane u¿ytkowników, ród³o: Opracowanie w³asne.}
+	\label{rys:EdytujUzytkownika}
+\end{figure}
 
-Nastêpnie zostanie otwarte nowe okno, które wyœwietla dane u¿ytkowników w tabeli. Aby edytowaæ dane nale¿y zaznaczyæ wybran¹ komórkê, wpisaæ tekst.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.75\textwidth]{edytujuz2.jpg}
-%    \caption{Okno edycji danych u¿ytkowników, ród³o: Opracowanie w³asne.}
-%	\label{rys:EdytujUzytkownika2}
-%\end{figure}
-
+\newpage
 \subsubsection{Usuwanie konta}
 
-Aby usun¹æ konto u¿ytkownika, w oknie g³ównym administrator wybiera z menu rozwijanego \textit{U¿ytkownicy} opcjê \textit{Usuñ}.
+W przypadku zmian kadrowych, administrator posiada mo¿liwoœæ usuwania kont u¿ytkowników. Rysunek \ref{rys:UsunKonto} przedstawia okno obs³uguj¹ce funkcjonalnoœæ usuwania, które posiada listê rozwijan¹ zawieraj¹ca loginy u¿ytkowników. Po wybraniu loginu u¿ytkownika, którego konto ma zostaæ usuniête nale¿y klikn¹æ przycisk \textsl{Usuñ}. Pomyœlne usuniêcia konta z bazy danych jest potwierdzane komunikatem wyœwietlanym na rysunku \ref{rys:UsunKonto2}.
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{rm.jpg}
-%    \caption{Usuwanie u¿ytkowników z poziomu menu rozwijanego, ród³o: Opracowanie w³asne.}
-%	\label{rys:UsunUzytkownika}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{rm2.jpg}
+    \caption{Okno usuwania kont u¿ytkowników, ród³o: Opracowanie w³asne.}
+	\label{rys:UsunKonto}
+\end{figure}
 
-Nastêpnie pojawia siê okno, w którym z listy rozwijanej administrator wybiera konto. Aby usun¹æ konto nale¿y klikn¹æ przycisk \textit{Usuñ}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{rm3.jpg}
+    \caption{Komunikat o poprawnym usuniêciu konta u¿ytkownika z bazy danych, ród³o: Opracowanie w³asne.}
+	\label{rys:UsunKonto2}
+\end{figure}
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{rm2.jpg}
-%    \caption{Okno usuwanie u¿ytkowników, ród³o: Opracowanie w³asne.}
-%	\label{rys:UsunUzytkownika2}
-%\end{figure}
-
-Je¿eli usuwanie powiod³o siê, zostaje wyœwietlony komunikat.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{rm3.jpg}
-%    \caption{Komunikat o poprawnym usuniêciu konta u¿ytkownika, ród³o: Opracowanie w³asne.}
-%	\label{rys:UsunUzytkownika3}
-%\end{figure}
-
+\newpage
 \subsubsection{Resetowanie hase³}
 
+Istnieje mo¿liwoœæ, i¿ u¿ytkownik nie pamiêta swojego has³a. W takim przypadku administrator korzysta z opcji resetowania has³a, co umo¿liwia u¿ytkownikowi ustawienie nowego has³a podczas kolejnej próby logowania. Na rysunku \ref{rys:ResetujHaslo} przedstawiono okno w którym znajduje siê lista rozwijana, wype³niona loginami u¿ytkowników tak samo jak w module s³u¿¹cym do usuwania kont. Po wybraniu loginu z listy nale¿y klikn¹æ przycisk \textsl{Resetuj}. Komunikat o pomyœlnym usuniêciu konta z bazy danych znajduje siê na rysunku \ref{rys:ResetujHaslo2}.
 
-Aby zresetowaæ has³o u¿ytkownika, w oknie g³ównym administrator wybiera z menu rozwijanego \textit{U¿ytkownicy} opcjê \textit{Resetuj has³o}.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.4\textwidth]{reset2.jpg}
+    \caption{Okno resetowania hase³ u¿ytkowników, ród³o: Opracowanie w³asne.}
+	\label{rys:ResetujHaslo}
+\end{figure}
 
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{resetuj.jpg}
-%    \caption{Resetowanie hase³ u¿ytkowników z poziomu menu rozwijanego, ród³o: Opracowanie w³asne.}
-%	\label{rys:ResetujHaslo}
-%\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{reset3.jpg}
+    \caption{Komunikat o powodzeniu operacji usuwania konta u¿ytkownika z bazy danych, ród³o: Opracowanie w³asne.}
+	\label{rys:ResetujHaslo2}
+\end{figure}
 
-Nastêpnie pojawia siê okno, w którym z listy rozwijanej administrator wybiera konto. Aby zresetowaæ konto nale¿y klikn¹æ przycisk \textit{Resetuj}.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{reset2.jpg}
-%    \caption{Okno resetowania hase³, ród³o: Opracowanie w³asne.}
-%	\label{rys:ResetujHaslo2}
-%\end{figure}
-
-Je¿eli operacj¹ powiod³a siê, u¿ytkownik otrzyma komunikat.
-
-%\begin{figure}[ht]
-%    \centering
-%    \includegraphics[width=0.35\textwidth]{reset3.jpg}
-%    \caption{Komunikat o poprawnym usuniecia konta, ród³o: Opracowanie w³asne.}
-%	\label{rys:ResetujHaslo3}
-%\end{figure}
-
-\subsection{Modyfikacja s³owników cenowych}
-
+Modyfikacja s³owników cenowych odbywaæ siê mo¿e tylko z poziomu administratora. Z menu nale¿y wybraæ „Edytuj s³ownik". Zostanie otwarte nowe okno, gdzie bêdzie mo¿na wybraæ typ s³ownika, który bêdzie edytowany. Niestety nie wszystkie s³oniki s¹ edytowalne wynika to z faktu, braku cen produktów które s¹ ustawiane przez sprzedawce. Pierwsze klikniecie w komórkê powoduje jej zaznaczenie, drugie wybranie, dopiero po trzecim klikniêciu jest mo¿liwa edycja komórki. Edycja nastêpuje poprzez wpisywanie wartoœci w poszczególnych komórkach tabeli w zale¿noœci, któr¹ pozycjê chce siê edytowaæ. Wciskaj¹c przycisk „ENTER” nastêpuje zapis edytowanego wiersza do bazy danych. Istnieje równie¿ mo¿liwoœæ dodawania nowych pozycji. W ostatnim pustym wierszu tabeli nale¿y wype³niæ wszystkie komórki, by móc dodaæ do bazy. W trakcie edycja jak i dodawania istnieje kontrola typów danych jeœli w komórce ma byæ liczba a bêdziemy chcieli wpisaæ tekst komórka podœwietli siê na czerwono. Odœwie¿enie tabeli w przypadku dodania nowego produktu nastêpuje po ponownym uruchomieniu okna edycji s³owników. 
+ \begin{itemize}
+	\item \textsl {Pokoje}
+	
+	\tab
+	Istnieje tylko mo¿liwoœæ edytowania ceny pokoi
+			
+	\item \textsl {Gastronomia}
+	
+	
+	\tab
+	W s³owniku tym istnieje mo¿liwoœæ dodawania nowych pozycji. U³atwieniem w przypadku tego s³ownika jest podzia³ ze wzglêdu na kategorie produktów. Tego typu udogodnienie u³atwia znajdowanie poszczególnych pozycji w tym s³owniku, przyspiesza jego edycje.   
+	
+	\item \textsl {Sale}
+	
+	\tab 
+	Ceny poszczególnych sal s¹ zale¿ne on miesiêcy, w których dane wydarzenie ma siê odbyæ. Nie ma mo¿liwoœci dodawania nowych sal. Przedstawia to rysunku \ref{rys:Sale}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Sale.jpg}
+    \caption{Ceny sal w poszczególnych miesi¹cach, ród³o: Opracowanie w³asne.}
+    \label{rys:Sale}
+\end{figure}
+	
+ \end{itemize}
  
 \section{Specyfikacja wewnêtrzna}
 
@@ -1073,10 +1185,9 @@ Najwa¿niejszym elementem koniecznym do prawid³owej pracy prezentowanego modu³u b
 \subsection{Edycja s³owników oraz kont u¿ytkowników}
 \subsubsection{DataGridView a dynamiczna komunikacja z Baz¹ danych}
 
-Aby umo¿liwiæ edycjê danych z poziomu DataGridView, zaimplementowano funckjê obs³uguj¹c¹ zdarzenie \textit{DataGridRowEditEndingEventArgs}. Kiedy edycja danej komórki zostaje zakoñczona, wywo³ywana jest funkcja której zadaniem jest dynamiczne przechwytywanie nowych wartoœci oraz aktualizacja bazy danych. U¿ycie zmiennej dynamic, podyktowane jest faktem, i¿ jest ona sprawdzana podczas wywo³ania, a nie kompilacji \cite{dynamic}. Umo¿liwia to odwo³anie do nowych wartoœci zapisanych w komórkach. Funkcja jest wykorzystywana w module s³u¿¹cym do edycji danych pracowników. Poni¿ej znajduje siê kod Ÿród³owy funkcji:
+Aby umo¿liwiæ edycjê danych z poziomu DataGridView, zaimplementowano funckjê obs³uguj¹c¹ zdarzenie \textit{DataGridRowEditEndingEventArgs}. Kiedy edycja danej komórki zostaje zakoñczona, wywo³ywana jest funkcja której zadaniem jest dynamiczne przechwytywanie nowych wartoœci oraz aktualizacja bazy danych. U¿ycie zmiennej dynamic, podyktowane jest faktem, i¿ jest ona sprawdzana podczas wywo³ania, a nie kompilacji \cite{dynamic}. Umo¿liwia to odwo³anie do nowych wartoœci zapisanych w komórkach. Funkcja jest wykorzystywana w module s³u¿¹cym do edycji danych pracowników. Implementacjê funkcji przedstawia kod Ÿród³owy \ref{listing:DynamicGridView}:
 
 \begin{lstlisting}[caption= {Implementacja i opis funkcji aktualizuj¹cej bazê danych z poziomu DataGridView}, label={listing:DynamicGridView}]
-
 //pobranie identyfikatora u¿ytkownika którego wiersz 
 //jest zaznaczony w DataGridView oraz zapis do zmiennej typu int
 object item = UserList.SelectedItem;
@@ -1119,9 +1230,9 @@ Users userUpdate = (from user in _ctx.Users
 
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 
-Za pomoc¹ mechanizmów biblioteki MigraDoc, zaimplementowano funckje tworz¹ce tabele propozycji cenowej. Poni¿ej, znajduje siê przyk³adowy kod Ÿród³owy który tworzy now¹ kolumnê oraz w tabeli:
+Za pomoc¹ mechanizmów biblioteki MigraDoc, zaimplementowano funckje tworz¹ce tabele propozycji cenowej. Kod Ÿród³owy \ref{listing:PdfSharpTable} przedstawia prost¹ funkcjê tworz¹ca tabelê z jedn¹ kolumn¹ i wierszem. 
 
-\begin{verbatim}
+\begin{lstlisting}[caption= {Implementacja i opis funkcji tworz¹cej prost¹ tabelê przy u¿yciu biblioteki PDFSharp \& MigraDoc}, label={listing:PdfSharpTable}]
 //inicjalizacja nowej tabeli, ustawienie czcionki i jej rozmiaru
 Table table = document.LastSection.AddTable();
 table.Borders.Visible = true;
@@ -1132,13 +1243,13 @@ table.Format.Font.Name = "Calibri";
 Column column = table.AddColumn("3.750cm");
 column.Format.Alignment = ParagraphAlignment.Left;
 
-//dodawanie nowego wiersza, z przyk³adowymi atrybutami
+//dodawanie nowego wiersza, z przyk³adowymi atrybutami 
 Row row = table.AddRow();
 row.Cells[0].Shading.Color = Colors.LightGray;
 row.Cells[0].AddParagraph("WYNAJEM");
 \end{verbatim}
 
-Poni¿szy kod zosta³ u¿yty w implementacji funkcji zapisuj¹cej propozycjê cenow¹ do pliku PDF:
+Kod Ÿród³owy \ref{listing:SavePdf} przedstawia implementacjê funkcji zapisuj¹cej wygenerowane przez program tabele propozycji cenowej do pliku PDF.
 
 \begin{lstlisting}[caption= {Implementacja i opis funkcji zapisuj¹cej propozycjê cenow¹ do pliku PDF}, label={listing:SavePdf}]
 // deklaracja obiektu klasy PdfDocumentRenderer
@@ -1202,6 +1313,14 @@ Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie
 \bibitem{LiczbaHoteli} 
 http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
 
+%ogi analiza
+\bibitem{Systemy} 
+http://www.ranking.pl/pl/rankings/operating-systems.html
+
+%ogi analiza
+\bibitem{SQLRanking} 
+http://db-engines.com/en/ranking
+
 %Lisu wstêp
 \bibitem {iloscFirm}
 http://stat.gov.pl/obszary-tematyczne/podmioty-gospodarcze-wyniki-finansowe/przedsiebiorstwa-niefinansowe/male-i-srednie-przedsiebiorstwa-niefinansowe-w-polsce-w-latach-2009-2013,22,1.html
@@ -1250,13 +1369,24 @@ http://urriellu.net/en/articles-software/csharp-advantages.html
 %Seba xml
 \bibitem{Xml}
 http://www.w3schools.com/xml/xml\_whatis.asp
+
 %Lis T_SQL
+\bibitem {T-SQL}
+ Itzik Ben-Gan  \textsl{Microsoft SQL Server 2012. Podstawy jêzyka T-SQL} Wydawnictwo Helion, Gliwice , 2012
+ 
 \bibitem {bazy}
 Jeffrey D. Ullman, Jennifer Widom
-\textsl{Podstawowy kurs systemów baz danych. Wydanie III} Wydawnictwo Helion, Gliwice , 2011 
+\textsl{Podstawowy kurs systemów baz danych. Wydanie III} Wydawnictwo Helion, Gliwice , 2011
+ 
 %LIS Visual Studio
 \bibitem {VS}
 https://www.visualstudio.com/pl-pl/downloads/download-visual-studio-vs.aspx
+
+\bibitem {VSlicencja}
+https://www.visualstudio.com/support/legal/dn877550
+
+\bibitem {msdn}
+http://ms.polsl.pl/aktualnosci.php?news=149wid=22
 
 \bibitem {VSG}
 https://visualstudiogallery.msdn.microsoft.com
@@ -1340,6 +1470,10 @@ Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletn
 
 \bibitem{DataBinding}
 MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
+
+%Lis MS-SQL
+\bibitem{MS-SQL}
+LeBlanc Patrick  \textsl{Microsoft SQL Server 2012. Krok po kroku},Wydawnictwo Helion, Gliwice 2012
 
 %Seba entity
 \bibitem{AdnotacjeCodeFirst}

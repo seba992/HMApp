@@ -114,8 +114,6 @@ Jednym z ostatnich aspektów wytwarzania oprogramowania jest wybranie, jakiego ty
 
 W kontekœcie wdro¿enia, aplikacja powinna zostaæ zainstalowana na stacjach roboczych pracowników co jest drugim warunkiem koniecznym do wprowadzenia nowej infrastruktury IT dla pracowników dzia³u sprzeda¿y. Je¿eli w przysz³oœci aplikacja by³aby rozwijana, za pomoc¹ narzêdzi Continuous Integration kolejne wersje oprogramowania mog¹ zostaæ szybko dostarczone sieci hotelowej w postaci paczki zip, co zosta³o szerzej opisane w rozdziale \textsl{Automatyzacja wydawania kolejnych wersji aplikacji}. 
 
-
-
 \section{Istniej¹ce rozwi¹zania konkurencyjne}
 Wraz ze wzrostem liczby firm \cite{iloscFirm} dzia³aj¹cych w Polsce istnieje koniecznoœæ lepszego, szybszego zarz¹dzania. Wi¹¿e siê to z rozwojem informatyzacji. Mo¿na w ten sposób zautomatyzowaæ wiele procesów w firmie miedzy innymi: zarz¹dzanie magazynem, kontrolê sprzeda¿y, zapotrzebowanie przedsiêbiorstwa na ró¿ne produkty. Do tego celu wdra¿ane s¹ zintegrowane systemy informatyczne, których zadaniem jest po³¹czenie wszystkich elementów przedsiêbiorstwa, w jeden scentralizowany system. Wykorzystuje siê do tego oprogramowania klasy ERP (ang. enterprise resource planning – ERP)\cite{SystemERP}. W sk³ad takiego oprogramowania mo¿e wchodziæ wiele modu³ów: finansowoœæ, stany magazynowe, kontakt z klientem, w zale¿noœci, co w danym przedsiêbiorstwie jest wymagane. Wymogiem takiego systemu jest by wszystkie modu³y by³y niezale¿ne, poniewa¿ ka¿da firma nie potrzebuje ich wszystkich, ale musz¹ siê umieæ z sob¹ komunikowaæ by móc w lepszy sposób zarz¹dzaæ. W wypadku kontaktu z klientem wprowadza siê systemy, które sprawnie obs³uguj¹ sprawy zwi¹zane z reklamacjami, wsparciem technicznym i innymi rzeczami zwi¹zanymi z jego obs³ug¹. Z tym zwi¹zane jest wystawianie propozycji cenowej. Jest to proces czasoch³onny ze wzglêdu na koniecznoœæ aktualizowania cenników, mo¿liwego wyposa¿enia sal i innych spraw zwi¹zanych z organizowanym wydarzeniem. Modu³ CRM(ang. customer relationship management – CRM), który wspomaga proces kontaktu z klientem zawiera komponent wspomaganie procesu wystawiania propozycji. Komponent ten nie tylko automatyzuje proces wystawiania propozycji cenowej, ale jest równie¿ odpowiedzialny, za sprzeda¿ oferowanych towarów i us³ug. W nastêpnej czêœci tego rozdzia³u przedstawiono ró¿ne systemy CRM, których istnieje wersja darmowa.
 
@@ -160,10 +158,8 @@ Wymagane wtedy s¹ tyko podstawowe elementy jak nazwa, kod i jednostka miary towa
 
 \item \textsl{Tworzenie szablonów typu dokumentów} 
 
-\tab W programie ProfitCRM  istnieje równie¿ mo¿liwoœæ zdefiniowania w³asnego szablonu. Proces tworzenia nowego szablonu jest procesem skomplikowanym. Najlepszym rozwi¹zanie jest skopiowanie istniej¹cych w systemie szablonów, poniewa¿ ich edycja jest zablokowana.  Nastêpnie edytowanie skopiowanego. Nie powiod³o siê równie¿ wygenerowanie PDF o wygl¹dzie zbli¿onym do wygl¹du przedstawionego przez sieæ hotelow¹. . Niestety w programie Asystent CRM edycja wzorów dokumentów do druku jest bardzo trudna w realizacji dla zwyk³ego sprzedawcy. Jest to spowodowane sposobem edycji. Bez znajomoœci
-programowania nie ma mo¿liwoœci stworzenia nowej wersji dokumentu, co utrudnia
-zmianê wygl¹du pod dana firmê. W ostatnim przetestowanym programie czyli Gestor GT nie ma ¿adnej mo¿liwoœci edycji szablonów dokumentów.
-
+\tab W programie ProfitCRM  istnieje równie¿ mo¿liwoœæ zdefiniowania w³asnego szablonu. Proces tworzenia nowego szablonu jest procesem skomplikowanym. Najlepszym rozwi¹zanie jest skopiowanie istniej¹cych w systemie szablonów, poniewa¿ ich edycja jest zablokowana.  Nastêpnie edytowanie skopiowanego. Nie powiod³o siê równie¿ wygenerowanie PDF o wygl¹dzie zbli¿onym do wygl¹du przedstawionego przez sieæ hotelow¹. Niestety w programie Asystent CRM edycja wzorów dokumentów do druku jest bardzo trudna w realizacji dla zwyk³ego sprzedawcy. Jest to spowodowane sposobem edycji. Bez znajomoœci
+programowania nie ma mo¿liwoœci stworzenia nowej wersji dokumentu, co utrudnia zmianê wygl¹du pod dana firmê. W ostatnim przetestowanym programie czyli Gestor GT nie ma ¿adnej mo¿liwoœci edycji szablonów dokumentów.
 
 \item \textsl{Cena}
  
@@ -263,7 +259,6 @@ Produkt tego typu zwiera w sobie:
 
 \tab 	G³ównym i najwa¿niejszym elementem tego œrodowiska jest kompilator, który wytwarza program z linii kodu, a dok³adniej t³umaczy kod  zapisany w jêzyku programowania na kod zrozumia³y dla sprzêtu to znaczy maszynowy. W wypadku produktu linii Visual studio mo¿e on pracowaæ w dwóch trybach release i debug, ka¿dy z nich charakteryzuje siê innymi parametrami. W trybie debug gdy  program jest kompilowany  jest mo¿liwe debugowanie z wykorzystaniem wbudowanego debuggera, ale o tym w dalszej czêœci tego rozdzia³u. Niestety w tym trybie jest brak optymalizacji kodu, jest tworzona ca³a otoczka umo¿liwiaj¹ca debugowanie. W drugim trybie s¹ uruchamiane optymalizacje miedzy, innymi tak zwane inline, która polega w du¿ym uproszczeniu na przekopiowane na przyk³ad cia³a funkcji w miejsce w którym zosta³a ona wywo³ana. Dodatkowe mechanizmy optymalizacji powoduj¹ niemo¿liwoœæ znajdowania b³êdów.   
 
-
 \item \textsl{Debugger}
 
 \tab Debugger wbudowany w Visual Studio umo¿liwia szybkie znajdowanie b³êdów, dziêki mo¿liwoœci œledzenia programu krok po kroku w trakcie jego pracy. Ten mechanizm umo¿liwia podgl¹danie wartoœci zmiennych, co te¿ dana funkcja zwróci³a. Dziêki punktom zatrzymania (ang. breakpoint) jest mo¿liwe wyznaczenie miejsca zatrzymania, a w trakcie debugowania jest mo¿liwe tworzenie nowych punktów w innych elementach programu. Program mo¿na œledziæ w dwojaki sposób. Dok³adnie krok po kroku z wchodzeniem w poszczególne funkcje, klasy  nawet te, które zosta³y wykorzystane z zewnêtrznych Ÿróde³ lub te¿ wbudowane w œrodowisko programistyczne. Drug¹ mo¿liwoœci¹ jest œledzenie programu w danym bloku kodu, jest to du¿ym udogodnieniem, bo szukamy tylko w danej funkcji. Istnieje równie¿ opcja mieszania tych trybów co umo¿liwia znajdowanie b³êdów nie tylko w ca³ym projekcie ale w jego czêœci.   
@@ -298,8 +293,6 @@ Visual Studio istnieje w wielu wersjach tego œrodowiska programistycznego. Ka¿da
  Standardowym œrodowiskiem dla technologii jakimi s¹ WPF .NET/C\#  jest Visual Studio. Dziêki wbudowanym mechanizmom istnieje równie¿ mo¿liwoœci ich rozszerzania poprzez napisanie dodatków z wykorzystaniem SDK. Mo¿na równie¿ pobraæ ju¿ gotowe rozszerzenia z Visual  Studio gallery  \cite{VSG} stworzonych przez innych u¿ytkowników zrzeszonych wœród produktów firmy Microsoft. Wykorzystuj¹c odpowiednie udogodnienia istnieje mo¿liwoœæ szybszego pisania kodu, co przek³ada siê na iloœæ kodu do napisania przez programistê.
 	 Kolejnym istotnym elementem z punktu widzenia projektu jest mo¿liwoœæ projektowania okien w dwóch technologiach WPF i Winforms. U³atwia to pracê nad interfejsem u¿ytkownika, poniewa¿ wyeliminowana jest koniecznoœæ ci¹g³ego uruchamiania pisanego programu, by zobaczyæ wygl¹d aplikacji. Zawiera równie¿ wiele predefiniowanych elementów dla tworzonego wygl¹du miedzy, innymi pola tekstowe, przyciski. Wykorzystuj¹c technikê drag-and-drop mo¿na w ³awy sposób ustawiaæ elementy w wybranym przez siebie miejscu.
 
-
-
 \subsubsection{SQL Server Management Studio}
 
 W trakcie prac nad projektem wykorzystano darmowe narzêdzie do zarz¹dzania baz¹ danych SQL Server Management Studio 2012 Express \cite{SQL Server Management Studio Express} wynika to z istniej¹cej infrastruktury opartej na rozwi¹zaniach Microsoftu, co u³atwi³o pracê i proces projektowania ca³ej bazy danych. Dziêki przejrzystemu interfejsowi u¿ytkownika, mo¿na w bardzo ³atwy sposób tworzyæ nawet bardzo skomplikowane struktury, bez koniecznoœci znajomoœci jêzyka tworz¹cego bazê danych.  Program ten u³atwi³ tworzenie wymaganej przez sieæ hotelow¹ bazy danych. Istnieje równie¿ mo¿liwoœæ generowania skryptów, których zadaniem jest odtworzenie ca³ej struktury bazy danych. W programie jest równie¿ mo¿liwoœæ tworzenia diagramów: wszystkich jak równie¿ wybranych tabel. Te mo¿liwoœci przedstawia rysunek  \ref{rys:interfejsSQL} Umo¿liwia to diagnozowanie problemu braku po³¹czeñ niektórych tabel z reszt¹ struktury. 
@@ -321,6 +314,7 @@ Wykorzystuj¹c wbudowane mechanizmy mo¿liwe jest ³atwe wpisywanie pocz¹tkowych da
 	\tab
 	Drugim wa¿nym elementem SQL Server Management Studio jest Object Explorer umo¿liwiaj¹cy przegl¹danie wielu instancji bazy danych. W tym te¿ elemencie jest mo¿liwoœæ generowania diagramów baz danych,  projektowania ca³ej bazy danych. Wyœwietla podgl¹d tabel  wyzwalacze, procedury. Podgl¹d tabel daje te¿ mo¿liwoœæ edycji danych  w tabeli jak i wybierania pieszych wierszy w danej tabeli. U³atwia to sprawdzenie zachowañ aplikacji na dane testowe. Dziêki graficznemu interfejsowi jest mo¿liwe w bardzo prosty sposób usuwanie bazy danych poprzez naciœniêcie przycisku ,,DELETE". Umo¿liwia generowanie skryptu dziêki, któremu mo¿na odtworzyæ ca³¹ strukturê bazy danych
 \end{itemize}   
+
 \subsubsection{Trello}
 
 Podczas pracy zespo³owej napotyka siê liczne problemy zwi¹zane z organizacj¹ pracy, jej synchronizacj¹ oraz podzia³em obowi¹zków. Stopieñ zaawansowania przedstawionych problemów dodatkowo wzrasta, w sytuacji, gdy wspó³praca zespo³u przebiega zdalnie. W takich okolicznoœciach warto pos³u¿yæ siê dedykowanymi narzêdziami, które umo¿liwiaj¹ prost¹, szybk¹ i skuteczn¹ komunikacjê wspieraj¹c¹ pracê wielu osób nad jednym projektem. 
@@ -515,6 +509,16 @@ TODO: after refactor.
 
 \subsection{Architektura bazy danych}
 
+\subsubsection{Definicja bazy danych}
+Bazy danych mo¿na porównaæ do archiwum firmy gdzie s¹ przechowywane wszelakie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ tak jak dane jednej osoby, a kolumny to s¹ poszczególne dane typu imiê nazwisko pesel itp.. Tak jak pesel jest unikatowy dla osoby w firmie tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez na przyk³ad pesel danej osoby to w drugim segregatorze nazywa siê kluczem obcym, a samo po³¹czenie relacj¹. Rozró¿niamy kilka relacji:
+\begin{enumerate}
+  \item Jeden do, wielu kiedy jedna koszulka w segregatorze ³¹czy siê z wieloma koszulkami w drugim.
+  \item Jeden do jednego wystêpuje wtedy, kiedy jedna teczka ³¹czy siê tylko z teczk¹ inn¹ w pojedynczy sposób.
+  \item Wiele do wielu wystêpuje wtedy, kiedy jedna koszulka z jednego segregatora odpowiada wielu w drugim i na odwrót.
+\end{enumerate}
+
+W projekcie zosta³a wykorzystana baza relacyjna, która dzia³a na powy¿szym przyk³adzie. Wa¿nym z punktu widzenia projektowania aplikacji bazodanowej jest odpowiednie zaprojektowanie struktury tabel i po³¹czeñ miedzy nim. Nie mo¿na lekcewa¿yæ tego procesu. Gdy siê Ÿle zaprojektuje bazê mog¹ wynikn¹æ w póŸniejszym czasie problemy z jej dalszym rozwojem. Istnieje jeszcze gorszy scenariusz, gdy w trakcie dalszych prac baza danych nie bêdzie spe³nia³a swojego zadania. Efektem Ÿle zaprojektowanej bazy danych mo¿e byæ d³ugoœæ wykonywanych zapytaæ jak i bardzo du¿a z³o¿onoœæ. Wi¹¿e siê to z koniecznoœci¹ przeprojektowania od pocz¹tku ca³ej bazy lub starania siê w programie ukryæ te niedomagania.
+
 \subsubsection{MS-SQL – Zastosowany system zarz¹dzania baz¹ danych}
 
 Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W sieci hotelowej wykorzystane s¹ technologie Microsoftu. Produktem tej firmy zwi¹zanym z powy¿sz¹ tematyk¹ jest  serwer z rodziny  MS-SQL\cite{MS-SQL}. Serwer ten umo¿liwia tworzenie baz danych dwóch typów relacyjny jak i nierelacyjnych. Tworzenie baz danych mo¿e siê odbywaæ w dwojaki sposób poprzez:
@@ -548,6 +552,7 @@ W tym silniku bazodanowym mo¿na wyszczególniæ kilka komponentów:
 
 
 \subsubsection{Budowa bazy danych u¿ytej w projekcie}
+
 Bazy danych mo¿na porównaæ do archiwum firmy gdzie s¹ przechowywane wszelakie projekty i dane osobowe. Tabel¹ w kontekœcie tego przyk³adu jest pojedynczy segregator zawieraj¹cy dane o identycznej tematyce. Tabela sk³ada siê z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spójn¹ ca³oœæ tak jak dane jednej osoby, a kolumny to s¹ poszczególne dane typu imiê nazwisko pesel itp. Tak jak pesel jest unikatowy dla osoby w firmie tak klucz g³ówny w tabeli te¿ musi byæ unikatowy. Po³¹czenie dwóch segregatorów poprzez na przyk³ad pesel danej osoby to w drugim segregatorze nazywa siê kluczem obcym, a samo po³¹czenie relacj¹. Rozró¿niamy kilka relacji:
 \begin{enumerate}
   \item Jeden do, wielu kiedy jedna koszulka w segregatorze ³¹czy siê z wieloma koszulkami w drugim.
@@ -572,7 +577,6 @@ Drugi cz³on bazy danych stanowi¹ tabele zwi¹zane z tworzon¹ propozycj¹ cenow¹. S
 
 \end{itemize}
 Podzia³ taki uwzglêdnia mo¿liwoœæ dalszego rozwoju aplikacji. Mo¿liwe jest dodawanie nowych s³owników która bêd¹ zwieraæ inne elementy zwi¹zane z tworzon¹ propozycj¹ cenowa. Dodanie nowej tabeli do s³owników,  która bêdzie wi¹za³a siê z now¹  grupy produktów.
-
 
 \subsection{Komunikacja bazy danych z projektem programistycznym}
 \subsubsection{Mapowanie obiektowo-relacyjne}
@@ -936,7 +940,6 @@ Edycja istniej¹cej propozycji cenowej odbywa siê poprzez zaznaczenie w oknie g³ó
 	\label{rys:editProp}
 \end{figure}
 
-
 \subsection{Tworzenie pliku PDF istniej¹cej propozycji cenowej}
 
 Jedn¹ z najwa¿niejszych funkcjonalnoœci niniejszej aplikacji jest mo¿liwoœæ zapisu propozycji cenowych do pliku PDF. W menu rozwijanym znajduje siê pozycja \textsl{Lista propozycji}, co zosta³o przedstawione na rysunku \ref{rys:ListaPropozycji}.
@@ -1078,7 +1081,6 @@ Istnieje mo¿liwoœæ, i¿ u¿ytkownik nie pamiêta swojego has³a. W takim przypadku a
 \end{figure}
 	
  \end{itemize}
-
  
 \section{Specyfikacja wewnêtrzna}
 
@@ -1371,6 +1373,7 @@ http://urriellu.net/en/articles-software/csharp-advantages.html
 %Seba xml
 \bibitem{Xml}
 http://www.w3schools.com/xml/xml\_whatis.asp
+
 %Lis T_SQL
 \bibitem {T-SQL}
  Itzik Ben-Gan  \textsl{Microsoft SQL Server 2012. Podstawy jêzyka T-SQL} Wydawnictwo Helion, Gliwice , 2012
@@ -1385,6 +1388,7 @@ https://www.visualstudio.com/pl-pl/downloads/download-visual-studio-vs.aspx
 
 \bibitem {VSlicencja}
 https://www.visualstudio.com/support/legal/dn877550
+
 \bibitem {msdn}
 http://ms.polsl.pl/aktualnosci.php?news=149wid=22
 
@@ -1470,9 +1474,11 @@ Borycki D., Matulewski J., Pakulski M., Grabek M.: \textsl{ASP.NET MVC. Kompletn
 
 \bibitem{DataBinding}
 MacDonald M., \textsl{Pro WPF 4.5 in VB: Windows Presentation Foundation in .NET 4.5}, Wydawnictwo Apress, 2012
+
 %Lis MS-SQL
 \bibitem{MS-SQL}
 LeBlanc Patrick  \textsl{Microsoft SQL Server 2012. Krok po kroku},Wydawnictwo Helion, Gliwice 2012
+
 %Seba entity
 \bibitem{AdnotacjeCodeFirst}
 https://msdn.microsoft.com/en-us/data/jj591583
