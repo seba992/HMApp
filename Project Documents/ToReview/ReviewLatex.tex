@@ -47,10 +47,6 @@ basicstyle=\ttfamily\small
 
 \autor{Mateusz Ogiermann}{226591}{0} {~9 stron na 13.12.2015r.}	
 	
-
-
-%% dedykacja mile widziana
-\dedykacja{To jest\\dedykacja}
 %\NumeryNaPoczatku
 %% numeracja wzorÛw tu w≥πczona typu (1.2.3), ta druga to typu (1.2), a domyúlnie typu (1)
 %\subsectionWzory
@@ -58,17 +54,11 @@ basicstyle=\ttfamily\small
 
 %\rozdzialy
 
-
 %\literowaNumeracjaDodatkow %% w≥πczy numeracjÍ dodatkÛw literami
 %\rzymskaNumeracjaDodatkow  %%w≥πczy numeracjÍ dodatkÛw liczbami rzymskimi
 
 %% wy≥πczenie wyjaúnieÒ:
 \bezWyjasnien
-
-%% standardowe komendy \newtheorem  dzia≥ajπ jak w oryginale
-\newtheorem{tw}{Twierdzenie}[subsection]
-\newtheorem{twa}{Twierdzenie}[section]
-\newtheorem{dd}{Definicja}[subsection]
 
 \begin{document}
 \TabPositions{0.75cm}
@@ -78,7 +68,7 @@ Obecna sytuacja rynkowa zwiπzana z istnieniem duøej iloúci firm w zakresie kaøde
 	Liczba hoteli w Polsce od kilkunastu lat nieprzerwanie roúnie \cite{LiczbaHoteli}. Implikuje to koniecznoúÊ wzmoøonej walki o klienta w celu utrzymania siÍ na rynku. Obniøenie cen us≥ug wynajmu pokoi, sal konferencyjnych oraz cateringÛw przy zachowaniu odpowiedniego poziomu dochodÛw jest problemem, z ktÛrym zmaga siÍ kaøda sieÊ hotelowa. PrzedsiÍbiorcy przeúcigajπ siÍ w znajdowaniu coraz to nowszych i efektywniejszych rozwiπzaÒ, ktÛre majπ na celu rozwiπzanie owego problemu. W XXI wieku duøπ pomocπ w tym zakresie okazuje siÍ informatyzacja.
 
 \section{Geneza projektu}
-
+\label{dzial:geneza}
 Podczas przeprowadzania transakcji dotyczπcej organizacji szkolenia w jednej z sieci hotelowych, dostrzeøony zosta≥ potencjalny problem wynikajπcy z manualnego operowania wszelkimi danymi przez pracownikÛw dzia≥u sprzedaøy. Pracownicy Ci w czasie kontaktu z klientem majπ za zadanie ustalenie wszelkich wartoúci cenowych us≥ug wybranych przez klienta. Us≥ugi te bezpoúrednio zwiπzane sπ z typem wydarzenia, ktÛre klient chce zorganizowaÊ. Przewaønie sπ to wszelkiego rodzaju konferencje, kilkudniowe szkolenia firmowe, ale takøe imprezy weselne, urodzinowe, czy spotkania rodzinne. Przez wzglπd na rÛønπ specyfikÍ powyøszych przedsiÍwziÍÊ sieÊ hotelowa dysponuje szerokπ gamπ us≥ug z nimi zwiπzanych. 
 
 W czasie tworzenia przez sprzedawcÍ propozycji cenowej organizowanego wydarzenia, klient ma moøliwoúÊ wyboru odpowiedniej dla jego potrzeb sali konferencyjnej lub bankietowej wraz z jej dodatkowym wyposaøeniem, ustalenia aspektÛw gastronomicznych, takich jak liczba i rodzaj posi≥kÛw oraz napojÛw, a takøe wyborem odpowiedniego typu pokoju hotelowego. Po wstÍpnym wyborze zakresu us≥ug, elementy te uzupe≥niane sπ o liczbÍ osÛb, ktÛre bÍdπ w wydarzeniu uczestniczyÊ, a takøe iloúÊ dni jego trwania. Kolejnym etapem jest negocjacja rabatÛw oraz finalnie ustalenie formy zap≥aty za organizowane przedsiÍwziÍcie. Aktualnie operacja ta wraz z procesem tworzeniem dokumentu propozycji cenowej przeprowadzana jest za pomocπ aplikacji Microsoft Excel jak rÛwnieø w wersji papierowej. Obydwie metodologie generujπ liczne problemy, ktÛre bezpoúrednio wp≥ywajπ na zwiÍkszenie kosztÛw generowanych przez pracownikÛw, a co za tym idzie ceny oferowanych us≥ug. Pierwszy problem odnosi siÍ do aspektu utrudnienia aktualizacji danych, ktÛry jest nieod≥πcznym elementem branøy. Ceny pokoi hotelowych ulegajπ czÍstym modyfikacjom oraz uzaleønione sπ od sytuacji rynkowej, organizowanych okolicznych wydarzeÒ rozrywkowych i kulturalnych oraz samego faktu wolnej ich iloúci w danym czasie. Analogicznie sytuacja przedstawia siÍ w przypadku produktÛw gastronomicznych oraz pozosta≥ych wynajmowanych pomieszczeÒ.
@@ -90,9 +80,9 @@ Dostrzegajπc powyøsze problemy zdecydowano siÍ wykonaÊ dedykowanπ aplikacjÍ bazo
 
 Kolejnym atutem przedstawionego rozwiπzania by≥oby umoøliwienie kierownictwu z poziomu kont administratorskich kontroli pracownikÛw poprzez zdalny wglπd w przygotowywane przez nich propozycje cenowe, a co za tym idzie ustalanych z klientem cen oraz zniøek. Menadøer sprzedaøy za pomocπ swojego uprzywilejowanego konta posiada≥by rÛwnieø moøliwoúÊ aktualizacji odpowiednich tabel danych, dziÍki czemu zmiany natychmiastowo by≥yby widocznie na kontach sprzedawcÛw. Zmiany te dotyczy≥yby moøliwoúci modyfikacji cen oferowanych us≥ug i produktÛw oraz kontroli sk≥adu pracowniczego poprzez funkcjonalnoúÊ dodawania, usuwania a takøe modyfikacji ich kont. 
 
-\section{Analiza przedwdroøeniowa}
+\section{Specyfikacja wymagaÒ projektowych}
 
-W rozdziale \textsl{Geneza pracy} przedstawiono problemy sieci hotelowej, wystÍpujπce podczas przeprowadzania transakcji z klientem. Sπ one podstawowymi czynnikami determinujπcymi docelowπ formÍ aplikacji, dobÛr narzÍdzi i technologii oraz wymagania ktÛre naleøy spe≥niÊ w celu wdroøenia proponowanego rozwiπzania. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemÛw operacyjnych jest uøywany. Jak pokazujπ rankingi, jednymi z najczÍúciej uøywanych systemÛw operacyjnych sπ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekúcie doboru technologii oznacza to, iø warto zastosowaÊ rozwiπzania firmy Microsoft ktÛre sπ w pe≥ni zintegrowane z systemami Windows, ze wzglÍdu na ich wysokπ wydajnoúÊ oraz popularnoúÊ. Fundamentalnym elementem aplikacji jest baza danych w ktÛrej przechowywane sπ detale transakcji, szczegÛ≥owe listy oferowanych us≥ug czy dane osobowe pracownikÛw. Firma Microsoft oferuje produkt SQL Server, ktÛry posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jÍzykÛw platformy programistycznej .NET Framework. SQL Server w wersji darmowej moøe zostaÊ uøyty do w projektach czysto hobbystycznych jak i w pe≥ni komercyjnych co jest jego duøym atutem. W rankingu portalu db-engines.com SQL Server zajmuje 3 pozycjÍ, nieprzerwanie od 2014 r. poúrÛd ponad 200 sklasyfikowanych silnikÛw baz danych \cite{SQLRanking}. Wystarczajπcym kryterium ktÛre musi zostaÊ spe≥nione aby firma mog≥a korzystaÊ z aplikacji bazujπcej na tym silniku, jest przygotowanie jednego serwera centralnego z ktÛrym za poúrednictwem aplikacji ≥πczπ siÍ pracownicy. Opisane rozwiπzanie eliminuje jeden z problemÛw, ktÛrym jest synchronizacja danych pomiÍdzy pracownikami, takich jak aktualne wersje propozycji cenowych oraz listy oferowanych us≥ug. 
+W rozdziale \ref{dzial:geneza} przedstawiono problemy sieci hotelowej, wystÍpujπce podczas przeprowadzania transakcji z klientem. Sπ one podstawowymi czynnikami determinujπcymi docelowπ formÍ aplikacji, dobÛr narzÍdzi i technologii oraz wymagania ktÛre naleøy spe≥niÊ w celu wdroøenia proponowanego rozwiπzania. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemÛw operacyjnych jest uøywany. Jak pokazujπ rankingi, jednymi z najczÍúciej uøywanych systemÛw operacyjnych sπ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekúcie doboru technologii oznacza to, iø warto zastosowaÊ rozwiπzania firmy Microsoft ktÛre sπ w pe≥ni zintegrowane z systemami Windows, ze wzglÍdu na ich wysokπ wydajnoúÊ oraz popularnoúÊ. Fundamentalnym elementem aplikacji jest baza danych w ktÛrej przechowywane sπ detale transakcji, szczegÛ≥owe listy oferowanych us≥ug czy dane osobowe pracownikÛw. Firma Microsoft oferuje produkt SQL Server, ktÛry posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jÍzykÛw platformy programistycznej .NET Framework. SQL Server w wersji darmowej moøe zostaÊ uøyty do w projektach czysto hobbystycznych jak i w pe≥ni komercyjnych co jest jego duøym atutem. W rankingu portalu db-engines.com SQL Server zajmuje 3 pozycjÍ, nieprzerwanie od 2014 r. poúrÛd ponad 200 sklasyfikowanych silnikÛw baz danych \cite{SQLRanking}. Wystarczajπcym kryterium ktÛre musi zostaÊ spe≥nione aby firma mog≥a korzystaÊ z aplikacji bazujπcej na tym silniku, jest przygotowanie jednego serwera centralnego z ktÛrym za poúrednictwem aplikacji ≥πczπ siÍ pracownicy. Opisane rozwiπzanie eliminuje jeden z problemÛw, ktÛrym jest synchronizacja danych pomiÍdzy pracownikami, takich jak aktualne wersje propozycji cenowych oraz listy oferowanych us≥ug. 
 
 Popularnym jÍzykiem platformy programistycznej .NET Framework jest jÍzyk C\#. Umoøliwia on tworzenie nowoczesnych aplikacji okienkowych, przy uøyciu bibliotek graficznych takich jak WPF. Tworzenie okien i ich komponentÛw takich jak przyciski, listy rozwijane czy pola tekstowe jest proste i wygodne dla programistÛw, poniewaø nie wymagajπ duøych ingerencji w kod ürÛd≥owy. Manipulacja komponentami okien odbywa siÍ poprzez modelowanie elementÛw graficznych w kreatorze. Umoøliwia on tworzenie graficznego interfejsu uøytkownika podobnie jak w popularnych programach s≥uøπcych do obrÛbki grafiki. Do zaprojektowanego w ten sposÛb interfejsu, wystarczy podpiπÊ konkretne funkcjonalnoúci zaimplementowane w kodzie ürÛd≥owym. Mogπ to byÊ operacje takie jak zapisywanie propozycji cenowych do pliku PDF poprzez klikniÍcie przycisku. W konsekwencji czas implementacji aplikacji ulega redukcji. Istotnπ kwestiπ podczas implementacji oprogramowania jest komunikacja aplikacji z zasobami bazy danych z poziomu kodu ürÛd≥owego. Dla jÍzyka C\# firma Microsoft zaprojektowa≥a system Entity Framework ktÛry s≥uøy do odwzorowania relacyjnej bazy danych na obiekty dostÍpne z poziomu kodu. Zapytania bazodanowe takie jak usuwanie czy modyfikacja tabel sπ implementowane w kodzie operujπcym na obiektach utworzonych przez Entity Framework. 
 
@@ -169,16 +159,19 @@ programowania nie ma moøliwoúci stworzenia nowej wersji dokumentu, co utrudnia z
 Podsumowujπc powyøsze programy moøna zauwaøyÊ, øe proces dodawania produktÛw jest bardzo zbliøony. Podobnie sprawa wyglπda z procesem wystawiania ofert, faktur. NajwiÍkszπ moøliwoúciπ personalizacji wystawianych dokumentÛw ma program ProfitCRM. Poniewaø øaden z tych programÛw nie oferowa≥ moøliwoúci wystawianie propozycji cenowej, a tak øπdanie mia≥a sieÊ hotelowa dlatego wynik≥a koniecznoúÊ stworzenia dedykowanej aplikacji. 
 
 \section{Zastosowane rozwiπzania}
-\subsection{Wykorzystana technologia}
 
-Niniejszy rozdzia≥ zawiera opis technologii wykorzystanych do implementacji aplikacji. Zakres opisu obejmuje nastÍpujπce komponenty:
+Niniejszy rozdzia≥ zawiera opis technologii wykorzystanych do implementacji prezentowanej aplikacji. Zakres opisu obejmuje wszelkie komponenty techniczne, ktÛre znalaz≥y zastosowanie w projekcie:
 
 \begin{itemize}
-\item \textsl{JÍzyk programowania}
-\item \textsl{Silnik graficzny}
-\item \textsl{JÍzyk opisu graficznego interfejsu uøytkownika}
-\item \textsl{JÍzyk zapytaÒ bazy danych}
+\item \textsl{JÍzyk programowania,}
+\item \textsl{Silnik graficzny,}
+\item \textsl{JÍzyk opisu graficznego interfejsu uøytkownika,}
+\item \textsl{JÍzyk zapytaÒ bazy danych,}
+\item \textsl{NarzÍdzia wspierajπce pracÍ zespo≥u programistycznego,}
+\item \textsl{Biblioteki umoøliwiajπce wdroøenie sprawdzonych juø i poprawnie dzia≥ajπcych rozwiπzaÒ skomplikowanych operacji.}
 \end{itemize}
+
+\subsection{Wykorzystana technologia}
 
 \subsubsection{.NET Framework/C\#}
 
@@ -1150,10 +1143,11 @@ Istnieje moøliwoúÊ, iø uøytkownik nie pamiÍta swojego has≥a. W takim przypadku a
 	\item \textsl {Sale}
 	
 	\tab 
-	Ceny poszczegÛlnych sal sπ zaleøne on miesiÍcy, w ktÛrych dane wydarzenie ma siÍ odbyÊ. Nie ma moøliwoúci dodawania nowych sal. Przedstawia to rysunku \ref{rys:Sale}
+	Ceny poszczegÛlnych sal sπ zaleøne on miesiÍcy, w ktÛrych dane wydarzenie ma siÍ odbyÊ. Nie ma moøliwoúci dodawania nowych sal. Okno przedstawiajπce graficznπ reprezentacjπ tabeli sal przedstawione jest na rysunku \ref{rys:Sale}.
+	
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{Sale.jpg}
+    \includegraphics[width=0.9\textwidth]{Sale.jpg}
     \caption{Ceny sal w poszczegÛlnych miesiπcach, èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:Sale}
 \end{figure}
@@ -1356,39 +1350,12 @@ W fazie implementacji za≥oøonych modu≥Ûw prezentowanej aplikacji napotkano na wi
 Pierwszym pomys≥em rozbudowy prezentowanego systemu jest wprowadzenie funkcji tworzenia propozycji offline. Zgodnie z ustalonymi wymaganiami projektowymi, osoba korzystajπca z aplikacji zobowiπzana jest do posiadania dostÍpu do sieci Internet. W przypadku jego braku, praca z programem przez wzglπd na koniecznoúÊ weryfikacji toøsamoúci na podstawie bazy danych jest niemoøliwa. Wersja offline wprowadzi≥aby moøliwoúÊ stworzenia nowej propozycji cenowej w sytuacji braku po≥πczenia internetowego oraz zapis wszystkich jego elementÛw w postaci pliku na lokalnym dysku twardym. Implikuje to jednak szereg problemÛw do rozwiπzania na tle synchronizacji z bazπ danych oraz szablonu tworzonej propozycji. W sytuacji utworzenia nowej propozycji offline oraz pÛüniejszym uzyskaniu dostÍpu do sieci, wszystkie jej elementy synchronizowane byÊ powinny z bazπ danych oraz lokalnie usuwane. Komplikacja na tle schematu tworzenia propozycji dotyczy≥aby z kolei sposobu wype≥nienia pÛl, ktÛrych zawartoúÊ zaleøna jest od bazy danych.
 
 NastÍpnπ modyfikacjπ moøliwπ do wprowadzenia w przypadku rozwoju projektu jest modyfikacja obecnie zaimplementowanego szablonu wyboru elementÛw dostÍpnych us≥ug. W chwili obecnej liczba moøliwych do wyboru elementÛw kaødej us≥ugi jest z gÛry ustalona. Modyfikacja wprowadza≥aby dynamicznie rozwijane rekordy, ktÛrych liczba zaleøna by≥aby od liczby wybranych elementÛw. Zmiana ta g≥Íboko ingerowa≥aby w obecnπ architekturÍ modu≥u tworzenia propozycji i wymaga≥aby jej gruntownej przebudowy dotyczπcej zmiany stosowanych kontrolek graficznych, implementacji ich zachowaÒ oraz walidacji wprowadzanych danych.
-
-%% UWaga na \newlineTekst oraz \newlineSpis. Moøna teø uøyÊ \newline, dzia≥a jak \newlineSpis\newlineTekst
-\section[Tytu≥ drugiego rozdzia≥u. Bardzo d≥ugi \ldots]
-        {Tytu≥ drugiego rozdzia≥u. \newlineTekst Bardzo d≥ugi tytu≥. \newlineTekst
-          Jego \newlineSpis formatowanie jest trudniejsze}
-CACHE
-
-Tu jest wnÍtrze rozdzia≥u drugiego.
-
-\dodatek{MÛj specjalny dodatek}
-
-CACHE
-
-Tu treúÊ dodatku. ZwrÛÊmy uwagÍ na sposÛb numerowania dodatku, 
-moøliwa jest zmiana numerowania, patrz wyjaúnienia.
-          
+         
 %% to wpisuje siÍ do spisu treúci, ale bez numeru rozdzia≥u,
 %% moøna teø uøywaÊ \dodatek{Tytu≥}, ktÛry jest numerowany, ale inaczej niø rozdzia≥y.
 
 \dodatkowo{Za≥πczniki}
-CACHE zalaczniki
-
-\vrule\hspace{10pt}\begin{minipage}{10cm}
-\begin{verbatim*}
-<?php
-   echo "test=$test";
-?>
-\end{verbatim*}
-\end{minipage}
-
-\begin{tw}
-Twierdzenie Twierdzenie Twierdzenie Twierdzenie Twierdzenie 
-\end{tw}
+TODO OGI
 
 \begin{thebibliography}{12}
 
@@ -1596,9 +1563,6 @@ Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 
 \bibitem{dynamic}
 http://www.pzielinski.com/?p=831
-
-
-
 
 %Nazwisko I. \textsl{tytu≥}, miasto, rok
 

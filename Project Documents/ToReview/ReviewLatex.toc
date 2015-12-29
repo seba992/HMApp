@@ -1,6 +1,6 @@
 \contentsline {section}{Wst\k ep}{9}
 \contentsline {section}{\numberline {1}\kernsekcyjny Geneza projektu}{11}
-\contentsline {section}{\numberline {2}\kernsekcyjny Analiza przedwdro\.zeniowa}{13}
+\contentsline {section}{\numberline {2}\kernsekcyjny Specyfikacja wymaga\'n projektowych}{13}
 \contentsline {section}{\numberline {3}\kernsekcyjny Istniej\k ace rozwi\k azania konkurencyjne}{17}
 \contentsline {section}{\numberline {4}\kernsekcyjny Zastosowane rozwi\k azania}{21}
 \contentsline {subsection}{\numberline {4.1}\kernsubsekcyjny Wykorzystana technologia}{21}
@@ -11,7 +11,7 @@
 \contentsline {subsection}{\numberline {4.2}\kernsubsekcyjny Wykorzystane narz\k edzia}{25}
 \contentsline {subsubsection}{\numberline {4.2.1}\kernsubsubsekcyjny Visual Studio 2013}{25}
 \contentsline {subsubsection}{\numberline {4.2.2}\kernsubsubsekcyjny SQL Server Management Studio}{28}
-\contentsline {subsubsection}{\numberline {4.2.3}\kernsubsubsekcyjny Trello}{29}
+\contentsline {subsubsection}{\numberline {4.2.3}\kernsubsubsekcyjny Trello}{30}
 \contentsline {subsubsection}{\numberline {4.2.4}\kernsubsubsekcyjny Git/SourceTree/GitHub}{32}
 \contentsline {subsubsection}{\numberline {4.2.5}\kernsubsubsekcyjny ReSharper}{36}
 \contentsline {subsubsection}{\numberline {4.2.6}\kernsubsubsekcyjny Jenkins}{37}
@@ -63,7 +63,5 @@
 \contentsline {subsubsection}{\numberline {8.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{87}
 \contentsline {subsection}{\numberline {8.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{89}
 \contentsline {section}{\numberline {9}\kernsekcyjny Podsumowanie i perspektywy rozwoju \relax oprogramowania}{91}
-\contentsline {section}{\numberline {10}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{93}
-\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{95}
-\contentsline {section}{Za\IeC {\l }\k aczniki}{97}
-\contentsline {section}{Bibliografia}{99}
+\contentsline {section}{Za\IeC {\l }\k aczniki}{93}
+\contentsline {section}{Bibliografia}{95}
