@@ -21,48 +21,49 @@
 \contentsline {section}{\numberline {5}\kernsekcyjny Implementacja}{41}
 \contentsline {subsection}{\numberline {5.1}\kernsubsekcyjny Architektura aplikacji}{41}
 \contentsline {subsubsection}{\numberline {5.1.1}\kernsubsubsekcyjny Wzorce architektoniczne oprogramowania}{41}
-\contentsline {subsubsection}{\numberline {5.1.2}\kernsubsubsekcyjny Zastosowany wzorzec architektoniczny \IeC {\textendash } MVVM}{41}
+\contentsline {subsubsection}{\numberline {5.1.2}\kernsubsubsekcyjny Zastosowany wzorzec architektoniczny \IeC {\textendash } MVVM}{42}
 \contentsline {subsubsection}{\numberline {5.1.3}\kernsubsubsekcyjny Model aplikacji}{43}
 \contentsline {subsection}{\numberline {5.2}\kernsubsekcyjny Architektura bazy danych}{43}
-\contentsline {subsubsection}{\numberline {5.2.1}\kernsubsubsekcyjny MS-SQL \IeC {\textendash } Zastosowany system zarz\k adzania baz\k a danych}{43}
-\contentsline {subsubsection}{\numberline {5.2.2}\kernsubsubsekcyjny Budowa bazy danych u\.zytej w projekcie}{44}
-\contentsline {subsection}{\numberline {5.3}\kernsubsekcyjny Komunikacja bazy danych z projektem programistycznym}{46}
-\contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Mapowanie obiektowo-relacyjne}{46}
-\contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny Zastosowane narz\k edzie ORM \IeC {\textendash } Entity Framework}{48}
-\contentsline {subsubsection}{\numberline {5.3.3}\kernsubsubsekcyjny Stosowanie polece\'n bazodanowych ze strony projektu C\# za pomoc\k a Linq to Entities}{48}
-\contentsline {section}{\numberline {6}\kernsekcyjny Automatyzacja wydawania kolejnych wersji aplikacji}{51}
-\contentsline {subsection}{\numberline {6.1}\kernsubsekcyjny Continuous Integration/Continuous Delivery/Continuous Deployment}{51}
-\contentsline {subsection}{\numberline {6.2}\kernsubsekcyjny Programy i wtyczki u\.zyte w Jenkins}{51}
-\contentsline {subsubsection}{\numberline {6.2.1}\kernsubsubsekcyjny SonarQube}{51}
-\contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Schemat budowania projektu}{54}
-\contentsline {section}{\numberline {7}\kernsekcyjny Testowanie aplikacji}{55}
-\contentsline {subsection}{\numberline {7.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{55}
-\contentsline {subsection}{\numberline {7.2}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{58}
-\contentsline {subsubsection}{\numberline {7.2.1}\kernsubsubsekcyjny Opis klienta}{58}
-\contentsline {subsubsection}{\numberline {7.2.2}\kernsubsubsekcyjny Sala i jej wyposa\.zenie}{61}
-\contentsline {subsubsection}{\numberline {7.2.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{62}
-\contentsline {subsubsection}{\numberline {7.2.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{64}
-\contentsline {subsubsection}{\numberline {7.2.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{64}
-\contentsline {subsubsection}{\numberline {7.2.6}\kernsubsubsekcyjny Zapis nowej propozycji cenowej}{66}
-\contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{67}
-\contentsline {subsection}{\numberline {7.4}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{68}
-\contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{69}
-\contentsline {subsubsection}{\numberline {7.5.1}\kernsubsubsekcyjny Dodawanie konta}{70}
-\contentsline {subsubsection}{\numberline {7.5.2}\kernsubsubsekcyjny Edycja konta}{71}
-\contentsline {subsubsection}{\numberline {7.5.3}\kernsubsubsekcyjny Usuwanie konta}{72}
-\contentsline {subsubsection}{\numberline {7.5.4}\kernsubsubsekcyjny Resetowanie hase\IeC {\l }}{73}
-\contentsline {subsection}{\numberline {7.6}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{74}
-\contentsline {section}{\numberline {8}\kernsekcyjny Specyfikacja wewn\k etrzna}{77}
-\contentsline {subsection}{\numberline {8.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{77}
-\contentsline {subsubsection}{\numberline {8.1.1}\kernsubsubsekcyjny Bezpiecze\'nstwo procesu logowania}{77}
-\contentsline {subsubsection}{\numberline {8.1.2}\kernsubsubsekcyjny Wymagania z\IeC {\l }o\.zono\'sci hase\IeC {\l }}{78}
-\contentsline {subsection}{\numberline {8.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{79}
-\contentsline {subsection}{\numberline {8.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{80}
-\contentsline {subsection}{\numberline {8.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{81}
-\contentsline {subsubsection}{\numberline {8.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{81}
-\contentsline {subsection}{\numberline {8.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{83}
-\contentsline {section}{\numberline {9}\kernsekcyjny Podsumowanie i perspektywy rozwoju \relax oprogramowania}{85}
-\contentsline {section}{\numberline {10}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{87}
-\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{89}
-\contentsline {section}{Za\IeC {\l }\k aczniki}{91}
-\contentsline {section}{Bibliografia}{93}
+\contentsline {subsubsection}{\numberline {5.2.1}\kernsubsubsekcyjny Definicja bazy danych}{43}
+\contentsline {subsubsection}{\numberline {5.2.2}\kernsubsubsekcyjny MS-SQL \IeC {\textendash } Zastosowany system zarz\k adzania baz\k a danych}{44}
+\contentsline {subsubsection}{\numberline {5.2.3}\kernsubsubsekcyjny Budowa bazy danych u\.zytej w projekcie}{45}
+\contentsline {subsection}{\numberline {5.3}\kernsubsekcyjny Komunikacja bazy danych z projektem programistycznym}{47}
+\contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Mapowanie obiektowo-relacyjne}{47}
+\contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny Zastosowane narz\k edzie ORM \IeC {\textendash } Entity Framework}{49}
+\contentsline {subsubsection}{\numberline {5.3.3}\kernsubsubsekcyjny Stosowanie polece\'n bazodanowych ze strony projektu C\# za pomoc\k a Linq to Entities}{49}
+\contentsline {section}{\numberline {6}\kernsekcyjny Automatyzacja wydawania kolejnych wersji aplikacji}{53}
+\contentsline {subsection}{\numberline {6.1}\kernsubsekcyjny Continuous Integration/Continuous Delivery/Continuous Deployment}{53}
+\contentsline {subsection}{\numberline {6.2}\kernsubsekcyjny Programy i wtyczki u\.zyte w Jenkins}{53}
+\contentsline {subsubsection}{\numberline {6.2.1}\kernsubsubsekcyjny SonarQube}{53}
+\contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Schemat budowania projektu}{56}
+\contentsline {section}{\numberline {7}\kernsekcyjny Testowanie aplikacji}{57}
+\contentsline {subsection}{\numberline {7.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{57}
+\contentsline {subsection}{\numberline {7.2}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{60}
+\contentsline {subsubsection}{\numberline {7.2.1}\kernsubsubsekcyjny Opis klienta}{60}
+\contentsline {subsubsection}{\numberline {7.2.2}\kernsubsubsekcyjny Sala i jej wyposa\.zenie}{63}
+\contentsline {subsubsection}{\numberline {7.2.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{64}
+\contentsline {subsubsection}{\numberline {7.2.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{66}
+\contentsline {subsubsection}{\numberline {7.2.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{66}
+\contentsline {subsubsection}{\numberline {7.2.6}\kernsubsubsekcyjny Zapis nowej propozycji cenowej}{68}
+\contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{69}
+\contentsline {subsection}{\numberline {7.4}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{70}
+\contentsline {subsection}{\numberline {7.5}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{71}
+\contentsline {subsubsection}{\numberline {7.5.1}\kernsubsubsekcyjny Dodawanie konta}{72}
+\contentsline {subsubsection}{\numberline {7.5.2}\kernsubsubsekcyjny Edycja konta}{73}
+\contentsline {subsubsection}{\numberline {7.5.3}\kernsubsubsekcyjny Usuwanie konta}{74}
+\contentsline {subsubsection}{\numberline {7.5.4}\kernsubsubsekcyjny Resetowanie hase\IeC {\l }}{75}
+\contentsline {subsection}{\numberline {7.6}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{76}
+\contentsline {section}{\numberline {8}\kernsekcyjny Specyfikacja wewn\k etrzna}{79}
+\contentsline {subsection}{\numberline {8.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{79}
+\contentsline {subsubsection}{\numberline {8.1.1}\kernsubsubsekcyjny Bezpiecze\'nstwo procesu logowania}{79}
+\contentsline {subsubsection}{\numberline {8.1.2}\kernsubsubsekcyjny Wymagania z\IeC {\l }o\.zono\'sci hase\IeC {\l }}{80}
+\contentsline {subsection}{\numberline {8.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{81}
+\contentsline {subsection}{\numberline {8.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{82}
+\contentsline {subsection}{\numberline {8.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{83}
+\contentsline {subsubsection}{\numberline {8.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{83}
+\contentsline {subsection}{\numberline {8.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{85}
+\contentsline {section}{\numberline {9}\kernsekcyjny Podsumowanie i perspektywy rozwoju \relax oprogramowania}{87}
+\contentsline {section}{\numberline {10}\kernsekcyjny Tytu\IeC {\l } drugiego rozdzia\IeC {\l }u. \relax Bardzo d\IeC {\l }ugi tytu\IeC {\l }. \relax Jego \\formatowanie jest trudniejsze}{89}
+\contentsline {section}{Dodatek: M\'oj specjalny dodatek}{91}
+\contentsline {section}{Za\IeC {\l }\k aczniki}{93}
+\contentsline {section}{Bibliografia}{95}

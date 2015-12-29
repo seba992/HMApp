@@ -474,9 +474,12 @@ PDFSharp \& Migradoc Foundation jest darmow¹ bibliotek¹ umo¿liwiaj¹c¹ tworzenie 
 
 \section{Implementacja}
 \subsection{Architektura aplikacji}
+
+W in¿ynierii oprogramowania analogicznie jak w innych dziedzinach, w których przeprowadzana jest operacja budowania zadanego przedmiotu, nale¿y starannie zaplanowaæ jego proces. Prezentowany rozdzia³ zawiera opis metodologii, która umo¿liwia w uporz¹dkowany sposób przeprowadzenie procesu budowania aplikacji wraz z zastosowan¹ w prezentowanym projekcie jego odmian¹. Rozdzia³ \ref{dzial:ModelApki} przedstawia równie¿ efekt zastosowanego rozwi¹zania widoczny z poziomu projektu programistycznego.
+
 \subsubsection{Wzorce architektoniczne oprogramowania}
 
-W in¿ynierii oprogramowania analogicznie jak w innych dziedzinach, w których przeprowadzana jest operacja budowania zadanego przedmiotu, nale¿y starannie zaplanowaæ jego proces. W tym calu nale¿y kierowaæ siê przyjêtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mówi¹ o tym, i¿ nale¿y dok³adnie okreœliæ wymagania, które powinno budowane oprogramowanie spe³niaæ, a nastêpnie ustaliæ jego ogóln¹ architekturê. Punkt ten jest niebywale wa¿ny z racji na problematycznoœæ zmiany architektury zbudowanego ju¿ systemu. W celu zobrazowania tego zagadnienia mo¿na przywo³aæ operacjê budowy budynku. Wszelkie zmiany dotycz¹ce jego konstrukcji s¹ ciê¿kie do zrealizowania w sytuacji, w której jest on ju¿ fizycznie gotowy. Kolejne fazy polegaj¹ na realizacji opisanej wczeœniej architektury poprzez implementacjê wszystkich komponentów oprogramowania wraz z ich wzajemnymi po³¹czeniami, przetestowaniem ca³ego systemu oraz jego finalnemu uruchomieniu wraz z usuwaniem wykrytych podczas jego dzia³ania b³êdów.
+W celu przeprowadzenia procesu budowy aplikacji w sposób umo¿liwiaj¹cy jego efektywny rozwój oraz dokonywanie zmian we funkcjonalnoœciach nale¿y kierowaæ siê przyjêtymi fazami produkcji oprogramowania \cite{FazyProdukcjiOprogramowania}. Fazy te mówi¹ o tym, i¿ nale¿y dok³adnie okreœliæ wymagania, które powinno budowane oprogramowanie spe³niaæ, a nastêpnie ustaliæ jego ogóln¹ architekturê. Punkt ten jest niebywale wa¿ny z racji na problematycznoœæ zmiany architektury zbudowanego ju¿ systemu. W celu zobrazowania tego zagadnienia mo¿na przywo³aæ operacjê budowy budynku. Wszelkie zmiany dotycz¹ce jego konstrukcji s¹ ciê¿kie do zrealizowania w sytuacji, w której jest on ju¿ fizycznie gotowy. Kolejne fazy polegaj¹ na realizacji opisanej wczeœniej architektury poprzez implementacjê wszystkich komponentów oprogramowania wraz z ich wzajemnymi po³¹czeniami, przetestowaniem ca³ego systemu oraz jego finalnemu uruchomieniu wraz z usuwaniem wykrytych podczas jego dzia³ania b³êdów.
 
 Odnosz¹c siê do planowania architektury systemu bardzo pomocne okazuj¹ siê dostêpne wzorce architektoniczne. Wzorce te s¹ to sprawdzone oraz zaakceptowane sposoby rozwi¹zania danego problemu z dziedziny architektury oprogramowania, okreœlaj¹ce ogóln¹ strukturê systemu informatycznego, zasady komunikacji pomiêdzy komponentami oraz elementy wchodz¹ce w jego sk³ad wraz z opisem ich funkcji. Wybór odpowiedniego wzorca w du¿ej mierze zale¿ny jest od wykorzystanej w projekcie technologii. W przypadku WPF powszechnie uznanym rozwi¹zaniem jest MVVM (Model View ViewModel) \cite{MvvmOpis}, który jest zmodyfikowan¹ wersj¹ wzorca MVC, zawieraj¹c¹ specjalizacjê modelu prezentacji.
 
@@ -499,6 +502,9 @@ ViewModel zajmuje siê reprezentacj¹ danych, które wysy³ane s¹ do widoku, nie maj
 Wastwa widoku (View) odpowiedzialna jest za wyœwietlanie danych i pe³ni rolê wy³¹cznie prezentacyjn¹. Jej komunikacja z warstw¹ modelu przebiega za poœrednictwem warstwy poœrednicz¹cej ViewModel, do której jest przy³¹czona za pomoc¹ w³aœciwoœci DataContext. W³aœciwoœæ ta wstrzykuje zale¿noœci pomiêdzy View oraz ViewModel, który j¹ kontroluje. 
 
 \subsubsection{Model aplikacji}
+\label{dzial:ModelApki}
+
+
 
 Pytanie do promotora:  Opisywaæ podzia³ klas, strukturê folderów aplikacji ? Jest to bardzo techniczna kwestia, nie wiem, czy potrzebna
 
@@ -642,7 +648,7 @@ var exampleQuerry = (from records in _context.TableName
 
 Edycja danych znajduj¹cych siê w bazie danych z poziomu projektu programistycznego realizowana jest poprzez modyfikacjê opisanego polecenia \textsl{SELECT}. Modyfikacja ta polega na przekszta³ceniu typu otrzymanego obiektu na typ klasy modelu Entity, który reprezentuje edytowan¹ bazodanow¹ tabelê. W przypadku operowania na jednym rekordzie, przekszta³cenie te nale¿y dokonaæ pos³uguj¹c siê metod¹ \textsl{SingleOrDefault}, natomiast w przypadku wielu rekordów metod¹ \textsl{ToList}, która dokona konwersji na listê obiektów po¿¹danego typu. Do takiego utworzonego obiektu, programista ma mo¿liwoœæ odwo³ywania siê i dokonywania zmian w standardowy dla jêzyka C\# sposób. Po operacji modyfikacji, wszystkie zmiany nale¿y potwierdziæ metod¹ \textsl{SaveChanges} na obiekcie modelu Entity, która uaktualnia zmodyfikowane elementy na poziomie bazy danych.
 
-Dodanie rekordu do bazy danych jest operacj¹, które nie wymaga znajomoœci sk³adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, która reprezentuje bazodanow¹ tabelê, do której nowy rekord ma byæ dodany, a nastêpnie uzupe³nieniu jego elementów danymi. Tak zbudowany obiekt nale¿y dodaæ do obiektu kontekstu, odwo³uj¹c siê do jego w³aœciwoœci o nazwie interesuj¹cej nas tabeli bazy danych, a nastêpnie w parametrze metody \textsl{Add} umieœciæ wczeœniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych nale¿y potwierdziæ na obiekcie kontekstu. Przedstawienie opisanej operacji z poziomu kodu, dostêpne jest równie¿ do wgl¹du w drugiej czêœci listingu \ref{listing:AdoEntityCompare}.
+Dodanie rekordu do bazy danych jest operacj¹, które nie wymaga znajomoœci sk³adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, która reprezentuje bazodanow¹ tabelê, do której nowy rekord ma byæ dodany, a nastêpnie uzupe³nieniu jego elementów danymi. Tak zbudowany obiekt nale¿y dodaæ do obiektu kontekstu, odwo³uj¹c siê do jego w³aœciwoœci o nazwie interesuj¹cej nas tabeli bazy danych, a nastêpnie w parametrze metody \textsl{Add} umieœciæ wczeœniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych nale¿y potwierdziæ na obiekcie kontekstu. Przedstawienie opisanej operacji z poziomu kodu, dostêpne jest równie¿ do wgl¹du w drugiej czêœci kodu Ÿród³owego \ref{listing:AdoEntityCompare}.
 
 \section{Automatyzacja wydawania kolejnych wersji aplikacji}
 \subsection{Continuous Integration/Continuous Delivery/Continuous Deployment}
@@ -1145,7 +1151,7 @@ public static bool ValidatePassword(string pass)
 \end{lstlisting}
 
 \subsection{Konto administratora i u¿ytkownika – ListView}
-U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami. Przedstawia to  listing \ref{listing:propuser}
+U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami. Przedstawia to kod Ÿród³owy \ref{listing:propuser}.
 \begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:propuser}]
  var myProposition = (from prop in _ctx.Proposition
                       from user in _ctx.Users 
@@ -1167,7 +1173,7 @@ U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana 
 //przypisanie do listy propozycji 
 //w prawid³owej formie do wyœwietlenia
 \end{lstlisting}
-Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje listing \ref{listing:user} Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
+Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje kod Ÿród³owy \ref{listing:user} Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
 \begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika} \label{listing:user}]
  var userlist = (from s in _ctx.Users
                      where s.Proposition.Any()
