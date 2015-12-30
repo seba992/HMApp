@@ -640,7 +640,7 @@ namespace DiamondApp.Tools.Pdf
 
                 //default section and paragraph, formatting paragraph
                 Section section = document.AddSection();
-                Paragraph paragraph = section.AddParagraph("Nazwa Hotelu ****");
+                Paragraph paragraph = section.AddParagraph("Sieć Hotelowa Gliwice *****");
                 paragraph.Format.Font.Size = 14;
                 paragraph.Format.Font.Color = Colors.DarkRed;
                 paragraph.Format.SpaceBefore = "2.2cm";
@@ -683,9 +683,9 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[0].AddParagraph("DOTYCZY:");
                 row.Cells[1].MergeDown = 1;
                 //row.Cells[3].MergeDown = 1; // merge down third cell with next one
-                row.Cells[1].AddParagraph("Nazwa Hotelu ****");
-                row.Cells[1].AddParagraph("ul. Przykładowa 122a");
-                row.Cells[1].AddParagraph("00-000 Przykład");
+                row.Cells[1].AddParagraph("Sieć Hotelowa Gliwice *****");
+                row.Cells[1].AddParagraph("ul. Inżynierska 5");
+                row.Cells[1].AddParagraph("55-555 Nibylandia");
                 row.Cells[2].AddParagraph("DLA:");
                 row.Cells[3].AddParagraph(CompanyName(propId2));
 
@@ -702,7 +702,7 @@ namespace DiamondApp.Tools.Pdf
                 row.Cells[0].Shading.Color = Colors.LightGray;
                 row.Cells[2].Shading.Color = Colors.LightGray;
                 row.Cells[0].AddParagraph("NIP:");
-                row.Cells[1].AddParagraph("0000000000");
+                row.Cells[1].AddParagraph("0123456789");
                 row.Cells[2].AddParagraph("NIP:");
                 row.Cells[3].AddParagraph(CompanyNip(propId2));
 
