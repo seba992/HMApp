@@ -4681,12 +4681,10 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 {
                     if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
                     {
-                        if (hall.Days != PropHallEqDays0)
-                            hall.Days = PropHallEqDays0;
-                        if (hall.Amount != PropHallEqAmount0)
-                            hall.Amount = PropHallEqAmount0;
-                        _ctx.PropHallEquipment.Remove(hall);
-                        _ctx.SaveChanges();
+                        
+                       hall.Days = PropHallEqDays0;
+                       hall.Amount = PropHallEqAmount0;
+                       _ctx.SaveChanges();
                     }
 
                 }
@@ -4703,7 +4701,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 }
                 //wposażenie
 
-
+                _ctx.SaveChanges();
+               
                 if (PropHallEqThing1 != null)
                 {
                     var thing1 = propEquipment.ElementAtOrDefault(0);
@@ -4844,7 +4843,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                       select q).ToList();
                 foreach (var check in propEquipment1)
                 {
-                    if (check.Things == " " || check.Things == null)
+                    if (check.Things == " " || check.Things == null || check.Days == null || check.Days == 0 || check.Amount == 0 || check.Amount == null)
                     {
                         _ctx.PropHallEquipment.Remove(check);
                     }

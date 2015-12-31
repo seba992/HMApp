@@ -4511,7 +4511,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                                       select q).ToList();
                 foreach (var check in propEquipment1)
                 {
-                    if (check.Things == " " || check.Things == null)
+                    if (check.Things == " " || check.Things == null || check.Days == null || check.Days == 0 || check.Amount == 0 || check.Amount == null)
                     {
                         _ctx.PropHallEquipment.Remove(check);
                     }
