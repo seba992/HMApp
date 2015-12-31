@@ -40,7 +40,7 @@
                 <MenuItem Header="Dodaj" HorizontalAlignment="Left" Width="167" Margin="0,0,0,0" Command="{Binding CreateNewPropositionCommand}"/>
                 <MenuItem Header="Edytuj" HorizontalAlignment="Left" Width="167" Margin="0,0,0,0" Command="{Binding ChangePropositionCommand }"/>
                 <MenuItem Header="Lista propozycji" HorizontalAlignment="Left"  Margin="0" Command="{Binding ShowPropositionsCommand}"/>
-                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167"  Margin="0,0,0,0"/>
+                <MenuItem Header="Zakończ" HorizontalAlignment="Left" Width="167"  Margin="0,0,0,0" Command="{Binding ShutDown}"/>
             </MenuItem>
             <MenuItem Header="Edytuj słownik" Command="{Binding EditDictionaryCommand}"/>
             <MenuItem Header="Użytkownicy">
@@ -277,9 +277,9 @@
 
                     <Rectangle Grid.ColumnSpan="5" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="107" Margin="163,10,0,-24" Grid.Row="9" Stroke="Black" VerticalAlignment="Top" Width="358" Grid.RowSpan="3" Grid.Column="2"/>
                     <!--definicja wierszy cel sali /dol srodek/-->
-                    <Label Grid.Column="2"  Grid.Row="9" Content="Standardowa cena sali: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="107,18,88,20" Grid.RowSpan="2" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
-                    <Label Grid.Column="2"  Grid.Row="10" Content="Rabat (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="107,18,88,20" Grid.RowSpan="2" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
-                    <Label Grid.Column="2"  Grid.Row="11" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="107,17,88,-12" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+                    <Label Grid.Column="3"  Grid.Row="9" Content="Standardowa cena sali: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="3,17,90,19" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+                    <Label Grid.Column="3"  Grid.Row="10" Content="Rabat (%): " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,16,90,20" Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+                    <Label Grid.Column="3"  Grid.Row="11" Content="Cena po rabacie: " HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Margin="6,17,88,-12" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
 
                     <TextBox x:Name="SrCenaStandardTextBox" Grid.Column="4" Grid.Row="9" Margin="32.5,17,46,19" HorizontalContentAlignment="Center" Text="{Binding PropHallEquipmentDiscountStandPrice, StringFormat=\{0:c\}}" IsEnabled="False" Grid.ColumnSpan="3" Grid.RowSpan="2"/>
                     <xctk:IntegerUpDown x:Name="SrRabatOdBaraCustIntUpDown" Grid.Column="4" Grid.Row="10" Margin="32.5,17,46,19" Minimum="0" Maximum="100" Value="{Binding PropHallEquipmentDiscountValue}" Grid.ColumnSpan="3" Grid.RowSpan="2" />

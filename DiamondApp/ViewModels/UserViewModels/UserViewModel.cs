@@ -5690,7 +5690,27 @@ namespace DiamondApp.ViewModels.UserViewModels
 
         }
 
-       
+        public ICommand ShutDown
+        {
+            get
+            {
+                if (_shutDown == null)
+                {
+                    _shutDown = new RelayCommand(ShutDownExecute, CanShutDownExecute);
+                }
+                return _shutDown;
+            }
+        }
+        private ICommand _shutDown;
+        private bool CanShutDownExecute(object arg)
+        {
+            return true;
+        }
+        private void ShutDownExecute(object obj)
+        {
+            Application.Current.Shutdown();
+        }
+
         /* Wyszukiwanie wszystkich danych potrzebnych do wypełnienia grida admina
          * - wszystkie propozycje wszystkich użytkowników posortowane według daty
          * (imie+nazwisko użytkownika , imie+nazwisko klienta, nazwa firmy klienta, data aktualizacji*/

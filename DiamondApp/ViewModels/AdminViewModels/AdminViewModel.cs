@@ -118,7 +118,6 @@ namespace DiamondApp.ViewModels.AdminViewModels
             _userId = userId;
             SelectUsers();
             SelectAllPropositions();
-            SelectAllUsers();
             FillNeededList();
             PropDefaultSeller();
             SetDefaultValues();
@@ -247,18 +246,6 @@ namespace DiamondApp.ViewModels.AdminViewModels
             }
         }
 
-        public ICommand ShowUsersCommand
-        {
-            get
-            {
-                if (_showUsersCommand == null)
-                {
-                    _showUsersCommand = new RelayCommand(ShowUsersExecute, CanShowUsersExecute);
-                }
-                return _showUsersCommand;
-            }
-
-        }
 
         public ICommand ChangePropositionCommand
         {
@@ -5435,17 +5422,6 @@ namespace DiamondApp.ViewModels.AdminViewModels
             ChangeView(false);
         }
 
-        //lista userow
-        private ICommand _showUsersCommand;
-        private bool CanShowUsersExecute(object arg)
-        {
-            return true;
-        }
-        private void ShowUsersExecute(object obj)
-        {
-            SelectAllUsers();
-        }
-
         //Edycja porpozycji
         private ICommand _changePropositionCommand;
 
@@ -6012,9 +5988,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
 
         private ICommand _addUserCommand;
-        private List<UserProposition> _userListGrid;
-
-
+        
         public ICommand AddUserCommand
         {
             get
@@ -6039,6 +6013,26 @@ namespace DiamondApp.ViewModels.AdminViewModels
             add.Show();
         }
 
+        public ICommand ShutDown
+        {
+            get
+            {
+                if (_shutDown == null)
+                {
+                    _shutDown = new RelayCommand(ShutDownExecute, CanShutDownExecute);
+                }
+                return _shutDown;
+            }
+        }
+        private ICommand _shutDown;
+        private bool CanShutDownExecute(object arg)
+        {
+            return true;
+        }
+        private void ShutDownExecute(object obj)
+        {
+            Application.Current.Shutdown();
+        }
 
         #endregion
 
@@ -6053,7 +6047,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             UsersList = q;
         }
 
-        public void SelectAllUsers()
+   /*     public void SelectAllUsers()
         {
             var myQuerry = (from user in _ctx.Users
                             select new UserProposition
@@ -6068,7 +6062,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                 UserLogin = user.Login,
                             }).ToList();
             _userListGrid = myQuerry;
-        }
+        }*/
 
         // Zmiana widoków
         public void ChangeView(bool whatView)

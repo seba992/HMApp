@@ -4,7 +4,7 @@
         xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
         Title="Edytuj użytkownika" ResizeMode="NoResize" Height="510" Width="880" WindowStartupLocation="CenterScreen">
     <Grid  Background="#FF1F7AC7">
-        <DataGrid ItemsSource="{Binding UsersListGrid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowEditEnding="UserList_RowEditEnding" x:Name ="UserList" HorizontalAlignment="Left" Height="452" VerticalAlignment="Top" Width="844" IsHitTestVisible="True" AutoGenerateColumns="False" CanUserAddRows="False" Visibility="Visible" Margin="10,10,0,0" AlternatingRowBackground="LightBlue" AlternationCount="2" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid ItemsSource="{Binding UsersListGrid, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" RowEditEnding="UserList_RowEditEnding" x:Name ="UserList" HorizontalAlignment="Left" Height="452" VerticalAlignment="Top" Width="844" IsHitTestVisible="True" AutoGenerateColumns="False" CanUserAddRows="False" Visibility="Visible" Margin="10,10,0,0" AlternatingRowBackground="LightGray" AlternationCount="2" CanUserResizeColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding UserId}" Header="Id" />
 
