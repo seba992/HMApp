@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Annotations;
 using System.Windows.Input;
 using DiamondApp.FillingObjects;
 using DiamondApp.Model;
@@ -3755,7 +3757,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[0].ServiceType = value;
-                RaisePropertyChanged("PropExtraServType0");
+               
 
                 PropExtraServBrutto0 = SetExtraServBruttoPrice(_propExtraServ[0].ServiceType);
 
@@ -3764,6 +3766,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 if (PropExtraServDays0 != null && PropExtraServAmount0 != null)
                     FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServDays0,
                         PropExtraServDays0);
+                RaisePropertyChanged("PropExtraServType0");
             }
         }
         public string PropExtraServType1
@@ -3857,9 +3860,10 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[0].Vat = value;
-                RaisePropertyChanged("PropExtraServVat0");
+                
 
                 FifthTabNettoPrice0 = ComputeNettoPrice(PropExtraServBrutto0, PropExtraServVat0);
+                RaisePropertyChanged("PropExtraServVat0");
             }
         }
         public float? PropExtraServVat1
@@ -3868,9 +3872,10 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[1].Vat = value;
-                RaisePropertyChanged("PropExtraServVat1");
+               
 
                 FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, PropExtraServVat1);
+                RaisePropertyChanged("PropExtraServVat1");
             }
         }
         public float? PropExtraServVat2
@@ -3902,10 +3907,11 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _fifthTabNettoPrice[0] = value;
-                RaisePropertyChanged("FifthTabNettoPrice0");
+                
 
                 if (PropExtraServAmount0 != null && PropExtraServDays0 != null)
                     FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0, PropExtraServDays0);
+                RaisePropertyChanged("FifthTabNettoPrice0");
             }
         }
         public decimal? FifthTabNettoPrice1
@@ -4019,7 +4025,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[0].Days = value;
-                RaisePropertyChanged("PropExtraServDays0");
+                
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto0 != null && PropExtraServAmount0 != null)
@@ -4029,6 +4035,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServAmount0,
                         PropExtraServDays0);
                 }
+                RaisePropertyChanged("PropExtraServDays0");
             }
         }
         public int? PropExtraServDays1
@@ -4037,8 +4044,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[1].Days = value;
-                RaisePropertyChanged("PropExtraServDays1");
-
+                
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto1 != null && PropExtraServAmount1 != null)
                 {
@@ -4047,6 +4053,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     FifthTabBruttoValue1 = ComputeBruttoValue(PropExtraServBrutto1, PropExtraServAmount1,
                         PropExtraServDays1);
                 }
+                RaisePropertyChanged("PropExtraServDays1");
             }
         }
         public int? PropExtraServDays2
@@ -4055,7 +4062,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[2].Days = value;
-                RaisePropertyChanged("PropExtraServDays2");
+               
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto2 != null && PropExtraServAmount2 != null)
@@ -4064,7 +4071,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
                         PropExtraServDays2);
                     FifthTabBruttoValue2 = ComputeBruttoValue(PropExtraServBrutto2, PropExtraServAmount2,
                         PropExtraServDays2);
+                 
                 }
+                RaisePropertyChanged("PropExtraServDays2");
             }
         }
         public int? PropExtraServDays3
@@ -4073,7 +4082,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[3].Days = value;
-                RaisePropertyChanged("PropExtraServDays3");
+               
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto3 != null && PropExtraServAmount3 != null)
@@ -4084,6 +4093,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, PropExtraServAmount3,
                         PropExtraServDays3);
                 }
+                RaisePropertyChanged("PropExtraServDays3");
             }
         }
 
@@ -4678,7 +4688,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 var propEquipment = (from q in _ctx.PropHallEquipment
                                      where q.Id_proposition == idProposition
                                      select q).ToList();
-                var hall = propEquipment.ElementAtOrDefault(0);
+                var myRegex=new Regex(@"Sala *");
+                var hall = propEquipment.Find(f => myRegex.IsMatch(f.Things));
                 if (hall != null)
                 {
                     if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
@@ -4687,7 +4698,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                             hall.Days = PropHallEqDays0;
                         if (hall.Amount != PropHallEqAmount0)
                             hall.Amount = PropHallEqAmount0;
-
+                        _ctx.PropHallEquipment.Remove(hall);
                         _ctx.SaveChanges();
                     }
 
@@ -4708,7 +4719,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropHallEqThing1 != null)
                 {
-                    var thing1 = propEquipment.ElementAtOrDefault(1);
+                    var thing1 = propEquipment.ElementAtOrDefault(0);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -4734,7 +4745,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _ctx.SaveChanges();
                 if (PropHallEqThing2 != null)
                 {
-                    var thing1 =  propEquipment.ElementAtOrDefault(2);
+                    var thing1 =  propEquipment.ElementAtOrDefault(1);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -4761,7 +4772,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _ctx.SaveChanges();
                 if (PropHallEqThing3 != null)
                 {
-                    var thing1 = propEquipment.ElementAtOrDefault(3);
+                    var thing1 = propEquipment.ElementAtOrDefault(2);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -4788,7 +4799,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _ctx.SaveChanges();
                 if (PropHallEqThing4 != null)
                 {
-                    var thing1 = propEquipment.ElementAtOrDefault(4);
+                    var thing1 = propEquipment.ElementAtOrDefault(3);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -4815,7 +4826,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropHallEqThing5 != null)
                 {
-                    var thing1 = propEquipment.ElementAtOrDefault(5);
+                    var thing1 = propEquipment.ElementAtOrDefault(4);
                     if (thing1 != null)
                     {
                         thing1.Id_proposition = _idProposition;
@@ -5270,22 +5281,25 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 var propextr = (from q in _ctx.PropExtraServices
                                 where q.Id_proposition == idProposition
                                 select q).ToList();
-                var dic = (from q in _ctx.PropExtraServices_Dictionary
-                           select q.ServiceType).ToList();
-
+               
+                var parking = new Regex(@"PARKING .+");
+               
                 if (PropExtraServType0 != null)
                 {
-                    var position = propextr.Find(item => item.ServiceType == dic[0]);
-                    var position1 = propextr.Find(item => item.ServiceType == dic[1]);
+                    
+                    var position = propextr.Find(f => parking.IsMatch(f.ServiceType));
+                    
 
-                    if (position != null || position1 != null)
+                    if (position != null )
                     {
                         position.ServiceType = PropExtraServType0;
                         position.Amount = PropExtraServAmount0;
                         position.Days = PropExtraServDays0;
                         position.BruttoPrice = PropExtraServBrutto0;
                         position.Vat = PropExtraServVat0;
+                        propextr.Remove(position);
                     }
+     
                     else
                     {
 
@@ -5301,14 +5315,14 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 }
                 if (PropExtraServType1 != null)
                 {
-                    var position = propextr.Find(item => item.ServiceType == PropExtraServType1);
-                    if (position != null)
+
+                    if (propextr.ElementAtOrDefault(0) != null)
                     {
-                        position.ServiceType = PropExtraServType1;
-                        position.Amount = PropExtraServAmount1;
-                        position.Days = PropExtraServDays1;
-                        position.BruttoPrice = PropExtraServBrutto1;
-                        position.Vat = PropExtraServVat1;
+                        propextr[0].ServiceType = PropExtraServType1;
+                        propextr[0].Amount = PropExtraServAmount1;
+                        propextr[0].Days = PropExtraServDays1;
+                        propextr[0].BruttoPrice = PropExtraServBrutto1;
+                        propextr[0].Vat = PropExtraServVat1;
                     }
                     else
                     {
@@ -5324,14 +5338,14 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 }
                 if (PropExtraServType2 != null)
                 {
-                    var position = propextr.Find(item => item.ServiceType == PropExtraServType2);
-                    if (position != null)
+
+                    if (propextr.ElementAtOrDefault(1) != null)
                     {
-                        position.ServiceType = PropExtraServType2;
-                        position.Amount = PropExtraServAmount2;
-                        position.Days = PropExtraServDays2;
-                        position.BruttoPrice = PropExtraServBrutto2;
-                        position.Vat = PropExtraServVat2;
+                        propextr[1].ServiceType = PropExtraServType2;
+                        propextr[1].Amount = PropExtraServAmount2;
+                        propextr[1].Days = PropExtraServDays2;
+                        propextr[1].BruttoPrice = PropExtraServBrutto2;
+                        propextr[1].Vat = PropExtraServVat2;
                     }
                     else
                     {
@@ -5348,14 +5362,14 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 }
                 if (PropExtraServType3 != null)
                 {
-                    var position = propextr.Find(item => item.ServiceType == PropExtraServType3);
-                    if (position != null)
+
+                    if (propextr.ElementAtOrDefault(2) != null)
                     {
-                        position.ServiceType = PropExtraServType3;
-                        position.Amount = PropExtraServAmount3;
-                        position.Days = PropExtraServDays3;
-                        position.BruttoPrice = PropExtraServBrutto3;
-                        position.Vat = PropExtraServVat3;
+                        propextr[2].ServiceType = PropExtraServType3;
+                        propextr[2].Amount = PropExtraServAmount3;
+                        propextr[2].Days = PropExtraServDays3;
+                        propextr[2].BruttoPrice = PropExtraServBrutto3;
+                        propextr[2].Vat = PropExtraServVat3;
                     }
                     else
                     {
@@ -5370,6 +5384,12 @@ namespace DiamondApp.ViewModels.AdminViewModels
                         _ctx.PropExtraServices.Add(newextra);
                     }
                 }
+                _ctx.SaveChanges();
+                var clear = (from x in _ctx.PropExtraServices
+                             where x.ServiceType == " " || x.ServiceType == ""
+                             select x).ToList();
+                _ctx.PropExtraServices.RemoveRange(clear);
+                
                 _ctx.SaveChanges();
                 var paysug = (from q in _ctx.PropPaymentSuggestions
                               where q.Id_proposition == _idProposition
@@ -5444,7 +5464,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             FillNeededList();
             SetDefaultValues();
             CleanProperties(GetType());
-
+            HallListFunction();
             if (SelectedProposition != null)
                 _idProposition = SelectedProposition.PropositionId;
             SelectedProposition = null;
@@ -5502,7 +5522,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 {
                     PropositionReservDetailsPeopleNumber = editDetalis.PeopleNumber;
                 }
-                //PropositionReservDetailsHallSetting = editDetalis.HallSetting;
+                PropositionReservDetailsHallSetting = editDetalis.HallSetting;
 
 
                 //_ctx.SaveChanges();
@@ -5636,7 +5656,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                         select q).ToList()
                                 .Where(x => x.ThingName == editGastronomic[2].TypeOfService)
                                 .SingleOrDefault();
-                            ;
+                            
                             SelectedType2 = typ2.SpecificType;
                             PropMenuPosMergeType2 = editGastronomic[2].MergeType;
                             PropMenuPosVat2 = editGastronomic[2].Vat;
@@ -5650,7 +5670,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                         select q).ToList()
                                 .Where(x => x.ThingName == editGastronomic[3].TypeOfService)
                                 .SingleOrDefault();
-                            ;
+                            
                             SelectedType3 = typ3.SpecificType;
                             PropMenuPosMergeType3 = editGastronomic[3].MergeType;
                             PropMenuPosVat3 = editGastronomic[3].Vat;
@@ -5664,7 +5684,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                         select q).ToList()
                                 .Where(x => x.ThingName == editGastronomic[4].TypeOfService)
                                 .SingleOrDefault();
-                            ;
+                            
                             SelectedType3 = typ4.SpecificType;
                             PropMenuPosMergeType4 = editGastronomic[4].MergeType;
                             PropMenuPosVat4 = editGastronomic[4].Vat;
@@ -5679,7 +5699,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                         select q).ToList()
                                 .Where(x => x.ThingName == editGastronomic[0].TypeOfService)
                                 .SingleOrDefault();
-                            ;
+                            
                             SelectedType5 = typ5.SpecificType;
                             PropMenuPosMergeType5 = editGastronomic[5].MergeType;
                             PropMenuPosVat5 = editGastronomic[5].Vat;
@@ -5705,178 +5725,169 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 }
 
-                var propAccomDiscountValue = (from q in _ctx.PropAccomodationDiscount
-                                              where q.Id_proposition == _idProposition
-                                              select q).SingleOrDefault();
-                if (propAccomDiscountValue != null)
-                    PropAccomDiscountValue = propAccomDiscountValue.Discount;
-
+               
                 var propAccomodation = (from q in _ctx.PropAccomodation
                                         where q.Id_proposition == _idProposition
                                         select q).ToList();
                 _roomExistList = (from q in _ctx.PropAccomodation_Dictionary
                                   select q.TypeOfRoom).ToList();
+                var dicAccomodation = (from q in _ctx.PropAccomodation_Dictionary
+                                  select q).ToList();
                 for (int i = 0; i < propAccomodation.Count; i++)
                 {
                     switch (propAccomodation[i].TypeOfRoom)
                     {
                         case "POKÓJ 1-OSOBOWY":
+                            
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount0 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays0 = propAccomodation[i].Days;
-                            // MessageBox.Show(roomExistList.Count.ToString());
-                            _roomExistList.Remove("POKÓJ 1-OSOBOWY");
-                            //MessageBox.Show(roomExistList.Count.ToString());
+                                //PropAccomBrutto1 = propAccomodation[i].BruttoPrice;
+                                PropAccomVat0 = propAccomodation[i].Vat;
+                                FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
+                                     PropAccomDays0);
+                                FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
+                                     PropAccomDays0);
+                                _roomExistList.Remove("POKÓJ 1-OSOBOWY");
+                            
                             break;
                         case "POKÓJ 2-OSOBOWY":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount1 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays1 = propAccomodation[i].Days;
-                            _roomExistList.Remove("POKÓJ 2-OSOBOWY");
+                                //PropAccomBrutto1 = propAccomodation[i].BruttoPrice;
+                                PropAccomVat1 = propAccomodation[i].Vat; 
+                                _roomExistList.Remove("POKÓJ 2-OSOBOWY");
                             break;
                         case "POKÓJ BUSSINES 1-OSOBOWY":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount2 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays2 = propAccomodation[i].Days;
-                            _roomExistList.Remove("POKÓJ BUSSINES 1-OSOBOWY");
+                                PropAccomBrutto2 = propAccomodation[i].BruttoPrice;
+                                PropAccomVat2 = propAccomodation[i].Vat;
+                                _roomExistList.Remove("POKÓJ BUSSINES 1-OSOBOWY");
                             break;
                         case "POKÓJ BUSSINES 2-OSOBOWY":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount3 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays3 = propAccomodation[i].Days;
-                            _roomExistList.Remove("POKÓJ BUSSINES 2-OSOBOWY");
+                                PropAccomBrutto3 = propAccomodation[i].BruttoPrice;
+                                PropAccomVat3 = propAccomodation[i].Vat;
+                                _roomExistList.Remove("POKÓJ BUSSINES 2-OSOBOWY");
                             break;
                         case "APARTAMENT":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount4 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays4 = propAccomodation[i].Days;
-                            _roomExistList.Remove("APARTAMENT");
+                                PropAccomBrutto4 = propAccomodation[i].BruttoPrice;
+                                PropAccomVat4 = propAccomodation[i].Vat;
+                                _roomExistList.Remove("APARTAMENT");
                             break;
                         case "POKOJ DLA NIEPEŁNOSPRAWNYCH":
                             if (propAccomodation[i].Amount != null)
                                 PropAccomAmount5 = propAccomodation[i].Amount;
                             if (propAccomodation[i].Days != null)
                                 PropAccomDays5 = propAccomodation[i].Days;
-                            _roomExistList.Remove("POKOJ DLA NIEPEŁNOSPRAWNYCH");
+                                PropAccomBrutto5 = propAccomodation[i].BruttoPrice;
+                                PropAccomVat5 = propAccomodation[i].Vat;
+                                _roomExistList.Remove("POKOJ DLA NIEPEŁNOSPRAWNYCH");
                             break;
                     }
                 }
 
+                var propAccomDiscountValue = (from q in _ctx.PropAccomodationDiscount
+                                              where q.Id_proposition == _idProposition
+                                              select q).SingleOrDefault();
+                if (propAccomDiscountValue != null)
+                    PropAccomDiscountValue = propAccomDiscountValue.Discount;
 
-                //MessageBox.Show(roomExistList.Count.ToString());
+                
                 //Dodatkowe
                 var extra = (from q in _ctx.PropExtraServices
                              where q.Id_proposition == _idProposition
                              select q).ToList();
-                var dic = (from q in _ctx.PropExtraServices_Dictionary
-                           select q.ServiceType).ToList();
-                int nullFisrtRow = 0;
-                for (int i = 0; i < extra.Count; i++)
-                {
-                    switch (i)
-                    {
-                        case 0:
-                            try
-                            {
-                                var position = extra.Find(item => item.ServiceType == dic[0]);
-                                var position1 = extra.Find(item => item.ServiceType == dic[1]);
-                                if (position != null)
-                                {
-                                    //MessageBox.Show(position.ServiceType +"11111111");
-                                    PropExtraServType0 = position.ServiceType;
-                                    PropExtraServVat0 = position.Vat;
-                                    PropExtraServAmount0 = position.Amount;
-                                    PropExtraServDays0 = position.Days;
-                                    PropExtraServBrutto0 = position.BruttoPrice;
-                                    extra.Remove(position);
+                
+                var parking = new Regex(@"PARKING .+");
+                var position = extra.Find(f => parking.IsMatch(f.ServiceType));
+                   
+               try
+                 {
+                     
+                     if (position != null)
+                     {
+                         
+                         PropExtraServType0 = position.ServiceType;
+                         PropExtraServVat0 = position.Vat;
+                         PropExtraServAmount0 = position.Amount;
+                         PropExtraServDays0 = position.Days;
+                         PropExtraServBrutto0 = position.BruttoPrice;
+                         FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0,
+                                            PropExtraServDays0);
+                         FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServAmount0,
+                                                PropExtraServDays0);
+                         extra.Remove(position);
+                
+                     }
+                    
+                     
+                 }
+                 catch (Exception e)
+                 {
+                     MessageBox.Show("testststset" + e.ToString());
+                 }
 
-                                }
-                                else if (position1 != null)
-                                {
-                                    //MessageBox.Show(position1.ServiceType + "2222");
-                                    PropExtraServType0 = position1.ServiceType;
-                                    PropExtraServVat0 = position1.Vat;
-                                    PropExtraServAmount0 = position1.Amount;
-                                    PropExtraServDays0 = position1.Days;
-                                    PropExtraServBrutto0 = position1.BruttoPrice;
-                                    extra.Remove(position1);
-                                }
-                                else
-                                {
-                                    //MessageBox.Show(extra[0].ServiceType );
-                                    PropExtraServType1 = extra[0].ServiceType;
-                                    PropExtraServVat1 = extra[0].Vat;
-                                    PropExtraServAmount1 = extra[0].Amount;
-                                    PropExtraServDays1 = extra[0].Days;
-                                    PropExtraServBrutto1 = extra[0].BruttoPrice;
-                                    nullFisrtRow++;
-
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                MessageBox.Show("testststset" + e.ToString());
-                            }
-
-                            break;
-                        case 1:
-                            //MessageBox.Show(extra[1].ServiceType);
-                            if (nullFisrtRow > 0)
-                            {
-                                PropExtraServType2 = extra[1].ServiceType;
-                                PropExtraServVat2 = extra[1].Vat;
-                                PropExtraServAmount2 = extra[1].Amount;
-                                PropExtraServDays2 = extra[1].Days;
-                                PropExtraServBrutto2 = extra[1].BruttoPrice;
-                            }
-                            else
-                            {
-                                PropExtraServType1 = extra[1].ServiceType;
-                                PropExtraServVat1 = extra[1].Vat;
-                                PropExtraServAmount1 = extra[1].Amount;
-                                PropExtraServDays1 = extra[1].Days;
-                                PropExtraServBrutto1 = extra[1].BruttoPrice;
-
-                            }
-                            break;
-                        case 2:
-                            // MessageBox.Show(extra[2].ServiceType);
-                            if (nullFisrtRow > 0)
-                            {
-                                PropExtraServType3 = extra[2].ServiceType;
-                                PropExtraServVat3 = extra[2].Vat;
-                                PropExtraServAmount3 = extra[2].Amount;
-                                PropExtraServDays3 = extra[2].Days;
-                                PropExtraServBrutto3 = extra[2].BruttoPrice;
-                            }
-                            else
-                            {
-                                PropExtraServType2 = extra[2].ServiceType;
-                                PropExtraServVat2 = extra[2].Vat;
-                                PropExtraServAmount2 = extra[2].Amount;
-                                PropExtraServDays2 = extra[2].Days;
-                                PropExtraServBrutto2 = extra[2].BruttoPrice;
-                            }
-                            break;
-                        case 3:
-                            //MessageBox.Show(extra[3].ServiceType);
-                            if (nullFisrtRow > 0)
-                            {
-                                PropExtraServType3 = extra[3].ServiceType;
-                                PropExtraServVat3 = extra[3].Vat;
-                                PropExtraServAmount3 = extra[3].Amount;
-                                PropExtraServDays3 = extra[3].Days;
-                                PropExtraServBrutto3 = extra[3].BruttoPrice;
-                            }
-                            break;
-
-                    }
-                }
+                         
+                  if (extra.ElementAtOrDefault(0)!= null)
+                  {
+                      PropExtraServType1 = extra[0].ServiceType;
+                      PropExtraServVat1 = extra[0].Vat;
+                      PropExtraServAmount1 = extra[0].Amount;
+                      PropExtraServDays1 = extra[0].Days;
+                      PropExtraServBrutto1 = extra[0].BruttoPrice;
+                      FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, PropExtraServAmount1,
+                                            PropExtraServDays1);
+                      FifthTabBruttoValue1 = ComputeBruttoValue(PropExtraServBrutto1, PropExtraServAmount1,
+                                             PropExtraServDays1);
+                      
+                  }
+                 
+                
+                  
+                  if (extra.ElementAtOrDefault(1) != null)
+                  {
+                      PropExtraServType2 = extra[1].ServiceType;
+                      PropExtraServVat2 = extra[1].Vat;
+                      PropExtraServAmount2 = extra[1].Amount;
+                      PropExtraServDays2 = extra[1].Days;
+                      PropExtraServBrutto2 = extra[1].BruttoPrice;
+                      FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, PropExtraServAmount2,
+                                            PropExtraServDays1);
+                      FifthTabBruttoValue2 = ComputeBruttoValue(PropExtraServBrutto2, PropExtraServAmount2,
+                                             PropExtraServDays2);
+           
+                  }
+                
+                 
+                  
+                  if (extra.ElementAtOrDefault(2) != null)
+                  {
+                      PropExtraServType3 = extra[2].ServiceType;
+                      PropExtraServVat3 = extra[2].Vat;
+                      PropExtraServAmount3 = extra[2].Amount;
+                      PropExtraServDays3 = extra[2].Days;
+                      PropExtraServBrutto3 = extra[2].BruttoPrice;
+                      FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
+                                            PropExtraServDays3);
+                      FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, PropExtraServAmount3,
+                                             PropExtraServDays3);
+                  }
+                            
+                
                 var paysug = (from q in _ctx.PropPaymentSuggestions
                               where q.Id_proposition == _idProposition
                               select q).SingleOrDefault();
