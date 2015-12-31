@@ -41,11 +41,67 @@ basicstyle=\ttfamily\small
 
 
 %% kaødy autor musi mieÊ 4 argumenty: imiÍ nazwisko, nr albumu, procent wk≥adu, opis wk≥adu
-\autor{£ukasz Lis}{112233}{1} {~7.5 strony na 13.12.2015r.}
-	
-\autor{Sebastian Nalepka}{225265}{3} {~24 strony na 20.12.2015r.}
+\autor{£ukasz Lis}{225261}{32} {
 
-\autor{Mateusz Ogiermann}{226591}{0} {~9 stron na 13.12.2015r.}	
+- Zdefiniowanie i zapis specyfikacji wymagaÒ (rozdzia≥ 3 (33 \%), 4 (33\%))
+
+- Zaprojektowanie schematu bazy danych  wraz ze wszystkim relacjami oraz tabelami s≥ownikowymi (40\%)
+
+- Opis wykorzystanych rozwiπzaÒ technologicznych (rozdzia≥ 5.1.2, 5.2.1, 5.2.2)
+
+- Przetestowanie utworzonej bazy danych wraz z jej pe≥nym opisem (rozdzia≥ 6.2)
+
+- Implementacja modu≥u edycji istniejπcej propozycji cenowej (rozdzia≥ 8.3)
+
+- Implementacja modu≥u edycji s≥ownikÛw cenowych (rozdzia≥ 8.6)
+ 
+- Implementacja interakcji okien wraz z odpowiednim wyúwietlaniem elementÛw
+
+- Opis rozdzia≥u Konto administratora i uøytkownika ñ ListView (rozdzia≥ 9.2)
+
+}
+	
+\autor{Sebastian Nalepka}{225265}{50} {
+
+- Zdefiniowanie i opis wstÍpu, genezy projektu, specyfikacji wymagaÒ i celu projektu (rozdzia≥ 1, 2, 3 (33\%), 4(33\%) )
+
+- Zaprojektowanie schematu bazy danych wraz ze wszystkimi relacjami oraz tabelami s≥ownikowymi (60\%)
+
+- Fizyczna implementacja bazy danych MS-SQL
+
+- Opis wykorzystanych rozwiπzaÒ technologicznych (rozdzia≥ 5.1.3, 5.2.3, 5.2.5, 5.3.1)
+
+- Zamodelowanie aplikacji wraz z podzia≥em na klasy oraz dostosowaniem do wzorca architektonicznego MVVM (rozdzia≥ 6.1)
+
+- Komunikacja bazy danych z aplikacjπ C\# (WPF) za pomocπ Entity Framework 6 (rozdzia≥ 6.3)
+
+- Implementacja modu≥u logowania do programu wraz z jego zabezpieczeniem (rozdzia≥ 8.1, 9.1)
+
+- Implementacja modu≥u tworzenia nowej propozycji cenowej wraz z fizycznπ budowπ formy tworzonej propozycji (rozdzia≥ 8.2, 9.3)
+
+- Zaprojektowania okna g≥Ûwnego konta administratora 
+
+- Przetestowanie modu≥u dotyczπcego modyfikacji kont uøytkownikÛw oraz
+
+- Opis podsumowania oraz perspektyw rozwoju oprogramowania (rozdzia≥ 10)
+
+}
+
+\autor{Mateusz Ogiermann}{226591}{18} {
+
+- Zapis wstÍpu do rozdzia≥u 5
+
+- Opis wykorzystanych rozwiπzaÒ technologicznych (rozdzia≥ 5.1.1, 5.2.4, 5.3.2)
+
+- Opis wydawania kolejnych wersji oprogramowania (rozdzia≥ 7)
+
+- Implementacja modu≥u tworzenia pliku PDF wraz z utworzeniem jego szablonu oraz zapisem do pliku (rozdzia≥ 8.4, 9.5)
+
+- Implementacja modu≥u przeznaczonego do zarzπdzania kontami pracownikÛw (rozdzia≥ 8.5)
+
+- Implementacja metod s≥uøπcych do edycji danych zapisanych w arkuszu DataGridView (rozdzia≥ 9.4)
+
+}	
 	
 %\NumeryNaPoczatku
 %% numeracja wzorÛw tu w≥πczona typu (1.2.3), ta druga to typu (1.2), a domyúlnie typu (1)
@@ -81,18 +137,19 @@ Dostrzegajπc powyøsze problemy zdecydowano siÍ wykonaÊ dedykowanπ aplikacjÍ bazo
 Kolejnym atutem przedstawionego rozwiπzania by≥oby umoøliwienie kierownictwu z poziomu kont administratorskich kontroli pracownikÛw poprzez zdalny wglπd w przygotowywane przez nich propozycje cenowe, a co za tym idzie ustalanych z klientem cen oraz zniøek. Menadøer sprzedaøy za pomocπ swojego uprzywilejowanego konta posiada≥by rÛwnieø moøliwoúÊ aktualizacji odpowiednich tabel danych, dziÍki czemu zmiany natychmiastowo by≥yby widocznie na kontach sprzedawcÛw. Zmiany te dotyczy≥yby moøliwoúci modyfikacji cen oferowanych us≥ug i produktÛw oraz kontroli sk≥adu pracowniczego poprzez funkcjonalnoúÊ dodawania, usuwania a takøe modyfikacji ich kont. 
 
 \section{Specyfikacja wymagaÒ projektowych}
+\label{dzial:specyfikacjaWymaganProjektowych}
 
-Dostrzegajπc problematykÍ dzia≥ajπcego obecnie rozwiπzania dokonano rozpoznania majπcego na celu spisanie za≥oøeÒ projektowych, ktÛre umoøliwiπ zniwelowanie aktualnych problemÛw zwiπzanych z przeprowadzaniem operacji tworzenia nowej propozycji cenowej. W czasie rozmÛw ze sprzedawcami pierwszym elementem, ktÛry zosta≥ przedstawiony w celu usprawnienia ich pracy by≥a forma dokumentÛw na bazie ktÛrych pracujπ. Wykazywano inicjatywÍ, aby owe dokumenty dotyczπce cennikÛw us≥ug aktualizowane by≥y bez ingerencji kaødego pracownika, umoøliwiajπc przy tym ciπg≥π pracÍ bez obawy o posiadanie nieaktualnych danych. 
+Dostrzegajπc problematykÍ dzia≥ajπcego obecnie rozwiπzania dokonano rozpoznania majπcego na celu spisanie za≥oøeÒ projektowych, ktÛre umoøliwiπ zniwelowanie aktualnych problemÛw zwiπzanych z przeprowadzaniem operacji tworzenia nowej propozycji cenowej. W czasie rozmÛw ze sprzedawcami pierwszym elementem, ktÛry zosta≥ przedstawiony w celu usprawnienia ich pracy by≥a forma dokumentÛw na bazie ktÛrych pracujπ. Wykazywano inicjatywÍ, aby owe dokumenty dotyczπce cennikÛw us≥ug aktualizowane by≥y bez ingerencji kaødego pracownika, umoøliwiajπc przy tym ciπg≥π pracÍ bez obawy o posiadanie nieaktualnych danych. Aktualnie proces ten polega na ciπg≥ym sprawdzaniu skrzynki elektronicznej, na ktÛrπ menadøer sprzedaøy wysy≥a aktualne wersje dokumentÛw oraz pobraniu ewentualnej aktualizacji. Istotnym problemem dotyczπcym tej kwestii jest rÛwnieø brak pewnoúci co do dostarczenia wiadomoúci e-mail, co powodowaÊ moøe w konsekwencji pracÍ sprzedawcÛw na bazie nieaktualnych danych.
 
-Kolejnπ sugestiπ ze strony pracownikÛw by≥o wycofanie koniecznoúci pracy z oprogramowaniem Microsoft Excel przez wzglπd na b≥Ídy spowodowane obowiπzkiem dokonywania rÍcznych obliczeÒ oraz przypadkowym usuwaniem formu≥ z pÛl. Problem ten polega≥ na tym, iø tylko czÍúÊ pÛl w arkuszu, na ktÛrym przeprowadzana by≥a praca naleøa≥o modyfikowaÊ. W przypadku wpisania wartoúci do pola zawierajπcego formu≥Í, owa formu≥a zosta≥a usuwana co skutkowa≥o reakcjπ ≥aÒcuchowπ polegajπcπ na b≥Ídnym wyliczaniu wartoúci w pozosta≥ych miejscach. Proces ten bardzo niekorzystnie wp≥ywa≥ na pracÍ sprzedawcy, ktÛry dodatkowo zobligowany by≥ do kontroli wartoúci cenowych tworzonej propozycji oraz w sytuacji b≥Ídu, powtÛrzeniu ca≥ego procesu od nowa na poprawnie dzia≥ajπcej wersji arkusza kalkulacyjnego. 
+Kolejnπ sugestiπ ze strony pracownikÛw by≥o wycofanie koniecznoúci pracy z oprogramowaniem Microsoft Excel przez wzglπd na b≥Ídy spowodowane obowiπzkiem rÍcznego wypisywania nazw produktÛw wraz z ich cenami w odpowiednie pola oraz przypadkowym usuwaniem formu≥ z pÛl. Problem ten polega≥ na tym, iø tylko czÍúÊ pÛl w arkuszu, na ktÛrym przeprowadzana by≥a praca naleøa≥o modyfikowaÊ. W przypadku wpisania wartoúci do pola zawierajπcego formu≥Í, owa formu≥a zosta≥a usuwana co skutkowa≥o reakcjπ ≥aÒcuchowπ polegajπcπ na b≥Ídnym wyliczaniu wartoúci w pozosta≥ych miejscach. Proces ten bardzo niekorzystnie wp≥ywa≥ na pracÍ sprzedawcy, ktÛry dodatkowo zobligowany by≥ do kontroli wartoúci cenowych tworzonej propozycji oraz w sytuacji b≥Ídu, powtÛrzeniu ca≥ej operacji od nowa na poprawnie dzia≥ajπcej wersji arkusza kalkulacyjnego.
 
-Ostatnim elementem, w sprawie ktÛrego kaødy ze sprzedawcÛw dostrzeg≥ problem oraz moøliwoúÊ ulepszenia by≥a rozbudowana lista produktÛw gastronomicznych i ich cen. Operowanie z owπ listπ przez sprzedawcÛw opiera siÍ na manualnym wyszukiwaniu interesujπcego produktu oraz sprawdzaniu jego ceny, co przez fakt duøej iloúci produktÛw jest czasoch≥onne. Zasugerowano, aby ulepszenie listy polega≥o na podzieleniu produktÛw na kategoriÍ oraz wyborze z ustalonej kategorii odpowiedniego produktu. Tym sposobem dostÍpna lista elementÛw do wyboru by≥aby znacznie mniejsza, co przek≥ada≥oby siÍ na znacznπ oszczÍdnoúÊ czasowπ.
+Ostatniπ kwestiπ, w sprawie ktÛrej kaødy ze sprzedawcÛw dostrzeg≥ problem oraz moøliwoúÊ ulepszenia by≥a rozbudowana lista produktÛw gastronomicznych i ich cen. Operowanie z owπ listπ przez sprzedawcÛw opiera siÍ na manualnym wyszukiwaniu interesujπcego produktu oraz sprawdzaniu jego ceny, co przez fakt duøej iloúci elementÛw jest czasoch≥onne. Zasugerowano, aby ulepszenie listy polega≥o na podzieleniu produktÛw na kategorie oraz moøliwoúci wyboru z ustalonej kategorii odpowiedniego produktu. Tym sposobem dostÍpna lista elementÛw do wyboru by≥aby znacznie mniejsza, co przek≥ada≥oby siÍ na znacznπ oszczÍdnoúÊ czasowπ.
 
-Usprawnienie procesu tworzenia nowej propozycji cenowej oraz zarzπdzania zmianami dotyczy rÛwnieø menadøera sprzedaøy. Podczas zasiÍgania opinii o moøliwoúci usprawniania jego pracy otrzymano informacjÍ o chÍci zaprzestania dystrybucji nowych wersji cennikÛw oraz arkusza Microsoft Excel poprzez skrzynki elektroniczne. Proces ten okaza≥ siÍ czasoch≥onny poprzez czÍste aktualizacje danych i obowiπzek ich przesy≥ania ca≥ej kadrze pracownikÛw, w ktÛrej dodatkowo nastÍpujπ liczne rotacje osobowe. Przy tym punkcie dostrzeøono jednoczeúnie moøliwoúÊ wprowadzenia centralnego zarzπdzania kontami pracownikÛw, ktÛre umoøliwi≥yby w prosty sposÛb wdroøenie nowych osÛb oraz usuniÍcie starych.
+Usprawnienie procesu tworzenia nowej propozycji cenowej oraz zarzπdzania zmianami dotyczyÊ moøe rÛwnieø menadøera sprzedaøy. Podczas zasiÍgania opinii o moøliwoúci usprawniania jego pracy otrzymano informacjÍ o chÍci zaprzestania dystrybucji nowych wersji cennikÛw oraz arkuszy Microsoft Excel za poúrednictwem skrzynki elektronicznej. Proces ten okaza≥ siÍ czasoch≥onny poprzez czÍste aktualizacje danych i obowiπzek ich przesy≥ania ca≥ej kadrze pracownikÛw, w ktÛrej dodatkowo wystÍpujπ liczne rotacje osobowe. Przy tym punkcie dostrzeøono jednoczeúnie moøliwoúÊ wprowadzenia centralnego systemu zarzπdzania kontami, ktÛry umoøliwi≥by w prosty sposÛb modyfikacje aktualnej kadry pracowniczej.
 
-Drugi zas≥yszany element usprawniajπcy pracÍ menadøera to moøliwoúÊ przeglπdania utworzonych przez pracownikÛw propozycji cenowych. W chwili obecnej opcja ta jest niemoøliwa do wykonania pomijajπc fakt dostarczenia menadøerowi propozycji drogπ elektronicznπ przez pracownika. Rozwiπzanie to implikuje jednak koniecznoúÊ dodatkowej pracy sprzedawcy, a w przypadku zmodyfikowania wys≥anej propozycji cenowej obowiπzku poinformowania o tym fakcie menadøera oraz wys≥ania zaktualizowanej wersji w celu weryfikacji.
+Drugim przedstawionym przez menadøera aspektem usprawniajπcym jego pracÍ by≥a moøliwoúÊ przeglπdania utworzonych przez pracownikÛw propozycji cenowych. W chwili obecnej opcja ta jest niemoøliwa do wykonania przez fakt lokalnego przechowywania dokumentÛw na stacji roboczej pracownika, przez co menadøer sprzedaøy nie posiada dostÍpu do oryginalnego pliku. Poúrednim rozwiπzaniem jest dostarczenie menadøerowi propozycji drogπ elektronicznπ przez pracownika. Rozwiπzanie to implikuje jednak koniecznoúÊ dodatkowej pracy sprzedawcy oraz nie gwarantuje menadøerowi posiadania aktualnej wersji dokumentu, przez fakt moøliwoúci jej pÛüniejszej edycji przez pracownika.
 
-Waønym elementem wyciπgniÍtym z rozpoznania zosta≥ widoczny na rysunku \ref{rys:SzablonPropozycji} szablon PDF w postaci arkusza kalkulacyjnego, ktÛry opracowany zosta≥ na podstawie burzy mÛzgÛw oraz aktualnej wersji dokumentu, na bazie ktÛrej tworzona jest propozycja cenowa. Szablon ten w znacznym stopniu u≥atwia rozlokowanie wszelkich elementÛw oraz ukazuje iteracyjny proces tworzenia propozycji, ktÛry naleøy zaimplementowaÊ w tworzonej aplikacji. Przedstawia on poøπdane przez pracownikÛw u≥oøenie elementÛw propozycji oraz ukazuje wszelkie zaleønoúci, ktÛre wystÍpujπ w czasie jej tworzenia.
+Waønym elementem wyciπgniÍtym z rozpoznania jest widoczny na rysunku \ref{rys:SzablonPropozycji} szablon PDF, ktÛry opracowany zosta≥ na podstawie burzy mÛzgÛw oraz aktualnej wersji dokumentu, na bazie ktÛrej tworzona jest propozycja cenowa. Szablon ten w znacznym stopniu u≥atwia rozlokowanie wszelkich elementÛw oraz ukazuje iteracyjny proces tworzenia propozycji, ktÛry naleøy zaimplementowaÊ w tworzonej aplikacji. Przedstawia on poøπdane przez pracownikÛw rozmieszczenie elementÛw propozycji oraz dziÍki utworzeniu jego formy w arkuszu kalkulacyjnym moøliwy by≥ jednoczesny zapis wszystkich zaleønoúci w postaci formu≥ i funkcji, ktÛre odwzorowujπ logikÍ tworzenia propozycji. Formu≥y te dotyczπ sposobu obliczania cen jednostkowych produktÛw wraz ze stawkπ VAT, ich zsumowanej wartoúci, sposobu uwzglÍdniania poziomu marøy oraz wyliczania terminu waønoúci propozycji.
 
 \newpage
 
@@ -104,15 +161,15 @@ Waønym elementem wyciπgniÍtym z rozpoznania zosta≥ widoczny na rysunku \ref{rys:
     \label{rys:SzablonPropozycji}
 \end{figure}
 
-Dokonujπc podsumowania przedstawionych problemÛw oraz jej analizy przez zespÛ≥ utworzono ogÛlnπ listÍ za≥oøeÒ, ktÛrych realizacja konieczna jest w celu uprawnienia procesu tworzenia propozycji cenowej ze strony zarÛwno sprzedawcy, jak i menadøera. Przedstawiona lista zawiera takøe elementy, ktÛre na drodze dedukcji uznane zosta≥y przez zespÛ≥ jako warte wprowadzenia.
+Dokonujπc podsumowania przedstawionych problemÛw i pomys≥Ûw wraz z ich szczegÛ≥owπ analizπ, utworzono ogÛlnπ listÍ za≥oøeÒ, ktÛrych realizacja wskazana jest w celu usprawnienia procesu tworzenia propozycji cenowej ze strony zarÛwno sprzedawcy, jak i menadøera. Przedstawiona lista zawiera takøe elementy, ktÛre na drodze dedukcji uznane zosta≥y jako warte wprowadzenia.
 
 \begin{itemize}
 
 \item \textsl{Wprowadzenie dwÛch typÛw kont uøytkownikÛw przez fakt na rÛøny zakres obowiπzkÛw s≥uøbowych,}
 
-\item \textsl{Aktualizacja wszelkich danych bez koniecznoúci ingerencji osobistej sprzedawcy (aktualizacja ze strony menadøera automatycznie powinna byÊ dostÍpna na kontach sprzedawcÛw),}
+\item \textsl{Aktualizacja wszelkich danych bez koniecznoúci osobistej ingerencji sprzedawcy (aktualizacja ze strony menadøera automatycznie powinna byÊ dostÍpna na kontach sprzedawcÛw),}
 
-\item \textsl{Zaprzestanie aktualizacji danych za pomocπ skrzynek elektronicznych (aktualizacja cennikÛw z poziomu konta administratora),}
+\item \textsl{Zaprzestanie aktualizacji danych za pomocπ skrzynek elektronicznych (aktualizacja cennikÛw powinna odbywaÊ siÍ z poziomu konta administratora),}
 
 \item \textsl{Zaprzestanie uøywania arkuszy kalkulacyjnych (przeniesienie procesu tworzenia nowej propozycji cenowej na poziom aplikacji),}
 
@@ -120,31 +177,130 @@ Dokonujπc podsumowania przedstawionych problemÛw oraz jej analizy przez zespÛ≥ u
 
 \item \textsl{MoøliwoúÊ zapisu utworzonej propozycji cenowej wraz z opcjπ jej pÛüniejszej modyfikacji,}
 
-\item \textsl{Zautomatyzowanie przeprowadzanych obliczeÒ w miejscach, w ktÛrych jest to moøliwe (odciπøenie sprzedawcy),}
+\item \textsl{Zautomatyzowanie przeprowadzanych obliczeÒ w miejscach, w ktÛrych jest to moøliwe,}
 
-\item \textsl{Podzia≥ produktÛw gastronomicznych na kategorie i moøliwoúÊ wyboru szukanego elementu z krÛtkiej listy,}
+\item \textsl{Podzia≥ produktÛw gastronomicznych na kategorie i moøliwoúÊ wyboru szukanego elementu z wybranej kategorii,}
 
-\item \textsl{Wprowadzenie centralnego zarzπdzania pracownikami z poziomu dedykowanego dla kaødej osoby konta,}
+\item \textsl{Wprowadzenie centralnego systemu zarzπdzania kontami pracownikÛw,}
 
-\item \textsl{Umoøliwienie dodawania, edycji, usuwania kont z poziomu konta administratorskiego,}
+\item \textsl{Umoøliwienie dodawania, edycji, usuwania kont z poziomu konta administratora,}
 
-\item \textsl{MoøliwoúÊ przeglπdania tworzonych przez sprzedawcÛw propozycji cenowych z poziomu konta administratorskiego}
+\item \textsl{MoøliwoúÊ przeglπdania tworzonych przez sprzedawcÛw propozycji cenowych z poziomu konta administratora,}
 
 \item \textsl{Walidacja wprowadzanych przez uøytkownika danych oraz informowanie go o potencjalnych b≥Ídach,}
 
-\item \textsl{Funkcja tworzenia dokumentu PDF zapisanej propozycji cenowej,}
+\item \textsl{Funkcja tworzenia dokumentu PDF zapisanej uprzednio propozycji cenowej,}
 
 \end{itemize}
 
+\section{Istniejπce rozwiπzania konkurencyjne}
+\label{dzial:IstniejaceRozwiazaniaKonkurencyjne}
+
+W celu wdroøenia siÍ w tematykÍ automatyzacji procesu tworzenia propozycji cenowej przeprowadzono rekonesans dostÍpnych aplikacji wspierajπcych przedstawiony proces. Na podstawie utworzonej uprzednio listy ogÛlnych za≥oøeÒ z szerokiej gamy dostÍpnych rozwiπzaÒ \cite{CRMList}, wytypowane zosta≥y trzy programy, ktÛre w najwiÍkszym stopniu jπ pokrywajπ oraz mogπ byÊ zastosowane w branøy hotelarskiej. Aplikacje te przetestowane zosta≥y pod kπtem funkcjonalnoúci w celu zaznajomienia siÍ ze sposobem realizacji ustalonych wymagaÒ projektowych i ewentualnemu ich doprecyzowaniu.
+
+\begin{itemize}
+\item \textsl{ProfitCRM} 
+
+\tab ProfitCRM \cite{ProfitCRM} jest to aplikacja desktopowa s≥uøπca do wspomagania procesÛw dotyczπcych zarzπdzania relacjami z klientami. Oprogramowanie to nie jest dedykowane konkretnej branøy, jednakøe czÍúÊ jego funkcjonalnoúci moøna wykorzystaÊ do realizacji ustalonych wymagaÒ projektowych.
+Aplikacja wyposaøona jest w modu≥ logowania, na podstawie ktÛrego przeprowadzana jest identyfikacja logujπcej siÍ osoby. Wszelkie czynnoúci wykonywane w czasie pracy programu sπ wiÍc przyporzπdkowane konkretnemu pracownikowi, co z kolei umoøliwia z poziomu konta z dodatkowymi uprawnieniami okreúlenie w≥aúciciela danej propozycji cenowej znajdujπcej siÍ w systemie. Opcjπ, ktÛrπ zosta≥a dostrzeøona odnoúnie kwestii przeszukiwania propozycji cenowych przez administratora jest moøliwoúÊ wyboru propozycji konkretnego pracownika, co znosi koniecznoúÊ d≥ugotrwa≥ego szukania jednego elementu w sytuacji posiadania rozbudowanej listy elementÛw.
+DziÍki wspÛ≥pracy z systemem bazodanowym aplikacja umoøliwia rÛwnieø przeprowadzenie aktualizacji wszelkich list zawierajπcych produkty z poziomu aplikacji. Kaøda zmiana listy jest automatycznie rejestrowana i zapisywana w bazie danych. Tym sposobem kaødy uøytkownik ma pewnoúÊ, iø podczas pracy posiadaÊ bÍdzie aktualnπ wersjÍ danych. ProfitCRM posiada rÛwnieø moøliwoúÊ tworzenia spersonalizowanych pod konkretne przedsiÍbiorstwo szablonÛw dokumentÛw, ktÛre w przypadku sieci hotelowej mogπ przybraÊ formÍ propozycji cenowej, ktÛra po uzupe≥nieniu moøe zostaÊ wyeksportowana do pliku PDF.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{InterfejsProfitCRM.jpg}
+    \caption{Interfejs uøytkownika w aplikacji ProfitCRM, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:InterfejsProfitCRM}
+\end{figure}
+
+\newpage
+
+\tab Testowane oprogramowanie przez fakt braku ukierunkowania branøowego posiada bardzo duøo opcji, z ktÛrych znaczna wiÍkszoúÊ nie jest potrzebna w kontekúcie branøy hotelarskiej. W konsekwencji tego interfejs aplikacji, ktÛry zobaczyÊ moøna na rysunku \ref{rys:InterfejsProfitCRM} jest nieczytelny, co poczπtkowo uniemoøliwia szybkie znalezienie potrzebnej funkcji. Przyk≥adem ukazujπcym z≥oøonoúÊ interfejsu jest jedna z zak≥adek menu przedstawiona na rysunku \ref{rys:profitcrm}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{ProfitCRM.jpg}
+    \caption{Jedna z siedmiu pozycji menu w ProfitCRM, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:profitcrm}
+\end{figure}
+
+\newpage
+
+\item \textsl{AsystentCRM}
+
+\tab Kolejnπ przetestowanπ aplikacjπ jest AsystentCRM \cite{AsystentCRM}, ktÛrego przeznaczeniem jest, analogicznie jak w przyk≥adzie poprzednim, wspomaganie procesÛw odnoszπcych siÍ do zarzπdzania relacjami z klientami. Zaletπ aplikacji jest jej uniwersalnoúÊ odnoszπca siÍ do dostosowania siÍ do potrzeb przedsiÍbiorstwa. Zaleta ta najbardziej zauwaøalna jest w module edytora szablonÛw generowanego dokumentu, ktÛry widoczny jest na rysunku \ref{rys:SzablonAsystentCRM}. Szablon tworzony w edytorze konstruowany jest wykorzystujπc jÍzyk HTML oraz CSS, co umoøliwia utworzenie dowolnego schematu wymaganego przez przedsiÍbiorstwo dokumentu oraz pÛüniejsze wygenerowanie jego pliku PDF.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{SzablonAsystentCRM.jpg}
+    \caption{Edytor szablonÛw aplikacji AsystentCRM, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:SzablonAsystentCRM}
+\end{figure}
+
+\tab W czasie testowania aplikacji, duøa uwaga zwrÛcona zosta≥a modu≥owi s≥uøπcy do zarzπdzania kontami uøytkownikÛw, ktÛry zawiera moøliwoúÊ dodania i usuniÍcia uøytkownika oraz zmianÍ danych personalnych, statusu konta oraz jego has≥a. Edycja ta moøliwa jest z poziomu uporzπdkowanej tabeli, ktÛrej graficzna reprezentacja podobna jest do standardowych arkuszy kalkulacyjnych. Metoda ta jest bardzo prosta i intuicyjna dla uøytkownika oraz w przeciwieÒstwie do tworzenia szablonu dokumentu nie wymaga øadnej specjalistycznej wiedzy.
+Podobnie jak w ProfitCRM, aplikacja posiada modu≥ logowania, z tπ rÛønicπ, iø nie jest dostÍpna opcja przeglπdania utworzonych przez pracownikÛw dokumentÛw z poziomu konta administratora. Ograniczenie to wyklucza moøliwoúÊ zdalnej kontroli pracownikÛw, ktÛra jest jednπ z priorytetowych za≥oøeÒ prezentowanego projektu inøynierskiego. Drugim z kolei ograniczeniem jest brak kategoryzacji elementÛw, ktÛry w przypadku pracy na listach zawierajπcych duøo elementÛw moøe byÊ znacznie utrudniony.
+
+\item \textsl{Gestor GT} 
+
+\tab Ostatnim testowanym oprogramowaniem jest Gestor GT \cite{Gestor} s≥uøπcy do wspomagania firmy w zakresie obs≥ugi klienta, w szczegÛlnoúci odnoszπc siÍ do planowania oraz realizacji wszelkich dzia≥aÒ handlowych. Warto wspomnieÊ, iø  budowa programu jest modu≥owa juø na poziomie aplikacji. W celu uøycia funkcji dotyczπcych wspÛlnych kartotek towarÛw, wraz ze wszystkimi cenami, rabatami, a takøe wystawiania dokumentÛw handlowych, wymagane jest doinstalowanie odpowiednich dodatkÛw takich jak Subiekt GT oraz Rewizor GT. Wersja demonstracyjna, na ktÛrej przeprowadzane by≥y testy zawiera jednak pe≥en pakiet oprogramowania, co znosi koniecznoúÊ ich oddzielnego pobierania.
+
+Graficzny interfejs uøytkownika przedstawiony na rysunku \ref{rys:InterfejGestorGT}, podobnie jak w aplikacji ProfitCRM jest bardzo rozbudowany z tπ jednak rÛønicπ, iø wszelkie dostÍpne elementy zosta≥y u≥oøone wed≥ug ustalonej hierarchii w dobrze skategoryzowanym formacie. Z tego teø powodu wyszukiwanie interesujπcych funkcji jest stosunkowo szybkie i intuicyjne. Testowana aplikacja posiada standardowe funkcjonalnoúci dotyczπce tworzenia dokumentu, ktÛrego schemat graficzny naleøy wybraÊ z listy dostÍpnych schematÛw. Nie istnieje moøliwoúÊ jego dostosowania do potrzeb przedsiÍbiorstwa, jednakøe dostÍpna lista posiada bardzo duøo elementÛw, co zwiÍksza szansÍ na znalezienie szablonu odpowiedniego pod dane przedsiÍbiorstwo.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{InterfejGestorGTs.jpg}
+    \caption{Interfejs programu Gestor GT, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:InterfejGestorGT}
+\end{figure}
+
+Istotnπ rÛønicπ odnoúnie tworzonych dokumentÛw w porÛwnaniu z uprzednio opisywanymi programami jest sposÛb ich zapisu do postaci dokumentu PDF. Sama aplikacja nie wspiera takiej funkcjonalnoúci, jednak po zainstalowaniu dodatkowego oprogramowania PDFCreator \cite{PDFCreator}, wygenerowanie dokumentu PDF jest moøliwe podczas operacji drukowania. 
+\end{itemize}
+
+W przedstawionych programach moøna dostrzec podobieÒstwa w implementacji ich funkcjonalnoúci, z tπ rÛønicπ, iø øadna z prezentowanych aplikacji nie pokry≥a w pe≥ni wszystkich elementÛw zawartych na utworzonej uprzednio liúcie za≥oøeÒ. Opis przeprowadzonych testÛw zawiera wy≥πcznie elementy, ktÛre rÛøniπ siÍ pomiÍdzy kolejno testowanymi aplikacjami z wykluczeniem standardowych funkcjonalnoúci ktÛre kaøda prezentowana aplikacja posiada.
+
+Wszystkie trzy programy sπ programami pos≥ugujπcymi siÍ systemami bazodanowymi wspierajπcymi pracÍ uøytkownikÛw na dwÛch typach kont - uøytkownik oraz administrator. DziÍki moøliwoúÊ centralnego przechowywania danych kont uøytkownikÛw, po uruchomieniu kaødej aplikacji widoczny jest modu≥ logowania jednoznacznie identyfikujπcy osobÍ, zabezpieczajπc dodatkowo moøliwoúÊ pracy przez nieupowaønionego uøytkownika. Po prawid≥owo przeprowadzonym procesie logowania, uøytkownik kaødego prezentowanego systemu ma moøliwoúÊ utworzenia propozycji cenowej, z tπ rÛønicπ, iø tylko AsystentCRM oraz ProfitCRM majπ funkcjÍ dostosowania szablonu tworzonego dokumentu. Utworzona propozycja cenowa posiada moøliwoúÊ pÛüniejszej edycji oraz zapisu w formacie PDF z poziomu kaødego prezentowanego programu, z rÛønicπ tπ, iø Gestor GT wymaga instalacji dodatkowego zewnÍtrznego oprogramowania w celu spe≥nienia tej funkcjonalnoúci.
+
+NajwiÍksze dostrzeøone rÛønice dotyczπ jednak moøliwoúci przeglπdania tworzonych przez uøytkownikÛw propozycji cenowych z poziomu konta administratora oraz podziale produktÛw na kategorie. ProfitCRM jako jedyny umoøliwia kontrolÍ akcji pracownikÛw wliczajπc w to podglπd tworzonych przez nich dokumentÛw, a takøe wraz z systemem Gestor GT posiada narzÍdzie umoøliwiajπce kategoryzacjÍ wprowadzonej do systemu listy produktÛw. 
+
+Przetestowanie aplikacji konkurencyjnych umoøliwi≥o doprecyzowanie kilku punktÛw zawartych na liúcie wymagaÒ projektowych. Dostrzeøono koniecznoúÊ zbudowania prostego interfejsu uøytkownika, ktÛry umoøliwi intuicyjnπ obs≥ugÍ programu. Liczba dostÍpnych funkcjonalnoúci ograniczona byÊ powinna wy≥πcznie do niezbÍdnych opcji potrzebnych do przeprowadzenia operacji tworzenia propozycji cenowej oraz jej pÛüniejszej edycji. Pomocny w tym aspekcie jest fakt, iø aplikacja projektu inøynierskiego tworzona jest pod konkretnπ branøÍ, co niweluje koniecznoúÊ wprowadzenia licznych uniwersalnych opcji, ktÛrych listÍ moøna dostrzec na rysunku \ref{rys:profitcrm}. Zaletπ wynikajπcπ z ukierunkowania pod jednπ branøÍ jest rÛwnieø moøliwoúÊ dostosowania szablonu PDF, ktÛry zawieraÊ moøe dok≥adnie sprecyzowane kategorie odnoszπce siÍ do konkretnych elementÛw tworzenia propozycji cenowej organizowanego przez klienta wydarzenia. Aplikacja ProfitCRM nakreúli≥a rÛwnieø moøliwy schemat podglπdu propozycji cenowych innych uøytkownikÛw dotyczπcy opcji wyboru z listy i wyúwietlenia propozycji konkretnego uøytkownika, a nie tylko wszystkich utworzonych propozycji.
 
 
---- END SEBA ---
+\section{Pomys≥ na rozwiπzanie problemu}
+\label{dzial:PomyslNaRozwiazanieProblemu}
 
-W rozdziale \ref{dzial:geneza} przedstawiono problemy sieci hotelowej, wystÍpujπce podczas przeprowadzania transakcji z klientem. Sπ one podstawowymi czynnikami determinujπcymi docelowπ formÍ aplikacji, dobÛr narzÍdzi i technologii oraz wymagania ktÛre naleøy spe≥niÊ w celu wdroøenia proponowanego rozwiπzania. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemÛw operacyjnych jest uøywany. Jak pokazujπ rankingi, jednymi z najczÍúciej uøywanych systemÛw operacyjnych sπ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekúcie doboru technologii oznacza to, iø warto zastosowaÊ rozwiπzania firmy Microsoft ktÛre sπ w pe≥ni zintegrowane z systemami Windows, ze wzglÍdu na ich wysokπ wydajnoúÊ oraz popularnoúÊ. Fundamentalnym elementem aplikacji jest baza danych w ktÛrej przechowywane sπ detale transakcji, szczegÛ≥owe listy oferowanych us≥ug czy dane osobowe pracownikÛw. Firma Microsoft oferuje produkt SQL Server, ktÛry posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jÍzykÛw platformy programistycznej .NET Framework. SQL Server w wersji darmowej moøe zostaÊ uøyty do w projektach czysto hobbystycznych jak i w pe≥ni komercyjnych co jest jego duøym atutem. W rankingu portalu \textsl{db-engines.com} SQL Server zajmuje 3 pozycjÍ, nieprzerwanie od 2014 roku poúrÛd ponad 200 sklasyfikowanych silnikÛw baz danych \cite{SQLRanking}. Wystarczajπcym kryterium ktÛre musi zostaÊ spe≥nione aby firma mog≥a korzystaÊ z aplikacji bazujπcej na tym silniku, jest przygotowanie jednego serwera centralnego z ktÛrym za poúrednictwem aplikacji ≥πczπ siÍ pracownicy. Opisane rozwiπzanie eliminuje jeden z problemÛw, ktÛrym jest synchronizacja danych pomiÍdzy pracownikami, takich jak aktualne wersje propozycji cenowych oraz listy oferowanych us≥ug. 
+Przeprowadzona analiza opisana w rozdziale \ref{dzial:specyfikacjaWymaganProjektowych} oraz zawarta w niej lista wymagaÒ projektowych, ktÛra doprecyzowana zosta≥a w czasie testÛw aplikacji opisanych w rozdziale \ref{dzial:IstniejaceRozwiazaniaKonkurencyjne} umoøliwi≥a powstanie pomys≥u na rozwiπzanie problemu dotyczπcego zautomatyzowania procesu tworzenia propozycji cenowej w wybranej sieci hotelowej.
 
-Popularnym jÍzykiem platformy programistycznej .NET Framework jest jÍzyk C\#. Umoøliwia on tworzenie nowoczesnych aplikacji okienkowych, przy uøyciu bibliotek graficznych takich jak WPF. Tworzenie okien i ich komponentÛw takich jak przyciski, listy rozwijane czy pola tekstowe jest proste i wygodne dla programistÛw, poniewaø nie wymagajπ duøych ingerencji w kod ürÛd≥owy. Manipulacja komponentami okien odbywa siÍ poprzez modelowanie elementÛw graficznych w kreatorze. Umoøliwia on tworzenie graficznego interfejsu uøytkownika podobnie jak w popularnych programach s≥uøπcych do obrÛbki grafiki. Do zaprojektowanego w ten sposÛb interfejsu, wystarczy podpiπÊ konkretne funkcjonalnoúci zaimplementowane w kodzie ürÛd≥owym. Mogπ to byÊ operacje takie jak zapisywanie propozycji cenowych do pliku PDF poprzez klikniÍcie przycisku. W konsekwencji czas implementacji aplikacji ulega redukcji. Istotnπ kwestiπ podczas implementacji oprogramowania jest komunikacja aplikacji z zasobami bazy danych z poziomu kodu ürÛd≥owego. Dla jÍzyka C\# firma Microsoft zaprojektowa≥a system Entity Framework ktÛry s≥uøy do odwzorowania relacyjnej bazy danych na obiekty dostÍpne z poziomu kodu. Zapytania bazodanowe takie jak usuwanie czy modyfikacja tabel sπ implementowane w kodzie operujπcym na obiektach utworzonych przez Entity Framework. 
+Uøytkownik po uruchomieniu aplikacji przeniesiony zostanie do ekranu logowania, ktÛre zobowiπzywaÊ go bÍdzie do wpisania jego loginu, has≥a oraz naciúniÍcia przycisku logowania. Mechanizmy realizujπce proces logowania ustanawiajπc po≥πczenie z bazπ danych sprawdzaÊ bÍdπ poprawnoúÊ wpisanych danych i w zaleønoúci od informacji zwrotnej bÍdπ mog≥y wykonaÊ jednπ z trzech operacji:
 
-Jednym z ostatnich aspektÛw wytwarzania oprogramowania jest wybranie, jakiego typu bÍdzie to aplikacja. Za≥oøeniem niniejszego projektu inøynierskiego jest implementacja aplikacji desktopowej. Zalety tradycyjnych aplikacji desktopowych, ktÛre spowodowa≥y wybÛr tego typu sπ nastÍpujπce:
+\begin{itemize}
+\item{\textsl{B≥Ídne dane logowania}}
+
+\tab Uøytkownik w sytuacji podania danych, ktÛre nie znalezione zostanπ w bazie danych otrzyma informacjÍ o b≥Ídzie.
+
+\item{\textsl{Pierwsze logowanie uøytkownika}}
+
+\tab Uøytkownik w momencie pierwszego logowania na swoje dedykowane konto, zostanie poinformowany o koniecznoúci ustawienia swojego has≥a. Po prawid≥owym przeprowadzeniu tej operacji, uøytkownik przeniesiony zostanie do odpowiedniego panelu g≥Ûwnego aplikacji.
+
+\item{\textsl{Przeniesienie do panelu g≥Ûwnego}}
+
+\tab W sytuacji podania prawid≥owego loginu i has≥a uøytkownik przenoszony zostanie do panelu g≥Ûwnego aplikacji.
+
+\end{itemize}
+
+Po prawid≥owo przeprowadzonym procesie logowania, w zaleønoúci od uprawnieÒ konta zawartych w tabeli bazodanowej, uøytkownik przeniesiony zostanie do panelu uøytkownika lub w przypadku posiadania praw administratorskich do panelu administratora.
+
+Panel uøytkownika umoøliwiaÊ bÍdzie korzystajπcemu z niego uøytkownikowi przeprowadzenie podstawowych czynnoúci zawartych na liúcie wymagaÒ projektowych. Okno g≥Ûwne zawieraÊ bÍdzie listÍ propozycji uøytkownika, na ktÛrej zawieraÊ siÍ bÍdπ wszystkie utworzone przez niego propozycje cenowe wraz z moøliwoúciπ ich zapisu do pliku PDF. Bazujπc na przeprowadzonych analizach dotyczπcych rozwiπzaÒ konkurencyjnych, przycisk umoøliwiajπcy generowanie plikÛw PDF umiejscowiony bÍdzie w dobrze widocznym miejscu w celu bezproblemowego wykonania przedstawianej operacji. Z menu g≥Ûwnego uøytkownik bÍdzie posiada≥ moøliwoúÊ wybrania opcji utworzenia nowej propozycji cenowej, ktÛra przeniesie go do formy umoøliwiajπcej jej utworzenie. Kolejna opcja dostÍpna z poziomu menu to edycja istniejπcej propozycji cenowej, ktÛra po zaznaczeniu uprzednio interesujπcej propozycji cenowej z listy rÛwnieø przeniesie uøytkownika do formy umoøliwiajπcej jej utworzenie, z tπ rÛønicπ, iø z bazy danych pobrane zostanπ wszystkie uzupe≥nione wczeúniej elementy wybranej propozycji gotowe do dalszej modyfikacji. Trzecia z kolei opcja to lista propozycji, ktÛra umoøliwiaÊ bÍdzie przeniesienie uøytkownika do okna g≥Ûwnego w przypadku zrezygnowania z utworzenia nowej propozycji cenowej lub w czasie jej modyfikacji. Ostatnia opcja bÍdzie standardowym wyjúciem z programu, ktÛre przez wzglπd na intuicyjnoúÊ obs≥ugi rÛwnieø zamieszczone bÍdzie w menu g≥Ûwnym.
+
+Panel administratora skonstruowany bÍdzie w analogiczny sposÛb, z tπ rÛønicπ, iø bÍdzie posiada≥ dwie dodatkowe zak≥adki menu oraz lekko zmodyfikowane okno g≥Ûwne. Modyfikacja okna g≥Ûwnego dotyczyÊ bÍdzie zawartoúci listy propozycji, ktÛra zawieraÊ bÍdzie propozycje utworzone przez wszystkich uøytkownikÛw systemu. Administrator bÍdzie posiada≥ moøliwoúÊ ich podglπdu, zapisu do pliku PDF w sposÛb analogiczny jak uøytkownik standardowy oraz filtrowania wyúwietlanych propozycji cenowych po konkretnym uøytkowniku. Dodatkowe pozycje w menu bÍdπ dotyczy≥y natomiast edycji s≥ownikÛw dotyczπcych cen pokoi hotelowych, elementÛw gastronomicznych oraz kosztu wynajmu sal okolicznoúciowych. Administrator bÍdzie mia≥ ponadto moøliwoúÊ dodania nowego konta uøytkownika, edycji jego danych wraz z moøliwoúciπ zresetowania has≥a w przypadku jego utracenia oraz jego usuniÍcia.
+
+\section{Zastosowane rozwiπzania technologiczne}
+
+W rozdziale \ref{dzial:specyfikacjaWymaganProjektowych} przedstawiono za≥oøenia projektowe dotyczπce opisanego w rozdziale \ref{dzial:geneza} problemu sieci hotelowej wystÍpujπcego podczas przeprowadzania transakcji z klientem. Za≥oøenia te wraz z opisanym w dziale \ref{dzial:PomyslNaRozwiazanieProblemu} pomys≥em na ich rozwiπzanie sπ podstawowymi czynnikami determinujπcymi docelowπ formÍ aplikacji i dobÛr narzÍdzi. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemÛw operacyjnych jest uøywany. Jak pokazujπ rankingi, jednymi z najczÍúciej uøywanych systemÛw operacyjnych sπ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekúcie doboru technologii oznacza to, iø warto zastosowaÊ rozwiπzania firmy Microsoft ktÛre sπ w pe≥ni zintegrowane z systemami Windows, ze wzglÍdu na ich wysokπ wydajnoúÊ oraz popularnoúÊ. Fundamentalnym elementem prezentowanej aplikacji jest baza danych w ktÛrej przechowywane sπ detale transakcji, szczegÛ≥owe listy oferowanych us≥ug czy dane osobowe pracownikÛw. Firma Microsoft oferuje produkt SQL Server, ktÛry posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jÍzykÛw platformy programistycznej .NET Framework. SQL Server w wersji darmowej moøe zostaÊ uøyty do w projektach czysto hobbystycznych jak i w pe≥ni komercyjnych co jest jego duøym atutem. W rankingu portalu \textsl{db-engines.com} SQL Server zajmuje 3 pozycjÍ, nieprzerwanie od 2014 roku poúrÛd ponad 200 sklasyfikowanych silnikÛw baz danych \cite{SQLRanking}. Wystarczajπcym kryterium ktÛre musi zostaÊ spe≥nione aby firma mog≥a korzystaÊ z aplikacji bazujπcej na tym silniku, jest przygotowanie jednego serwera centralnego z ktÛrym za poúrednictwem aplikacji ≥πczπ siÍ pracownicy. 
+
+Popularnym jÍzykiem platformy programistycznej .NET Framework jest jÍzyk C\#. Umoøliwia on tworzenie nowoczesnych aplikacji okienkowych, przy uøyciu bibliotek graficznych takich jak WPF. Tworzenie okien i ich komponentÛw takich jak przyciski, listy rozwijane czy pola tekstowe jest proste i wygodne dla programistÛw, poniewaø nie wymagajπ duøych ingerencji w kod ürÛd≥owy. Manipulacja komponentami okien odbywa siÍ poprzez modelowanie elementÛw graficznych w kreatorze. Umoøliwia on tworzenie graficznego interfejsu uøytkownika podobnie jak w popularnych programach s≥uøπcych do obrÛbki grafiki. Do zaprojektowanego w ten sposÛb interfejsu, wystarczy podpiπÊ konkretne funkcjonalnoúci zaimplementowane w kodzie ürÛd≥owym. Mogπ to byÊ operacje takie jak zapisywanie propozycji cenowych do pliku PDF poprzez klikniÍcie przycisku. W konsekwencji czas implementacji aplikacji ulega redukcji. Istotnπ kwestiπ podczas implementacji oprogramowania jest komunikacja aplikacji z zasobami bazy danych z poziomu kodu ürÛd≥owego. Dla jÍzyka C\# firma Microsoft zaprojektowa≥a system Entity Framework ktÛry s≥uøy do odwzorowania relacyjnej bazy danych na obiekty dostÍpne z poziomu kodu. Zapytania bazodanowe takie jak usuwanie czy modyfikacja tabel sπ implementowane w kodzie operujπcym na obiektach utworzonych przez Entity Framework.
+
+Wydawanie kolejnych wersji oprogramowania w úrodowisku produkcyjnym czy to testowym przysparzaÊ moøe wiele problemÛw dotyczπcych zawartoúci wydawanej paczki oraz czasoch≥onnoúci tego procesu. W prezentowanym projekcie wykorzystany zosta≥ serwer ciπg≥ej integracji Jenkins umoøliwiajπcy szybkie wygenerowanie archiwum zawierajπcego pliki niezbÍdne do prawid≥owego dzia≥ania najnowszej wersji programu, ktÛre moøe byÊ przekazane testerom, programistom czy potencjalnemu uøytkownikowi w dowolnym momencie.
+
+Jednym z aspektÛw procesu wytwarzania oprogramowania jest wybranie, jakiego typu bÍdzie to aplikacja. Za≥oøeniem niniejszego projektu inøynierskiego jest implementacja aplikacji desktopowej. Zalety tradycyjnych aplikacji desktopowych, ktÛre spowodowa≥y wybÛr tego typu sπ nastÍpujπce:
 
 \begin{itemize}
 \item \textsl{Prostota w implementacji GUI} 
@@ -158,82 +314,6 @@ Jednym z ostatnich aspektÛw wytwarzania oprogramowania jest wybranie, jakiego ty
 \item \textsl{Brak problemÛw zgodnoúci} 
 
 \tab Uøytkownicy korzystajπ z rÛønych przeglπdarek internetowych takich jak Mozilla Firefox, Google Chrome, Safari czy Opera. Dostosowanie wyglπdu, skalowalnoúci oraz funkcjonalnoúci dla rÛønych przeglπdarek jest czasoch≥onne, podczas gdy w przypadku aplikacji desktopowych wymieniony problem nie wystÍpuje.
-\end{itemize}
-
-W kontekúcie wdroøenia, aplikacja powinna zostaÊ zainstalowana na stacjach roboczych pracownikÛw co jest drugim warunkiem koniecznym do wprowadzenia nowej infrastruktury IT dla pracownikÛw dzia≥u sprzedaøy. Jeøeli w przysz≥oúci aplikacja by≥aby rozwijana, za pomocπ narzÍdzi Continuous Integration kolejne wersje oprogramowania mogπ zostaÊ szybko dostarczone sieci hotelowej w postaci paczki zip, co zosta≥o szerzej opisane w rozdziale \textsl{Automatyzacja wydawania kolejnych wersji aplikacji}. 
-
-\section{Istniejπce rozwiπzania konkurencyjne}
-Wraz ze wzrostem liczby firm \cite{iloscFirm} dzia≥ajπcych w Polsce istnieje koniecznoúÊ lepszego, szybszego zarzπdzania. Wiπøe siÍ to z rozwojem informatyzacji. Moøna w ten sposÛb zautomatyzowaÊ wiele procesÛw w firmie miedzy innymi: zarzπdzanie magazynem, kontrolÍ sprzedaøy, zapotrzebowanie przedsiÍbiorstwa na rÛøne produkty. Do tego celu wdraøane sπ zintegrowane systemy informatyczne, ktÛrych zadaniem jest po≥πczenie wszystkich elementÛw przedsiÍbiorstwa, w jeden scentralizowany system. Wykorzystuje siÍ do tego oprogramowania klasy ERP (ang. enterprise resource planning ñ ERP)\cite{SystemERP}. W sk≥ad takiego oprogramowania moøe wchodziÊ wiele modu≥Ûw: finansowoúÊ, stany magazynowe, kontakt z klientem, w zaleønoúci, co w danym przedsiÍbiorstwie jest wymagane. Wymogiem takiego systemu jest by wszystkie modu≥y by≥y niezaleøne, poniewaø kaøda firma nie potrzebuje ich wszystkich, ale muszπ siÍ umieÊ z sobπ komunikowaÊ by mÛc w lepszy sposÛb zarzπdzaÊ. W wypadku kontaktu z klientem wprowadza siÍ systemy, ktÛre sprawnie obs≥ugujπ sprawy zwiπzane z reklamacjami, wsparciem technicznym i innymi rzeczami zwiπzanymi z jego obs≥ugπ. Z tym zwiπzane jest wystawianie propozycji cenowej. Jest to proces czasoch≥onny ze wzglÍdu na koniecznoúÊ aktualizowania cennikÛw, moøliwego wyposaøenia sal i innych spraw zwiπzanych z organizowanym wydarzeniem. Modu≥ CRM(ang. customer relationship management ñ CRM), ktÛry wspomaga proces kontaktu z klientem zawiera komponent wspomaganie procesu wystawiania propozycji. Komponent ten nie tylko automatyzuje proces wystawiania propozycji cenowej, ale jest rÛwnieø odpowiedzialny, za sprzedaø oferowanych towarÛw i us≥ug. W nastÍpnej czÍúci tego rozdzia≥u przedstawiono rÛøne systemy CRM, ktÛrych istnieje wersja darmowa.
-
-Do sprawdzenia dostÍpnych rozwiπzaÒ zosta≥y wytypowane trzy programy, ktÛre spe≥niajπ wymagania sieci hotelowej sπ to: ProfitCRM\cite{ProfitCRM} i Asystent CRM\cite{AsystentCRM} Gestor GT \cite{Gestor}. Zosta≥y one wytypowane z powodu moøliwoúci pod≥πczenia do istniejπcej juø infrastruktury w firmie opartej na badzie MS-SQL. Eliminuje to koniecznoúÊ ingerencji sprzedawcy w proces aktualizowania danych. Waønym czynnikiem wyboru tych programÛw jest moøliwoúÊ generowania PDF zapisanych propozycji. Czynnikiem wp≥ywajπcym jest rÛwnieø przejrzystoúÊ interfejsu uøytkownika. Ma to istotne znaczenie, poniewaø nie kaødy uøytkownik mia≥ kontakt z tego typu systemem wspomagajπcym sprzedaø. Wykorzystanie aplikacji  desktopowej gwarantuje nam rÛwnieø wiÍkszπ kontrolÍ nad dostÍpem do danych. Element ten jest istotny z punktu bezpieczeÒstwa. Przydatnπ funkcjπ jest integracja  z skrzynkπ pocztowπ, ktÛrej wy≥πcznym zadaniem jest kontakt z klientem. 
-
-
-\begin{itemize}
-
-\item \textsl{Interfejs uøytkownika} 
-
-\tab Wyglπd aplikacji w niektÛrych przypadkach pozostawia≥ wiele do øyczenia a niektÛre zaskoczy≥y nietypowym interfejsem. W przypadku programu ProfitCRM interfejs uøytkownika jest trochÍ za bardzo poúciskany, co utrudnia≥o znalezienie odpowiednich elementÛw potrzebnych w danym momencie. Najistotniejszπ wadπ programu jest bardzo wolno reagujπcy interfejs uøytkownika, co utrudnia pracÍ. CzÍsto zdarza siÍ, øe jakieú okienko np. edycja szablonÛw zniknie i nie ma moøliwoúci robienia czegokolwiek w programie. Bardzo ma≥o intuicyjnie zorganizowany jest zapis oferty do formatu PDF, poniewaø nie robi siÍ tego poprzez przycisk drukuj tylko poprzez podglπd dokumentu i eksportuj do PDF. Kiedy dodawany jest nowy towar lub teø us≥uga otwiera siÍ nowe okno z polami, ktÛre trzeba wype≥niÊ. Sπ to nazwa, kod towaru. Niestety us≥ugi te muszπ mieÊ jednostkÍ miary. W tym teø oknie istnieje moøliwoúÊ dodawania zdjÍÊ, komentarzy i dodawania ich do grup.  Drugim ze sposobÛw dodawania towaru jest klikniÍcie w o≥Ûwek, ktÛry moøna zaobserwowaÊ na rysunku
-\ref{rys:rysunek olowka} w procesie tworzenia oferty.
-  \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\textwidth]{olowek.jpg}
-    \caption{SposÛb dodawania towaru w ofercie, èrÛd≥o: Opracowanie w≥asne.}
-    \label{rys:rysunek olowka}
-\end{figure}
-
-Wymagane wtedy sπ tyko podstawowe elementy jak nazwa, kod i jednostka miary towaru. Podobny interfejs uøytkownika prezentuje Asystent CRM z tπ tyko rÛønicπ, øe jego przyciski sπ zdecydowanie wiÍksze i jest ich teø mniej w jednym oknie. DziÍki przejrzystemu interfejsowi uøytkownika przedstawia rysunek \ref {rys:interfejsAsystenta} jest bardzo prosta nawigacja w programie.
- 
- \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\textwidth]{IntejfejsAsystent.jpg}
-    \caption{Interfejs programu Asysten CRM, èrÛd≥o: Opracowanie w≥asne.}
-    \label{rys:interfejsAsystenta}
-\end{figure}
-
-  Dodawanie nowych produkty odbywa poprzez magazyn lub teø bezpoúrednio przy tworzonej ofercie. Program Gestor GT ca≥kowicie zmieni≥ podejúcie do interfejsu uøytkownika przedstawia rysunek \ref {rys:interfejsGestor} z tych trzech jest najbardziej przejrzystym interfejsem, ale niestety ma≥o intuicyjnym na przyk≥ad dodawanie nowych produktÛw jest tutaj bardzo utrudnione i bardziej skomplikowane niø w poprzednich. Wynika to z faktu ukrycia czÍúci elementÛw w g≥Ûwnym interfejsie.
- \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\textwidth]{interfejsGestor.JPG}
-    \caption{Interfejs programu Gestor GT, èrÛd≥o: Opracowanie w≥asne.}
-    \label{rys:interfejsGestor}
-\end{figure}  
-
-\item \textsl{D≥ugoúÊ wersji darmowej} 
-
-\tab Testowane programy ProfitCRM i Asystent CRM dzia≥ajπ w wersji darmowej przez 30 dni, jedynie Gestor GT w wersji darmowej moøna uøywaÊ przez 45 dni. W ProfitCRM  i Gestor GT dodawany jest Microsoft SQL Server 2008. Asystent CRM jest pozbawiony dodatkowych moøliwoúci.
-
-\item \textsl{Tworzenie szablonÛw dokumentÛw PDF} 
-
-\tab W programie ProfitCRM  istnieje rÛwnieø moøliwoúÊ zdefiniowania w≥asnego szablonu. Proces tworzenia nowego szablonu jest procesem skomplikowanym, ale naj≥atwiejszym z poúrÛd reszty. Najlepszym rozwiπzanie jest skopiowanie istniejπcych w systemie szablonÛw, poniewaø ich edycja jest zablokowana.  NastÍpnie edytowanie skopiowanego. Nie powiod≥o siÍ rÛwnieø wygenerowanie PDF o wyglπdzie zbliøonym do wyglπdu przedstawionego przez sieÊ hotelowπ. Niestety w programie Asystent CRM edycja wzorÛw dokumentÛw do druku jest bardzo trudna w realizacji dla zwyk≥ego sprzedawcy. Jest to spowodowane sposobem edycji. Bez znajomoúci
-programowania nie ma moøliwoúci stworzenia nowej wersji dokumentu, co utrudnia zmianÍ wyglπdu pod dana firmÍ. W ostatnim przetestowanym programie czyli Gestor GT nie ma øadnej moøliwoúci edycji szablonÛw dokumentÛw.
-
-\item \textsl{Cena}
- 
-\tab Koszt licencji programu ProfitCRM na jedno stanowisko pracy wynosi 736 z≥ w przypadku programu Asystent CRM, w zaleønoúci od wersji od 79-369 z≥. Gestor GT kosztuje 859.77z≥ jest to najdroøszy produkt z poúrÛd wybranych.
-
-\item \textsl{Integracja z skrzynkπ pocztowπ}
- 
-\tab
-	Przydatnπ funkcjπ jest integracja z elektronicznπ skrzynkπ pocztowπ. W programie ProfitCRM wykorzystuje siÍ w tym celu zewnÍtrzne programy takie jak  MS Outlook i Mozilla Thunderbird. Umoøliwia on rÛwnieø gromadzenie ca≥ej korespondencji z kontrahentem w jednym miejscu nawet jeúli komputer, z ktÛrego zosta≥a wys≥ana wiadomoúÊ jest wy≥πczony. W Asystent CRM istnieje zintegrowany klient pocztowy, ktÛry umoøliwia pod≥πczenie wielu kont z rÛønych serwisÛw pocztowych bez koniecznoúci instalowania klienta poczty elektronicznej. Gestor GT ma zbliøone rozwiπzanie w stosunku do Asystent CRM. Miedzy innymi tworzenie szablonÛw maili. 
-
-\end{itemize}
-
-Podsumowujπc powyøsze programy moøna zauwaøyÊ, øe proces dodawania produktÛw jest bardzo zbliøony, odbywa siÍ poprzez nowo otwarte okno. Proces wystawiania faktur, ofert jest taki sam odbywa siÍ to przez klikniecie w guzik oferta/faktura. Kaødy z nich udostÍpnia rÛwnieø bardo duøπ iloúÊ zdefiniowanych szablonÛw wystawiania dokumentÛw. Dwa z nich ProfitCRM, Asystent CRM w wersji testowej mia≥y rÛwnieø moøliwoúÊ tworzenia nowych szablonÛw dla dokumentÛw. Najlepszym rozwiπzanie w tworzeniu szablonÛw dokumentÛw ma program ProfitCRM. Przenoszπc predefiniowanych elementÛw np. pola tekstowa. Umoøliwia rÛwnieø tworzenie  wielu wariantÛw jednej oferty, u≥atwia to proces dostosowania oferty do konkretnego klienta. Warianty te mogπ siÍ rÛøniÊ np. walutπ. Istotnπ z punktu widzenia relacji z klientem jest sprawdzanie zadowolenia klienta z obs≥ugi sieci hotelowej umoøliwia to wy≥πcznie ProfitCRM poprzez system ankiet. Niestety brak podzia≥u na grupy towarÛw w programie Gestor GT utrudnia zarzπdzanie nimi i tworzenie ofert. Jedyna moøliwoúciπ tworzenia propozycji cenowej jest edycja szablonÛw dokumentÛw z ofertπ w sposÛb zbliøony do przedstawionego w analizie dokumentu.
-
-\section{Pomys≥ na rozwiπzanie problemu}
-Analizujπc powyøsze rozwiπzania i aspekty zwiπzane z wymaganiami stawianymi przed aplikacjπ, wynik≥a koniecznoúÊ zrealizowania dedykowanej aplikacji, ktÛrej zadaniem jest tworzenie propozycji cenowej zgodnie z wymaganiami sieci hotelowej. Najbardziej istotnym element programu jest moøliwoúÊ generowania PDF propozycji cenowej bez zbÍdnego wysi≥ku z strony sprzedawcy. Niestety program tego nie realizowa≥ w prosty sposÛb. Jest to zwiπzane z problem prawnym s≥owa ,,oferta" poniewaø zgodnie z treúciπ art. 71 Kodeksu Cywilnego  propozycja cenowa nie stanowi oferty handlowej, a jedynie pe≥ni funkcjÍ informacyjnπ. Zosta≥ wykorzystany sposÛb podzia≥u uøytkownikÛw na dwie grupy: administrator i uøytkownik co odpowiada roli menadøera i sprzedawcy. Z stanowiskiem  menadøera wiπøe siÍ moøliwoúÊ podglπdania propozycji wystawianych przez sprzedawcÛw. Zosta≥o to zrealizowane w oknie g≥Ûwnym programu w postaci tabeli. By nie utrudniaÊ nawigacji w oknie menadøera niektÛre z elementÛw zosta≥y przeniesione do osobnych okien.  Kolejnym wymaganiem przedstawionym przez sieÊ hoteli zwiπzanym z aktualizacjπ wszelkich danych wykorzystanych do tworzenia propozycji, zostanie stworzone  wyspecjalizowane okno z wyznaczonymi elementami do zmiany cen produktÛw. Kaødy uøytkownik rÛwnieø administrator aplikacji ma swÛj dedykowany element sk≥adowy okna g≥Ûwnego, w ktÛrym jest moøliwoúÊ dodawania, edycji i zapisywania propozycji cenowej.Do edycji wykorzystany zostanie element tworzπcy nowπ propozycje, by nie duplikowaÊ elementÛw. Administrator poprzez osobne okna ma moøliwoúÊ dodawania, usuwania i edycje kont sprzedawcÛw.   
-
-\section{Zastosowane rozwiπzania technologiczne}
-
-Niniejszy rozdzia≥ zawiera opis technologii wykorzystanych do implementacji prezentowanej aplikacji. Zakres opisu obejmuje wszelkie komponenty techniczne, ktÛre znalaz≥y zastosowanie w projekcie:
-
-\begin{itemize}
-\item \textsl{JÍzyk programowania,}
-\item \textsl{Silnik graficzny,}
-\item \textsl{JÍzyk opisu graficznego interfejsu uøytkownika,}
-\item \textsl{JÍzyk zapytaÒ bazy danych,}
-\item \textsl{NarzÍdzia wspierajπce pracÍ zespo≥u programistycznego,}
-\item \textsl{Biblioteki umoøliwiajπce wdroøenie sprawdzonych juø i poprawnie dzia≥ajπcych rozwiπzaÒ skomplikowanych operacji.}
 \end{itemize}
 
 \subsection{Wykorzystana technologia}
@@ -327,30 +407,30 @@ Produkt tego typu zwiera w sobie:
 Visual Studio istnieje w wielu wersjach tego úrodowiska programistycznego. Kaøda charakteryzuje siÍ innymi elementami.
 \begin{itemize}
 
-	\item \textsl{Express Edition}
-	
-	\tab 
-	Jest to ca≥kowicie darmowe narzÍdzie do uøytku domowa i komercyjnego. Ograniczone jest do konkretnych rozwiπzaÒ na przyk≥ad aplikacji komputerowych, stron internetowych lub na platformy mobilne. 
-	
-	\item \textsl{Community Edition}
-	
-	\tab Tak jak powyøsza wersja programu ta jest rÛwnieø darmowa ograniczona liczbπ moøliwych uøytkownikÛw korzystajπcych z niej do 5, jeúli ktoú chce korzystaÊ komercyjne to maksymalnie do 250 uøytkownikÛw lub przychÛd nie wiÍkszy niø milion dolarÛw amerykaÒskich.\cite{VSlicencja}. W stosunku do poprzedniej wersji ma moøliwoúÊ tworzenie aplikacji dla wiÍkszej iloúci rozwiπzaÒ. 	
-		
-	\item \textsl{Professional}
-	
-	\tab Do napisania projektu zosta≥ wykorzystany Visual Studio w wersji 2013 \cite{VS} edycja Professional. Jest to produkt komercyjny, ktÛry zosta≥ wykorzystany w ramach licencji studenckiej udostÍpnionej w programie MSDN Academic Alliance (DreamSpark)  dla studentÛw Wydzia≥u Matematyki Stosowanej \cite{msdn}. DziÍki temu studenci mogπ poznaÊ produkt komercyjny. Wersja ta umoøliwia rÛwnieø pisanie testÛw jednostkowych, tworzenie aplikacji na Windows Phone, aplikacji chmurowych.  
- 
-	
-	\item \textsl{Premium}
-	
-	\tab Zawiera	wszystkie elementy poprzednich wersji. Ma bardzo bogate rozbudowane úrodowisko testowe miedzy, innymi o przyk≥adowe testy, plany testÛw i testy interfejsu uøytkownika.	
+\item \textsl{Express Edition}
 
-	\item \textsl{Ultimate}
+\tab Jest to ca≥kowicie darmowe narzÍdzie do uøytku domowa i komercyjnego. Ograniczone jest do konkretnych rozwiπzaÒ na przyk≥ad aplikacji komputerowych, stron internetowych lub na platformy mobilne. 
 	
-	\tab Jest to najbardziej rozbudowana wersja oprogramowania, umoøliwia tworzenie instalatorÛw serwisÛw internetowych. Pozwala rÛwnieø na nagrywanie w trakcie dzia≥ania aplikacji. Jeúli w trakcie nagrywania zdarzy siÍ  b≥πd nie jest wymagane jego ponowne symulowanie, lub teø prÛba jego odtworzenia. Umoøliwia rÛwnieø przedstawiania zaleønoúci w kodzie w postaci diagramÛw UML. DziÍki temu mechanizmowi jest moøliwe zauwaøenie wielu zaleønoúci, ktÛre czÍsto potrafiπ byÊ bardzo zawi≥e. Bardzo ciekawπ mechanizmem jest edytowanie kodu w trakcie debugowania co umoøliwia na bieøπco naprawianie b≥ÍdÛw.
+\item \textsl{Community Edition}
+
+\tab Tak jak powyøsza wersja programu ta jest rÛwnieø darmowa ograniczona liczbπ moøliwych uøytkownikÛw korzystajπcych z niej do 5, jeúli ktoú chce korzystaÊ komercyjne to maksymalnie do 250 uøytkownikÛw lub przychÛd nie wiÍkszy niø milion dolarÛw amerykaÒskich.\cite{VSlicencja}. W stosunku do poprzedniej wersji ma moøliwoúÊ tworzenie aplikacji dla wiÍkszej iloúci rozwiπzaÒ. 		
+\item \textsl{Professional}
+
+\tab Do napisania projektu zosta≥ wykorzystany Visual Studio w wersji 2013 \cite{VS} edycja Professional. Jest to produkt komercyjny, ktÛry zosta≥ wykorzystany w ramach licencji studenckiej udostÍpnionej w programie MSDN Academic Alliance (DreamSpark)  dla studentÛw Wydzia≥u Matematyki Stosowanej \cite{msdn}. DziÍki temu studenci mogπ poznaÊ produkt komercyjny. Wersja ta umoøliwia rÛwnieø pisanie testÛw jednostkowych, tworzenie aplikacji na Windows Phone, aplikacji chmurowych.  
+
+\item \textsl{Premium}
+
+\tab Zawiera	wszystkie elementy poprzednich wersji. Ma bardzo bogate rozbudowane úrodowisko testowe miedzy, innymi o przyk≥adowe testy, plany testÛw i testy interfejsu uøytkownika.	
+
+\item \textsl{Ultimate}
+
+\tab Jest to najbardziej rozbudowana wersja oprogramowania, umoøliwia tworzenie instalatorÛw serwisÛw internetowych. Pozwala rÛwnieø na nagrywanie w trakcie dzia≥ania aplikacji. Jeúli w trakcie nagrywania zdarzy siÍ  b≥πd nie jest wymagane jego ponowne symulowanie, lub teø prÛba jego odtworzenia. Umoøliwia rÛwnieø przedstawiania zaleønoúci w kodzie w postaci diagramÛw UML. DziÍki temu mechanizmowi jest moøliwe zauwaøenie wielu zaleønoúci, ktÛre czÍsto potrafiπ byÊ bardzo zawi≥e. Bardzo ciekawπ mechanizmem jest edytowanie kodu w trakcie debugowania co umoøliwia na bieøπco naprawianie b≥ÍdÛw.
+
 \end{itemize}
+
  Standardowym úrodowiskiem dla technologii jakimi sπ WPF .NET/C\#  jest Visual Studio. DziÍki wbudowanym mechanizmom istnieje rÛwnieø moøliwoúci ich rozszerzania poprzez napisanie dodatkÛw z wykorzystaniem SDK. Moøna rÛwnieø pobraÊ juø gotowe rozszerzenia z Visual  Studio gallery  \cite{VSG} stworzonych przez innych uøytkownikÛw zrzeszonych wúrÛd produktÛw firmy Microsoft. Wykorzystujπc odpowiednie udogodnienia istnieje moøliwoúÊ szybszego pisania kodu, co przek≥ada siÍ na iloúÊ kodu do napisania przez programistÍ.
-	 Kolejnym istotnym elementem z punktu widzenia projektu jest moøliwoúÊ projektowania okien w dwÛch technologiach WPF i Winforms. U≥atwia to pracÍ nad interfejsem uøytkownika, poniewaø wyeliminowana jest koniecznoúÊ ciπg≥ego uruchamiania pisanego programu, by zobaczyÊ wyglπd aplikacji. Zawiera rÛwnieø wiele predefiniowanych elementÛw dla tworzonego wyglπdu miedzy, innymi pola tekstowe, przyciski. Wykorzystujπc technikÍ drag-and-drop moøna w ≥awy sposÛb ustawiaÊ elementy w wybranym przez siebie miejscu.
+
+Kolejnym istotnym elementem z punktu widzenia projektu jest moøliwoúÊ projektowania okien w dwÛch technologiach WPF i Winforms. U≥atwia to pracÍ nad interfejsem uøytkownika, poniewaø wyeliminowana jest koniecznoúÊ ciπg≥ego uruchamiania pisanego programu, by zobaczyÊ wyglπd aplikacji. Zawiera rÛwnieø wiele predefiniowanych elementÛw dla tworzonego wyglπdu miedzy, innymi pola tekstowe, przyciski. Wykorzystujπc technikÍ drag-and-drop moøna w ≥awy sposÛb ustawiaÊ elementy w wybranym przez siebie miejscu.
 
 \subsubsection{SQL Server Management Studio}
 
@@ -362,22 +442,22 @@ W trakcie prac nad projektem wykorzystano darmowe narzÍdzie do zarzπdzania bazπ 
     \caption{Interfejs SQL Server Management Studio Express, èrÛd≥o: Opracowanie w≥asne.}
      \label{rys:interfejsSQL}
 \end{figure}
+
 Wykorzystujπc wbudowane mechanizmy moøliwe jest ≥atwe wpisywanie poczπtkowych danych takich jak: uøytkownicy systemu, ceny produktÛw, ich edycja na poziomie bazy. Umoøliwia to sprawdzenie, czy baza dzia≥a zgodnie oczekiwaniami. W ten sposÛb moøna úledziÊ dzia≥anie programu w trakcie pracy. SprawdziÊ moøna czy wszystkie elementy prawid≥owo dzia≥ajπ i czy w poprawny sposÛb jest zapisywana dana pozycja. W projekcie wykorzystano:
 \begin{itemize}
-	\item \textsl{Edytor zapytaÒ}
+\item \textsl{Edytor zapytaÒ}
 		
-	\tab
-	Jest to edytor wspomagajπcy jÍzyki Transact-SQL, MDX, DMX lub XML/A, ktÛry dziÍki kolorowaniu s≥Ûw kluczowych w trakcie pisania skryptÛw zwiÍksza czytelnoúÊ kodu. Wykorzystuje siÍ teø jako interfejs do zapytaÒ Transact-SQL. RÛwnieø jak opisany wczeúniej Visual Studio wykorzystuje mechanizm IntelliSense odpowiedzialny za podpowiadanie kolumn tabel. Ma moøliwoúÊ wykrywania b≥ÍdÛw nieprawid≥owej sk≥adni. Wyúwietla b≥Ídy, ostrzeøenia i komunikaty informacyjne, ktÛre sπ zwracane przez serwer.
+\tab Jest to edytor wspomagajπcy jÍzyki Transact-SQL, MDX, DMX lub XML/A, ktÛry dziÍki kolorowaniu s≥Ûw kluczowych w trakcie pisania skryptÛw zwiÍksza czytelnoúÊ kodu. Wykorzystuje siÍ teø jako interfejs do zapytaÒ Transact-SQL. RÛwnieø jak opisany wczeúniej Visual Studio wykorzystuje mechanizm IntelliSense odpowiedzialny za podpowiadanie kolumn tabel. Ma moøliwoúÊ wykrywania b≥ÍdÛw nieprawid≥owej sk≥adni. Wyúwietla b≥Ídy, ostrzeøenia i komunikaty informacyjne, ktÛre sπ zwracane przez serwer.
 \item \textsl{Object Explorer}
-		
-	\tab
-	Drugim waønym elementem SQL Server Management Studio jest Object Explorer umoøliwiajπcy przeglπdanie wielu instancji bazy danych. W tym teø elemencie jest moøliwoúÊ generowania diagramÛw baz danych,  projektowania ca≥ej bazy danych. Wyúwietla podglπd tabel  wyzwalacze, procedury. Podglπd tabel daje teø moøliwoúÊ edycji danych  w tabeli jak i wybierania pieszych wierszy w danej tabeli. U≥atwia to sprawdzenie zachowaÒ aplikacji na dane testowe. DziÍki graficznemu interfejsowi jest moøliwe w bardzo prosty sposÛb usuwanie bazy danych poprzez naciúniÍcie przycisku ,,DELETE". Umoøliwia generowanie skryptu dziÍki, ktÛremu moøna odtworzyÊ ca≥π strukturÍ bazy danych
+
+\tab Drugim waønym elementem SQL Server Management Studio jest Object Explorer umoøliwiajπcy przeglπdanie wielu instancji bazy danych. W tym teø elemencie jest moøliwoúÊ generowania diagramÛw baz danych,  projektowania ca≥ej bazy danych. Wyúwietla podglπd tabel  wyzwalacze, procedury. Podglπd tabel daje teø moøliwoúÊ edycji danych  w tabeli jak i wybierania pieszych wierszy w danej tabeli. U≥atwia to sprawdzenie zachowaÒ aplikacji na dane testowe. DziÍki graficznemu interfejsowi jest moøliwe w bardzo prosty sposÛb usuwanie bazy danych poprzez naciúniÍcie przycisku ,,DELETE". Umoøliwia generowanie skryptu dziÍki, ktÛremu moøna odtworzyÊ ca≥π strukturÍ bazy danych
 \end{itemize}   
 
 \subsubsection{Trello}
 
 Podczas pracy zespo≥owej napotyka siÍ liczne problemy zwiπzane z organizacjπ pracy, jej synchronizacjπ oraz podzia≥em obowiπzkÛw. StopieÒ zaawansowania przedstawionych problemÛw dodatkowo wzrasta, w sytuacji, gdy wspÛ≥praca zespo≥u przebiega zdalnie. W takich okolicznoúciach warto pos≥uøyÊ siÍ dedykowanymi narzÍdziami, ktÛre umoøliwiajπ prostπ, szybkπ i skutecznπ komunikacjÍ wspierajπcπ pracÍ wielu osÛb nad jednym projektem. 
 Trello jest to darmowa aplikacja, ktÛrej przeznaczeniem jest wspieranie organizacji pracy grupowej opierajπc siÍ na metodyce Kanban \cite{Kanban}, ktÛra zaadoptowana zosta≥a na potrzeby inøynierii oprogramowania. Potencjalny wzrost wydajnoúci pracy przy uøyciu Trello ma nastπpiÊ dziÍki scentralizowanemu systemowi zarzπdzania projektem opierajπcemu siÍ na wirtualnych tablicach oraz ulokowanych na nich list zadaÒ, ktÛre moøna dostrzec na rysunku \ref{rys:InterfejsTrello}
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{trello.jpg}
@@ -531,7 +611,7 @@ Jednym z celÛw projektu, jest przedstawienie szczegÛ≥Ûw transakcji pomiÍdzy klie
 
 PDFSharp \& Migradoc Foundation jest darmowπ bibliotekπ umoøliwiajπcπ tworzenie dokumentÛw PDF w jÍzykach programowania z rodziny .NET. Oferowane funkcjonalnoúci to m. in. tworzenie paragrafÛw, tabel, formatowanie tekstu, za≥πczanie oraz skalowanie grafiki. Projekt posiada dedykowanπ stronÍ internetowπ zawierajπcπ dokumentacjÍ i przyk≥adowe programy wraz z kodami ürÛd≥owymi \cite{PdfSharp}. Instalacja w Microsoft Visual Studio jest moøliwa za pomocπ menedøera pakietÛw Nuget. 
 
-\section{Implementacja}
+\section{Architektura budowanego systemu}
 \subsection{Architektura aplikacji}
 
 W inøynierii oprogramowania analogicznie jak w innych dziedzinach, w ktÛrych przeprowadzana jest operacja budowania zadanego przedmiotu, naleøy starannie zaplanowaÊ jego proces. Prezentowany rozdzia≥ zawiera opis metodologii, ktÛra umoøliwia w uporzπdkowany sposÛb przeprowadzenie procesu budowania aplikacji wraz z zastosowanπ w prezentowanym projekcie jego odmianπ. Rozdzia≥ \ref{dzial:ModelApki} przedstawia rÛwnieø efekt zastosowanego rozwiπzania widoczny z poziomu projektu programistycznego.
@@ -675,11 +755,12 @@ W tym silniku bazodanowym moøna wyszczegÛlniÊ kilka komponentÛw:
 
 \subsubsection{Budowa bazy danych uøytej w projekcie}
 
-Bazy danych moøna porÛwnaÊ do archiwum firmy gdzie sπ przechowywane wszelakie projekty i dane osobowe. Tabelπ w kontekúcie tego przyk≥adu jest pojedynczy segregator zawierajπcy dane o identycznej tematyce. Tabela sk≥ada siÍ z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spÛjnπ ca≥oúÊ tak jak dane jednej osoby, a kolumny to sπ poszczegÛlne dane typu imiÍ nazwisko pesel itp. Tak jak pesel jest unikatowy dla osoby w firmie tak klucz g≥Ûwny w tabeli teø musi byÊ unikatowy. Po≥πczenie dwÛch segregatorÛw poprzez na przyk≥ad pesel danej osoby to w drugim segregatorze nazywa siÍ kluczem obcym, a samo po≥πczenie relacjπ. Istnieje  kilka relacji\cite{RelacjeBazDanych}:
+Bazy danych moøna porÛwnaÊ do archiwum firmy gdzie dla przyk≥adu przechowywane sπ wszystkie projekty lub dane osobowe. Tabelπ w kontekúcie tego przyk≥adu jest pojedynczy segregator zawierajπcy dane o identycznej tematyce. Tabela sk≥ada siÍ z wierszy dalej zwanych rekordami i kolumn. Rekord tworzy spÛjnπ ca≥oúÊ tak jak dane jednej osoby, kolumny natomiast sπ to poszczegÛlne dane typu imiÍ, nazwisko lub pesel. Tak jak pesel jest unikatowy dla osoby tak klucz g≥Ûwny w tabeli teø musi byÊ unikatowy. Po≥πczenie dwÛch segregatorÛw poprzez dla przyk≥adu numer pesel danej osoby to tak zwana relacja, w ktÛrej w drugim segregatorze numer pesel stanowi klucz obcy. W terminologii bazodanowej rozrÛøniÊ moøna kilka relacji, ktÛre przekszta≥cone zosta≥y z \cite{RelacjeBazDanych} na potrzeby przedstawianego przyk≥adu:
+
 \begin{enumerate}
-  \item Jeden do, wielu kiedy jedna koszulka w segregatorze ≥πczy siÍ z wieloma koszulkami w drugim.
-  \item Jeden do jednego wystÍpuje wtedy, kiedy jedna teczka ≥πczy siÍ tylko z teczkπ innπ w pojedynczy sposÛb.
-  \item Wiele do wielu wystÍpuje wtedy, kiedy jedna koszulka z jednego segregatora odpowiada wielu w drugim i na odwrÛt.
+  \item Jeden do wielu, kiedy jedna koszulka w segregatorze ≥πczy siÍ z wieloma koszulkami w drugim.
+  \item Jeden do jednego wystÍpuje wtedy, kiedy jedna koszulka ≥πczy siÍ tylko z jednπ (innπ) koszulkπ.
+  \item Wiele do wielu wystÍpuje wtedy, kiedy jedna koszulka z jednego segregatora odpowiada wielu koszulkom w drugim i na odwrÛt.
 \end{enumerate}
 
 W projekcie zosta≥a wykorzystana baza relacyjna, ktÛra dzia≥a na powyøszym przyk≥adzie. Waønym z punktu widzenia projektowania aplikacji bazodanowej jest odpowiednie zaprojektowanie struktury tabel i po≥πczeÒ miedzy nim. Nie moøna lekcewaøyÊ tego procesu. Gdy siÍ üle zaprojektuje bazÍ mogπ wyniknπÊ w pÛüniejszym czasie problemy z jej dalszym rozwojem. Istnieje jeszcze gorszy scenariusz, gdy w trakcie dalszych prac baza danych nie bÍdzie spe≥nia≥a swojego zadania. Efektem üle zaprojektowanej bazy danych moøe byÊ d≥ugoúÊ wykonywanych zapytaÊ jak i bardzo duøa z≥oøonoúÊ. Wiπøe siÍ to z koniecznoúciπ przeprojektowania od poczπtku ca≥ej bazy lub starania siÍ w programie ukryÊ te niedomagania.
@@ -691,10 +772,11 @@ BazÍ, ktÛra zosta≥a wykorzystana w projekcie moøna podzieliÊ na dwie g≥Ûwne czÍú
 	
 \tab 
 Tabele s≥ownikowe przez wzglπd na funkcje, ktÛrπ pe≥niπ nie sπ powiπzane z innymi tabelami Taki podzia≥ tabel na dwa osobne zbiory zosta≥ spowodowany bezpieczeÒstwem. Jeúli istnia≥aby relacja ≥πczπca te dwie tabele to zmiana wartoúÊ w tabeli s≥ownikowej powodowa≥aby zmianÍ cen produktÛw w starszych propozycja. Efektem unikniÍcia tego typu problemÛw jest rozdzielenie na dwie odseparowane czÍúci.  Gdyby tak nie by≥o wtedy moøliwoúÊ odtworzenia starej propozycji cenowej by≥aby niemoøliwa, co jest efektem niepoøπdanym z punktu widzenia dzia≥ania aplikacji. Przedstawia to rysunek \ref{Schemat:Slownikow1}.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{dicSchemat1.jpg}
-    \caption{CzÍúci s≥ownikowej bazy, èrÛd≥o: Opracowanie w≥asne.}
+    \caption{CzÍúci s≥ownikowa bazy, èrÛd≥o: Opracowanie w≥asne.}
     \label{Schemat:Slownikow1}
 \end{figure} 
 
@@ -782,15 +864,16 @@ Edycja danych znajdujπcych siÍ w bazie danych z poziomu projektu programistyczne
 Dodanie rekordu do bazy danych jest operacjπ, ktÛre nie wymaga znajomoúci sk≥adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, ktÛra reprezentuje bazodanowπ tabelÍ, do ktÛrej nowy rekord ma byÊ dodany, a nastÍpnie uzupe≥nieniu jego elementÛw danymi. Tak zbudowany obiekt naleøy dodaÊ do obiektu kontekstu, odwo≥ujπc siÍ do jego w≥aúciwoúci o nazwie interesujπcej nas tabeli bazy danych, a nastÍpnie w parametrze metody \textsl{Add} umieúciÊ wczeúniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych naleøy potwierdziÊ na obiekcie kontekstu. Przedstawienie opisanej operacji z poziomu kodu, dostÍpne jest rÛwnieø do wglπdu w drugiej czÍúci kodu ürÛd≥owego \ref{listing:AdoEntityCompare}.
 
 \section{Automatyzacja wydawania kolejnych wersji aplikacji}
+
+Niniejszy dzia≥ opisuje praktyki stosowane w celu integracji zmian w kodzie ürÛd≥owym zachodzπcych podczas procesu wytwarzania oprogramowania. Przedstawiono rÛwnieø schemat koncepcji wydawania kolejnych wersji niniejszego projektu w oparciu o narzÍdzie Jenkins oraz metodologiÍ Continuous Deployment. OprÛcz podstawowego za≥oøenia ktÛrym jest wytworzenie paczki zawierajπcej pliki wykonywalne oraz niezbÍdne do poprawnego dzia≥ania aplikacji bibliotek w formie archiwum zip jest przeprowadzenie statycznej analizy kodu ürÛd≥owego przy uøyciu SonarQube. Wygenerowany w ten sposÛb raport analizy jest przydatny podczas procesu refaktoryzacji kodu.
+
 \subsection{Continuous Integration/Continuous Delivery/Continuous Deployment}
 
 Ciπg≥a integracja (ang. Continuous Integration, CI) jest praktykπ stosowanπ podczas procesu wytwarzania oprogramowania. Cz≥onkowie zespo≥Ûw programistycznych synchronizujπ zmiany w kodzie ürÛd≥owym przynajmniej raz dziennie, dπøπc do wielokrotnej intagracji jednego dnia. Kaøda integracja weryfikowana jest przez narzÍdzia do automatyzacji (ang. build automation), takie jak Jenkins. Dla kaødej zmiany kodu ürÛd≥owego w repozytorium kompilacja, czy testy jednostkowe mogπ zostaÊ wykonane automatycznie, co prowadzi do wczeúniejszego wykrywania b≥ÍdÛw. Stosowanie tej praktyki umoøliwia zmniejszenie iloúci pracy podczas ≥πczenia zmian projektÛw programistycznych \cite{ci}.
 
 Ciπg≥a dostawa (ang. Continuous Delivery) jest podejúciem w inøynierii oprogramowania ktÛrego podstawowym za≥oøeniem jest zapewnienie wysokiej jakoúci oraz poprawnoúci dzia≥ania cyklicznie wytwarzanego oprogramowania. Wynikiem procesu jest stabilna wersja oprogramowania, ktÛra moøe zostaÊ dostarczona do klienta w dowolnym czasie \cite{cdel}. RozwiniÍciem praktyki jest ciπg≥e wdraøanie (ang. Continuous Deployment), ktÛre umoøliwia automatyczne wydawanie aplikacji do lini produkcyjnej \cite{cdr}.
 
-\subsection{Programy i wtyczki uøyte w Jenkins}
-
-\subsubsection{SonarQube}
+\subsection{Wtyczka uøyta w Jenkins - SonarQube}
 
 SonarQube jest darmowπ, wieloplatformowπ aplikacjπ s≥uøπcπ do zarzπdzania jakoúciπ kodu ürÛd≥owego. Zosta≥a napisanπ w jÍzykach Java i Ruby. Domyúlnie dzia≥a na porcie 9000. Posiada szereg wtyczek zapewniajπcych wsparcie dla popularnych jÍzykÛw programowania takich jak Java, C++, Objective-C, C\# czy PHP \cite{SonarLang}, ktÛre umoøliwiajπ statycznπ analizÍ kodu. W przypadku niniejszego projektu uøyto wtyczkÍ SonarQube Scanner for MSBuild, ktÛra zawiera zbiÛr zasad okreúlajπcych poprawnoúÊ kodu w jÍzyku C\#. Wsparcie SonarQube w Jenkins'ie, umoøliwia wykorzystywanie narzÍdzia w planach ciπg≥ej integracji \cite{MsScaner}. Podstawowe parametry wyliczane w analizie sπ nastÍpujπce:
 
@@ -1423,6 +1506,35 @@ NastÍpnπ modyfikacjπ moøliwπ do wprowadzenia w przypadku rozwoju projektu jest m
 \bibitem{LiczbaHoteli} 
 http://www.wykresy.net/liniowe/liczba-hoteli-w-polsce-ostatnie-12-lat.html
 
+%Lisu wstÍp
+\bibitem {iloscFirm}
+http://stat.gov.pl/obszary-tematyczne/podmioty-gospodarcze-wyniki-finansowe/przedsiebiorstwa-niefinansowe/male-i-srednie-przedsiebiorstwa-niefinansowe-w-polsce-w-latach-2009-2013,22,1.html
+
+% 
+\bibitem {SystemERP}
+Kisielnicki J., PaÒkowska M., Sroka H.: \textsl{Zintegrowane systemy informatyczne. Dobre praktyki wdroøeÒ systemÛw klasy ERP}, Wydawnictwo Naukowe PWN, Warszawa, 2012
+
+% Seba 4 lisu
+%Nazwisko I. \textsl{tytu≥}, miasto, rok
+\bibitem {SystemCRM}
+DeszczyÒski B.: \textsl{CRM. Strategia. System. Zarzπdzanie zmianπ: Jak uniknπÊ b≥ÍdÛw i odnieúÊ sukces wdroøenia}, Wydawnictwo Wolter Kluwer Polska, Warszawa, 2011
+
+\bibitem {CRMList}
+http://www.capterra.com/customer-relationship-management-software/
+
+\bibitem {ProfitCRM}
+http://www.profitcrm.pl/crm
+
+\bibitem {AsystentCRM}
+http://meteoryt.pl/Asystent\_CRM-k54.html
+
+\bibitem {Gestor}
+https://www.insert.com.pl
+
+\bibitem{PDFCreator}
+Avery J., Holmes J.: \textsl{Windows Developer Power Tools: Turbocharge Windows development with more than 170 free and open source tools}, Wydawnictwo O'Reilly Media, Sebastopol 2006
+
+
 %ogi analiza
 \bibitem{Systemy} 
 http://www.ranking.pl/pl/rankings/operating-systems.html
@@ -1430,23 +1542,6 @@ http://www.ranking.pl/pl/rankings/operating-systems.html
 %ogi analiza
 \bibitem{SQLRanking} 
 http://db-engines.com/en/ranking
-
-%Lisu wstÍp
-\bibitem {iloscFirm}
-http://stat.gov.pl/obszary-tematyczne/podmioty-gospodarcze-wyniki-finansowe/przedsiebiorstwa-niefinansowe/male-i-srednie-przedsiebiorstwa-niefinansowe-w-polsce-w-latach-2009-2013,22,1.html
-
-% 
-\bibitem {SystemERP}
-Kisielnicki J., PaÒkowska M., Sroka H.: \textsl{Zintegrowane systemy informatyczne. Dobre praktyki wdroøeÒ systemÛw klasy ERP}, Wydawnictwo Naukowe PWN, Warszaw, 2012
-
-\bibitem {ProfitCRM}
-http://www.profitcrm.pl/crm
-
-\bibitem {AsystentCRM}
-http://meteoryt.pl/
-
-\bibitem {Gestor}
-https://www.insert.com.pl
 
 \bibitem {Clr}
 https://msdn.microsoft.com/pl-pl/library/w0x726c2(v=vs.110).aspx
@@ -1625,7 +1720,6 @@ Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 http://www.pzielinski.com/?p=831
 
 %Nazwisko I. \textsl{tytu≥}, miasto, rok
-
 
 %---
 
