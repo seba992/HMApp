@@ -162,7 +162,7 @@
                     <TextBox x:Name="OKTabelaSalaCena" Grid.Column="2" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text = "{Binding HallPrice, StringFormat=\{0:c\}}" />
                     <Label Grid.Row="15" Grid.Column="3" Content="Miesiąc: " HorizontalContentAlignment="Right" Margin="3" />
                     <TextBox x:Name="OKSalaMiesiac" Grid.Column="4" Grid.Row="15" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" Text="{Binding EventMonth}"/>
-                    <ComboBox Grid.Column="8" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top" Width="127" Height="28" ItemsSource="{Binding PropStates}" SelectedValue="{Binding SelectedState}"/>
+                    <ComboBox Grid.Column="8" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top" Width="127" Height="28" ItemsSource="{Binding PropStates}" SelectedValue="{Binding SelectedState}" SelectedIndex="0"/>
                     <Label Content="STATUS PROPOZYCJI: " Grid.Column="7" HorizontalAlignment="Left" Margin="0" Grid.Row="14" VerticalAlignment="Top"  Width="122" Height="31"/>
                 </Grid>
             </TabItem>

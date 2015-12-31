@@ -5094,9 +5094,11 @@ namespace DiamondApp.ViewModels.UserViewModels
             InitializeObjects();
             FillNeededList();
             SetDefaultValues();
+
             CleanProperties(GetType());
             PropDefaultSeller();
             ChangeView(true);
+
             _saveFlag = false;
             var querry = (from user in _ctx.Users
                           where user.Id == _userId
@@ -5120,8 +5122,15 @@ namespace DiamondApp.ViewModels.UserViewModels
             var hallDict2 = (from hd in _ctx.PropReservationDetails_Dictionary_HallSettings
                              select hd.Setting).ToList();
             HallSettingList = hallDict2;
-            PropStates = (from q in _ctx.PropositionStates_Dictionary
-                          select q.Status).ToList();
+
+            Filter.Add(" ");
+            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                             group x by x.SpecificType into g
+                             select g.Key).ToList());
+            var propstates = (from ps in _ctx.PropositionStates_Dictionary
+                              select ps.Status).ToList();
+            PropStates = propstates;
+
             // wypelnianie listy dodatkowego wyposazenia sali 2tab
             var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
                                   select he.Things).ToList();
@@ -5142,10 +5151,6 @@ namespace DiamondApp.ViewModels.UserViewModels
             PropMenuGastThingDict4 = new ObservableCollection<string>(gastThingDict);
             PropMenuGastThingDict5 = new ObservableCollection<string>(gastThingDict);
             PropMenuGastThingDict6 = new ObservableCollection<string>(gastThingDict);
-            Filter.Add(" ");
-            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                             group x by x.SpecificType into g
-                             select g.Key).ToList());
 
 
             // wypelnienie domyslnych marzy
@@ -5157,13 +5162,11 @@ namespace DiamondApp.ViewModels.UserViewModels
             PropMenuMerge3 = merges[3].Value;
             PropMenuMerge4 = merges[4].Value;
 
-            _propMenuMerges[0].MergeName = merges[0].MergeName;
-            _propMenuMerges[1].MergeName = merges[1].MergeName;
-            _propMenuMerges[2].MergeName = merges[2].MergeName;
-            _propMenuMerges[3].MergeName = merges[3].MergeName;
-            _propMenuMerges[4].MergeName = merges[4].MergeName;
-
-
+            for (int i = 0; i < 5; i++)
+            {
+                _propMenuMerges[i].MergeName = merges[i].MergeName;
+            }
+           
             var mergetype = (from m in _ctx.PropMergeTypes_Dictionary
                              select m).ToList();
             _propMenuMerges[0].MergeType = mergetype[0].MergeType;
@@ -5714,7 +5717,6 @@ namespace DiamondApp.ViewModels.UserViewModels
         // Metoda ustawiająca cenę sali gdy jest wypełniona nazwa sali i miesiąc wydarzenia
         private void SetHallPrice()
         {
-            int? price = null;
             if (!string.IsNullOrEmpty(PropositionReservDetailsHall) && PropositionReservDetailsStartData != null)
             {
                 // zapisanie angielskiej nazwy miesiaca (jest ona rowna kolumnie w tabeli PropReservationDetails_Dictionary_HallPrices
@@ -5722,19 +5724,33 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                 // zapytanie zwracajace wiersz zawierajacy wybrana przez uzytkownika sale
                 var q = (from s in _ctx.PropReservationDetails_Dictionary_HallPrices
-                    where s.Hall == PropositionReservDetailsHall
-                    select s).ToList();
+                         where s.Hall == PropositionReservDetailsHall
+                         select s).ToList();
 
                 // za pomoca refleksji wybieramy interesujaca nas kolumne
                 // domyslnie w entity nie mozna wybierac dynamicznej nazwy kolumny 
                 // (w naszym przypadku zależna jest ona od wybranego miesiąca)
 
-                var names = q.Select(x => x.GetType().GetProperty(columnName).GetValue(x).ToString());
+                var names = q.Select(x => x.GetType().GetProperty(columnName).GetValue(x).ToString()).SingleOrDefault();
                 // przypisanie odpowiadającej ceny w danym miesiącu danej sali
-                price = Convert.ToInt32(names.First());
-
-                HallPrice = price;
-                PropHallEquipmentDiscountStandPrice = price;
+                int price;
+                if (!Int32.TryParse(names, out price))
+                    price = 0;
+                if (price == 0)
+                {
+                    HallPrice = null;
+                    PropHallEquipmentDiscountStandPrice = null;
+                }
+                else
+                {
+                    HallPrice = price;
+                    PropHallEquipmentDiscountStandPrice = price;
+                }
+            }
+            else
+            {
+                HallPrice = null;
+                PropHallEquipmentDiscountStandPrice = null;
             }
         }
 
@@ -5757,14 +5773,15 @@ namespace DiamondApp.ViewModels.UserViewModels
         {
             if (PropHallEquipmentDiscountValue.HasValue && PropHallEquipmentDiscountStandPrice.HasValue)
             {
-                PropHallPriceAfterDiscount = Math.Ceiling((decimal) PropHallEquipmentDiscountStandPrice -
-                                                         ((decimal) PropHallEquipmentDiscountStandPrice*
-                                                          (decimal) PropHallEquipmentDiscountValue/100));
+                PropHallPriceAfterDiscount = Math.Ceiling((decimal)PropHallEquipmentDiscountStandPrice -
+                                                         ((decimal)PropHallEquipmentDiscountStandPrice *
+                                                          (decimal)PropHallEquipmentDiscountValue / 100));
                 PropHallEqBrutto0 = (float?)PropHallPriceAfterDiscount;
             }
             else if (!PropHallEquipmentDiscountValue.HasValue)
             {
                 PropHallEquipmentDiscountValue = 0;
+                PropHallEqBrutto0 = null;
             }
         }
 
@@ -5951,9 +5968,10 @@ namespace DiamondApp.ViewModels.UserViewModels
         // nully sprawdzane musza byc przed wywolaniem metody (tab2)
         private decimal ComputeNettoValue(decimal nettoPrice, int? amount, int? days)
         {
+
             if (amount == null || days == null)
                 return 0;
-            return (decimal)nettoPrice * (decimal)amount * (decimal)days;
+            return nettoPrice * (decimal)amount * (decimal)days;
         }
 
         // obliczanie sumy netto (tab2)
@@ -5991,10 +6009,10 @@ namespace DiamondApp.ViewModels.UserViewModels
         private float? SetMenuPosDefaultVat(string typeofservice)
         {
             var mvat = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
-                where typeofservice == s.ThingName
-                select s.Vat).SingleOrDefault();
+                        where typeofservice == s.ThingName
+                        select s.Vat).SingleOrDefault();
 
-            return mvat!=null ? mvat : 0;
+            return mvat != null ? mvat : 0;
         }
 
         // na podstawie nazwy produktu ustaw cene netto
@@ -6011,9 +6029,9 @@ namespace DiamondApp.ViewModels.UserViewModels
         {
             float? vat = SetMenuPosDefaultVat(typeofservice);
             var netto = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
-                where typeofservice == s.ThingName
-                select s.NettoMini).SingleOrDefault();
-            float? toret = (float?) netto + (float?)netto*vat.Value/100;
+                         where typeofservice == s.ThingName
+                         select s.NettoMini).SingleOrDefault();
+            float? toret = netto + netto * vat.Value / 100;
             return toret;
         }
 
@@ -6021,8 +6039,8 @@ namespace DiamondApp.ViewModels.UserViewModels
         private string SetMenuPosDefaultMergeType(string typeofservice)
         {
             var mt = (from s in _ctx.PropMenuGastronomicThings_Dictionary_First
-                where typeofservice == s.ThingName
-                select s.MergeType).SingleOrDefault();
+                      where typeofservice == s.ThingName
+                      select s.MergeType).SingleOrDefault();
             return mt;
         }
 
@@ -6032,13 +6050,16 @@ namespace DiamondApp.ViewModels.UserViewModels
 //            if (price == null)
 //                price = 0;
             var mergeValue =
-                _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new {x = x.DefaultValue}).FirstOrDefault();
+                 _propMenuMerges.Where(x => x.MergeType == mergeType)
+                     .Select(x => new { x = x.DefaultValue }).FirstOrDefault();
 
             if (mergeValue != null && mergeValue.x != null)
             {
-                var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
-                return toret;
+                if (price != null)
+                {
+                    var toret = price + ((decimal)price * (decimal)mergeValue.x / 100);
+                    return toret;
+                }
             }
             return price;
         }
@@ -6048,7 +6069,7 @@ namespace DiamondApp.ViewModels.UserViewModels
         {
             var mergeValue =
                 _propMenuMerges.Where(x => x.MergeType == mergeType)
-                    .Select((x) => new {x = x.DefaultValue})
+                    .Select(x => new { x = x.DefaultValue })
                     .FirstOrDefault();
 
             if (mergeValue != null && mergeValue.x != null)
@@ -6164,7 +6185,8 @@ namespace DiamondApp.ViewModels.UserViewModels
         }
         private void HallListFunction()
         {
-
+            PropStates = (from q in _ctx.PropositionStates_Dictionary
+                          select q.Status).ToList();
             var hallDict1 = (from hd in _ctx.PropReservationDetails_Dictionary_HallCapacity
                              select hd.Hall).ToList();
             HallList = hallDict1;
@@ -6172,7 +6194,10 @@ namespace DiamondApp.ViewModels.UserViewModels
             var hallDict2 = (from hd in _ctx.PropReservationDetails_Dictionary_HallSettings
                              select hd.Setting).ToList();
             HallSettingList = hallDict2;
-
+            Filter.Add(" ");
+            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                             group x by x.SpecificType into g
+                             select g.Key).ToList());
             // wypelnianie listy dodatkowego wyposazenia sali 2tab
             var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
                                   select he.Things).ToList();
@@ -6181,15 +6206,16 @@ namespace DiamondApp.ViewModels.UserViewModels
             var vat = (from he in _ctx.VatList
                        select he.Vat).ToList();
             VatList = vat;
-            var gastThingDict = (from gt in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                 select gt.ThingName).ToList();
-            PropMenuGastThingDict0 = new ObservableCollection<string>(gastThingDict);
-            PropMenuGastThingDict1 = new ObservableCollection<string>(gastThingDict);
-            PropMenuGastThingDict2 = new ObservableCollection<string>(gastThingDict);
-            PropMenuGastThingDict3 = new ObservableCollection<string>(gastThingDict);
-            PropMenuGastThingDict4 = new ObservableCollection<string>(gastThingDict);
-            PropMenuGastThingDict5 = new ObservableCollection<string>(gastThingDict);
-            PropMenuGastThingDict6 = new ObservableCollection<string>(gastThingDict);
+            ObservableCollection<string> gastThingDict = new ObservableCollection<string>((from gt in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                                                                           select gt.ThingName).ToList());
+
+            PropMenuGastThingDict0 = gastThingDict;
+            PropMenuGastThingDict1 = gastThingDict;
+            PropMenuGastThingDict2 = gastThingDict;
+            PropMenuGastThingDict3 = gastThingDict;
+            PropMenuGastThingDict4 = gastThingDict;
+            PropMenuGastThingDict5 = gastThingDict;
+            PropMenuGastThingDict6 = gastThingDict;
             Filter.Add(" ");
             Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                              group x by x.SpecificType into g
@@ -6265,6 +6291,8 @@ namespace DiamondApp.ViewModels.UserViewModels
             var properties = obj.GetProperties();
 
             //tab1
+            _propStates = null;
+            SelectedPropState = null;
             PropositionReservDetailsStartData = null;
             PropositionReservDetailsEndData = null;
 
