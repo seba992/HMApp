@@ -25,9 +25,9 @@ begin
 insert into Proposition (Id_user, UpdateDate,Status)
 values (@iduser,CONVERT(VARCHAR(19),GETDATE()),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
-select  p.Id,'Wytwórnia win','Jagodowa 3 23-765 Siemianowiec','1234556698','Łukasz Lis', 500295458,'Łukasz Lis' ,'sn@wp.pl'   from Proposition p;
+select  p.Id,'Wytwórnia win','ul. Jagodowa 3 23-765 Siemianowiec','1234556698','Łukasz Lis', 500295458,'Łukasz Lis' ,'sn@wp.pl'   from Proposition p where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
-select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p;
+select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p where p.Id_user = @iduser;
 insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
 select  p.Id,'Sala A',285,23,3,4  from Proposition p where p.Id_user = @iduser;
 insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
@@ -56,4 +56,274 @@ insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Am
 select  p.Id,'Inne',5,8,3,3  from Proposition p where p.Id_user = @iduser;
 insert into PropPaymentSuggestions (Id_proposition,PaymentForm,IndividualOrders,InvoiceServiceName,CarPark,HallDescription)
 select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Usługa noclegowa 8%','Płatny indywidualnie',null from Proposition p where p.Id_user = @iduser;
+
+--************************************************** druga
+
+select @iduser =  id from Users where Login ='agpr';
+PRINT @iduser 
+insert into Proposition (Id_user, UpdateDate,Status)
+values (@iduser,CONVERT(VARCHAR(19),GETDATE()),'Nowa');
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
+select  p.Id,'Reserved','ul. Francuska 32/43 23-765 Bytom','1234556698','Iwona Janioł', 852456951,'Iwona Janioł' ,'iwonaj@reserved.pl'   from Proposition p  where p.Id_user = @iduser;
+insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
+select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p  where p.Id_user = @iduser;
+insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Sala A',285,23,3,4  from Proposition p where p.Id_user = @iduser;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
+select p.Id,300,5 from Proposition p where p.Id_user = @iduser ;
+insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Lunch serwowany - 2 dania z przystawką',63.1401443,8,2,3  from Proposition p where p.Id_user = @iduser;
+
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża gastronomia 8%)',77,'MGA8' from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select p.Id,'MMarża gastronomia 23%)',78,'MGA23'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża Alkohole)',78,'MALK'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża niskobudżetowe)',58,'MNIS'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Napoje)',48,'MNAPO'  from Proposition p where p.Id_user = @iduser;
+
+insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
+select p.Id,'POKÓJ 1-OSOBOWY',242.5,8,3,3  from Proposition p  where p.Id_user = @iduser;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,NULL,3,NULL,NULL,NULL from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'PARKING ( część dozorowana )',3.5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'Inne',5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropPaymentSuggestions (Id_proposition,PaymentForm,IndividualOrders,InvoiceServiceName,CarPark,HallDescription)
+select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Usługa noclegowa 8%','Płatny indywidualnie',null from Proposition p where p.Id_user = @iduser;
+
+-- *****************************************************kolejna
+select @iduser =  id from Users where Login ='dawa';
+
+insert into Proposition (Id_user, UpdateDate,Status)
+values (@iduser,CONVERT(VARCHAR(19),GETDATE()),'Nowa');
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
+select  p.Id,'Adidas','ul. Chorzowska 324 95-755 Warszawa','9875656698','Kamil Duda', 852456951,'Kamil Duda' ,'kamil_duda@adidas.pl'   from Proposition p  where p.Id_user = @iduser;
+insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
+select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p  where p.Id_user = @iduser;
+insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Sala A',285,23,3,4  from Proposition p where p.Id_user = @iduser;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
+select p.Id,300,5 from Proposition p where p.Id_user = @iduser ;
+insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Lunch serwowany - 2 dania z przystawką',63.1401443,8,2,3  from Proposition p where p.Id_user = @iduser;
+
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża gastronomia 8%)',77,'MGA8' from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select p.Id,'MMarża gastronomia 23%)',78,'MGA23'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża Alkohole)',78,'MALK'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża niskobudżetowe)',58,'MNIS'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Napoje)',48,'MNAPO'  from Proposition p where p.Id_user = @iduser;
+
+insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
+select p.Id,'POKÓJ 1-OSOBOWY',242.5,8,3,3  from Proposition p  where p.Id_user = @iduser;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,NULL,3,NULL,NULL,NULL from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'PARKING ( część dozorowana )',3.5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'Inne',5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropPaymentSuggestions (Id_proposition,PaymentForm,IndividualOrders,InvoiceServiceName,CarPark,HallDescription)
+select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Usługa noclegowa 8%','Płatny indywidualnie',null from Proposition p where p.Id_user = @iduser;
+
+-- *****************************************************kolejna
+select @iduser =  id from Users where Login ='pali';
+
+insert into Proposition (Id_user, UpdateDate,Status)
+values (@iduser,CONVERT(VARCHAR(19),GETDATE()),'Nowa');
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
+select  p.Id,'Google','ul. Powstańców Warszawskich 54/2 95-755 Wrocław','9875656698','Iwona Sapia', 852456951,'Kamil Duda' ,'iwonaiapia@google.com'   from Proposition p  where p.Id_user = @iduser;
+insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
+select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p where p.Id_user = @iduser;
+insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Sala A',285,23,3,4  from Proposition p where p.Id_user = @iduser;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
+select p.Id,300,5 from Proposition p where p.Id_user = @iduser ;
+insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Lunch serwowany - 2 dania z przystawką',63.1401443,8,2,3  from Proposition p where p.Id_user = @iduser;
+
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża gastronomia 8%)',77,'MGA8' from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select p.Id,'MMarża gastronomia 23%)',78,'MGA23'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża Alkohole)',78,'MALK'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża niskobudżetowe)',58,'MNIS'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Napoje)',48,'MNAPO'  from Proposition p where p.Id_user = @iduser;
+
+insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
+select p.Id,'POKÓJ 1-OSOBOWY',242.5,8,3,3  from Proposition p  where p.Id_user = @iduser;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,NULL,3,NULL,NULL,NULL from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'PARKING ( część dozorowana )',3.5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'Inne',5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropPaymentSuggestions (Id_proposition,PaymentForm,IndividualOrders,InvoiceServiceName,CarPark,HallDescription)
+select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Usługa noclegowa 8%','Płatny indywidualnie',null from Proposition p where p.Id_user = @iduser;
+
+
+-- *****************************************************kolejna
+select @iduser =  id from Users where Login ='miko';
+
+insert into Proposition (Id_user, UpdateDate,Status)
+values (@iduser,CONVERT(VARCHAR(19),GETDATE()),'Nowa');
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
+select  p.Id,'Sklep wielobranżowy','ul. Gajowa 43/2 95-755 Łódz','9875656698','Huberd Zboroń', 852456951,'Huberd Zboroń' ,'huber2321@wp.pl'   from Proposition p  where p.Id_user = @iduser;
+insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
+select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p  where p.Id_user = @iduser;
+insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Sala A',285,23,3,4  from Proposition p where p.Id_user = @iduser;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
+select p.Id,300,5 from Proposition p where p.Id_user = @iduser ;
+insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Lunch serwowany - 2 dania z przystawką',63.1401443,8,2,3  from Proposition p where p.Id_user = @iduser;
+
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża gastronomia 8%)',77,'MGA8' from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select p.Id,'MMarża gastronomia 23%)',78,'MGA23'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża Alkohole)',78,'MALK'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża niskobudżetowe)',58,'MNIS'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Napoje)',48,'MNAPO'  from Proposition p where p.Id_user = @iduser;
+
+insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
+select p.Id,'POKÓJ 1-OSOBOWY',242.5,8,3,3  from Proposition p  where p.Id_user = @iduser;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,NULL,3,NULL,NULL,NULL from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'PARKING ( część dozorowana )',3.5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'Inne',5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropPaymentSuggestions (Id_proposition,PaymentForm,IndividualOrders,InvoiceServiceName,CarPark,HallDescription)
+select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Usługa noclegowa 8%','Płatny indywidualnie',null from Proposition p where p.Id_user = @iduser;
+
+
+-- *****************************************************kolejna
+select @iduser =  id from Users where Login ='towi';
+
+insert into Proposition (Id_user, UpdateDate,Status)
+values (@iduser,CONVERT(VARCHAR(19),GETDATE()),'Nowa');
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
+select  p.Id,'Sklep spożywczy','ul. Łagienicka 253/2 58-785 Łódz','9875656698','Huberd Zboroń', 852456951,'Huberd Zboroń' ,'huber2321@wp.pl'   from Proposition p  where p.Id_user = @iduser;
+insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
+select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p  where p.Id_user = @iduser;
+insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Sala A',285,23,3,4  from Proposition p where p.Id_user = @iduser;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
+select p.Id,300,5 from Proposition p where p.Id_user = @iduser ;
+insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Lunch serwowany - 2 dania z przystawką',63.1401443,8,2,3  from Proposition p where p.Id_user = @iduser;
+
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża gastronomia 8%)',77,'MGA8' from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select p.Id,'MMarża gastronomia 23%)',78,'MGA23'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża Alkohole)',78,'MALK'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża niskobudżetowe)',58,'MNIS'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Napoje)',48,'MNAPO'  from Proposition p where p.Id_user = @iduser;
+
+insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
+select p.Id,'POKÓJ 1-OSOBOWY',242.5,8,3,3  from Proposition p  where p.Id_user = @iduser;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,NULL,3,NULL,NULL,NULL from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'PARKING ( część dozorowana )',3.5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'Inne',5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropPaymentSuggestions (Id_proposition,PaymentForm,IndividualOrders,InvoiceServiceName,CarPark,HallDescription)
+select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Usługa noclegowa 8%','Płatny indywidualnie',null from Proposition p where p.Id_user = @iduser;
+
+-- *****************************************************kolejna
+select @iduser =  id from Users where Login ='mare';
+
+insert into Proposition (Id_user, UpdateDate,Status)
+values (@iduser,CONVERT(VARCHAR(19),GETDATE()),'Nowa');
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
+select  p.Id,'Mechanik','ul. Opolska 23/32 53-783 Poznań','9875656698','Jan Podolski', 852456951,'Jan Podolski' ,'janp2321@wp.pl'   from Proposition p  where p.Id_user = @iduser;
+insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
+select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p  where p.Id_user = @iduser;
+insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Sala A',285,23,3,4  from Proposition p where p.Id_user = @iduser;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
+select p.Id,300,5 from Proposition p where p.Id_user = @iduser ;
+insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Lunch serwowany - 2 dania z przystawką',63.1401443,8,2,3  from Proposition p where p.Id_user = @iduser;
+
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża gastronomia 8%)',77,'MGA8' from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select p.Id,'MMarża gastronomia 23%)',78,'MGA23'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża Alkohole)',78,'MALK'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża niskobudżetowe)',58,'MNIS'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Napoje)',48,'MNAPO'  from Proposition p where p.Id_user = @iduser;
+
+insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
+select p.Id,'POKÓJ 1-OSOBOWY',242.5,8,3,3  from Proposition p  where p.Id_user = @iduser;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,NULL,3,NULL,NULL,NULL from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'PARKING ( część dozorowana )',3.5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'Inne',5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropPaymentSuggestions (Id_proposition,PaymentForm,IndividualOrders,InvoiceServiceName,CarPark,HallDescription)
+select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Usługa noclegowa 8%','Płatny indywidualnie',null from Proposition p where p.Id_user = @iduser;
+
+-- *****************************************************kolejna
+select @iduser =  id from Users where Login ='tosk';
+
+insert into Proposition (Id_user, UpdateDate,Status)
+values (@iduser,CONVERT(VARCHAR(19),GETDATE()),'Nowa');
+insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
+select  p.Id,'Dentysta "Piękny uśmiech"','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Karolina Komada ', 852456951,'Karolina Komada' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser;
+insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
+select  p.Id,CONVERT(VARCHAR(19),2015-12-29), '10:15:00' ,CONVERT(VARCHAR(19),2015-12-29), '14:15:00',6,'A',NULL from Proposition p  where p.Id_user = @iduser;
+insert into PropHallEquipment(Id_proposition,Things,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Sala A',285,23,3,4  from Proposition p where p.Id_user = @iduser;
+insert into PropHallEquipmentDiscount(Id_proposition,StandardPrice,Discount) 
+select p.Id,300,5 from Proposition p where p.Id_user = @iduser ;
+insert into PropMenuPosition(Id_proposition,TypeOfService,BruttoPrice,Vat,Amount,Days)
+select  p.Id,'Lunch serwowany - 2 dania z przystawką',63.1401443,8,2,3  from Proposition p where p.Id_user = @iduser;
+
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża gastronomia 8%)',77,'MGA8' from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select p.Id,'MMarża gastronomia 23%)',78,'MGA23'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża Alkohole)',78,'MALK'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Marża niskobudżetowe)',58,'MNIS'  from Proposition p where p.Id_user = @iduser;
+insert into PropMenuMerge(Id_proposition,MergeName,DefaultValue,MergeType)
+select  p.Id,'Napoje)',48,'MNAPO'  from Proposition p where p.Id_user = @iduser;
+
+insert into PropAccomodation (Id_proposition,TypeOfRoom,BruttoPrice,Vat,Amount,Days)
+select p.Id,'POKÓJ 1-OSOBOWY',242.5,8,3,3  from Proposition p  where p.Id_user = @iduser;
+insert into PropAccomodationDiscount ( Id_proposition, StandardPrice,Discount,DoubleRoomEP,BussinesSingleEP,ApartmentSingleEP)
+select p.Id,NULL,3,NULL,NULL,NULL from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'PARKING ( część dozorowana )',3.5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropExtraServices(Id_proposition,ServiceType,BruttoPrice,Vat,Days,Amount)
+select  p.Id,'Inne',5,8,3,3  from Proposition p where p.Id_user = @iduser;
+insert into PropPaymentSuggestions (Id_proposition,PaymentForm,IndividualOrders,InvoiceServiceName,CarPark,HallDescription)
+select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konferencyjna 8% ; Gastronomia konferencyjna 23% ; Wynajem Sali 23% ; Usługa noclegowa 8%','Płatny indywidualnie',null from Proposition p where p.Id_user = @iduser;
+
 end

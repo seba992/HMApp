@@ -309,8 +309,6 @@ update PropMenuGastronomicThings_Dictionary_First set Vat = '23' where MergeType
 update PropMenuGastronomicThings_Dictionary_First set Vat = '8' where MergeType = 'MNIS'
 update PropMenuGastronomicThings_Dictionary_First set Vat = '8' where MergeType = 'MGA8'
 
-insert into PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values
-(NULL,NULL,NULL,NULL,NULL)
 
 insert PropExtraServices_Dictionary (ServiceType,Price) values (' ',null);
 insert into PropPaymentSuggestions_Dictionary_First values (' ')
