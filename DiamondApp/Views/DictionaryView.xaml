@@ -5,19 +5,16 @@
         xmlns:adminViewModels="clr-namespace:DiamondApp.ViewModels.AdminViewModels"
         Title="Edycja słowników" Height="530" Width="820" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
-    <Window.DataContext>
-        <adminViewModels:DictionaryViewModel/>
-    </Window.DataContext>
-
     <Grid Background="#FF1F7AC7">
         <ComboBox x:Name="Ctyp" HorizontalAlignment="Left" Margin="290,5,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Filter}" Visibility="Hidden" SelectedValue="{Binding SelectedFilter}"/>
         <Label x:Name="LTyp" Content="Typ produktu" HorizontalAlignment="Left" Margin="144,5,0,0" VerticalAlignment="Top" Width="126" Visibility="Hidden" Foreground="#FFF9F8F8"/>
-        <DataGrid x:Name="GstronomicGrid" HorizontalAlignment="Left" Margin="5,30,5,5" VerticalAlignment="Top" Height="460" Width="800" RowEditEnding="RowEditGstronomic"
-                  ItemsSource="{Binding Gastronomic}" AutoGenerateColumns="False" Visibility="Hidden"  AlternatingRowBackground="LightBlue" AlternationCount="2" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid x:Name="GstronomicGrid" HorizontalAlignment="Left" Margin="4,30,4,5" VerticalAlignment="Top" Height="460" Width="800" RowEditEnding="RowEditGstronomic"
+                  ItemsSource="{Binding Gastronomic}" AutoGenerateColumns="False" Visibility="Hidden"  AlternatingRowBackground="LightGray" AlternationCount="2" CanUserResizeColumns="False"
+                  CanUserResizeRows="False" SelectedItem ="{Binding SelectedDeleteElement}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id"  />
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Nazwa" >
+                <DataGridTemplateColumn IsReadOnly="False" Header="Nazwa" SortMemberPath="ThingName" CanUserSort="true" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged}"/>
@@ -30,7 +27,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Netto" >
+                <DataGridTemplateColumn IsReadOnly="False" Header="Netto"  SortMemberPath="NettoMini" CanUserSort="true" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding NettoMini, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:c\}}"/>
@@ -44,19 +41,24 @@
                 </DataGridTemplateColumn>
 
                 <DataGridTemplateColumn IsReadOnly="False" Header="Vat" >
+
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock  Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged}"/>
+
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged}" />
+                            <ComboBox Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged}" >
+                                <ComboBoxItem Content="8"/>
+                                <ComboBoxItem Content="23"/>
+                            </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Typ marży" >
+                <DataGridTemplateColumn IsReadOnly="False" Header="Typ marży" SortMemberPath="MergeType" CanUserSort="true" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged}"/>
@@ -69,7 +71,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn IsReadOnly="False" Header="Typ produktu" >
+                <DataGridTemplateColumn IsReadOnly="False" Header="Typ produktu" SortMemberPath="SpecificType" CanUserSort="true">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged}"/>
@@ -84,23 +86,11 @@
             </DataGrid.Columns>
 
         </DataGrid>
-        <DataGrid x:Name="RoomGrid" HorizontalAlignment="Left" Margin="5,30,5,5" VerticalAlignment="Top" Height="460" Width="800" ItemsSource="{Binding ListAccomaDictionaries}"
-                  AutoGenerateColumns="False" RowEditEnding="RowEditAccoma"  AlternatingRowBackground="LightBlue" AlternationCount="2" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid x:Name="RoomGrid" HorizontalAlignment="Left" Margin="295,30,5,5" VerticalAlignment="Top" Height="460" Width="290" ItemsSource="{Binding ListAccomaDictionaries}"
+                  AutoGenerateColumns="False" RowEditEnding="RowEditAccoma"  AlternatingRowBackground="LightGray" AlternationCount="2" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
-
-                <DataGridTemplateColumn IsReadOnly="True" Header="Pokój" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding TypeOfRoom, UpdateSourceTrigger=PropertyChanged}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <TextBox Text="{Binding TypeOfRoom, UpdateSourceTrigger=PropertyChanged}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn IsReadOnly="True" Binding ="{Binding TypeOfRoom}"  Header="Pokój" />
 
                 <DataGridTemplateColumn IsReadOnly="False" Header="Cena" >
                     <DataGridTemplateColumn.CellTemplate>
@@ -116,23 +106,11 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="HallGrid" HorizontalAlignment="Left" Margin="5,30,5,5" VerticalAlignment="Top" Height="460" Width="805" RowEditEnding="RowEditHall" ItemsSource="{Binding HallPrices}"
-                  AutoGenerateColumns="False"  AlternatingRowBackground="LightBlue"  AlternationCount="2" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid x:Name="HallGrid" HorizontalAlignment="Left" Margin="4,30,4,5" VerticalAlignment="Top" Height="460" Width="805" RowEditEnding="RowEditHall" ItemsSource="{Binding HallPrices}"
+                  AutoGenerateColumns="False"  AlternatingRowBackground="LightGray"  AlternationCount="2" CanUserAddRows="False" CanUserResizeColumns="False" CanUserResizeRows="False" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id" />
-
-                <DataGridTemplateColumn IsReadOnly="True" Header="Sala" >
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Hall, UpdateSourceTrigger=PropertyChanged}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                    <DataGridTemplateColumn.CellEditingTemplate>
-                        <DataTemplate>
-                            <TextBox Text="{Binding Hall, UpdateSourceTrigger=PropertyChanged}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellEditingTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn IsReadOnly="True" Binding="{Binding Hall}" Header="Sala" />
 
                 <DataGridTemplateColumn IsReadOnly="False" Header="Styczeń" >
                     <DataGridTemplateColumn.CellTemplate>
@@ -150,12 +128,12 @@
                 <DataGridTemplateColumn IsReadOnly="False" Header="Luty" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Febuary, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding February, UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding Febuary, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Text="{Binding February, UpdateSourceTrigger=PropertyChanged}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -308,6 +286,7 @@
         </DataGrid>
         <Label Content="Wybór słownika" HorizontalAlignment="Left" Margin="455,5,0,0" VerticalAlignment="Top" Height="28" Width="145" Foreground="#FFFFFDFD"/>
         <ComboBox x:Name="DictionaryList" HorizontalAlignment="Left" Margin="600,5,0,0" VerticalAlignment="Top" Width="184" RenderTransformOrigin="1.739,0.682" ItemsSource="{Binding ListTable}" SelectedItem="{Binding SelectTable}" SelectionChanged="Changeview" SelectedValue="{Binding SelectTable}"  IsSynchronizedWithCurrentItem="False" />
+        <Button x:Name="DeleteButton"  Content="Usuń" HorizontalAlignment="Left" Height="20" Margin="10,5,0,0" VerticalAlignment="Top" Width="112" Command="{Binding DeleteCommand}" />
 
     </Grid>
 </Window>

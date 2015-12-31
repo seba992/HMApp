@@ -59,6 +59,7 @@ namespace DiamondApp.Views
                               //Dictionary.DataContext = _ctx.PropMenuGastronomicThings_Dictionary_First;
                                HallGrid.Visibility = Visibility.Hidden;
                                RoomGrid.Visibility = Visibility.Hidden;
+                               DeleteButton.Visibility = Visibility.Visible;
                               
 
                                     break;
@@ -70,6 +71,7 @@ namespace DiamondApp.Views
                                 RoomGrid.Visibility = Visibility.Visible;
                                 LTyp.Visibility = Visibility.Hidden;
                                 Ctyp.Visibility = Visibility.Hidden;
+                                DeleteButton.Visibility = Visibility.Hidden;
                                
                                break;
                 case "Sale":
@@ -79,6 +81,7 @@ namespace DiamondApp.Views
                                 GstronomicGrid.Visibility = Visibility.Hidden;
                                 LTyp.Visibility = Visibility.Hidden;
                                 Ctyp.Visibility = Visibility.Hidden;
+                                DeleteButton.Visibility = Visibility.Hidden;
                                  break;
             }
 
@@ -95,7 +98,8 @@ namespace DiamondApp.Views
                 // int selected = ((PropMenuGastronomicThings_Dictionary_First)e.Row.Item).Id;
 
                 dynamic userRow = GstronomicGrid.SelectedItem;
-                if(selected !=0)
+
+                if (selected != 0 && userRow.ThingName != ""  && userRow.ThingName != null && userRow.NettoMini != null && userRow.NettoMini != 0 && userRow.MergeType != null && userRow.SpecificType != null && userRow.SpecificType != "")
                 { 
                     PropMenuGastronomicThings_Dictionary_First userUpdate = 
                         (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
@@ -104,28 +108,32 @@ namespace DiamondApp.Views
                                         select q).First();
                                 userUpdate.ThingName = userRow.ThingName;
                                 userUpdate.NettoMini = (float)userRow.NettoMini;
-                                userUpdate.Vat = (float)userRow.Vat;
+                                userUpdate.Vat = userRow.Vat;
                                 userUpdate.MergeType = userRow.MergeType;
                                 userUpdate.SpecificType = userRow.SpecificType;
                                 
                 }
-                else
+                else if (userRow.ThingName != "" && userRow.ThingName != null && userRow.NettoMini != null && userRow.NettoMini != 0 && userRow.MergeType != null && userRow.SpecificType !=null && userRow.SpecificType != "")
                 {
                     PropMenuGastronomicThings_Dictionary_First userUpdate = new PropMenuGastronomicThings_Dictionary_First();
                                     
                     userUpdate.ThingName = userRow.ThingName;
                     userUpdate.NettoMini = (float)userRow.NettoMini;
-                    userUpdate.Vat = (float)userRow.Vat;
+                    userUpdate.Vat = userRow.Vat;
                     userUpdate.MergeType = userRow.MergeType;
                     userUpdate.SpecificType = userRow.SpecificType;
                     _ctx.PropMenuGastronomicThings_Dictionary_First.Add(userUpdate);
 
                 }
+                else
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
                 _ctx.SaveChanges();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -138,7 +146,12 @@ namespace DiamondApp.Views
                 string ID = (HallGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                 int selected = Int32.Parse(ID);
                 dynamic hallRow = GstronomicGrid.SelectedItem;
-                if (selected != 0)
+                if ( hallRow.April > 0 && hallRow.August > 0 && hallRow.December > 0
+                    && hallRow.February > 0 && hallRow.January > 0 
+                    && hallRow.July > 0 && hallRow.June > 0 
+                    && hallRow.March > 0 && hallRow.May > 0 
+                    && hallRow.November > 0 && hallRow.October > 0 
+                    && hallRow.September > 0 && hallRow.Other > 0)
                 {
                     PropReservationDetails_Dictionary_HallPrices hallUpdate =
                         (from q in _ctx.PropReservationDetails_Dictionary_HallPrices
@@ -148,7 +161,7 @@ namespace DiamondApp.Views
 
 
 
-                    hallUpdate.February = hallRow.Febuary;
+                    hallUpdate.February = hallRow.February;
                     hallUpdate.January = hallRow.January;
                     hallUpdate.March = hallRow.March;
                     hallUpdate.April = hallRow.April;
@@ -163,24 +176,9 @@ namespace DiamondApp.Views
                     hallUpdate.September = hallRow.September;
                     hallUpdate.Other = hallRow.Other;
                 }
-                else
+                else 
                 {
-                    PropReservationDetails_Dictionary_HallPrices hallUpdate = new PropReservationDetails_Dictionary_HallPrices();
-                    hallUpdate.February = hallRow.Febuary;
-                    hallUpdate.January = hallRow.January;
-                    hallUpdate.March = hallRow.March;
-                    hallUpdate.April = hallRow.April;
-                    hallUpdate.May = hallRow.May;
-                    hallUpdate.August = hallRow.August;
-                    hallUpdate.July = hallRow.July;
-                    hallUpdate.June = hallRow.June;
-                    hallUpdate.November = hallRow.November;
-                    hallUpdate.October = hallRow.October;
-                    hallUpdate.December = hallRow.December;
-                    hallUpdate.Hall = hallRow.Hall;
-                    hallUpdate.September = hallRow.September;
-                    hallUpdate.Other = hallRow.Other;
-                    _ctx.PropReservationDetails_Dictionary_HallPrices.Add(hallUpdate);
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki wartościami wiekszymi niż zero!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 _ctx.SaveChanges();
             }
@@ -198,7 +196,7 @@ namespace DiamondApp.Views
             string ID = (RoomGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
             int selected = Int32.Parse(ID);
             dynamic roomRow = RoomGrid.SelectedItem;
-            if (selected != 0)
+            if (roomRow.Price > 0)
             {
                 PropAccomodation_Dictionary roomUpdate = (from q in _ctx.PropAccomodation_Dictionary
                     where q.Id == selected
@@ -209,10 +207,7 @@ namespace DiamondApp.Views
             }
             else
             {
-                PropAccomodation_Dictionary roomUpdate = new PropAccomodation_Dictionary();
-                roomUpdate.Price = roomRow.Price;
-                roomUpdate.TypeOfRoom = roomRow.TypeOfRoom;
-                _ctx.PropAccomodation_Dictionary.Add(roomUpdate);
+                Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki wartościami wiekszymi niż zero!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             
             _ctx.SaveChanges();

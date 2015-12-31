@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 using DiamondApp.Model;
 using DiamondApp.Tools.MvvmClasses;
 
@@ -21,34 +24,41 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
         private DiamondDBEntities _ctx;
 //        private List<DiamondDBEntities> _items;
-        private List<PropMenuGastronomicThings_Dictionary_First> _gastronomic;
+        private ObservableCollection<PropMenuGastronomicThings_Dictionary_First> _gastronomic;
         private List<PropReservationDetails_Dictionary_HallPrices> _hallPrices;
         private List<string> _filter;
         private List<string> _listTable = new List<string> { "Gastronomia", "Pokoje", "Sale" };
         private string _selectTable;
         private string _selectFilter;
         private List<PropAccomodation_Dictionary> _listAccomaDictionaries;
+        private PropMenuGastronomicThings_Dictionary_First _seletedDeleteElement;
+        private ICommand _deleteCommand;
+        private  List<float?> _vatList; 
 
         private void DictionaryUpdate()
         {
-            var test1 = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                         select x).ToList();
+            ObservableCollection<PropMenuGastronomicThings_Dictionary_First> test1 = new ObservableCollection<PropMenuGastronomicThings_Dictionary_First>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                select x).ToList());
             Gastronomic = test1;
             // Sale
             var test2 = (from x in _ctx.PropReservationDetails_Dictionary_HallPrices
                          select x).ToList();
             HallPrices = test2;
             //Filtrowanie gatronowmi
-            _filter = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+            _filter=new List<string>();
+            _filter.Add(" ");
+            _filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                        group x by x.SpecificType into g
-                       select g.Key).ToList();
+                       select g.Key).ToList());
             SelectTable = "Pokoje";
             var room = (from x in _ctx.PropAccomodation_Dictionary
                select x).ToList();
             ListAccomaDictionaries = room;
+            _vatList = (from x in _ctx.VatList
+                 select x.Vat).ToList();
         }
 
-        public List<PropMenuGastronomicThings_Dictionary_First> Gastronomic
+        public ObservableCollection<PropMenuGastronomicThings_Dictionary_First> Gastronomic
         {
             get { return _gastronomic;}
             set
@@ -66,8 +76,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _selectTable = value;
                 HallPrices = (from x in _ctx.PropReservationDetails_Dictionary_HallPrices
                               select x).ToList();
-                Gastronomic=(from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                            select x).ToList();
+                Gastronomic=new ObservableCollection<PropMenuGastronomicThings_Dictionary_First>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                    select x).ToList());
                 ListAccomaDictionaries=(from x in _ctx.PropAccomodation_Dictionary
                                        select x).ToList();
                 RaisePropertyChanged("SelectPropertyInfo");
@@ -113,9 +123,17 @@ namespace DiamondApp.ViewModels.AdminViewModels
             {
                 _selectFilter = value;
                 RaisePropertyChanged("SelectedFilter");
-                Gastronomic = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                    where x.SpecificType == value
-                    select x).ToList();
+                if (value != " ")
+                {
+                    Gastronomic = new ObservableCollection<PropMenuGastronomicThings_Dictionary_First>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                        where x.SpecificType == value
+                        select x).ToList());
+                }
+                else
+                {
+                    Gastronomic = new ObservableCollection<PropMenuGastronomicThings_Dictionary_First>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                        select x).ToList());
+                }
             }
         }
 
@@ -129,7 +147,48 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
         }
 
+        public PropMenuGastronomicThings_Dictionary_First SelectedDeleteElement
+        {
+            get { return _seletedDeleteElement;}
+            set
+            {
+                _seletedDeleteElement = value;
+                RaisePropertyChanged("SelectedDeleteElement");
+            }
+        }
 
+        public List<float?> VatList
+        {
+            get { return _vatList; }
+            set
+            {
+                _vatList = value;
+                RaisePropertyChanged("VatList");
+            }
+        }
 
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                if (_deleteCommand == null)
+                {
+                    _deleteCommand = new RelayCommand(DeleteCommandExecucte, CanDeleteCommandExecute);
+                }
+                return _deleteCommand;
+            }
+        }
+
+        private bool CanDeleteCommandExecute(object arg)
+        {
+            return true;
+        }
+
+        private void DeleteCommandExecucte(object obj)
+        {
+           
+            _ctx.PropMenuGastronomicThings_Dictionary_First.Remove(SelectedDeleteElement);
+            _ctx.SaveChanges();
+        }
     }
 }
