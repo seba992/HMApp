@@ -4,7 +4,7 @@
         xmlns:System="clr-namespace:System;assembly=mscorlib" 
         xmlns:ViewModels="clr-namespace:DiamondApp.ViewModels"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-         Title="Panel użytkownika" Height="623.015" Width="1081.455" Closed="Window_Closed" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+         Title="Panel użytkownika" Height="623.015" Width="1081.455" Closed="Window_Closed" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/DiamondApp;component/ApplicationIcon.ico">
     <Window.Resources>
         <DataTemplate x:Key="SebaWrappingTemplate">
             <Grid>

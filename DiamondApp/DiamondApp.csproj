@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ikona.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -329,7 +330,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MainPdfLogo.png" />
-    <Resource Include="ikona.ico" />
+    <Resource Include="ApplicationIcon.ico" />
     <Content Include="Model\DiamondModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DiamondModel.edmx</DependentUpon>
