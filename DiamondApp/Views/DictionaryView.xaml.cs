@@ -99,7 +99,10 @@ namespace DiamondApp.Views
 
                 dynamic userRow = GstronomicGrid.SelectedItem;
 
-                if (selected != 0 && userRow.ThingName != ""  && userRow.ThingName != null && userRow.NettoMini != null && userRow.NettoMini != 0 && userRow.MergeType != null && userRow.SpecificType != null && userRow.SpecificType != "")
+                if (selected != 0 && userRow.ThingName != ""  && userRow.ThingName != null 
+                    && userRow.NettoMini != null && userRow.NettoMini != 0 
+                    && userRow.MergeType != null && userRow.SpecificType != null
+                    && userRow.SpecificType != "" && userRow.Vat != null && userRow.Vat != "")
                 { 
                     PropMenuGastronomicThings_Dictionary_First userUpdate = 
                         (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
