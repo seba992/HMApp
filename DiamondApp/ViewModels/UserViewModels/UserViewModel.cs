@@ -4242,9 +4242,6 @@ namespace DiamondApp.ViewModels.UserViewModels
             }
             else
             {
-                //fox
-                // Wybrany Id Propozycji
-                // int currentPropositionId = SelectedProposition.PropositionId;
 
                 //Edycja Propozycji
                 // !! PROPCLIENT !!
@@ -4348,11 +4345,9 @@ namespace DiamondApp.ViewModels.UserViewModels
                 {
                     if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
                     {
-                        if (hall.Days != PropHallEqDays0)
-                            hall.Days = PropHallEqDays0;
-                        if (hall.Amount != PropHallEqAmount0)
-                            hall.Amount = PropHallEqAmount0;
-                        _ctx.PropHallEquipment.Remove(hall);
+
+                        hall.Days = PropHallEqDays0;
+                        hall.Amount = PropHallEqAmount0;
                         _ctx.SaveChanges();
                     }
 
@@ -4370,6 +4365,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 }
                 //wposażenie
 
+                _ctx.SaveChanges();
 
                 if (PropHallEqThing1 != null)
                 {
@@ -4522,10 +4518,8 @@ namespace DiamondApp.ViewModels.UserViewModels
                                        where q.Id_proposition == _idProposition
                                        select q).ToList();
 
-                PropMenuPosition emptyrow = new PropMenuPosition();
-                emptyrow.TypeOfService = " ";
-                editGastronomic.Add(emptyrow);
-                if (PropMenuTypeOfServ0 != null)
+
+                if (PropMenuTypeOfServ0 != " " && PropMenuTypeOfServ0 != null)
                 {
                     var service = editGastronomic.ElementAtOrDefault(0);
                     if (service != null)
@@ -4533,25 +4527,14 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                         service.Id_proposition = idProposition;
                         service.TypeOfService = PropMenuTypeOfServ0;
-
                         service.Amount = PropMenuPosAmount0;
                         service.Days = PropMenuPosDays0;
-                        if (PropMenuTypeOfServ0 != " ")
-                        {
-                            service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ0);
-                            service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ0);
-                            service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ0);
-                        }
-                        else
-                        {
-                            PropMenuPosition toRemove = (from q in _ctx.PropMenuPosition
-                                                         where q.Id_proposition == idProposition
-                                                         select q).ToList().ElementAtOrDefault(0);
-                            if (toRemove != null)
-                                _ctx.PropMenuPosition.Remove(toRemove);
-                        }
+                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ0);
+                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ0);
+                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ0);
+
                     }
-                    else if (PropMenuTypeOfServ0 != " " && PropMenuTypeOfServ0 != null)
+                    else
                     {
                         PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
@@ -4568,7 +4551,7 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                 _ctx.SaveChanges();
 
-                if (PropMenuTypeOfServ1 != null)
+                if (PropMenuTypeOfServ1 != " " && PropMenuTypeOfServ1 != null)
                 {
                     var service = editGastronomic.ElementAtOrDefault(1);
                     if (service != null)
@@ -4577,22 +4560,12 @@ namespace DiamondApp.ViewModels.UserViewModels
                         service.TypeOfService = PropMenuTypeOfServ1;
                         service.Amount = PropMenuPosAmount1;
                         service.Days = PropMenuPosDays1;
-                        if (PropMenuTypeOfServ1 != " " && PropMenuTypeOfServ1 != null)
-                        {
-                            service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ1);
-                            service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ1);
-                            service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ1);
-                        }
-                        else
-                        {
-                            PropMenuPosition toRemove = (from q in _ctx.PropMenuPosition
-                                                         where q.Id_proposition == idProposition
-                                                         select q).ToList().ElementAtOrDefault(1);
-                            if (toRemove != null)
-                                _ctx.PropMenuPosition.Remove(toRemove);
-                        }
+                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ1);
+                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ1);
+                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ1);
+
                     }
-                    else if (PropMenuTypeOfServ1 != " ")
+                    else
                     {
                         PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
@@ -4607,7 +4580,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 }
                 _ctx.SaveChanges();
 
-                if (PropMenuTypeOfServ2 != null)
+                if (PropMenuTypeOfServ2 != " " && PropMenuTypeOfServ2 != null)
                 {
                     var service = editGastronomic.ElementAtOrDefault(2);
                     if (service != null)
@@ -4616,22 +4589,12 @@ namespace DiamondApp.ViewModels.UserViewModels
                         service.TypeOfService = PropMenuTypeOfServ2;
                         service.Amount = PropMenuPosAmount2;
                         service.Days = PropMenuPosDays2;
-                        if (PropMenuTypeOfServ1 != " ")
-                        {
-                            service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ2);
-                            service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ2);
-                            service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ2);
-                        }
-                        else
-                        {
-                            PropMenuPosition toRemove = (from q in _ctx.PropMenuPosition
-                                                         where q.Id_proposition == idProposition
-                                                         select q).ToList().ElementAtOrDefault(2);
-                            if (toRemove != null)
-                                _ctx.PropMenuPosition.Remove(toRemove);
-                        }
+                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ2);
+                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ2);
+                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ2);
+
                     }
-                    else if (PropMenuTypeOfServ2 != " ")
+                    else
                     {
                         PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
@@ -4645,7 +4608,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                     }
                 }
                 _ctx.SaveChanges();
-                if (PropMenuTypeOfServ3 != null)
+                if (PropMenuTypeOfServ3 != null && PropMenuTypeOfServ3 != " ")
                 {
                     var service = editGastronomic.ElementAtOrDefault(3);
                     if (service != null)
@@ -4654,22 +4617,12 @@ namespace DiamondApp.ViewModels.UserViewModels
                         service.TypeOfService = PropMenuTypeOfServ3;
                         service.Amount = PropMenuPosAmount3;
                         service.Days = PropMenuPosDays3;
-                        if (PropMenuTypeOfServ3 != " ")
-                        {
-                            service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ3);
-                            service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ3);
-                            service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ3);
-                        }
-                        else
-                        {
-                            PropMenuPosition toRemove = (from q in _ctx.PropMenuPosition
-                                                         where q.Id_proposition == idProposition
-                                                         select q).ToList().ElementAtOrDefault(3);
-                            if (toRemove != null)
-                                _ctx.PropMenuPosition.Remove(toRemove);
-                        }
+                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ3);
+                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ3);
+                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ3);
+
                     }
-                    else if (PropMenuTypeOfServ3 != " ")
+                    else
                     {
                         PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
@@ -4683,7 +4636,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                     }
                 }
                 _ctx.SaveChanges();
-                if (PropMenuTypeOfServ4 != null)
+                if (PropMenuTypeOfServ4 != null && PropMenuTypeOfServ4 != " ")
                 {
                     var service = editGastronomic.ElementAtOrDefault(4);
                     if (service != null)
@@ -4692,22 +4645,12 @@ namespace DiamondApp.ViewModels.UserViewModels
                         service.TypeOfService = PropMenuTypeOfServ4;
                         service.Amount = PropMenuPosAmount4;
                         service.Days = PropMenuPosDays4;
-                        if (PropMenuTypeOfServ4 != " ")
-                        {
-                            service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ4);
-                            service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ4);
-                            service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ4);
-                        }
-                        else
-                        {
-                            PropMenuPosition toRemove = (from q in _ctx.PropMenuPosition
-                                                         where q.Id_proposition == idProposition
-                                                         select q).ToList().ElementAtOrDefault(3);
-                            if (toRemove != null)
-                                _ctx.PropMenuPosition.Remove(toRemove);
-                        }
+                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ4);
+                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ4);
+                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ4);
+
                     }
-                    else if (PropMenuTypeOfServ4 != " ")
+                    else
                     {
                         PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
@@ -4721,7 +4664,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                     }
                 }
                 _ctx.SaveChanges();
-                if (PropMenuTypeOfServ5 != null)
+                if (PropMenuTypeOfServ5 != null && PropMenuTypeOfServ5 != " ")
                 {
                     var service = editGastronomic.ElementAtOrDefault(5);
                     if (service != null)
@@ -4730,22 +4673,12 @@ namespace DiamondApp.ViewModels.UserViewModels
                         service.TypeOfService = PropMenuTypeOfServ5;
                         service.Amount = PropMenuPosAmount5;
                         service.Days = PropMenuPosDays5;
-                        if (PropMenuTypeOfServ5 != " ")
-                        {
-                            service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ5);
-                            service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ5);
-                            service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ5);
-                        }
-                        else
-                        {
-                            PropMenuPosition toRemove = (from q in _ctx.PropMenuPosition
-                                                         where q.Id_proposition == idProposition
-                                                         select q).ToList().ElementAtOrDefault(3);
-                            if (toRemove != null)
-                                _ctx.PropMenuPosition.Remove(toRemove);
-                        }
+                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ5);
+                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ5);
+                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ5);
+
                     }
-                    else if (PropMenuTypeOfServ5 != " ")
+                    else
                     {
                         PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
@@ -4758,7 +4691,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                     }
                 }
                 _ctx.SaveChanges();
-                if (PropMenuTypeOfServ6 != null)
+                if (PropMenuTypeOfServ6 != null && PropMenuTypeOfServ5 != " ")
                 {
                     var service = editGastronomic.ElementAtOrDefault(6);
                     if (service != null)
@@ -4767,23 +4700,12 @@ namespace DiamondApp.ViewModels.UserViewModels
                         service.TypeOfService = PropMenuTypeOfServ6;
                         service.Amount = PropMenuPosAmount6;
                         service.Days = PropMenuPosDays6;
-                        if (PropMenuTypeOfServ6 != " ")
-                        {
-                            service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ6);
-                            service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ6);
-                            service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ6);
-                        }
-                        else
-                        {
+                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ6);
+                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ6);
+                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ6);
 
-                            PropMenuPosition toRemove = (from q in _ctx.PropMenuPosition
-                                                         where q.Id_proposition == idProposition
-                                                         select q).ToList().ElementAtOrDefault(3);
-                            if (toRemove != null)
-                                _ctx.PropMenuPosition.Remove(toRemove);
-                        }
                     }
-                    else if (PropMenuTypeOfServ5 != " ")
+                    else
                     {
                         PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
@@ -4797,7 +4719,15 @@ namespace DiamondApp.ViewModels.UserViewModels
                     }
                 }
                 _ctx.SaveChanges();
-
+                var clearGast = (from q in _ctx.PropMenuPosition
+                                 where q.Id_proposition == _idProposition
+                                 select q).ToList();
+                var tmpClearGast =
+                    clearGast.FindAll(
+                        item =>
+                            item.Amount == null || item.Amount == 0 || item.Days == null || item.Days == 0 ||
+                            item.TypeOfService == " " || item.TypeOfService == null).ToList();
+                _ctx.PropMenuPosition.RemoveRange(tmpClearGast);
 
                 var merge = (from q in _ctx.PropMenuMerge
                              where q.Id_proposition == idProposition
@@ -4847,7 +4777,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                     switch (_roomExistList[i])
                     {
                         case "POKÓJ 1-OSOBOWY":
-                            if (PropAccomAmount0 != null || PropAccomDays0 != null)
+                            if (PropAccomAmount0 != null && PropAccomDays0 != null && PropAccomAmount0 != 0 && PropAccomDays0 != 0)
                             {
                                 PropAccomodation newroom = new PropAccomodation();
                                 newroom.Id_proposition = _idProposition;
@@ -4860,7 +4790,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                             }
                             break;
                         case "POKÓJ 2-OSOBOWY":
-                            if (PropAccomAmount1 != null || PropAccomDays1 != null)
+                            if (PropAccomAmount1 != null && PropAccomDays1 != null && PropAccomAmount1 != 0 && PropAccomDays1 != 0)
                             {
                                 PropAccomodation newroom = new PropAccomodation();
                                 newroom.Id_proposition = _idProposition;
@@ -4873,7 +4803,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                             }
                             break;
                         case "POKÓJ BUSSINES 1-OSOBOWY":
-                            if (PropAccomAmount2 != null || PropAccomDays2 != null)
+                            if (PropAccomAmount2 != null && PropAccomDays2 != null && PropAccomAmount2 != 0 && PropAccomDays2 != 0)
                             {
                                 PropAccomodation newroom = new PropAccomodation();
                                 newroom.Id_proposition = _idProposition;
@@ -4886,7 +4816,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                             }
                             break;
                         case "POKÓJ BUSSINES 2-OSOBOWY":
-                            if (PropAccomAmount3 != null || PropAccomDays3 != null)
+                            if (PropAccomAmount3 != null && PropAccomDays3 != null && PropAccomAmount3 != 0 && PropAccomDays3 != 0)
                             {
                                 PropAccomodation newroom = new PropAccomodation();
                                 newroom.Id_proposition = _idProposition;
@@ -4899,7 +4829,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                             }
                             break;
                         case "APARTAMENT":
-                            if (PropAccomAmount4 != null || PropAccomDays4 != null)
+                            if (PropAccomAmount4 != null && PropAccomDays4 != null && PropAccomAmount4 != 0 && PropAccomDays5 != 0)
                             {
                                 PropAccomodation newroom = new PropAccomodation();
                                 newroom.Id_proposition = _idProposition;
@@ -4912,7 +4842,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                             }
                             break;
                         case "POKOJ DLA NIEPEŁNOSPRAWNYCH":
-                            if (PropAccomAmount5 != null || PropAccomDays5 != null)
+                            if (PropAccomAmount5 != null && PropAccomDays5 != null && PropAccomAmount5 != 0 && PropAccomDays5 != 0)
                             {
                                 PropAccomodation newroom = new PropAccomodation();
                                 newroom.Id_proposition = _idProposition;
@@ -4926,8 +4856,15 @@ namespace DiamondApp.ViewModels.UserViewModels
                             break;
                     }
                 }
+                var clearAcc =
+                    (from q in _ctx.PropAccomodation
+                     where q.Id_proposition == _idProposition
+                     select q).ToList().FindAll(item => item.Amount == 0 || item.Amount == null || item.Days == 0 || item.Days == null);
+                _ctx.PropAccomodation.RemoveRange(clearAcc);
+                _ctx.SaveChanges();
+
                 var mergeaccom = (from q in _ctx.PropAccomodationDiscount
-                                  where q.Id_proposition == idProposition
+                                  where q.Id_proposition == _idProposition
                                   select q).SingleOrDefault();
                 mergeaccom.Discount = PropAccomDiscountValue;
                 _ctx.SaveChanges();
@@ -4967,6 +4904,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                         _ctx.PropExtraServices.Add(newextra);
                     }
                 }
+
                 if (PropExtraServType1 != null)
                 {
 
@@ -4988,6 +4926,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                         newextra.Days = PropExtraServDays1;
                         newextra.BruttoPrice = PropExtraServBrutto1;
                         newextra.Vat = PropExtraServVat1;
+                        _ctx.PropExtraServices.Add(newextra);
                     }
                 }
                 if (PropExtraServType2 != null)
@@ -5038,11 +4977,15 @@ namespace DiamondApp.ViewModels.UserViewModels
                         _ctx.PropExtraServices.Add(newextra);
                     }
                 }
+
                 _ctx.SaveChanges();
-                var clear = (from x in _ctx.PropExtraServices
-                             where x.ServiceType == " " || x.ServiceType == ""
-                             select x).ToList();
-                _ctx.PropExtraServices.RemoveRange(clear);
+                var extrClear = (from x in _ctx.PropExtraServices
+                                 where x.Id_proposition == _idProposition
+                                 select x).ToList().FindAll(item => item.Days == null ||
+                                                             item.Amount == null || item.Days == 0 ||
+                                                             item.Amount == 0 || item.ServiceType == " " && parking.IsMatch(item.ServiceType));
+
+                _ctx.PropExtraServices.RemoveRange(extrClear);
 
                 _ctx.SaveChanges();
                 var paysug = (from q in _ctx.PropPaymentSuggestions
@@ -5074,6 +5017,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 Xceed.Wpf.Toolkit.MessageBox.Show("Edytowano istniejącą propozycję cenową!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+
 
         private bool CanShowPropositionExecute(object arg)
         {
