@@ -59,7 +59,6 @@
 \contentsline {subsection}{\numberline {9.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{95}
 \contentsline {subsection}{\numberline {9.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{97}
 \contentsline {subsection}{\numberline {9.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{97}
-\contentsline {subsubsection}{\numberline {9.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{97}
 \contentsline {subsection}{\numberline {9.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{99}
 \contentsline {section}{\numberline {10}\kernsekcyjny Podsumowanie oraz perspektywy rozwoju \relax oprogramowania}{101}
 \contentsline {section}{Bibliografia}{103}

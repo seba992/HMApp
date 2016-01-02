@@ -1430,11 +1430,10 @@ Modu³ tworzenia propozycji cenowej wraz z modu³em jej edycji jest najbardziej ro
 Najwa¿niejszym elementem koniecznym do prawid³owej pracy prezentowanego modu³u by³a kontrola przesy³anych pomiêdzy baz¹ a aplikacj¹ danych. Pola obiektów, które zawiera³y puste wartoœci wymaga³y szczegó³owej kontroli i konwersji typu NULL na typ obs³ugiwany przez odbiorcê. Wymóg ten by³ konieczny przez wzgl¹d na mo¿liwoœæ wyst¹pienia wyj¹tku, który przerywa³ pracê ca³ej aplikacji. Zgodnie z za³o¿eniami projektowymi, u¿ytkownik w czasie tworzenia propozycji cenowej ma mo¿liwoœæ wype³niania tylko jej czêœci. Dodaj¹c do tego fakt, i¿ u¿ytkownik przypadkowo mo¿e wype³niæ dla przyk³adu rekord zawieraj¹cy element gastronomiczny bez wpisania jego dni lub iloœci, szczegó³owa kontrola zawartoœci obiektów by³a priorytetowa. W sytuacji nie wpisania wszystkich kolumn rekordu odnosz¹cego siê do elementu zak³adki opisywanej w punktach \ref{dzial:SalaIWyposazenieUzytkownik}, \ref{dzial:UslugiGastronomiczneUzytkownik}, \ref{dzial:UslugiNoclegoweUzytkownik} oraz \ref{dzial:UslugiDodatkoweIPlatnoscUzytkownik}, przy zapisie propozycji do bazy danych, rekord ten jest wychwytywany przez mechanizmy waliduj¹ce i usuwany.
 
 \subsection{Edycja s³owników oraz kont u¿ytkowników}
-\subsubsection{DataGridView a dynamiczna komunikacja z Baz¹ danych}
 
-Aby umo¿liwiæ edycjê danych z poziomu DataGridView, zaimplementowano funckjê obs³uguj¹c¹ zdarzenie \textit{DataGridRowEditEndingEventArgs}. Kiedy edycja danej komórki zostaje zakoñczona, wywo³ywana jest funkcja której zadaniem jest dynamiczne przechwytywanie nowych wartoœci oraz aktualizacja bazy danych. U¿ycie zmiennej dynamic, podyktowane jest faktem, i¿ jest ona sprawdzana podczas wywo³ania, a nie kompilacji \cite{dynamic}. Umo¿liwia to odwo³anie do nowych wartoœci zapisanych w komórkach. Funkcja jest wykorzystywana w module s³u¿¹cym do edycji danych pracowników. Implementacjê funkcji przedstawia kod Ÿród³owy \ref{listing:DynamicGridView}:
+Aby umo¿liwiæ edycjê danych z poziomu DataGridView który jest arkuszem podzielonym na wiersze i komórki, zaprezentowanym na rysunku \ref{rys:EdytujUzytkownika} zaimplementowano metody obs³uguj¹ce zdarzenie \textit{DataGridRowEditEndingEventArgs}. W sytuacji w której edycja danej komórki zostaje ukoñczona owe zdarzenie jest przechwytywane. W tym celu wymagane jest u¿ycie zmiennej dynamic której wartoœæ sprawdzana jest podczas wywo³ania, a nie kompilacji \cite{dynamic}. Umo¿liwia to odwo³anie do nowych wartoœci zapisanych w komórkach i przekazanie ich jako argumentów do fragmentów kodu odpowiedzialnych za aktualizacjê bazy danych. Fragment kodu zawarty w programie \ref{listing:DynamicGridView} realizuje powy¿sze operacje, wykorzystywany jest w module s³u¿¹cym do edycji danych pracowników i s³owników cenowych. 
 
-\begin{lstlisting}[caption= {Implementacja i opis funkcji aktualizuj¹cej bazê danych z poziomu DataGridView}, label={listing:DynamicGridView}]
+\begin{lstlisting}[caption= {Implementacja i opis fragmentu kodu aktualizuj¹cego bazê danych z poziomu DataGridView}, label={listing:DynamicGridView}]
 //pobranie identyfikatora u¿ytkownika którego wiersz 
 //jest zaznaczony w DataGridView oraz zapis do zmiennej typu int
 object item = UserList.SelectedItem;
@@ -1477,9 +1476,9 @@ Users userUpdate = (from user in _ctx.Users
 
 \subsection{Tworzenie szablonu PDF propozycji cenowej}
 
-Za pomoc¹ mechanizmów biblioteki MigraDoc, zaimplementowano funckje tworz¹ce tabele propozycji cenowej. Kod Ÿród³owy \ref{listing:PdfSharpTable} przedstawia prost¹ funkcjê tworz¹ca tabelê z jedn¹ kolumn¹ i wierszem. 
+Za pomoc¹ mechanizmów biblioteki MigraDoc, zaimplementowano funckje tworz¹ce tabele propozycji cenowej. Kod Ÿród³owy \ref{listing:PdfSharpTable} przedstawia implementacje mechanizmu tworz¹cego tabelê z jedn¹ kolumn¹ i wierszem. 
 
-\begin{lstlisting}[caption= {Implementacja i opis funkcji tworz¹cej prost¹ tabelê przy u¿yciu biblioteki PDFSharp \& MigraDoc}, label={listing:PdfSharpTable}]
+\begin{lstlisting}[caption= {Fragment kodu tworz¹cego prost¹ tabelê przy u¿yciu biblioteki PDFSharp \& MigraDoc}, label={listing:PdfSharpTable}]
 //inicjalizacja nowej tabeli, ustawienie czcionki i jej rozmiaru
 Table table = document.LastSection.AddTable();
 table.Borders.Visible = true;

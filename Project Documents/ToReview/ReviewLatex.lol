@@ -3,5 +3,5 @@
 \contentsline {lstlisting}{\numberline {3}Metoda weryfikuj\k aca poprawno\'s\'c wpisanego przez u\.zytkownika has\IeC {\l }a}{94}
 \contentsline {lstlisting}{\numberline {4}Polecenie wyci\k agaj\k ace wszystkie propozycje u\.zytkownika}{95}
 \contentsline {lstlisting}{\numberline {5}{Polecenie wyci\k agaj\k ace wszystkie u\.zytkownika posiadaj\k acych propozycj\k e} }{96}
-\contentsline {lstlisting}{\numberline {6}Implementacja i opis funkcji aktualizuj\k acej baz\k e danych z poziomu DataGridView}{97}
-\contentsline {lstlisting}{\numberline {7}Implementacja i opis funkcji tworz\k acej prost\k a tabel\k e przy u\.zyciu biblioteki PDFSharp \& MigraDoc}{99}
+\contentsline {lstlisting}{\numberline {6}Implementacja i opis fragmentu kodu aktualizuj\k acego baz\k e danych z poziomu DataGridView}{97}
+\contentsline {lstlisting}{\numberline {7}Fragment kodu tworz\k acego prost\k a tabel\k e przy u\.zyciu biblioteki PDFSharp \& MigraDoc}{99}
