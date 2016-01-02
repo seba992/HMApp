@@ -746,7 +746,6 @@ Ostatni katalog jak katalogiem najwaøniejszym ze strony uøytkownika, gdyø zawier
 
 Potrzeba stosowania centralnego systemu bazodanowego niesie za sobπ koniecznoúÊ wykorzystania serwera, ktÛry zosta≥ przedstawiony w podrozdziale \ref{dzial:MS-SQL}. Wraz z tym istnia≥a koniecznoúÊ stworzenia modelu bazy danych. 
 
-
 \subsubsection{MS-SQL ñ Zastosowany system zarzπdzania bazπ danych}
 \label{dzial:MS-SQL}
 Z racji wykorzystania w projekcie baz danych istnia≥a koniecznoúÊ uruchomienia serwera bazodanowego. W konsekwencji wykorzystanych technologii opisanych w rodziale \ref{dzial:ZastosowaneRozwiπzaniaTechnologiczne} uøyto Microsoft SQL Server\cite{MS-SQL}. Oprogramowanie umoøliwia tworzenie relacyjnych i nierelacyjnych baz danych ktÛre odbywa siÍ poprzez:
@@ -893,8 +892,7 @@ Edycja danych znajdujπcych siÍ w bazie danych z poziomu projektu programistyczne
 Dodanie rekordu do bazy danych jest operacjπ, ktÛre nie wymaga znajomoúci sk≥adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, ktÛra reprezentuje bazodanowπ tabelÍ, do ktÛrej nowy rekord ma byÊ dodany, a nastÍpnie uzupe≥nieniu jego elementÛw danymi. Tak zbudowany obiekt naleøy dodaÊ do obiektu kontekstu, odwo≥ujπc siÍ do jego w≥aúciwoúci o nazwie interesujπcej nas tabeli bazy danych, a nastÍpnie w parametrze metody \textsl{Add} umieúciÊ wczeúniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych naleøy potwierdziÊ na obiekcie kontekstu. Przedstawienie opisanej operacji z poziomu kodu, dostÍpne jest rÛwnieø do wglπdu w drugiej czÍúci kodu ürÛd≥owego \ref{listing:AdoEntityCompare}.
 
 \section{Implementacja aplikacji}
-
-\subsection{BezpieczeÒstwo procesu logowania}
+\subsection{Proces logowania i jego bezpieczeÒstwo}
 
 Modu≥ logowania jest czÍúciπ systemu, do ktÛrego dostÍp ma kaødy uøytkownik korzystajπcy z prezentowanej aplikacji. Implikuje to koniecznoúÊ jego zabezpieczenia przed niepowo≥anym uøyciem dotyczπcym dostÍpu do poufnych danych, takich jak dane osobiste oraz has≥a, dla ktÛrych dobrπ praktykπ odnoszπcπ siÍ do bezpieczeÒstwa jest ich nieprzechowywanie w øadnym miejscu w postaci jawnej.
 
@@ -907,7 +905,14 @@ Pole wpisywania has≥a przez uøytkownika w oknie logowania stanowi dedykowana dla
     \label{rys:PasswordBox}
 \end{figure}
 
-Sama operacja sprawdzania poprawnoúci wpisanego has≥a zosta≥a zaprojektowana w taki sposÛb, aby otrzymane z kontrolki has≥o nie by≥o nigdzie zapisywane i porÛwnywane w postaci jawnej. W chwili wpisania has≥a przez uøytkownika oraz klikniÍcia przycisku logowania, nastÍpuje sprawdzenie ustalonych zasad dotyczπcych z≥oøonoúci has≥a oraz w sytuacji ich pozytywnego rozpatrzenia, has≥o przekszta≥cane jest za pomocπ 256-bitowej odmiany algorytmu haszujπcego SHA-2 na skrÛt, ktÛry porÛwnywany jest ze skrÛtem has≥a dopasowanemu wpisanej nazwie uøytkownika uøytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostÍp do dalszej czÍúci programu.
+Sama operacja sprawdzania poprawnoúci wpisanego has≥a zosta≥a zaprojektowana w taki sposÛb, aby otrzymane z kontrolki has≥o nie by≥o nigdzie zapisywane i porÛwnywane w postaci jawnej. W chwili wpisania has≥a przez uøytkownika oraz klikniÍcia przycisku logowania, nastÍpuje sprawdzenie ustalonych zasad dotyczπcych z≥oøonoúci has≥a oraz w sytuacji ich pozytywnego rozpatrzenia, has≥o przekszta≥cane jest za pomocπ 256-bitowej odmiany algorytmu haszujπcego SHA-2 na skrÛt, ktÛry porÛwnywany jest ze skrÛtem has≥a dopasowanemu wpisanej nazwie uøytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostÍp do dalszej czÍúci programu. Pojedynczy rekord bazowanowy zawierajπcy has≥o uøytkownika widoczny jest na rysunku \ref{rys:UserBazaDanych}. 
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{UserBazaDanych.jpg}
+    \caption{Rekord bazodanowy zawierajπcy wszystkie dane uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:UserBazaDanych}
+\end{figure}
 
 %TODO: hasze hasel screen z bazy jak wlaczy sie hashowanie
 

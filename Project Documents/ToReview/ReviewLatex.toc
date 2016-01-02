@@ -31,9 +31,9 @@
 \contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny Zastosowane narz\k edzie ORM \IeC {\textendash } Entity Framework}{66}
 \contentsline {subsubsection}{\numberline {5.3.3}\kernsubsubsekcyjny Stosowanie polece\'n bazodanowych ze strony projektu C\# za pomoc\k a Linq to Entities}{67}
 \contentsline {section}{\numberline {6}\kernsekcyjny Implementacja aplikacji}{69}
-\contentsline {subsection}{\numberline {6.1}\kernsubsekcyjny Bezpiecze\'nstwo procesu logowania}{69}
+\contentsline {subsection}{\numberline {6.1}\kernsubsekcyjny Proces logowania i jego bezpiecze\'nstwo}{69}
 \contentsline {subsection}{\numberline {6.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{71}
-\contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{72}
+\contentsline {subsection}{\numberline {6.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{73}
 \contentsline {subsection}{\numberline {6.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{73}
 \contentsline {subsection}{\numberline {6.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{75}
 \contentsline {section}{\numberline {7}\kernsekcyjny Automatyzacja wydawania kolejnych wersji aplikacji}{77}
