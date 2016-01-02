@@ -4,7 +4,7 @@
 \contentsline {section}{\numberline {3}\kernsekcyjny Istniej\k ace rozwi\k azania konkurencyjne}{19}
 \contentsline {section}{\numberline {4}\kernsekcyjny Pomys\IeC {\l } na rozwi\k azanie problemu}{27}
 \contentsline {section}{\numberline {5}\kernsekcyjny Zastosowane rozwi\k azania technologiczne}{29}
-\contentsline {subsection}{\numberline {5.1}\kernsubsekcyjny Wykorzystana technologia}{31}
+\contentsline {subsection}{\numberline {5.1}\kernsubsekcyjny Wykorzystane technologie}{31}
 \contentsline {subsubsection}{\numberline {5.1.1}\kernsubsubsekcyjny .NET Framework/C\#}{31}
 \contentsline {subsubsection}{\numberline {5.1.2}\kernsubsubsekcyjny WPF}{32}
 \contentsline {subsubsection}{\numberline {5.1.3}\kernsubsubsekcyjny XAML}{33}
@@ -34,7 +34,7 @@
 \contentsline {section}{\numberline {7}\kernsekcyjny Automatyzacja wydawania kolejnych wersji aplikacji}{67}
 \contentsline {subsection}{\numberline {7.1}\kernsubsekcyjny Continuous Integration/Continuous Delivery/Continuous Deployment}{67}
 \contentsline {subsection}{\numberline {7.2}\kernsubsekcyjny Wtyczka u\.zyta w Jenkins - SonarQube}{68}
-\contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Schemat budowania projektu}{69}
+\contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Schemat budowania projektu}{70}
 \contentsline {section}{\numberline {8}\kernsekcyjny Testowanie aplikacji}{71}
 \contentsline {subsection}{\numberline {8.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{71}
 \contentsline {subsection}{\numberline {8.2}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{74}

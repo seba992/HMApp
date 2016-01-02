@@ -316,7 +316,7 @@ Jednym z aspektÛw procesu wytwarzania oprogramowania jest wybranie, jakiego typu
 \tab Uøytkownicy korzystajπ z rÛønych przeglπdarek internetowych takich jak Mozilla Firefox, Google Chrome, Safari czy Opera. Dostosowanie wyglπdu, skalowalnoúci oraz funkcjonalnoúci dla rÛønych przeglπdarek jest czasoch≥onne, podczas gdy w przypadku aplikacji desktopowych wymieniony problem nie wystÍpuje.
 \end{itemize}
 
-\subsection{Wykorzystana technologia}
+\subsection{Wykorzystane technologie}
 
 \subsubsection{.NET Framework/C\#}
 
@@ -351,7 +351,7 @@ Jednym z aspektÛw procesu wytwarzania oprogramowania jest wybranie, jakiego typu
 
 Platforma .NET zapewnia wsparcie dla jÍzyka C\#, ktÛry jest obecnie jednym z najpopularniejszych jÍzykÛw programowania na úwiecie. Wed≥ug rankingu firmy TIOBE Software z grudnia 2015 r. znajduje siÍ on na piπtym miejscu, spoúrÛd piÍÊdziesiÍciu sklasyfikowanych jÍzykÛw. Poczπwszy od 2000 r. jÍzyk C\# awansowa≥ z dziesiπtego miejsca na piπte \cite{CRanking}. 
 
-C\# jest nowoczesnym, obiektowym jÍzykiem programowania, wyprodukowanym przez firmÍ Microsoft. Zosta≥ wydany po raz pierwszy w lipcu 2002 r. G≥Ûwnym projektantem jÍzyka jest duÒski inøynier oprogramowania Anders Hejlsberg \cite{chash}. Moøe zostaÊ wykorzystywany do pisania aplikacji desktopowych, internetowych oraz mobilnych. Programy napisane w C\# kompilowane sπ do kodu poúredniego zapisanego w jÍzyku CIL (ang. Common Intermediate Language) i wykonywane w úrodowisku uruchomieniowym .NET Framework. Jest on uznawany za prosty w nauce jÍzyk, poniewaø posiada szereg modu≥Ûw oraz udogodnieÒ u≥atwiajπcych pracÍ programistom, takich jak \cite{cadv}:
+C\# jest nowoczesnym, obiektowym jÍzykiem programowania, wyprodukowanym przez firmÍ Microsoft. Zosta≥ wydany po raz pierwszy w lipcu 2000 r. G≥Ûwnym projektantem jÍzyka jest duÒski inøynier oprogramowania Anders Hejlsberg \cite{chash}. Moøe zostaÊ wykorzystywany do pisania aplikacji desktopowych, internetowych oraz mobilnych. Programy napisane w C\# kompilowane sπ do kodu poúredniego zapisanego w jÍzyku CIL (ang. Common Intermediate Language) i wykonywane w úrodowisku uruchomieniowym .NET Framework. Jest on uznawany za prosty w nauce jÍzyk, poniewaø posiada szereg modu≥Ûw oraz udogodnieÒ u≥atwiajπcych pracÍ programistom, takich jak \cite{cadv}:
 
 \begin{itemize}
 
@@ -869,7 +869,7 @@ Niniejszy dzia≥ opisuje praktyki stosowane w celu integracji zmian w kodzie ürÛd
 
 \subsection{Continuous Integration/Continuous Delivery/Continuous Deployment}
 
-Ciπg≥a integracja (ang. Continuous Integration, CI) jest praktykπ stosowanπ podczas procesu wytwarzania oprogramowania. Cz≥onkowie zespo≥Ûw programistycznych synchronizujπ zmiany w kodzie ürÛd≥owym przynajmniej raz dziennie, dπøπc do wielokrotnej intagracji jednego dnia. Kaøda integracja weryfikowana jest przez narzÍdzia do automatyzacji (ang. build automation), takie jak Jenkins. Dla kaødej zmiany kodu ürÛd≥owego w repozytorium kompilacja, czy testy jednostkowe mogπ zostaÊ wykonane automatycznie, co prowadzi do wczeúniejszego wykrywania b≥ÍdÛw. Stosowanie tej praktyki umoøliwia zmniejszenie iloúci pracy podczas ≥πczenia zmian projektÛw programistycznych \cite{ci}.
+Ciπg≥a integracja (ang. Continuous Integration, CI) jest praktykπ stosowanπ podczas procesu wytwarzania oprogramowania. Cz≥onkowie zespo≥Ûw programistycznych synchronizujπ zmiany w kodzie ürÛd≥owym przynajmniej raz dziennie, dπøπc do wielokrotnej intagracji jednego dnia. Kaøda integracja weryfikowana jest przez narzÍdzia do automatyzacji (ang. build automation), takie jak Jenkins. Dla kaødej zmiany kodu ürÛd≥owego w repozytorium kompilacja, czy testy jednostkowe mogπ zostaÊ wykonane automatycznie, co prowadzi do wczeúniejszego wykrywania b≥ÍdÛw. Stosowanie tej praktyki umoøliwia zmniejszenie iloúci pracy podczas ≥πczenia zmian  w projektach programistycznych \cite{ci}.
 
 Ciπg≥a dostawa (ang. Continuous Delivery) jest podejúciem w inøynierii oprogramowania ktÛrego podstawowym za≥oøeniem jest zapewnienie wysokiej jakoúci oraz poprawnoúci dzia≥ania cyklicznie wytwarzanego oprogramowania. Wynikiem procesu jest stabilna wersja oprogramowania, ktÛra moøe zostaÊ dostarczona do klienta w dowolnym czasie \cite{cdel}. RozwiniÍciem praktyki jest ciπg≥e wdraøanie (ang. Continuous Deployment), ktÛre umoøliwia automatyczne wydawanie aplikacji do lini produkcyjnej \cite{cdr}.
 
@@ -885,15 +885,6 @@ SonarQube jest darmowπ, wieloplatformowπ aplikacjπ s≥uøπcπ do zarzπdzania jakoúc
 \item \textsl{Liczba potencjalnych b≥ÍdÛw i przybliøony czas potrzebny do ich rozwiπzania}
 \item \textsl{Ocena jakoúci w skali SQALE}
 \end{itemize}
-
-Przyk≥adowy raport analizy kodu niniejszego projektu zosta≥ przedstawiony na rysunku \ref{rys:RaportAnalizy}.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\textwidth]{sonarraport.jpg}
-    \caption{Raport statycznej analizy kodu ürÛd≥owego, èrÛd≥o: Opracowanie w≥asne.}
-    \label{rys:RaportAnalizy}
-\end{figure}
 
 SonarQube na podstawie raportu analizy dokonuje oceny jakoúci kodu w skali SQALE (ang. Software Quality Assessment based on Lifecycle Expectations). Ocena jest wyliczana ze wzoru \cite{SQALE}:
 
@@ -911,15 +902,25 @@ Wynik dzia≥ania jest przedstawiany w procentach. Im mniejsza wartoúÊ, tym jakoúÊ
 \item \textsl{E - powyøej 100\%}
 \end{itemize}
 
-Potencjalne b≥Ídy zapisywane sπ na liúcie zadaÒ, pokazanej na rysunku \ref{rys:SonarIssues}.
+Przyk≥adowy raport analizy kodu niniejszego projektu zosta≥ przedstawiony na rysunku \ref{rys:RaportAnalizy}. Kod ürÛd≥owy projektu uzyska≥ ocenÍ A w skali SQALE.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{sonarraport.jpg}
+    \caption{Raport statycznej analizy kodu ürÛd≥owego, èrÛd≥o: Opracowanie w≥asne.}
+    \label{rys:RaportAnalizy}
+\end{figure}
+
+Potencjalne b≥Ídy znalezione podczas przeprowadzania analizy, zapisywane sπ na liúcie zadaÒ pokazanej na rysunku \ref{rys:SonarIssues}. 
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{SonarIssues.jpg}
-    \caption{Lista zadaÒ w SonarQube, èrÛd≥o: Opracowanie w≥asne.}
+    \caption{Lista b≥ÍdÛw w kodzie ürÛd≥owym w SonarQube, èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:SonarIssues}
 \end{figure} 
 
+\newpage
 \subsection{Schemat budowania projektu}
 
 Kolejne wersje niniejszego projektu sπ wydawane zgodnie z zasadami Continuous Delivery. Utworzono plan w Jenkins'ie ktÛry wykonuje nastÍpujπce zadania:
@@ -962,6 +963,7 @@ Rysunek \ref{rys:JenkinsSek} przedstawia stronÍ wygenerowanπ dla planu.
 
 
 \section{Testowanie aplikacji}
+
 \subsection{Przeprowadzenie operacji logowania uøytkownika}
 
 Podstawowym modu≥em kaødej aplikacji wspierajπcej pracÍ wielu uøytkownikÛw na ich dedykowanych kontach jest modu≥ logowania. Po uruchomieniu aplikacji, ktÛra jest przedmiotem projektu, oczom uøytkownika ukazuje siÍ widocznie na rysunku \ref{rys:UzytkownikLogowanie} okno, ktÛrego zadaniem jest sprawdzenie jego toøsamoúci oraz w sytuacji jej potwierdzenia, prze≥πczenie do odpowiedniego okna g≥Ûwnego aplikacji, w zaleønoúci od posiadanych uprawnieÒ. 
@@ -1179,7 +1181,7 @@ Jednπ z najwaøniejszych funkcjonalnoúci niniejszej aplikacji jest moøliwoúÊ zapi
 \end{figure}
 
 \newpage
-Po klikniÍciu w opcjÍ \textsl{Lista propozycji} zostaje wyúwietlona lista istniejπcych propozycji cenowych. OprÛcz podstawowych parametrÛw propozycji cenowych, w ostatniej kolumnie listy pojawia siÍ przycisk \textsl{Zapisz do PDF} ktÛrego klikniÍcie otwiera dialog wyboru pliku. Uøytkownik wpisuje dowolnπ nazwÍ pliku, oraz wybiera lokalizacjÍ zapisu pliku co zosta≥o pokazane na rysunku \ref{rys:ZapisDoPdf}. Jeøeli proces generowania pliku PDF przebiegnie pomyúlnie, zostaje wyúwietlony komunikat z informacjπ o sukcesie, przedstawiony na rysunku \ref{rys:ZapisDoPdf2}. (dodaÊ odnoúnik do za≥πcznika - wygenerowanego przez program PDF).
+Po klikniÍciu w opcjÍ \textsl{Lista propozycji} zostaje wyúwietlona lista istniejπcych propozycji cenowych. OprÛcz podstawowych parametrÛw propozycji cenowych, w ostatniej kolumnie listy pojawia siÍ przycisk \textsl{Zapisz do PDF} ktÛrego klikniÍcie otwiera dialog wyboru pliku. Uøytkownik wpisuje dowolnπ nazwÍ pliku, oraz wybiera lokalizacjÍ zapisu pliku co zosta≥o pokazane na rysunku \ref{rys:ZapisDoPdf}. Jeøeli proces generowania pliku PDF przebiegnie pomyúlnie, zostaje wyúwietlony komunikat z informacjπ o sukcesie, przedstawiony na rysunku \ref{rys:ZapisDoPdf2}.
 
 \begin{figure}[ht]
     \centering
@@ -1232,7 +1234,7 @@ Kolejnπ funkcjonalnoúciπ jest moøliwoúÊ edycji danych pracownikÛw. Informacje o 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{edytujuz2.jpg}
-    \caption{Tabela zawierajπca dane uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
+    \caption{Tabela zawierajπca dane uøytkowninkÛw, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:EdytujUzytkownika}
 \end{figure}
 

@@ -22,7 +22,7 @@
 \contentsline {figure}{\numberline {22}{\ignorespaces Cz\k e\'sci s\IeC {\l }ownikowa bazy, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{61}
 \contentsline {figure}{\numberline {23}{\ignorespaces Cz\k e\'sci tworzonej propozycji, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{62}
 \contentsline {figure}{\numberline {24}{\ignorespaces Raport statycznej analizy kodu \'zr\'od\IeC {\l }owego, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{69}
-\contentsline {figure}{\numberline {25}{\ignorespaces Lista zada\'n w SonarQube, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{70}
+\contentsline {figure}{\numberline {25}{\ignorespaces Lista b\IeC {\l }\k ed\'ow w kodzie \'zr\'od\IeC {\l }owym w SonarQube, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{69}
 \contentsline {figure}{\numberline {26}{\ignorespaces Plan ci\k ag\IeC {\l }ej integracji w Jenkins'ie, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{71}
 \contentsline {figure}{\numberline {27}{\ignorespaces Okno procesu logowania, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{72}
 \contentsline {figure}{\numberline {28}{\ignorespaces Informacja otrzymania b\IeC {\l }\k ednych danych podczas operacji logowania, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{73}
@@ -41,7 +41,7 @@
 \contentsline {figure}{\numberline {41}{\ignorespaces Dodawanie nowego konta u\.zytkownika, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{86}
 \contentsline {figure}{\numberline {42}{\ignorespaces Komunikat o poprawnym zapisie konta u\.zytkownika w bazie danych, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{87}
 \contentsline {figure}{\numberline {43}{\ignorespaces Komunikat o b\IeC {\l }\k edzie podczas zapisu konta u\.zytkownika do bazy danych, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{87}
-\contentsline {figure}{\numberline {44}{\ignorespaces Tabela zawieraj\k aca dane u\.zytkownik\'ow, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{88}
+\contentsline {figure}{\numberline {44}{\ignorespaces Tabela zawieraj\k aca dane u\.zytkownink\'ow, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{88}
 \contentsline {figure}{\numberline {45}{\ignorespaces Okno usuwania kont u\.zytkownik\'ow, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{88}
 \contentsline {figure}{\numberline {46}{\ignorespaces Komunikat o poprawnym usuni\k eciu konta u\.zytkownika z bazy danych, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{89}
 \contentsline {figure}{\numberline {47}{\ignorespaces Okno resetowania hase\IeC {\l } u\.zytkownik\'ow, \'Zr\'od\IeC {\l }o: Opracowanie w\IeC {\l }asne.}}{89}

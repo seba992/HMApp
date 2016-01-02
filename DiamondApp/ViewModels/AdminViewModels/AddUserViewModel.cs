@@ -129,7 +129,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             }
             catch (Exception ex)
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("Wystąpił błąd! Konto użytkownika nie zostało utworzone", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Xceed.Wpf.Toolkit.MessageBox.Show("Wystąpił błąd! Konto użytkownika nie zostało utworzone.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
             } 
         }
     }
