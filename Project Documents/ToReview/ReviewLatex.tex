@@ -744,11 +744,12 @@ Ostatni katalog jak katalogiem najwa¿niejszym ze strony u¿ytkownika, gdy¿ zawier
 \subsection{Architektura bazy danych}
 \label{dzial:ArchitekturaBazyDanych}
 
-Potrzeba stosowania centralnego systemu bazodanowego niesie za sob¹ koniecznoœæ wykorzystania serwera, który zosta³ przedstawiony w podrozdziale \ref{dzial:MS-SQL}. Wraz z tym istnia³a koniecznoœæ stworzenia modelu bazy danych. 
+W zwi¹zku z wymaganiami projektu wynika³a potrzeba zastosowania bazy danych uwzglêdniaj¹c potrzeby przedstawione w rozdziale \ref{dzial:PomyslNaRozwiazanieProblemu} oraz wykorzystane technologie zaprezentowanej w rozdziale \ref{dzial:ZastosowaneRozwi¹zaniaTechnologiczne}. Opisany zosta³ serwer realizuj¹cy instancjê bazy w raz z jego dzia³aniem oraz model.
+
 
 \subsubsection{MS-SQL – Zastosowany system zarz¹dzania baz¹ danych}
 \label{dzial:MS-SQL}
-Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W konsekwencji wykorzystanych technologii opisanych w rodziale \ref{dzial:ZastosowaneRozwi¹zaniaTechnologiczne} u¿yto Microsoft SQL Server\cite{MS-SQL}. Oprogramowanie umo¿liwia tworzenie relacyjnych i nierelacyjnych baz danych które odbywa siê poprzez:
+Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W konsekwencji wykorzystanych technologii opisanych w rodziale \ref{dzial:ZastosowaneRozwi¹zaniaTechnologiczne} u¿yto Microsoft SQL Server\cite{MS-SQL}. Oprogramowanie umo¿liwia tworzenie relacyjnych i nierelacyjnych baz danych których proces tworzenia odbywa siê przy u¿yciu:
 \begin{enumerate}
 	\item	SQL Server Management Studio, który jest nak³adk¹ graficzn¹
 	\item	T-SQL. 
@@ -892,6 +893,8 @@ Edycja danych znajduj¹cych siê w bazie danych z poziomu projektu programistyczne
 Dodanie rekordu do bazy danych jest operacj¹, które nie wymaga znajomoœci sk³adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, która reprezentuje bazodanow¹ tabelê, do której nowy rekord ma byæ dodany, a nastêpnie uzupe³nieniu jego elementów danymi. Tak zbudowany obiekt nale¿y dodaæ do obiektu kontekstu, odwo³uj¹c siê do jego w³aœciwoœci o nazwie interesuj¹cej nas tabeli bazy danych, a nastêpnie w parametrze metody \textsl{Add} umieœciæ wczeœniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych nale¿y potwierdziæ na obiekcie kontekstu. Przedstawienie opisanej operacji z poziomu kodu, dostêpne jest równie¿ do wgl¹du w drugiej czêœci kodu Ÿród³owego \ref{listing:AdoEntityCompare}.
 
 \section{Implementacja aplikacji}
+Ka¿dy projekt programistyczny posiada elementy skomplikowane pod wzglêdem algorytmicznym. Wymagaj¹ one du¿ych nak³adów czasowych w procesie wytwarzania kodu Ÿród³owego wybranego modu³u. W prezentowanym rozdziale zosta³y ujête istotne aspekty programistyczne ciekawe ze wzglêdu na schemat ich dzia³ania i sposób implementacji.     
+
 \subsection{Proces logowania i jego bezpieczeñstwo}
 
 Modu³ logowania jest czêœci¹ systemu, do którego dostêp ma ka¿dy u¿ytkownik korzystaj¹cy z prezentowanej aplikacji. Implikuje to koniecznoœæ jego zabezpieczenia przed niepowo³anym u¿yciem dotycz¹cym dostêpu do poufnych danych, takich jak dane osobiste oraz has³a, dla których dobr¹ praktyk¹ odnosz¹c¹ siê do bezpieczeñstwa jest ich nieprzechowywanie w ¿adnym miejscu w postaci jawnej.
@@ -1502,7 +1505,7 @@ Po wybraniu pracownika z listy, nale¿y klikn¹æ przycisk \textsl{Resetuj}. Komuni
 
 \newpage
 \subsection{Modyfikacja s³owników cenowych}
- Modyfikacja s³owników cenowych odbywaæ siê mo¿e tylko z poziomu administratora. Z menu nale¿y wybraæ „Edytuj s³ownik". Zostanie otwarte nowe okno, gdzie bêdzie mo¿na wybraæ typ s³ownika, który bêdzie edytowany. Niestety nie wszystkie s³oniki s¹ edytowalne wynika to z faktu, braku cen produktów które s¹ ustawiane przez sprzedawce. Pierwsze klikniecie w komórkê powoduje jej zaznaczenie, drugie wybranie, dopiero po trzecim klikniêciu jest mo¿liwa edycja komórki. Edycja nastêpuje poprzez wpisywanie wartoœci w poszczególnych komórkach tabeli w zale¿noœci, któr¹ pozycjê chce siê edytowaæ. Wciskaj¹c przycisk „ENTER” nastêpuje zapis edytowanego wiersza do bazy danych. Istnieje równie¿ mo¿liwoœæ dodawania nowych pozycji. W ostatnim pustym wierszu tabeli nale¿y wype³niæ wszystkie komórki, by móc dodaæ do bazy. W trakcie edycja jak i dodawania istnieje kontrola typów danych jeœli w komórce ma byæ liczba a bêdziemy chcieli wpisaæ tekst komórka podœwietli siê na czerwono. Odœwie¿enie tabeli w przypadku dodania nowego produktu nastêpuje po ponownym uruchomieniu okna edycji s³owników. 
+ Modyfikacja s³owników cenowych odbywaæ siê mo¿e tylko z poziomu administratora. Z menu nale¿y wybraæ „Edytuj s³ownik". Zostanie otwarte nowe okno, gdzie bêdzie mo¿na wybraæ typ s³ownika, który bêdzie edytowany. Niestety nie wszystkie s³oniki s¹ edytowalne wynika to z faktu, braku cen produktów które s¹ ustawiane przez sprzedawce. Pierwsze klikniêcie w komórkê powoduje jej zaznaczenie, drugie wybranie, dopiero po trzecim klikniêciu jest mo¿liwa edycja komórki. Edycja nastêpuje poprzez wpisywanie wartoœci w poszczególnych komórkach tabeli w zale¿noœci, któr¹ pozycjê chce siê edytowaæ. Wciskaj¹c przycisk „ENTER” nastêpuje zapis edytowanego wiersza do bazy danych. Istnieje równie¿ mo¿liwoœæ dodawania nowych pozycji. W ostatnim pustym wierszu tabeli nale¿y wype³niæ wszystkie komórki, by móc dodaæ do bazy. W trakcie edycja jak i dodawania istnieje kontrola typów danych jeœli w komórce ma byæ liczba a bêdziemy chcieli wpisaæ tekst komórka podœwietli siê na czerwono. Odœwie¿enie tabeli w przypadku dodania nowego produktu nastêpuje po ponownym uruchomieniu okna edycji s³owników. 
  \begin{itemize}
 	\item \textsl {Pokoje}
 	
@@ -1734,6 +1737,10 @@ https://msdn.microsoft.com/en-us/data/jj591583
 Magennis T.: \textsl{LINQ to Objects w C\# 4.0}, Wydawnictwo Helion, Gliwice 2012
 
 %ogi CI start
+\bibitem{dynamic}
+https://msdn.microsoft.com/pl-pl/library/dd264736.aspx
+
+
 \bibitem{ci}
 Fowler M.: \textsl{Continuous Integration}, http://www.martinfowler.com/articles/continuousIntegration.html
 
@@ -1756,8 +1763,7 @@ http://www.sonarsource.com/products/plugins/governance/sqale/installation-and-us
 \bibitem{SHA1Slabosc}
 Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 
-\bibitem{dynamic}
-https://msdn.microsoft.com/pl-pl/library/dd264736.aspx
+
 
 %Nazwisko I. \textsl{tytu³}, miasto, rok
 
