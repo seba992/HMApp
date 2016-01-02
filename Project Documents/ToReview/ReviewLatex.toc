@@ -49,13 +49,13 @@
 \contentsline {subsubsection}{\numberline {8.2.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{91}
 \contentsline {subsubsection}{\numberline {8.2.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{92}
 \contentsline {subsubsection}{\numberline {8.2.6}\kernsubsubsekcyjny Zapis nowej propozycji cenowej}{94}
-\contentsline {subsection}{\numberline {8.3}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{95}
+\contentsline {subsection}{\numberline {8.3}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{94}
 \contentsline {subsection}{\numberline {8.4}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{95}
-\contentsline {subsection}{\numberline {8.5}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{96}
-\contentsline {subsubsection}{\numberline {8.5.1}\kernsubsubsekcyjny Dodawanie konta}{97}
-\contentsline {subsubsection}{\numberline {8.5.2}\kernsubsubsekcyjny Edycja konta}{97}
-\contentsline {subsubsection}{\numberline {8.5.3}\kernsubsubsekcyjny Usuwanie konta}{98}
-\contentsline {subsubsection}{\numberline {8.5.4}\kernsubsubsekcyjny Resetowanie hase\IeC {\l }}{99}
-\contentsline {subsection}{\numberline {8.6}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{100}
-\contentsline {section}{\numberline {9}\kernsekcyjny Podsumowanie oraz perspektywy rozwoju \relax oprogramowania}{103}
+\contentsline {subsection}{\numberline {8.5}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{97}
+\contentsline {subsubsection}{\numberline {8.5.1}\kernsubsubsekcyjny Dodawanie konta}{98}
+\contentsline {subsubsection}{\numberline {8.5.2}\kernsubsubsekcyjny Edycja konta}{99}
+\contentsline {subsubsection}{\numberline {8.5.3}\kernsubsubsekcyjny Usuwanie konta}{100}
+\contentsline {subsubsection}{\numberline {8.5.4}\kernsubsubsekcyjny Resetowanie hase\IeC {\l }}{101}
+\contentsline {subsection}{\numberline {8.6}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{102}
+\contentsline {section}{\numberline {9}\kernsekcyjny Podsumowanie oraz perspektywy rozwoju \relax oprogramowania}{105}
 \contentsline {section}{Bibliografia}{107}

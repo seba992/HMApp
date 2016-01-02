@@ -63,27 +63,27 @@ basicstyle=\ttfamily\small
 	
 \autor{Sebastian Nalepka}{225265}{50} {
 
-- Zdefiniowanie i opis wstÍpu, genezy projektu, specyfikacji wymagaÒ i celu projektu (rozdzia≥ 1, 2, 3 (33\%), 4(33\%) )
+- Zdefiniowanie i opis wstÍpu, genezy projektu, specyfikacji wymagaÒ i celu projektu (WstÍp, rozdzia≥ 1, 2 (33\%), 3(33\%) )
 
 - Zaprojektowanie schematu bazy danych wraz ze wszystkimi relacjami oraz tabelami s≥ownikowymi (60\%)
 
 - Utworzenie bazy danych za pomocπ SQL Server Management studio 2012
 
-- Opis wykorzystanych rozwiπzaÒ technologicznych (rozdzia≥ 5.1.3, 5.2.3, 5.2.5, 5.3.1)
+- Opis wykorzystanych rozwiπzaÒ technologicznych (rozdzia≥ 4.1.3, 4.2.3, 4.2.5, 4.3.1)
 
-- Zamodelowanie aplikacji wraz z podzia≥em na klasy oraz dostosowaniem do wzorca architektonicznego MVVM (rozdzia≥ 6.1)
+- Zamodelowanie aplikacji wraz z podzia≥em na klasy oraz dostosowaniem do wzorca architektonicznego MVVM (rozdzia≥ 5.1)
 
-- Komunikacja bazy danych z aplikacjπ C\# (WPF) za pomocπ Entity Framework 6 (rozdzia≥ 6.3)
+- Komunikacja bazy danych z aplikacjπ C\# (WPF) za pomocπ Entity Framework 6 (rozdzia≥ 5.3)
 
-- Implementacja modu≥u logowania do programu wraz z jego zabezpieczeniem (rozdzia≥ 8.1, 9.1)
+- Implementacja modu≥u logowania do programu wraz z jego zabezpieczeniem (rozdzia≥ 6.1, 8.1)
 
-- Implementacja modu≥u tworzenia nowej propozycji cenowej wraz z fizycznπ budowπ formy tworzonej propozycji (rozdzia≥ 8.2, 9.3)
+- Implementacja modu≥u tworzenia nowej propozycji cenowej wraz z fizycznπ budowπ formy tworzonej propozycji (rozdzia≥ 6.3, 8.2)
 
 - Zaprojektowania okna g≥Ûwnego konta administratora 
 
 - Przetestowanie modu≥u dotyczπcego modyfikacji kont uøytkownikÛw
 
-- Opis perspektyw rozwoju oprogramowania oraz podsumowania (rozdzia≥ 10)
+- Opis perspektyw rozwoju oprogramowania oraz podsumowania (rozdzia≥ 9)
 
 }
 
@@ -399,7 +399,7 @@ W celu efektywnej pracy z technologiami opisanymi w rozdziale \ref{dzial:technol
 
 \subsubsection{Visual Studio 2013}
 
-Visual Studio \cite{bookVS} jest bardzo rozbudowanym úrodowiskiem pracy programistycznej, jest produktem typu IDE (ang. Integrated development environment-zintegrowane úrodowisko programistyczne).Wspiera on rÛwnieø bardzo wiele jÍzykÛw programowania miedzy innymi JavaScript, HTML, C\#, VB, XAML, C++. 
+Visual Studio \cite{bookVS} jest bardzo rozbudowanym úrodowiskiem pracy programistycznej, jest produktem typu IDE (ang. Integrated development environment - zintegrowane úrodowisko programistyczne).Wspiera on rÛwnieø bardzo wiele jÍzykÛw programowania miedzy innymi JavaScript, HTML, C\#, VB, XAML, C++. 
 Produkt tego typu zwiera w sobie:
 \begin{itemize}
 
@@ -460,7 +460,7 @@ Wykorzystujπc wbudowane mechanizmy moøliwe jest ≥atwe wpisywanie poczπtkowych da
 \begin{itemize}
 \item \textsl{Edytor zapytaÒ}
 		
-\tab Jest to edytor wspomagajπcy jÍzyki Transact-SQL, MDX, DMX lub XML/A, ktÛry dziÍki kolorowaniu s≥Ûw kluczowych w trakcie pisania skryptÛw zwiÍksza czytelnoúÊ kodu. Wykorzystuje siÍ teø jako interfejs do zapytaÒ Transact-SQL. RÛwnieø jak opisany wczeúniej Visual Studio wykorzystuje mechanizm IntelliSense odpowiedzialny za podpowiadanie kolumn tabel. Ma moøliwoúÊ wykrywania b≥ÍdÛw nieprawid≥owej sk≥adni. Wyúwietla b≥Ídy, ostrzeøenia i komunikaty informacyjne, ktÛre sπ zwracane przez serwer.
+\tab Jest to edytor wspomagajπcy jÍzyki Transact-SQL, MDX, DMX lub XML, ktÛry dziÍki kolorowaniu s≥Ûw kluczowych w trakcie pisania skryptÛw zwiÍksza czytelnoúÊ kodu. Wykorzystuje siÍ teø jako interfejs do zapytaÒ Transact-SQL. RÛwnieø jak opisany wczeúniej Visual Studio wykorzystuje mechanizm IntelliSense odpowiedzialny za podpowiadanie kolumn tabel. Ma moøliwoúÊ wykrywania b≥ÍdÛw nieprawid≥owej sk≥adni. Wyúwietla b≥Ídy, ostrzeøenia i komunikaty informacyjne, ktÛre sπ zwracane przez serwer.
 \item \textsl{Object Explorer}
 
 \tab Drugim waønym elementem SQL Server Management Studio jest Object Explorer umoøliwiajπcy przeglπdanie wielu instancji bazy danych. W tym teø elemencie jest moøliwoúÊ generowania diagramÛw baz danych,  projektowania ca≥ej bazy danych. Wyúwietla podglπd tabel  wyzwalacze, procedury. Podglπd tabel daje teø moøliwoúÊ edycji danych  w tabeli jak i wybierania pieszych wierszy w danej tabeli. U≥atwia to sprawdzenie zachowaÒ aplikacji na dane testowe. DziÍki graficznemu interfejsowi jest moøliwe w bardzo prosty sposÛb usuwanie bazy danych poprzez naciúniÍcie przycisku ,,DELETE". Umoøliwia generowanie skryptu dziÍki, ktÛremu moøna odtworzyÊ ca≥π strukturÍ bazy danych
@@ -601,10 +601,10 @@ Jednym z elementÛw, dla ktÛrego przedstawiona biblioteka znalaz≥a zastosowanie w
 
 Kolejnym miejscem zastosowania biblioteki Extended WPF Toolkit w projekcie jest ustalanie z poziomu programu daty oraz godziny. Do tych celÛw pos≥uøono siÍ dwiema dodatkowymi kontrolkami DatePicker oraz TimePicker.
 Kontrolka DatePicker, ktÛrej wyglπd przedstawiony zosta≥ na rysunku \ref{rys:DatePicker}, umoøliwia uøytkownikowi wybÛr daty w ustandaryzowanym formacie. Po operacji naciúniÍcia kursorem myszki w przedstawianπ kontrolkÍ wyúwietlany jest przejrzysty kalendarz, w ktÛrym proces wyboru daty polega na wybraniu przez uøytkownika odpowiedniego roku, miesiπca, a nastÍpnie klikniÍcia w dzieÒ odpowiadajπcy jego potrzebom. Istnieje takøe moøliwoúÊ wpisania rÍcznie daty, z tπ rÛønicπ, iø musi byÊ ona podana w formacie RRRR-MM-DD. Zapis daty w innych formatach zostanie automatycznie wykryty przez mechanizmy wewnÍtrzne kontrolki jako niepoprawny, a wpisana wartoúÊ usuniÍta.
-
+ 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.25\textwidth]{ExtendedWpfDataPicker.jpg}
+    \includegraphics[width=0.35\textwidth]{ExtendedWpfDataPicker.jpg}
     \caption{Kontrolka DatePicker, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:DatePicker}
 \end{figure}
@@ -692,7 +692,7 @@ Folder \textsl{FillingObjects} ukazany na rysunku \ref{rys:ModelFillingObjectsFo
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{ModelModelFolder.jpg}
+    \includegraphics[width=0.54\textwidth]{ModelModelFolder.jpg}
     \caption{Folder Modelu, èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:ModelModelFolder}
 \end{figure}
@@ -1267,7 +1267,7 @@ Pierwsza zak≥adka, ktÛrej okno graficzne dostÍpnej jest do wglπdu przy rysunku \
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{UzytkownikNowaPropozycjaTab1.jpg}
-    \caption{Okno tworzenia propozycji cenowej. Zak≥adka kontakt ze strony zamawiajπcego, èrÛd≥o: Opracowanie w≥asne.}
+    \caption{Okno tworzenia propozycji cenowej. Zak≥adka opisu klienta, èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:UzytkownikNowaPropozycjaTab1}
 \end{figure}
 
@@ -1348,7 +1348,7 @@ Ostatniπ zak≥adkπ procesu tworzenia nowej propozycji cenowej widocznπ pod rysunk
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{UzytkownikNowaPropozycjaTab5.jpg}
+    \includegraphics[width=0.9\textwidth]{UzytkownikNowaPropozycjaTab5.jpg}
     \caption{Okno tworzenia propozycji cenowej. Zak≥adka dotyczπca us≥ug dodatkowych oraz formÍ zap≥aty za organizowane wydarzenie, èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:UzytkownikNowaPropozycjaTab5}
 \end{figure}
@@ -1361,6 +1361,7 @@ Operacja zapisu nowej propozycji cenowej moøliwa jest do wykonania w kaødej chwi
 
 \subsection{Edycja istniejπcej propozycji cenowej}
 Edycja istniejπcej propozycji cenowej odbywa siÍ poprzez zaznaczenie w oknie g≥Ûwny programu wybranej propozycji cenowej, a nastÍpnie z menu wybrania "Edytuj" co moøna zaobserwowaÊ na rysunku \ref{rys:editProp}. Uøytkownik zostanie przeniesiony do okna tworzenia nowej propozycji, ale juø z wype≥nionymi wczeúniej polami. Sprzedawca ma moøliwoúÊ dodawania nowych produktÛw a usuwanie odbywa siÍ poprzez wybranie pustego pola na liúcie rozwijalnej. Zapis edytowalnej propozycji jest moøliwy w kaødym momencie edycji.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{editpro.jpg}
@@ -1379,15 +1380,15 @@ Jednπ z najwaøniejszych funkcjonalnoúci niniejszej aplikacji jest moøliwoúÊ zapi
 	\label{rys:ListaPropozycji}
 \end{figure}
 
+\newpage
+Po klikniÍciu w opcjÍ \textsl{Lista propozycji} zostaje wyúwietlona lista istniejπcych propozycji cenowych. OprÛcz podstawowych parametrÛw propozycji cenowych, w ostatniej kolumnie listy pojawia siÍ przycisk \textsl{Zapisz do PDF} ktÛrego klikniÍcie otwiera dialog wyboru pliku. Uøytkownik wpisuje dowolnπ nazwÍ pliku, oraz wybiera lokalizacjÍ zapisu pliku co zosta≥o pokazane na rysunku \ref{rys:ZapisDoPdf}. Jeøeli proces generowania pliku PDF przebiegnie pomyúlnie, zostaje wyúwietlony komunikat z informacjπ o sukcesie, przedstawiony na rysunku \ref{rys:ZapisDoPdf2}.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{df2.jpg}
     \caption{Zapis propozycji cenowej do pliku PDF, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:ZapisDoPdf}
 \end{figure}
-
-\newpage
-Po klikniÍciu w opcjÍ \textsl{Lista propozycji} zostaje wyúwietlona lista istniejπcych propozycji cenowych. OprÛcz podstawowych parametrÛw propozycji cenowych, w ostatniej kolumnie listy pojawia siÍ przycisk \textsl{Zapisz do PDF} ktÛrego klikniÍcie otwiera dialog wyboru pliku. Uøytkownik wpisuje dowolnπ nazwÍ pliku, oraz wybiera lokalizacjÍ zapisu pliku co zosta≥o pokazane na rysunku \ref{rys:ZapisDoPdf}. Jeøeli proces generowania pliku PDF przebiegnie pomyúlnie, zostaje wyúwietlony komunikat z informacjπ o sukcesie, przedstawiony na rysunku \ref{rys:ZapisDoPdf2}.
 
 \begin{figure}[ht]
     \centering
@@ -1410,25 +1411,29 @@ Uøytkownicy z uprawnieniami administratora posiadajπ moøliwoúÊ wykonywania podst
 \newpage
 \subsubsection{Dodawanie konta}
 
-Pierwszπ z funkcjonalnoúci zaimplementowanych w module, jest moøliwoúÊ utworzenia nowego konta. Rysunek \ref{rys:DodajUøytkownika2} przedstawia okno zawierajπce pola tekstowe do ktÛrych wpisywane sπ dane osobowe pracownika, oraz listÍ rozwijanπ z ktÛrej wybierany jest typ konta. Po klikniÍciu przycisku \textsl{Dodaj} w przypadku poprawnego wykonania operacji dodawania konta, wyúwietlana jest informacja przedstawiona na rysunku \ref{rys:DodajUøytkownika3}. W sytuacji niepowodzenia, zostaje wyúwietlany komunikat o b≥Ídzie co moøna zaobserwowaÊ na rysunku \ref{rys:DodajUøytkownika4}.
+Pierwszπ z funkcjonalnoúci zaimplementowanych w module, jest moøliwoúÊ utworzenia nowego konta. Rysunek \ref{rys:DodajUøytkownika2} przedstawia okno zawierajπce pola tekstowe do ktÛrych wpisywane sπ dane osobowe pracownika, oraz listÍ rozwijanπ z ktÛrej wybierany jest typ konta. 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.4\textwidth]{dodaj2.jpg}
+    \includegraphics[width=0.5\textwidth]{dodaj2.jpg}
     \caption{Dodawanie nowego konta uøytkownika, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:DodajUøytkownika2}
 \end{figure}
 
+Po klikniÍciu przycisku \textsl{Dodaj} w przypadku poprawnego wykonania operacji dodawania konta, wyúwietlana jest informacja przedstawiona na rysunku \ref{rys:DodajUøytkownika3}. W sytuacji niepowodzenia, zostaje wyúwietlany komunikat o b≥Ídzie co moøna zaobserwowaÊ na rysunku \ref{rys:DodajUøytkownika4}.
+
+\newpage
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{dodaj3.jpg}
+    \includegraphics[width=0.7\textwidth]{dodaj3.jpg}
     \caption{Komunikat o poprawnym zapisie konta uøytkownika w bazie danych, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:DodajUøytkownika3}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{dodaj4.jpg}
+    \includegraphics[width=0.7\textwidth]{dodaj4.jpg}
     \caption{Komunikat o b≥Ídzie podczas zapisu konta uøytkownika do bazy danych, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:DodajUøytkownika4}
 \end{figure}
@@ -1445,20 +1450,23 @@ Kolejnπ funkcjonalnoúciπ jest moøliwoúÊ edycji danych pracownikÛw. Informacje o 
 \end{figure}
 
 \newpage
+
 \subsubsection{Usuwanie konta}
 
-W przypadku zmian kadrowych, administrator posiada moøliwoúÊ usuwania kont uøytkownikÛw. Rysunek \ref{rys:UsunKonto} przedstawia okno obs≥ugujπce funkcjonalnoúÊ usuwania, ktÛre posiada listÍ rozwijanπ zawierajπca loginy imiona i nazwiska uøytkownikÛw. Po wybraniu z listy pracownika, ktÛrego konto ma zostaÊ usuniÍte naleøy kliknπÊ przycisk \textsl{UsuÒ}. Pomyúlne usuniÍcia konta z bazy danych jest potwierdzane komunikatem wyúwietlanym na rysunku \ref{rys:UsunKonto2}.
+W przypadku zmian kadrowych, administrator posiada moøliwoúÊ usuwania kont uøytkownikÛw. Rysunek \ref{rys:UsunKonto} przedstawia okno obs≥ugujπce funkcjonalnoúÊ usuwania, ktÛre posiada listÍ rozwijanπ zawierajπca loginy imiona i nazwiska uøytkownikÛw. 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.4\textwidth]{rm2.jpg}
+    \includegraphics[width=0.5\textwidth]{rm2.jpg}
     \caption{Okno usuwania kont uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:UsunKonto}
 \end{figure}
 
+Po wybraniu z listy pracownika, ktÛrego konto ma zostaÊ usuniÍte naleøy kliknπÊ przycisk \textsl{UsuÒ}. Pomyúlne usuniÍcia konta z bazy danych jest potwierdzane komunikatem wyúwietlanym na rysunku \ref{rys:UsunKonto2}.
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{rm3.jpg}
+    \includegraphics[width=0.7\textwidth]{rm3.jpg}
     \caption{Komunikat o poprawnym usuniÍciu konta uøytkownika z bazy danych, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:UsunKonto2}
 \end{figure}
@@ -1466,18 +1474,20 @@ W przypadku zmian kadrowych, administrator posiada moøliwoúÊ usuwania kont uøytk
 \newpage
 \subsubsection{Resetowanie hase≥}
 
-Istnieje moøliwoúÊ, iø uøytkownik nie pamiÍta swojego has≥a. W takim przypadku administrator korzysta z opcji resetowania has≥a, co umoøliwia uøytkownikowi ustawienie nowego has≥a podczas kolejnej prÛby logowania. Na rysunku \ref{rys:ResetujHaslo} przedstawiono okno w ktÛrym znajduje siÍ lista rozwijana, wype≥niona imionami i nazwiskami uøytkownikÛw tak samo jak w module s≥uøπcym do usuwania kont. Po wybraniu pracownika z listy, naleøy kliknπÊ przycisk \textsl{Resetuj}. Komunikat o pomyúlnym usuniÍciu konta z bazy danych znajduje siÍ na rysunku \ref{rys:ResetujHaslo2}.
+Istnieje moøliwoúÊ, iø uøytkownik nie pamiÍta swojego has≥a. W takim przypadku administrator korzysta z opcji resetowania has≥a, co umoøliwia uøytkownikowi ustawienie nowego has≥a podczas kolejnej prÛby logowania. Na rysunku \ref{rys:ResetujHaslo} przedstawiono okno w ktÛrym znajduje siÍ lista rozwijana, wype≥niona imionami i nazwiskami uøytkownikÛw tak samo jak w module s≥uøπcym do usuwania kont. 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.4\textwidth]{reset2.jpg}
+    \includegraphics[width=0.5\textwidth]{reset2.jpg}
     \caption{Okno resetowania hase≥ uøytkownikÛw, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:ResetujHaslo}
 \end{figure}
 
+Po wybraniu pracownika z listy, naleøy kliknπÊ przycisk \textsl{Resetuj}. Komunikat o pomyúlnym usuniÍciu konta z bazy danych znajduje siÍ na rysunku \ref{rys:ResetujHaslo2}.
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{reset3.jpg}
+    \includegraphics[width=0.7\textwidth]{reset3.jpg}
     \caption{Komunikat o powodzeniu operacji usuwania konta uøytkownika z bazy danych, èrÛd≥o: Opracowanie w≥asne.}
 	\label{rys:ResetujHaslo2}
 \end{figure}
@@ -1504,7 +1514,7 @@ Istnieje moøliwoúÊ, iø uøytkownik nie pamiÍta swojego has≥a. W takim przypadku a
 	
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.9\textwidth]{Sale.jpg}
+    \includegraphics[width=1\textwidth]{Sale.jpg}
     \caption{Ceny sal w poszczegÛlnych miesiπcach, èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:Sale}
 \end{figure}
