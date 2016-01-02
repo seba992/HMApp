@@ -532,7 +532,7 @@ Popularnym systemem kontroli wersji jest Git, wydany na darmowej licencji. Zosta
 
 \end{itemize}
 
-Historia zmian dokonanych w plikach Ÿród³owych zapisywana jest za pomoc¹ polecenia commit, które nadaje identyfikator aktualnej wersji projektu, opis zmian (opcjonalnie) oraz spis zmodyfikowanych plików. Pliki na serwer wysy³ane s¹ za pomoc¹ komendy push. Pobieranie plików zamieszczanych na serwerze przez pozosta³ych cz³onków zespo³u umo¿liwia komenda fetch, natomiast synchronizacjê zmian z lokaln¹ kopi¹ umo¿liwia komenda pull. 
+Historia zmian dokonanych w plikach Ÿród³owych zapisywana jest za pomoc¹ polecenia commit, które nadaje identyfikator aktualnej wersji projektu, opis zmian (opcjonalnie) oraz spis zmodyfikowanych plików. Pliki na serwer wysy³ane s¹ za pomoc¹ komendy push. Pobieranie plików zamieszczanych na serwerze przez pozosta³ych cz³onków zespo³u umo¿liwia komenda fetch, natomiast synchronizacjê zmian z lokaln¹ kopi¹ umo¿liwia komenda pull \cite{useOfGit}. 
 Git jest programem dzia³aj¹cym w linii poleceñ. Istnieje równie¿ graficzna nak³adka na Git'a, któr¹ jest Atlassian SourceTree. Jest on darmowym programem, jednak po up³ywie trzydziestu dni od instalacji, u¿ytkownik zobowi¹zany jest do rejestracji konta w celu dalszego korzystania z aplikacji \cite{treelic}. Posiada dystrybucje dla systemu Windows oraz OS X. Oprócz standardowych funkcjonalnoœci Git'a umo¿liwia podgl¹d zmian w plikach dla poszczególnych commit'ów \cite{tree}. Podczas pracy nad projektem programistycznym, prawdopodobn¹ sytuacj¹ jest dokonanie zmian na tym samym pliku przez dwóch programistów. Jeœli zmiany wzajemnie siê wykluczaj¹, problem mo¿na rozwi¹zaæ za pomoc¹ zewnêtrznego narzêdzia do rozwi¹zywania konfliktów SVN. Umo¿liwia on u¿ytkownikowi porównanie ró¿nic w poszczególnych wersjach pliku. Programista wybiera bloki kodu Ÿród³owego które maj¹ zostaæ zapisane w pliku, zatwierdza zmiany a konflikt zostaje oznaczony jako rozwi¹zany. Rysunek \ref{rys:SourceTree} przedstawia okno g³ówne SourceTree.
 
 \begin{figure}[ht]
@@ -1552,14 +1552,15 @@ https://www.insert.com.pl
 Avery J., Holmes J.: \textsl{Windows Developer Power Tools: Turbocharge Windows development with more than 170 free and open source tools}, Wydawnictwo O'Reilly Media, Sebastopol 2006
 
 
-%ogi analiza
+%ogi technologie
 \bibitem{Systemy} 
 http://www.ranking.pl/pl/rankings/operating-systems.html
 
-%ogi analiza
+%ogi technologie
 \bibitem{SQLRanking} 
 http://db-engines.com/en/ranking
 
+%ogi technologie start
 \bibitem {Clr}
 https://msdn.microsoft.com/pl-pl/library/w0x726c2(v=vs.110).aspx
 
@@ -1567,7 +1568,7 @@ https://msdn.microsoft.com/pl-pl/library/w0x726c2(v=vs.110).aspx
 https://msdn.microsoft.com/pl-pl/vstudio/cc511286
 
 \bibitem {Bcl}
-http://www.thebestcsharpprogrammerintheworld.com/fundamentals/Base-Class-Library.aspx
+Troelsen A.: \textsl{Jêzyk C\# 2010 i platforma .NET 4}, Wydawnictwo Naukowe PWN, Warszawa 2011
 
 \bibitem {Fcl}
 http://www.etechpulse.com/2013/04/difference-between-bcl-and-fcl-in-net.html
@@ -1586,6 +1587,7 @@ http://antyweb.pl/hello-world-czyli-krotka-historia-jezykow-programowania/
 
 \bibitem {cadv}
 http://urriellu.net/en/articles-software/csharp-advantages.html
+%ogi technologie koniec
 
 \bibitem {WPF}
  Adam Nathan \textsl{WPF 4.5. Ksiêga eksperta}, Wydawnictwo Helion, Gliwice 2015
@@ -1627,6 +1629,7 @@ Krasiñski M.: \textsl{Nauki o zarz¹dzaniu}, Wydawnictwo Uniwersytetu Ekonomiczne
 \bibitem{PlatformyTrello} 
 https://trello.com/platforms
 
+%ogi narzêdzia start
 \bibitem{version} 
 http://www.gajdaw.pl/varia/subversion-system-kontroli-wersji-tutorial/p1.html
 
@@ -1642,6 +1645,9 @@ https://git-scm.com/
 \bibitem{gitadv}
 http://leniwy.eu/news,18,Git-poradnik-poczatkujacego.html
 
+\bibitem{useOfGit}
+Gajda W.: \textsl{Git. Rozproszony system kontroli wersji}, Wydawnictwo Helion, Gliwice 2013 
+
 \bibitem{treelic}
 https://answers.atlassian.com/questions/303753/sourcetree-free-license
 
@@ -1650,6 +1656,8 @@ https://www.atlassian.com/software/sourcetree/overview
 
 \bibitem{github}
 https://github.com/blog/40-we-launched
+
+%ogi narzedzia koniec
 
 %Seba ReSharper
 %znalesc ksiazke w ktorej jest opis .NET
@@ -1662,6 +1670,7 @@ Martin R.C.: \textsl{Czysty kod. Podrêcznik dobrego programisty}, Wydawnictwo He
 \bibitem{ReSharperFunkcje} 
 https://www.jetbrains.com/resharper/features/
 
+%ogi narzedzia i biblioteki start
 \bibitem{jenkins}
 https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins
 
@@ -1679,6 +1688,7 @@ http://www.download.net.pl/jak-zapisac-dowolny-dokument-do-pliku-pdf/n/3662/
 
 \bibitem{PdfSharp} 
 http://www.pdfsharp.net/
+%ogi narzedzia i biblioteki koniec
 
 %Seba wpf extended - na razie brak
 
@@ -1711,6 +1721,7 @@ https://msdn.microsoft.com/en-us/data/jj591583
 \bibitem{LINQ}
 Magennis T.: \textsl{LINQ to Objects w C\# 4.0}, Wydawnictwo Helion, Gliwice 2012
 
+%ogi CI start
 \bibitem{ci}
 http://www.martinfowler.com/articles/continuousIntegration.html
 
@@ -1728,13 +1739,14 @@ http://docs.sonarqube.org/display/SONARNEXT/Installing+and+ \newline Configuring
 
 \bibitem{SQALE}
 http://www.sonarsource.com/products/plugins/governance/sqale/installation-and-usage/$\#$understandingSqaleRatings
+%ogi CI koniec
 
 %Seba techiczne logowanie
 \bibitem{SHA1Slabosc}
 Bruce Schneier, Schneier on Security: Cryptanalysis of SHA-1, 2005
 
 \bibitem{dynamic}
-http://www.pzielinski.com/?p=831
+https://msdn.microsoft.com/pl-pl/library/dd264736.aspx
 
 %Nazwisko I. \textsl{tytu³}, miasto, rok
 
