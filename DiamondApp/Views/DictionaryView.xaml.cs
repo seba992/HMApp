@@ -98,7 +98,7 @@ namespace DiamondApp.Views
                 // int selected = ((PropMenuGastronomicThings_Dictionary_First)e.Row.Item).Id;
 
                 dynamic userRow = GstronomicGrid.SelectedItem;
-
+               
                 if (selected != 0 && userRow.ThingName != ""  && userRow.ThingName != null 
                     && userRow.NettoMini != null && userRow.NettoMini != 0 
                     && userRow.MergeType != null && userRow.SpecificType != null
@@ -148,7 +148,7 @@ namespace DiamondApp.Views
                 object item = HallGrid.SelectedItem;
                 string ID = (HallGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                 int selected = Int32.Parse(ID);
-                dynamic hallRow = GstronomicGrid.SelectedItem;
+                dynamic hallRow = HallGrid.SelectedItem;
                 if ( hallRow.April > 0 && hallRow.August > 0 && hallRow.December > 0
                     && hallRow.February > 0 && hallRow.January > 0 
                     && hallRow.July > 0 && hallRow.June > 0 
