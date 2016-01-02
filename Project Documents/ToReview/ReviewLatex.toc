@@ -1,24 +1,24 @@
 \contentsline {section}{Wst\k ep}{11}
 \contentsline {section}{\numberline {1}\kernsekcyjny Geneza projektu}{13}
 \contentsline {section}{\numberline {2}\kernsekcyjny Specyfikacja wymaga\'n projektowych}{15}
-\contentsline {section}{\numberline {3}\kernsekcyjny Istniej\k ace rozwi\k azania konkurencyjne}{19}
-\contentsline {section}{\numberline {4}\kernsekcyjny Pomys\IeC {\l } na rozwi\k azanie problemu}{27}
+\contentsline {section}{\numberline {3}\kernsekcyjny Analiza istniej\k acych rozwi\k aza\'n konkurencyjnych}{19}
+\contentsline {section}{\numberline {4}\kernsekcyjny Projekt rozwi\k azania problemu}{27}
 \contentsline {section}{\numberline {5}\kernsekcyjny Zastosowane rozwi\k azania technologiczne}{29}
 \contentsline {subsection}{\numberline {5.1}\kernsubsekcyjny Wykorzystane technologie}{31}
 \contentsline {subsubsection}{\numberline {5.1.1}\kernsubsubsekcyjny .NET Framework/C\#}{31}
-\contentsline {subsubsection}{\numberline {5.1.2}\kernsubsubsekcyjny WPF}{32}
-\contentsline {subsubsection}{\numberline {5.1.3}\kernsubsubsekcyjny XAML}{33}
+\contentsline {subsubsection}{\numberline {5.1.2}\kernsubsubsekcyjny WPF}{33}
+\contentsline {subsubsection}{\numberline {5.1.3}\kernsubsubsekcyjny XAML}{34}
 \contentsline {subsubsection}{\numberline {5.1.4}\kernsubsubsekcyjny T-SQl}{34}
-\contentsline {subsection}{\numberline {5.2}\kernsubsekcyjny Wykorzystane narz\k edzia}{34}
-\contentsline {subsubsection}{\numberline {5.2.1}\kernsubsubsekcyjny Visual Studio 2013}{34}
-\contentsline {subsubsection}{\numberline {5.2.2}\kernsubsubsekcyjny SQL Server Management Studio}{37}
+\contentsline {subsection}{\numberline {5.2}\kernsubsekcyjny Wykorzystane narz\k edzia}{35}
+\contentsline {subsubsection}{\numberline {5.2.1}\kernsubsubsekcyjny Visual Studio 2013}{35}
+\contentsline {subsubsection}{\numberline {5.2.2}\kernsubsubsekcyjny SQL Server Management Studio}{38}
 \contentsline {subsubsection}{\numberline {5.2.3}\kernsubsubsekcyjny Trello}{39}
-\contentsline {subsubsection}{\numberline {5.2.4}\kernsubsubsekcyjny Git/SourceTree/GitHub}{41}
-\contentsline {subsubsection}{\numberline {5.2.5}\kernsubsubsekcyjny ReSharper}{45}
-\contentsline {subsubsection}{\numberline {5.2.6}\kernsubsubsekcyjny Jenkins}{46}
-\contentsline {subsection}{\numberline {5.3}\kernsubsekcyjny Biblioteki zewn\k etrzne}{46}
-\contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Extended WPF Toolkit}{46}
-\contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny PDFsharp \& MigraDoc Foundation}{49}
+\contentsline {subsubsection}{\numberline {5.2.4}\kernsubsubsekcyjny Git/SourceTree/GitHub}{42}
+\contentsline {subsubsection}{\numberline {5.2.5}\kernsubsubsekcyjny ReSharper}{46}
+\contentsline {subsubsection}{\numberline {5.2.6}\kernsubsubsekcyjny Jenkins}{47}
+\contentsline {subsection}{\numberline {5.3}\kernsubsekcyjny Biblioteki zewn\k etrzne}{47}
+\contentsline {subsubsection}{\numberline {5.3.1}\kernsubsubsekcyjny Extended WPF Toolkit}{48}
+\contentsline {subsubsection}{\numberline {5.3.2}\kernsubsubsekcyjny PDFsharp \& MigraDoc Foundation}{50}
 \contentsline {section}{\numberline {6}\kernsekcyjny Architektura budowanego systemu}{51}
 \contentsline {subsection}{\numberline {6.1}\kernsubsekcyjny Architektura aplikacji}{51}
 \contentsline {subsubsection}{\numberline {6.1.1}\kernsubsubsekcyjny Wzorce architektoniczne oprogramowania}{51}

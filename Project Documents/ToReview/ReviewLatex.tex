@@ -193,7 +193,7 @@ Dokonujπc podsumowania przedstawionych problemÛw i pomys≥Ûw wraz z ich szczegÛ≥o
 
 \end{itemize}
 
-\section{Istniejπce rozwiπzania konkurencyjne}
+\section{Analiza istniejπcych rozwiπzaÒ konkurencyjnych}
 \label{dzial:IstniejaceRozwiazaniaKonkurencyjne}
 
 W celu wdroøenia siÍ w tematykÍ automatyzacji procesu tworzenia propozycji cenowej przeprowadzono rekonesans dostÍpnych aplikacji wspierajπcych przedstawiony proces. Na podstawie utworzonej uprzednio listy ogÛlnych za≥oøeÒ z szerokiej gamy dostÍpnych rozwiπzaÒ \cite{CRMList}, wytypowane zosta≥y trzy programy, ktÛre w najwiÍkszym stopniu jπ pokrywajπ oraz mogπ byÊ zastosowane w branøy hotelarskiej. Aplikacje te przetestowane zosta≥y pod kπtem funkcjonalnoúci w celu zaznajomienia siÍ ze sposobem realizacji ustalonych wymagaÒ projektowych i ewentualnemu ich doprecyzowaniu.
@@ -264,7 +264,7 @@ NajwiÍksze dostrzeøone rÛønice dotyczπ jednak moøliwoúci przeglπdania tworzonych
 Przetestowanie aplikacji konkurencyjnych umoøliwi≥o doprecyzowanie kilku punktÛw zawartych na liúcie wymagaÒ projektowych. Dostrzeøono koniecznoúÊ zbudowania prostego interfejsu uøytkownika, ktÛry umoøliwi intuicyjnπ obs≥ugÍ programu. Liczba dostÍpnych funkcjonalnoúci ograniczona byÊ powinna wy≥πcznie do niezbÍdnych opcji potrzebnych do przeprowadzenia operacji tworzenia propozycji cenowej oraz jej pÛüniejszej edycji. Pomocny w tym aspekcie jest fakt, iø aplikacja projektu inøynierskiego tworzona jest pod konkretnπ branøÍ, co niweluje koniecznoúÊ wprowadzenia licznych uniwersalnych opcji, ktÛrych listÍ moøna dostrzec na rysunku \ref{rys:profitcrm}. Zaletπ wynikajπcπ z ukierunkowania pod jednπ branøÍ jest rÛwnieø moøliwoúÊ dostosowania szablonu PDF, ktÛry zawieraÊ moøe dok≥adnie sprecyzowane kategorie odnoszπce siÍ do konkretnych elementÛw tworzenia propozycji cenowej organizowanego przez klienta wydarzenia. Aplikacja ProfitCRM nakreúli≥a rÛwnieø moøliwy schemat podglπdu propozycji cenowych innych uøytkownikÛw dotyczπcy opcji wyboru z listy i wyúwietlenia propozycji konkretnego uøytkownika, a nie tylko wszystkich utworzonych propozycji.
 
 
-\section{Pomys≥ na rozwiπzanie problemu}
+\section{Projekt rozwiπzania problemu}
 \label{dzial:PomyslNaRozwiazanieProblemu}
 
 Przeprowadzona analiza opisana w rozdziale \ref{dzial:specyfikacjaWymaganProjektowych} oraz zawarta w niej lista wymagaÒ projektowych, ktÛra doprecyzowana zosta≥a w czasie testÛw aplikacji opisanych w rozdziale \ref{dzial:IstniejaceRozwiazaniaKonkurencyjne} umoøliwi≥a powstanie pomys≥u na rozwiπzanie problemu dotyczπcego zautomatyzowania procesu tworzenia propozycji cenowej w wybranej sieci hotelowej.
@@ -317,6 +317,16 @@ Jednym z aspektÛw procesu wytwarzania oprogramowania jest wybranie, jakiego typu
 \end{itemize}
 
 \subsection{Wykorzystane technologie}
+\label{dzial:technologie}
+
+Niniejszy podrozdzia≥ zawiera opis technologii wykorzystanych do implementacji aplikacji. Zakres opisu obejmuje nastÍpujπce komponenty:
+
+\begin{itemize}
+\item \textsl{JÍzyk programowania}
+\item \textsl{Silnik graficzny}
+\item \textsl{JÍzyk opisu graficznego interfejsu uøytkownika}
+\item \textsl{JÍzyk zapytaÒ bazy danych}
+\end{itemize}
 
 \subsubsection{.NET Framework/C\#}
 
@@ -384,6 +394,9 @@ Jest to krÛtkie okreúlenie Transaction-SQL\cite{T-SQL}, ktÛre jest rozwiniÍciem 
 T-SQL jest jÍzykiem transakcyjny, polega na wykonywanie operacji, jeúli operacja zosta≥a zaakceptowana to nastÍpuje zapis do bazy, moøna to porÛwnaÊ do przelewÛw bankowych zabranie z jednego konta i przelaniu na drugie konto, jeúli na pierwszym koncie jest suma potrzebna do przelewu. W przeciwnym wypadku przelew nie nastÍpuje tak jak zapis do bazy, jeúli dane bÍdπ nieprawid≥owe. Umoøliwia rÛwnieø tworzenie zmiennych, pÍtli jak rÛwnieø instrukcji warunkowych. Pozwala na tworzenie obiektÛw, takie jak widoki, procedury sk≥adowane, wyzwalacze i funkcje zdefiniowane przez uøytkownika.
 
 \subsection{Wykorzystane narzÍdzia}
+
+W podrozdziale \ref{dzial:technologie} ujÍto opis technologii wykorzystanych do implementacji oprogramowania. Niniejszy podrozdzia≥ zosta≥ poúwiÍcony charakterystyce narzÍdzi wspierajπcych pracÍ z ustalonymi technologiami, zawiera rÛwnieø zestawienie uøytych przez zespÛ≥ programÛw u≥atwiajπcych szeroko rozumiany rozwÛj aplikacji.
+
 \subsubsection{Visual Studio 2013}
 
 Visual Studio jest bardzo rozbudowanym úrodowiskiem pracy programistycznej, jest produktem typu IDE (ang. Integrated development environment-zintegrowane úrodowisko programistyczne).Wspiera on rÛwnieø bardzo wiele jÍzykÛw programowania miedzy innymi JavaScript, HTML, C\#, VB, XAML, C++. 
@@ -571,6 +584,9 @@ Przedstawione funkcjonalnoúci ReSharpera wraz z wieloma innymi dostÍpnymi do zap
 Jenkins Continuous Integration Server jest darmowym, wieloplatformowym narzÍdziem s≥uøacym do ciπg≥ej integracji projektÛw programistycznych. Zosta≥ napisany w jÍzyku Java, wywodzi siÍ od narzÍdzia Hudson. Zosta≥ wydany po raz pierwszy w 2011 r. \cite{jenkins}. Posiada szereg wtyczek zapewniajπcych funkcjonalnoúci takie jak statyczna analiza kodu, automatyczne tworzenie dokumentacji kodu ürÛd≥owego, powiadomienia e-mail, pobieranie plikÛw z repozytoriÛw. Pozwala na budowanie oraz testowanie projektÛw w popularnych jÍzykach programowania, m. in. w jezyku C\# czy Java. Jenkins jest aplikacjπ internetowπ, domyúlnie dzia≥ajπcπ na porcie 8080. Zadania do wykonania definiowane sπ w postaci planÛw (ang. job) ktÛre mogπ byÊ uruchamiane cyklicznie, zgodnie z okreúlonym harmonogramem lub manualnie. Plany wykonywane sπ w tzw. obszarach roboczych (ang. wokrspace) ktÛre sπ katalogami na dysku \cite{jenkins2}. 
 
 \subsection{Biblioteki zewnÍtrzne}
+
+W niniejszym podrozdziale zawarty zosta≥ opis zewnÍtrznych bibliotek dla jÍzyka programowania C\# uøytych przy implementacji aplikacji.
+
 \subsubsection{Extended WPF Toolkit}
 
 Waønym aspektem kaødego rodzaju oprogramowania uøytkowego jest stopieÒ trudnoúci jego obs≥ugi. Interfejs graficzny aplikacji powinien byÊ budowany w sposÛb przejrzysty i intuicyjny dla uøytkownika w celu bezproblemowego korzystania z wszystkich jej funkcjonalnoúci. Kaødy element programu, ktÛry przysparza uøytkownikowi problem w obs≥udze jest potencjalnym fragmentem, ktÛry moøe doprowadziÊ do nieprawid≥owego dzia≥ania oprogramowania. Dla przyk≥adu pole, do ktÛrego uøytkownik zobowiπzany jest wprowadziÊ datÍ moøe przysporzyÊ sporo problemÛw w sytuacji, gdy jest ono zwyk≥ym polem tekstowym. W takim przypadku nie wiadomo jaki jest poøπdany format daty, co implikuje koniecznoúÊ dok≥adnej walidacji wpisanych przez uøytkownika ciπgÛw znakÛw oraz informacji zwrotnej w sytuacji b≥Ídnej ich formy.
@@ -960,7 +976,6 @@ Rysunek \ref{rys:JenkinsSek} przedstawia stronÍ wygenerowanπ dla planu.
     \caption{Plan ciπg≥ej integracji w Jenkins'ie, èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:JenkinsSek}
 \end{figure}
-
 
 \section{Testowanie aplikacji}
 
