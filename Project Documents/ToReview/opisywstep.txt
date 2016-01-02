@@ -1,0 +1,3 @@
+
+do testowania aplikacji
+Celem niniejszego rozdzia³u jest prezentacja funkcjonalnoœci zaimplementowanych w aplikacji. W rozdziale zawarte s¹ instrukcje obs³ugi poszczególnych modu³ów w formie opisu tekstowego prezentowanych na rysunkach czynnoœci.
