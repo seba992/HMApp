@@ -37,29 +37,29 @@
 \contentsline {subsection}{\numberline {7.3}\kernsubsekcyjny Schemat budowania projektu}{70}
 \contentsline {section}{\numberline {8}\kernsekcyjny Testowanie aplikacji}{71}
 \contentsline {subsection}{\numberline {8.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{71}
-\contentsline {subsection}{\numberline {8.2}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{74}
+\contentsline {subsection}{\numberline {8.2}\kernsubsekcyjny Tworzenie nowej propozycji cenowej}{73}
 \contentsline {subsubsection}{\numberline {8.2.1}\kernsubsubsekcyjny Opis klienta}{74}
 \contentsline {subsubsection}{\numberline {8.2.2}\kernsubsubsekcyjny Sala i jej wyposa\.zenie}{77}
 \contentsline {subsubsection}{\numberline {8.2.3}\kernsubsubsekcyjny Us\IeC {\l }ugi gastronomiczne}{78}
 \contentsline {subsubsection}{\numberline {8.2.4}\kernsubsubsekcyjny Us\IeC {\l }ugi noclegowe}{80}
-\contentsline {subsubsection}{\numberline {8.2.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{80}
-\contentsline {subsubsection}{\numberline {8.2.6}\kernsubsubsekcyjny Zapis nowej propozycji cenowej}{82}
+\contentsline {subsubsection}{\numberline {8.2.5}\kernsubsubsekcyjny Us\IeC {\l }ugi dodatkowe i forma p\IeC {\l }atno\'sci}{81}
+\contentsline {subsubsection}{\numberline {8.2.6}\kernsubsubsekcyjny Zapis nowej propozycji cenowej}{83}
 \contentsline {subsection}{\numberline {8.3}\kernsubsekcyjny Edycja istniej\k acej propozycji cenowej}{83}
-\contentsline {subsection}{\numberline {8.4}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{84}
-\contentsline {subsection}{\numberline {8.5}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{85}
-\contentsline {subsubsection}{\numberline {8.5.1}\kernsubsubsekcyjny Dodawanie konta}{86}
-\contentsline {subsubsection}{\numberline {8.5.2}\kernsubsubsekcyjny Edycja konta}{87}
-\contentsline {subsubsection}{\numberline {8.5.3}\kernsubsubsekcyjny Usuwanie konta}{88}
-\contentsline {subsubsection}{\numberline {8.5.4}\kernsubsubsekcyjny Resetowanie hase\IeC {\l }}{89}
-\contentsline {subsection}{\numberline {8.6}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{90}
-\contentsline {section}{\numberline {9}\kernsekcyjny Specyfikacja wewn\k etrzna}{93}
-\contentsline {subsection}{\numberline {9.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{93}
-\contentsline {subsubsection}{\numberline {9.1.1}\kernsubsubsekcyjny Bezpiecze\'nstwo procesu logowania}{93}
-\contentsline {subsubsection}{\numberline {9.1.2}\kernsubsubsekcyjny Wymagania z\IeC {\l }o\.zono\'sci hase\IeC {\l }}{94}
-\contentsline {subsection}{\numberline {9.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{95}
+\contentsline {subsection}{\numberline {8.4}\kernsubsekcyjny Tworzenie pliku PDF istniej\k acej propozycji cenowej}{83}
+\contentsline {subsection}{\numberline {8.5}\kernsubsekcyjny Modyfikacja kont u\.zytkownik\'ow/sprzedawc\'ow}{84}
+\contentsline {subsubsection}{\numberline {8.5.1}\kernsubsubsekcyjny Dodawanie konta}{85}
+\contentsline {subsubsection}{\numberline {8.5.2}\kernsubsubsekcyjny Edycja konta}{85}
+\contentsline {subsubsection}{\numberline {8.5.3}\kernsubsubsekcyjny Usuwanie konta}{86}
+\contentsline {subsubsection}{\numberline {8.5.4}\kernsubsubsekcyjny Resetowanie hase\IeC {\l }}{87}
+\contentsline {subsection}{\numberline {8.6}\kernsubsekcyjny Modyfikacja s\IeC {\l }ownik\'ow cenowych}{88}
+\contentsline {section}{\numberline {9}\kernsekcyjny Specyfikacja wewn\k etrzna}{91}
+\contentsline {subsection}{\numberline {9.1}\kernsubsekcyjny Przeprowadzenie operacji logowania u\.zytkownika}{91}
+\contentsline {subsubsection}{\numberline {9.1.1}\kernsubsubsekcyjny Bezpiecze\'nstwo procesu logowania}{91}
+\contentsline {subsubsection}{\numberline {9.1.2}\kernsubsubsekcyjny Wymagania z\IeC {\l }o\.zono\'sci hase\IeC {\l }}{92}
+\contentsline {subsection}{\numberline {9.2}\kernsubsekcyjny Konto administratora i u\.zytkownika \IeC {\textendash } ListView}{94}
 \contentsline {subsection}{\numberline {9.3}\kernsubsekcyjny Tworzenie propozycji cenowej}{96}
-\contentsline {subsection}{\numberline {9.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{97}
+\contentsline {subsection}{\numberline {9.4}\kernsubsekcyjny Edycja s\IeC {\l }ownik\'ow oraz kont u\.zytkownik\'ow}{96}
 \contentsline {subsubsection}{\numberline {9.4.1}\kernsubsubsekcyjny DataGridView a dynamiczna komunikacja z Baz\k a danych}{97}
-\contentsline {subsection}{\numberline {9.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{99}
+\contentsline {subsection}{\numberline {9.5}\kernsubsekcyjny Tworzenie szablonu PDF propozycji cenowej}{98}
 \contentsline {section}{\numberline {10}\kernsekcyjny Podsumowanie oraz perspektywy rozwoju \relax oprogramowania}{101}
 \contentsline {section}{Bibliografia}{103}
