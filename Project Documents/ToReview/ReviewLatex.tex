@@ -67,7 +67,7 @@ basicstyle=\ttfamily\small
 
 - Zaprojektowanie schematu bazy danych wraz ze wszystkimi relacjami oraz tabelami s³ownikowymi (60\%)
 
-- Fizyczna implementacja bazy danych MS-SQL
+- Utworzenie bazy danych za pomoc¹ SQL Server Management studio 2012
 
 - Opis wykorzystanych rozwi¹zañ technologicznych (rozdzia³ 5.1.3, 5.2.3, 5.2.5, 5.3.1)
 
@@ -81,9 +81,9 @@ basicstyle=\ttfamily\small
 
 - Zaprojektowania okna g³ównego konta administratora 
 
-- Przetestowanie modu³u dotycz¹cego modyfikacji kont u¿ytkowników oraz
+- Przetestowanie modu³u dotycz¹cego modyfikacji kont u¿ytkowników
 
-- Opis podsumowania oraz perspektyw rozwoju oprogramowania (rozdzia³ 10)
+- Opis perspektyw rozwoju oprogramowania oraz podsumowania (rozdzia³ 10)
 
 }
 
@@ -123,7 +123,7 @@ basicstyle=\ttfamily\small
 Obecna sytuacja rynkowa zwi¹zana z istnieniem du¿ej iloœci firm w zakresie ka¿dej bran¿y wymusza na przedsiêbiorcach ci¹g³e zwiêkszanie swojej atrakcyjnoœci oraz konkurencyjnoœci w celu zdobycia potencjalnego klienta. W realizacji powy¿szego zadania konieczne jest wdra¿anie nowoczesnych metod umo¿liwiaj¹cych miêdzy innymi obni¿enie kosztów pracy, co wprost przek³ada siê na ni¿sz¹ cenê produktu koñcowego. Ni¿sza cena dla klienta jest jednym z najwa¿niejszych elementów, który determinuje wybór konkretnego us³ugodawcy. Aspekt ten dotyczy tak¿e bran¿y hotelarskiej, która w sposób bezpoœredni dotyczy naszej pracy.
 	Liczba hoteli w Polsce od kilkunastu lat nieprzerwanie roœnie \cite{LiczbaHoteli}. Implikuje to koniecznoœæ wzmo¿onej walki o klienta w celu utrzymania siê na rynku. Obni¿enie cen us³ug wynajmu pokoi, sal konferencyjnych oraz cateringów przy zachowaniu odpowiedniego poziomu dochodów jest problemem, z którym zmaga siê ka¿da sieæ hotelowa. Przedsiêbiorcy przeœcigaj¹ siê w znajdowaniu coraz to nowszych i efektywniejszych rozwi¹zañ, które maj¹ na celu rozwi¹zanie owego problemu. W XXI wieku du¿¹ pomoc¹ w tym zakresie okazuje siê informatyzacja.
 
-\section{Geneza projektu}
+\section*{Geneza projektu}
 \label{dzial:geneza}
 Podczas przeprowadzania transakcji dotycz¹cej organizacji szkolenia w jednej z sieci hotelowych, dostrze¿ony zosta³ potencjalny problem wynikaj¹cy z manualnego operowania wszelkimi danymi przez pracowników dzia³u sprzeda¿y. Pracownicy Ci w czasie kontaktu z klientem maj¹ za zadanie ustalenie wszelkich wartoœci cenowych us³ug wybranych przez klienta. Us³ugi te bezpoœrednio zwi¹zane s¹ z typem wydarzenia, które klient chce zorganizowaæ. Przewa¿nie s¹ to wszelkiego rodzaju konferencje, kilkudniowe szkolenia firmowe, ale tak¿e imprezy weselne, urodzinowe, czy spotkania rodzinne. Przez wzgl¹d na ró¿n¹ specyfikê powy¿szych przedsiêwziêæ sieæ hotelowa dysponuje szerok¹ gam¹ us³ug z nimi zwi¹zanych. 
 
@@ -193,7 +193,7 @@ Dokonuj¹c podsumowania przedstawionych problemów i pomys³ów wraz z ich szczegó³o
 
 \end{itemize}
 
-\section{Analiza istniej¹cych rozwi¹zañ konkurencyjnych}
+\section{Analiza istniej¹cych rozwi¹zañ \newlineTekst konkurencyjnych}
 \label{dzial:IstniejaceRozwiazaniaKonkurencyjne}
 
 W celu wdro¿enia siê w tematykê automatyzacji procesu tworzenia propozycji cenowej przeprowadzono rekonesans dostêpnych aplikacji wspieraj¹cych przedstawiony proces. Na podstawie utworzonej uprzednio listy ogólnych za³o¿eñ z szerokiej gamy dostêpnych rozwi¹zañ \cite{CRMList}, wytypowane zosta³y trzy programy, które w najwiêkszym stopniu j¹ pokrywaj¹ oraz mog¹ byæ zastosowane w bran¿y hotelarskiej. Aplikacje te przetestowane zosta³y pod k¹tem funkcjonalnoœci w celu zaznajomienia siê ze sposobem realizacji ustalonych wymagañ projektowych i ewentualnemu ich doprecyzowaniu.
@@ -395,7 +395,7 @@ T-SQL jest jêzykiem transakcyjny, polega na wykonywanie operacji, jeœli operacja
 
 \subsection{Wykorzystane narzêdzia}
 
-W podrozdziale \ref{dzial:technologie} ujêto opis technologii wykorzystanych do implementacji oprogramowania. Niniejszy podrozdzia³ zosta³ poœwiêcony charakterystyce narzêdzi wspieraj¹cych pracê z ustalonymi technologiami, zawiera równie¿ zestawienie u¿ytych przez zespó³ programów u³atwiaj¹cych szeroko rozumiany rozwój aplikacji.
+W celu efektywnej pracy z technologiami opisanymi w rozdziale \ref{dzial:technologie} warto wspomagaæ siê dedykowanymi narzêdziami, które upraszczaj¹ wykorzystanie ich mo¿liwoœci. W tym celu w czasie pracy nad prezentowanym projektem in¿ynierskim pos³u¿ono siê szeregiem narzêdzi, które umo¿liwi³y skrócenie procesu implementacyjnego budowanego systemu oraz usprawnienie organizacji pracy zespo³u.
 
 \subsubsection{Visual Studio 2013}
 
@@ -585,7 +585,7 @@ Jenkins Continuous Integration Server jest darmowym, wieloplatformowym narzêdzie
 
 \subsection{Biblioteki zewnêtrzne}
 
-W niniejszym podrozdziale zawarty zosta³ opis zewnêtrznych bibliotek dla jêzyka programowania C\# u¿ytych przy implementacji aplikacji.
+W sytuacji budowy systemu informatycznego zdarza siê, i¿ zachodzi koniecznoœæ implementacji czêsto powtarzaj¹cej siê w ró¿nych projektach funkcjonalnoœci dotycz¹cej dla przyk³adu wyboru daty w odpowiednim formacie, koloru z dostêpnej palety barw lub, jak w prezentowanym projekcie in¿ynierskim, wygenerowania pliku o ustalonym formacie. W tym celu warto zastosowaæ biblioteki zewnêtrzne które umo¿liwiaj¹ dodanie w prosty sposób funkcjonalnoœci bez koniecznoœci implementacji ich od podstaw. Biblioteki te przez fakt ci¹g³ego rozwoju przez ich autorów oraz naprawiania b³êdów, zg³aszanych przez u¿ytkowników s¹ z regu³y pewnymi elementami, które umo¿liwiaj¹ uzyskanie znacznych korzyœci czasowych w czasie wdra¿ania nowej funkcjonalnoœci aplikacji. 
 
 \subsubsection{Extended WPF Toolkit}
 
@@ -628,9 +628,11 @@ Jednym z celów projektu, jest przedstawienie szczegó³ów transakcji pomiêdzy klie
 PDFSharp \& Migradoc Foundation jest darmow¹ bibliotek¹ umo¿liwiaj¹c¹ tworzenie dokumentów PDF w jêzykach programowania z rodziny .NET. Oferowane funkcjonalnoœci to m. in. tworzenie paragrafów, tabel, formatowanie tekstu, za³¹czanie oraz skalowanie grafiki. Projekt posiada dedykowan¹ stronê internetow¹ zawieraj¹c¹ dokumentacjê i przyk³adowe programy wraz z kodami Ÿród³owymi \cite{PdfSharp}. Instalacja w Microsoft Visual Studio jest mo¿liwa za pomoc¹ mened¿era pakietów Nuget. 
 
 \section{Architektura budowanego systemu}
-W tym rozdziale zasta³y poruszone kwestie zwi¹zane z problematyk¹ tworzenia aplikacji z wyborem wzorca architektonicznego. Równie¿ zosta³ poruszone kwestie system bazodanowego u¿ytego w aplikacji jak równie¿ model bazy danych wykorzystany w projekcie. Przedstawiono te¿ problem zawi¹zany za komunikacj¹ bazy danych z czêœci¹ odpowiedzialn¹ za  interfejsem u¿ytkownika wraz z rozwi¹zaniem przedstawionym w rozdziale \ref{dzial:komunikacja}.
+
+Budowa bazodanowego systemu informatycznego od podstaw wymaga dok³adnego przeanalizowania elementów dotycz¹cych jego architektury. Przez fakt budowy dwóch oddzielnych elementów, analiza ta podzielona zosta³a na czêœæ dotycz¹c¹ modelowania bazy danych, aplikacji u¿ytkownika oraz ich wzajemnej komunikacji. 
 
 \subsection{Architektura aplikacji}
+\label{dzial:ArchitekturaAplikacji}
 
 W in¿ynierii oprogramowania analogicznie jak w innych dziedzinach, w których przeprowadzana jest operacja budowania zadanego przedmiotu, nale¿y starannie zaplanowaæ jego proces. Prezentowany rozdzia³ zawiera opis metodologii, która umo¿liwia w uporz¹dkowany sposób przeprowadzenie procesu budowania aplikacji wraz z zastosowan¹ w prezentowanym projekcie jego odmian¹. Rozdzia³ \ref{dzial:ModelApki} przedstawia równie¿ efekt zastosowanego rozwi¹zania widoczny z poziomu projektu programistycznego.
 
@@ -738,7 +740,10 @@ Ostatni katalog jak katalogiem najwa¿niejszym ze strony u¿ytkownika, gdy¿ zawier
 \newpage
 
 \subsection{Architektura bazy danych}
+\label{dzial:ArchitekturaBazyDanych}
+
 W niniejszym podrozdziale zostanie przedstawiony serwer bazodanowy wykorzystywany przez aplikacjê wraz z wyszczególnionymi komponentami. Równie¿ budowa bazy danych z jej podzia³em na logiczne struktury odpowiedzialne za poszczególne elementy dzia³ania programu.
+
 \subsubsection{MS-SQL – Zastosowany system zarz¹dzania baz¹ danych}
 
 Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W sieci hotelowej wykorzystane s¹ technologie Microsoftu. Produktem tej firmy zwi¹zanym z powy¿sz¹ tematyk¹ jest  serwer z rodziny  MS-SQL\cite{MS-SQL}. Serwer ten umo¿liwia tworzenie baz danych dwóch typów relacyjny jak i nierelacyjnych. Tworzenie baz danych mo¿e siê odbywaæ w dwojaki sposób poprzez:
@@ -791,6 +796,8 @@ Bazê, która zosta³a wykorzystana w projekcie mo¿na podzieliæ na dwie g³ówne czêœ
 \tab 
 Tabele s³ownikowe przez wzgl¹d na funkcje, któr¹ pe³ni¹ nie s¹ powi¹zane z innymi tabelami Taki podzia³ tabel na dwa osobne zbiory zosta³ spowodowany bezpieczeñstwem. Jeœli istnia³aby relacja ³¹cz¹ca te dwie tabele to zmiana wartoœæ w tabeli s³ownikowej powodowa³aby zmianê cen produktów w starszych propozycja. Efektem unikniêcia tego typu problemów jest rozdzielenie na dwie odseparowane czêœci.  Gdyby tak nie by³o wtedy mo¿liwoœæ odtworzenia starej propozycji cenowej by³aby niemo¿liwa, co jest efektem niepo¿¹danym z punktu widzenia dzia³ania aplikacji. Przedstawia to rysunek \ref{Schemat:Slownikow1}.
 
+\newpage
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{dicSchemat1.jpg}
@@ -802,7 +809,7 @@ Tabele s³ownikowe przez wzgl¹d na funkcje, któr¹ pe³ni¹ nie s¹ powi¹zane z innym
 \item \textsl{Czêœæ Propozycji}
 	
 \tab 
-Drugi cz³on bazy danych stanowi¹ tabele zwi¹zane z tworzon¹ propozycj¹ cenow¹. S¹ one podzielone w logiczny sposób uwzglêdniaj¹c podzia³ przyk³adowej propozycji cenowej przedstawione przez sieæ hotelow¹: produkty gastronomiczne, wyposa¿enie sali, szczegó³y rezerwacji, szczegó³y klienta. Jest to te¿ najbardziej rozbudowana czêœæ bazy danych wi¹¿¹ siê te¿ z ni¹ konta u¿ytkowników kto, któr¹ propozycje cenow¹ wystawi³. Wi¹¿e ze sob¹ koniecznoœæ nadawania uprawnieñ u¿ytkownikom w systemie. Aktualnie istniej¹ tylko dwa typy kont sprzedawca i administrator. Do ka¿dej stworzonej propozycji cenowej s¹ te¿ do³¹czane rabaty na poszczególne jej elementy: gastronomie, wyposa¿enie sali. Ca³a bazê przedstawia rysunek \ref{Schemat:Prop1}  
+Drugi cz³on bazy danych stanowi¹ tabele zwi¹zane z tworzon¹ propozycj¹ cenow¹. S¹ one podzielone w logiczny sposób uwzglêdniaj¹c podzia³ przyk³adowej propozycji cenowej przedstawione przez sieæ hotelow¹: produkty gastronomiczne, wyposa¿enie sali, szczegó³y rezerwacji, szczegó³y klienta. Jest to te¿ najbardziej rozbudowana czêœæ bazy danych wi¹¿¹ siê te¿ z ni¹ konta u¿ytkowników kto, któr¹ propozycje cenow¹ wystawi³. Wi¹¿e ze sob¹ koniecznoœæ nadawania uprawnieñ u¿ytkownikom w systemie. Aktualnie istniej¹ tylko dwa typy kont sprzedawca i administrator. Do ka¿dej stworzonej propozycji cenowej s¹ te¿ do³¹czane rabaty na poszczególne jej elementy: gastronomie, wyposa¿enie sali. Ca³a bazê przedstawia rysunek \ref{Schemat:Prop1}.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{schProp.jpg}
@@ -881,6 +888,184 @@ var exampleQuerry = (from records in _context.TableName
 Edycja danych znajduj¹cych siê w bazie danych z poziomu projektu programistycznego realizowana jest poprzez modyfikacjê opisanego polecenia \textsl{SELECT}. Modyfikacja ta polega na przekszta³ceniu typu otrzymanego obiektu na typ klasy modelu Entity, który reprezentuje edytowan¹ bazodanow¹ tabelê. W przypadku operowania na jednym rekordzie, przekszta³cenie te nale¿y dokonaæ pos³uguj¹c siê metod¹ \textsl{SingleOrDefault}, natomiast w przypadku wielu rekordów metod¹ \textsl{ToList}, która dokona konwersji na listê obiektów po¿¹danego typu. Do takiego utworzonego obiektu, programista ma mo¿liwoœæ odwo³ywania siê i dokonywania zmian w standardowy dla jêzyka C\# sposób. Po operacji modyfikacji, wszystkie zmiany nale¿y potwierdziæ metod¹ \textsl{SaveChanges} na obiekcie modelu Entity, która uaktualnia zmodyfikowane elementy na poziomie bazy danych.
 
 Dodanie rekordu do bazy danych jest operacj¹, które nie wymaga znajomoœci sk³adni LINQ to Entities. Operacja ta polega na utworzeniu obiektu klasy wygenerowanej przez Entity Framework, która reprezentuje bazodanow¹ tabelê, do której nowy rekord ma byæ dodany, a nastêpnie uzupe³nieniu jego elementów danymi. Tak zbudowany obiekt nale¿y dodaæ do obiektu kontekstu, odwo³uj¹c siê do jego w³aœciwoœci o nazwie interesuj¹cej nas tabeli bazy danych, a nastêpnie w parametrze metody \textsl{Add} umieœciæ wczeœniej zbudowany obiekt. Dokonane zmiany, analogicznie jak w przypadku edycji danych nale¿y potwierdziæ na obiekcie kontekstu. Przedstawienie opisanej operacji z poziomu kodu, dostêpne jest równie¿ do wgl¹du w drugiej czêœci kodu Ÿród³owego \ref{listing:AdoEntityCompare}.
+
+\section{Implementacja aplikacji}
+
+\subsection{Bezpieczeñstwo procesu logowania}
+
+Modu³ logowania jest czêœci¹ systemu, do którego dostêp ma ka¿dy u¿ytkownik korzystaj¹cy z prezentowanej aplikacji. Implikuje to koniecznoœæ jego zabezpieczenia przed niepowo³anym u¿yciem dotycz¹cym dostêpu do poufnych danych, takich jak dane osobiste oraz has³a, dla których dobr¹ praktyk¹ odnosz¹c¹ siê do bezpieczeñstwa jest ich nieprzechowywanie w ¿adnym miejscu w postaci jawnej.
+
+Pole wpisywania has³a przez u¿ytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka PasswordBox, dostêpna do wgl¹du na rysunku \ref{rys:PasswordBox}. Jest to zmodyfikowana kontrolka TextBox dostêpna w technologi WPF, która wyœwietla swoj¹ zawartoœæ w postaci ukrytej, uniemo¿liwiaj¹c jednoczeœnie wykonanie na jej zawartoœci operacji kopiowania oraz wycinania z poziomu klawiatury oraz myszy. Zabezpiecza to przed niechcianym podejrzeniem has³a oraz jego odzyskaniem przez osobê trzeci¹.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{PasswordBox.jpg}
+    \caption{Kontrolka PasswordBox z przedstawieniem aspektów bezpieczeñstwa, ród³o: Opracowanie w³asne.}
+    \label{rys:PasswordBox}
+\end{figure}
+
+Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili wpisania has³a przez u¿ytkownika oraz klikniêcia przycisku logowania, nastêpuje sprawdzenie ustalonych zasad dotycz¹cych z³o¿onoœci has³a oraz w sytuacji ich pozytywnego rozpatrzenia, has³o przekszta³cane jest za pomoc¹ 256-bitowej odmiany algorytmu haszuj¹cego SHA-2 na skrót, który porównywany jest ze skrótem has³a dopasowanemu wpisanej nazwie u¿ytkownika u¿ytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostêp do dalszej czêœci programu.
+
+%TODO: hasze hasel screen z bazy jak wlaczy sie hashowanie
+
+Ustalenie has³a przez u¿ytkownika programu implikuje obowi¹zek walidacji wprowadzonego przez niego ci¹gu znaków w celu sprawdzenia jego poziomu bezpieczeñstwa. Krótkie has³a s¹ bardziej podatne próbê ich z³amania, ni¿ d³u¿sze ci¹gi, sk³adaj¹ce siê zarówno z liter jak i cyfr. W tym celu, w czasie ustalania przez u¿ytkownika nowego has³a, wprowadzona zosta³a metoda widoczna przy kodzie Ÿród³owym \ref{listing:ValidatePasswordMethod}, której zadaniem jest weryfikacja za³o¿onych z góry aspektów, które musi has³o spe³niaæ w celu jego akceptacji. Wymogami tymi jest d³ugoœæ has³a, które sk³adaæ siê musi z przynajmniej oœmiu znaków, posiadanie minimum jednej du¿ej oraz ma³ej litery, a tak¿e obecnoœæ w jego sk³adzie cyfry. W przypadku niespe³nienia chocia¿ jednej z przedstawionych zasad, has³o jest automatycznie odrzucane, a u¿ytkownik informowany jest o zaistnia³ym problemie.
+
+\begin{lstlisting}[caption={Metoda weryfikuj¹ca poprawnoœæ wpisanego przez u¿ytkownika has³a}, label={listing:ValidatePasswordMethod}]
+
+public static bool ValidatePassword(string pass)
+{
+    // minimalna wymagana d³ugoœæ has³a
+    const int minLength = 8;
+    // sprawdzenie czy has³o jest puste
+    if (pass == null) 
+        return false;
+    // sprawdzenie poprawnoœci d³ugoœci has³a
+    bool isPassLengthOk = pass.Length >= minLength;
+    bool hasUpperCaseChar = false;
+    bool hasLowerCaseChar = false;
+    bool hasDecimalDigit = false;
+    if (isPassLengthOk)
+    {
+        // sprawdzanie czy has³o zawiera du¿¹ literê, ma³¹ literê oraz cyfrê
+        foreach (char letter in pass)
+        {
+            if (char.IsUpper(letter)) 
+            	hasUpperCaseChar = true;
+            else if (char.IsLower(letter)) 
+            	hasLowerCaseChar = true;
+            else if (char.IsDigit(letter)) 
+            	hasDecimalDigit = true;
+        }
+    }
+    bool isValid = (isPassLengthOk && hasUpperCaseChar
+                    && hasLowerCaseChar && hasDecimalDigit);
+    // true == has³o poprawne, false == has³o niepoprawne
+    return isValid;
+}
+
+\end{lstlisting}
+
+\subsection{Konto administratora i u¿ytkownika – ListView}
+U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami nastêpnie nastêpuje zapisanie jej do w³aœciwoœci PropositionsList. Przedstawia to kod Ÿród³owy \ref{listing:propuser}.
+\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika}, label={listing:propuser}]
+ var myProposition = (from prop in _ctx.Proposition
+                      from user in _ctx.Users 
+                      where user.Id == _userId		
+                      where prop.Id_user == _userId 
+            // szuka propozycji u¿ytkownika zalogowanego
+            select new AdminProposition
+            {
+             PropositionId = prop.Id,
+             UserFirstName = user.Name,
+             UserSurname = user.Surname,
+             CustomerFullName = prop.PropClient
+             				.CustomerFullName,
+             CompanyName = prop.PropClient.CompanyName,
+             UpdateDate = prop.UpdateDate,
+             Status = prop.Status
+            }).ToList();
+            PropositionsList = myProposition; 
+//przypisanie do listy propozycji 
+//w prawid³owej formie do wyœwietlenia
+\end{lstlisting}
+Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje kod Ÿród³owy \ref{listing:user}. Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
+\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie u¿ytkownika posiadaj¹cych propozycjê}, label={listing:user}]
+ var userlist = (from s in _ctx.Users
+                     where s.Proposition.Any()
+                     select s).ToList();
+            userlist.Add(new Users()); 
+ //dodanie pustego u¿ytkownika by 
+ //móc wyœwietliæ wszystkie propozycje
+            UsersList = userlist;
+
+\end{lstlisting}
+
+Edycja propozycji w obydwu przypadkach odbywa siê w ten sam sposób poprzez wybranie propozycji z ListView nastêpuje przypisanie identyfikatora z bazy danych do zmiennej i wyszukanie wszystkich elementów danej propozycji. Z kolei wype³niane s¹ wszystkie pola, które zosta³y zaznaczone w procesie tworzenia propozycji.
+
+\subsection{Tworzenie propozycji cenowej}
+
+Modu³ tworzenia propozycji cenowej wraz z modu³em jej edycji jest najwa¿niejszym modu³em prezentowanej aplikacji, który przez fakt aktywnej komunikacji z baz¹ danych w celu pobrania potrzebnych s³ownikowych oraz zapisu wybranych przez u¿ytkownika elementów posiada skomplikowan¹ logikê dzia³ania. 
+Najwa¿niejszym elementem koniecznym do prawid³owej pracy prezentowanego modu³u by³a kontrola przesy³anych pomiêdzy baz¹ a aplikacj¹ danych. Pola obiektów, które zawiera³y puste wartoœci wymaga³y szczegó³owej kontroli i konwersji typu NULL na typ obs³ugiwany przez odbiorcê. Wymóg ten by³ konieczny przez wzgl¹d na mo¿liwoœæ wyst¹pienia wyj¹tku, który przerywa³ pracê ca³ej aplikacji. Zgodnie z za³o¿eniami projektowymi, u¿ytkownik w czasie tworzenia propozycji cenowej ma mo¿liwoœæ wype³niania tylko jej czêœci. Dodaj¹c do tego fakt, i¿ u¿ytkownik przypadkowo mo¿e wype³niæ dla przyk³adu rekord zawieraj¹cy element gastronomiczny bez wpisania jego dni lub iloœci, szczegó³owa kontrola zawartoœci obiektów by³a priorytetowa. W sytuacji nie wpisania wszystkich kolumn rekordu odnosz¹cego siê do elementu zak³adki opisywanej w punktach \ref{dzial:SalaIWyposazenieUzytkownik}, \ref{dzial:UslugiGastronomiczneUzytkownik}, \ref{dzial:UslugiNoclegoweUzytkownik} oraz \ref{dzial:UslugiDodatkoweIPlatnoscUzytkownik}, przy zapisie propozycji do bazy danych, rekord ten jest wychwytywany przez mechanizmy waliduj¹ce i usuwany.
+
+\subsection{Edycja s³owników oraz kont u¿ytkowników}
+
+Aby umo¿liwiæ edycjê danych z poziomu DataGridView który jest arkuszem podzielonym na wiersze i komórki, zaprezentowanym na rysunku \ref{rys:EdytujUzytkownika} zaimplementowano metody obs³uguj¹ce zdarzenie \textit{DataGridRowEditEndingEventArgs}. W sytuacji w której edycja danej komórki zostaje ukoñczona owe zdarzenie jest przechwytywane. W tym celu wymagane jest u¿ycie zmiennej dynamic której wartoœæ sprawdzana jest podczas wywo³ania, a nie kompilacji \cite{dynamic}. Umo¿liwia to odwo³anie do nowych wartoœci zapisanych w komórkach i przekazanie ich jako argumentów do fragmentów kodu odpowiedzialnych za aktualizacjê bazy danych. Fragment kodu zawarty w programie \ref{listing:DynamicGridView} realizuje powy¿sze operacje, wykorzystywany jest w module s³u¿¹cym do edycji danych pracowników i s³owników cenowych. 
+
+\begin{lstlisting}[caption= {Implementacja i opis fragmentu kodu aktualizuj¹cego bazê danych z poziomu DataGridView}, label={listing:DynamicGridView}]
+//pobranie identyfikatora u¿ytkownika którego wiersz 
+//jest zaznaczony w DataGridView oraz zapis do zmiennej typu int
+object item = UserList.SelectedItem;
+string ID = 
+    (UserList.SelectedCells[0]
+             .Column
+             .GetCellContent(item) as TextBlock).Text;
+
+int selected = Int32.Parse(ID);
+
+//zapis danych z poszczególnych kolumn do zmiennej dynamicznej
+dynamic userRow = UserList.SelectedItem;
+
+//konwersja rodzaju konta z liczby na tekst
+int tmp = 0;
+if (userRow.UserAccountType == "Administrator")
+	tmp = 1;
+else
+    tmp = 2;
+
+//deklaracja obiektu bazy danych
+DiamondDBEntities _ctx = new DiamondDBEntities();
+Users userUpdate = (from user in _ctx.Users
+                    where user.Id == selected
+                    select user).First();
+	
+	//przypisanie nowych wartoœci z komórek do poszczególnych 
+	//kolumn tabeli Users
+	userUpdate.Name = userRow.UserName;
+	userUpdate.Surname = userRow.UserSurname;
+	userUpdate.PhoneNum = userRow.UserPhoneNumber;
+	userUpdate.Email = userRow.UserEmail;
+	userUpdate.Position = userRow.UserPosition;
+	userUpdate.AccountType = tmp;
+	userUpdate.Login = userRow.UserLogin;
+	
+	//zapis danych do bazy
+	_ctx.SaveChanges();
+\end{lstlisting}
+
+\subsection{Tworzenie szablonu PDF propozycji cenowej}
+
+Za pomoc¹ mechanizmów biblioteki MigraDoc, zaimplementowano funckje tworz¹ce tabele propozycji cenowej. Kod Ÿród³owy \ref{listing:PdfSharpTable} przedstawia implementacje mechanizmu tworz¹cego tabelê z jedn¹ kolumn¹ i wierszem. 
+
+\begin{lstlisting}[caption= {Fragment kodu tworz¹cego prost¹ tabelê przy u¿yciu biblioteki PDFSharp \& MigraDoc}, label={listing:PdfSharpTable}]
+//inicjalizacja nowej tabeli, ustawienie czcionki i jej rozmiaru
+Table table = document.LastSection.AddTable();
+table.Borders.Visible = true;
+table.Format.Font.Size = 10;
+table.Format.Font.Name = "Calibri";
+
+//dodawanie nowej kolumny
+Column column = table.AddColumn("3.750cm");
+column.Format.Alignment = ParagraphAlignment.Left;
+
+//dodawanie nowego wiersza, z przyk³adowymi atrybutami 
+Row row = table.AddRow();
+row.Cells[0].Shading.Color = Colors.LightGray;
+row.Cells[0].AddParagraph("WYNAJEM");
+\end{verbatim}
+
+Kod Ÿród³owy \ref{listing:SavePdf} przedstawia implementacjê funkcji zapisuj¹cej wygenerowane przez program tabele propozycji cenowej do pliku PDF.
+
+\begin{lstlisting}[caption= {Implementacja i opis funkcji zapisuj¹cej propozycjê cenow¹ do pliku PDF}, label={listing:SavePdf}]
+// deklaracja obiektu klasy PdfDocumentRenderer
+PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(
+   true,PdfSharp.Pdf.PdfFontEmbedding.Always
+);
+//renderowanie dokumentu
+renderDocument.Document = document;
+renderDocument.RenderDocument();
+//zapis do pliku
+renderDocument.Save(path);
+\end{lstlisting}
 
 \section{Automatyzacja wydawania kolejnych wersji aplikacji}
 
@@ -971,6 +1156,8 @@ Kolejne wersje niniejszego projektu s¹ wydawane zgodnie z zasadami Continuous De
 
 \end{itemize}
 
+\newpage
+
 Rysunek \ref{rys:JenkinsSek} przedstawia stronê wygenerowan¹ dla planu.
 
 \begin{figure}[ht]
@@ -981,8 +1168,7 @@ Rysunek \ref{rys:JenkinsSek} przedstawia stronê wygenerowan¹ dla planu.
 \end{figure}
 
 \section{Testowanie aplikacji}
-
-Rezultatem prezentowanego projektu in¿ynierskiego jest desktopowa aplikacja bazodanowa wspomagaj¹c¹ pracê wybranej sieci hotelowej. W celu pokazania dzia³ania oprogramowania, w niniejszym rozdziale zawarta zosta³a prezentacja funkcjonalnoœci zaimplementowanych w programie. Demonstracja zosta³a przedstawiona w formie instrukcji obs³ugi poszczególnych modu³ów, obejmuj¹c opis tekstowy prezentowanych na rysunkach czynnoœci.
+Rezultatem prezentowanego projektu in¿ynierskiego jest desktopowa aplikacja bazodanowa wspomagaj¹c¹ pracê wybranej sieci hotelowej. W celu pokazania dzia³ania oprogramowania, w niniejszym rozdziale zawarta zosta³a prezentacja funkcjonalnoœci zaimplementowanych w programie. Demonstracja zosta³a przedstawiona w formie instrukcji obs³ugi poszczególnych modu³ów, obejmuj¹c ich opis teoretyczny wraz z do³¹czonymi do nich obrazkami.
 
 \subsection{Przeprowadzenie operacji logowania u¿ytkownika}
 
@@ -1325,190 +1511,6 @@ Istnieje mo¿liwoœæ, i¿ u¿ytkownik nie pamiêta swojego has³a. W takim przypadku a
 	
  \end{itemize}
  
-\section{Specyfikacja wewnêtrzna}
-
-\subsection{Przeprowadzenie operacji logowania u¿ytkownika}
-\subsubsection{Bezpieczeñstwo procesu logowania}
-
-Modu³ logowania jest czêœci¹ systemu, do którego dostêp ma ka¿dy u¿ytkownik korzystaj¹cy z prezentowanej aplikacji. Implikuje to koniecznoœæ jego zabezpieczenia przed niepowo³anym u¿yciem dotycz¹cym dostêpu do poufnych danych, takich jak dane osobiste oraz has³a, dla których dobr¹ praktyk¹ odnosz¹c¹ siê do bezpieczeñstwa jest ich nieprzechowywanie w ¿adnym miejscu w postaci jawnej.
-
-Pole wpisywania has³a przez u¿ytkownika w oknie logowania stanowi dedykowana dla tego celu kontrolka PasswordBox, dostêpna do wgl¹du na rysunku \ref{rys:PasswordBox}. Jest to zmodyfikowana kontrolka TextBox dostêpna w technologi WPF, która wyœwietla swoj¹ zawartoœæ w postaci ukrytej, uniemo¿liwiaj¹c jednoczeœnie wykonanie na jej zawartoœci operacji kopiowania oraz wycinania z poziomu klawiatury oraz myszy. Zabezpiecza to przed niechcianym podejrzeniem has³a oraz jego odzyskaniem przez osobê trzeci¹.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.5\textwidth]{PasswordBox.jpg}
-    \caption{Kontrolka PasswordBox z przedstawieniem aspektów bezpieczeñstwa, ród³o: Opracowanie w³asne.}
-    \label{rys:PasswordBox}
-\end{figure}
-
-Sama operacja sprawdzania poprawnoœci wpisanego has³a zosta³a zaprojektowana w taki sposób, aby otrzymane z kontrolki has³o nie by³o nigdzie zapisywane i porównywane w postaci jawnej. W chwili wpisania has³a przez u¿ytkownika oraz klikniêcia przycisku logowania, nastêpuje sprawdzenie ustalonych zasad dotycz¹cych z³o¿onoœci has³a opisanych w rozdziale \ref{dzial:ZlozonoscHasel} oraz w sytuacji ich pozytywnego rozpatrzenia, has³o przekszta³cane jest za pomoc¹ 256-bitowej odmiany algorytmu haszuj¹cego SHA-2 na skrót, który porównywany jest ze skrótem has³a dopasowanemu wpisanej nazwie u¿ytkownika u¿ytkownika w bazie danych. Na tej podstawie przyznawany lub odmawiany jest dostêp do dalszej czêœci programu.
-
-%TODO: hasze hasel screen z bazy jak wlaczy sie hashowanie
-
-
-
-\subsubsection{Wymagania z³o¿onoœci hase³}
-\label{dzial:ZlozonoscHasel}
-
-Ustalenie has³a przez u¿ytkownika programu implikuje obowi¹zek walidacji wprowadzonego przez niego ci¹gu znaków w celu sprawdzenia jego poziomu bezpieczeñstwa. Krótkie has³a s¹ bardziej podatne próbê ich z³amania, ni¿ d³u¿sze ci¹gi, sk³adaj¹ce siê zarówno z liter jak i cyfr. W tym celu, w czasie ustalania przez u¿ytkownika nowego has³a, wprowadzona zosta³a metoda widoczna przy kodzie Ÿród³owym \ref{listing:ValidatePasswordMethod}, której zadaniem jest weryfikacja za³o¿onych z góry aspektów, które musi has³o spe³niaæ w celu jego akceptacji. Wymogami tymi jest d³ugoœæ has³a, które sk³adaæ siê musi z przynajmniej oœmiu znaków, posiadanie minimum jednej du¿ej oraz ma³ej litery, a tak¿e obecnoœæ w jego sk³adzie cyfry. W przypadku niespe³nienia chocia¿ jednej z przedstawionych zasad, has³o jest automatycznie odrzucane, a u¿ytkownik informowany jest o zaistnia³ym problemie.
-
-\begin{lstlisting}[caption={Metoda weryfikuj¹ca poprawnoœæ wpisanego przez u¿ytkownika has³a}, label={listing:ValidatePasswordMethod}]
-
-public static bool ValidatePassword(string pass)
-{
-    // minimalna wymagana d³ugoœæ has³a
-    const int minLength = 8;
-    // sprawdzenie czy has³o jest puste
-    if (pass == null) 
-        return false;
-    // sprawdzenie poprawnoœci d³ugoœci has³a
-    bool isPassLengthOk = pass.Length >= minLength;
-    bool hasUpperCaseChar = false;
-    bool hasLowerCaseChar = false;
-    bool hasDecimalDigit = false;
-    if (isPassLengthOk)
-    {
-        // sprawdzanie czy has³o zawiera du¿¹ literê, ma³¹ literê oraz cyfrê
-        foreach (char letter in pass)
-        {
-            if (char.IsUpper(letter)) 
-            	hasUpperCaseChar = true;
-            else if (char.IsLower(letter)) 
-            	hasLowerCaseChar = true;
-            else if (char.IsDigit(letter)) 
-            	hasDecimalDigit = true;
-        }
-    }
-    bool isValid = (isPassLengthOk && hasUpperCaseChar
-                    && hasLowerCaseChar && hasDecimalDigit);
-    // true == has³o poprawne, false == has³o niepoprawne
-    return isValid;
-}
-
-\end{lstlisting}
-
-\subsection{Konto administratora i u¿ytkownika – ListView}
-U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami nastêpnie nastêpuje zapisanie jej do w³aœciwoœci PropositionsList. Przedstawia to kod Ÿród³owy \ref{listing:propuser}.
-\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika}, label={listing:propuser}]
- var myProposition = (from prop in _ctx.Proposition
-                      from user in _ctx.Users 
-                      where user.Id == _userId		
-                      where prop.Id_user == _userId 
-            // szuka propozycji u¿ytkownika zalogowanego
-            select new AdminProposition
-            {
-             PropositionId = prop.Id,
-             UserFirstName = user.Name,
-             UserSurname = user.Surname,
-             CustomerFullName = prop.PropClient
-             				.CustomerFullName,
-             CompanyName = prop.PropClient.CompanyName,
-             UpdateDate = prop.UpdateDate,
-             Status = prop.Status
-            }).ToList();
-            PropositionsList = myProposition; 
-//przypisanie do listy propozycji 
-//w prawid³owej formie do wyœwietlenia
-\end{lstlisting}
-Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje kod Ÿród³owy \ref{listing:user}. Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
-\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie u¿ytkownika posiadaj¹cych propozycjê}, label={listing:user}]
- var userlist = (from s in _ctx.Users
-                     where s.Proposition.Any()
-                     select s).ToList();
-            userlist.Add(new Users()); 
- //dodanie pustego u¿ytkownika by 
- //móc wyœwietliæ wszystkie propozycje
-            UsersList = userlist;
-
-\end{lstlisting}
-
-Edycja propozycji w obydwu przypadkach odbywa siê w ten sam sposób poprzez wybranie propozycji z ListView nastêpuje przypisanie identyfikatora z bazy danych do zmiennej i wyszukanie wszystkich elementów danej propozycji. Z kolei wype³niane s¹ wszystkie pola, które zosta³y zaznaczone w procesie tworzenia propozycji.
-
-\subsection{Tworzenie propozycji cenowej}
-
-Modu³ tworzenia propozycji cenowej wraz z modu³em jej edycji jest najbardziej rozbudowanym modu³em prezentowanej aplikacji, który przez fakt aktywnej komunikacji z baz¹ danych w celu pobrania potrzebnych s³ownikowych oraz zapisu wybranych przez u¿ytkownika elementów posiada skomplikowan¹ logikê dzia³ania. 
-Najwa¿niejszym elementem koniecznym do prawid³owej pracy prezentowanego modu³u by³a kontrola przesy³anych pomiêdzy baz¹ a aplikacj¹ danych. Pola obiektów, które zawiera³y puste wartoœci wymaga³y szczegó³owej kontroli i konwersji typu NULL na typ obs³ugiwany przez odbiorcê. Wymóg ten by³ konieczny przez wzgl¹d na mo¿liwoœæ wyst¹pienia wyj¹tku, który przerywa³ pracê ca³ej aplikacji. Zgodnie z za³o¿eniami projektowymi, u¿ytkownik w czasie tworzenia propozycji cenowej ma mo¿liwoœæ wype³niania tylko jej czêœci. Dodaj¹c do tego fakt, i¿ u¿ytkownik przypadkowo mo¿e wype³niæ dla przyk³adu rekord zawieraj¹cy element gastronomiczny bez wpisania jego dni lub iloœci, szczegó³owa kontrola zawartoœci obiektów by³a priorytetowa. W sytuacji nie wpisania wszystkich kolumn rekordu odnosz¹cego siê do elementu zak³adki opisywanej w punktach \ref{dzial:SalaIWyposazenieUzytkownik}, \ref{dzial:UslugiGastronomiczneUzytkownik}, \ref{dzial:UslugiNoclegoweUzytkownik} oraz \ref{dzial:UslugiDodatkoweIPlatnoscUzytkownik}, przy zapisie propozycji do bazy danych, rekord ten jest wychwytywany przez mechanizmy waliduj¹ce i usuwany.
-
-\subsection{Edycja s³owników oraz kont u¿ytkowników}
-
-Aby umo¿liwiæ edycjê danych z poziomu DataGridView który jest arkuszem podzielonym na wiersze i komórki, zaprezentowanym na rysunku \ref{rys:EdytujUzytkownika} zaimplementowano metody obs³uguj¹ce zdarzenie \textit{DataGridRowEditEndingEventArgs}. W sytuacji w której edycja danej komórki zostaje ukoñczona owe zdarzenie jest przechwytywane. W tym celu wymagane jest u¿ycie zmiennej dynamic której wartoœæ sprawdzana jest podczas wywo³ania, a nie kompilacji \cite{dynamic}. Umo¿liwia to odwo³anie do nowych wartoœci zapisanych w komórkach i przekazanie ich jako argumentów do fragmentów kodu odpowiedzialnych za aktualizacjê bazy danych. Fragment kodu zawarty w programie \ref{listing:DynamicGridView} realizuje powy¿sze operacje, wykorzystywany jest w module s³u¿¹cym do edycji danych pracowników i s³owników cenowych. 
-
-\begin{lstlisting}[caption= {Implementacja i opis fragmentu kodu aktualizuj¹cego bazê danych z poziomu DataGridView}, label={listing:DynamicGridView}]
-//pobranie identyfikatora u¿ytkownika którego wiersz 
-//jest zaznaczony w DataGridView oraz zapis do zmiennej typu int
-object item = UserList.SelectedItem;
-string ID = 
-    (UserList.SelectedCells[0]
-             .Column
-             .GetCellContent(item) as TextBlock).Text;
-
-int selected = Int32.Parse(ID);
-
-//zapis danych z poszczególnych kolumn do zmiennej dynamicznej
-dynamic userRow = UserList.SelectedItem;
-
-//konwersja rodzaju konta z liczby na tekst
-int tmp = 0;
-if (userRow.UserAccountType == "Administrator")
-	tmp = 1;
-else
-    tmp = 2;
-
-//deklaracja obiektu bazy danych
-DiamondDBEntities _ctx = new DiamondDBEntities();
-Users userUpdate = (from user in _ctx.Users
-                    where user.Id == selected
-                    select user).First();
-	
-	//przypisanie nowych wartoœci z komórek do poszczególnych 
-	//kolumn tabeli Users
-	userUpdate.Name = userRow.UserName;
-	userUpdate.Surname = userRow.UserSurname;
-	userUpdate.PhoneNum = userRow.UserPhoneNumber;
-	userUpdate.Email = userRow.UserEmail;
-	userUpdate.Position = userRow.UserPosition;
-	userUpdate.AccountType = tmp;
-	userUpdate.Login = userRow.UserLogin;
-	
-	//zapis danych do bazy
-	_ctx.SaveChanges();
-\end{lstlisting}
-
-\subsection{Tworzenie szablonu PDF propozycji cenowej}
-
-Za pomoc¹ mechanizmów biblioteki MigraDoc, zaimplementowano funckje tworz¹ce tabele propozycji cenowej. Kod Ÿród³owy \ref{listing:PdfSharpTable} przedstawia implementacje mechanizmu tworz¹cego tabelê z jedn¹ kolumn¹ i wierszem. 
-
-\begin{lstlisting}[caption= {Fragment kodu tworz¹cego prost¹ tabelê przy u¿yciu biblioteki PDFSharp \& MigraDoc}, label={listing:PdfSharpTable}]
-//inicjalizacja nowej tabeli, ustawienie czcionki i jej rozmiaru
-Table table = document.LastSection.AddTable();
-table.Borders.Visible = true;
-table.Format.Font.Size = 10;
-table.Format.Font.Name = "Calibri";
-
-//dodawanie nowej kolumny
-Column column = table.AddColumn("3.750cm");
-column.Format.Alignment = ParagraphAlignment.Left;
-
-//dodawanie nowego wiersza, z przyk³adowymi atrybutami 
-Row row = table.AddRow();
-row.Cells[0].Shading.Color = Colors.LightGray;
-row.Cells[0].AddParagraph("WYNAJEM");
-\end{verbatim}
-
-Kod Ÿród³owy \ref{listing:SavePdf} przedstawia implementacjê funkcji zapisuj¹cej wygenerowane przez program tabele propozycji cenowej do pliku PDF.
-
-\begin{lstlisting}[caption= {Implementacja i opis funkcji zapisuj¹cej propozycjê cenow¹ do pliku PDF}, label={listing:SavePdf}]
-// deklaracja obiektu klasy PdfDocumentRenderer
-PdfDocumentRenderer renderDocument = new PdfDocumentRenderer(
-   true,PdfSharp.Pdf.PdfFontEmbedding.Always
-);
-//renderowanie dokumentu
-renderDocument.Document = document;
-renderDocument.RenderDocument();
-//zapis do pliku
-renderDocument.Save(path);
-\end{lstlisting}
-
 \section{Podsumowanie oraz perspektywy rozwoju \newlineTekst oprogramowania}
 
 Celem prezentowanego projektu by³o wykonanie aplikacji bazodanowej wspieraj¹cej pracê wybranej sieci hotelowej, która umo¿liwia zautomatyzowanie procesu tworzenia propozycji cenowej, uproszczenie sposobu aktualizacji wszelkich cenników us³ug dostêpnych w hotelu oraz mo¿liwoœæ kontroli pracowników przez kierownictwo. Przedstawione cele zosta³y w pe³ni zrealizowane, czego efektem jest dzia³aj¹ca aplikacja bazodanowa posiadaj¹ca szereg modu³ów umo¿liwiaj¹cych ich osi¹gniêcie. 
