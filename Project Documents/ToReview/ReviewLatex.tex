@@ -43,13 +43,13 @@ basicstyle=\ttfamily\small
 %% ka¿dy autor musi mieæ 4 argumenty: imiê nazwisko, nr albumu, procent wk³adu, opis wk³adu
 \autor{£ukasz Lis}{225261}{32} {
 
-- Zdefiniowanie i zapis specyfikacji wymagañ (rozdzia³ 3 (33 \%), 4 (33\%))
+- Zdefiniowanie i zapis specyfikacji wymagañ (rozdzia³ 2 (33 \%), 3 (33\%))
 
 - Zaprojektowanie schematu bazy danych  wraz ze wszystkim relacjami oraz tabelami s³ownikowymi (40\%)
 
-- Opis wykorzystanych rozwi¹zañ technologicznych (rozdzia³ 5.1.2, 5.2.1, 5.2.2)
+- Opis wykorzystanych rozwi¹zañ technologicznych (rozdzia³ 4.1.2, 4.1.4 , 4.2.1, 4.2.2)
 
-- Przetestowanie utworzonej bazy danych wraz z jej pe³nym opisem (rozdzia³ 6.2)
+- Przetestowanie utworzonej bazy danych wraz z jej pe³nym opisem (rozdzia³ 5.2)
 
 - Implementacja modu³u edycji istniej¹cej propozycji cenowej (rozdzia³ 8.3)
 
@@ -57,7 +57,7 @@ basicstyle=\ttfamily\small
  
 - Implementacja interakcji okien wraz z odpowiednim wyœwietlaniem elementów
 
-- Opis rozdzia³u Konto administratora i u¿ytkownika – ListView (rozdzia³ 9.2)
+- Opis rozdzia³u Konto administratora i u¿ytkownika – ListView (rozdzia³ 6.2)
 
 }
 	
@@ -89,19 +89,21 @@ basicstyle=\ttfamily\small
 
 \autor{Mateusz Ogiermann}{226591}{18} {
 
-- Zapis wstêpu do rozdzia³u 5
+- Zdefiniowanie i zapis specyfikacji wymagañ (rozdzia³ 2 (33 \%), 3 (33\%))
 
-- Opis wykorzystanych rozwi¹zañ technologicznych (rozdzia³ 5.1.1, 5.2.4, 5.3.2)
+- Zapis wstêpu do rozdzia³u 4
+
+- Opis wykorzystanych rozwi¹zañ technologicznych (rozdzia³ 4.1.1, 4.2.4, 4.3.2)
 
 - Opis wydawania kolejnych wersji oprogramowania (rozdzia³ 7)
 
-- Implementacja modu³u tworzenia pliku PDF wraz z utworzeniem jego szablonu oraz zapisem do pliku (rozdzia³ 8.4, 9.5)
+- Implementacja modu³u tworzenia pliku PDF wraz z utworzeniem jego szablonu oraz zapisem do pliku (rozdzia³ 6.5 8.4)
 
 - Implementacja modu³u przeznaczonego do zarz¹dzania kontami pracowników (rozdzia³ 8.5)
 
-- Implementacja metod s³u¿¹cych do edycji danych zapisanych w arkuszu DataGridView (rozdzia³ 9.4)
+- Implementacja metod s³u¿¹cych do edycji danych zapisanych w arkuszu DataGridView (rozdzia³ 6.4)
 
-}	
+}		
 	
 %\NumeryNaPoczatku
 %% numeracja wzorów tu w³¹czona typu (1.2.3), ta druga to typu (1.2), a domyœlnie typu (1)
@@ -293,7 +295,7 @@ Panel u¿ytkownika umo¿liwiaæ bêdzie korzystaj¹cemu z niego u¿ytkownikowi przepro
 Panel administratora skonstruowany bêdzie w analogiczny sposób, z t¹ ró¿nic¹, i¿ bêdzie posiada³ dwie dodatkowe zak³adki menu oraz lekko zmodyfikowane okno g³ówne. Modyfikacja okna g³ównego dotyczyæ bêdzie zawartoœci listy propozycji, która zawieraæ bêdzie propozycje utworzone przez wszystkich u¿ytkowników systemu. Administrator bêdzie posiada³ mo¿liwoœæ ich podgl¹du, zapisu do pliku PDF w sposób analogiczny jak u¿ytkownik standardowy oraz filtrowania wyœwietlanych propozycji cenowych po konkretnym u¿ytkowniku. Dodatkowe pozycje w menu bêd¹ dotyczy³y natomiast edycji s³owników dotycz¹cych cen pokoi hotelowych, elementów gastronomicznych oraz kosztu wynajmu sal okolicznoœciowych. Administrator bêdzie mia³ ponadto mo¿liwoœæ dodania nowego konta u¿ytkownika, edycji jego danych wraz z mo¿liwoœci¹ zresetowania has³a w przypadku jego utracenia oraz jego usuniêcia.
 
 \section{Zastosowane rozwi¹zania technologiczne}
-
+\label{dzial:ZastosowaneRozwi¹zaniaTechnologiczne}
 W rozdziale \ref{dzial:specyfikacjaWymaganProjektowych} przedstawiono za³o¿enia projektowe dotycz¹ce opisanego w rozdziale \ref{dzial:geneza} problemu sieci hotelowej wystêpuj¹cego podczas przeprowadzania transakcji z klientem. Za³o¿enia te wraz z opisanym w dziale \ref{dzial:PomyslNaRozwiazanieProblemu} pomys³em na ich rozwi¹zanie s¹ podstawowymi czynnikami determinuj¹cymi docelow¹ formê aplikacji i dobór narzêdzi. Pierwszym istotnym elementem infrastruktury IT w firmach jest to, jaki typ systemów operacyjnych jest u¿ywany. Jak pokazuj¹ rankingi, jednymi z najczêœciej u¿ywanych systemów operacyjnych s¹ systemy rodziny Windows \cite{Systemy} takie jak Windows 7, 8. W kontekœcie doboru technologii oznacza to, i¿ warto zastosowaæ rozwi¹zania firmy Microsoft które s¹ w pe³ni zintegrowane z systemami Windows, ze wzglêdu na ich wysok¹ wydajnoœæ oraz popularnoœæ. Fundamentalnym elementem prezentowanej aplikacji jest baza danych w której przechowywane s¹ detale transakcji, szczegó³owe listy oferowanych us³ug czy dane osobowe pracowników. Firma Microsoft oferuje produkt SQL Server, który posiada darmowe dystrybucje i jest oprogramowaniem bazodanowym dedykowanym dla jêzyków platformy programistycznej .NET Framework. SQL Server w wersji darmowej mo¿e zostaæ u¿yty do w projektach czysto hobbystycznych jak i w pe³ni komercyjnych co jest jego du¿ym atutem. W rankingu portalu \textsl{db-engines.com} SQL Server zajmuje 3 pozycjê, nieprzerwanie od 2014 roku poœród ponad 200 sklasyfikowanych silników baz danych \cite{SQLRanking}. Wystarczaj¹cym kryterium które musi zostaæ spe³nione aby firma mog³a korzystaæ z aplikacji bazuj¹cej na tym silniku, jest przygotowanie jednego serwera centralnego z którym za poœrednictwem aplikacji ³¹cz¹ siê pracownicy. 
 
 Popularnym jêzykiem platformy programistycznej .NET Framework jest jêzyk C\#. Umo¿liwia on tworzenie nowoczesnych aplikacji okienkowych, przy u¿yciu bibliotek graficznych takich jak WPF. Tworzenie okien i ich komponentów takich jak przyciski, listy rozwijane czy pola tekstowe jest proste i wygodne dla programistów, poniewa¿ nie wymagaj¹ du¿ych ingerencji w kod Ÿród³owy. Manipulacja komponentami okien odbywa siê poprzez modelowanie elementów graficznych w kreatorze. Umo¿liwia on tworzenie graficznego interfejsu u¿ytkownika podobnie jak w popularnych programach s³u¿¹cych do obróbki grafiki. Do zaprojektowanego w ten sposób interfejsu, wystarczy podpi¹æ konkretne funkcjonalnoœci zaimplementowane w kodzie Ÿród³owym. Mog¹ to byæ operacje takie jak zapisywanie propozycji cenowych do pliku PDF poprzez klikniêcie przycisku. W konsekwencji czas implementacji aplikacji ulega redukcji. Istotn¹ kwesti¹ podczas implementacji oprogramowania jest komunikacja aplikacji z zasobami bazy danych z poziomu kodu Ÿród³owego. Dla jêzyka C\# firma Microsoft zaprojektowa³a system Entity Framework który s³u¿y do odwzorowania relacyjnej bazy danych na obiekty dostêpne z poziomu kodu. Zapytania bazodanowe takie jak usuwanie czy modyfikacja tabel s¹ implementowane w kodzie operuj¹cym na obiektach utworzonych przez Entity Framework.
@@ -742,11 +744,12 @@ Ostatni katalog jak katalogiem najwa¿niejszym ze strony u¿ytkownika, gdy¿ zawier
 \subsection{Architektura bazy danych}
 \label{dzial:ArchitekturaBazyDanych}
 
-W niniejszym podrozdziale zostanie przedstawiony serwer bazodanowy wykorzystywany przez aplikacjê wraz z wyszczególnionymi komponentami. Równie¿ budowa bazy danych z jej podzia³em na logiczne struktury odpowiedzialne za poszczególne elementy dzia³ania programu.
+Potrzeba stosowania centralnego systemu bazodanowego niesie za sob¹ koniecznoœæ wykorzystania serwera, który zosta³ przedstawiony w podrozdziale \ref{dzial:MS-SQL}. Wraz z tym istnia³a koniecznoœæ stworzenia modelu bazy danych. 
+
 
 \subsubsection{MS-SQL – Zastosowany system zarz¹dzania baz¹ danych}
-
-Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W sieci hotelowej wykorzystane s¹ technologie Microsoftu. Produktem tej firmy zwi¹zanym z powy¿sz¹ tematyk¹ jest  serwer z rodziny  MS-SQL\cite{MS-SQL}. Serwer ten umo¿liwia tworzenie baz danych dwóch typów relacyjny jak i nierelacyjnych. Tworzenie baz danych mo¿e siê odbywaæ w dwojaki sposób poprzez:
+\label{dzial:MS-SQL}
+Z racji wykorzystania w projekcie baz danych istnia³a koniecznoœæ uruchomienia serwera bazodanowego. W konsekwencji wykorzystanych technologii opisanych w rodziale \ref{dzial:ZastosowaneRozwi¹zaniaTechnologiczne} u¿yto Microsoft SQL Server\cite{MS-SQL}. Oprogramowanie umo¿liwia tworzenie relacyjnych i nierelacyjnych baz danych które odbywa siê poprzez:
 \begin{enumerate}
 	\item	SQL Server Management Studio, który jest nak³adk¹ graficzn¹
 	\item	T-SQL. 
