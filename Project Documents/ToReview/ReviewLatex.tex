@@ -628,6 +628,8 @@ Jednym z celÛw projektu, jest przedstawienie szczegÛ≥Ûw transakcji pomiÍdzy klie
 PDFSharp \& Migradoc Foundation jest darmowπ bibliotekπ umoøliwiajπcπ tworzenie dokumentÛw PDF w jÍzykach programowania z rodziny .NET. Oferowane funkcjonalnoúci to m. in. tworzenie paragrafÛw, tabel, formatowanie tekstu, za≥πczanie oraz skalowanie grafiki. Projekt posiada dedykowanπ stronÍ internetowπ zawierajπcπ dokumentacjÍ i przyk≥adowe programy wraz z kodami ürÛd≥owymi \cite{PdfSharp}. Instalacja w Microsoft Visual Studio jest moøliwa za pomocπ menedøera pakietÛw Nuget. 
 
 \section{Architektura budowanego systemu}
+W tym rozdziale zasta≥y poruszone kwestie zwiπzane z problematykπ tworzenia aplikacji z wyborem wzorca architektonicznego. RÛwnieø zosta≥ poruszone kwestie system bazodanowego uøytego w aplikacji jak rÛwnieø model bazy danych wykorzystany w projekcie. Przedstawiono teø problem zawiπzany za komunikacjπ bazy danych z czÍúciπ odpowiedzialnπ za  interfejsem uøytkownika wraz z rozwiπzaniem przedstawionym w rozdziale \ref{dzial:komunikacja}.
+
 \subsection{Architektura aplikacji}
 
 W inøynierii oprogramowania analogicznie jak w innych dziedzinach, w ktÛrych przeprowadzana jest operacja budowania zadanego przedmiotu, naleøy starannie zaplanowaÊ jego proces. Prezentowany rozdzia≥ zawiera opis metodologii, ktÛra umoøliwia w uporzπdkowany sposÛb przeprowadzenie procesu budowania aplikacji wraz z zastosowanπ w prezentowanym projekcie jego odmianπ. Rozdzia≥ \ref{dzial:ModelApki} przedstawia rÛwnieø efekt zastosowanego rozwiπzania widoczny z poziomu projektu programistycznego.
@@ -736,7 +738,7 @@ Ostatni katalog jak katalogiem najwaøniejszym ze strony uøytkownika, gdyø zawier
 \newpage
 
 \subsection{Architektura bazy danych}
-W niniejszym podrozdziale zostanie przedstawiony serwer bazodanowy jak rÛwnieø budowa bazy danych uøytej w projekcie.
+W niniejszym podrozdziale zostanie przedstawiony serwer bazodanowy wykorzystywany przez aplikacjÍ wraz z wyszczegÛlnionymi komponentami. RÛwnieø budowa bazy danych z jej podzia≥em na logiczne struktury odpowiedzialne za poszczegÛlne elementy dzia≥ania programu.
 \subsubsection{MS-SQL ñ Zastosowany system zarzπdzania bazπ danych}
 
 Z racji wykorzystania w projekcie baz danych istnia≥a koniecznoúÊ uruchomienia serwera bazodanowego. W sieci hotelowej wykorzystane sπ technologie Microsoftu. Produktem tej firmy zwiπzanym z powyøszπ tematykπ jest  serwer z rodziny  MS-SQL\cite{MS-SQL}. Serwer ten umoøliwia tworzenie baz danych dwÛch typÛw relacyjny jak i nierelacyjnych. Tworzenie baz danych moøe siÍ odbywaÊ w dwojaki sposÛb poprzez:
@@ -792,7 +794,7 @@ Tabele s≥ownikowe przez wzglπd na funkcje, ktÛrπ pe≥niπ nie sπ powiπzane z innym
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{dicSchemat1.jpg}
-    \caption{Rysunek przedstawiajπcy czÍúÊ s≥ownikowπ bazy danych, èrÛd≥o: Opracowanie w≥asne.}
+    \caption{Przedstawienie czÍúci s≥ownikowej bazy danych, èrÛd≥o: Opracowanie w≥asne.}
     \label{Schemat:Slownikow1}
 \end{figure} 
 
@@ -804,7 +806,7 @@ Drugi cz≥on bazy danych stanowiπ tabele zwiπzane z tworzonπ propozycjπ cenowπ. S
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{schProp.jpg}
-    \caption{Rysunek przedstawiajπcy czÍúÊ bazy danych odpowiedzialnπ za tworzonπ propozycjÍ, èrÛd≥o: Opracowanie w≥asne.}
+    \caption{Przedstawienie czÍúci bazy danych odpowiedzialnej za tworzonπ propozycji, èrÛd≥o: Opracowanie w≥asne.}
     \label{Schemat:Prop1}
 \end{figure}   
 
@@ -812,6 +814,7 @@ Drugi cz≥on bazy danych stanowiπ tabele zwiπzane z tworzonπ propozycjπ cenowπ. S
 Podzia≥ taki uwzglÍdnia moøliwoúÊ dalszego rozwoju aplikacji. Moøliwe jest dodawanie nowych s≥ownikÛw ktÛra bÍdπ zwieraÊ inne elementy zwiπzane z tworzonπ propozycjπ cenowa. Dodanie nowej tabeli do s≥ownikÛw,  ktÛra bÍdzie wiπza≥a siÍ z nowπ  grupy produktÛw.
 
 \subsection{Komunikacja bazy danych z projektem programistycznym}
+\label{dzial:komunikacja}
 
 Po≥πczenie bazy danych z projektem programistycznym jest kluczowπ kwestiπ dotyczπcπ poprawnoúci dzia≥ania aplikacji bazodanowej. Ciπg≥e, stabilne i kontrolowane po≥πczenie umoøliwia bezproblemowe przesy≥anie danych z gwarancjπ ich niezmiennoúci oraz stosownπ informacjπ w sytuacji wystπpienia b≥Ídu komunikacyjnego. W technologii .NET moøliwe jest jest standardowe podejúcie dostarczane przez ADO.NET oraz nowsze dotyczπce komunikacji na poziomie obiektÛw.
 
@@ -1386,7 +1389,7 @@ public static bool ValidatePassword(string pass)
 
 \subsection{Konto administratora i uøytkownika ñ ListView}
 Uøytkownik moøe oglπdaÊ swoje propozycje ich iloúÊ jak i z jak firmami zwiπzana jest dana propozycja cenowa. Do tego celu nie moøna w bezpoúredni sposÛb wykorzystaÊ bazy danych lecz zosta≥a stworzona warstwa poúrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyúwietlenia propozycji cenowej w postaci imiÍ nazwisko osoby odpowiedzialnej, status, jeúli dana propozycja cenowa jest dla firmy to firmÍ. Wykorzystujπc polecenia LINQ sπ pobierane dane z bazy danych i wykorzystujπc wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami. Przedstawia to kod ürÛd≥owy \ref{listing:propuser}.
-\begin{lstlisting}[caption= {Polecenie wyciπgajπce wszystkie propozycje uøytkownika} \label{listing:propuser}]
+\begin{lstlisting}[caption= {Polecenie wyciπgajπce wszystkie propozycje uøytkownika}, label={listing:propuser}]
  var myProposition = (from prop in _ctx.Proposition
                       from user in _ctx.Users 
                       where user.Id == _userId		
