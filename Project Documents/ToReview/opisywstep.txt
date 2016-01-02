@@ -1,3 +1,15 @@
 
 do testowania aplikacji
 Celem niniejszego rozdzia³u jest prezentacja funkcjonalnoœci zaimplementowanych w aplikacji. W rozdziale zawarte s¹ instrukcje obs³ugi poszczególnych modu³ów w formie opisu tekstowego prezentowanych na rysunkach czynnoœci.
+
+30 - wywalic
+33 - wywalic
+
+Fowler M.: \textsl{Continuous Integration}, http://www.martinfowler.com/articles/continuousIntegration.html
+
+Caum C.: \textsl{Continuous Delivery Vs. Continuous Deployment: What's the Diff?}, https://puppetlabs.com/blog/continuous-delivery-vs-continuous-deployment-whats-diff
+
+https://www.ebooks-it.net/ebook/jenkins-continuous-integration-cookbook-2nd-edition - 43 
+
+Berg A.: \textsl{Jenkins Continuous Integration Cookbook
+}, Wydawnictwo Packt Publishing, Birmingham 2012
