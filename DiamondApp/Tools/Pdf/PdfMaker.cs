@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using DiamondApp.Model;
 using DiamondApp.Tools.MvvmClasses;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
+using PdfSharp.Drawing;
+using Image = MigraDoc.DocumentObjectModel.Shapes.Image;
 
 namespace DiamondApp.Tools.Pdf
 {
@@ -625,8 +632,7 @@ namespace DiamondApp.Tools.Pdf
             row2.Cells[7].AddParagraph(Convert.ToDecimal(bruttoSum.ToString()).ToString("#,##0.00") + " zł");
         }
 
-
-        public void createPdf(string propId, string path)
+       public void createPdf(string propId, string path)
         {
             try
             {
@@ -648,8 +654,10 @@ namespace DiamondApp.Tools.Pdf
                 paragraph.Format.Alignment = ParagraphAlignment.Center;
                 paragraph.Format.Font.Bold = true;
 
-                //add logo
-                Image image = section.AddImage("../../Resources/MainPdfLogo.png");
+  
+                string tempPath = Path.GetTempPath();
+                string filePath = tempPath + "\\MainPdfLogo.png";
+                Image image = section.AddImage(filePath);
                 image.Width = Unit.FromPoint(593);
                 image.Height = Unit.FromPoint(125);
                 image.RelativeVertical = RelativeVertical.Page;
