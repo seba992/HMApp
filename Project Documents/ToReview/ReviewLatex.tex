@@ -736,7 +736,7 @@ Ostatni katalog jak katalogiem najwaøniejszym ze strony uøytkownika, gdyø zawier
 \newpage
 
 \subsection{Architektura bazy danych}
-
+W niniejszym podrozdziale zostanie przedstawiony serwer bazodanowy jak rÛwnieø budowa bazy danych uøytej w projekcie.
 \subsubsection{MS-SQL ñ Zastosowany system zarzπdzania bazπ danych}
 
 Z racji wykorzystania w projekcie baz danych istnia≥a koniecznoúÊ uruchomienia serwera bazodanowego. W sieci hotelowej wykorzystane sπ technologie Microsoftu. Produktem tej firmy zwiπzanym z powyøszπ tematykπ jest  serwer z rodziny  MS-SQL\cite{MS-SQL}. Serwer ten umoøliwia tworzenie baz danych dwÛch typÛw relacyjny jak i nierelacyjnych. Tworzenie baz danych moøe siÍ odbywaÊ w dwojaki sposÛb poprzez:
@@ -792,7 +792,7 @@ Tabele s≥ownikowe przez wzglπd na funkcje, ktÛrπ pe≥niπ nie sπ powiπzane z innym
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{dicSchemat1.jpg}
-    \caption{CzÍúci s≥ownikowa bazy, èrÛd≥o: Opracowanie w≥asne.}
+    \caption{Rysunek przedstawiajπcy czÍúÊ s≥ownikowπ bazy danych, èrÛd≥o: Opracowanie w≥asne.}
     \label{Schemat:Slownikow1}
 \end{figure} 
 
@@ -804,7 +804,7 @@ Drugi cz≥on bazy danych stanowiπ tabele zwiπzane z tworzonπ propozycjπ cenowπ. S
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{schProp.jpg}
-    \caption{CzÍúci tworzonej propozycji, èrÛd≥o: Opracowanie w≥asne.}
+    \caption{Rysunek przedstawiajπcy czÍúÊ bazy danych odpowiedzialnπ za tworzonπ propozycjÍ, èrÛd≥o: Opracowanie w≥asne.}
     \label{Schemat:Prop1}
 \end{figure}   
 
@@ -1406,7 +1406,7 @@ Uøytkownik moøe oglπdaÊ swoje propozycje ich iloúÊ jak i z jak firmami zwiπzana 
 //w prawid≥owej formie do wyúwietlenia
 \end{lstlisting}
 Administrator ma rÛwnieø dodatkowπ moøliwoúÊ wybierania propozycji danego uøytkownika. Wykorzystujπc moøliwoúci jÍzyka LINQ tworzona jest lista wszystkich uøytkownikÛw majπcych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje kod ürÛd≥owy \ref{listing:user}. Wraz z wyborem uøytkownika z tej listy nastÍpuje odúwieøenie ListView z propozycjami. 
-\begin{lstlisting}[caption= {Polecenie wyciπgajπce wszystkie propozycje uøytkownika} \label{listing:user}]
+\begin{lstlisting}[caption= {Polecenie wyciπgajπce wszystkie uøytkownika posiadajπcych propozycjÍ} \label{listing:user}]
  var userlist = (from s in _ctx.Users
                      where s.Proposition.Any()
                      select s).ToList();
