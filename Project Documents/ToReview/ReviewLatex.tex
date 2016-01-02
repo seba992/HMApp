@@ -1388,7 +1388,7 @@ public static bool ValidatePassword(string pass)
 \end{lstlisting}
 
 \subsection{Konto administratora i u¿ytkownika – ListView}
-U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami. Przedstawia to kod Ÿród³owy \ref{listing:propuser}.
+U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana jest dana propozycja cenowa. Do tego celu nie mo¿na w bezpoœredni sposób wykorzystaæ bazy danych lecz zosta³a stworzona warstwa poœrednia w postaci klasy AdminProposition. Klasa ta zawiera pola wymagane do wyœwietlenia propozycji cenowej w postaci imiê nazwisko osoby odpowiedzialnej, status, jeœli dana propozycja cenowa jest dla firmy to firmê. Wykorzystuj¹c polecenia LINQ s¹ pobierane dane z bazy danych i wykorzystuj¹c wbudowane mechanizmy, jest tworzona lista propozycji z wymaganymi polami nastêpnie nastêpuje zapisanie jej do w³aœciwoœci PropositionsList. Przedstawia to kod Ÿród³owy \ref{listing:propuser}.
 \begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie propozycje u¿ytkownika}, label={listing:propuser}]
  var myProposition = (from prop in _ctx.Proposition
                       from user in _ctx.Users 
@@ -1411,7 +1411,7 @@ U¿ytkownik mo¿e ogl¹daæ swoje propozycje ich iloœæ jak i z jak firmami zwi¹zana 
 //w prawid³owej formie do wyœwietlenia
 \end{lstlisting}
 Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytkownika. Wykorzystuj¹c mo¿liwoœci jêzyka LINQ tworzona jest lista wszystkich u¿ytkowników maj¹cych jakiekolwiek propozycje cenowe i przypisanie ich do ComboBox. Proces przypisywania prezentuje kod Ÿród³owy \ref{listing:user}. Wraz z wyborem u¿ytkownika z tej listy nastêpuje odœwie¿enie ListView z propozycjami. 
-\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie u¿ytkownika posiadaj¹cych propozycjê} \label{listing:user}]
+\begin{lstlisting}[caption= {Polecenie wyci¹gaj¹ce wszystkie u¿ytkownika posiadaj¹cych propozycjê}, label={listing:user}]
  var userlist = (from s in _ctx.Users
                      where s.Proposition.Any()
                      select s).ToList();
@@ -1422,7 +1422,7 @@ Administrator ma równie¿ dodatkow¹ mo¿liwoœæ wybierania propozycji danego u¿ytko
 
 \end{lstlisting}
 
-Edycja propozycji w obydwu przypadkach odbywa siê w ten sam sposób poprzez wybranie propozycji z ListView nastêpuje przypisanie identyfikatora z bazy danych do zmiennej i wyszukanie wszystkich elementów danej propozycji. Z kolei wype³niane s¹ wszystkie pola, które zosta³y zaznaczone. 
+Edycja propozycji w obydwu przypadkach odbywa siê w ten sam sposób poprzez wybranie propozycji z ListView nastêpuje przypisanie identyfikatora z bazy danych do zmiennej i wyszukanie wszystkich elementów danej propozycji. Z kolei wype³niane s¹ wszystkie pola, które zosta³y zaznaczone w procesie tworzenia propozycji.
 
 \subsection{Tworzenie propozycji cenowej}
 
