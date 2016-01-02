@@ -5665,6 +5665,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                             from user in _ctx.Users
                             where user.Id == _userId
                             where prop.Id_user == UserId
+                            orderby prop.UpdateDate descending, user.Surname
                             select new AdminProposition
                             {
                                 PropositionId = prop.Id,

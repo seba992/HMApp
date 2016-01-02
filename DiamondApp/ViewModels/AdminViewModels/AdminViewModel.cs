@@ -188,6 +188,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                         from user in _ctx.Users
                         where user.Id == value.Id
                         where prop.Id_user == value.Id
+                        orderby prop.UpdateDate descending, user.Surname
                         select new AdminProposition
                         {
                             PropositionId = prop.Id,
@@ -6033,7 +6034,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             var myQuerry = (from prop in _ctx.Proposition
                             from user in _ctx.Users
                             where prop.Id_user == user.Id
-                            orderby prop.UpdateDate descending, user.Name descending
+                            orderby prop.UpdateDate descending, user.Surname
                             select new AdminProposition
                             {
                                 PropositionId = prop.Id,   // myślę że id propozycji się przyda CACHE
