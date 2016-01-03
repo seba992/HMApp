@@ -4635,7 +4635,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     addPropReservationDetails.PeopleNumber = PropositionReservDetailsPeopleNumber;
                     addPropReservationDetails.EndTime = PropositionReservDetails.EndTime;
                     addPropReservationDetails.StartTime = PropositionReservDetails.StartTime;
-                    //ddPropReservationDetails.Proposition = PropositionReservDetails.Proposition;
+                    //addPropReservationDetails.Proposition = PropositionReservDetails.Proposition;
                     _ctx.PropReservationDetails.Add(addPropReservationDetails);
 
                 }
@@ -4685,6 +4685,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                         
                        hall.Days = PropHallEqDays0;
                        hall.Amount = PropHallEqAmount0;
+                        propEquipment.Remove(hall);
                        _ctx.SaveChanges();
                     }
 
@@ -5452,6 +5453,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 List<PropHallEquipment> editEquipment = (from q in _ctx.PropHallEquipment
                                                          where q.Id_proposition == _idProposition
                                                          select q).ToList();
+
 
                 var halla = editEquipment.Find(item => item.Things == "Sala " + editDetalis.Hall);
                 if (halla != null)

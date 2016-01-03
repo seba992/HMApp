@@ -4348,6 +4348,7 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                         hall.Days = PropHallEqDays0;
                         hall.Amount = PropHallEqAmount0;
+                        propEquipment.Remove(hall);
                         _ctx.SaveChanges();
                     }
 
