@@ -23,7 +23,7 @@ select @iduser =  id from Users where Login ='tomasz.karolak';
 
 begin
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE()) + 60,'Nowa');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 60),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Wytwórnia win','ul. Jagodowa 3 23-765 Siemianowiec','1234556698','Łukasz Lis', 500295458,'Łukasz Lis' ,'sn@wp.pl'   from Proposition p where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -62,7 +62,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='agata.przybysz';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 70),'Nowa');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 70),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Reserved','ul. Francuska 32/43 23-765 Bytom','1234556698','Iwona Janioł', 852456951,'Iwona Janioł' ,'iwonaj@reserved.pl'   from Proposition p  where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -100,7 +100,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='daria.warcab';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 30),'Nowa');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 30),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Adidas','ul. Chorzowska 324 95-755 Warszawa','9875656698','Kamil Duda', 852456951,'Kamil Duda' ,'kamil_duda@adidas.pl'   from Proposition p  where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -138,7 +138,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='pawel.lis';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 33),'Nowa');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 33),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Google','ul. Powstańców Warszawskich 54/2 95-755 Wrocław','9875656698','Iwona Sapia', 852456951,'Kamil Duda' ,'iwonaiapia@google.com'   from Proposition p  where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -177,7 +177,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='miwi';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 44 ),'Nowa');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 44 ),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Sklep wielobranżowy','ul. Gajowa 43/2 95-755 Łódz','9875656698','Huberd Zboroń', 852456951,'Huberd Zboroń' ,'huber2321@wp.pl'   from Proposition p  where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -216,7 +216,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='tomasz.wiglusz';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 65),'Nowa');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 65),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Sklep spożywczy','ul. Łagienicka 253/2 58-785 Łódz','9875656698','Huberd Zboroń', 852456951,'Huberd Zboroń' ,'huber2321@wp.pl'   from Proposition p  where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -450,7 +450,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='maria.krzemien';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 10),'Nowa');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 10),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Skład węgla','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Mateusz Mularczyk', 852456951,'Mateusz Mularczyk' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -489,7 +489,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='sylwia.gruszka';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE()+ 20),'Nowa');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 20),'Nowa');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Firma budowlana','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Jacek Wołczyk', 852456951,'Jacek Wołczyk' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser;
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -527,7 +527,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='joanna.ulman';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 1),'W trakcie realizacji');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 1),'W trakcie realizacji');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Zegarmistrz','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Dawid Szczepanik', 852456951,'Dawid Szczepani' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser and p.Status='W trakcie realizacji';
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -566,7 +566,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='monika.duda';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE()+ 10 ),'W trakcie realizacji');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 10 ),'W trakcie realizacji');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'KWK Bobrek','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Herbert Salwicek', 852456951,'Herbert Salwicek' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser  and p.Status='W trakcie realizacji';
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -605,7 +605,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='tomasz.karolak';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 20),'W trakcie realizacji');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 20),'W trakcie realizacji');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Huta stali','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Jan Poloczek', 852456951,'Jan Poloczek' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser  and p.Status='W trakcie realizacji';
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -643,7 +643,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='tomasz.skowronek';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 50),'W trakcie realizacji');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 50),'W trakcie realizacji');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Serwis komputerowy','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Jan Bochenek', 852456951,'Jan Bochenek' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser  and p.Status='W trakcie realizacji';
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -682,7 +682,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='malgorzata.rembisz';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 26),'W trakcie realizacji');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 26),'W trakcie realizacji');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'Zakład wulkanizacyjny','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Tomasz Gwarecki', 852456951,'Tomasz Gwarecki' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser  and p.Status='W trakcie realizacji';
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
@@ -720,7 +720,7 @@ select   p.Id,'100% do dnia realizacji','Doliczany do faktury','Gastronomia konf
 select @iduser =  id from Users where Login ='miwi';
 PRINT @iduser 
 insert into Proposition (Id_user, UpdateDate,Status)
-values (@iduser,CONVERT(VARCHAR(19),GETDATE() + 45),'W trakcie realizacji');
+values (@iduser,CONVERT(VARCHAR(19),GETDATE() - 45),'W trakcie realizacji');
 insert into PropClient (Id_proposition,CompanyName,CompanyAdress,NIP,CustomerFullName,PhoneNum,DecisingPersonFullName, CustomerEmail)
 select  p.Id,'ZOO','ul. Wrocławska 3/2 53-783 Gdańsk','9875656698','Michał Frączewski', 852456951,'Michał Frączewski' ,'komada997@wp.pl'   from Proposition p  where p.Id_user = @iduser  and p.Status='W trakcie realizacji';
 insert into PropReservationDetails (Id_proposition,StartData,StartTime,EndData,EndTime,PeopleNumber,Hall,HallSetting)
