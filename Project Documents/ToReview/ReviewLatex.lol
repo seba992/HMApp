@@ -5,3 +5,4 @@
 \contentsline {lstlisting}{\numberline {5}Polecenie wyci\k agaj\k ace wszystkie u\.zytkownika posiadaj\k acych propozycj\k e}{72}
 \contentsline {lstlisting}{\numberline {6}Implementacja i opis fragmentu kodu aktualizuj\k acego baz\k e danych z poziomu DataGridView}{74}
 \contentsline {lstlisting}{\numberline {7}Fragment kodu tworz\k acego prost\k a tabel\k e przy u\.zyciu biblioteki PDFSharp \& MigraDoc}{75}
+\contentsline {lstlisting}{\numberline {8}Implementacja i opis funkcji zapisuj\k acej propozycj\k e cenow\k a do pliku PDF}{76}

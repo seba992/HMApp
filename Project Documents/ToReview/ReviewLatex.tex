@@ -537,6 +537,8 @@ Popularnym systemem kontroli wersji jest Git, wydany na darmowej licencji. Zosta
 Historia zmian dokonanych w plikach ürÛd≥owych zapisywana jest za pomocπ polecenia commit, ktÛre nadaje identyfikator aktualnej wersji projektu, opis zmian (opcjonalnie) oraz spis zmodyfikowanych plikÛw. Pliki na serwer wysy≥ane sπ za pomocπ komendy push. Pobieranie plikÛw zamieszczanych na serwerze przez pozosta≥ych cz≥onkÛw zespo≥u umoøliwia komenda fetch, natomiast synchronizacjÍ zmian z lokalnπ kopiπ umoøliwia komenda pull \cite{useOfGit}. 
 Git jest programem dzia≥ajπcym w linii poleceÒ. Istnieje rÛwnieø graficzna nak≥adka na Git'a, ktÛrπ jest Atlassian SourceTree. Jest on darmowym programem, jednak po up≥ywie trzydziestu dni od instalacji, uøytkownik zobowiπzany jest do rejestracji konta w celu dalszego korzystania z aplikacji \cite{treelic}. Posiada dystrybucje dla systemu Windows oraz OS X. OprÛcz standardowych funkcjonalnoúci Git'a umoøliwia podglπd zmian w plikach dla poszczegÛlnych commit'Ûw \cite{tree}. Podczas pracy nad projektem programistycznym, prawdopodobnπ sytuacjπ jest dokonanie zmian na tym samym pliku przez dwÛch programistÛw. Jeúli zmiany wzajemnie siÍ wykluczajπ, problem moøna rozwiπzaÊ za pomocπ zewnÍtrznego narzÍdzia do rozwiπzywania konfliktÛw SVN. Umoøliwia on uøytkownikowi porÛwnanie rÛønic w poszczegÛlnych wersjach pliku. Programista wybiera bloki kodu ürÛd≥owego ktÛre majπ zostaÊ zapisane w pliku, zatwierdza zmiany a konflikt zostaje oznaczony jako rozwiπzany. Rysunek \ref{rys:SourceTree} przedstawia okno g≥Ûwne SourceTree.
 
+\newpage
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{tree.jpg}
@@ -544,19 +546,20 @@ Git jest programem dzia≥ajπcym w linii poleceÒ. Istnieje rÛwnieø graficzna nak≥a
     \label{rys:SourceTree}
 \end{figure}
 
-
-GitHub.com jest darmowym serwisem internetowym ktÛry pozwala na przechowywanie projektÛw programistycznych, wspiera system kontroli wersji Git. Pierwsza wersja zosta≥a wydana, w kwietniu 2008 roku \cite{github}. GitHub umoøliwia miÍdzy innymi tworzenie i zarzπdzanie repozytoriami (np. nadawanie uprawnieÒ dostÍpu wspÛ≥pracownikom), podglπd plikÛw danego projektu. Rysunek \ref{rys:RepozytoriumWWW} przedstawia repozytorium niniejszego projektu. Ciekawπ funkcjonalnoúciπ serwisu przedstawionπ na rysunku \ref{rys:GitHub}, jest opracowywanie statystyk uøytkownikÛw, i prezentowanie ich wk≥adu w konkretny projekt w formie wykresÛw. 
+GitHub.com jest darmowym serwisem internetowym ktÛry pozwala na przechowywanie projektÛw programistycznych, wspiera system kontroli wersji Git. Pierwsza wersja zosta≥a wydana, w kwietniu 2008 roku \cite{github}. GitHub umoøliwia miÍdzy innymi tworzenie i zarzπdzanie repozytoriami (np. nadawanie uprawnieÒ dostÍpu wspÛ≥pracownikom), podglπd plikÛw danego projektu. Rysunek \ref{rys:RepozytoriumWWW} przedstawia repozytorium niniejszego projektu. 
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{repowww.jpg}
+    \includegraphics[width=1\textwidth]{repowww.jpg}
     \caption{Interfejs repozytorium w witrynie GiHub.com, èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:RepozytoriumWWW}
 \end{figure}
 
+Ciekawπ funkcjonalnoúciπ serwisu przedstawionπ na rysunku \ref{rys:GitHub}, jest opracowywanie statystyk uøytkownikÛw, i prezentowanie ich wk≥adu w konkretny projekt w formie wykresÛw. 
+
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.85\textwidth]{github.jpg}
+    \includegraphics[width=1\textwidth]{github.jpg}
     \caption{Statystyka wk≥adu pracy z dnia 13 grudnia 2015 r., èrÛd≥o: Opracowanie w≥asne.}
     \label{rys:GitHub}
 \end{figure}
@@ -1062,7 +1065,7 @@ column.Format.Alignment = ParagraphAlignment.Left;
 Row row = table.AddRow();
 row.Cells[0].Shading.Color = Colors.LightGray;
 row.Cells[0].AddParagraph("WYNAJEM");
-\end{verbatim}
+\end{lstlisting}
 
 Kod ürÛd≥owy \ref{listing:SavePdf} przedstawia implementacjÍ funkcji zapisujπcej wygenerowane przez program tabele propozycji cenowej do pliku PDF.
 
@@ -1167,9 +1170,9 @@ Kolejne wersje niniejszego projektu sπ wydawane zgodnie z zasadami Continuous De
 
 \end{itemize}
 
-\newpage
-
 Rysunek \ref{rys:JenkinsSek} przedstawia stronÍ wygenerowanπ dla planu.
+
+\newpage
 
 \begin{figure}[ht]
     \centering
@@ -1742,7 +1745,7 @@ https://msdn.microsoft.com/pl-pl/library/dd264736.aspx
 
 
 \bibitem{ci}
-Fowler M.: \textsl{Continuous Integration}, http://www.martinfowler.com/articles/continuousIntegration.html
+Fowler M.: \textsl{Continuous Integration}, http://www.martinfowler.com/articles/ \newline continuousIntegration.html
 
 \bibitem{cdel}
 http://www.infoq.com/articles/cd-benefits-challenges
