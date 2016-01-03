@@ -5075,7 +5075,7 @@ namespace DiamondApp.ViewModels.UserViewModels
             var propstates = (from ps in _ctx.PropositionStates_Dictionary
                               select ps.Status).ToList();
             PropStates = propstates;
-
+            SelectedPropState = propstates.FirstOrDefault();
             // wypelnianie listy dodatkowego wyposazenia sali 2tab
             var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
                                   select he.Things).ToList();
