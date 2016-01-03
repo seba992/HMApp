@@ -4,7 +4,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
-        Title="Panel administratora" Height="623.015" Width="1081.455" Closed="Window_Closed" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/DiamondApp;component/ApplicationIcon.ico">
+        Title="Panel administratora" Height="623.015" Width="1081.455" Closed="Window_Closed" ResizeMode="NoResize, CanMinimize" WindowStartupLocation="CenterScreen" Icon="/DiamondApp;component/ApplicationIcon.ico" >
     <Window.Resources>
         <DataTemplate x:Key="SebaWrappingTemplate">
             <Grid>

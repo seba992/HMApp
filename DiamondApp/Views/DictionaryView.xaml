@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
         xmlns:adminViewModels="clr-namespace:DiamondApp.ViewModels.AdminViewModels"
-        Title="Edycja słowników" Height="530" Width="820" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/DiamondApp;component/ApplicationIcon.ico">
+        Title="Edycja słowników" Height="530" Width="820" ResizeMode="NoResize, CanMinimize" WindowStartupLocation="CenterScreen" Icon="/DiamondApp;component/ApplicationIcon.ico">
 
     <Grid Background="#FF1F7AC7">
         <ComboBox x:Name="Ctyp" HorizontalAlignment="Left" Margin="290,5,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Filter}" Visibility="Hidden" SelectedValue="{Binding SelectedFilter}"/>
