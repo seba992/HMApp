@@ -654,10 +654,13 @@ namespace DiamondApp.Tools.Pdf
                 paragraph.Format.Alignment = ParagraphAlignment.Center;
                 paragraph.Format.Font.Bold = true;
 
-  
+                //get logo from resource
                 string tempPath = Path.GetTempPath();
                 string filePath = tempPath + "\\MainPdfLogo.png";
+                Bitmap bitmapWithLogo = new Bitmap(Properties.Resources.MainPdfLogo);
+                bitmapWithLogo.Save(filePath);
                 Image image = section.AddImage(filePath);
+
                 image.Width = Unit.FromPoint(593);
                 image.Height = Unit.FromPoint(125);
                 image.RelativeVertical = RelativeVertical.Page;
