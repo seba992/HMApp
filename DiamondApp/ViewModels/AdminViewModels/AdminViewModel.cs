@@ -5393,7 +5393,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             SelectedProposition = null;
             var updateProposition = (from q in _ctx.Proposition
                                      where q.Id == _idProposition
-                                        && q.Id_user == _userId
+                                        //&& q.Id_user == _userId
                                      select q).SingleOrDefault();
 
 
