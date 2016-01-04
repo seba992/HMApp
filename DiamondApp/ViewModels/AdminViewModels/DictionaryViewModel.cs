@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 using DiamondApp.Model;
 using DiamondApp.Tools.MvvmClasses;
@@ -23,8 +22,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
 
         private DiamondDBEntities _ctx;
-//        private List<DiamondDBEntities> _items;
-        private ObservableCollection<PropMenuGastronomicThings_Dictionary_First> _gastronomic;
+
+        private ObservableCollection<PropMenuGastronomicThings_Dictionary_First> _gastronomic; 
         private List<PropReservationDetails_Dictionary_HallPrices> _hallPrices;
         private List<string> _filter;
         private List<string> _listTable = new List<string> { "Gastronomia", "Pokoje", "Sale" };
@@ -33,7 +32,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         private List<PropAccomodation_Dictionary> _listAccomaDictionaries;
         private PropMenuGastronomicThings_Dictionary_First _seletedDeleteElement;
         private ICommand _deleteCommand;
-        private  List<float?> _vatList; 
+
 
         private void DictionaryUpdate()
         {
@@ -44,7 +43,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             var test2 = (from x in _ctx.PropReservationDetails_Dictionary_HallPrices
                          select x).ToList();
             HallPrices = test2;
-            //Filtrowanie gatronowmi
+            //Filtrowanie gatronomia
             _filter=new List<string>();
             _filter.Add(" ");
             _filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
@@ -54,8 +53,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             var room = (from x in _ctx.PropAccomodation_Dictionary
                select x).ToList();
             ListAccomaDictionaries = room;
-            _vatList = (from x in _ctx.VatList
-                 select x.Vat).ToList();
+           
         }
 
         public ObservableCollection<PropMenuGastronomicThings_Dictionary_First> Gastronomic
@@ -157,16 +155,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             }
         }
 
-        public List<float?> VatList
-        {
-            get { return _vatList; }
-            set
-            {
-                _vatList = value;
-                RaisePropertyChanged("VatList");
-            }
-        }
-
+     
         public ICommand DeleteCommand
         {
             get

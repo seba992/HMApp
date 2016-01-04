@@ -1,8 +1,6 @@
 ﻿<Window x:Class="DiamondApp.Views.DictionaryView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:viewModels="clr-namespace:DiamondApp.ViewModels"
-        xmlns:adminViewModels="clr-namespace:DiamondApp.ViewModels.AdminViewModels"
         Title="Edycja słowników" Height="530" Width="820" ResizeMode="NoResize, CanMinimize" WindowStartupLocation="CenterScreen" Icon="/DiamondApp;component/ApplicationIcon.ico">
 
     <Grid Background="#FF1F7AC7">

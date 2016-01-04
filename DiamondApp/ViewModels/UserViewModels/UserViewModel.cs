@@ -5564,7 +5564,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show("testststset" + e.ToString());
+                    MessageBox.Show("Niedodano parkingu" + e.ToString());
                 }
 
 

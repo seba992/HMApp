@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
-using System.Windows.Media.Animation;
 using DiamondApp.Model;
-using DiamondApp.ViewModels;
 using DiamondApp.ViewModels.AdminViewModels;
 
 namespace DiamondApp.Views
@@ -22,14 +15,8 @@ namespace DiamondApp.Views
     public partial class DictionaryView : Window
     {
         private DiamondDBEntities _ctx;
-        private string selectDictionry;
         private string _selectDictionry;
-        private List<PropMenuGastronomicThings_Dictionary_First> _gastronomic;
-        private List<PropReservationDetails_Dictionary_HallPrices> _hallPriceses;
-        private DataRowView rowBeingEdited;
-        private int id;
-        private DictionaryViewModel tmp;
-        private List<string> testing;
+
        
 #region Construkt
         public DictionaryView( )
@@ -45,11 +32,10 @@ namespace DiamondApp.Views
         public void Changeview(object sender, EventArgs e)
         {
 
-            //selectDictionry = DictionaryList.SelectionBoxItem.ToString();
-            selectDictionry = DictionaryList.SelectedItem.ToString();
+            _selectDictionry = DictionaryList.SelectedItem.ToString();
            
 
-            switch (selectDictionry)
+            switch (_selectDictionry)
             {
                 case "Gastronomia":
                            
@@ -95,15 +81,16 @@ namespace DiamondApp.Views
                 object item = GstronomicGrid.SelectedItem;
                 string ID = (GstronomicGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
                 int selected = Int32.Parse(ID);
-                // int selected = ((PropMenuGastronomicThings_Dictionary_First)e.Row.Item).Id;
+                //int selected = ((PropMenuGastronomicThings_Dictionary_First)e.Row.Item).Id;
 
                 dynamic userRow = GstronomicGrid.SelectedItem;
-               
+                
                 if (selected != 0 && userRow.ThingName != ""  && userRow.ThingName != null 
                     && userRow.NettoMini != null && userRow.NettoMini != 0 
                     && userRow.MergeType != null && userRow.SpecificType != null
-                    && userRow.SpecificType != "" && userRow.Vat != null && userRow.Vat != "")
-                { 
+                    && userRow.SpecificType != "" && userRow.Vat.ToString() != "" && userRow.Vat.ToString() != null)
+                {
+                    
                     PropMenuGastronomicThings_Dictionary_First userUpdate = 
                         (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
                                         where q.Id == selected
@@ -115,8 +102,12 @@ namespace DiamondApp.Views
                                 userUpdate.MergeType = userRow.MergeType;
                                 userUpdate.SpecificType = userRow.SpecificType;
                                 
+                                
                 }
-                else if (userRow.ThingName != "" && userRow.ThingName != null && userRow.NettoMini != null && userRow.NettoMini != 0 && userRow.MergeType != null && userRow.SpecificType !=null && userRow.SpecificType != "")
+                else if (userRow.ThingName != "" && userRow.ThingName != null 
+                    && userRow.NettoMini != null && userRow.NettoMini != 0 
+                    && userRow.MergeType != null && userRow.SpecificType !=null
+                    && userRow.SpecificType != "" && userRow.Vat.ToString() != "" && userRow.Vat.ToString() != null)
                 {
                     PropMenuGastronomicThings_Dictionary_First userUpdate = new PropMenuGastronomicThings_Dictionary_First();
                                     
@@ -126,6 +117,7 @@ namespace DiamondApp.Views
                     userUpdate.MergeType = userRow.MergeType;
                     userUpdate.SpecificType = userRow.SpecificType;
                     _ctx.PropMenuGastronomicThings_Dictionary_First.Add(userUpdate);
+                    
 
                 }
                 else
@@ -136,7 +128,7 @@ namespace DiamondApp.Views
             }
             catch (Exception ex)
             {
-                Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+               Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

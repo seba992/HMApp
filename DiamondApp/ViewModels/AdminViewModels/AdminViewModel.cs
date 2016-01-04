@@ -5,7 +5,6 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Annotations;
 using System.Windows.Input;
 using DiamondApp.FillingObjects;
 using DiamondApp.Model;
@@ -5533,13 +5532,11 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     PropMenuMerge4 = editGastronomicMerge[4].DefaultValue;
                 }
                
-                //PropMenuPositions = editGastronomic;
-                //_propMenuPositions = editGastronomic;
-
+              
                 var editGastronomic = (from q in _ctx.PropMenuPosition
                                        where q.Id_proposition == _idProposition
                                        select q).ToList();
-                //MessageBox.Show(editGastronomic.ElementAtOrDefault(0).TypeOfService);
+                
 
                 for (int i = 0; i < editGastronomic.Count; i++)
                 {
@@ -5761,7 +5758,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                  }
                  catch (Exception e)
                  {
-                     MessageBox.Show("testststset" + e.ToString());
+                     MessageBox.Show("Niedodano parkingu" + e.ToString());
                  }
 
                          
@@ -5827,7 +5824,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             {
                 ChangeView(false);
                 _saveFlag = false;
-                Xceed.Wpf.Toolkit.MessageBox.Show("Nie wybrano propozycji lub propozycje innego użytkownika!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                Xceed.Wpf.Toolkit.MessageBox.Show("Nie wybrano propozycji lub propozycję innego użytkownika!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
 
