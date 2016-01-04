@@ -78,6 +78,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 var order = (from o in _ctx.Users
                              where o.Id == _userProp.Id
                              select o).First();
+                var user = (from u in _ctx.Users
+                            where u.AccountType == 1
+                            select u).FirstOrDefault();
+                var prop = (from u in _ctx.Proposition
+                            where u.Id_user == _userProp.Id
+                            select u).ToList();
+                foreach (var tmp in prop)
+                {
+                    tmp.Id_user = user.Id;
+                }
                 _ctx.Users.Remove(order);
                 _ctx.SaveChanges();
                 Xceed.Wpf.Toolkit.MessageBox.Show("Konto użytkownika zostało usunięte!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -85,6 +95,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.ToString());
                 Xceed.Wpf.Toolkit.MessageBox.Show("Wystąpił błąd! Konto użytkownika nie zostało usunięte.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }
