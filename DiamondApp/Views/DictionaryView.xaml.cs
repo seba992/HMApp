@@ -16,7 +16,7 @@ namespace DiamondApp.Views
     {
         private DiamondDBEntities _ctx;
         private string _selectDictionry;
-
+        private bool thisView;
        
 #region Construkt
         public DictionaryView( )
@@ -28,6 +28,7 @@ namespace DiamondApp.Views
              this.Language = XmlLanguage.GetLanguage(Thread.CurrentThread.CurrentCulture.Name);  // potrzebne do zmiany wyswietlanej waluty $ -> zl
             
         }
+      
 #endregion
         public void Changeview(object sender, EventArgs e)
         {

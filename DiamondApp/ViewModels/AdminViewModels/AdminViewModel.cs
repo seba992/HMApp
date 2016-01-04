@@ -109,6 +109,11 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
         private int _defaultViewVatIndex;
 
+        private DictionaryView _editDictionaryView ;
+        private AddUserView _addUserView;
+        private EditUserView _editUserView;
+        private RemoveUserView _removeUserView;
+        private ResetPasswordView _resetPasswordView;
         #region Constructor
 
         public AdminViewModel(int userId)
@@ -5850,8 +5855,24 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
         private void EditDictionaryExecute(object obj)
         {
-            DictionaryView edit = new DictionaryView();
-            edit.Show();
+            if (_editDictionaryView != null)
+            {
+                if (_editDictionaryView.IsLoaded)
+                {
+                    _editDictionaryView.Focus();
+                }
+                else
+                {
+                    _editDictionaryView = new DictionaryView();
+                    _editDictionaryView.Show();
+                }
+            }
+            else
+            {
+                _editDictionaryView = new DictionaryView();
+                _editDictionaryView.Show();
+            }
+
         }
 
         private ICommand _resetPasswordCommand;
@@ -5875,9 +5896,35 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
         private void ResetPasswordExecute(object obj)
         {
-            ResetPasswordView reset = new ResetPasswordView();
+           /* ResetPasswordView reset = new ResetPasswordView();
             Application.Current.MainWindow = reset;
-            reset.Show();
+            reset.Show();*/
+
+            if (_resetPasswordView != null)
+            {
+                if (_resetPasswordView.IsLoaded)
+                {
+                    _resetPasswordView.RestarPass.Text = null;
+                    Application.Current.MainWindow = _resetPasswordView;
+                   _resetPasswordView.Show();
+                   
+                }
+                else
+                {
+
+                    _resetPasswordView = new ResetPasswordView();
+                    Application.Current.MainWindow = _resetPasswordView;
+                    _resetPasswordView.Show();
+
+                }
+            }
+            else
+            {
+                _resetPasswordView = new ResetPasswordView();
+                Application.Current.MainWindow = _resetPasswordView;
+                _resetPasswordView.Show();
+            }
+           
         }
 
         private ICommand _removeUserCommand;
@@ -5901,9 +5948,32 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
         private void RemoveUserExecute(object obj)
         {
-            RemoveUserView remove = new RemoveUserView();
+           /* RemoveUserView remove = new RemoveUserView();
             Application.Current.MainWindow = remove;
-            remove.Show();
+            remove.Show();*/
+            if (_removeUserView != null)
+            {
+                if (_removeUserView.IsLoaded)
+                {
+                    _removeUserView.UserListComboBox.Text = null;
+                    _removeUserView.Show();
+                    Application.Current.MainWindow = _removeUserView;
+                }
+                else
+                {
+                    
+                    _removeUserView = new RemoveUserView();
+                    Application.Current.MainWindow = _removeUserView;
+                    _removeUserView.Show();
+
+                }
+            }
+            else
+            {
+                _removeUserView = new RemoveUserView();
+                Application.Current.MainWindow = _removeUserView;
+                _removeUserView.Show();
+            }
         }
 
         private ICommand _editUserCommand;
@@ -5927,9 +5997,33 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
         private void EditUserExecute(object obj)
         {
-            EditUserView remove = new EditUserView();
-            Application.Current.MainWindow = remove;
-            remove.Show();
+            //EditUserView _editUserView = new EditUserView();
+           // Application.Current.MainWindow = _editUserView;
+           // _editUserView.Show();
+
+            if (_editUserView != null)
+            {
+                if (_editUserView.IsLoaded)
+                {
+                           
+                    _editUserView.Focus();
+                    Application.Current.MainWindow = _editUserView;
+                }
+                else
+                {
+
+                    _editUserView = new EditUserView();
+                    Application.Current.MainWindow = _addUserView;
+                    _editUserView.Show();
+                   
+                }
+            }
+            else
+            {
+                _editUserView = new EditUserView();
+                Application.Current.MainWindow = _editUserView;
+                _editUserView.Show();
+            }
         }
 
         private ICommand _addUserCommand;
@@ -5953,9 +6047,43 @@ namespace DiamondApp.ViewModels.AdminViewModels
         }
         private void AddUserExecute(object obj)
         {
-            AddUserView add = new AddUserView();
-            Application.Current.MainWindow = add;
-            add.Show();
+            //AddUserView add = new AddUserView();
+            //Application.Current.MainWindow = add;
+           // add.Show();
+            if (_addUserView != null)
+            {
+                if (_addUserView.IsLoaded)
+                {
+                    
+                   // _addUserView.Focus();
+                    _addUserView.EmailTextBox.Text = null;
+                    _addUserView.NameTextBox.Text = null;
+                    _addUserView.SurnameTextBox.Text = null;
+                    _addUserView.PositionTextBox.Text = null;
+                    _addUserView.PhoneNumberTextBox.Text = null;
+                    _addUserView.TypeComboBox.Text = null;
+                    
+                   _addUserView.Show();
+                    Application.Current.MainWindow = _addUserView;
+                }
+                else
+                {
+                    
+                    _addUserView = new AddUserView();
+                    //Application.Current.MainWindow = _addUserView;
+                    _addUserView.Show();
+                    Application.Current.MainWindow = _addUserView;
+                }
+            }
+            else
+            {
+
+                
+                _addUserView = new AddUserView();
+                Application.Current.MainWindow = _addUserView;
+                _addUserView.Show();
+            }
+            
         }
 
         public ICommand ShutDown
