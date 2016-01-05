@@ -1811,6 +1811,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _thirdTabNettoPrice[0] = value;
                 RaisePropertyChanged("ThirdTabNettoPrice0");
+
+                if (value == null)
+                {
+                    ThirdTabNettoValue0 = 0;
+                    ThirdTabBruttoValue0 = 0;
+                }
             }
         }
         public decimal? ThirdTabNettoPrice1
@@ -1820,6 +1826,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _thirdTabNettoPrice[1] = value;
                 RaisePropertyChanged("ThirdTabNettoPrice1");
+
+                if (value == null)
+                {
+                    ThirdTabNettoValue1 = 0;
+                    ThirdTabBruttoValue1 = 0;
+                }
             }
         }
         public decimal? ThirdTabNettoPrice2
@@ -1829,6 +1841,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _thirdTabNettoPrice[2] = value;
                 RaisePropertyChanged("ThirdTabNettoPrice2");
+
+                if (value == null)
+                {
+                    ThirdTabNettoValue2 = 0;
+                    ThirdTabBruttoValue2 = 0;
+                }
             }
         }
         public decimal? ThirdTabNettoPrice3
@@ -1838,6 +1856,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _thirdTabNettoPrice[3] = value;
                 RaisePropertyChanged("ThirdTabNettoPrice3");
+
+                if (value == null)
+                {
+                    ThirdTabNettoValue3 = 0;
+                    ThirdTabBruttoValue3 = 0;
+                }
             }
         }
         public decimal? ThirdTabNettoPrice4
@@ -1847,6 +1871,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _thirdTabNettoPrice[4] = value;
                 RaisePropertyChanged("ThirdTabNettoPrice4");
+
+                if (value == null)
+                {
+                    ThirdTabNettoValue4 = 0;
+                    ThirdTabBruttoValue4 = 0;
+                }
             }
         }
         public decimal? ThirdTabNettoPrice5
@@ -1856,6 +1886,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _thirdTabNettoPrice[5] = value;
                 RaisePropertyChanged("ThirdTabNettoPrice5");
+
+                if (value == null)
+                {
+                    ThirdTabNettoValue5 = 0;
+                    ThirdTabBruttoValue5 = 0;
+                }
             }
         }
         public decimal? ThirdTabNettoPrice6
@@ -1865,6 +1901,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _thirdTabNettoPrice[6] = value;
                 RaisePropertyChanged("ThirdTabNettoPrice6");
+
+                if (value == null)
+                {
+                    ThirdTabNettoValue6 = 0;
+                    ThirdTabBruttoValue6 = 0;
+                }
             }
         }
 

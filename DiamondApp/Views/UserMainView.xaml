@@ -15,7 +15,7 @@
         <Style x:Key="ListViewStyle" TargetType="{x:Type ListViewItem}">
             <Style.Triggers>
                 <Trigger Property="ItemsControl.AlternationIndex" Value="1">
-                    <Setter Property="Background" Value="LightBlue"></Setter>
+                    <Setter Property="Background" Value="LightGray"></Setter>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -112,8 +112,8 @@
                     <Label Grid.Row="0" Grid.Column="4" Content="DLA: " Grid.ColumnSpan="2"/>
                     <Label Grid.Row="1" Grid.Column="4" Content="ADRES: " Grid.ColumnSpan="2"/>
                     <Label Grid.Row="2" Grid.Column="4" Content="NIP: " Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="3" Grid.Column="4" Content="TERMIN WAŻNOŚCI PROPOZYCJI:" Grid.ColumnSpan="2"/>
-                    <Label Grid.Row="4" Grid.Column="4" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold" Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="3" Grid.Column="4" Content="TERMIN WAŻNOŚCI PROPOZYCJI:" Grid.ColumnSpan="3"/>
+                    <Label Grid.Row="4" Grid.Column="4" Content="KONTAKT ZE STRONY ZAMAWIAJĄCEGO: " FontWeight="Bold" Grid.ColumnSpan="3"/>
                     <Label Grid.Row="5" Grid.Column="4" Content="Sz.P.:" Grid.ColumnSpan="2"/>
                     <Label Grid.Row="6" Grid.Column="4" Content="TELEFON:" Grid.ColumnSpan="2"/>
                     <Label Grid.Row="7" Grid.Column="4" Content="ADRES E-MAIL:" Grid.ColumnSpan="2"/>
@@ -521,13 +521,6 @@
                     <TextBox x:Name="UnWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue3, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="UnWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue4, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="UnWartoscBruttoTextBox6" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue5, StringFormat=\{0:c\}}" />
-
-                    <TextBox x:Name="UNWartoscBruttoTextBox1" Grid.Column="7" Grid.Row="2" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue0, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UNWartoscBruttoTextBox2" Grid.Column="7" Grid.Row="3" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue1, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UNWartoscBruttoTextBox3" Grid.Column="7" Grid.Row="4" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue2, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UNWartoscBruttoTextBox4" Grid.Column="7" Grid.Row="5" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue3, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UNWartoscBruttoTextBox5" Grid.Column="7" Grid.Row="6" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue4, StringFormat=\{0:c\}}" />
-                    <TextBox x:Name="UNWartoscBruttoTextBox6" Grid.Column="7" Grid.Row="7" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabBruttoValue5, StringFormat=\{0:c\}}" />
 
                     <TextBox x:Name="UnSumaWartoscNettoTextBox" Grid.Column="6" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding FourthTabSumNettoValue, StringFormat=\{0:c\}}" />
                     <TextBox x:Name="UnSumaWartoscBruttoTextBox" Grid.Column="7" Grid.Row="8" Margin="3" IsEnabled="False" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Text="{Binding FourthTabSumBruttoValue, StringFormat=\{0:c\}}" />
