@@ -5156,8 +5156,8 @@ namespace DiamondApp.ViewModels.UserViewModels
                 SelectedProposition = null;
                 _idProposition = 0;
                 SelectAllPropositions();
-                ChangeView(false);
                 Xceed.Wpf.Toolkit.MessageBox.Show("Edytowano istniejącą propozycję cenową!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                ChangeView(false);
             }
         }
 

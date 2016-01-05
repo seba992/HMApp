@@ -17,6 +17,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
     public class AdminViewModel : ObservableObject
     {
         private DiamondDBEntities _ctx;
+
         // ukrywanie elemntów
         private Visibility _editPropVisibility = Visibility.Hidden;
         private Visibility _otherElementVisibility = Visibility.Visible;
@@ -5390,8 +5391,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 SelectedProposition = null;
                 _idProposition = 0;
                 SelectAllPropositions();
-                ChangeView(false);
                 Xceed.Wpf.Toolkit.MessageBox.Show("Edytowano istniejącą propozycję cenową!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                ChangeView(false);
             }
         }
 
