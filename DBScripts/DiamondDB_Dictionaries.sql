@@ -227,15 +227,15 @@ insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,Merge
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Cava Rigol Brut 0,75l', 46.68,0.23,'MALK','Szampany');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Jean De La Fontaine Brut 0,75l', 116.70,0.23,'MALK','Szampany');
 																			
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Pepsi 0.2l', 4.08, 0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('PepsiMax 0.2l', 4.08,0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Pepsi Light 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Mirinda 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('7 UP 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Schwepps 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Górska natura gazowana 0.3l', 4.08 ,0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Górska natura niegazowana 0.3l', 4.08 ,0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Red bull 0.2l', 5.84 ,0.23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Pepsi 0.2l', 4.08, 23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('PepsiMax 0.2l', 4.08,23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Pepsi Light 0.2l', 4.08 ,23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Mirinda 0.2l', 4.08 ,23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('7 UP 0.2l', 4.08 ,23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Schwepps 0.2l', 4.08 ,23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Górska natura gazowana 0.3l', 4.08 ,23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Górska natura niegazowana 0.3l', 4.08 ,23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Red bull 0.2l', 5.84 ,23,'MNAPO','Napoje');
 																			
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Œniadania grupowe niskobud¿etowe (ekonomiczne)', 22.69 ,0.08,'MNIS','Lunch');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Lunch serwowany - Menu I', 23.77 ,0.08,'MNIS','Lunch');

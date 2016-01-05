@@ -4363,6 +4363,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                             Console.WriteLine(@"- Property: " + ve.PropertyName + ", Error: " + ve.ErrorMessage);
                         }
                     }
+                    MessageBox.Show(e.ToString());
                     throw;
                 }
                 Xceed.Wpf.Toolkit.MessageBox.Show("Dodano nową propozycję cenową!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -4476,9 +4477,10 @@ namespace DiamondApp.ViewModels.UserViewModels
                 {
                     if (PropHallEqAmount0 != null && PropHallEqDays0 != null)
                     {
-
+                        hall.Things = PropHallEqThing0;
                         hall.Days = PropHallEqDays0;
                         hall.Amount = PropHallEqAmount0;
+                        hall.BruttoPrice = PropHallEqBrutto0;
                         propEquipment.Remove(hall);
                         _ctx.SaveChanges();
                     }
@@ -4639,7 +4641,9 @@ namespace DiamondApp.ViewModels.UserViewModels
                                       select q).ToList();
                 foreach (var check in propEquipment1)
                 {
-                    if (check.Things == " " || check.Things == null || check.Days == null || check.Days == 0 || check.Amount == 0 || check.Amount == null)
+                    if (check.Things == " " || check.Things == null 
+                        || check.Days == null || check.Days == 0 
+                        || check.Amount == 0 || check.Amount == null)
                     {
                         _ctx.PropHallEquipment.Remove(check);
                     }
@@ -4848,7 +4852,8 @@ namespace DiamondApp.ViewModels.UserViewModels
                 var tmpClearGast =
                     clearGast.FindAll(
                         item =>
-                            item.Amount == null || item.Amount == 0 || item.Days == null || item.Days == 0 ||
+                            item.Amount == null || item.Amount == 0 
+                            || item.Days == null || item.Days == 0 ||
                             item.TypeOfService == " " || item.TypeOfService == null).ToList();
                 _ctx.PropMenuPosition.RemoveRange(tmpClearGast);
 
@@ -4872,26 +4877,38 @@ namespace DiamondApp.ViewModels.UserViewModels
                         case "POKÓJ 1-OSOBOWY":
                             room[i].Amount = PropAccomAmount0;
                             room[i].Days = PropAccomDays0;
+                            room[i].BruttoPrice = PropAccomBrutto0;
+                            room[i].Vat = PropAccomVat0;
                             break;
                         case "POKÓJ 2-OSOBOWY":
                             room[i].Amount = PropAccomAmount1;
                             room[i].Days = PropAccomDays1;
+                            room[i].BruttoPrice = PropAccomBrutto1;
+                            room[i].Vat = PropAccomVat1;
                             break;
                         case "POKÓJ BUSSINES 1-OSOBOWY":
                             room[i].Amount = PropAccomAmount2;
                             room[i].Days = PropAccomDays2;
+                            room[i].BruttoPrice = PropAccomBrutto2;
+                            room[i].Vat = PropAccomVat2;
                             break;
                         case "POKÓJ BUSSINES 2-OSOBOWY":
                             room[i].Amount = PropAccomAmount3;
                             room[i].Days = PropAccomDays3;
+                            room[i].BruttoPrice = PropAccomBrutto3;
+                            room[i].Vat = PropAccomVat3;
                             break;
                         case "APARTAMENT":
                             room[i].Amount = PropAccomAmount4;
                             room[i].Days = PropAccomDays4;
+                            room[i].BruttoPrice = PropAccomBrutto4;
+                            room[i].Vat = PropAccomVat4;
                             break;
                         case "POKOJ DLA NIEPEŁNOSPRAWNYCH":
                             room[i].Amount = PropAccomAmount5;
                             room[i].Days = PropAccomDays5;
+                            room[i].BruttoPrice = PropAccomBrutto5;
+                            room[i].Vat = PropAccomVat5;
                             break;
                     }
                 }
@@ -4982,7 +4999,9 @@ namespace DiamondApp.ViewModels.UserViewModels
                 var clearAcc =
                     (from q in _ctx.PropAccomodation
                      where q.Id_proposition == _idProposition
-                     select q).ToList().FindAll(item => item.Amount == 0 || item.Amount == null || item.Days == 0 || item.Days == null);
+                     select q).ToList().FindAll(item => item.Amount == 0 
+                         || item.Amount == null || item.Days == 0 
+                         || item.Days == null);
                 _ctx.PropAccomodation.RemoveRange(clearAcc);
                 _ctx.SaveChanges();
 
@@ -5106,7 +5125,8 @@ namespace DiamondApp.ViewModels.UserViewModels
                                  where x.Id_proposition == _idProposition
                                  select x).ToList().FindAll(item => item.Days == null ||
                                                              item.Amount == null || item.Days == 0 ||
-                                                             item.Amount == 0 || item.ServiceType == " " || item.ServiceType == "");
+                                                             item.Amount == 0 || item.ServiceType == " " 
+                                                             || item.ServiceType == "");
 
                 _ctx.PropExtraServices.RemoveRange(extrClear);
 
@@ -5461,12 +5481,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                                        where q.Id_proposition == _idProposition
                                        select q).ToList();
 
-                //PropMenuPositions = editGastronomic;
-                //_propMenuPositions = editGastronomic;
-
-
-                // MessageBox.Show(editGastronomic[0].TypeOfService.ToString());
-
+                
                 for (int i = 0; i < editGastronomic.Count; i++)
                 {
                     switch (i)
@@ -5482,10 +5497,8 @@ namespace DiamondApp.ViewModels.UserViewModels
                             PropMenuPosMergeType0 = editGastronomic[0].MergeType;
                             PropMenuPosVat0 = editGastronomic[0].Vat;
                             PropMenuTypeOfServ0 = editGastronomic[0].TypeOfService;
-                            if (editGastronomic[0].Amount != null)
-                                PropMenuPosAmount0 = editGastronomic[0].Amount;
-                            if (editGastronomic[0].Days != null)
-                                PropMenuPosDays0 = editGastronomic[0].Days;
+                            PropMenuPosAmount0 = editGastronomic[0].Amount;
+                            PropMenuPosDays0 = editGastronomic[0].Days;
                             break;
                         case 1:
 
@@ -5593,10 +5606,6 @@ namespace DiamondApp.ViewModels.UserViewModels
                                 PropAccomDays0 = propAccomodation[i].Days;
                             PropAccomBrutto0 = propAccomodation[i].BruttoPrice;
                             PropAccomVat0 = propAccomodation[i].Vat;
-                            FourthTabNettoValue0 = ComputeNettoValue((decimal)FourthTabNettoPrice0, PropAccomAmount0,
-                                 PropAccomDays0);
-                            FourthTabBruttoValue0 = ComputeBruttoValue(PropAccomBrutto0, PropAccomAmount0,
-                                 PropAccomDays0);
                             _roomExistList.Remove("POKÓJ 1-OSOBOWY");
 
                             break;
