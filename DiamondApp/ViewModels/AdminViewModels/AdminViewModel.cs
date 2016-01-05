@@ -2772,6 +2772,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     PropMenuGastThingDict0 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                where x.SpecificType == value
                                                                                select x.ThingName).ToList());
+                    PropMenuPosDays0 = null;
+                    PropMenuPosAmount0 = null;
 
                 }
                 else
@@ -2779,7 +2781,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                     PropMenuGastThingDict0 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                select x.ThingName).ToList());
-
+                    PropMenuPosDays0 = null;
+                    PropMenuPosAmount0 = null;
                 }
                 PropMenuGastThingDict0.Add(" ");
                 RaisePropertyChanged("SelectedType0");
@@ -2798,14 +2801,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     PropMenuGastThingDict1 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                where x.SpecificType == value
                                                                                select x.ThingName).ToList());
-
+                    PropMenuPosDays1 = null;
+                    PropMenuPosAmount1 = null;
                 }
                 else
                 {
                     PropMenuGastThingDict1 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                select x.ThingName).ToList());
 
-
+                    PropMenuPosDays1 = null;
+                    PropMenuPosAmount1 = null;
                 }
                 PropMenuGastThingDict1.Add(" ");
                 RaisePropertyChanged("SelectedType1");
@@ -2825,13 +2830,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     PropMenuGastThingDict2 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                where x.SpecificType == value
                                                                                select x.ThingName).ToList());
-
+                    PropMenuPosDays2 = null;
+                    PropMenuPosAmount2 = null;
 
                 }
                 else
                 {
                     PropMenuGastThingDict2 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                select x.ThingName).ToList());
+                    PropMenuPosDays2 = null;
+                    PropMenuPosAmount2 = null;
                 }
                 PropMenuGastThingDict2.Add(" ");
                 RaisePropertyChanged("SelectedType2");
@@ -2851,12 +2859,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     PropMenuGastThingDict3 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                where x.SpecificType == value
                                                                                select x.ThingName).ToList());
+                    PropMenuPosDays3 = null;
+                    PropMenuPosAmount3 = null;
                 }
                 else
                 {
                     PropMenuGastThingDict3 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                select x.ThingName).ToList());
 
+                    PropMenuPosDays3 = null;
+                    PropMenuPosAmount3 = null;
                 }
                 PropMenuGastThingDict3.Add(" ");
                 RaisePropertyChanged("SelectedType3");
@@ -2876,12 +2888,15 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     PropMenuGastThingDict4 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                where x.SpecificType == value
                                                                                select x.ThingName).ToList());
-
+                    PropMenuPosDays4 = null;
+                    PropMenuPosAmount4 = null;
                 }
                 else
                 {
                     PropMenuGastThingDict4 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                select x.ThingName).ToList());
+                    PropMenuPosDays4 = null;
+                    PropMenuPosAmount4 = null;
                 }
                 PropMenuGastThingDict4.Add(" ");
                 RaisePropertyChanged("SelectedType4");
@@ -2900,11 +2915,15 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     PropMenuGastThingDict5 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                where x.SpecificType == value
                                                                                select x.ThingName).ToList());
+                    PropMenuPosDays5 = null;
+                    PropMenuPosAmount5 = null;
                 }
                 else
                 {
                     PropMenuGastThingDict5 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                select x.ThingName).ToList());
+                    PropMenuPosDays5 = null;
+                    PropMenuPosAmount5 = null;
                 }
                 PropMenuGastThingDict5.Add(" ");
                 RaisePropertyChanged("SelectedType5");
@@ -2924,11 +2943,15 @@ namespace DiamondApp.ViewModels.AdminViewModels
                     PropMenuGastThingDict6 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                where x.SpecificType == value
                                                                                select x.ThingName).ToList());
+                    PropMenuPosDays6 = null;
+                    PropMenuPosAmount6 = null;
                 }
                 else
                 {
                     PropMenuGastThingDict6 = new ObservableCollection<string>((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
                                                                                select x.ThingName).ToList());
+                    PropMenuPosDays6 = null;
+                    PropMenuPosAmount6 = null;
                 }
                 PropMenuGastThingDict6.Add(" ");
                 RaisePropertyChanged("SelectedType6");
@@ -4861,166 +4884,158 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                        select q).ToList();
 
 
-                if (PropMenuTypeOfServ0 != " " && PropMenuTypeOfServ0 != null)
+                var service = editGastronomic.ElementAtOrDefault(0);
+                if (service != null)
                 {
-                    var service = editGastronomic.ElementAtOrDefault(0);
-                    if (service != null)
-                    {
 
-                        service.Id_proposition = idProposition;
-                        service.TypeOfService = PropMenuTypeOfServ0;
-                        service.Amount = PropMenuPosAmount0;
-                        service.Days = PropMenuPosDays0;
-                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ0);
-                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ0);
-                         service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ0);
-                        
-                    }
-                    else 
-                    {
-                        PropMenuPosition newPosition = new PropMenuPosition();
-                        newPosition.Id_proposition = idProposition;
-                        newPosition.TypeOfService = PropMenuTypeOfServ0;
-                        newPosition.Amount = PropMenuPosAmount0;
-                        newPosition.Days = PropMenuPosDays0;
-                        newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ0);
-                        newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ0);
-                        newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ0);
-                        _ctx.PropMenuPosition.Add(newPosition);
-                    }
+                    service.Id_proposition = idProposition;
+                    service.TypeOfService = PropMenuTypeOfServ0;
+                    service.Amount = PropMenuPosAmount0;
+                    service.Days = PropMenuPosDays0;
+                    service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ0);
+                    service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ0);
+                    service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ0);
 
+                }
+                else
+                {
+                    PropMenuPosition newPosition = new PropMenuPosition();
+                    newPosition.Id_proposition = idProposition;
+                    newPosition.TypeOfService = PropMenuTypeOfServ0;
+                    newPosition.Amount = PropMenuPosAmount0;
+                    newPosition.Days = PropMenuPosDays0;
+                    newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ0);
+                    newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ0);
+                    newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ0);
+                    _ctx.PropMenuPosition.Add(newPosition);
+                }
+
+
+
+                _ctx.SaveChanges();
+
+
+                var service1 = editGastronomic.ElementAtOrDefault(1);
+                if (service1 != null)
+                {
+                    service1.Id_proposition = idProposition;
+                    service1.TypeOfService = PropMenuTypeOfServ1;
+                    service1.Amount = PropMenuPosAmount1;
+                    service1.Days = PropMenuPosDays1;
+                    service1.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ1);
+                    service1.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ1);
+                    service1.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ1);
+
+                }
+                else
+                {
+                    PropMenuPosition newPosition = new PropMenuPosition();
+                    newPosition.Id_proposition = idProposition;
+                    newPosition.TypeOfService = PropMenuTypeOfServ1;
+                    newPosition.Amount = PropMenuPosAmount1;
+                    newPosition.Days = PropMenuPosDays1;
+                    newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ1);
+                    newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ1);
+                    newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ1);
+                    _ctx.PropMenuPosition.Add(newPosition);
                 }
 
                 _ctx.SaveChanges();
 
-                if (PropMenuTypeOfServ1 != " " && PropMenuTypeOfServ1 != null)
+
+                var service2 = editGastronomic.ElementAtOrDefault(2);
+                if (service2 != null)
                 {
-                    var service  = editGastronomic.ElementAtOrDefault(1);
-                    if (service != null)
+                    service2.Id_proposition = idProposition;
+                    service2.TypeOfService = PropMenuTypeOfServ2;
+                    service2.Amount = PropMenuPosAmount2;
+                    service2.Days = PropMenuPosDays2;
+                    service2.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ2);
+                    service2.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ2);
+                    service2.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ2);
+
+                }
+                else
+                {
+                    PropMenuPosition newPosition = new PropMenuPosition();
+                    newPosition.Id_proposition = idProposition;
+                    newPosition.TypeOfService = PropMenuTypeOfServ2;
+                    newPosition.Amount = PropMenuPosAmount2;
+                    newPosition.Days = PropMenuPosDays2;
+                    newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ2);
+                    newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ2);
+                    newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ2);
+                    _ctx.PropMenuPosition.Add(newPosition);
+                }
+
+                _ctx.SaveChanges();
+                var service3 = editGastronomic.ElementAtOrDefault(3);
+                if (service3 != null)
+                {
+                    service3.Id_proposition = idProposition;
+                    service3.TypeOfService = PropMenuTypeOfServ3;
+                    service3.Amount = PropMenuPosAmount3;
+                    service3.Days = PropMenuPosDays3;
+                    service3.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ3);
+                    service3.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ3);
+                    service3.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ3);
+
+                }
+                else
+                {
+                    PropMenuPosition newPosition = new PropMenuPosition();
+                    newPosition.Id_proposition = idProposition;
+                    newPosition.TypeOfService = PropMenuTypeOfServ3;
+                    newPosition.Amount = PropMenuPosAmount3;
+                    newPosition.Days = PropMenuPosDays3;
+                    newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ3);
+                    newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ3);
+                    newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ3);
+                    _ctx.PropMenuPosition.Add(newPosition);
+                }
+
+                _ctx.SaveChanges();
+
+                var service4 = editGastronomic.ElementAtOrDefault(4);
+                if (service4 != null)
+                {
+                    service4.Id_proposition = idProposition;
+                    service4.TypeOfService = PropMenuTypeOfServ4;
+                    service4.Amount = PropMenuPosAmount4;
+                    service4.Days = PropMenuPosDays4;
+                    service4.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ4);
+                    service4.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ4);
+                    service4.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ4);
+
+                }
+                else
+                {
+                    PropMenuPosition newPosition = new PropMenuPosition();
+                    newPosition.Id_proposition = idProposition;
+                    newPosition.TypeOfService = PropMenuTypeOfServ4;
+                    newPosition.Amount = PropMenuPosAmount4;
+                    newPosition.Days = PropMenuPosDays4;
+                    newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ4);
+                    newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ4);
+                    newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ4);
+                    _ctx.PropMenuPosition.Add(newPosition);
+                }
+
+                _ctx.SaveChanges();
+                
+                    var service5 = editGastronomic.ElementAtOrDefault(5);
+                    if (service5 != null)
                     {
-                        service.Id_proposition = idProposition;
-                        service.TypeOfService = PropMenuTypeOfServ1;
-                        service.Amount = PropMenuPosAmount1;
-                        service.Days = PropMenuPosDays1;
-                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ1);
-                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ1);
-                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ1);
-                       
+                        service5.Id_proposition = idProposition;
+                        service5.TypeOfService = PropMenuTypeOfServ5;
+                        service5.Amount = PropMenuPosAmount5;
+                        service5.Days = PropMenuPosDays5;
+                        service5.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ5);
+                        service5.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ5);
+                        service5.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ5);
+
                     }
                     else
-                    {
-                        PropMenuPosition newPosition = new PropMenuPosition();
-                        newPosition.Id_proposition = idProposition;
-                        newPosition.TypeOfService = PropMenuTypeOfServ1;
-                        newPosition.Amount = PropMenuPosAmount1;
-                        newPosition.Days = PropMenuPosDays1;
-                        newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ1);
-                        newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ1);
-                        newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ1);
-                        _ctx.PropMenuPosition.Add(newPosition);
-                    }
-                }
-                _ctx.SaveChanges();
-
-                if (PropMenuTypeOfServ2 != " " && PropMenuTypeOfServ2 != null)
-                {
-                    var service = editGastronomic.ElementAtOrDefault(2);
-                    if (service != null)
-                    {
-                        service.Id_proposition = idProposition;
-                        service.TypeOfService = PropMenuTypeOfServ2;
-                        service.Amount = PropMenuPosAmount2;
-                        service.Days = PropMenuPosDays2;
-                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ2);
-                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ2);
-                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ2);
-  
-                    }
-                    else
-                    {
-                        PropMenuPosition newPosition = new PropMenuPosition();
-                        newPosition.Id_proposition = idProposition;
-                        newPosition.TypeOfService = PropMenuTypeOfServ2;
-                        newPosition.Amount = PropMenuPosAmount2;
-                        newPosition.Days = PropMenuPosDays2;
-                        newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ2);
-                        newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ2);
-                        newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ2);
-                        _ctx.PropMenuPosition.Add(newPosition);
-                    }
-                }
-                _ctx.SaveChanges();
-                if (PropMenuTypeOfServ3 != null && PropMenuTypeOfServ3 != " ")
-                {
-                    var service = editGastronomic.ElementAtOrDefault(3);
-                    if (service != null)
-                    {
-                        service.Id_proposition = idProposition;
-                        service.TypeOfService = PropMenuTypeOfServ3;
-                        service.Amount = PropMenuPosAmount3;
-                        service.Days = PropMenuPosDays3;
-                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ3);
-                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ3);
-                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ3);
-                       
-                    }
-                    else
-                    {
-                        PropMenuPosition newPosition = new PropMenuPosition();
-                        newPosition.Id_proposition = idProposition;
-                        newPosition.TypeOfService = PropMenuTypeOfServ3;
-                        newPosition.Amount = PropMenuPosAmount3;
-                        newPosition.Days = PropMenuPosDays3;
-                        newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ3);
-                        newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ3);
-                        newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ3);
-                        _ctx.PropMenuPosition.Add(newPosition);
-                    }
-                }
-                _ctx.SaveChanges();
-                if (PropMenuTypeOfServ4 != null && PropMenuTypeOfServ4 != " ")
-                {
-                    var service = editGastronomic.ElementAtOrDefault(4);
-                    if (service != null)
-                    {
-                        service.Id_proposition = idProposition;
-                        service.TypeOfService = PropMenuTypeOfServ4;
-                        service.Amount = PropMenuPosAmount4;
-                        service.Days = PropMenuPosDays4;
-                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ4);
-                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ4);
-                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ4);
-                       
-                    }
-                    else
-                    {
-                        PropMenuPosition newPosition = new PropMenuPosition();
-                        newPosition.Id_proposition = idProposition;
-                        newPosition.TypeOfService = PropMenuTypeOfServ4;
-                        newPosition.Amount = PropMenuPosAmount4;
-                        newPosition.Days = PropMenuPosDays4;
-                        newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ4);
-                        newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ4);
-                        newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ4);
-                        _ctx.PropMenuPosition.Add(newPosition);
-                    }
-                }
-                _ctx.SaveChanges();
-                if (PropMenuTypeOfServ5 != null && PropMenuTypeOfServ5 != " ")
-                {
-                    var service = editGastronomic.ElementAtOrDefault(5);
-                    if (service != null)
-                    {
-                        service.Id_proposition = idProposition;
-                        service.TypeOfService = PropMenuTypeOfServ5;
-                        service.Amount = PropMenuPosAmount5;
-                        service.Days = PropMenuPosDays5;
-                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ5);
-                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ5);
-                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ5);
-                        
-                    }
-                    else 
                     {
                         PropMenuPosition newPosition = new PropMenuPosition();
                         newPosition.Id_proposition = idProposition;
@@ -5031,35 +5046,35 @@ namespace DiamondApp.ViewModels.AdminViewModels
                         newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ5);
                         _ctx.PropMenuPosition.Add(newPosition);
                     }
-                }
+                
                 _ctx.SaveChanges();
-                if (PropMenuTypeOfServ6 != null && PropMenuTypeOfServ5 != " ")
+
+                var service6 = editGastronomic.ElementAtOrDefault(6);
+                if (service6 != null)
                 {
-                    var service = editGastronomic.ElementAtOrDefault(6);
-                    if (service != null)
-                    {
-                        service.Id_proposition = idProposition;
-                        service.TypeOfService = PropMenuTypeOfServ6;
-                        service.Amount = PropMenuPosAmount6;
-                        service.Days = PropMenuPosDays6;
-                        service.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ6);
-                        service.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ6);
-                        service.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ6);
-                       
-                    }
-                    else 
-                    {
-                        PropMenuPosition newPosition = new PropMenuPosition();
-                        newPosition.Id_proposition = idProposition;
-                        newPosition.TypeOfService = PropMenuTypeOfServ6;
-                        newPosition.Amount = PropMenuPosAmount6;
-                        newPosition.Days = PropMenuPosDays6;
-                        newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ6);
-                        newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ6);
-                        newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ6);
-                        _ctx.PropMenuPosition.Add(newPosition);
-                    }
+                    service6.Id_proposition = idProposition;
+                    service6.TypeOfService = PropMenuTypeOfServ6;
+                    service6.Amount = PropMenuPosAmount6;
+                    service6.Days = PropMenuPosDays6;
+                    service6.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ6);
+                    service6.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ6);
+                    service6.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ6);
+
                 }
+                else
+                {
+                    PropMenuPosition newPosition = new PropMenuPosition();
+                    newPosition.Id_proposition = idProposition;
+                    newPosition.TypeOfService = PropMenuTypeOfServ6;
+                    newPosition.Amount = PropMenuPosAmount6;
+                    newPosition.Days = PropMenuPosDays6;
+                    newPosition.MergeType = SetMenuPosDefaultMergeType(PropMenuTypeOfServ6);
+                    newPosition.BruttoPrice = SetMenuPosDefaultBrutto(PropMenuTypeOfServ6);
+                    newPosition.Vat = SetMenuPosDefaultVat(PropMenuTypeOfServ6);
+                    _ctx.PropMenuPosition.Add(newPosition);
+                }
+               
+                
                 _ctx.SaveChanges();
                 var clearGast = (from q in _ctx.PropMenuPosition
                                  where q.Id_proposition == _idProposition
@@ -5325,8 +5340,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                  where x.Id_proposition == _idProposition
                                  select x).ToList().FindAll(item => item.Days == null ||
                                                              item.Amount == null || item.Days == 0 ||
-                                                             item.Amount == 0 || item.ServiceType == " " && parking.IsMatch(item.ServiceType));
-
+                                                             item.Amount == 0 || item.ServiceType == " " || item.ServiceType == "");
                 _ctx.PropExtraServices.RemoveRange(extrClear);
                 
                 _ctx.SaveChanges();
@@ -5829,7 +5843,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             {
                 ChangeView(false);
                 _saveFlag = false;
-                Xceed.Wpf.Toolkit.MessageBox.Show("Nie wybrano propozycji lub propozycję innego użytkownika!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                Xceed.Wpf.Toolkit.MessageBox.Show("Nie wybrano propozycji! Wybierz propozycję cenową", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
 

@@ -139,8 +139,6 @@ insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,Merge
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('¯ywiec bia³e 0.5 l', 5.84  ,0.23,'MALK','Piwo');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('¯ywiec bezalkohoolowy 0.33 l', 4.08  ,0.23,'MALK','Piwo');
 
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('¯ywiec 0.3 l', 4.67  ,0.23,'MALK','Piwo');
-
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Wyborowa 0,04 l', 3.50,0.23,'MALK','Wódki');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Wyborowa 0,5 l', 35.01,0.23,'MALK','Wódki');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Finlandia 0,04 l', 4.67,0.23,'MALK','Wódki');
@@ -209,28 +207,28 @@ insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,Merge
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Tequila Gold 0,04 l', 6.42,0.23,'MALK','Tequila');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Tequila Gold 0,7 l', 112.32,0.23,'MALK','Tequila');
 
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('SantaCarolina Premio 0,15l', 4.67,0.23,'MALK','Wina C');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('SantaCarolina Premio 0,75l', 29.18,0.23,'MALK','Wina C');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Elilaio Trebbiano D''Abruzzo 0,15l', 5.84,0.23,'MALK','Wina C');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Elilaio Trebbiano D''Abruzzo 0,75l', 35.01,0.23,'MALK','Wina C');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Kumala Shiraz Pinotage 0,75l', 46.68,0.23,'MALK','Wina C');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Vina Bujanda Tempranillo 0,75l', 52.52,0.23,'MALK','Wina C');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Chateau Pey La Tour 0,75l', 58.35,0.23,'MALK','Wina C');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Peppoli Chianti Classico 0,75l', 116.70,0.23,'MALK','Wina C');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('SantaCarolina Premio 0,15l C', 4.67,0.23,'MALK','Wina C');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('SantaCarolina Premio 0,75l C', 29.18,0.23,'MALK','Wina C');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Elilaio Trebbiano D''Abruzzo 0,15l C', 5.84,0.23,'MALK','Wina C');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Elilaio Trebbiano D''Abruzzo 0,75l C', 35.01,0.23,'MALK','Wina C');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Kumala Shiraz Pinotage 0,75l C', 46.68,0.23,'MALK','Wina C');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Vina Bujanda Tempranillo 0,75l C', 52.52,0.23,'MALK','Wina C');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Chateau Pey La Tour 0,75l C', 58.35,0.23,'MALK','Wina C');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Peppoli Chianti Classico 0,75l C', 116.70,0.23,'MALK','Wina C');
 
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Santa Carolina Premio 0,15l', 4.67,0.23,'MALK','Wina B');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Santa Carolina Premio 0,75l', 29.18,0.23,'MALK','Wina B');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Elilaio Trebbiano D''Abruzzo 0,15l', 5.84,0.23,'MALK','Wina B');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Elilaio Trebbiano D''Abruzzo 0,75l', 35.01,0.23,'MALK','Wina B');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Kumala Semillon Chardonnay 0,75l', 46.68,0.23,'MALK','Wina B');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Bordeaus 0,75l', 46.68,0.23,'MALK','Wina Bia³e');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Santa Carolina Premio 0,15l B', 4.67,0.23,'MALK','Wina B');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Santa Carolina Premio 0,75l B', 29.18,0.23,'MALK','Wina B');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Elilaio Trebbiano D''Abruzzo 0,15l B', 5.84,0.23,'MALK','Wina B');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Elilaio Trebbiano D''Abruzzo 0,75l B', 35.01,0.23,'MALK','Wina B');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Kumala Semillon Chardonnay 0,75l B', 46.68,0.23,'MALK','Wina B');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Bordeaus 0,75l B', 46.68,0.23,'MALK','Wina B');
 																			
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Cava Rigol Brut 0,1l', 4.67,0.23,'MALK','Szampany');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Cava Rigol Brut 0,75l', 46.68,0.23,'MALK','Szampany');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Jean De La Fontaine Brut 0,75l', 116.70,0.23,'MALK','Szampany');
 																			
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Pepsi 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
-insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('PepsiMax 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Pepsi 0.2l', 4.08, 0.23,'MNAPO','Napoje');
+insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('PepsiMax 0.2l', 4.08,0.23,'MNAPO','Napoje');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Pepsi Light 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('Mirinda 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
 insert PropMenuGastronomicThings_Dictionary_First (ThingName,NettoMini,Vat,MergeType,SpecificType) values ('7 UP 0.2l', 4.08 ,0.23,'MNAPO','Napoje');
