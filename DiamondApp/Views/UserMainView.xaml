@@ -109,7 +109,7 @@
                     <Label Grid.Row="7" Grid.Column="0" Content="ADRES E-MAIL:" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
                     <Label Grid.Row="10" Grid.Column="0" Content="TERMIN (od - do):" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
                     <Label Grid.Row="11" Grid.Column="0" Content="CZAS TRWANIA (od - do):" Margin="0,0,128,0" Grid.ColumnSpan="3"/>
-                    <Label Grid.Row="0" Grid.Column="4" Content="DLA: " Grid.ColumnSpan="2"/>
+                    <Label Grid.Row="0" Grid.Column="4" Content="NAZWA FIRMY: " Grid.ColumnSpan="2"/>
                     <Label Grid.Row="1" Grid.Column="4" Content="ADRES: " Grid.ColumnSpan="2"/>
                     <Label Grid.Row="2" Grid.Column="4" Content="NIP: " Grid.ColumnSpan="2"/>
                     <Label Grid.Row="3" Grid.Column="4" Content="TERMIN WAŻNOŚCI PROPOZYCJI:" Grid.ColumnSpan="3"/>

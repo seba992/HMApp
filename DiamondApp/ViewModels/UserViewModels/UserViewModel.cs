@@ -1095,8 +1095,8 @@ namespace DiamondApp.ViewModels.UserViewModels
                 //jeśli jest cena netto i ilosc dni to oblicz sume
                 if (PropHallEqDays0 != null && PropHallEqAmount0 != null)
                 {
-                    SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, value, PropHallEqDays0);
-                    SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, value, PropHallEqDays0);
+                    SecondTabNettoValue0 = ComputeNettoValue(SecondTabNettoPrice0, value, PropHallEqAmount0);
+                    SecondTabBruttoValue0 = ComputeBruttoValue(PropHallEqBrutto0, value, PropHallEqAmount0);
                 }
                 else
                 {
@@ -1116,8 +1116,8 @@ namespace DiamondApp.ViewModels.UserViewModels
                 //jeśli jest cena netto i ilosc dni to oblicz sume
                 if (PropHallEqDays1 != null && PropHallEqAmount1 != null)
                 {
-                    SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, value, PropHallEqDays1);
-                    SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, value, PropHallEqDays1);
+                    SecondTabNettoValue1 = ComputeNettoValue(SecondTabNettoPrice1, value, PropHallEqAmount1);
+                    SecondTabBruttoValue1 = ComputeBruttoValue(PropHallEqBrutto1, value, PropHallEqAmount1);
                 }
                 else
                 {
