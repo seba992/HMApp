@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using DiamondApp.Model;
 using DiamondApp.Tools.MvvmClasses;
@@ -155,7 +157,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             }
         }
 
-     
+
         public ICommand DeleteCommand
         {
             get
@@ -175,15 +177,22 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
         private void DeleteCommandExecucte(object obj)
         {
-            if (SelectedDeleteElement != null)
+            if (SelectedDeleteElement != null && SelectedDeleteElement.Id!=0)
             {
-                _ctx.PropMenuGastronomicThings_Dictionary_First.Remove(SelectedDeleteElement);
+                var test = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                    where x.Id == SelectedDeleteElement.Id
+                    select x).SingleOrDefault();
+                _ctx.PropMenuGastronomicThings_Dictionary_First.Remove(test);
                 _ctx.SaveChanges();
                 Gastronomic =
                     new ObservableCollection<PropMenuGastronomicThings_Dictionary_First>(
                         (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
                             select q).ToList());
+                Xceed.Wpf.Toolkit.MessageBox.Show("Usunieto rekord", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
         }
+
+
     }
 }

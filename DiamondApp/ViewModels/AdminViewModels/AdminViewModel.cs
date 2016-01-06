@@ -3880,7 +3880,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             {
                 _propExtraServ[0].BruttoPrice = value;
                 RaisePropertyChanged("PropExtraServBrutto0");
-              
+
             }
         }
         public float? PropExtraServBrutto1
@@ -3892,7 +3892,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 RaisePropertyChanged("PropExtraServBrutto1");
 
                 if (PropExtraServVat1 != null)
-                    FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, PropExtraServVat1);
+                    FifthTabNettoPrice1 = ComputeNettoPrice(value, PropExtraServVat1);
                 FifthTabBruttoValue1 = ComputeBruttoValue(value, PropExtraServAmount1, PropExtraServDays1);
 
             }
@@ -3906,7 +3906,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 RaisePropertyChanged("PropExtraServBrutto2");
 
                 if (PropExtraServVat2 != null)
-                    FifthTabNettoPrice2 = ComputeNettoPrice(PropExtraServBrutto2, PropExtraServVat2);
+                    FifthTabNettoPrice2 = ComputeNettoPrice(value, PropExtraServVat2);
                 FifthTabBruttoValue2 = ComputeBruttoValue(value, PropExtraServAmount2, PropExtraServDays2);
             }
         }
@@ -3919,7 +3919,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 RaisePropertyChanged("PropExtraServBrutto3");
 
                 if (PropExtraServVat3 != null)
-                    FifthTabNettoPrice3 = ComputeNettoPrice(PropExtraServBrutto3, PropExtraServVat3);
+                    FifthTabNettoPrice3 = ComputeNettoPrice(value, PropExtraServVat3);
                 FifthTabBruttoValue3 = ComputeBruttoValue(value, PropExtraServAmount3, PropExtraServDays3);
             }
         }
@@ -3930,10 +3930,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[0].Vat = value;
-                
-
-                FifthTabNettoPrice0 = ComputeNettoPrice(PropExtraServBrutto0, PropExtraServVat0);
                 RaisePropertyChanged("PropExtraServVat0");
+
+                FifthTabNettoPrice0 = ComputeNettoPrice(PropExtraServBrutto0, value);
             }
         }
         public float? PropExtraServVat1
@@ -3942,10 +3941,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[1].Vat = value;
-               
-
-                FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, PropExtraServVat1);
                 RaisePropertyChanged("PropExtraServVat1");
+
+                FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, value);
             }
         }
         public float? PropExtraServVat2
@@ -3956,7 +3954,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _propExtraServ[2].Vat = value;
                 RaisePropertyChanged("PropExtraServVat2");
 
-                FifthTabNettoPrice2 = ComputeNettoPrice(PropExtraServBrutto2, PropExtraServVat2);
+                FifthTabNettoPrice2 = ComputeNettoPrice(PropExtraServBrutto2, value);
             }
         }
         public float? PropExtraServVat3
@@ -3967,7 +3965,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _propExtraServ[3].Vat = value;
                 RaisePropertyChanged("PropExtraServVat3");
 
-                FifthTabNettoPrice3 = ComputeNettoPrice(PropExtraServBrutto3, PropExtraServVat3);
+                FifthTabNettoPrice3 = ComputeNettoPrice(PropExtraServBrutto3, value);
             }
         }
 
@@ -3977,7 +3975,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _fifthTabNettoPrice[0] = value;
-                
+
 
                 if (PropExtraServAmount0 != null && PropExtraServDays0 != null)
                     FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0, PropExtraServDays0);
@@ -4030,9 +4028,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropExtraServBrutto0 != null && PropExtraServDays0 != null)
                 {
-                    FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0,
+                    FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, value,
                         PropExtraServDays0);
-                    FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServAmount0,
+                    FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, value,
                         PropExtraServDays0);
                 }
             }
@@ -4049,9 +4047,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropExtraServBrutto1 != null && PropExtraServDays1 != null)
                 {
-                    FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, PropExtraServAmount1,
+                    FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, value,
                         PropExtraServDays1);
-                    FifthTabBruttoValue1 = ComputeBruttoValue(PropExtraServBrutto1, PropExtraServAmount1,
+                    FifthTabBruttoValue1 = ComputeBruttoValue(PropExtraServBrutto1, value,
                         PropExtraServDays1);
                 }
             }
@@ -4068,9 +4066,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropExtraServBrutto2 != null && PropExtraServDays2 != null)
                 {
-                    FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, PropExtraServAmount2,
-                        PropExtraServDays3);
-                    FifthTabBruttoValue2 = ComputeBruttoValue(PropExtraServBrutto2, PropExtraServAmount2,
+                    FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, value,
+                        PropExtraServDays2);
+                    FifthTabBruttoValue2 = ComputeBruttoValue(PropExtraServBrutto2, value,
                         PropExtraServDays2);
                 }
             }
@@ -4087,9 +4085,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropExtraServBrutto3 != null && PropExtraServDays3 != null)
                 {
-                    FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
+                    FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, value,
                         PropExtraServDays3);
-                    FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, PropExtraServAmount3,
+                    FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, value,
                         PropExtraServDays3);
                 }
             }
@@ -4101,17 +4099,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[0].Days = value;
-                
+                RaisePropertyChanged("PropExtraServDays0");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto0 != null && PropExtraServAmount0 != null)
                 {
                     FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0,
-                        PropExtraServDays0);
+                        value);
                     FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServAmount0,
-                        PropExtraServDays0);
+                        value);
                 }
-                RaisePropertyChanged("PropExtraServDays0");
             }
         }
         public int? PropExtraServDays1
@@ -4120,16 +4117,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[1].Days = value;
-                
+                RaisePropertyChanged("PropExtraServDays1");
+
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto1 != null && PropExtraServAmount1 != null)
                 {
                     FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, PropExtraServAmount1,
-                        PropExtraServDays1);
+                        value);
                     FifthTabBruttoValue1 = ComputeBruttoValue(PropExtraServBrutto1, PropExtraServAmount1,
-                        PropExtraServDays1);
+                        value);
                 }
-                RaisePropertyChanged("PropExtraServDays1");
             }
         }
         public int? PropExtraServDays2
@@ -4138,18 +4135,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[2].Days = value;
-               
+                RaisePropertyChanged("PropExtraServDays2");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto2 != null && PropExtraServAmount2 != null)
                 {
                     FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, PropExtraServAmount2,
-                        PropExtraServDays2);
+                        value);
                     FifthTabBruttoValue2 = ComputeBruttoValue(PropExtraServBrutto2, PropExtraServAmount2,
-                        PropExtraServDays2);
-                 
+                        value);
                 }
-                RaisePropertyChanged("PropExtraServDays2");
             }
         }
         public int? PropExtraServDays3
@@ -4158,18 +4153,16 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[3].Days = value;
-               
+                RaisePropertyChanged("PropExtraServDays3");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
                 if (PropExtraServBrutto3 != null && PropExtraServAmount3 != null)
                 {
-                    if (FifthTabNettoPrice3 != null)
-                        FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
-                            PropExtraServDays3);
+                    FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
+                        value);
                     FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, PropExtraServAmount3,
-                        PropExtraServDays3);
+                        value);
                 }
-                RaisePropertyChanged("PropExtraServDays3");
             }
         }
 
@@ -4211,9 +4204,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 _fifthTabNettoValue[3] = value;
                 RaisePropertyChanged("FifthTabNettoValue3");
                 ComputeFifthTabSumNettoValue();
-                
             }
         }
+
 
         public List<decimal> FifthTabNettoValue
         {
@@ -5498,7 +5491,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             SelectedProposition = null;
             var updateProposition = (from q in _ctx.Proposition
                                      where q.Id == _idProposition
-                                       // && q.Id_user == _userId
+                                        && q.Id_user == _userId
                                      select q).SingleOrDefault();
 
 
@@ -5638,113 +5631,122 @@ namespace DiamondApp.ViewModels.AdminViewModels
                                        where q.Id_proposition == _idProposition
                                        select q).ToList();
 
-
-                for (int i = 0; i < editGastronomic.Count; i++)
+                try
                 {
-                    switch (i)
+                    for (int i = 0; i < editGastronomic.Count; i++)
                     {
-                        case 0:
+                        switch (i)
+                        {
+                            case 0:
 
-                            var typ = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                       select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[0].TypeOfService)
-                                .SingleOrDefault();
+                                var typ = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                           select q).ToList()
+                                    .Where(x => x.ThingName == editGastronomic[0].TypeOfService)
+                                    .SingleOrDefault();
 
-                            SelectedType0 = typ.SpecificType;
-                            PropMenuPosMergeType0 = editGastronomic[0].MergeType;
-                            PropMenuPosVat0 = editGastronomic[0].Vat;
-                            PropMenuTypeOfServ0 = editGastronomic[0].TypeOfService;
-                            PropMenuPosAmount0 = editGastronomic[0].Amount;
-                            PropMenuPosDays0 = editGastronomic[0].Days;
-                            break;
-                        case 1:
+                                SelectedType0 = typ.SpecificType;
+                                PropMenuPosMergeType0 = editGastronomic[0].MergeType;
+                                PropMenuPosVat0 = editGastronomic[0].Vat;
+                                PropMenuTypeOfServ0 = editGastronomic[0].TypeOfService;
+                                PropMenuPosAmount0 = editGastronomic[0].Amount;
+                                PropMenuPosDays0 = editGastronomic[0].Days;
+                                break;
+                            case 1:
 
-                            var typ1 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                        select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[1].TypeOfService)
-                                .SingleOrDefault();
-                            SelectedType1 = typ1.SpecificType;
-                            PropMenuPosMergeType1 = editGastronomic[1].MergeType;
-                            PropMenuPosVat1 = editGastronomic[1].Vat;
-                            PropMenuTypeOfServ1 = editGastronomic[1].TypeOfService;
-                            PropMenuPosAmount1 = editGastronomic[1].Amount;
-                            PropMenuPosDays1 = editGastronomic[1].Days;
-                            //SelectedType1 = editGastronomic[0].;
+                                var typ1 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                            select q).ToList()
+                                    .Where(x => x.ThingName == editGastronomic[1].TypeOfService)
+                                    .SingleOrDefault();
+                                SelectedType1 = typ1.SpecificType;
+                                PropMenuPosMergeType1 = editGastronomic[1].MergeType;
+                                PropMenuPosVat1 = editGastronomic[1].Vat;
+                                PropMenuTypeOfServ1 = editGastronomic[1].TypeOfService;
+                                PropMenuPosAmount1 = editGastronomic[1].Amount;
+                                PropMenuPosDays1 = editGastronomic[1].Days;
+                                //SelectedType1 = editGastronomic[0].;
 
-                            break;
-                        case 2:
-                            var typ2 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                        select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[2].TypeOfService)
-                                .SingleOrDefault();
+                                break;
+                            case 2:
+                                var typ2 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                            select q).ToList()
+                                    .Where(x => x.ThingName == editGastronomic[2].TypeOfService)
+                                    .SingleOrDefault();
 
-                            SelectedType2 = typ2.SpecificType;
-                            PropMenuPosMergeType2 = editGastronomic[2].MergeType;
-                            PropMenuPosVat2 = editGastronomic[2].Vat;
-                            PropMenuTypeOfServ2 = editGastronomic[2].TypeOfService;
-                            PropMenuPosAmount2 = editGastronomic[2].Amount;
-                            PropMenuPosDays2 = editGastronomic[2].Days;
+                                SelectedType2 = typ2.SpecificType;
+                                PropMenuPosMergeType2 = editGastronomic[2].MergeType;
+                                PropMenuPosVat2 = editGastronomic[2].Vat;
+                                PropMenuTypeOfServ2 = editGastronomic[2].TypeOfService;
+                                PropMenuPosAmount2 = editGastronomic[2].Amount;
+                                PropMenuPosDays2 = editGastronomic[2].Days;
 
-                            break;
-                        case 3:
-                            var typ3 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                        select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[3].TypeOfService)
-                                .SingleOrDefault();
+                                break;
+                            case 3:
+                                var typ3 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                            select q).ToList()
+                                    .Where(x => x.ThingName == editGastronomic[3].TypeOfService)
+                                    .SingleOrDefault();
 
-                            SelectedType3 = typ3.SpecificType;
-                            PropMenuPosMergeType3 = editGastronomic[3].MergeType;
-                            PropMenuPosVat3 = editGastronomic[3].Vat;
-                            PropMenuTypeOfServ3 = editGastronomic[3].TypeOfService;
-                            PropMenuPosAmount3 = editGastronomic[3].Amount;
-                            PropMenuPosDays3 = editGastronomic[3].Days;
+                                SelectedType3 = typ3.SpecificType;
+                                PropMenuPosMergeType3 = editGastronomic[3].MergeType;
+                                PropMenuPosVat3 = editGastronomic[3].Vat;
+                                PropMenuTypeOfServ3 = editGastronomic[3].TypeOfService;
+                                PropMenuPosAmount3 = editGastronomic[3].Amount;
+                                PropMenuPosDays3 = editGastronomic[3].Days;
 
-                            break;
-                        case 4:
-                            var typ4 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                        select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[4].TypeOfService)
-                                .SingleOrDefault();
+                                break;
+                            case 4:
+                                var typ4 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                            select q).ToList()
+                                    .Where(x => x.ThingName == editGastronomic[4].TypeOfService)
+                                    .SingleOrDefault();
 
-                            SelectedType4 = typ4.SpecificType;
-                            PropMenuPosMergeType4 = editGastronomic[4].MergeType;
-                            PropMenuPosVat4 = editGastronomic[4].Vat;
-                            PropMenuTypeOfServ4 = editGastronomic[4].TypeOfService;
-                            PropMenuPosAmount4 = editGastronomic[4].Amount;
-                            PropMenuPosDays4 = editGastronomic[4].Days;
-                            PropMenuPosMergeType4 = editGastronomic[4].MergeType;
-                            break;
-                        case 5:
-                            var typ5 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                SelectedType4 = typ4.SpecificType;
+                                PropMenuPosMergeType4 = editGastronomic[4].MergeType;
+                                PropMenuPosVat4 = editGastronomic[4].Vat;
+                                PropMenuTypeOfServ4 = editGastronomic[4].TypeOfService;
+                                PropMenuPosAmount4 = editGastronomic[4].Amount;
+                                PropMenuPosDays4 = editGastronomic[4].Days;
+                                PropMenuPosMergeType4 = editGastronomic[4].MergeType;
+                                break;
+                            case 5:
+                                var typ5 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
 
-                                        select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[5].TypeOfService)
-                                .SingleOrDefault();
+                                            select q).ToList()
+                                    .Where(x => x.ThingName == editGastronomic[5].TypeOfService)
+                                    .SingleOrDefault();
 
-                            SelectedType5 = typ5.SpecificType;
-                            PropMenuPosMergeType5 = editGastronomic[5].MergeType;
-                            PropMenuPosVat5 = editGastronomic[5].Vat;
-                            PropMenuTypeOfServ5 = editGastronomic[5].TypeOfService;
-                            PropMenuPosAmount5 = editGastronomic[5].Amount;
-                            PropMenuPosDays5 = editGastronomic[5].Days;
+                                SelectedType5 = typ5.SpecificType;
+                                PropMenuPosMergeType5 = editGastronomic[5].MergeType;
+                                PropMenuPosVat5 = editGastronomic[5].Vat;
+                                PropMenuTypeOfServ5 = editGastronomic[5].TypeOfService;
+                                PropMenuPosAmount5 = editGastronomic[5].Amount;
+                                PropMenuPosDays5 = editGastronomic[5].Days;
 
-                            break;
-                        case 6:
-                            var typ6 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                        select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[6].TypeOfService)
-                                .SingleOrDefault();
-                            SelectedType6 = typ6.SpecificType;
-                            PropMenuPosMergeType6 = editGastronomic[6].MergeType;
-                            PropMenuPosVat6 = editGastronomic[6].Vat;
-                            PropMenuTypeOfServ6 = editGastronomic[6].TypeOfService;
-                            PropMenuPosAmount6 = editGastronomic[6].Amount;
-                            PropMenuPosDays6 = editGastronomic[6].Days;
-                            PropMenuPosMergeType6 = editGastronomic[6].MergeType;
-                            break;
+                                break;
+                            case 6:
+                                var typ6 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                            select q).ToList()
+                                    .Where(x => x.ThingName == editGastronomic[6].TypeOfService)
+                                    .SingleOrDefault();
+                                SelectedType6 = typ6.SpecificType;
+                                PropMenuPosMergeType6 = editGastronomic[6].MergeType;
+                                PropMenuPosVat6 = editGastronomic[6].Vat;
+                                PropMenuTypeOfServ6 = editGastronomic[6].TypeOfService;
+                                PropMenuPosAmount6 = editGastronomic[6].Amount;
+                                PropMenuPosDays6 = editGastronomic[6].Days;
+                                PropMenuPosMergeType6 = editGastronomic[6].MergeType;
+                                break;
+                        }
+
                     }
-
                 }
+                catch (Exception)
+                {
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Niestety została usunięta pozycja z cennika," +
+                            Environment.NewLine + " nie ma możliwości edycji propozycji cenowej jedynie możliwe jest generowanie PDF!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Information);
+                    throw;
+                }
+                
 
 
                 var propAccomodation = (from q in _ctx.PropAccomodation
@@ -5917,6 +5919,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             {
                 ChangeView(false);
                 _saveFlag = false;
+                
                 Xceed.Wpf.Toolkit.MessageBox.Show("Nie wybrano propozycji! Wybierz propozycję cenową", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }

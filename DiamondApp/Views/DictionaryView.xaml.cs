@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Markup;
 using DiamondApp.Model;
 using DiamondApp.ViewModels.AdminViewModels;
@@ -118,19 +119,22 @@ namespace DiamondApp.Views
                     userUpdate.MergeType = userRow.MergeType;
                     userUpdate.SpecificType = userRow.SpecificType;
                     _ctx.PropMenuGastronomicThings_Dictionary_First.Add(userUpdate);
-                    
 
+                    
                 }
                 else
                 {
                     Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
                 _ctx.SaveChanges();
+                
             }
             catch (Exception ex)
             {
                Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+
+           
         }
 
         public void RowEditHall(object sender, DataGridRowEditEndingEventArgs e)

@@ -15,12 +15,12 @@
                 <DataGridTemplateColumn IsReadOnly="False" Header="Nazwa" SortMemberPath="ThingName" CanUserSort="true" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -28,12 +28,12 @@
                 <DataGridTemplateColumn IsReadOnly="False" Header="Netto"  SortMemberPath="NettoMini" CanUserSort="true" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding NettoMini, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:c\}}"/>
+                            <TextBlock Text="{Binding NettoMini, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:c\} , NotifyOnTargetUpdated=True}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding NettoMini, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:c\}}" />
+                            <TextBox Text="{Binding NettoMini, UpdateSourceTrigger=PropertyChanged, StringFormat=\{0:c\},NotifyOnTargetUpdated=True}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -42,13 +42,13 @@
 
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock  Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock  Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}"/>
 
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <ComboBox Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged}" >
+                            <ComboBox Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged ,NotifyOnTargetUpdated=True}" >
                                 <ComboBoxItem Content="8"/>
                                 <ComboBoxItem Content="23"/>
                             </ComboBox>
@@ -59,12 +59,12 @@
                 <DataGridTemplateColumn IsReadOnly="False" Header="Typ marży" SortMemberPath="MergeType" CanUserSort="true" >
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged , NotifyOnTargetUpdated=True}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -72,12 +72,12 @@
                 <DataGridTemplateColumn IsReadOnly="False" Header="Typ produktu" SortMemberPath="SpecificType" CanUserSort="true">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBlock Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged , NotifyOnTargetUpdated=True}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged}" />
+                            <TextBox Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged , NotifyOnTargetUpdated=True}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
