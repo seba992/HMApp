@@ -175,9 +175,15 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
         private void DeleteCommandExecucte(object obj)
         {
-           
-            _ctx.PropMenuGastronomicThings_Dictionary_First.Remove(SelectedDeleteElement);
-            _ctx.SaveChanges();
+            if (SelectedDeleteElement != null)
+            {
+                _ctx.PropMenuGastronomicThings_Dictionary_First.Remove(SelectedDeleteElement);
+                _ctx.SaveChanges();
+                Gastronomic =
+                    new ObservableCollection<PropMenuGastronomicThings_Dictionary_First>(
+                        (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                            select q).ToList());
+            }
         }
     }
 }
