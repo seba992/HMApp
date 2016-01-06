@@ -44,11 +44,11 @@
                   AlternationCount="2"  Visibility="{Binding OtherElementVisibility}">
             <ListView.View>
                 <GridView >
-                    <GridViewColumn Width="200" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
+                    <GridViewColumn Width="180" Header="Nazwa użytkownika" DisplayMemberBinding="{Binding UserFullName}"  />
                     <GridViewColumn Width="200" Header="Nazwa klienta" DisplayMemberBinding="{Binding CustomerFullName}" />
-                    <GridViewColumn Width="200" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
-                    <GridViewColumn Width="130" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat=\{0:yyyy-MM-dd\}}" />
-                    <GridViewColumn Width="70" Header="Status" DisplayMemberBinding="{Binding Status}" />
+                    <GridViewColumn Width="295" Header="Nazwa firmy" DisplayMemberBinding="{Binding CompanyName}" />
+                    <GridViewColumn Width="135" Header="Data aktualizacji" DisplayMemberBinding="{Binding UpdateDate, StringFormat=\{0:yyyy-MM-dd\}}" />
+                    <GridViewColumn Width="110" Header="Status" DisplayMemberBinding="{Binding Status}" />
 
                     <GridViewColumn Width="100">
                         <GridViewColumn.CellTemplate>

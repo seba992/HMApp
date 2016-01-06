@@ -548,6 +548,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propHallEquipment[0].Things = value;
+                if (value == null)
+                {
+                    PropHallEqBrutto0 = null;
+                    PropHallEqAmount0 = null;
+                    PropHallEqDays0 = null;
+                }
                 RaisePropertyChanged("PropHallEqThing0");
             }
         }
@@ -557,6 +563,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propHallEquipment[1].Things = value;
+                if (value == " ")
+                {
+                    PropHallEqBrutto1 = null;
+                    PropHallEqAmount1 = null;
+                    PropHallEqDays1 = null;
+                }
                 RaisePropertyChanged("PropHallEqThing1");
             }
         }
@@ -566,6 +578,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propHallEquipment[2].Things = value;
+                if (value == " ")
+                {
+                    PropHallEqBrutto2 = null;
+                    PropHallEqAmount2 = null;
+                    PropHallEqDays2 = null;
+                }
                 RaisePropertyChanged("PropHallEqThing2");
             }
         }
@@ -575,6 +593,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propHallEquipment[3].Things = value;
+                if (value == " ")
+                {
+                    PropHallEqBrutto3 = null;
+                    PropHallEqAmount3 = null;
+                    PropHallEqDays3 = null;
+                }
                 RaisePropertyChanged("PropHallEqThing3");
             }
         }
@@ -584,6 +608,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propHallEquipment[4].Things = value;
+                if (value == " ")
+                {
+                    PropHallEqBrutto4 = null;
+                    PropHallEqAmount4 = null;
+                    PropHallEqDays4 = null;
+                }
                 RaisePropertyChanged("PropHallEqThing4");
             }
         }
@@ -593,6 +623,12 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propHallEquipment[5].Things = value;
+                if (value == " ")
+                {
+                    PropHallEqBrutto5 = null;
+                    PropHallEqAmount5 = null;
+                    PropHallEqDays5 = null;
+                }
                 RaisePropertyChanged("PropHallEqThing5");
             }
         }
@@ -2340,10 +2376,10 @@ namespace DiamondApp.ViewModels.UserViewModels
         }
         public int? PropMenuPosDays6
         {
-            get { return _propMenuPositions[5].Days; }
+            get { return _propMenuPositions[6].Days; }
             set
             {
-                _propMenuPositions[5].Days = value;
+                _propMenuPositions[6].Days = value;
                 RaisePropertyChanged("PropMenuPosDays6");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
@@ -3169,6 +3205,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 if (PropAccomAmount2 != null && PropAccomDays2 != null)
                     if (FourthTabNettoPrice2 != null)
                         FourthTabNettoValue2 = ComputeNettoValue((decimal)FourthTabNettoPrice2, PropAccomAmount2, PropAccomDays2);
+                FourthTabBruttoValue2 = ComputeBruttoValue(PropAccomBrutto2, PropAccomAmount2, PropAccomDays2);
             }
         }
         public decimal? FourthTabNettoPrice3
@@ -3182,6 +3219,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 if (PropAccomAmount3 != null && PropAccomDays3 != null)
                     if (FourthTabNettoPrice3 != null)
                         FourthTabNettoValue3 = ComputeNettoValue((decimal)FourthTabNettoPrice3, PropAccomAmount3, PropAccomDays3);
+                FourthTabBruttoValue3 = ComputeBruttoValue(PropAccomBrutto3, PropAccomAmount3, PropAccomDays3);
             }
         }
         public decimal? FourthTabNettoPrice4
@@ -3195,6 +3233,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 if (PropAccomAmount4 != null && PropAccomDays4 != null)
                     if (FourthTabNettoPrice4 != null)
                         FourthTabNettoValue4 = ComputeNettoValue((decimal)FourthTabNettoPrice4, PropAccomAmount4, PropAccomDays4);
+                FourthTabBruttoValue4 = ComputeBruttoValue(PropAccomBrutto4, PropAccomAmount4, PropAccomDays4);
             }
         }
         public decimal? FourthTabNettoPrice5
@@ -3208,6 +3247,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 if (PropAccomAmount5 != null && PropAccomDays5 != null)
                     if (FourthTabNettoPrice5 != null)
                         FourthTabNettoValue5 = ComputeNettoValue((decimal)FourthTabNettoPrice5, PropAccomAmount5, PropAccomDays5);
+                FourthTabBruttoValue5 = ComputeBruttoValue(PropAccomBrutto5, PropAccomAmount5, PropAccomDays5);
             }
         }
 
@@ -3787,6 +3827,7 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _propExtraServ[0].BruttoPrice = value;
                 RaisePropertyChanged("PropExtraServBrutto0");
+
             }
         }
         public float? PropExtraServBrutto1
@@ -3799,6 +3840,8 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                 if (PropExtraServVat1 != null)
                     FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, PropExtraServVat1);
+                FifthTabBruttoValue1 = ComputeBruttoValue(value, PropExtraServAmount1, PropExtraServDays1);
+
             }
         }
         public float? PropExtraServBrutto2
@@ -3811,6 +3854,7 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                 if (PropExtraServVat2 != null)
                     FifthTabNettoPrice2 = ComputeNettoPrice(PropExtraServBrutto2, PropExtraServVat2);
+                FifthTabBruttoValue2 = ComputeBruttoValue(value, PropExtraServAmount2, PropExtraServDays2);
             }
         }
         public float? PropExtraServBrutto3
@@ -3823,6 +3867,7 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                 if (PropExtraServVat3 != null)
                     FifthTabNettoPrice3 = ComputeNettoPrice(PropExtraServBrutto3, PropExtraServVat3);
+                FifthTabBruttoValue3 = ComputeBruttoValue(value, PropExtraServAmount3, PropExtraServDays3);
             }
         }
 
@@ -3877,10 +3922,11 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _fifthTabNettoPrice[0] = value;
-                RaisePropertyChanged("FifthTabNettoPrice0");
+
 
                 if (PropExtraServAmount0 != null && PropExtraServDays0 != null)
                     FifthTabNettoValue0 = ComputeNettoValue((decimal)FifthTabNettoPrice0, PropExtraServAmount0, PropExtraServDays0);
+                RaisePropertyChanged("FifthTabNettoPrice0");
             }
         }
         public decimal? FifthTabNettoPrice1
@@ -3889,6 +3935,8 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _fifthTabNettoPrice[1] = value;
+                if (PropExtraServAmount1 != null && PropExtraServDays1 != null)
+                    FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, PropExtraServAmount1, PropExtraServDays1);
                 RaisePropertyChanged("FifthTabNettoPrice1");
             }
         }
@@ -3898,6 +3946,8 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _fifthTabNettoPrice[2] = value;
+                if (PropExtraServAmount2 != null && PropExtraServDays2 != null)
+                    FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, PropExtraServAmount2, PropExtraServDays2);
                 RaisePropertyChanged("FifthTabNettoPrice2");
             }
         }
@@ -3907,6 +3957,8 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _fifthTabNettoPrice[3] = value;
+                if (PropExtraServAmount3 != null && PropExtraServDays3 != null)
+                    FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3, PropExtraServDays3);
                 RaisePropertyChanged("FifthTabNettoPrice3");
             }
         }
@@ -4481,6 +4533,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                         hall.Days = PropHallEqDays0;
                         hall.Amount = PropHallEqAmount0;
                         hall.BruttoPrice = PropHallEqBrutto0;
+                        hall.Vat = PropHallEqVat0;
                         propEquipment.Remove(hall);
                         _ctx.SaveChanges();
                     }
@@ -4537,7 +4590,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                         thing1.Amount = PropHallEqAmount2;
                         thing1.Days = PropHallEqDays2;
                         thing1.BruttoPrice = PropHallEqBrutto2;
-                        thing1.Vat = PropHallEqVat1;
+                        thing1.Vat = PropHallEqVat2;
                     }
                     else
                     {
@@ -4643,7 +4696,8 @@ namespace DiamondApp.ViewModels.UserViewModels
                 {
                     if (check.Things == " " || check.Things == null 
                         || check.Days == null || check.Days == 0 
-                        || check.Amount == 0 || check.Amount == null)
+                        || check.Amount == 0 || check.Amount == null 
+                        || check.BruttoPrice == 0)
                     {
                         _ctx.PropHallEquipment.Remove(check);
                     }
@@ -5126,7 +5180,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                                  select x).ToList().FindAll(item => item.Days == null ||
                                                              item.Amount == null || item.Days == 0 ||
                                                              item.Amount == 0 || item.ServiceType == " " 
-                                                             || item.ServiceType == "");
+                                                             || item.ServiceType == "" || item.BruttoPrice == 0f && !parking.IsMatch(item.ServiceType));
 
                 _ctx.PropExtraServices.RemoveRange(extrClear);
 
@@ -5153,10 +5207,11 @@ namespace DiamondApp.ViewModels.UserViewModels
                     _ctx.PropPaymentSuggestions.Add(paysug1);
                 }
                 _ctx.SaveChanges();
+        
+                Xceed.Wpf.Toolkit.MessageBox.Show("Edytowano istniejącą propozycję cenową!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
                 SelectedProposition = null;
                 _idProposition = 0;
                 SelectAllPropositions();
-                Xceed.Wpf.Toolkit.MessageBox.Show("Edytowano istniejącą propozycję cenową!", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
                 ChangeView(false);
             }
         }
@@ -5279,6 +5334,7 @@ namespace DiamondApp.ViewModels.UserViewModels
             //wypelnienie nazw pokoi
             var rooms = (from r in _ctx.PropAccomodation_Dictionary
                          select r).ToList();
+           
             PropAccomTypeOfRoom0 = rooms[0].TypeOfRoom;
             PropAccomTypeOfRoom1 = rooms[1].TypeOfRoom;
             PropAccomTypeOfRoom2 = rooms[2].TypeOfRoom;
@@ -5549,7 +5605,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                                 .Where(x => x.ThingName == editGastronomic[4].TypeOfService)
                                 .SingleOrDefault();
 
-                            SelectedType3 = typ4.SpecificType;
+                            SelectedType4 = typ4.SpecificType;
                             PropMenuPosMergeType4 = editGastronomic[4].MergeType;
                             PropMenuPosVat4 = editGastronomic[4].Vat;
                             PropMenuTypeOfServ4 = editGastronomic[4].TypeOfService;
@@ -5561,7 +5617,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                             var typ5 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
 
                                         select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[0].TypeOfService)
+                                .Where(x => x.ThingName == editGastronomic[5].TypeOfService)
                                 .SingleOrDefault();
 
                             SelectedType5 = typ5.SpecificType;
@@ -5575,7 +5631,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                         case 6:
                             var typ6 = (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
                                         select q).ToList()
-                                .Where(x => x.ThingName == editGastronomic[0].TypeOfService)
+                                .Where(x => x.ThingName == editGastronomic[6].TypeOfService)
                                 .SingleOrDefault();
                             SelectedType6 = typ6.SpecificType;
                             PropMenuPosMergeType6 = editGastronomic[6].MergeType;
