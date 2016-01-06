@@ -132,8 +132,8 @@
                     <DatePicker x:Name="TerminOdDatePicker" Grid.Row="10" Grid.Column="2" Margin="3,3,3,0" Text="Data start" VerticalAlignment="Top" SelectedDate="{Binding PropositionReservDetailsStartData, StringFormat=\{0:yyyy-MM-dd\}}"/>
                     <DatePicker x:Name="TerminDoDatePicker" Grid.Row="10" Grid.Column="3" Margin="3" Text="Data koniec" SelectedDate="{Binding PropositionReservDetailsEndData, StringFormat=\{0:yyyy-MM-dd\}}"/>
 
-                    <xctk:TimePicker x:Name="GodzinaOdTimePicker" Grid.Row="11" Grid.Column="2" Text="{Binding PropositionReservDetailsStartTime}" Margin="3"   Format="LongTime"/>
-                    <xctk:TimePicker x:Name="GodzinaDoTimePicker" Grid.Row="11" Grid.Column="3" Text="{Binding PropositionReservDetailsEndTime}" Margin="3"  Format="LongTime"/>
+                    <xctk:TimePicker x:Name="GodzinaOdTimePicker" Grid.Row="11" Grid.Column="2" Text="{Binding PropositionReservDetailsStartTime}" Margin="3" />
+                    <xctk:TimePicker x:Name="GodzinaDoTimePicker" Grid.Row="11" Grid.Column="3" Text="{Binding PropositionReservDetailsEndTime}" Margin="3"/>
 
                     <TextBox x:Name="DlaTextBox" Grid.Column="7" Grid.Row="0" Margin="3" Text="{Binding PropositionClientCompanyName, Mode=TwoWay}" Grid.ColumnSpan="2" />
                     <TextBox x:Name="DlaAdresTextBox" Grid.Column="7" Grid.Row="1" Margin="3" AcceptsReturn="True" Text="{Binding PropositionClientCompanyAdress, Mode=TwoWay}" Grid.ColumnSpan="2" />
