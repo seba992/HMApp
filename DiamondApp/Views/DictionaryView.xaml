@@ -20,7 +20,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" />
+                            <TextBox Text="{Binding ThingName, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" MaxLength="170" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -64,7 +64,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}" />
+                            <TextBox Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}"  MaxLength="8"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
@@ -77,7 +77,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged , NotifyOnTargetUpdated=True}" />
+                            <TextBox Text="{Binding SpecificType, UpdateSourceTrigger=PropertyChanged , NotifyOnTargetUpdated=True}" MaxLength="10"  />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>

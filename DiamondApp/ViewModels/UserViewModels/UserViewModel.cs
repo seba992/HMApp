@@ -4040,7 +4040,7 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
 
-                if (PropExtraServBrutto1 != null && PropExtraServDays1 != null && PropExtraServType1 != null && PropExtraServType1 != "")
+                if (PropExtraServBrutto1 != null && PropExtraServDays1 != null )
                 {
                     FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, value,
                         PropExtraServDays1);
@@ -4059,7 +4059,7 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
 
-                if (PropExtraServBrutto2 != null && PropExtraServDays2 != null && PropExtraServType2 != null && PropExtraServType2 != "")
+                if (PropExtraServBrutto2 != null && PropExtraServDays2 != null )
                 {
                     FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2,value,
                         PropExtraServDays2);
@@ -4078,7 +4078,7 @@ namespace DiamondApp.ViewModels.UserViewModels
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
 
-                if (PropExtraServBrutto3 != null && PropExtraServDays3 != null && PropExtraServType2 != null && PropExtraServType2 != "")
+                if (PropExtraServBrutto3 != null && PropExtraServDays3 != null)
                 {
                     FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, value,
                         PropExtraServDays3);
@@ -4115,7 +4115,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 RaisePropertyChanged("PropExtraServDays1");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
-                if (PropExtraServBrutto1 != null && PropExtraServAmount1 != null && PropExtraServType1 != null && PropExtraServType1 != "")
+                if (PropExtraServBrutto1 != null && PropExtraServAmount1 != null)
                 {
                     FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, PropExtraServAmount1,
                         value);
@@ -4133,7 +4133,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 RaisePropertyChanged("PropExtraServDays2");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
-                if (PropExtraServBrutto2 != null && PropExtraServAmount2 != null && PropExtraServType2 != null && PropExtraServType2 != "")
+                if (PropExtraServBrutto2 != null && PropExtraServAmount2 != null )
                 {
                     FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, PropExtraServAmount2,
                         value);
@@ -4151,7 +4151,7 @@ namespace DiamondApp.ViewModels.UserViewModels
                 RaisePropertyChanged("PropExtraServDays3");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
-                if (PropExtraServBrutto3 != null && PropExtraServAmount3 != null && PropExtraServType3 != null && PropExtraServType3 != "")
+                if (PropExtraServBrutto3 != null && PropExtraServAmount3 != null)
                 {
                     FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
                         value);
