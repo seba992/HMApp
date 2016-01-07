@@ -7,8 +7,8 @@
         <ComboBox x:Name="Ctyp" HorizontalAlignment="Left" Margin="290,5,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding Filter}" Visibility="Hidden" SelectedValue="{Binding SelectedFilter}"/>
         <Label x:Name="LTyp" Content="Typ produktu" HorizontalAlignment="Left" Margin="144,5,0,0" VerticalAlignment="Top" Width="126" Visibility="Hidden" Foreground="#FFF9F8F8"/>
         <DataGrid x:Name="GstronomicGrid" HorizontalAlignment="Left" Margin="4,30,4,5" VerticalAlignment="Top" Height="460" Width="800" RowEditEnding="RowEditGstronomic"
-                  ItemsSource="{Binding Gastronomic}" AutoGenerateColumns="False" Visibility="Hidden"  AlternatingRowBackground="LightGray" AlternationCount="2" CanUserResizeColumns="False"
-                  CanUserResizeRows="False" SelectedItem ="{Binding SelectedDeleteElement}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                  ItemsSource="{Binding Gastronomic}" AutoGenerateColumns="False" Visibility="Hidden"  AlternatingRowBackground="LightGray" AlternationCount="2"
+                  CanUserResizeRows="False" SelectedItem ="{Binding SelectedDeleteElement}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" CanUserResizeColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Binding="{Binding Id}" Header="Id"  />
 

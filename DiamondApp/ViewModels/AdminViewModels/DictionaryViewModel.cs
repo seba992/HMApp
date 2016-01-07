@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using System.Xaml;
 using DiamondApp.Model;
 using DiamondApp.Tools.MvvmClasses;
 
@@ -55,7 +55,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
             var room = (from x in _ctx.PropAccomodation_Dictionary
                select x).ToList();
             ListAccomaDictionaries = room;
-           
+            SelectedFilter = " ";
+
         }
 
         public ObservableCollection<PropMenuGastronomicThings_Dictionary_First> Gastronomic
@@ -177,18 +178,32 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
         private void DeleteCommandExecucte(object obj)
         {
-            if (SelectedDeleteElement != null && SelectedDeleteElement.Id!=0)
+            if (SelectedDeleteElement != null)
             {
                 var test = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                    where x.Id == SelectedDeleteElement.Id
+                    where x.ThingName == SelectedDeleteElement.ThingName
+                    && x.NettoMini == SelectedDeleteElement.NettoMini
+                    && x.SpecificType == SelectedDeleteElement.SpecificType
+                    && x.Vat ==SelectedDeleteElement.Vat
                     select x).SingleOrDefault();
                 _ctx.PropMenuGastronomicThings_Dictionary_First.Remove(test);
                 _ctx.SaveChanges();
                 Gastronomic =
                     new ObservableCollection<PropMenuGastronomicThings_Dictionary_First>(
                         (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                            select q).ToList());
-                Xceed.Wpf.Toolkit.MessageBox.Show("Usunieto rekord", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                         select q).ToList());
+                SelectedFilter = Filter[0];
+                Xceed.Wpf.Toolkit.MessageBox.Show("Usunięto rekord", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                
+            }
+            else
+            {
+                Gastronomic =
+                   new ObservableCollection<PropMenuGastronomicThings_Dictionary_First>(
+                       (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                        select q).ToList());
+
+                SelectedFilter = Filter[0];
             }
 
         }
