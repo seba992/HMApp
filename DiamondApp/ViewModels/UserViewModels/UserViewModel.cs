@@ -3935,7 +3935,7 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _propExtraServ[1].Vat = value;
                 RaisePropertyChanged("PropExtraServVat1");
-
+                if (PropExtraServType1 != null && PropExtraServType1 != "")
                 FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, value);
             }
         }
@@ -3946,7 +3946,7 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _propExtraServ[2].Vat = value;
                 RaisePropertyChanged("PropExtraServVat2");
-
+                if (PropExtraServType2 != null && PropExtraServType2 != "")
                 FifthTabNettoPrice2 = ComputeNettoPrice(PropExtraServBrutto2, value);
 
             }
@@ -3959,7 +3959,7 @@ namespace DiamondApp.ViewModels.UserViewModels
             {
                 _propExtraServ[3].Vat = value;
                 RaisePropertyChanged("PropExtraServVat3");
-
+                if (PropExtraServType3 != null && PropExtraServType3 != "")
                 FifthTabNettoPrice3 = ComputeNettoPrice(PropExtraServBrutto3, value);
             }
         }
