@@ -3822,7 +3822,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[0].ServiceType = value;
-               
+                RaisePropertyChanged("PropExtraServType0");
 
                 PropExtraServBrutto0 = SetExtraServBruttoPrice(_propExtraServ[0].ServiceType);
 
@@ -3831,7 +3831,6 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 if (PropExtraServDays0 != null && PropExtraServAmount0 != null)
                     FifthTabBruttoValue0 = ComputeBruttoValue(PropExtraServBrutto0, PropExtraServDays0,
                         PropExtraServDays0);
-                RaisePropertyChanged("PropExtraServType0");
             }
         }
         public string PropExtraServType1
@@ -3840,6 +3839,21 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[1].ServiceType = value;
+                if (value == "")
+                {
+                    PropExtraServBrutto1 = 0;
+                    PropExtraServAmount1 = null;
+                    PropExtraServDays1 = null;
+                }
+                else
+                {
+                    if (PropExtraServVat1 != null)
+                        FifthTabNettoPrice1 = ComputeNettoPrice(PropExtraServBrutto1, PropExtraServVat1);
+                    if (PropExtraServDays1 != null && PropExtraServAmount1 != null)
+                        FifthTabBruttoValue1 = ComputeBruttoValue(PropExtraServBrutto1, PropExtraServDays1,
+                            PropExtraServDays1);
+                }
+
                 RaisePropertyChanged("PropExtraServType1");
 
             }
@@ -3850,6 +3864,20 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[2].ServiceType = value;
+                if (value == "")
+                {
+                    PropExtraServBrutto2 = 0;
+                    PropExtraServAmount2 = null;
+                    PropExtraServDays2 = null;
+                }
+                else
+                {
+                    if (PropExtraServVat2 != null)
+                        FifthTabNettoPrice2 = ComputeNettoPrice(PropExtraServBrutto2, PropExtraServVat2);
+                    if (PropExtraServDays2 != null && PropExtraServAmount2 != null)
+                        FifthTabBruttoValue2 = ComputeBruttoValue(PropExtraServBrutto2, PropExtraServDays2,
+                            PropExtraServDays2);
+                }
                 RaisePropertyChanged("PropExtraServType2");
 
             }
@@ -3860,6 +3888,20 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[3].ServiceType = value;
+                if (value == "")
+                {
+                    PropExtraServBrutto3 = 0;
+                    PropExtraServAmount3 = null;
+                    PropExtraServDays3 = null;
+                }
+                else
+                {
+                    if (PropExtraServVat3 != null)
+                        FifthTabNettoPrice3 = ComputeNettoPrice(PropExtraServBrutto3, PropExtraServVat3);
+                    if (PropExtraServDays3 != null && PropExtraServAmount3 != null)
+                        FifthTabBruttoValue3 = ComputeBruttoValue(PropExtraServBrutto3, PropExtraServDays3,
+                            PropExtraServDays3);
+                }
                 RaisePropertyChanged("PropExtraServType3");
 
             }
@@ -3893,7 +3935,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropExtraServVat1 != null)
                     FifthTabNettoPrice1 = ComputeNettoPrice(value, PropExtraServVat1);
-                FifthTabBruttoValue1 = ComputeBruttoValue(value, PropExtraServAmount1, PropExtraServDays1);
+                if (PropExtraServType1 != null || PropExtraServType1 != "")
+                    FifthTabBruttoValue1 = ComputeBruttoValue(value, PropExtraServAmount1, PropExtraServDays1);
 
             }
         }
@@ -3907,7 +3950,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropExtraServVat2 != null)
                     FifthTabNettoPrice2 = ComputeNettoPrice(value, PropExtraServVat2);
-                FifthTabBruttoValue2 = ComputeBruttoValue(value, PropExtraServAmount2, PropExtraServDays2);
+                if (PropExtraServType2 != null || PropExtraServType2 != "")
+                    FifthTabBruttoValue2 = ComputeBruttoValue(value, PropExtraServAmount2, PropExtraServDays2);
             }
         }
         public float? PropExtraServBrutto3
@@ -3920,7 +3964,8 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 if (PropExtraServVat3 != null)
                     FifthTabNettoPrice3 = ComputeNettoPrice(value, PropExtraServVat3);
-                FifthTabBruttoValue3 = ComputeBruttoValue(value, PropExtraServAmount3, PropExtraServDays3);
+                if (PropExtraServType3 != null || PropExtraServType3 != "")
+                    FifthTabBruttoValue3 = ComputeBruttoValue(value, PropExtraServAmount3, PropExtraServDays3);
             }
         }
 
@@ -4045,7 +4090,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
 
-                if (PropExtraServBrutto1 != null && PropExtraServDays1 != null)
+                if (PropExtraServBrutto1 != null && PropExtraServDays1 != null && PropExtraServType1 != null && PropExtraServType1 != "")
                 {
                     FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, value,
                         PropExtraServDays1);
@@ -4064,7 +4109,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
 
-                if (PropExtraServBrutto2 != null && PropExtraServDays2 != null)
+                if (PropExtraServBrutto2 != null && PropExtraServDays2 != null && PropExtraServType2 != null && PropExtraServType2 != "")
                 {
                     FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, value,
                         PropExtraServDays2);
@@ -4083,7 +4128,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 // jesli jest wybrany przedmiot i wypelniona jest liczba dni to oblicz sume
 
-                if (PropExtraServBrutto3 != null && PropExtraServDays3 != null)
+                if (PropExtraServBrutto3 != null && PropExtraServDays3 != null && PropExtraServType2 != null && PropExtraServType2 != "")
                 {
                     FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, value,
                         PropExtraServDays3);
@@ -4120,7 +4165,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 RaisePropertyChanged("PropExtraServDays1");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
-                if (PropExtraServBrutto1 != null && PropExtraServAmount1 != null)
+                if (PropExtraServBrutto1 != null && PropExtraServAmount1 != null && PropExtraServType1 != null && PropExtraServType1 != "")
                 {
                     FifthTabNettoValue1 = ComputeNettoValue((decimal)FifthTabNettoPrice1, PropExtraServAmount1,
                         value);
@@ -4138,7 +4183,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 RaisePropertyChanged("PropExtraServDays2");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
-                if (PropExtraServBrutto2 != null && PropExtraServAmount2 != null)
+                if (PropExtraServBrutto2 != null && PropExtraServAmount2 != null && PropExtraServType2 != null && PropExtraServType2 != "")
                 {
                     FifthTabNettoValue2 = ComputeNettoValue((decimal)FifthTabNettoPrice2, PropExtraServAmount2,
                         value);
@@ -4156,7 +4201,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
                 RaisePropertyChanged("PropExtraServDays3");
 
                 // jesli jest wybrany element i ilosc to aktualizuj sume netto i brutto elementu
-                if (PropExtraServBrutto3 != null && PropExtraServAmount3 != null)
+                if (PropExtraServBrutto3 != null && PropExtraServAmount3 != null && PropExtraServType3 != null && PropExtraServType3 != "")
                 {
                     FifthTabNettoValue3 = ComputeNettoValue((decimal)FifthTabNettoPrice3, PropExtraServAmount3,
                         value);
