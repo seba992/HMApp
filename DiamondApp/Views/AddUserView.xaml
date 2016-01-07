@@ -16,11 +16,11 @@
         <TextBlock HorizontalAlignment="Left" Margin="20,110,0,0" TextWrapping="Wrap" Text="E-mail:" Foreground="White" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="20,140,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top"><Run Text="Stanowisko:"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="20,170,0,0" TextWrapping="Wrap" Foreground="White" VerticalAlignment="Top"><Run Text="Typ konta:"/><LineBreak/><Run/></TextBlock>
-        <TextBox x:Name="NameTextBox" HorizontalAlignment="Left" Height="23" Margin="111,20,0,0" TextWrapping="Wrap" Text="{Binding Path=UserName}"  VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="SurnameTextBox" HorizontalAlignment="Left" Height="23" Margin="111,50,0,0" TextWrapping="Wrap" Text="{Binding Path=UserSurname}" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.608,0.652"/>
-        <TextBox x:Name="PhoneNumberTextBox" HorizontalAlignment="Left" Height="23" Margin="111,80,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPhoneNumber}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Height="23" Margin="111,110,0,0" TextWrapping="Wrap" Text="{Binding Path=UserEmail}" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="PositionTextBox" HorizontalAlignment="Left" Height="23" Margin="111,140,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPosition}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="NameTextBox" MaxLength="35" HorizontalAlignment="Left" Height="23" Margin="111,20,0,0" TextWrapping="Wrap" Text="{Binding Path=UserName}"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="SurnameTextBox" MaxLength="35" HorizontalAlignment="Left" Height="23" Margin="111,50,0,0" TextWrapping="Wrap" Text="{Binding Path=UserSurname}" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.608,0.652"/>
+        <TextBox x:Name="PhoneNumberTextBox" MaxLength="15" HorizontalAlignment="Left" Height="23" Margin="111,80,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPhoneNumber}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="EmailTextBox" MaxLength="50" HorizontalAlignment="Left" Height="23" Margin="111,110,0,0" TextWrapping="Wrap" Text="{Binding Path=UserEmail}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="PositionTextBox" MaxLength="70" HorizontalAlignment="Left" Height="23" Margin="111,140,0,0" TextWrapping="Wrap" Text="{Binding Path=UserPosition}" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="TypeComboBox" HorizontalAlignment="Left" Margin="111,170,0,0" VerticalAlignment="Top" Width="120" Text="{Binding Path=UserAccountType}">
             <ComboBoxItem Content="Administrator" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="Sprzedawca" HorizontalAlignment="Left" Width="118"/>
