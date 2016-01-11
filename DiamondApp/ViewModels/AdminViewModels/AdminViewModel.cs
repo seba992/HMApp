@@ -63,7 +63,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
         private ObservableCollection<string> _propMenuGastThingDict6;
 
         private List<string> _selectedType = new List<string>(7);
-        private List<string> _filter = new List<string>(7);
+        private ObservableCollection<string> _filter = new ObservableCollection<string>();
 
         private List<PropMenuPosition> _propMenuPositions = new List<PropMenuPosition>(7);  // obiekt przechowujacy elementy uslug gastronomicznych
         private List<decimal?> _thirdTabNettoPrice = new List<decimal?>(7);  // lista cen netto (tab3)
@@ -2790,7 +2790,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             }
         }
 
-        public List<string> Filter
+        public ObservableCollection<string> Filter
         {
             get
             {
@@ -3839,9 +3839,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[1].ServiceType = value;
-                if (value == "")
+                if (value == "" || value == " ")
                 {
-                    PropExtraServBrutto1 = 0;
+                    PropExtraServBrutto1 = null;
                     PropExtraServAmount1 = null;
                     PropExtraServDays1 = null;
                 }
@@ -3864,9 +3864,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[2].ServiceType = value;
-                if (value == "")
+                if (value == "" || value == " ")
                 {
-                    PropExtraServBrutto2 = 0;
+                    PropExtraServBrutto2 = null;
                     PropExtraServAmount2 = null;
                     PropExtraServDays2 = null;
                 }
@@ -3888,9 +3888,9 @@ namespace DiamondApp.ViewModels.AdminViewModels
             set
             {
                 _propExtraServ[3].ServiceType = value;
-                if (value == "")
+                if (value == "" || value == " ")
                 {
-                    PropExtraServBrutto3 = 0;
+                    PropExtraServBrutto3 = null;
                     PropExtraServAmount3 = null;
                     PropExtraServDays3 = null;
                 }
@@ -4429,10 +4429,13 @@ namespace DiamondApp.ViewModels.AdminViewModels
                              select hd.Setting).ToList();
             HallSettingList = hallDict2;
 
-            Filter.Add(" ");
-            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                             group x by x.SpecificType into g
-                             select g.Key).ToList());
+            //Filter.Add(" ");
+            var filtertmp = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                group x by x.SpecificType
+                into g
+                select g.Key).ToList();
+            filtertmp.Add(" ");
+            Filter= new ObservableCollection<string>(filtertmp);
             var propstates = (from ps in _ctx.PropositionStates_Dictionary
                               select ps.Status).ToList();
             PropStates = propstates;
@@ -4504,10 +4507,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             //wypelnienie nazw pokoi
             var rooms = (from r in _ctx.PropAccomodation_Dictionary
                          select r).ToList();
-            for (int i = 0; i < rooms.Count; i++)
-            {
-                _propAccomodations[i].BruttoPrice = rooms[i].Price;
-            }
+
           
             PropAccomTypeOfRoom0 = rooms[0].TypeOfRoom;
             PropAccomTypeOfRoom1 = rooms[1].TypeOfRoom;
@@ -4515,15 +4515,15 @@ namespace DiamondApp.ViewModels.AdminViewModels
             PropAccomTypeOfRoom3 = rooms[3].TypeOfRoom;
             PropAccomTypeOfRoom4 = rooms[4].TypeOfRoom;
             PropAccomTypeOfRoom5 = rooms[5].TypeOfRoom;
-            /*
+           
           // wypełnienie domyslnymi cenami brutto
-          PropAccomBrutto0 = rooms[0].Price;
-          PropAccomBrutto1 = rooms[1].Price;
-          PropAccomBrutto2 = rooms[2].Price;
-          PropAccomBrutto3 = rooms[3].Price;
-          PropAccomBrutto4 = rooms[4].Price;
-          PropAccomBrutto5 = rooms[5].Price;
-          */
+            PropAccomBrutto0 = rooms[0].Price;
+            PropAccomBrutto1 = rooms[1].Price;
+            PropAccomBrutto2 = rooms[2].Price;
+            PropAccomBrutto3 = rooms[3].Price;
+            PropAccomBrutto4 = rooms[4].Price;
+            PropAccomBrutto5 = rooms[5].Price;
+          
             //tab 5
 
             // uzupelnianie slownikami form platnosci
@@ -5864,7 +5864,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
 
                 var propAccomDiscountValue = (from q in _ctx.PropAccomodationDiscount
                                               where q.Id_proposition == _idProposition
-                                              select q).SingleOrDefault();
+                                              select q).FirstOrDefault();
                 if (propAccomDiscountValue != null)
                     PropAccomDiscountValue = propAccomDiscountValue.Discount;
 
@@ -6400,7 +6400,7 @@ namespace DiamondApp.ViewModels.AdminViewModels
             _fifthTabBruttoValue = new List<decimal>(4);
             _propPaymentSugg = new PropPaymentSuggestions();
             _selectedType = new List<string>(7);
-            _filter = new List<string>(7);
+            _filter = new ObservableCollection<string>();
             _propMenuGastThingDict0 = new ObservableCollection<string>();
             _propMenuGastThingDict1 = new ObservableCollection<string>();
             _propMenuGastThingDict2 = new ObservableCollection<string>();
@@ -6484,11 +6484,12 @@ namespace DiamondApp.ViewModels.AdminViewModels
             for (int i = 0; i < _fifthTabBruttoValue.Capacity; i++)
                 _fifthTabBruttoValue.Add(new decimal());
 
-            Filter.Add(" ");
-            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                             group x by x.SpecificType into g
-                             select g.Key).ToList());
-
+            var filtertmp = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                             group x by x.SpecificType
+                                 into g
+                                 select g.Key).ToList();
+            filtertmp.Add(" ");
+            Filter = new ObservableCollection<string>(filtertmp);
             //First Tab state list
             //           for (int i = 0; i < _propStates.Capacity; i++)
             //              _propStates.Add("Nierozpatrzona");
@@ -6790,10 +6791,12 @@ namespace DiamondApp.ViewModels.AdminViewModels
             var hallDict2 = (from hd in _ctx.PropReservationDetails_Dictionary_HallSettings
                              select hd.Setting).ToList();
             HallSettingList = hallDict2;
-            Filter.Add(" ");
-            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                             group x by x.SpecificType into g
-                             select g.Key).ToList());
+            var filtertmp = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                             group x by x.SpecificType
+                                 into g
+                                 select g.Key).ToList();
+            filtertmp.Add(" ");
+            Filter = new ObservableCollection<string>(filtertmp);
             // wypelnianie listy dodatkowego wyposazenia sali 2tab
             var propHallEqList = (from he in _ctx.PropHallEquipmnet_Dictionary_Second
                                   select he.Things).ToList();
@@ -6812,11 +6815,6 @@ namespace DiamondApp.ViewModels.AdminViewModels
             PropMenuGastThingDict4 = gastThingDict;
             PropMenuGastThingDict5 = gastThingDict;
             PropMenuGastThingDict6 = gastThingDict;
-            Filter.Add(" ");
-            Filter.AddRange((from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                             group x by x.SpecificType into g
-                             select g.Key).ToList());
-
 
 
             //tab4

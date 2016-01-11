@@ -3787,9 +3787,9 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propExtraServ[1].ServiceType = value;
-                if (value == "")
+                if (value == "" || value == " ")
                 {
-                    PropExtraServBrutto1 = 0;
+                    PropExtraServBrutto1 = null;
                     PropExtraServAmount1 = null;
                     PropExtraServDays1 = null;
                 }
@@ -3812,9 +3812,9 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propExtraServ[2].ServiceType = value;
-                if (value == "")
+                if (value == "" || value == " ")
                 {
-                    PropExtraServBrutto2 = 0;
+                    PropExtraServBrutto2 = null;
                     PropExtraServAmount2 = null;
                     PropExtraServDays2 = null;
                 }
@@ -3836,9 +3836,9 @@ namespace DiamondApp.ViewModels.UserViewModels
             set
             {
                 _propExtraServ[3].ServiceType = value;
-                if (value == "")
+                if (value == "" || value == " ")
                 {
-                    PropExtraServBrutto3 = 0;
+                    PropExtraServBrutto3 = null;
                     PropExtraServAmount3 = null;
                     PropExtraServDays3 = null;
                 }

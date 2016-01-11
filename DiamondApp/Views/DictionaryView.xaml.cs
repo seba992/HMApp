@@ -77,100 +77,110 @@ namespace DiamondApp.Views
 
         public void RowEditGstronomic(object sender, DataGridRowEditEndingEventArgs e)
         {
-           
-            try
-            {
-                object item = GstronomicGrid.SelectedItem;
-                string ID = (GstronomicGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-                int selected = Int32.Parse(ID);
-                //int selected = ((PropMenuGastronomicThings_Dictionary_First)e.Row.Item).Id;
-
-                dynamic userRow = GstronomicGrid.SelectedItem;
-
-                if (Ctyp.SelectedItem.ToString() != " ")
+                try
                 {
-                    if (selected != 0 && userRow.ThingName != "" && userRow.ThingName != null
-                            && userRow.NettoMini != null && userRow.NettoMini != 0 && userRow.Vat.ToString() != ""
-                            && userRow.Vat.ToString() != null)
-                    {
-                        PropMenuGastronomicThings_Dictionary_First userUpdate =
-                            (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                where q.Id == selected
-                                // int selected!!! you know what i want up to date
-                                select q).First();
-                        userUpdate.ThingName = userRow.ThingName;
-                        userUpdate.NettoMini = userRow.NettoMini;
-                        userUpdate.Vat = userRow.Vat;
-                   
-                        var mertyp = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                            where x.SpecificType == Ctyp.SelectedItem.ToString()
-                            && x.Id==selected
-                            group x by x.MergeType
-                            into g
-                            select g.Key).ToList();
-                        
-                        userUpdate.MergeType = mertyp.FirstOrDefault();
-                        userUpdate.SpecificType = Ctyp.SelectedItem.ToString();
-                       _ctx.SaveChanges();
-                    }
-                    else if (userRow.ThingName != "" && userRow.ThingName != null
-                            && userRow.NettoMini != null && userRow.NettoMini != 0 && userRow.Vat.ToString() != ""
-                            && userRow.Vat.ToString() != null)
-                    {
-                        PropMenuGastronomicThings_Dictionary_First userUpdate =
-                            new PropMenuGastronomicThings_Dictionary_First();
-                        userUpdate.ThingName = userRow.ThingName;
-                        userUpdate.NettoMini = userRow.NettoMini;
-                        userUpdate.Vat = userRow.Vat;
+                    object item = GstronomicGrid.SelectedItem;
+                    string ID = (GstronomicGrid.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+                    int selected = Int32.Parse(ID);
+                    //int selected = ((PropMenuGastronomicThings_Dictionary_First)e.Row.Item).Id;
 
-                        var mertyp = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                      where x.SpecificType == Ctyp.SelectedItem.ToString()
-                                      group x by x.MergeType
-                                          into g
-                                          select g.Key).ToList();
+                    dynamic userRow = GstronomicGrid.SelectedItem;
 
-                        userUpdate.MergeType = mertyp.FirstOrDefault();
-                        userUpdate.SpecificType = Ctyp.SelectedItem.ToString();
-                        _ctx.PropMenuGastronomicThings_Dictionary_First.Add(userUpdate);
-                        _ctx.SaveChanges();
-                        Xceed.Wpf.Toolkit.MessageBox.Show("Dodano rekord", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                    }
-                    else
+                    if (Ctyp.SelectedItem.ToString() != " ")
                     {
-                        Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić  nazwe, netto i vat!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
-                }
-                else
-                {
-                    if (selected != 0)
-                    {
-                        if (userRow.ThingName != "" && userRow.ThingName != null
-                            && userRow.NettoMini != null && userRow.NettoMini != 0
-                            && userRow.MergeType != null && userRow.Vat.ToString() != ""
-                            && userRow.Vat.ToString() != null)
+                        if (selected != 0 && userRow.ThingName != "" && userRow.ThingName != null
+                                && userRow.NettoMini != null && userRow.NettoMini != 0 && userRow.Vat.ToString() != ""
+                                && userRow.Vat.ToString() != null)
                         {
-
                             PropMenuGastronomicThings_Dictionary_First userUpdate =
                                 (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
-                                    where q.Id == selected
-                                    // int selected!!! you know what i want up to date
-                                    select q).First();
+                                 where q.Id == selected
+                                 // int selected!!! you know what i want up to date
+                                 select q).First();
                             userUpdate.ThingName = userRow.ThingName;
                             userUpdate.NettoMini = userRow.NettoMini;
                             userUpdate.Vat = userRow.Vat;
-                            userUpdate.MergeType = userRow.MergeType;
-                            userUpdate.SpecificType = userRow.SpecificType;
+                            if (userRow.MergeType == null)
+                            {
+                                var mertyp = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                    where x.SpecificType == Ctyp.SelectedItem.ToString()
+                                          && x.Id == selected
+                                    group x by x.MergeType
+                                    into g
+                                    select g.Key).ToList();
+
+                                userUpdate.MergeType = mertyp.FirstOrDefault();
+                            }
+                            else
+                            {
+                                userUpdate.MergeType = userRow.MergeType;
+                            }
+                            userUpdate.SpecificType = Ctyp.SelectedItem.ToString();
                             _ctx.SaveChanges();
                         }
+                        else if (userRow.ThingName != "" && userRow.ThingName != null
+                                 && userRow.NettoMini != null && userRow.NettoMini != 0 && userRow.Vat.ToString() != ""
+                                 && userRow.Vat.ToString() != null)
+                        {
+                            PropMenuGastronomicThings_Dictionary_First userUpdate =
+                                new PropMenuGastronomicThings_Dictionary_First();
+                            userUpdate.ThingName = userRow.ThingName;
+                            userUpdate.NettoMini = userRow.NettoMini;
+                            userUpdate.Vat = userRow.Vat;
+                            if (userRow.MergeType == null)
+                            {
+                                var mertyp = (from x in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                    where x.SpecificType == Ctyp.SelectedItem.ToString()
+                                    group x by x.MergeType
+                                    into g
+                                    select g.Key).ToList();
+                                userUpdate.MergeType = mertyp.FirstOrDefault();
+                            }
+                            else
+                            {
+                                userUpdate.MergeType = userRow.MergeType;
+                            }
+               
+               
+                             userUpdate.SpecificType = Ctyp.SelectedItem.ToString();
+                            _ctx.PropMenuGastronomicThings_Dictionary_First.Add(userUpdate);
+                            _ctx.SaveChanges();
+                            Xceed.Wpf.Toolkit.MessageBox.Show("Dodano rekord", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                        }
+                        else
+                        {
+                            Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić  nazwe, netto i vat!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
                     }
                     else
                     {
-                        if(userRow.ThingName != "" && userRow.ThingName != null
-                         && userRow.NettoMini != null && userRow.NettoMini != 0
-                         && userRow.MergeType != null && userRow.Vat.ToString() != ""
-                         && userRow.Vat.ToString() != null)
+                        if (selected != 0)
+                        {
+                            if (userRow.ThingName != "" && userRow.ThingName != null
+                                && userRow.NettoMini != null && userRow.NettoMini != 0
+                                && userRow.MergeType != null && userRow.Vat.ToString() != ""
+                                && userRow.Vat.ToString() != null && userRow.SpecificType != null)
+                            {
+
+                                PropMenuGastronomicThings_Dictionary_First userUpdate =
+                                    (from q in _ctx.PropMenuGastronomicThings_Dictionary_First
+                                     where q.Id == selected
+                                     // int selected!!! you know what i want up to date
+                                     select q).First();
+                                userUpdate.ThingName = userRow.ThingName;
+                                userUpdate.NettoMini = userRow.NettoMini;
+                                userUpdate.Vat = userRow.Vat;
+                                userUpdate.MergeType = userRow.MergeType;
+                                userUpdate.SpecificType = userRow.SpecificType;
+                                _ctx.SaveChanges();
+                            }
+
+                        }
+                        else if (userRow.ThingName != "" && userRow.ThingName != null
+                             && userRow.NettoMini != null && userRow.NettoMini != 0
+                             && userRow.MergeType != null && userRow.Vat.ToString() != ""
+                             && userRow.Vat.ToString() != null && userRow.SpecificType !=null)
                         {
                             PropMenuGastronomicThings_Dictionary_First userUpdate =
                                 new PropMenuGastronomicThings_Dictionary_First();
@@ -178,24 +188,26 @@ namespace DiamondApp.Views
                             userUpdate.ThingName = userRow.ThingName;
                             userUpdate.NettoMini = userRow.NettoMini;
                             userUpdate.Vat = userRow.Vat;
-                            userUpdate.SpecificType= userRow.SpecificType;
+                            userUpdate.SpecificType = userRow.SpecificType;
                             userUpdate.MergeType = userRow.MergeType;
                             _ctx.PropMenuGastronomicThings_Dictionary_First.Add(userUpdate);
                             _ctx.SaveChanges();
                             Xceed.Wpf.Toolkit.MessageBox.Show("Dodano rekord", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
-                    }
-                }
-                    
-                
-            }
-            catch (Exception ex)
-            {
-               
-               Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
 
-           
+                        else
+                            Xceed.Wpf.Toolkit.MessageBox.Show("Należy wypełnić wszystkie komórki!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    Xceed.Wpf.Toolkit.MessageBox.Show("Błąd dodania pozycji!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+
+          
         }
 
         public void RowEditHall(object sender, DataGridRowEditEndingEventArgs e)

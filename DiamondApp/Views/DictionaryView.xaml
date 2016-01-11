@@ -48,7 +48,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <ComboBox Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged ,NotifyOnTargetUpdated=True}" >
+                            <ComboBox Text="{Binding Vat, UpdateSourceTrigger=PropertyChanged ,NotifyOnTargetUpdated=True}" Width="36"  >
                                 <ComboBoxItem Content="8"/>
                                 <ComboBoxItem Content="23"/>
                             </ComboBox>
@@ -64,7 +64,14 @@
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <TextBox Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}"  MaxLength="8"/>
+                           <!-- <TextBox Text="{Binding MergeType, UpdateSourceTrigger=PropertyChanged, NotifyOnTargetUpdated=True}"  MaxLength="8"/>-->
+                            <ComboBox Text="{Binding MergeType, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged}" Width="60">
+                                <ComboBoxItem Content="MGA8"/>
+                                <ComboBoxItem Content="MGA23"/>
+                                <ComboBoxItem Content="MALK"/>
+                                <ComboBoxItem Content="MNIS"/>
+                                <ComboBoxItem Content="MNAPO"/>
+                            </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
